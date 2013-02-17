@@ -20,7 +20,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.suicune.pokeutils.database.PokeContract;
 
@@ -44,6 +43,8 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 	private static final int MAX_SP_DEF = 614;
 	private static final int MIN_SPEED = 41;
 	private static final int MAX_SPEED = 504;
+
+	private static final int LOADER_AUTO_COMPLETE = 1;
 
 	private TextView mIVHPView;
 	private TextView mIVAttView;
@@ -78,6 +79,8 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 	private int baseSpeed;
 
 	private String mNature;
+
+	private SimpleCursorAdapter mAutoCompleteAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -135,7 +138,8 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 	}
 
 	private void setListeners() {
-		mPokemonNameEditText.setAdapter(getAutoCompleteAdapter());
+		setAutoCompleteAdapter();
+		mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
 		mPokemonNameEditText
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -169,6 +173,8 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 			@Override
 			public void onItemSelected(AdapterView<?> adapterView, View view,
 					int position, long id) {
+				changeNature(id);
+
 				mNature = ((TextView) view.findViewById(android.R.id.text1))
 						.getText().toString();
 			}
@@ -180,106 +186,226 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 	}
 
 	private void changePokemonStats(long id) {
-
+	}
+	
+	private void changeNature(long id){
 	}
 
-	private SimpleCursorAdapter getAutoCompleteAdapter() {
-		CursorLoader loader = (CursorLoader) getActivity()
-				.getSupportLoaderManager().initLoader(0, null,
-						new MyPokemonLoader());
-		Cursor cursor = loader.loadInBackground();
+	private void setAutoCompleteAdapter() {
+		getActivity().getSupportLoaderManager().restartLoader(
+				LOADER_AUTO_COMPLETE, null, new MyPokemonLoader());
 		String[] from = { PokeContract.PokemonTable.POKEMON_NAME };
 		int[] to = { android.R.id.text1 };
-		return new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, cursor, from,
-				to, 0);
+		mAutoCompleteAdapter = new SimpleCursorAdapter(getActivity(),
+				android.R.layout.simple_spinner_dropdown_item, null, from, to,
+				0);
 
 	}
 
 	@Override
 	public void afterTextChanged(Editable s) {
+		ArrayList<Integer> ivs = null;
 		if (s.hashCode() == mStatHPView.getText().hashCode()
 				|| s.hashCode() == mEVHPView.getText().hashCode()) {
-			calculateIV(CODE_HP);
+			ivs = calculateIV(CODE_HP);
+			if (ivs != null) {
+				showIVs(CODE_HP, ivs);
+			}
 		} else if (s.hashCode() == mStatAttView.getText().hashCode()
 				|| s.hashCode() == mEVAttView.getText().hashCode()) {
-			calculateIV(CODE_ATT);
+			ivs = calculateIV(CODE_ATT);
+			if (ivs != null) {
+				showIVs(CODE_ATT, ivs);
+			}
+
 		} else if (s.hashCode() == mStatDefView.getText().hashCode()
 				|| s.hashCode() == mEVDefView.getText().hashCode()) {
-			calculateIV(CODE_DEF);
+			ivs = calculateIV(CODE_DEF);
+			if (ivs != null) {
+				showIVs(CODE_DEF, ivs);
+			}
+
 		} else if (s.hashCode() == mStatSpAttView.getText().hashCode()
 				|| s.hashCode() == mEVSpAttView.getText().hashCode()) {
-			calculateIV(CODE_SP_ATT);
+			ivs = calculateIV(CODE_SP_ATT);
+			if (ivs != null) {
+				showIVs(CODE_SP_ATT, ivs);
+			}
+
 		} else if (s.hashCode() == mStatSpAttView.getText().hashCode()
 				|| s.hashCode() == mEVSpDefView.getText().hashCode()) {
-			calculateIV(CODE_SP_DEF);
+			ivs = calculateIV(CODE_SP_DEF);
+			if (ivs != null) {
+				showIVs(CODE_SP_DEF, ivs);
+			}
+
 		} else if (s.hashCode() == mStatSpeedView.getText().hashCode()
 				|| s.hashCode() == mEVSpeedView.getText().hashCode()) {
-			calculateIV(CODE_SPEED);
+			ivs = calculateIV(CODE_SPEED);
+			if (ivs != null) {
+				showIVs(CODE_SPEED, ivs);
+			}
+
 		}
 	}
 
-	private void calculateIV(int code) {
+	private ArrayList<Integer> calculateIV(int code) {
 		int currentLevel = Integer.parseInt(mPokemonLevelEditText.getText()
 				.toString());
 
 		if (currentLevel > 100 || currentLevel < 1) {
-			return;
+			return null;
 		}
-		ArrayList<Integer> IVList = new ArrayList<Integer>();
-		int currentStatValue;
-		int currentEVValue;
+		ArrayList<Integer> ivList = new ArrayList<Integer>();
+		
+		int currentStatValue = 0;
+		int currentEVValue = 0;
+		int currentNatureModifier = 100;
+		int baseStat = 0;
 
 		switch (code) {
 		case CODE_HP:
 			currentStatValue = Integer.parseInt(mStatHPView.getText()
 					.toString());
 			if (currentStatValue < MIN_HP || currentStatValue > MAX_HP) {
-				return;
+				return null;
 			}
 			currentEVValue = Integer.parseInt(mEVHPView.getText().toString());
 			if (currentEVValue < 0 || currentEVValue > 255) {
-				return;
+				return null;
 			}
 
-			int minIVValue = -1;
-			int maxIVValue = -1;
-
-			for (int iv = 1; iv < 31; iv++) {
-				if (currentStatValue == (((iv + (2 * baseHP)
-						+ (currentEVValue / 4) + 100) * currentLevel) / 100) + 10) {
-					IVList.add(iv);
+			for (int iv = 0; iv < 31; iv++) {
+				if (currentStatValue == (((iv + (2 * baseHP) + (currentEVValue / 4) + 100) * currentLevel) / 100) + 10) {
+					ivList.add(iv);
 				}
 			}
 
-			if (IVList.size() < 1) {
-				return;
+			if (ivList.size() < 1) {
+				return null;
 			}
 
-			mIVHPView.setText(minIVValue + "-" + maxIVValue);
-			return;
+			return null;
 		case CODE_ATT:
-			currentStatValue = Integer.parseInt(mStatHPView.getText()
+			currentStatValue = Integer.parseInt(mStatAttView.getText()
 					.toString());
 			if (currentStatValue < MIN_ATT || currentStatValue > MAX_ATT) {
-				return;
+				return null;
 			}
-			currentEVValue = Integer.parseInt(mEVHPView.getText().toString());
-			if (currentEVValue < 0 || currentEVValue > 255) {
-				return;
-			}
+			currentEVValue = Integer.parseInt(mEVAttView.getText().toString());
 			
+			if(mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")){
+				currentNatureModifier = 110;
+			} else if (mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")) {
+				currentNatureModifier = 90;
+			}
+			baseStat = baseAtt;
 			break;
 		case CODE_DEF:
+			currentStatValue = Integer.parseInt(mStatDefView.getText()
+					.toString());
+			if (currentStatValue < MIN_DEF || currentStatValue > MAX_DEF) {
+				return null;
+			}
+			currentEVValue = Integer.parseInt(mEVDefView.getText().toString());			
+			if(mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")){
+				currentNatureModifier = 110;
+			} else if (mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")) {
+				currentNatureModifier = 90;
+			}
+			baseStat = baseDef;
 			break;
 		case CODE_SP_ATT:
+			currentStatValue = Integer.parseInt(mStatSpAttView.getText()
+					.toString());
+			if (currentStatValue < MIN_SP_ATT || currentStatValue > MAX_SP_ATT) {
+				return null;
+			}
+			currentEVValue = Integer.parseInt(mEVSpAttView.getText().toString());
+			
+			if(mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")){
+				currentNatureModifier = 110;
+			} else if (mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")) {
+				currentNatureModifier = 90;
+			}
+			baseStat = baseSpAtt;
 			break;
 		case CODE_SP_DEF:
+			currentStatValue = Integer.parseInt(mStatSpDefView.getText()
+					.toString());
+			if (currentStatValue < MIN_SP_DEF || currentStatValue > MAX_SP_DEF) {
+				return null;
+			}
+			currentEVValue = Integer.parseInt(mEVSpDefView.getText().toString());
+			
+			if(mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")){
+				currentNatureModifier = 110;
+			} else if (mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")) {
+				currentNatureModifier = 90;
+			}			
+			baseStat = baseSpDef;
 			break;
 		case CODE_SPEED:
+			currentStatValue = Integer.parseInt(mStatSpeedView.getText()
+					.toString());
+			if (currentStatValue < MIN_SPEED || currentStatValue > MAX_SPEED) {
+				return null;
+			}
+			currentEVValue = Integer.parseInt(mEVSpeedView.getText().toString());
+			
+			if(mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")){
+				currentNatureModifier = 110;
+			} else if (mNature.equals("") || mNature.equals("") || mNature.equals("") || mNature.equals("")) {
+				currentNatureModifier = 90;
+			}
+			baseStat = baseSpeed;
 			break;
 		}
+		if (currentEVValue < 0 || currentEVValue > 255) {
+			return null;
+		}
 
+		for (int iv = 0; iv < 31; iv ++){
+			if (currentStatValue == Math.floor(((((iv + (2 * baseStat) + (currentEVValue / 4))* currentLevel) / 100) + 5) * (currentNatureModifier/100))) {
+				ivList.add(iv);
+			}
+		}
+		
+		return ivList;
+	}
+
+	private void showIVs(int code, ArrayList<Integer> ivs) {
+		int minIVValue = 32;
+		int maxIVValue = -1;
+		for (int i = 0; i < ivs.size(); i++) {
+			int iv = ivs.get(i);
+			if (iv > maxIVValue) {
+				maxIVValue = iv;
+			}
+			if (iv < minIVValue) {
+				minIVValue = iv;
+			}
+		}
+		switch (code) {
+		case CODE_HP:
+			mIVHPView.setText("" + minIVValue + "-" + maxIVValue);
+			break;
+		case CODE_ATT:
+			mIVAttView.setText("" + minIVValue + "-" + maxIVValue);
+			break;
+		case CODE_DEF:
+			mIVDefView.setText("" + minIVValue + "-" + maxIVValue);
+			break;
+		case CODE_SP_ATT:
+			mIVSpAttView.setText("" + minIVValue + "-" + maxIVValue);
+			break;
+		case CODE_SP_DEF:
+			mIVSpDefView.setText("" + minIVValue + "-" + maxIVValue);
+			break;
+		case CODE_SPEED:
+			mIVSpeedView.setText("" + minIVValue + "-" + maxIVValue);
+			break;
+		}
 	}
 
 	@Override
@@ -298,23 +424,22 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 		public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 			Loader<Cursor> loader = null;
 
-			String[] projection = {
-					PokeContract.PokemonTable._ID,
+			String[] projection = { PokeContract.PokemonTable._ID,
 					PokeContract.PokemonTable.POKEMON_NAME,
 					PokeContract.PokemonTable.BASE_STAT_HP,
 					PokeContract.PokemonTable.BASE_STAT_ATT,
 					PokeContract.PokemonTable.BASE_STAT_DEF,
 					PokeContract.PokemonTable.BASE_STAT_SPATT,
 					PokeContract.PokemonTable.BASE_STAT_SPDEF,
-					PokeContract.PokemonTable.BASE_STAT_SPEED
-			};
+					PokeContract.PokemonTable.BASE_STAT_SPEED };
 			String selection = PokeContract.PokemonTable._ID + "=?";
 			String[] selectionArgs = { "1" };
-			loader = new CursorLoader(getActivity(),
-					PokeContract.CONTENT_POKEMON, projection, selection,
-					selectionArgs, null);
+
 			switch (id) {
-			default:
+			case LOADER_AUTO_COMPLETE:
+				loader = new CursorLoader(getActivity(),
+						PokeContract.CONTENT_POKEMON, projection, selection,
+						selectionArgs, null);
 				break;
 			}
 
@@ -324,14 +449,19 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 		@Override
 		public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 			switch (loader.getId()) {
-			default:
+			case LOADER_AUTO_COMPLETE:
+				mAutoCompleteAdapter.swapCursor(cursor);
 				break;
 			}
 		}
 
 		@Override
 		public void onLoaderReset(Loader<Cursor> loader) {
-
+			switch (loader.getId()) {
+			case LOADER_AUTO_COMPLETE:
+				mAutoCompleteAdapter.swapCursor(null);
+				break;
+			}
 		}
 	}
 }
