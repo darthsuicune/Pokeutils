@@ -26,7 +26,7 @@ public class MainActivity extends TabCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		makeFirstInsert();
+//		makeFirstInsert();
 		setContentView(R.layout.main_activity);
 		setTabs();
 	}
