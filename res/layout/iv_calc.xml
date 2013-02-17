@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- Pokemon Information block -->
+
+        <AutoCompleteTextView
+            android:id="@+id/iv_calc_pokemon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/pokemon_name"
+            android:inputType="text" >
+        </AutoCompleteTextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/iv_calc_pokemon_level"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/pokemon_level"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+
+            <Spinner
+                android:id="@+id/iv_calc_nature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </Spinner>
+        </LinearLayout>
+
+        <!-- IV Block -->
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:showDividers="middle" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/att" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/def" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sp_att" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sp_def" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speed" >
+                </TextView>
+            </TableRow>
+
+            <TableRow android:layout_width="match_parent" >
+
+                <TextView
+                    android:id="@+id/iv_calc_iv_hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_iv_att"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_iv_def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_iv_sp_att"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_iv_sp_def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_iv_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </TextView>
+            </TableRow>
+        </TableLayout>
+
+        <!-- Stats block -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/iv_calc_stat_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hp"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_stat_att"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/att"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_stat_def"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/def"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_stat_sp_att"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/sp_att"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_stat_sp_def"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/sp_def"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_stat_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/speed"
+                android:inputType="number"
+                android:maxLength="3" >
+            </EditText>
+        </LinearLayout>
+
+        <!-- EVs block -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/iv_calc_ev_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hp"
+                android:inputType="number"
+                android:maxLength="2" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_ev_att"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/att"
+                android:inputType="number"
+                android:maxLength="2" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_ev_def"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/def"
+                android:inputType="number"
+                android:maxLength="2" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_ev_sp_att"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/sp_att"
+                android:inputType="number"
+                android:maxLength="2" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_ev_sp_def"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/sp_def"
+                android:inputType="number"
+                android:maxLength="2" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/iv_calc_ev_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/speed"
+                android:inputType="number"
+                android:maxLength="2" >
+            </EditText>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

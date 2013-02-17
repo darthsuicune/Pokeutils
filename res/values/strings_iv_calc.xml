@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hp">HP</string>
+    <string name="att">Att</string>
+    <string name="def">Def</string>
+    <string name="sp_att">SpAtt</string>
+    <string name="sp_def">SpDef</string>
+    <string name="speed">Speed</string>
+    <string name="pokemon_name">Pokemon Name</string>
+    <string name="pokemon_level">Lvl</string>
+</resources>

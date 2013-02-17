@@ -1,6 +1,9 @@
 package com.suicune.pokeutils;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 
@@ -10,11 +13,17 @@ import com.suicune.pokeutils.compat.TabCompatActivity;
 import com.suicune.pokeutils.compat.TabHelper;
 
 public class MainActivity extends TabCompatActivity {
+	private static final int TAB_GENERAL = 0;
+	private static final int TAB_CALCULATORS = 1;
+	private static final int TAB_TABLES = 2;
+	
+	private SharedPreferences prefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		setContentView(R.layout.main_activity);
 		setTabs();
 	}
 
@@ -25,35 +34,77 @@ public class MainActivity extends TabCompatActivity {
 		return true;
 	}
 
-	private void setTabs(){
-		addTab(null, null, 0);
-	}
-	
-	private void addTab(String name, TabChangeListener listener, int textResId) {
+	private void setTabs() {
 		TabHelper tabHelper = getTabHelper();
 		
-		CompatTab tab = tabHelper.newTab(name);
-		tab.setText(textResId);
-		tab.setTabListener(listener);
+		int defaultTab = prefs.getInt(SettingsActivity.DEFAULT_TAB,
+                TAB_GENERAL);
 		
-		tabHelper.addTab(tab);
+		createTab(tabHelper, "IV Calculator", R.string.iv_calculator, new TabListener(this, IVCalcFragment.class));
 		
+		tabHelper.setActiveTab(defaultTab);
 	}
-	
-	private class TabChangeListener implements CompatTabListener{
 
-		@Override
-		public void onTabUnselected(CompatTab mLastTab, FragmentTransaction ft) {
-			
+	private void createTab(TabHelper tabHelper, String tag, int textResourceId,
+			TabListener listener) {
+
+		CompatTab tab = tabHelper.newTab(tag);
+
+		tab.setText(textResourceId);
+		tab.setTabListener(listener);
+
+		tabHelper.addTab(tab);
+	}
+
+	class TabListener implements CompatTabListener {
+		private TabCompatActivity mActivity;
+		private Class<? extends Fragment> mClass;
+
+		protected TabListener(TabCompatActivity activity,
+				Class<? extends Fragment> cls) {
+			mActivity = activity;
+			mClass = cls;
 		}
 
 		@Override
-		public void onTabSelected(CompatTab newTab, FragmentTransaction ft) {
-			
+		public void onTabUnselected(CompatTab tab, FragmentTransaction ft) {
+			Fragment fragment = tab.getFragment();
+			if (fragment != null) {
+				ft.detach(fragment);
+			}
+			fragment.setHasOptionsMenu(false);
 		}
 
 		@Override
-		public void onTabReselected(CompatTab newTab, FragmentTransaction ft) {
+		public void onTabSelected(CompatTab tab, FragmentTransaction ft) {
+			Fragment fragment = tab.getFragment();
+			if (fragment == null) {
+				fragment = Fragment.instantiate(mActivity, mClass.getName());
+				tab.setFragment(fragment);
+				ft.add(android.R.id.tabcontent, fragment, tab.getTag());
+			} else {
+				ft.attach(fragment);
+			}
+			fragment.setHasOptionsMenu(true);
+
+			if (prefs.getBoolean(SettingsActivity.PREFERENCE_SAVE_TAB_DEFAULT,
+					true)) {
+				saveCurrentTabAsDefault(tab);
+			}
 		}
+
+		@Override
+		public void onTabReselected(CompatTab tab, FragmentTransaction ft) {
+		}
+
+	}
+
+	private void saveCurrentTabAsDefault(CompatTab tab) {
+		int currentTab = 0;
+		if (tab.getTag().equals(getString(R.string.iv_calculator))) {
+		} else {
+		}
+
+		prefs.edit().putInt(SettingsActivity.DEFAULT_TAB, currentTab).commit();
 	}
 }
