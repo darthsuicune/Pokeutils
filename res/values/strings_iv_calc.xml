@@ -11,5 +11,6 @@
     <string name="iv_calc_title_evs">EVs:</string>
     <string name="iv_calc_title_ivs">IVs:</string>
     <string name="iv_calc_title_stats">Stats:</string>
+    <string name="iv_calc_title_base_stats">Bae stats:</string>
     <string name="iv_calc_title_level">Level:</string>
 </resources>

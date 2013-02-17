@@ -15,9 +15,9 @@ import com.suicune.pokeutils.compat.TabHelper;
 import com.suicune.pokeutils.database.PokeContract;
 
 public class MainActivity extends TabCompatActivity {
-	private static final int TAB_GENERAL = 0;
+	private static final int TAB_CALCULATORS = 0;
 	private static final int TAB_TEAM_BUILDER = 1;
-	private static final int TAB_CALCULATORS = 2;
+	private static final int TAB_GENERAL = 2;
 	private static final int TAB_TABLES = 3;
 
 	private SharedPreferences prefs;
@@ -26,7 +26,7 @@ public class MainActivity extends TabCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//		makeFirstInsert();
+		makeFirstInsert();
 		setContentView(R.layout.main_activity);
 		setTabs();
 	}
@@ -42,7 +42,7 @@ public class MainActivity extends TabCompatActivity {
 		TabHelper tabHelper = getTabHelper();
 
 		int defaultTab = prefs
-				.getInt(SettingsActivity.DEFAULT_TAB, TAB_GENERAL);
+				.getInt(SettingsActivity.DEFAULT_TAB, TAB_CALCULATORS);
 
 		createTab(tabHelper, getString(R.string.iv_calculator), R.string.iv_calculator,
 				new TabListener(this, IVCalcFragment.class));
@@ -109,6 +109,9 @@ public class MainActivity extends TabCompatActivity {
 	private void saveCurrentTabAsDefault(CompatTab tab) {
 		int currentTab = 0;
 		if (tab.getTag().equals(getString(R.string.iv_calculator))) {
+			currentTab = TAB_CALCULATORS;
+		} else if (tab.getTag().equals(getString(R.string.iv_calculator))) {
+			currentTab = TAB_TEAM_BUILDER;
 		} else {
 		}
 
