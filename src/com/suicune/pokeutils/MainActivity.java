@@ -1,5 +1,6 @@
 package com.suicune.pokeutils;
 
+import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -11,18 +12,20 @@ import com.suicune.pokeutils.compat.CompatTab;
 import com.suicune.pokeutils.compat.CompatTabListener;
 import com.suicune.pokeutils.compat.TabCompatActivity;
 import com.suicune.pokeutils.compat.TabHelper;
+import com.suicune.pokeutils.database.PokeContract;
 
 public class MainActivity extends TabCompatActivity {
 	private static final int TAB_GENERAL = 0;
 	private static final int TAB_CALCULATORS = 1;
 	private static final int TAB_TABLES = 2;
-	
+
 	private SharedPreferences prefs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//		makeFirstInsert();
 		setContentView(R.layout.main_activity);
 		setTabs();
 	}
@@ -36,12 +39,13 @@ public class MainActivity extends TabCompatActivity {
 
 	private void setTabs() {
 		TabHelper tabHelper = getTabHelper();
-		
-		int defaultTab = prefs.getInt(SettingsActivity.DEFAULT_TAB,
-                TAB_GENERAL);
-		
-		createTab(tabHelper, "IV Calculator", R.string.iv_calculator, new TabListener(this, IVCalcFragment.class));
-		
+
+		int defaultTab = prefs
+				.getInt(SettingsActivity.DEFAULT_TAB, TAB_GENERAL);
+
+		createTab(tabHelper, "IV Calculator", R.string.iv_calculator,
+				new TabListener(this, IVCalcFragment.class));
+
 		tabHelper.setActiveTab(defaultTab);
 	}
 
@@ -106,5 +110,25 @@ public class MainActivity extends TabCompatActivity {
 		}
 
 		prefs.edit().putInt(SettingsActivity.DEFAULT_TAB, currentTab).commit();
+	}
+
+	private void makeFirstInsert() {
+		ContentValues values = new ContentValues();
+		values.put(PokeContract.PokemonTable.POKEMON_NAME, "Bulbasaur");
+		values.put(PokeContract.PokemonTable.POKEMON_NUMBER, "1");
+		values.put(PokeContract.PokemonTable.TYPE_1, "Grass");
+		values.put(PokeContract.PokemonTable.TYPE_2, "Poison");
+		values.put(PokeContract.PokemonTable.ABILITY_1, "Clorophyl");
+		values.put(PokeContract.PokemonTable.ABILITY_2, "-");
+		values.put(PokeContract.PokemonTable.ABILITY_DW, "Overgrow");
+		values.put(PokeContract.PokemonTable.BASE_STAT_HP, "45");
+		values.put(PokeContract.PokemonTable.BASE_STAT_ATT, "49");
+		values.put(PokeContract.PokemonTable.BASE_STAT_DEF, "49");
+		values.put(PokeContract.PokemonTable.BASE_STAT_SPATT, "65");
+		values.put(PokeContract.PokemonTable.BASE_STAT_SPDEF, "65");
+		values.put(PokeContract.PokemonTable.BASE_STAT_SPEED, "45");
+		values.put(PokeContract.PokemonTable.BASE_EV_AMOUNT, "1");
+		values.put(PokeContract.PokemonTable.BASE_EV_TYPE, "SpAtt");
+		getContentResolver().insert(PokeContract.CONTENT_POKEMON, values);
 	}
 }

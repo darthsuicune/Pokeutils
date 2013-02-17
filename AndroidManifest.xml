@@ -22,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name="com.suicune.pokeutils.database.PokeProvider"
+            android:authorities="com.suicune.pokeutils.database.PokeProvider">
+            
+        </provider>
     </application>
 
 </manifest>
