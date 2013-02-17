@@ -4,19 +4,16 @@ import android.net.Uri;
 
 public final class PokeContract {
 
-	public static final String CONTENT_NAME = "";
-	public static final Uri CONTENT_POKEMON = Uri.parse("");
-	public static final Uri CONTENT_ATTACK = Uri.parse("");
-	public static final Uri CONTENT_ABILITY = Uri.parse("");
+	protected static final String CONTENT_NAME = "com.suicune.pokeutils.database.PokeProvider";
+	public static final Uri CONTENT_POKEMON = Uri.parse("content://" + CONTENT_NAME + "/" + PokemonTable.TABLE_NAME);
+	public static final Uri CONTENT_ATTACK = Uri.parse("content://" + CONTENT_NAME + "/" + AttacksTable.TABLE_NAME);
+	public static final Uri CONTENT_ABILITY = Uri.parse("content://" + CONTENT_NAME + "/" + AbilitiesTable.TABLE_NAME);
+	public static final Uri CONTENT_NATURE = Uri.parse("content://" + CONTENT_NAME + "/" + NaturesTable.TABLE_NAME);
 
 	public static final String DB_NAME = "pokeutils";
 	public static final int DB_VERSION = 1;
 
 	public static class PokemonTable {
-		public static final String TABLE_NAME = "pokemon";
-		public static final int _COUNT = 16;
-		public static final String DEFAULT_ORDER = "";
-
 		public static final String _ID = "_id";
 		public static final String POKEMON_NAME = "pokename";
 		public static final String POKEMON_NUMBER = "pokedex";
@@ -33,20 +30,39 @@ public final class PokeContract {
 		public static final String BASE_STAT_SPEED = "basespeed";
 		public static final String BASE_EV_AMOUNT = "evamount";
 		public static final String BASE_EV_TYPE = "evtype";
+		
+		public static final String TABLE_NAME = "pokemon";
+		public static final int _COUNT = 16;
+		public static final String DEFAULT_ORDER = _ID + " DESC";
 	}
 
 	public static class AttacksTable {
+		public static final String _ID = "_id";
+		public static final String ATTACK_NAME = "attackname";
 
+		public static final String TABLE_NAME = "attacks";
+		public static final int _COUNT = 1;
+		public static final String DEFAULT_ORDER = _ID + " DESC";
 	}
 
 	public static class AbilitiesTable {
+		public static final String _ID = "_id";
+		public static final String ABILITY_NAME = "abilityname";
+		public static final String ABILITY_DESCRIPTION = "abilitydescription";
 
+		public static final String TABLE_NAME = "abilities";
+		public static final int _COUNT = 3;
+		public static final String DEFAULT_ORDER = _ID + " DESC";
 	}
 
 	public static class NaturesTable {
 		public static final String _ID = "_id";
-		public static final String NATURE_NAME = "nature";
+		public static final String NATURE_NAME = "naturename";
 		public static final String STAT_UP = "statup";
 		public static final String STAT_DOWN = "statdown";
+		
+		public static final String TABLE_NAME = "natures";
+		public static final int _COUNT = 4;
+		public static final String DEFAULT_ORDER = _ID + " DESC";
 	}
 }

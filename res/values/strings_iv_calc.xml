@@ -8,4 +8,8 @@
     <string name="speed">Speed</string>
     <string name="pokemon_name">Pokemon Name</string>
     <string name="pokemon_level">Lvl</string>
+    <string name="iv_calc_title_evs">EVs:</string>
+    <string name="iv_calc_title_ivs">IVs:</string>
+    <string name="iv_calc_title_stats">Stats:</string>
+    <string name="iv_calc_title_level">Level:</string>
 </resources>

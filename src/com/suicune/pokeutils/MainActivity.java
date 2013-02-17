@@ -16,8 +16,9 @@ import com.suicune.pokeutils.database.PokeContract;
 
 public class MainActivity extends TabCompatActivity {
 	private static final int TAB_GENERAL = 0;
-	private static final int TAB_CALCULATORS = 1;
-	private static final int TAB_TABLES = 2;
+	private static final int TAB_TEAM_BUILDER = 1;
+	private static final int TAB_CALCULATORS = 2;
+	private static final int TAB_TABLES = 3;
 
 	private SharedPreferences prefs;
 
@@ -43,8 +44,10 @@ public class MainActivity extends TabCompatActivity {
 		int defaultTab = prefs
 				.getInt(SettingsActivity.DEFAULT_TAB, TAB_GENERAL);
 
-		createTab(tabHelper, "IV Calculator", R.string.iv_calculator,
+		createTab(tabHelper, getString(R.string.iv_calculator), R.string.iv_calculator,
 				new TabListener(this, IVCalcFragment.class));
+		createTab(tabHelper, getString(R.string.team_builder), R.string.team_builder,
+				new TabListener(this, TeamBuilderFragment.class));
 
 		tabHelper.setActiveTab(defaultTab);
 	}
@@ -130,5 +133,16 @@ public class MainActivity extends TabCompatActivity {
 		values.put(PokeContract.PokemonTable.BASE_EV_AMOUNT, "1");
 		values.put(PokeContract.PokemonTable.BASE_EV_TYPE, "SpAtt");
 		getContentResolver().insert(PokeContract.CONTENT_POKEMON, values);
+		
+		values.clear();
+		values.put(PokeContract.NaturesTable.NATURE_NAME, "Timid");
+		values.put(PokeContract.NaturesTable.STAT_DOWN, "Attack");
+		values.put(PokeContract.NaturesTable.STAT_UP, "Speed");
+		getContentResolver().insert(PokeContract.CONTENT_NATURE, values);
+		values.clear();
+		values.put(PokeContract.NaturesTable.NATURE_NAME, "Adamant");
+		values.put(PokeContract.NaturesTable.STAT_DOWN, "SpecialAttack");
+		values.put(PokeContract.NaturesTable.STAT_UP, "Attack");
+		getContentResolver().insert(PokeContract.CONTENT_NATURE, values);
 	}
 }
