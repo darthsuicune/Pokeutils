@@ -174,12 +174,13 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 
 			@Override
 			public void afterTextChanged(Editable s) {
-				if (!s.equals(""))
+				if (!s.equals("")) {
 					mPokemonName = s.toString();
-				else
-					mPokemonName = "";
-				getActivity().getSupportLoaderManager().restartLoader(
+					getActivity().getSupportLoaderManager().restartLoader(
 						LOADER_AUTO_COMPLETE, null, new MyPokemonLoader());
+				} else {
+					mPokemonName = "";
+				}
 
 			}
 
