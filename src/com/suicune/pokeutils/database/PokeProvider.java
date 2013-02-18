@@ -117,8 +117,7 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 			break;
 		}
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
-		long id = db.insert(table, null, values);
+		long id = mDbHelper.getWritableDatabase().db.insert(table, null, values);
 		Uri result = null;
 		if (id != -1) {
 			result = ContentUris.withAppendedId(uri, id);
@@ -132,7 +131,6 @@ public class PokeProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
 
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 		boolean distinct = false;
 		String table = null;
@@ -158,7 +156,7 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 			break;
 		}
-		Cursor cursor = db.query(distinct, table, projection, selection,
+		Cursor cursor = mDbHelper.getWritableDatabase().query(distinct, table, projection, selection,
 				selectionArgs, groupBy, having, sortOrder, limit);
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 		return cursor;
@@ -186,8 +184,7 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 			break;
 		}
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
-		int count = db.update(table, values, selection, selectionArgs);
+		int count = mDbHelper.getWritableDatabase().update(table, values, selection, selectionArgs);
 		getContext().getContentResolver().notifyChange(uri, null);
 		return count;
 	}
@@ -213,8 +210,7 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 			break;
 		}
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
-		int count = db.delete(table, selection, selectionArgs);
+		int count = mDbHelper.getWritableDatabase().delete(table, selection, selectionArgs);
 		getContext().getContentResolver().notifyChange(uri, null);
 		return count;
 	}
