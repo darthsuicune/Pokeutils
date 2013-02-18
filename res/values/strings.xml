@@ -8,4 +8,5 @@
     <string name="defense">Defense</string>
     <string name="special_attack">SpecialAttack</string>
     <string name="special_defense">SpecialDefense</string>
+    <string name="hidden_power">Hidden Power</string>
 </resources>

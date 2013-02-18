@@ -76,6 +76,9 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 	private EditText mEVSpDefView;
 	private EditText mEVSpeedView;
 
+	private TextView mHiddenPowerTypeView;
+	private TextView mHiddenPowerPowerView;
+
 	private AutoCompleteTextView mPokemonNameEditText;
 	private EditText mPokemonLevelEditText;
 	private Spinner mNatureSpinner;
@@ -108,6 +111,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 	}
 
 	void setViews() {
+		mHiddenPowerTypeView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_hidden_power_type);
+		mHiddenPowerPowerView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_hidden_power_power);
 		mIVHPView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_hp);
 		mIVAttView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_att);
 		mIVDefView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_def);
@@ -232,17 +239,17 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 					@Override
 					public CharSequence convertToString(Cursor c) {
 						TextView hpBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_iv_hp_base);
+								.findViewById(R.id.iv_calc_base_hp);
 						TextView attBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_iv_att_base);
+								.findViewById(R.id.iv_calc_base_att);
 						TextView defBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_iv_def_base);
+								.findViewById(R.id.iv_calc_base_def);
 						TextView spattBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_iv_sp_att_base);
+								.findViewById(R.id.iv_calc_base_sp_att);
 						TextView spdefBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_iv_sp_def_base);
+								.findViewById(R.id.iv_calc_base_sp_def);
 						TextView speedBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_iv_speed_base);
+								.findViewById(R.id.iv_calc_base_speed);
 
 						baseHP = Integer.parseInt(c.getString(c
 								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_HP)));
@@ -378,8 +385,28 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 			if (ivs != null) {
 				showIVs(CODE_SPEED, ivs);
 			}
-
 		}
+		int hpIv = -1;
+		int attIv = -1;
+		int defIv = -1;
+		int spAttIv = -1;
+		int spDefIv = -1;
+		int speedIv = -1;
+		try {
+			hpIv = Integer.parseInt(mIVHPView.getText().toString());
+			attIv = Integer.parseInt(mIVAttView.getText().toString());
+			defIv = Integer.parseInt(mIVDefView.getText().toString());
+			speedIv = Integer.parseInt(mIVSpeedView.getText().toString());
+			spAttIv = Integer.parseInt(mIVSpAttTextView.getText().toString());
+			spDefIv = Integer.parseInt(mIVSpDefTextView.getText().toString());
+		} catch (NumberFormatException e) {
+			return;
+		}
+		
+		mHiddenPowerTypeView.setText(": " + getHiddenPowerType(hpIv, attIv, defIv,
+				spAttIv, spDefIv, speedIv));
+		mHiddenPowerPowerView.setText(" " + getHiddenPowerPower(hpIv, attIv, defIv, spAttIv,
+				spDefIv, speedIv));
 	}
 
 	private ArrayList<Integer> calculateIV(int code, int currentStat,
@@ -541,6 +568,86 @@ public class IVCalcFragment extends Fragment implements TextWatcher {
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
+	}
+
+	private String getHiddenPowerType(int hpIv, int attIv, int defIv,
+			int spAttIv, int spDefIv, int speedIv) {
+		String hiddenPower = "";
+
+		Double hiddenPowerTypeDouble = Math.floor(((1 * (hpIv % 2))
+				+ (2 * (attIv % 2)) + (4 * (defIv % 2)) + (8 * (speedIv % 2))
+				+ (16 * (spAttIv % 2)) + (32 * (spDefIv % 2))) * 15 / 63);
+		int hiddenPowerType = hiddenPowerTypeDouble.intValue();
+
+		switch (hiddenPowerType) {
+		case 0:
+			hiddenPower = getString(R.string.type_fighting);
+			break;
+		case 1:
+			hiddenPower = getString(R.string.type_flying);
+			break;
+		case 2:
+			hiddenPower = getString(R.string.type_poison);
+			break;
+		case 3:
+			hiddenPower = getString(R.string.type_ground);
+			break;
+		case 4:
+			hiddenPower = getString(R.string.type_rock);
+			break;
+		case 5:
+			hiddenPower = getString(R.string.type_bug);
+			break;
+		case 6:
+			hiddenPower = getString(R.string.type_ghost);
+			break;
+		case 7:
+			hiddenPower = getString(R.string.type_steel);
+			break;
+		case 8:
+			hiddenPower = getString(R.string.type_fire);
+			break;
+		case 9:
+			hiddenPower = getString(R.string.type_water);
+			break;
+		case 10:
+			hiddenPower = getString(R.string.type_grass);
+			break;
+		case 11:
+			hiddenPower = getString(R.string.type_electric);
+			break;
+		case 12:
+			hiddenPower = getString(R.string.type_psychic);
+			break;
+		case 13:
+			hiddenPower = getString(R.string.type_ice);
+			break;
+		case 14:
+			hiddenPower = getString(R.string.type_dragon);
+			break;
+		case 15:
+			hiddenPower = getString(R.string.type_dark);
+			break;
+		}
+
+		return hiddenPower;
+	}
+
+	private int getHiddenPowerPower(int hpIv, int attIv, int defIv,
+			int spAttIv, int spDefIv, int speedIv) {
+		Double hiddenPowerPowerDouble = Math.floor((((1 * getValue(hpIv))
+				+ (2 * getValue(attIv)) + (4 * getValue(defIv)) + (8 * getValue(speedIv))
+				+ (16 * getValue(spAttIv)) + (32 * getValue(spDefIv))) * 40 / 63) + 30);
+
+		return hiddenPowerPowerDouble.intValue();
+	}
+
+	private int getValue(int iv) {
+		if (iv % 4 == 2 || iv % 4 == 3) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 	private class MyPokemonLoader implements LoaderCallbacks<Cursor> {

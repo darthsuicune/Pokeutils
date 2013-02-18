@@ -48,6 +48,119 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:showDividers="middle" >
+            
+            <!-- Base Stats Block -->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/iv_calc_title_base_stats" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/hp" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/att" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/def" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sp_att" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sp_def" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/speed" >
+                </TextView>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/iv_calc_base_hp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_base_att"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_base_def"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_base_sp_att"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_base_sp_def"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/iv_calc_base_speed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+                </TextView>
+            </TableRow>
 
             <!-- Stats block -->
 
@@ -325,116 +438,21 @@
                 </TextView>
             </TableRow>
             
-            <!-- Base Stats Block -->
-
-            <TableRow>
-
+            <!-- Hidden Power block -->
+            
+            <TableRow >
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/iv_calc_title_base_stats" />
-            </TableRow>
-
-            <TableRow>
-
+                    android:text="@string/hidden_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@string/hp" >
-                </TextView>
-
+                    android:id="@+id/iv_calc_hidden_power_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/att" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/def" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/sp_att" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/sp_def" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/speed" >
-                </TextView>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/iv_calc_iv_hp_base"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center" >
-                </TextView>
-
-                <TextView
-                    android:id="@+id/iv_calc_iv_att_base"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center" >
-                </TextView>
-
-                <TextView
-                    android:id="@+id/iv_calc_iv_def_base"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center" >
-                </TextView>
-
-                <TextView
-                    android:id="@+id/iv_calc_iv_sp_att_base"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center" >
-                </TextView>
-
-                <TextView
-                    android:id="@+id/iv_calc_iv_sp_def_base"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center" >
-                </TextView>
-
-                <TextView
-                    android:id="@+id/iv_calc_iv_speed_base"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center" >
+                    android:id="@+id/iv_calc_hidden_power_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
                 </TextView>
             </TableRow>
         </TableLayout>
