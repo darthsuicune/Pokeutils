@@ -156,7 +156,7 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 			break;
 		}
-		Cursor cursor = mDbHelper.getWritableDatabase().query(distinct, table, projection, selection,
+		Cursor cursor = mDbHelper.getReadableDatabase().query(distinct, table, projection, selection,
 				selectionArgs, groupBy, having, sortOrder, limit);
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 		return cursor;
