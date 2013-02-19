@@ -39,9 +39,14 @@ public final class PokeContract {
 	public static class AttacksTable {
 		public static final String _ID = "_id";
 		public static final String ATTACK_NAME = "attackname";
+		public static final String ATTACK_PP = "attackpp";
+		public static final String ATTACK_POWER = "attackpower";
+		public static final String ATTACK_TARGET = "attacktarget";
+		public static final String ATTACK_ACCURACY = "attackaccuracy";
+		public static final String ATTACK_DESCRIPTION = "attackdescription";
 
 		public static final String TABLE_NAME = "attacks";
-		public static final int _COUNT = 1;
+		public static final int _COUNT = 7;
 		public static final String DEFAULT_ORDER = _ID + " DESC";
 	}
 

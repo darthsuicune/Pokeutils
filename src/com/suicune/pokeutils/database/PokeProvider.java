@@ -6,7 +6,6 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 import com.suicune.pokeutils.R;
@@ -117,7 +116,7 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 			break;
 		}
-		long id = mDbHelper.getWritableDatabase().db.insert(table, null, values);
+		long id = mDbHelper.getWritableDatabase().insert(table, null, values);
 		Uri result = null;
 		if (id != -1) {
 			result = ContentUris.withAppendedId(uri, id);
