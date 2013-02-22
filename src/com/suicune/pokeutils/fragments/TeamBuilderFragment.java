@@ -1,10 +1,12 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.suicune.pokeutils.R;
 
 public class TeamBuilderFragment extends Fragment {
 

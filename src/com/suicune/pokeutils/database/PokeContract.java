@@ -17,6 +17,7 @@ public final class PokeContract {
 		public static final String _ID = "_id";
 		public static final String POKEMON_NAME = "pokename";
 		public static final String POKEMON_NUMBER = "pokedex";
+		public static final String POKEMON_FORM = "pokemonform";
 		public static final String TYPE_1 = "typeone";
 		public static final String TYPE_2 = "typetwo";
 		public static final String ABILITY_1 = "abilityone";
@@ -32,7 +33,7 @@ public final class PokeContract {
 		public static final String BASE_EV_TYPE = "evtype";
 		
 		public static final String TABLE_NAME = "pokemon";
-		public static final int _COUNT = 16;
+		public static final int _COUNT = 17;
 		public static final String DEFAULT_ORDER = _ID + " DESC";
 	}
 

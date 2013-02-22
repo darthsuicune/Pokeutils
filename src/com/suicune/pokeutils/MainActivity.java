@@ -2,6 +2,7 @@ package com.suicune.pokeutils;
 
 import android.content.ContentValues;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -13,12 +14,12 @@ import com.suicune.pokeutils.compat.CompatTabListener;
 import com.suicune.pokeutils.compat.TabCompatActivity;
 import com.suicune.pokeutils.compat.TabHelper;
 import com.suicune.pokeutils.database.PokeContract;
+import com.suicune.pokeutils.fragments.IVCalcFragment;
+import com.suicune.pokeutils.fragments.TeamBuilderFragment;
 
 public class MainActivity extends TabCompatActivity {
 	private static final int TAB_CALCULATORS = 0;
 	private static final int TAB_TEAM_BUILDER = 1;
-	private static final int TAB_GENERAL = 2;
-	private static final int TAB_TABLES = 3;
 
 	private SharedPreferences prefs;
 
@@ -26,7 +27,10 @@ public class MainActivity extends TabCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//		makeFirstInsert();
+		if (prefs.getBoolean(SettingsActivity.FIRST_RUN, true)) {
+			makeFirstRun();
+			prefs.edit().putBoolean(SettingsActivity.FIRST_RUN, false).commit();
+		}
 		setContentView(R.layout.main_activity);
 		setTabs();
 	}
@@ -41,13 +45,15 @@ public class MainActivity extends TabCompatActivity {
 	private void setTabs() {
 		TabHelper tabHelper = getTabHelper();
 
-		int defaultTab = prefs
-				.getInt(SettingsActivity.DEFAULT_TAB, TAB_CALCULATORS);
+		int defaultTab = prefs.getInt(SettingsActivity.DEFAULT_TAB,
+				TAB_CALCULATORS);
 
-		createTab(tabHelper, getString(R.string.iv_calculator), R.string.iv_calculator,
-				new TabListener(this, IVCalcFragment.class));
-		createTab(tabHelper, getString(R.string.team_builder), R.string.team_builder,
-				new TabListener(this, TeamBuilderFragment.class));
+		createTab(tabHelper, getString(R.string.iv_calculator),
+				R.string.iv_calculator, new TabListener(this,
+						IVCalcFragment.class));
+		createTab(tabHelper, getString(R.string.team_builder),
+				R.string.team_builder, new TabListener(this,
+						TeamBuilderFragment.class));
 
 		tabHelper.setActiveTab(defaultTab);
 	}
@@ -118,7 +124,11 @@ public class MainActivity extends TabCompatActivity {
 		prefs.edit().putInt(SettingsActivity.DEFAULT_TAB, currentTab).commit();
 	}
 
-	private void makeFirstInsert() {
+	private void makeFirstRun() {
+		new InsertDataTask().execute(null, null);
+	}
+
+	private void setDatabase() {
 		ContentValues values = new ContentValues();
 		values.put(PokeContract.PokemonTable.POKEMON_NAME, "Bulbasaur");
 		values.put(PokeContract.PokemonTable.POKEMON_NUMBER, "1");
@@ -136,7 +146,7 @@ public class MainActivity extends TabCompatActivity {
 		values.put(PokeContract.PokemonTable.BASE_EV_AMOUNT, "1");
 		values.put(PokeContract.PokemonTable.BASE_EV_TYPE, "SpAtt");
 		getContentResolver().insert(PokeContract.CONTENT_POKEMON, values);
-		
+
 		values.clear();
 		values.put(PokeContract.NaturesTable.NATURE_NAME, "Timid");
 		values.put(PokeContract.NaturesTable.STAT_DOWN, "Attack");
@@ -147,5 +157,13 @@ public class MainActivity extends TabCompatActivity {
 		values.put(PokeContract.NaturesTable.STAT_DOWN, "SpecialAttack");
 		values.put(PokeContract.NaturesTable.STAT_UP, "Attack");
 		getContentResolver().insert(PokeContract.CONTENT_NATURE, values);
+	}
+
+	private class InsertDataTask extends AsyncTask<Void, Void, Void> {
+		@Override
+		protected Void doInBackground(Void... params) {
+			setDatabase();
+			return null;
+		}
 	}
 }

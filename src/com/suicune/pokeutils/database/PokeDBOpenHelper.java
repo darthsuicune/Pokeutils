@@ -35,6 +35,7 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonTable.BASE_STAT_SPEED + text
 				+ PokeContract.PokemonTable.POKEMON_NAME + text
 				+ PokeContract.PokemonTable.POKEMON_NUMBER + text
+				+ PokeContract.PokemonTable.POKEMON_FORM + text
 				+ PokeContract.PokemonTable.TYPE_1 + text
 				+ PokeContract.PokemonTable.TYPE_2 + textEnd
 				+ ")");

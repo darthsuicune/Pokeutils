@@ -1,4 +1,4 @@
-package com.abbyy.cloudocr.utils;
+package com.suicune.pokeutils.tools;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
