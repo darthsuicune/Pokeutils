@@ -1,74 +1,162 @@
 package com.suicune.pokeutils.database;
 
 import android.net.Uri;
+import android.provider.BaseColumns;
 
 public final class PokeContract {
 
 	protected static final String CONTENT_NAME = "com.suicune.pokeutils.database.PokeProvider";
-	public static final Uri CONTENT_POKEMON = Uri.parse("content://" + CONTENT_NAME + "/" + PokemonTable.TABLE_NAME);
-	public static final Uri CONTENT_ATTACK = Uri.parse("content://" + CONTENT_NAME + "/" + AttacksTable.TABLE_NAME);
-	public static final Uri CONTENT_ABILITY = Uri.parse("content://" + CONTENT_NAME + "/" + AbilitiesTable.TABLE_NAME);
-	public static final Uri CONTENT_NATURE = Uri.parse("content://" + CONTENT_NAME + "/" + NaturesTable.TABLE_NAME);
 
-	public static final String DB_NAME = "pokeutils";
-	public static final int DB_VERSION = 1;
+	public static final Uri CONTENT_POKEDEX = Uri.parse("content://"
+			+ CONTENT_NAME + "/" + PokeProvider.POKEDEX_PATH);
 
-	public static class PokemonTable {
-		public static final String _ID = "_id";
-		public static final String POKEMON_NAME = "pokename";
-		public static final String POKEMON_NUMBER = "pokedex";
-		public static final String POKEMON_FORM = "pokemonform";
-		public static final String TYPE_1 = "typeone";
-		public static final String TYPE_2 = "typetwo";
-		public static final String ABILITY_1 = "abilityone";
-		public static final String ABILITY_2 = "abilitytwo";
-		public static final String ABILITY_DW = "abilitydw";
-		public static final String BASE_STAT_HP = "basehp";
-		public static final String BASE_STAT_ATT = "baseatt";
-		public static final String BASE_STAT_DEF = "basedef";
-		public static final String BASE_STAT_SPATT = "basespatt";
-		public static final String BASE_STAT_SPDEF = "basespdef";
-		public static final String BASE_STAT_SPEED = "basespeed";
-		public static final String BASE_EV_AMOUNT = "evamount";
-		public static final String BASE_EV_TYPE = "evtype";
-		
-		public static final String TABLE_NAME = "pokemon";
-		public static final int _COUNT = 17;
+	public static class PokemonName implements BaseColumns {
+		public static final String TABLE_NAME = "pokemonname";
 		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_NAME = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		public static final String NAME = "pokemonname";
+		public static final String FORM = "pokemonform";
+		public static final String NUMBER = "pokemonnumber";
+
+		private PokemonName() {
+		}
+	}
+	
+	public static class PokemonType1 implements BaseColumns {
+		public static final String TABLE_NAME = "pokemontypeone";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_TYPE_1 = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String TYPE = "pokemontypeone";
+		
+		private PokemonType1(){
+		}
+	}
+	public static class PokemonType2 implements BaseColumns {
+		public static final String TABLE_NAME = "pokemontypetwo";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_TYPE_2 = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String TYPE = "pokemontypetwo";
+		
+		private PokemonType2(){
+		}
 	}
 
-	public static class AttacksTable {
-		public static final String _ID = "_id";
-		public static final String ATTACK_NAME = "attackname";
-		public static final String ATTACK_PP = "attackpp";
-		public static final String ATTACK_POWER = "attackpower";
-		public static final String ATTACK_TARGET = "attacktarget";
-		public static final String ATTACK_ACCURACY = "attackaccuracy";
-		public static final String ATTACK_DESCRIPTION = "attackdescription";
+	public static class PokemonBaseStats implements BaseColumns {
+		public static final String TABLE_NAME = "pokemonbasestats";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_BASE_STATS = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		private PokemonBaseStats() {
+		}
 
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String BASE_HP = "pokemonbasehp";
+		public static final String BASE_ATT = "pokemonbaseatt";
+		public static final String BASE_DEF = "pokemonbasedef";
+		public static final String BASE_SPATT = "pokemonbasespatt";
+		public static final String BASE_SPDEF = "pokemonbasespdef";
+		public static final String BASE_SPEED = "pokemonbasespeed";
+	}
+	
+	public static class PokemonAbility1 implements BaseColumns {
+		public static final String TABLE_NAME = "pokemonabilityone";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_ABILITY_1 = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		private PokemonAbility1() {
+		}
+
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String ABILITY_1 = "pokemonabilityone";
+	}
+	
+	public static class PokemonAbility2 implements BaseColumns {
+		public static final String TABLE_NAME = "pokemonabilitytwo";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_ABILITY_2 = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		private PokemonAbility2() {
+		}
+
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String ABILITY_2 = "pokemonabilitytwo";
+	}
+	
+	public static class PokemonAbilityDW implements BaseColumns {
+		public static final String TABLE_NAME = "pokemonabilitydw";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_POKEMON_ABILITY_DW = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+		
+		private PokemonAbilityDW() {
+		}
+
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String ABILITY_DW = "pokemonabilitydw";
+	}
+
+	public static class Attacks implements BaseColumns {
 		public static final String TABLE_NAME = "attacks";
-		public static final int _COUNT = 7;
 		public static final String DEFAULT_ORDER = _ID + " DESC";
+
+		public static final Uri CONTENT_ATTACK = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+
+		public static final String ID = "attackid";
+		public static final String NAME = "attackname";
+		public static final String PP = "attackpp";
+		public static final String POWER = "attackpower";
+		public static final String TARGET = "attacktarget";
+		public static final String ACCURACY = "attackaccuracy";
+		public static final String DESCRIPTION = "attackdescription";
 	}
 
-	public static class AbilitiesTable {
-		public static final String _ID = "_id";
-		public static final String ABILITY_NAME = "abilityname";
-		public static final String ABILITY_DESCRIPTION = "abilitydescription";
-
+	public static class Abilities implements BaseColumns {
 		public static final String TABLE_NAME = "abilities";
-		public static final int _COUNT = 3;
 		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_ABILITY = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+
+		public static final String ID = "abilityid";
+		public static final String NAME = "abilityname";
+		public static final String DESCRIPTION = "abilitydescription";
 	}
 
-	public static class NaturesTable {
-		public static final String _ID = "_id";
-		public static final String NATURE_NAME = "naturename";
-		public static final String STAT_UP = "statup";
-		public static final String STAT_DOWN = "statdown";
-		
+	public static class Natures implements BaseColumns {
 		public static final String TABLE_NAME = "natures";
-		public static final int _COUNT = 4;
 		public static final String DEFAULT_ORDER = _ID + " DESC";
+		
+		public static final Uri CONTENT_NATURE = Uri.parse("content://"
+				+ CONTENT_NAME + "/" + TABLE_NAME);
+
+		public static final String ID = "natureid";
+		public static final String NAME = "naturename";
+		public static final String STAT_UP = "naturestatup";
+		public static final String STAT_DOWN = "naturestatdown";
 	}
 }

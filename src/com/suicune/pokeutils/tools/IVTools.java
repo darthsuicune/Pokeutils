@@ -23,7 +23,12 @@ public class IVTools {
 	public static final int MIN_SPEED = 41;
 	public static final int MAX_SPEED = 504;
 	
-	public static final String NATURE_NEUTRAL = "neutral";
+	public static final String NATURE_HARDY = "Hardy";
+	public static final String NATURE_BASHFUL = "Bashful";
+	public static final String NATURE_DOCILE = "Docile";
+	public static final String NATURE_QUIRKY = "Quirky";
+	public static final String NATURE_SERIOUS = "Serious";
+	
 	
 	public static final String NATURE_LONELY = "Lonely";
 	public static final String NATURE_BRAVE = "Brave";

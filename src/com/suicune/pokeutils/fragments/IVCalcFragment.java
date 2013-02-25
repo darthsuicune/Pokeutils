@@ -730,8 +730,24 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_careful))) {
 			return IVTools.NATURE_CAREFUL;
+			
+		} else if (mNature.equals(getActivity().getString(
+				R.string.nature_hardy))) {
+			return IVTools.NATURE_HARDY;
+		} else if (mNature.equals(getActivity().getString(
+				R.string.nature_bashful))) {
+			return IVTools.NATURE_BASHFUL;
+		} else if (mNature.equals(getActivity().getString(
+				R.string.nature_docile))) {
+			return IVTools.NATURE_DOCILE;
+		} else if (mNature.equals(getActivity().getString(
+				R.string.nature_quirky))) {
+			return IVTools.NATURE_QUIRKY;
+		} else if (mNature.equals(getActivity().getString(
+				R.string.nature_serious))) {
+			return IVTools.NATURE_SERIOUS;
 		} else {
-			return IVTools.NATURE_NEUTRAL;
+			return null;
 		}
 	}
 }

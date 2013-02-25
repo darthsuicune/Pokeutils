@@ -6,6 +6,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 import com.suicune.pokeutils.R;
@@ -13,37 +14,53 @@ import com.suicune.pokeutils.R;
 public class PokeProvider extends ContentProvider {
 	PokeDBOpenHelper mDbHelper;
 
-	private static final int POKEMON = 1;
-	private static final int POKEMON_ID = 2;
-	private static final int ATTACK = 3;
-	private static final int ATTACK_ID = 4;
-	private static final int ABILITY = 5;
-	private static final int ABILITY_ID = 6;
-	private static final int NATURE = 7;
-	private static final int NATURE_ID = 8;
+	protected static final String POKEDEX_PATH = "pokedex";
+	private static final int POKEMON_NAME = 1;
+	private static final int POKEMON_NAME_ID = 2;
+	private static final int POKEMON_BASE_STATS = 3;
+	private static final int POKEMON_BASE_STATS_ID = 4;
+	private static final int POKEMON_TYPE_1 = 5;
+	private static final int POKEMON_TYPE_1_ID = 6;
+	private static final int POKEMON_TYPE_2 = 7;
+	private static final int POKEMON_TYPE_2_ID = 8;
+	private static final int POKEMON_ABILITY_1 = 9;
+	private static final int POKEMON_ABILITY_1_ID = 10;
+	private static final int POKEMON_ABILITY_2 = 11;
+	private static final int POKEMON_ABILITY_2_ID = 12;
+	private static final int POKEMON_ABILITY_DW = 13;
+	private static final int POKEMON_ABILITY_DW_ID = 14;
+	private static final int ATTACK = 15;
+	private static final int ATTACK_ID = 16;
+	private static final int ABILITY = 17;
+	private static final int ABILITY_ID = 18;
+	private static final int NATURE = 19;
+	private static final int NATURE_ID = 20;
 
 	static UriMatcher sUriMatcher;
 	static {
 		sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.PokemonTable.TABLE_NAME, POKEMON);
-		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.PokemonTable.TABLE_NAME + "/#", POKEMON_ID);
+
+		sUriMatcher.addURI(PokeContract.CONTENT_NAME, POKEDEX_PATH, POKEDEX);
 
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.AttacksTable.TABLE_NAME, ATTACK);
+				PokeContract.Pokemon.TABLE_NAME, POKEMON);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.AttacksTable.TABLE_NAME + "/#", ATTACK_ID);
+				PokeContract.Pokemon.TABLE_NAME + "/#", POKEMON_ID);
 
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.AbilitiesTable.TABLE_NAME, ABILITY);
+				PokeContract.Attacks.TABLE_NAME, ATTACK);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.AbilitiesTable.TABLE_NAME + "/#", ABILITY_ID);
+				PokeContract.Attacks.TABLE_NAME + "/#", ATTACK_ID);
 
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.NaturesTable.TABLE_NAME, NATURE);
+				PokeContract.Abilities.TABLE_NAME, ABILITY);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.NaturesTable.TABLE_NAME + "/#", NATURE_ID);
+				PokeContract.Abilities.TABLE_NAME + "/#", ABILITY_ID);
+
+		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
+				PokeContract.Natures.TABLE_NAME, NATURE);
+		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
+				PokeContract.Natures.TABLE_NAME + "/#", NATURE_ID);
 	}
 
 	@Override
@@ -55,39 +72,30 @@ public class PokeProvider extends ContentProvider {
 	@Override
 	public String getType(Uri uri) {
 		switch (sUriMatcher.match(uri)) {
-
-		case POKEMON:
-			return ContentResolver.CURSOR_DIR_BASE_TYPE
-					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.PokemonTable.TABLE_NAME;
-		case POKEMON_ID:
-			return ContentResolver.CURSOR_ITEM_BASE_TYPE
-					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.PokemonTable.TABLE_NAME;
 		case ABILITY:
 			return ContentResolver.CURSOR_DIR_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.AbilitiesTable.TABLE_NAME;
+					+ PokeContract.Abilities.TABLE_NAME;
 		case ABILITY_ID:
 			return ContentResolver.CURSOR_ITEM_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.AbilitiesTable.TABLE_NAME;
+					+ PokeContract.Abilities.TABLE_NAME;
 		case NATURE:
 			return ContentResolver.CURSOR_DIR_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.NaturesTable.TABLE_NAME;
+					+ PokeContract.Natures.TABLE_NAME;
 		case NATURE_ID:
 			return ContentResolver.CURSOR_ITEM_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.NaturesTable.TABLE_NAME;
+					+ PokeContract.Natures.TABLE_NAME;
 		case ATTACK:
 			return ContentResolver.CURSOR_DIR_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.AttacksTable.TABLE_NAME;
+					+ PokeContract.Attacks.TABLE_NAME;
 		case ATTACK_ID:
 			return ContentResolver.CURSOR_ITEM_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.AttacksTable.TABLE_NAME;
+					+ PokeContract.Attacks.TABLE_NAME;
 		default:
 			throw new IllegalArgumentException(getContext().getString(
 					R.string.illegal_uri)
@@ -99,20 +107,16 @@ public class PokeProvider extends ContentProvider {
 	public Uri insert(Uri uri, ContentValues values) {
 		String table = "";
 		switch (sUriMatcher.match(uri)) {
-		case POKEMON:
-			table = PokeContract.PokemonTable.TABLE_NAME;
-		case POKEMON_ID:
-			break;
 		case ABILITY:
-			table = PokeContract.AbilitiesTable.TABLE_NAME;
+			table = PokeContract.Abilities.TABLE_NAME;
 		case ABILITY_ID:
 			break;
 		case NATURE:
-			table = PokeContract.NaturesTable.TABLE_NAME;
+			table = PokeContract.Natures.TABLE_NAME;
 		case NATURE_ID:
 			break;
 		case ATTACK:
-			table = PokeContract.AttacksTable.TABLE_NAME;
+			table = PokeContract.Attacks.TABLE_NAME;
 		case ATTACK_ID:
 			break;
 		}
@@ -130,7 +134,6 @@ public class PokeProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
 
-
 		boolean distinct = false;
 		String table = null;
 		String groupBy = null;
@@ -138,25 +141,22 @@ public class PokeProvider extends ContentProvider {
 		String limit = null;
 
 		switch (sUriMatcher.match(uri)) {
-		case POKEMON:
-			table = PokeContract.PokemonTable.TABLE_NAME;
-		case POKEMON_ID:
-			break;
 		case ABILITY:
-			table = PokeContract.AbilitiesTable.TABLE_NAME;
+			table = PokeContract.Abilities.TABLE_NAME;
 		case ABILITY_ID:
 			break;
 		case NATURE:
-			table = PokeContract.NaturesTable.TABLE_NAME;
+			table = PokeContract.Natures.TABLE_NAME;
 		case NATURE_ID:
 			break;
 		case ATTACK:
-			table = PokeContract.AttacksTable.TABLE_NAME;
+			table = PokeContract.Attacks.TABLE_NAME;
 		case ATTACK_ID:
 			break;
 		}
-		Cursor cursor = mDbHelper.getReadableDatabase().query(distinct, table, projection, selection,
-				selectionArgs, groupBy, having, sortOrder, limit);
+		Cursor cursor = mDbHelper.getReadableDatabase().query(distinct, table,
+				projection, selection, selectionArgs, groupBy, having,
+				sortOrder, limit);
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 		return cursor;
 	}
@@ -166,24 +166,21 @@ public class PokeProvider extends ContentProvider {
 			String[] selectionArgs) {
 		String table = null;
 		switch (sUriMatcher.match(uri)) {
-		case POKEMON:
-			table = PokeContract.PokemonTable.TABLE_NAME;
-		case POKEMON_ID:
-			break;
 		case ABILITY:
-			table = PokeContract.AbilitiesTable.TABLE_NAME;
+			table = PokeContract.Abilities.TABLE_NAME;
 		case ABILITY_ID:
 			break;
 		case NATURE:
-			table = PokeContract.NaturesTable.TABLE_NAME;
+			table = PokeContract.Natures.TABLE_NAME;
 		case NATURE_ID:
 			break;
 		case ATTACK:
-			table = PokeContract.AttacksTable.TABLE_NAME;
+			table = PokeContract.Attacks.TABLE_NAME;
 		case ATTACK_ID:
 			break;
 		}
-		int count = mDbHelper.getWritableDatabase().update(table, values, selection, selectionArgs);
+		int count = mDbHelper.getWritableDatabase().update(table, values,
+				selection, selectionArgs);
 		getContext().getContentResolver().notifyChange(uri, null);
 		return count;
 	}
@@ -192,24 +189,21 @@ public class PokeProvider extends ContentProvider {
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
 		String table = null;
 		switch (sUriMatcher.match(uri)) {
-		case POKEMON:
-			table = PokeContract.PokemonTable.TABLE_NAME;
-		case POKEMON_ID:
-			break;
 		case ABILITY:
-			table = PokeContract.AbilitiesTable.TABLE_NAME;
+			table = PokeContract.Abilities.TABLE_NAME;
 		case ABILITY_ID:
 			break;
 		case NATURE:
-			table = PokeContract.NaturesTable.TABLE_NAME;
+			table = PokeContract.Natures.TABLE_NAME;
 		case NATURE_ID:
 			break;
 		case ATTACK:
-			table = PokeContract.AttacksTable.TABLE_NAME;
+			table = PokeContract.Attacks.TABLE_NAME;
 		case ATTACK_ID:
 			break;
 		}
-		int count = mDbHelper.getWritableDatabase().delete(table, selection, selectionArgs);
+		int count = mDbHelper.getWritableDatabase().delete(table, selection,
+				selectionArgs);
 		getContext().getContentResolver().notifyChange(uri, null);
 		return count;
 	}

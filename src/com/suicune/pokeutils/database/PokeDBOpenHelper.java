@@ -5,12 +5,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class PokeDBOpenHelper extends SQLiteOpenHelper {
-	private static final String key = " INTEGER PRIMARY KEY AUTOINCREMENT, ";
-	private static final String text = " TEXT, ";
-	private static final String textEnd = " TEXT";
+	private static final String DB_NAME = "pokeutils";
+	private static final int DB_VERSION = 1;
+
+	private static final String CREATE = "CREATE TABLE ";
+	private static final String KEY = " INTEGER PRIMARY KEY AUTOINCREMENT, ";
+	private static final String TEXT = " TEXT, ";
+	private static final String TEXT_END = " TEXT";
 
 	public PokeDBOpenHelper(Context context) {
-		super(context, PokeContract.DB_NAME, null, PokeContract.DB_VERSION);
+		super(context, DB_NAME, null, DB_VERSION);
 	}
 
 	@Override
@@ -19,46 +23,72 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 			db = getWritableDatabase();
 		}
 
-		db.execSQL("CREATE TABLE " + PokeContract.PokemonTable.TABLE_NAME
-				+ " (" 
-				+ PokeContract.PokemonTable._ID + key
-				+ PokeContract.PokemonTable.ABILITY_1 + text
-				+ PokeContract.PokemonTable.ABILITY_2 + text
-				+ PokeContract.PokemonTable.ABILITY_DW + text
-				+ PokeContract.PokemonTable.BASE_EV_AMOUNT + text
-				+ PokeContract.PokemonTable.BASE_EV_TYPE + text
-				+ PokeContract.PokemonTable.BASE_STAT_ATT + text
-				+ PokeContract.PokemonTable.BASE_STAT_DEF + text
-				+ PokeContract.PokemonTable.BASE_STAT_HP + text
-				+ PokeContract.PokemonTable.BASE_STAT_SPATT + text
-				+ PokeContract.PokemonTable.BASE_STAT_SPDEF + text
-				+ PokeContract.PokemonTable.BASE_STAT_SPEED + text
-				+ PokeContract.PokemonTable.POKEMON_NAME + text
-				+ PokeContract.PokemonTable.POKEMON_NUMBER + text
-				+ PokeContract.PokemonTable.POKEMON_FORM + text
-				+ PokeContract.PokemonTable.TYPE_1 + text
-				+ PokeContract.PokemonTable.TYPE_2 + textEnd
+		db.execSQL(CREATE + PokeContract.PokemonName.TABLE_NAME + " ("
+				+ PokeContract.PokemonName._ID + KEY
+				+ PokeContract.PokemonName.NUMBER + TEXT
+				+ PokeContract.PokemonName.FORM + TEXT
+				+ PokeContract.PokemonName.NAME + TEXT_END
+				+ ")");
+		db.execSQL("CREATE TABLE " + PokeContract.PokemonBaseStats.TABLE_NAME
+				+ " (" + PokeContract.PokemonBaseStats._ID + KEY
+				+ PokeContract.PokemonBaseStats.NUMBER + TEXT
+				+ PokeContract.PokemonBaseStats.FORM + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_ATT + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_DEF + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_HP + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_SPATT + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_SPDEF + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_SPEED + TEXT_END
+				+ ")");
+		db.execSQL(CREATE + PokeContract.PokemonType1.TABLE_NAME + " ("
+				+ PokeContract.PokemonType1._ID + KEY
+				+ PokeContract.PokemonType1.NUMBER + TEXT
+				+ PokeContract.PokemonType1.FORM + TEXT
+				+ PokeContract.PokemonType1.TYPE + TEXT_END
+				+ ")");
+		db.execSQL(CREATE + PokeContract.PokemonType2.TABLE_NAME + " ("
+				+ PokeContract.PokemonType2._ID + KEY
+				+ PokeContract.PokemonType2.NUMBER + TEXT
+				+ PokeContract.PokemonType2.FORM + TEXT
+				+ PokeContract.PokemonType2.TYPE + TEXT_END
+				+ ")");
+		db.execSQL(CREATE + PokeContract.PokemonAbility1.TABLE_NAME + " ("
+				+ PokeContract.PokemonAbility1._ID + KEY
+				+ PokeContract.PokemonAbility1.NUMBER + TEXT
+				+ PokeContract.PokemonAbility1.FORM + TEXT
+				+ PokeContract.PokemonAbility1.ABILITY_1 + TEXT_END
+				+ ")");
+		db.execSQL(CREATE + PokeContract.PokemonAbility2.TABLE_NAME + " ("
+				+ PokeContract.PokemonAbility2._ID + KEY
+				+ PokeContract.PokemonAbility2.NUMBER + TEXT
+				+ PokeContract.PokemonAbility2.FORM + TEXT
+				+ PokeContract.PokemonAbility2.ABILITY_2 + TEXT_END
+				+ ")");
+		db.execSQL(CREATE + PokeContract.PokemonAbilityDW.TABLE_NAME + " ("
+				+ PokeContract.PokemonAbilityDW._ID + KEY
+				+ PokeContract.PokemonAbilityDW.NUMBER + TEXT
+				+ PokeContract.PokemonAbilityDW.FORM + TEXT
+				+ PokeContract.PokemonAbilityDW.ABILITY_DW + TEXT_END
 				+ ")");
 
-		db.execSQL("CREATE TABLE " + PokeContract.NaturesTable.TABLE_NAME
-				+ " (" 
-				+ PokeContract.NaturesTable._ID + key
-				+ PokeContract.NaturesTable.NATURE_NAME + text
-				+ PokeContract.NaturesTable.STAT_DOWN + text
-				+ PokeContract.NaturesTable.STAT_UP + textEnd
+		db.execSQL("CREATE TABLE " + PokeContract.Natures.TABLE_NAME + " ("
+				+ PokeContract.Natures._ID + KEY
+				+ PokeContract.Natures.ID + TEXT
+				+ PokeContract.Natures.NAME	+ TEXT
+				+ PokeContract.Natures.STAT_DOWN + TEXT
+				+ PokeContract.Natures.STAT_UP + TEXT_END
 				+ ")");
-		
-		db.execSQL("CREATE TABLE " + PokeContract.AbilitiesTable.TABLE_NAME
-				+ " (" 
-				+ PokeContract.AbilitiesTable._ID + key 
-				+ PokeContract.AbilitiesTable.ABILITY_NAME + text
-				+ PokeContract.AbilitiesTable.ABILITY_DESCRIPTION + textEnd
+
+		db.execSQL("CREATE TABLE " + PokeContract.Abilities.TABLE_NAME + " ("
+				+ PokeContract.Abilities._ID + KEY
+				+ PokeContract.Abilities.ID + TEXT
+				+ PokeContract.Abilities.NAME + TEXT
+				+ PokeContract.Abilities.DESCRIPTION + TEXT_END
 				+ ")");
-		
-		db.execSQL("CREATE TABLE " + PokeContract.AttacksTable.TABLE_NAME
-				+ " (" 
-				+ PokeContract.AttacksTable._ID + key 
-				+ PokeContract.AttacksTable.ATTACK_NAME + textEnd
+
+		db.execSQL("CREATE TABLE " + PokeContract.Attacks.TABLE_NAME + " ("
+				+ PokeContract.Attacks._ID + KEY
+				+ PokeContract.Attacks.NAME	+ TEXT_END
 				+ ")");
 	}
 
