@@ -153,31 +153,6 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 
 	private void setListeners() {
 		setAutoCompleteAdapter();
-		mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
-		mPokemonNameEditText.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				if (!s.equals("")) {
-					mPokemonName = s.toString();
-					getActivity().getSupportLoaderManager().restartLoader(
-							LOADER_AUTO_COMPLETE, null, IVCalcFragment.this);
-				} else {
-					mPokemonName = "";
-				}
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-			}
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-			}
-		});
 
 		mStatHPView.addTextChangedListener(this);
 		mStatAttView.addTextChangedListener(this);
@@ -218,9 +193,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 	}
 
 	private void setAutoCompleteAdapter() {
-		getActivity().getSupportLoaderManager().restartLoader(
-				LOADER_AUTO_COMPLETE, null, this);
-		String[] from = { PokeContract.PokemonTable.POKEMON_NAME };
+		String[] from = { PokeContract.PokemonName.NAME };
 		int[] to = { android.R.id.text1 };
 		mAutoCompleteAdapter = new SimpleCursorAdapter(getActivity(),
 				android.R.layout.simple_spinner_dropdown_item, null, from, to,
@@ -230,49 +203,45 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 
 					@Override
 					public CharSequence convertToString(Cursor c) {
-						TextView hpBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_base_hp);
-						TextView attBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_base_att);
-						TextView defBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_base_def);
-						TextView spattBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_base_sp_att);
-						TextView spdefBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_base_sp_def);
-						TextView speedBase = (TextView) getActivity()
-								.findViewById(R.id.iv_calc_base_speed);
-
-						baseHP = Integer.parseInt(c.getString(c
-								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_HP)));
-						baseAtt = Integer.parseInt(c.getString(c
-								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_ATT)));
-						baseDef = Integer.parseInt(c.getString(c
-								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_DEF)));
-						baseSpAtt = Integer.parseInt(c.getString(c
-								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_SPATT)));
-						baseSpDef = Integer.parseInt(c.getString(c
-								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_SPDEF)));
-						baseSpeed = Integer.parseInt(c.getString(c
-								.getColumnIndex(PokeContract.PokemonTable.BASE_STAT_SPEED)));
-
-						hpBase.setText("" + baseHP);
-						attBase.setText("" + baseAtt);
-						defBase.setText("" + baseDef);
-						spattBase.setText("" + baseSpAtt);
-						spdefBase.setText("" + baseSpDef);
-						speedBase.setText("" + baseSpeed);
 						return c.getString(c
-								.getColumnIndexOrThrow(PokeContract.PokemonTable.POKEMON_NAME));
+								.getColumnIndexOrThrow(PokeContract.PokemonName.NAME));
 					}
 				});
+		
+		mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
+		mPokemonNameEditText.addTextChangedListener(new TextWatcher() {
 
+			@Override
+			public void afterTextChanged(Editable s) {
+				if (!s.equals("")) {
+					mPokemonName = s.toString();
+					getActivity().getSupportLoaderManager().restartLoader(
+							LOADER_AUTO_COMPLETE, null, IVCalcFragment.this);
+				} else {
+					mPokemonName = "";
+				}
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+			}
+		});
+
+		getActivity().getSupportLoaderManager().restartLoader(
+				LOADER_AUTO_COMPLETE, null, this);
 	}
 
 	private void setNatureSpinnerAdapter() {
 		getActivity().getSupportLoaderManager().restartLoader(LOADER_NATURE,
 				null, this);
-		String[] from = { PokeContract.NaturesTable.NATURE_NAME };
+		String[] from = { PokeContract.Natures.NAME };
 		int[] to = { android.R.id.text1 };
 		mNatureAdapter = new SimpleCursorAdapter(getActivity(),
 				android.R.layout.simple_spinner_item, null, from, to, 0);
@@ -511,29 +480,24 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		Loader<Cursor> loader = null;
 
-		Uri uri = PokeContract.CONTENT_POKEMON;
+		Uri uri;
 
 		switch (id) {
 		case LOADER_AUTO_COMPLETE:
-			String[] autoCompleteProjection = { PokeContract.PokemonTable._ID,
-					PokeContract.PokemonTable.POKEMON_NAME,
-					PokeContract.PokemonTable.BASE_STAT_HP,
-					PokeContract.PokemonTable.BASE_STAT_ATT,
-					PokeContract.PokemonTable.BASE_STAT_DEF,
-					PokeContract.PokemonTable.BASE_STAT_SPATT,
-					PokeContract.PokemonTable.BASE_STAT_SPDEF,
-					PokeContract.PokemonTable.BASE_STAT_SPEED, };
-			String selection = PokeContract.PokemonTable.POKEMON_NAME
+			uri = PokeContract.PokemonName.CONTENT_POKEMON_NAME;
+			String[] autoCompleteProjection = { PokeContract.PokemonName._ID,
+					PokeContract.PokemonName.NAME,};
+			String selection = PokeContract.PokemonName.NAME
 					+ " LIKE ?";
 			String[] selectionArgs = { "%" + mPokemonName + "%" };
 			loader = new CursorLoader(getActivity(), uri,
 					autoCompleteProjection, selection, selectionArgs, null);
 			break;
 		case LOADER_NATURE:
-			uri = PokeContract.CONTENT_NATURE;
+			uri = PokeContract.Natures.CONTENT_NATURE;
 
-			String[] natureProjection = { PokeContract.NaturesTable._ID,
-					PokeContract.NaturesTable.NATURE_NAME };
+			String[] natureProjection = { PokeContract.Natures._ID,
+					PokeContract.Natures.NAME };
 
 			loader = new CursorLoader(getActivity(), uri, natureProjection,
 					null, null, null);
@@ -555,7 +519,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 			if (cursor.getCount() > 0) {
 				cursor.moveToFirst();
 				mNature = cursor.getString(cursor
-						.getColumnIndex(PokeContract.NaturesTable.NATURE_NAME));
+						.getColumnIndex(PokeContract.Natures.NAME));
 				setNature();
 			}
 			break;

@@ -35,7 +35,8 @@ public class MainActivity extends TabCompatActivity {
 		super.onCreate(savedInstanceState);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		if (prefs.getBoolean(SettingsActivity.FIRST_RUN, true)) {
-			Toast.makeText(this, R.string.first_run_load, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.first_run_load, Toast.LENGTH_LONG)
+					.show();
 			makeFirstRun();
 			prefs.edit().putBoolean(SettingsActivity.FIRST_RUN, false).commit();
 		}
@@ -179,14 +180,80 @@ public class MainActivity extends TabCompatActivity {
 			String name = pokemon.get(PokeContract.PokemonName.NAME);
 			String type1 = pokemon.get(PokeContract.PokemonType1.TYPE);
 			String type2 = pokemon.get(PokeContract.PokemonType2.TYPE);
-			String ability1 = pokemon.get(PokeContract.PokemonAbility1.ABILITY_1);
-			String ability2 = pokemon.get(PokeContract.PokemonAbility2.ABILITY_2);
-			String abilityDW = pokemon.get(PokeContract.PokemonAbilityDW.ABILITY_DW);
-			
-			
-			
-			getContentResolver().insert(PokeContract.CONTENT_POKEMON,
+			String ability1 = pokemon
+					.get(PokeContract.PokemonAbility1.ABILITY_1);
+			String ability2 = pokemon
+					.get(PokeContract.PokemonAbility2.ABILITY_2);
+			String abilityDW = pokemon
+					.get(PokeContract.PokemonAbilityDW.ABILITY_DW);
+			String baseHP = pokemon.get(PokeContract.PokemonBaseStats.BASE_HP);
+			String baseAtt = pokemon
+					.get(PokeContract.PokemonBaseStats.BASE_ATT);
+			String baseDef = pokemon
+					.get(PokeContract.PokemonBaseStats.BASE_DEF);
+			String baseSpAtt = pokemon
+					.get(PokeContract.PokemonBaseStats.BASE_SPATT);
+			String baseSpDef = pokemon
+					.get(PokeContract.PokemonBaseStats.BASE_SPDEF);
+			String baseSpeed = pokemon
+					.get(PokeContract.PokemonBaseStats.BASE_SPEED);
+			pokemonValues.put(PokeContract.PokemonName.NUMBER, number);
+			pokemonStatsValues.put(PokeContract.PokemonName.NUMBER, number);
+			type1Values.put(PokeContract.PokemonName.NUMBER, number);
+			type2Values.put(PokeContract.PokemonName.NUMBER, number);
+			ability1Values.put(PokeContract.PokemonName.NUMBER, number);
+			ability2Values.put(PokeContract.PokemonName.NUMBER, number);
+			abilityDWValues.put(PokeContract.PokemonName.NUMBER, number);
+			pokemonValues.put(PokeContract.PokemonName.FORM, form);
+			pokemonStatsValues.put(PokeContract.PokemonName.FORM, form);
+			type1Values.put(PokeContract.PokemonName.FORM, form);
+			type2Values.put(PokeContract.PokemonName.FORM, form);
+			ability1Values.put(PokeContract.PokemonName.FORM, form);
+			ability2Values.put(PokeContract.PokemonName.FORM, form);
+			abilityDWValues.put(PokeContract.PokemonName.FORM, form);
+			pokemonValues.put(PokeContract.PokemonName.NAME, name);
+			pokemonStatsValues.put(PokeContract.PokemonBaseStats.BASE_HP,
+					baseHP);
+			pokemonStatsValues.put(PokeContract.PokemonBaseStats.BASE_ATT,
+					baseAtt);
+			pokemonStatsValues.put(PokeContract.PokemonBaseStats.BASE_DEF,
+					baseDef);
+			pokemonStatsValues.put(PokeContract.PokemonBaseStats.BASE_SPATT,
+					baseSpAtt);
+			pokemonStatsValues.put(PokeContract.PokemonBaseStats.BASE_SPDEF,
+					baseSpDef);
+			pokemonStatsValues.put(PokeContract.PokemonBaseStats.BASE_SPEED,
+					baseSpeed);
+			type1Values.put(PokeContract.PokemonType1.TYPE, type1);
+			type2Values.put(PokeContract.PokemonType2.TYPE, type2);
+			ability1Values
+					.put(PokeContract.PokemonAbility1.ABILITY_1, ability1);
+			ability2Values
+					.put(PokeContract.PokemonAbility2.ABILITY_2, ability2);
+			abilityDWValues.put(PokeContract.PokemonAbilityDW.ABILITY_DW,
+					abilityDW);
+
+			getContentResolver().insert(
+					PokeContract.PokemonName.CONTENT_POKEMON_NAME,
 					pokemonValues);
+			getContentResolver().insert(
+					PokeContract.PokemonBaseStats.CONTENT_POKEMON_BASE_STATS,
+					pokemonStatsValues);
+			getContentResolver().insert(
+					PokeContract.PokemonType1.CONTENT_POKEMON_TYPE_1,
+					type1Values);
+			getContentResolver().insert(
+					PokeContract.PokemonType2.CONTENT_POKEMON_TYPE_2,
+					type2Values);
+			getContentResolver().insert(
+					PokeContract.PokemonAbility1.CONTENT_POKEMON_ABILITY_1,
+					ability1Values);
+			getContentResolver().insert(
+					PokeContract.PokemonAbility2.CONTENT_POKEMON_ABILITY_2,
+					ability2Values);
+			getContentResolver().insert(
+					PokeContract.PokemonAbilityDW.CONTENT_POKEMON_ABILITY_DW,
+					abilityDWValues);
 		}
 	}
 
@@ -203,7 +270,8 @@ public class MainActivity extends TabCompatActivity {
 			for (int j = 0; j < nature.size(); j++) {
 				values.put(elements.get(j), nature.get(elements.get(j)));
 			}
-			getContentResolver().insert(PokeContract.Natures.CONTENT_NATURE, values);
+			getContentResolver().insert(PokeContract.Natures.CONTENT_NATURE,
+					values);
 		}
 	}
 
@@ -222,7 +290,8 @@ public class MainActivity extends TabCompatActivity {
 			for (int j = 0; j < ability.size(); j++) {
 				values.put(elements.get(j), ability.get(elements.get(j)));
 			}
-			getContentResolver().insert(PokeContract.Abilities.CONTENT_ABILITY, values);
+			getContentResolver().insert(PokeContract.Abilities.CONTENT_ABILITY,
+					values);
 		}
 	}
 

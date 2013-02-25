@@ -3,6 +3,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp" >
+
+        <Button
+            android:id="@+id/team_builder_pokemon_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="@string/pokemon_1" />
+
+        <Button
+            android:id="@+id/team_builder_pokemon_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="@string/pokemon_2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp" >
+
+        <Button
+            android:id="@+id/team_builder_pokemon_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="@string/pokemon_3" />
+
+        <Button
+            android:id="@+id/team_builder_pokemon_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="@string/pokemon_4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp" >
+
+        <Button
+            android:id="@+id/team_builder_pokemon_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="@string/pokemon_5" />
+
+        <Button
+            android:id="@+id/team_builder_pokemon_6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="@string/pokemon_6" />
+    </LinearLayout>
 
 </LinearLayout>

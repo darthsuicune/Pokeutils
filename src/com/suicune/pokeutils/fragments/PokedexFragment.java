@@ -41,9 +41,9 @@ public class PokedexFragment extends ListFragment implements
 	private void prepareAdapter() {
 		String[] from = {
 				PokeContract.Abilities.NAME,
-				PokeContract.Pokemon.NAME,
-				PokeContract.Pokemon.TYPE_1,
-				PokeContract.Pokemon.TYPE_2
+				PokeContract.PokemonName.NAME,
+				PokeContract.PokemonType1.TYPE,
+				PokeContract.PokemonType2.TYPE
 		};
 		int[] to = {
 				R.id.pokedex_entry_pokemon_ability_1,

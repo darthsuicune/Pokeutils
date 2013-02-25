@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pokemon_1">Pokemon 1</string>
+    <string name="pokemon_2">Pokemon 2</string>
+    <string name="pokemon_3">Pokemon 3</string>
+    <string name="pokemon_4">Pokemon 4</string>
+    <string name="pokemon_5">Pokemon 5</string>
+    <string name="pokemon_6">Pokemon 6</string>
+    
+    <string name="load_team">Load team</string>
+    <string name="save_team">Save team</string>
+</resources>
