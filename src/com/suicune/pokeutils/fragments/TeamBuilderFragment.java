@@ -14,8 +14,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.suicune.pokeutils.Pokemon;
 import com.suicune.pokeutils.R;
+import com.suicune.pokeutils.TeamPokemon;
 
 /**
  * This Fragment will be automatically opened when the user selects to open a file with
@@ -33,12 +33,12 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	private Button mPokemonButton5;
 	private Button mPokemonButton6;
 	
-	private Pokemon mPokemon1;
-	private Pokemon mPokemon2;
-	private Pokemon mPokemon3;
-	private Pokemon mPokemon4;
-	private Pokemon mPokemon5;
-	private Pokemon mPokemon6;
+	private TeamPokemon mPokemon1;
+	private TeamPokemon mPokemon2;
+	private TeamPokemon mPokemon3;
+	private TeamPokemon mPokemon4;
+	private TeamPokemon mPokemon5;
+	private TeamPokemon mPokemon6;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -136,48 +136,48 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		
 	}
 
-	protected void setPokemonIcon(int number) {
+	protected void setPokemonIcon(int number, int pokemon) {
 		switch (number) {
 		case 1:
-			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.abbyy_logo, 0, 0);
+			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
 			break;
 		case 2:
-			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
 			break;
 		case 3:
-			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
 			break;
 		case 4:
-			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
 			break;
 		case 5:
-			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
 			break;
 		case 6:
-			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
 			break;
 		}
 	}
 
-	protected void setPokemonName(int number, String name) {
+	protected void setPokemonName(int number) {
 		switch (number) {
 		case 1:
-			mPokemonButton1.setText(name);
+			mPokemonButton1.setText(mPokemon1.mNickname);
 			break;
 		case 2:
-			mPokemonButton2.setText(name);
+			mPokemonButton2.setText(mPokemon2.mNickname);
 			break;
 		case 3:
-			mPokemonButton3.setText(name);
+			mPokemonButton3.setText(mPokemon3.mNickname);
 			break;
 		case 4:
-			mPokemonButton4.setText(name);
+			mPokemonButton4.setText(mPokemon4.mNickname);
 			break;
 		case 5:
-			mPokemonButton5.setText(name);
+			mPokemonButton5.setText(mPokemon5.mNickname);
 			break;
 		case 6:
-			mPokemonButton6.setText(name);
+			mPokemonButton6.setText(mPokemon6.mNickname);
 			break;
 		}
 	}
