@@ -1,6 +1,15 @@
 package com.suicune.pokeutils;
 
 public class TeamPokemon extends Pokemon {
+	public TeamPokemon(String mName, int mForm, String mType1, String mType2,
+			String mBaseHP, String mBaseAtt, String mBaseDef,
+			String mBaseSpAtt, String mBaseSpDef, String mBaseSpeed,
+			String mAbility1, String mAbility2, String mAbilityDW) {
+		super(mName, mForm, mType1, mType2, mBaseHP, mBaseAtt, mBaseDef, mBaseSpAtt,
+				mBaseSpDef, mBaseSpeed, mAbility1, mAbility2, mAbilityDW);
+		// TODO Auto-generated constructor stub
+	}
+
 	public static final int HP = 0;
 	public static final int ATT = 1;
 	public static final int DEF = 2;
@@ -23,10 +32,6 @@ public class TeamPokemon extends Pokemon {
 
 	public int[] mIVs;
 	public int[] mEVs;
-
-	public TeamPokemon() {
-
-	}
 
 	public void setAttack(int number, Attack attack) {
 		switch (number) {
