@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -33,6 +34,9 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 
 	private static final int LOADER_AUTO_COMPLETE = 1;
 	private static final int LOADER_NATURE = 2;
+	private static final int LOADER_BASE_STATS = 3;
+	protected static final String ROW_ID = "rowId";
+	
 
 	private EditText mIVHPView;
 	private EditText mIVAttView;
@@ -209,6 +213,15 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 				});
 		
 		mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
+		mPokemonNameEditText.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View v, int position,
+					long id) {
+				Bundle args = new Bundle();
+				args.putLong(ROW_ID, id);
+				getActivity().getSupportLoaderManager().restartLoader(LOADER_BASE_STATS, args, IVCalcFragment.this);
+			}
+		});
 		mPokemonNameEditText.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -441,6 +454,30 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 				spDefIv, speedIv);
 
 	}
+	
+	private void setBaseStats(int hp, int att, int def, int spatt, int spdef, int speed){
+		TextView baseHPView = (TextView) getActivity().findViewById(R.id.iv_calc_base_hp);
+		TextView baseAttView = (TextView) getActivity().findViewById(R.id.iv_calc_base_att);
+		TextView baseDefView = (TextView) getActivity().findViewById(R.id.iv_calc_base_def);
+		TextView baseSpAttView = (TextView) getActivity().findViewById(R.id.iv_calc_base_sp_att);
+		TextView baseSpDefView = (TextView) getActivity().findViewById(R.id.iv_calc_base_sp_def);
+		TextView baseSpeedView = (TextView) getActivity().findViewById(R.id.iv_calc_base_speed);
+		
+		baseHP = hp;
+		baseAtt = att;
+		baseDef = def;
+		baseSpAtt = spatt;
+		baseSpDef = spdef;
+		baseSpeed = speed;
+		
+		baseHPView.setText("" + hp);
+		baseAttView.setText("" + att);
+		baseDefView.setText("" + def);
+		baseSpAttView.setText("" + spatt);
+		baseSpDefView.setText("" + spdef);
+		baseSpeedView.setText("" + speed);
+		
+	}
 
 	private void showIVs(int code, ArrayList<Integer> ivs) {
 		String result = IVTools.showIVs(code, ivs);
@@ -469,7 +506,6 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count,
 			int after) {
-
 	}
 
 	@Override
@@ -481,17 +517,25 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		Loader<Cursor> loader = null;
 
 		Uri uri;
-
+		
 		switch (id) {
 		case LOADER_AUTO_COMPLETE:
 			uri = PokeContract.PokemonName.CONTENT_POKEMON_NAME;
 			String[] autoCompleteProjection = { PokeContract.PokemonName._ID,
 					PokeContract.PokemonName.NAME,};
-			String selection = PokeContract.PokemonName.NAME
+			String autoCompleteSelection = PokeContract.PokemonName.NAME
 					+ " LIKE ?";
-			String[] selectionArgs = { "%" + mPokemonName + "%" };
+			String[] autoCompleteSelectionArgs = { "%" + mPokemonName + "%" };
 			loader = new CursorLoader(getActivity(), uri,
-					autoCompleteProjection, selection, selectionArgs, null);
+					autoCompleteProjection, autoCompleteSelection, autoCompleteSelectionArgs, null);
+			break;
+		case LOADER_BASE_STATS:
+			uri = PokeContract.PokemonBaseStats.CONTENT_POKEMON_BASE_STATS;
+			String baseStatsSelection = PokeContract.PokemonBaseStats._ID + "=?";
+			String[] selectionArgs = {
+				Long.toString(args.getLong(ROW_ID))	
+			};
+			loader = new CursorLoader(getActivity(), uri, null, baseStatsSelection, selectionArgs, null);
 			break;
 		case LOADER_NATURE:
 			uri = PokeContract.Natures.CONTENT_NATURE;
@@ -512,6 +556,16 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		switch (loader.getId()) {
 		case LOADER_AUTO_COMPLETE:
 			mAutoCompleteAdapter.swapCursor(cursor);
+			break;
+		case LOADER_BASE_STATS:
+			if(cursor.moveToFirst()){
+				setBaseStats(Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_HP))),
+				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_ATT))),
+				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_DEF))),
+				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPATT))),
+				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPDEF))),
+				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPEED))));
+			}
 			break;
 		case LOADER_NATURE:
 			mNatureAdapter.swapCursor(cursor);

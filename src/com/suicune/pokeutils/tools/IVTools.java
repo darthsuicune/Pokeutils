@@ -12,16 +12,16 @@ public class IVTools {
 
 	public static final int MIN_HP = 1;
 	public static final int MAX_HP = 714;
-	public static final int MIN_ATT = 41;
-	public static final int MAX_ATT = 504;
-	public static final int MIN_DEF = 41;
+	public static final int MIN_ATT = 1;
+	public static final int MAX_ATT = 614;
+	public static final int MIN_DEF = 1;
 	public static final int MAX_DEF = 614;
-	public static final int MIN_SP_ATT = 50;
-	public static final int MAX_SP_ATT = 504;
-	public static final int MIN_SP_DEF = 68;
+	public static final int MIN_SP_ATT = 1;
+	public static final int MAX_SP_ATT = 614;
+	public static final int MIN_SP_DEF = 1;
 	public static final int MAX_SP_DEF = 614;
-	public static final int MIN_SPEED = 41;
-	public static final int MAX_SPEED = 504;
+	public static final int MIN_SPEED = 1;
+	public static final int MAX_SPEED = 614;
 	
 	public static final String NATURE_HARDY = "Hardy";
 	public static final String NATURE_BASHFUL = "Bashful";
@@ -151,9 +151,17 @@ public class IVTools {
 		}
 
 		for (int iv = 0; iv <= 31; iv++) {
-			if (currentStat == Math
-					.floor(((((iv + (2 * baseStat) + (currentEv / 4)) * currentLevel) / 100) + 5)
-							* (currentNatureModifier / 100))) {
+			Double calculatedStat = (double) (2 * baseStat);
+			double ev = currentEv/4;
+			calculatedStat += iv + ev;
+			calculatedStat *= currentLevel;
+			calculatedStat /= 100;
+			calculatedStat += 5;
+			calculatedStat *= currentNatureModifier;
+			calculatedStat /= 100;
+			calculatedStat = Math.floor(calculatedStat);
+			int calculated = calculatedStat.intValue();
+			if (currentStat == calculated) {
 				ivList.add(iv);
 			}
 		}
