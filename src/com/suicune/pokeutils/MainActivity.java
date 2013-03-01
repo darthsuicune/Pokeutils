@@ -138,7 +138,7 @@ public class MainActivity extends TabCompatActivity {
 	private void makeFirstRun() {
 
 		Toast.makeText(this, R.string.first_run_load, Toast.LENGTH_LONG).show();
-
+//		http://stackoverflow.com/questions/9109438/how-to-use-an-existing-database-with-an-android-application/9109728#9109728
 		 new Thread(new InsertDataTask(this)).start();
 	}
 
