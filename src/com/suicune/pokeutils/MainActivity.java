@@ -3,9 +3,13 @@ package com.suicune.pokeutils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -18,15 +22,17 @@ import com.suicune.pokeutils.compat.CompatTabListener;
 import com.suicune.pokeutils.compat.TabCompatActivity;
 import com.suicune.pokeutils.compat.TabHelper;
 import com.suicune.pokeutils.database.PokeContract;
+import com.suicune.pokeutils.fragments.DamageCalcFragment;
 import com.suicune.pokeutils.fragments.IVCalcFragment;
 import com.suicune.pokeutils.fragments.PokedexFragment;
 import com.suicune.pokeutils.fragments.TeamBuilderFragment;
 import com.suicune.pokeutils.tools.DBReader;
 
 public class MainActivity extends TabCompatActivity {
-	private static final int TAB_CALCULATORS = 0;
-	private static final int TAB_TEAM_BUILDER = 1;
-	private static final int TAB_POKEDEX = 1;
+	private static final int TAB_IV_CALCULATOR = 0;
+	private static final int TAB_TEAM_BUILDER = 2;
+	private static final int TAB_POKEDEX = 3;
+	private static final int TAB_DAMAGE_CALCULATOR = 1;
 
 	private SharedPreferences prefs;
 
@@ -40,6 +46,9 @@ public class MainActivity extends TabCompatActivity {
 		}
 		setContentView(R.layout.main_activity);
 		setTabs();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			setActionBar();
+		}
 	}
 
 	@Override
@@ -49,29 +58,38 @@ public class MainActivity extends TabCompatActivity {
 		return true;
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private void setActionBar() {
+		ActionBar actionBar = getActionBar();
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			actionBar.setDisplayShowTitleEnabled(true);
+		} else {
+			actionBar.setDisplayShowTitleEnabled(false);
+		}
+	}
+
 	private void setTabs() {
 		TabHelper tabHelper = getTabHelper();
 
 		int defaultTab = prefs.getInt(SettingsActivity.DEFAULT_TAB,
-				TAB_CALCULATORS);
+				TAB_IV_CALCULATOR);
 
-		createTab(tabHelper, getString(R.string.tab_iv_calculator),
-				R.string.tab_iv_calculator, new TabListener(this,
-						IVCalcFragment.class));
-		createTab(tabHelper, getString(R.string.tab_team_builder),
-				R.string.tab_team_builder, new TabListener(this,
-						TeamBuilderFragment.class));
-		createTab(tabHelper, getString(R.string.tab_pokedex),
-				R.string.tab_pokedex, new TabListener(this,
-						PokedexFragment.class));
+		createTab(tabHelper, R.string.tab_iv_calculator, new TabListener(this,
+				IVCalcFragment.class));
+		createTab(tabHelper, R.string.tab_damage_calculator, new TabListener(
+				this, DamageCalcFragment.class));
+		createTab(tabHelper, R.string.tab_team_builder, new TabListener(this,
+				TeamBuilderFragment.class));
+		createTab(tabHelper, R.string.tab_pokedex, new TabListener(this,
+				PokedexFragment.class));
 
 		tabHelper.setActiveTab(defaultTab);
 	}
 
-	private void createTab(TabHelper tabHelper, String tag, int textResourceId,
+	private void createTab(TabHelper tabHelper, int textResourceId,
 			TabListener listener) {
 
-		CompatTab tab = tabHelper.newTab(tag);
+		CompatTab tab = tabHelper.newTab(getString(textResourceId));
 
 		tab.setText(textResourceId);
 		tab.setTabListener(listener);
@@ -125,11 +143,14 @@ public class MainActivity extends TabCompatActivity {
 	private void saveCurrentTabAsDefault(CompatTab tab) {
 		int currentTab = 0;
 		if (tab.getTag().equals(getString(R.string.tab_iv_calculator))) {
-			currentTab = TAB_CALCULATORS;
+			currentTab = TAB_IV_CALCULATOR;
 		} else if (tab.getTag().equals(getString(R.string.tab_iv_calculator))) {
 			currentTab = TAB_TEAM_BUILDER;
 		} else if (tab.getTag().equals(getString(R.string.tab_pokedex))) {
 			currentTab = TAB_POKEDEX;
+		} else if (tab.getTag().equals(
+				getString(R.string.tab_damage_calculator))) {
+			currentTab = TAB_DAMAGE_CALCULATOR;
 		}
 
 		prefs.edit().putInt(SettingsActivity.DEFAULT_TAB, currentTab).commit();
@@ -138,16 +159,15 @@ public class MainActivity extends TabCompatActivity {
 	private void makeFirstRun() {
 
 		Toast.makeText(this, R.string.first_run_load, Toast.LENGTH_LONG).show();
-//		http://stackoverflow.com/questions/9109438/how-to-use-an-existing-database-with-an-android-application/9109728#9109728
-		 new Thread(new InsertDataTask(this)).start();
+		// http://stackoverflow.com/questions/9109438/how-to-use-an-existing-database-with-an-android-application/9109728#9109728
+		new Thread(new InsertDataTask(this)).start();
 	}
 
-	 private class InsertDataTask implements Runnable {
+	private class InsertDataTask implements Runnable {
 		private Context mContext;
 
 		public InsertDataTask(Context context) {
 			mContext = context;
-			run();
 		}
 
 		public void run() {
@@ -286,15 +306,17 @@ public class MainActivity extends TabCompatActivity {
 			ArrayList<HashMap<String, String>> result = DBReader.readDB(
 					getResources().openRawResource(R.raw.natures), elements);
 
+			ContentValues[] natures = new ContentValues[result.size()];
 			for (int i = 0; i < result.size(); i++) {
 				ContentValues values = new ContentValues();
 				HashMap<String, String> nature = result.get(i);
 				for (int j = 0; j < nature.size(); j++) {
 					values.put(elements.get(j), nature.get(elements.get(j)));
 				}
-				mContext.getContentResolver().insert(
-						PokeContract.Natures.CONTENT_NATURE, values);
+				natures[i] = values;
 			}
+			mContext.getContentResolver().bulkInsert(
+					PokeContract.Natures.CONTENT_NATURE, natures);
 		}
 
 		public void loadAbilities() {

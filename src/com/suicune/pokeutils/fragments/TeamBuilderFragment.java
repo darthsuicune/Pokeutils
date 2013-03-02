@@ -18,8 +18,8 @@ import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.TeamPokemon;
 
 /**
- * This Fragment will be automatically opened when the user selects to open a file with
- * a team definition from storage. 
+ * This Fragment will be automatically opened when the user selects to open a
+ * file with a team definition from storage.
  */
 public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	private static final int REQUEST_EDIT_POKEMON = 0;
@@ -32,7 +32,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	private Button mPokemonButton4;
 	private Button mPokemonButton5;
 	private Button mPokemonButton6;
-	
+
 	private TeamPokemon mPokemon1;
 	private TeamPokemon mPokemon2;
 	private TeamPokemon mPokemon3;
@@ -72,40 +72,38 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()){
+		switch (item.getItemId()) {
 		case R.id.load_team:
 			loadTeam();
-			break;
+			return true;
 		case R.id.save_team:
 			saveTeam();
-			break;
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	private void setViews() {
-		if (isLandscape) {
-		} else {
-			mPokemonButton1 = (Button) getActivity().findViewById(
-					R.id.team_builder_pokemon_1);
-			mPokemonButton2 = (Button) getActivity().findViewById(
-					R.id.team_builder_pokemon_2);
-			mPokemonButton3 = (Button) getActivity().findViewById(
-					R.id.team_builder_pokemon_3);
-			mPokemonButton4 = (Button) getActivity().findViewById(
-					R.id.team_builder_pokemon_4);
-			mPokemonButton5 = (Button) getActivity().findViewById(
-					R.id.team_builder_pokemon_5);
-			mPokemonButton6 = (Button) getActivity().findViewById(
-					R.id.team_builder_pokemon_6);
+		mPokemonButton1 = (Button) getActivity().findViewById(
+				R.id.team_builder_pokemon_1);
+		mPokemonButton2 = (Button) getActivity().findViewById(
+				R.id.team_builder_pokemon_2);
+		mPokemonButton3 = (Button) getActivity().findViewById(
+				R.id.team_builder_pokemon_3);
+		mPokemonButton4 = (Button) getActivity().findViewById(
+				R.id.team_builder_pokemon_4);
+		mPokemonButton5 = (Button) getActivity().findViewById(
+				R.id.team_builder_pokemon_5);
+		mPokemonButton6 = (Button) getActivity().findViewById(
+				R.id.team_builder_pokemon_6);
 
-			mPokemonButton1.setOnClickListener(this);
-			mPokemonButton2.setOnClickListener(this);
-			mPokemonButton3.setOnClickListener(this);
-			mPokemonButton4.setOnClickListener(this);
-			mPokemonButton5.setOnClickListener(this);
-			mPokemonButton6.setOnClickListener(this);
-		}
+		mPokemonButton1.setOnClickListener(this);
+		mPokemonButton2.setOnClickListener(this);
+		mPokemonButton3.setOnClickListener(this);
+		mPokemonButton4.setOnClickListener(this);
+		mPokemonButton5.setOnClickListener(this);
+		mPokemonButton6.setOnClickListener(this);
 	}
 
 	@Override
@@ -133,28 +131,40 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	}
 
 	private void editPokemon(int number) {
-		
+		if (isLandscape) {
+
+		} else {
+			Intent intent = new Intent(getActivity(),
+					EditTeamPokemonActivity.class);
+			startActivityForResult(intent, REQUEST_EDIT_POKEMON);
+		}
 	}
 
 	protected void setPokemonIcon(int number, int pokemon) {
 		switch (number) {
 		case 1:
-			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
+			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 2:
-			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
+			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 3:
-			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
+			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 4:
-			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
+			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 5:
-			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
+			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 6:
-			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, pokemon, 0, 0);
+			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		}
 	}
@@ -181,12 +191,12 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 			break;
 		}
 	}
-	
-	private void loadTeam(){
-		
+
+	private void loadTeam() {
+
 	}
-	
-	private void saveTeam(){
-		
+
+	private void saveTeam() {
+
 	}
 }

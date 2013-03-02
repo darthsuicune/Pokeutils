@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.text.TextUtils;
-
 public class DBReader {
 
 	public static ArrayList<HashMap<String, String>> readDB(InputStream stream, ArrayList<String> elements) {
@@ -18,7 +16,7 @@ public class DBReader {
 		try {
 			while ((line = br.readLine()) != null) {
 				HashMap<String, String> item = new HashMap<String, String>();
-				String[] items = TextUtils.split(line, "  "); 
+				String[] items = line.split("  "); 
 				for (int i = 0; i < items.length; i++) {
 					item.put(elements.get(i), items[i]);
 				}

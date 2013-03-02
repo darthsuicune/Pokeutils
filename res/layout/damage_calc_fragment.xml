@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TableRow>
+
+        <AutoCompleteTextView
+            android:id="@+id/damage_calc_pokemon_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:inputType="textNoSuggestions"
+            android:hint="@string/damage_calc_pokemon_1" />
+
+        <AutoCompleteTextView
+            android:id="@+id/damage_calc_pokemon_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:inputType="textNoSuggestions"
+            android:hint="@string/damage_calc_pokemon_2" />
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/damage_calc_level1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/pokemon_level"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <EditText
+            android:id="@+id/damage_calc_level2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/pokemon_level"
+            android:inputType="number"
+            android:maxLength="3" />
+    </TableRow>
+
+    <TableRow>
+
+        <Spinner
+            android:id="@+id/damage_calc_attack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/damage_calc_base_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="3"
+            android:hint="@string/damage_calc_base_damage" />
+    </TableRow>
+
+    <TableRow >
+        <TextView
+            android:text="@string/damage_calc_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/damage_calc_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
+</TableLayout>

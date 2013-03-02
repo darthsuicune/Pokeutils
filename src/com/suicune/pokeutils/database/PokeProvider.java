@@ -6,6 +6,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 import com.suicune.pokeutils.R;
@@ -14,7 +15,7 @@ public class PokeProvider extends ContentProvider {
 	PokeDBOpenHelper mDbHelper;
 
 	protected static final String POKEDEX_PATH = "pokedex";
-	private static final int POKEDEX = 0;
+	private static final int POKEDEX = 100;
 	private static final int POKEMON_NAME = 1;
 	private static final int POKEMON_NAME_ID = 2;
 	private static final int POKEMON_BASE_STATS = 3;
@@ -40,8 +41,7 @@ public class PokeProvider extends ContentProvider {
 	static {
 		sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-		sUriMatcher.addURI(PokeContract.CONTENT_NAME, PokeContract.CONTENT_NAME
-				+ "/" + POKEDEX_PATH, POKEDEX);
+		sUriMatcher.addURI(PokeContract.CONTENT_NAME, POKEDEX_PATH, POKEDEX);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
 				PokeContract.PokemonName.TABLE_NAME, POKEMON_NAME);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
@@ -194,49 +194,7 @@ public class PokeProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		String table = "";
-		switch (sUriMatcher.match(uri)) {
-		case POKEMON_NAME_ID:
-		case POKEMON_NAME:
-			table = PokeContract.PokemonName.TABLE_NAME;
-			break;
-		case POKEMON_BASE_STATS_ID:
-		case POKEMON_BASE_STATS:
-			table = PokeContract.PokemonBaseStats.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_1_ID:
-		case POKEMON_TYPE_1:
-			table = PokeContract.PokemonType1.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_2_ID:
-		case POKEMON_TYPE_2:
-			table = PokeContract.PokemonType2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_1_ID:
-		case POKEMON_ABILITY_1:
-			table = PokeContract.PokemonAbility1.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_2_ID:
-		case POKEMON_ABILITY_2:
-			table = PokeContract.PokemonAbility2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_DW_ID:
-		case POKEMON_ABILITY_DW:
-			table = PokeContract.PokemonAbilityDW.TABLE_NAME;
-			break;
-		case ABILITY_ID:
-		case ABILITY:
-			table = PokeContract.Abilities.TABLE_NAME;
-			break;
-		case NATURE_ID:
-		case NATURE:
-			table = PokeContract.Natures.TABLE_NAME;
-			break;
-		case ATTACK_ID:
-		case ATTACK:
-			table = PokeContract.Attacks.TABLE_NAME;
-			break;
-		}
+		String table = getTable(uri);
 		long id = mDbHelper.getWritableDatabase().insert(table, null, values);
 		Uri result = null;
 		if (id != -1) {
@@ -251,58 +209,15 @@ public class PokeProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
 
+		if (sUriMatcher.match(uri) == POKEDEX) {
+			return queryPokedex(projection, selection, selectionArgs, sortOrder);
+		}
+
 		boolean distinct = false;
-		String table = null;
+		String table = getTable(uri);
 		String groupBy = null;
 		String having = null;
 		String limit = null;
-
-		switch (sUriMatcher.match(uri)) {
-		case POKEDEX:
-			
-			break;
-		
-		case POKEMON_NAME_ID:
-		case POKEMON_NAME:
-			table = PokeContract.PokemonName.TABLE_NAME;
-			break;
-		case POKEMON_BASE_STATS_ID:
-		case POKEMON_BASE_STATS:
-			table = PokeContract.PokemonBaseStats.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_1_ID:
-		case POKEMON_TYPE_1:
-			table = PokeContract.PokemonType1.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_2_ID:
-		case POKEMON_TYPE_2:
-			table = PokeContract.PokemonType2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_1_ID:
-		case POKEMON_ABILITY_1:
-			table = PokeContract.PokemonAbility1.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_2_ID:
-		case POKEMON_ABILITY_2:
-			table = PokeContract.PokemonAbility2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_DW_ID:
-		case POKEMON_ABILITY_DW:
-			table = PokeContract.PokemonAbilityDW.TABLE_NAME;
-			break;
-		case ABILITY_ID:
-		case ABILITY:
-			table = PokeContract.Abilities.TABLE_NAME;
-			break;
-		case NATURE_ID:
-		case NATURE:
-			table = PokeContract.Natures.TABLE_NAME;
-			break;
-		case ATTACK_ID:
-		case ATTACK:
-			table = PokeContract.Attacks.TABLE_NAME;
-			break;
-		}
 		Cursor cursor = mDbHelper.getReadableDatabase().query(distinct, table,
 				projection, selection, selectionArgs, groupBy, having,
 				sortOrder, limit);
@@ -310,52 +225,24 @@ public class PokeProvider extends ContentProvider {
 		return cursor;
 	}
 
+	private Cursor queryPokedex(String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
+
+		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+		builder.setTables(PokeContract.PokemonName.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonAbility1.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonAbility2.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonAbilityDW.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonType1.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonType2.TABLE_NAME);
+		return builder.query(mDbHelper.getReadableDatabase(), projection,
+				selection, selectionArgs, null, null, null);
+	}
+
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
-		String table = null;
-		switch (sUriMatcher.match(uri)) {
-		case POKEMON_NAME_ID:
-		case POKEMON_NAME:
-			table = PokeContract.PokemonName.TABLE_NAME;
-			break;
-		case POKEMON_BASE_STATS_ID:
-		case POKEMON_BASE_STATS:
-			table = PokeContract.PokemonBaseStats.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_1_ID:
-		case POKEMON_TYPE_1:
-			table = PokeContract.PokemonType1.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_2_ID:
-		case POKEMON_TYPE_2:
-			table = PokeContract.PokemonType2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_1_ID:
-		case POKEMON_ABILITY_1:
-			table = PokeContract.PokemonAbility1.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_2_ID:
-		case POKEMON_ABILITY_2:
-			table = PokeContract.PokemonAbility2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_DW_ID:
-		case POKEMON_ABILITY_DW:
-			table = PokeContract.PokemonAbilityDW.TABLE_NAME;
-			break;
-		case ABILITY_ID:
-		case ABILITY:
-			table = PokeContract.Abilities.TABLE_NAME;
-			break;
-		case NATURE_ID:
-		case NATURE:
-			table = PokeContract.Natures.TABLE_NAME;
-			break;
-		case ATTACK_ID:
-		case ATTACK:
-			table = PokeContract.Attacks.TABLE_NAME;
-			break;
-		}
+		String table = getTable(uri);
 		int count = mDbHelper.getWritableDatabase().update(table, values,
 				selection, selectionArgs);
 		getContext().getContentResolver().notifyChange(uri, null);
@@ -364,53 +251,47 @@ public class PokeProvider extends ContentProvider {
 
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		String table = null;
-		switch (sUriMatcher.match(uri)) {
-		case POKEMON_NAME_ID:
-		case POKEMON_NAME:
-			table = PokeContract.PokemonName.TABLE_NAME;
-			break;
-		case POKEMON_BASE_STATS_ID:
-		case POKEMON_BASE_STATS:
-			table = PokeContract.PokemonBaseStats.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_1_ID:
-		case POKEMON_TYPE_1:
-			table = PokeContract.PokemonType1.TABLE_NAME;
-			break;
-		case POKEMON_TYPE_2_ID:
-		case POKEMON_TYPE_2:
-			table = PokeContract.PokemonType2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_1_ID:
-		case POKEMON_ABILITY_1:
-			table = PokeContract.PokemonAbility1.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_2_ID:
-		case POKEMON_ABILITY_2:
-			table = PokeContract.PokemonAbility2.TABLE_NAME;
-			break;
-		case POKEMON_ABILITY_DW_ID:
-		case POKEMON_ABILITY_DW:
-			table = PokeContract.PokemonAbilityDW.TABLE_NAME;
-			break;
-		case ABILITY_ID:
-		case ABILITY:
-			table = PokeContract.Abilities.TABLE_NAME;
-			break;
-		case NATURE_ID:
-		case NATURE:
-			table = PokeContract.Natures.TABLE_NAME;
-			break;
-		case ATTACK_ID:
-		case ATTACK:
-			table = PokeContract.Attacks.TABLE_NAME;
-			break;
-		}
+		String table = getTable(uri);
+
 		int count = mDbHelper.getWritableDatabase().delete(table, selection,
 				selectionArgs);
 		getContext().getContentResolver().notifyChange(uri, null);
 		return count;
 	}
 
+	private String getTable(Uri uri) {
+		switch (sUriMatcher.match(uri)) {
+		case POKEMON_NAME_ID:
+		case POKEMON_NAME:
+			return PokeContract.PokemonName.TABLE_NAME;
+		case POKEMON_BASE_STATS_ID:
+		case POKEMON_BASE_STATS:
+			return PokeContract.PokemonBaseStats.TABLE_NAME;
+		case POKEMON_TYPE_1_ID:
+		case POKEMON_TYPE_1:
+			return PokeContract.PokemonType1.TABLE_NAME;
+		case POKEMON_TYPE_2_ID:
+		case POKEMON_TYPE_2:
+			return PokeContract.PokemonType2.TABLE_NAME;
+		case POKEMON_ABILITY_1_ID:
+		case POKEMON_ABILITY_1:
+			return PokeContract.PokemonAbility1.TABLE_NAME;
+		case POKEMON_ABILITY_2_ID:
+		case POKEMON_ABILITY_2:
+			return PokeContract.PokemonAbility2.TABLE_NAME;
+		case POKEMON_ABILITY_DW_ID:
+		case POKEMON_ABILITY_DW:
+			return PokeContract.PokemonAbilityDW.TABLE_NAME;
+		case ABILITY_ID:
+		case ABILITY:
+			return PokeContract.Abilities.TABLE_NAME;
+		case NATURE_ID:
+		case NATURE:
+			return PokeContract.Natures.TABLE_NAME;
+		case ATTACK_ID:
+		case ATTACK:
+			return PokeContract.Attacks.TABLE_NAME;
+		}
+		return null;
+	}
 }

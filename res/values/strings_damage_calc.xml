@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="damage_calc_pokemon_1">Attacker</string>
+    <string name="damage_calc_pokemon_2">Defender</string>
+    <string name="damage_calc_base_damage">Base Damage</string>
+    <string name="damage_calc_damage">Damage: </string>
+</resources>

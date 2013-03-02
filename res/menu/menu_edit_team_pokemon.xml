@@ -2,16 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/load_team"
+        android:id="@+id/edit_team_pokemon_load_pokemon"
         android:icon="@android:drawable/ic_menu_upload"
         android:showAsAction="ifRoom"
-        android:title="@string/load_team">
-    </item>
+        android:title="@string/edit_team_pokemon_load_pokemon"/>
     <item
-        android:id="@+id/save_team"
+        android:id="@+id/edit_team_pokemon_save_pokemon"
         android:icon="@android:drawable/ic_menu_save"
         android:showAsAction="ifRoom"
-        android:title="@string/save_team">
-    </item>
+        android:title="@string/edit_team_pokemon_save_pokemon"/>
 
 </menu>

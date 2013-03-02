@@ -219,7 +219,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					long id) {
 				Bundle args = new Bundle();
 				args.putLong(ROW_ID, id);
-				getActivity().getSupportLoaderManager().restartLoader(LOADER_BASE_STATS, args, IVCalcFragment.this);
+				getLoaderManager().restartLoader(LOADER_BASE_STATS, args, IVCalcFragment.this);
 			}
 		});
 		mPokemonNameEditText.addTextChangedListener(new TextWatcher() {
@@ -228,7 +228,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 			public void afterTextChanged(Editable s) {
 				if (!s.equals("")) {
 					mPokemonName = s.toString();
-					getActivity().getSupportLoaderManager().restartLoader(
+					getLoaderManager().restartLoader(
 							LOADER_AUTO_COMPLETE, null, IVCalcFragment.this);
 				} else {
 					mPokemonName = "";
@@ -247,12 +247,12 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 			}
 		});
 
-		getActivity().getSupportLoaderManager().restartLoader(
+		getLoaderManager().restartLoader(
 				LOADER_AUTO_COMPLETE, null, this);
 	}
 
 	private void setNatureSpinnerAdapter() {
-		getActivity().getSupportLoaderManager().restartLoader(LOADER_NATURE,
+		getLoaderManager().restartLoader(LOADER_NATURE,
 				null, this);
 		String[] from = { PokeContract.Natures.NAME };
 		int[] to = { android.R.id.text1 };
