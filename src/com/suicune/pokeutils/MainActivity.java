@@ -46,26 +46,12 @@ public class MainActivity extends TabCompatActivity {
 		}
 		setContentView(R.layout.main_activity);
 		setTabs();
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			setActionBar();
-		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
-
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setActionBar() {
-		ActionBar actionBar = getActionBar();
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-			actionBar.setDisplayShowTitleEnabled(true);
-		} else {
-			actionBar.setDisplayShowTitleEnabled(false);
-		}
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	private void setTabs() {

@@ -1,5 +1,6 @@
 package com.suicune.pokeutils.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.suicune.pokeutils.EditTeamPokemonActivity;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.TeamPokemon;
 
@@ -22,7 +24,7 @@ import com.suicune.pokeutils.TeamPokemon;
  * file with a team definition from storage.
  */
 public class TeamBuilderFragment extends Fragment implements OnClickListener {
-	private static final int REQUEST_EDIT_POKEMON = 0;
+	private static final int REQUEST_EDIT_POKEMON = 1;
 
 	private boolean isLandscape;
 
@@ -46,6 +48,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		return inflater.inflate(R.layout.team_builder, container, false);
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -85,25 +88,25 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	}
 
 	private void setViews() {
-		mPokemonButton1 = (Button) getActivity().findViewById(
-				R.id.team_builder_pokemon_1);
-		mPokemonButton2 = (Button) getActivity().findViewById(
-				R.id.team_builder_pokemon_2);
-		mPokemonButton3 = (Button) getActivity().findViewById(
-				R.id.team_builder_pokemon_3);
-		mPokemonButton4 = (Button) getActivity().findViewById(
-				R.id.team_builder_pokemon_4);
-		mPokemonButton5 = (Button) getActivity().findViewById(
-				R.id.team_builder_pokemon_5);
-		mPokemonButton6 = (Button) getActivity().findViewById(
-				R.id.team_builder_pokemon_6);
-
-		mPokemonButton1.setOnClickListener(this);
-		mPokemonButton2.setOnClickListener(this);
-		mPokemonButton3.setOnClickListener(this);
-		mPokemonButton4.setOnClickListener(this);
-		mPokemonButton5.setOnClickListener(this);
-		mPokemonButton6.setOnClickListener(this);
+		// mPokemonButton1 = (Button) getActivity().findViewById(
+		// R.id.team_builder_pokemon_1);
+		// mPokemonButton2 = (Button) getActivity().findViewById(
+		// R.id.team_builder_pokemon_2);
+		// mPokemonButton3 = (Button) getActivity().findViewById(
+		// R.id.team_builder_pokemon_3);
+		// mPokemonButton4 = (Button) getActivity().findViewById(
+		// R.id.team_builder_pokemon_4);
+		// mPokemonButton5 = (Button) getActivity().findViewById(
+		// R.id.team_builder_pokemon_5);
+		// mPokemonButton6 = (Button) getActivity().findViewById(
+		// R.id.team_builder_pokemon_6);
+		//
+		// mPokemonButton1.setOnClickListener(this);
+		// mPokemonButton2.setOnClickListener(this);
+		// mPokemonButton3.setOnClickListener(this);
+		// mPokemonButton4.setOnClickListener(this);
+		// mPokemonButton5.setOnClickListener(this);
+		// mPokemonButton6.setOnClickListener(this);
 	}
 
 	@Override

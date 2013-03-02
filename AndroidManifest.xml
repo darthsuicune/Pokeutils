@@ -7,8 +7,8 @@
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="17" />
-    
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,10 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.suicune.pokeutils.SettingsActivity"
+            
+        android:label="@string/settings">
+        </activity>
+        <activity android:name="com.suicune.pokeutils.EditTeamPokemonActivity"
+            android:label="@string/edit_team_pokemon">
+        </activity>
+
         <provider
             android:name="com.suicune.pokeutils.database.PokeProvider"
-            android:authorities="com.suicune.pokeutils.database.PokeProvider">
-            
+            android:authorities="com.suicune.pokeutils.database.PokeProvider" >
         </provider>
     </application>
 

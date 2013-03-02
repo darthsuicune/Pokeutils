@@ -13,9 +13,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
@@ -33,6 +35,8 @@ public class DamageCalcFragment extends Fragment implements
 
 	private SimpleCursorAdapter mPokemon1Adapter;
 	private SimpleCursorAdapter mPokemon2Adapter;
+
+	private SimpleCursorAdapter mAttacksAdapter;
 
 	private String mPokemonName;
 
@@ -68,6 +72,25 @@ public class DamageCalcFragment extends Fragment implements
 				R.id.damage_calc_attack);
 		mAttackBaseDamageView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_base_damage);
+
+		setSpinnerAdapter();
+		mAttackView.setAdapter(mAttacksAdapter);
+		mAttackView.setOnItemSelectedListener(getOnItemSelectedListener());
+	}
+
+	private void setSpinnerAdapter() {
+		String[] from = { PokeContract.Attacks.NAME };
+		int[] to = { android.R.id.text1 };
+		mAttacksAdapter = new SimpleCursorAdapter(getActivity(),
+				android.R.layout.simple_spinner_dropdown_item, null, from, to,
+				0);
+		mAttacksAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_item);
+	}
+
+	private OnItemSelectedListener getOnItemSelectedListener() {
+		
+		return null;
 	}
 
 	private void prepareAutoCompleteViews() {
@@ -87,9 +110,11 @@ public class DamageCalcFragment extends Fragment implements
 		String[] from = { PokeContract.PokemonName.NAME };
 		int[] to = { android.R.id.text1 };
 		mPokemon1Adapter = new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, null, from, to, 0);
+				android.R.layout.simple_spinner_dropdown_item, null, from, to,
+				0);
 		mPokemon2Adapter = new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, null, from, to, 0);
+				android.R.layout.simple_spinner_dropdown_item, null, from, to,
+				0);
 		mPokemon1Adapter.setCursorToStringConverter(this);
 		mPokemon2Adapter.setCursorToStringConverter(this);
 		mPokemon1Adapter

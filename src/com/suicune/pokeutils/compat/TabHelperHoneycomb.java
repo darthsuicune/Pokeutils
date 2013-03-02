@@ -2,6 +2,7 @@ package com.suicune.pokeutils.compat;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,11 @@ public class TabHelperHoneycomb extends TabHelper{
 		if(mActionBar == null){
 			mActionBar = mActivity.getActionBar();
 			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+			if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+				mActionBar.setDisplayShowTitleEnabled(false);
+			} else {
+				mActionBar.setDisplayShowTitleEnabled(true);
+			}
 		}
 	}
 
