@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.tools;
+package com.suicune.pokeutils;
 
 public class Types {
 	public static final int NORMAL = 0;

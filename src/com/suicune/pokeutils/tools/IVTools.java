@@ -2,6 +2,8 @@ package com.suicune.pokeutils.tools;
 
 import java.util.ArrayList;
 
+import com.suicune.pokeutils.Natures;
+
 public class IVTools {
 	public static final int CODE_HP = 0;
 	public static final int CODE_ATT = 1;
@@ -22,38 +24,6 @@ public class IVTools {
 	public static final int MAX_SP_DEF = 614;
 	public static final int MIN_SPEED = 1;
 	public static final int MAX_SPEED = 614;
-	
-	public static final String NATURE_HARDY = "Hardy";
-	public static final String NATURE_BASHFUL = "Bashful";
-	public static final String NATURE_DOCILE = "Docile";
-	public static final String NATURE_QUIRKY = "Quirky";
-	public static final String NATURE_SERIOUS = "Serious";
-	
-	
-	public static final String NATURE_LONELY = "Lonely";
-	public static final String NATURE_BRAVE = "Brave";
-	public static final String NATURE_ADAMANT = "Adamant";
-	public static final String NATURE_NAUGHTY = "Naughty";
-	
-	public static final String NATURE_BOLD = "Bold";
-	public static final String NATURE_RELAXED = "Relaxed";
-	public static final String NATURE_IMPISH = "Impish";
-	public static final String NATURE_LAX = "Lax";
-	
-	public static final String NATURE_TIMID = "Timid";
-	public static final String NATURE_HASTY = "Hasty";
-	public static final String NATURE_JOLLY = "Jolly";
-	public static final String NATURE_NAIVE = "Naive";
-	
-	public static final String NATURE_MODEST = "Modest";
-	public static final String NATURE_MILD = "Mild";
-	public static final String NATURE_QUIET = "Quiet";
-	public static final String NATURE_RASH = "Rash";
-	
-	public static final String NATURE_CALM = "Calm";
-	public static final String NATURE_GENTLE = "Gentle";
-	public static final String NATURE_SASSY = "Sassy";
-	public static final String NATURE_CAREFUL = "Careful";
 
 	public static ArrayList<Integer> calculateIVs(int code, String nature, int currentStat,
 			int currentEv, int currentLevel, int baseStat) {
@@ -88,11 +58,11 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(NATURE_LONELY) || nature.equals(NATURE_BRAVE) || nature.equals(NATURE_ADAMANT)
-					|| nature.equals(NATURE_NAUGHTY)) {
+			if (nature.equals(Natures.LONELY) || nature.equals(Natures.BRAVE) || nature.equals(Natures.ADAMANT)
+					|| nature.equals(Natures.NAUGHTY)) {
 				currentNatureModifier = 110;
-			} else if (nature.equals(NATURE_BOLD) || nature.equals(NATURE_TIMID)
-					|| nature.equals(NATURE_MODEST) || nature.equals(NATURE_CALM)) {
+			} else if (nature.equals(Natures.BOLD) || nature.equals(Natures.TIMID)
+					|| nature.equals(Natures.MODEST) || nature.equals(Natures.CALM)) {
 				currentNatureModifier = 90;
 			}
 			break;
@@ -101,11 +71,11 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(NATURE_BOLD) || nature.equals(NATURE_RELAXED) || nature.equals(NATURE_IMPISH)
-					|| nature.equals(NATURE_LAX)) {
+			if (nature.equals(Natures.BOLD) || nature.equals(Natures.RELAXED) || nature.equals(Natures.IMPISH)
+					|| nature.equals(Natures.LAX)) {
 				currentNatureModifier = 110;
-			} else if (nature.equals(NATURE_LONELY) || nature.equals(NATURE_HASTY)
-					|| nature.equals(NATURE_MILD) || nature.equals(NATURE_GENTLE)) {
+			} else if (nature.equals(Natures.LONELY) || nature.equals(Natures.HASTY)
+					|| nature.equals(Natures.MILD) || nature.equals(Natures.GENTLE)) {
 				currentNatureModifier = 90;
 			}
 			break;
@@ -114,11 +84,11 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(NATURE_TIMID) || nature.equals(NATURE_HASTY) || nature.equals(NATURE_JOLLY)
-					|| nature.equals(NATURE_NAIVE)) {
+			if (nature.equals(Natures.TIMID) || nature.equals(Natures.HASTY) || nature.equals(Natures.JOLLY)
+					|| nature.equals(Natures.NAIVE)) {
 				currentNatureModifier = 110;
-			} else if (nature.equals(NATURE_BRAVE) || nature.equals(NATURE_RELAXED)
-					|| nature.equals(NATURE_QUIET) || nature.equals(NATURE_SASSY)) {
+			} else if (nature.equals(Natures.BRAVE) || nature.equals(Natures.RELAXED)
+					|| nature.equals(Natures.QUIET) || nature.equals(Natures.SASSY)) {
 				currentNatureModifier = 90;
 			}
 			break;
@@ -127,11 +97,11 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(NATURE_MODEST) || nature.equals(NATURE_MILD) || nature.equals(NATURE_QUIET)
-					|| nature.equals(NATURE_RASH)) {
+			if (nature.equals(Natures.MODEST) || nature.equals(Natures.MILD) || nature.equals(Natures.QUIET)
+					|| nature.equals(Natures.RASH)) {
 				currentNatureModifier = 110;
-			} else if (nature.equals(NATURE_ADAMANT) || nature.equals(NATURE_IMPISH)
-					|| nature.equals(NATURE_JOLLY) || nature.equals(NATURE_CAREFUL)) {
+			} else if (nature.equals(Natures.ADAMANT) || nature.equals(Natures.IMPISH)
+					|| nature.equals(Natures.JOLLY) || nature.equals(Natures.CAREFUL)) {
 				currentNatureModifier = 90;
 			}
 			break;
@@ -140,11 +110,11 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(NATURE_CALM) || nature.equals(NATURE_GENTLE) || nature.equals(NATURE_SASSY)
-					|| nature.equals(NATURE_CAREFUL)) {
+			if (nature.equals(Natures.CALM) || nature.equals(Natures.GENTLE) || nature.equals(Natures.SASSY)
+					|| nature.equals(Natures.CAREFUL)) {
 				currentNatureModifier = 110;
-			} else if (nature.equals(NATURE_NAUGHTY) || nature.equals(NATURE_LAX)
-					|| nature.equals(NATURE_NAIVE) || nature.equals(NATURE_RASH)) {
+			} else if (nature.equals(Natures.NAUGHTY) || nature.equals(Natures.LAX)
+					|| nature.equals(Natures.NAIVE) || nature.equals(Natures.RASH)) {
 				currentNatureModifier = 90;
 			}
 			break;

@@ -3,7 +3,8 @@ package com.suicune.pokeutils.tools;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.suicune.pokeutils.tools.Types.*;
+import com.suicune.pokeutils.Types;
+import com.suicune.pokeutils.Types.*;
 
 public class DamageCalcTools {
 	public static final double TYPE_MODIFIER_WEAK = 2;
