@@ -41,18 +41,21 @@ public class PokedexFragment extends ListFragment implements
 		super.onActivityCreated(savedInstanceState);
 		prepareAdapter();
 		setListAdapter(mAdapter);
-		getLoaderManager().initLoader(LOADER_POKEMON, null, this);
+		getLoaderManager().restartLoader(LOADER_POKEMON, null, this);
 	}
 
 	private void prepareAdapter() {
-		String[] from = { PokeContract.PokemonAbility1.ABILITY_1,
-				PokeContract.PokemonAbility2.ABILITY_2,
-				PokeContract.PokemonAbilityDW.ABILITY_DW,
-				PokeContract.PokemonName.NAME, PokeContract.PokemonType1.TYPE,
+		String[] from = { PokeContract.Pokedex.ABILITY_1_NAME,
+				PokeContract.Pokedex.ABILITY_2_NAME,
+				PokeContract.Pokedex.ABILITY_DW_NAME,
+				PokeContract.PokemonName.NUMBER,
+				PokeContract.PokemonName.NAME, 
+				PokeContract.PokemonType1.TYPE,
 				PokeContract.PokemonType2.TYPE };
 		int[] to = { R.id.pokedex_entry_pokemon_ability_1,
 				R.id.pokedex_entry_pokemon_ability_2,
 				R.id.pokedex_entry_pokemon_ability_dw,
+				R.id.pokedex_entry_pokemon_number,
 				R.id.pokedex_entry_pokemon_name,
 				R.id.pokedex_entry_pokemon_type_1,
 				R.id.pokedex_entry_pokemon_type_2 };
@@ -66,7 +69,7 @@ public class PokedexFragment extends ListFragment implements
 		switch (id) {
 		case LOADER_POKEMON:
 			loader = new CursorLoader(getActivity(),
-					PokeContract.CONTENT_POKEDEX, null, null, null, null);
+					PokeContract.Pokedex.CONTENT_POKEDEX, null, null, null, null);
 			break;
 		}
 		return loader;
@@ -107,46 +110,10 @@ public class PokedexFragment extends ListFragment implements
 			}
 			TextView type2 = (TextView) row
 					.findViewById(R.id.pokedex_entry_pokemon_type_2);
-			TextView ability1 = (TextView) row
-					.findViewById(R.id.pokedex_entry_pokemon_ability_1);
-			TextView ability2 = (TextView) row
-					.findViewById(R.id.pokedex_entry_pokemon_ability_2);
-			TextView abilityDW = (TextView) row
-					.findViewById(R.id.pokedex_entry_pokemon_ability_dw);
 
 			if (type2.getText().toString().equals("0")) {
 				type2.setText("-");
 			}
-
-			String selection = PokeContract.Abilities.ID + "=?";
-			String[] abilities1 = { ability1.getText().toString() };
-			String[] abilities2 = { ability2.getText().toString() };
-			String[] abilitiesDW = { abilityDW.getText().toString() };
-
-			Cursor c1 = getActivity().getContentResolver().query(mUri, null,
-					selection, abilities1, null);
-			Cursor c2 = getActivity().getContentResolver().query(mUri, null,
-					selection, abilities2, null);
-			Cursor cdw = getActivity().getContentResolver().query(mUri, null,
-					selection, abilitiesDW, null);
-			if (c1.getCount() > 0) {
-				c1.moveToFirst();
-				ability1.setText(c1.getString(c1
-						.getColumnIndex(PokeContract.Abilities.NAME)));
-			}
-			if (c2.getCount() > 0) {
-				c2.moveToFirst();
-				ability2.setText(c2.getString(c2
-						.getColumnIndex(PokeContract.Abilities.NAME)));
-			}
-			if (cdw.getCount() > 0) {
-				cdw.moveToFirst();
-				abilityDW.setText(cdw.getString(cdw
-						.getColumnIndex(PokeContract.Abilities.NAME)));
-			}
-			c1.close();
-			c2.close();
-			cdw.close();
 			return row;
 		}
 	}

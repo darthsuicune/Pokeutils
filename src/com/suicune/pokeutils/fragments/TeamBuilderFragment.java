@@ -88,25 +88,25 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	}
 
 	private void setViews() {
-		// mPokemonButton1 = (Button) getActivity().findViewById(
-		// R.id.team_builder_pokemon_1);
-		// mPokemonButton2 = (Button) getActivity().findViewById(
-		// R.id.team_builder_pokemon_2);
-		// mPokemonButton3 = (Button) getActivity().findViewById(
-		// R.id.team_builder_pokemon_3);
-		// mPokemonButton4 = (Button) getActivity().findViewById(
-		// R.id.team_builder_pokemon_4);
-		// mPokemonButton5 = (Button) getActivity().findViewById(
-		// R.id.team_builder_pokemon_5);
-		// mPokemonButton6 = (Button) getActivity().findViewById(
-		// R.id.team_builder_pokemon_6);
-		//
-		// mPokemonButton1.setOnClickListener(this);
-		// mPokemonButton2.setOnClickListener(this);
-		// mPokemonButton3.setOnClickListener(this);
-		// mPokemonButton4.setOnClickListener(this);
-		// mPokemonButton5.setOnClickListener(this);
-		// mPokemonButton6.setOnClickListener(this);
+		 mPokemonButton1 = (Button) getActivity().findViewById(
+		 R.id.team_builder_pokemon_1);
+		 mPokemonButton2 = (Button) getActivity().findViewById(
+		 R.id.team_builder_pokemon_2);
+		 mPokemonButton3 = (Button) getActivity().findViewById(
+		 R.id.team_builder_pokemon_3);
+		 mPokemonButton4 = (Button) getActivity().findViewById(
+		 R.id.team_builder_pokemon_4);
+		 mPokemonButton5 = (Button) getActivity().findViewById(
+		 R.id.team_builder_pokemon_5);
+		 mPokemonButton6 = (Button) getActivity().findViewById(
+		 R.id.team_builder_pokemon_6);
+		
+		 mPokemonButton1.setOnClickListener(this);
+		 mPokemonButton2.setOnClickListener(this);
+		 mPokemonButton3.setOnClickListener(this);
+		 mPokemonButton4.setOnClickListener(this);
+		 mPokemonButton5.setOnClickListener(this);
+		 mPokemonButton6.setOnClickListener(this);
 	}
 
 	@Override

@@ -1,4 +1,7 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.fragments;
+
+import com.suicune.pokeutils.R;
+import com.suicune.pokeutils.R.layout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

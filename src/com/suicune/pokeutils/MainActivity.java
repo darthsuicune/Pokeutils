@@ -3,13 +3,9 @@ package com.suicune.pokeutils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -30,9 +26,9 @@ import com.suicune.pokeutils.tools.DBReader;
 
 public class MainActivity extends TabCompatActivity {
 	private static final int TAB_IV_CALCULATOR = 0;
+	private static final int TAB_DAMAGE_CALCULATOR = 1;
 	private static final int TAB_TEAM_BUILDER = 2;
 	private static final int TAB_POKEDEX = 3;
-	private static final int TAB_DAMAGE_CALCULATOR = 1;
 
 	private SharedPreferences prefs;
 
@@ -160,6 +156,7 @@ public class MainActivity extends TabCompatActivity {
 			loadNatures();
 			loadPokemon();
 			loadAbilities();
+			Toast.makeText(mContext, "Insert finished", Toast.LENGTH_LONG).show();
 			return;
 		}
 
@@ -314,15 +311,18 @@ public class MainActivity extends TabCompatActivity {
 			ArrayList<HashMap<String, String>> result = DBReader.readDB(
 					getResources().openRawResource(R.raw.abilities), elements);
 
+			ContentValues[] abilities = new ContentValues[result.size()];
 			for (int i = 0; i < result.size(); i++) {
 				ContentValues values = new ContentValues();
 				HashMap<String, String> ability = result.get(i);
 				for (int j = 0; j < ability.size(); j++) {
 					values.put(elements.get(j), ability.get(elements.get(j)));
 				}
-				mContext.getContentResolver().insert(
-						PokeContract.Abilities.CONTENT_ABILITY, values);
+				abilities[i] = values;
 			}
+
+			mContext.getContentResolver().bulkInsert(
+					PokeContract.Abilities.CONTENT_ABILITY, abilities);
 		}
 	}
 }

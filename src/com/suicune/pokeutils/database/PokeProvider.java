@@ -229,14 +229,50 @@ public class PokeProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+		String[] myProjection = {
+				PokeContract.PokemonName.TABLE_NAME + "."
+						+ PokeContract.PokemonName._ID,
+				PokeContract.PokemonName.NAME, PokeContract.PokemonName.NUMBER,
+				PokeContract.PokemonName.FORM,
+				PokeContract.PokemonAbility1.ABILITY_1,
+				PokeContract.PokemonAbility2.ABILITY_2,
+				PokeContract.PokemonAbilityDW.ABILITY_DW,
+				PokeContract.PokemonType1.TYPE, PokeContract.PokemonType2.TYPE,
+				"A1." + PokeContract.Abilities.NAME + 
+				" AS " + PokeContract.Pokedex.ABILITY_1_NAME,
+				"A2." + PokeContract.Abilities.NAME + 
+				" AS " + PokeContract.Pokedex.ABILITY_2_NAME,
+				"ADW." + PokeContract.Abilities.NAME + 
+				" AS " + PokeContract.Pokedex.ABILITY_DW_NAME,
+				"A1." + PokeContract.Abilities.DESCRIPTION + 
+				" AS " + PokeContract.Pokedex.ABILITY_1_DESCRIPTION,
+				"A2." + PokeContract.Abilities.DESCRIPTION + 
+				" AS " + PokeContract.Pokedex.ABILITY_2_DESCRIPTION,
+				"ADW." + PokeContract.Abilities.DESCRIPTION + 
+				" AS " + PokeContract.Pokedex.ABILITY_DW_DESCRIPTION };
+
 		builder.setTables(PokeContract.PokemonName.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbility1.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbility2.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbilityDW.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonType1.TABLE_NAME
-				+ " NATURAL JOIN " + PokeContract.PokemonType2.TABLE_NAME);
-		return builder.query(mDbHelper.getReadableDatabase(), projection,
-				selection, selectionArgs, null, null, null);
+				+ " NATURAL JOIN " + PokeContract.PokemonType2.TABLE_NAME
+				+ " JOIN " + PokeContract.Abilities.TABLE_NAME
+				+ " AS A1 ON A1." + PokeContract.Abilities.ID + "="
+				+ PokeContract.PokemonAbility1.ABILITY_1 + " JOIN "
+				+ PokeContract.Abilities.TABLE_NAME + " AS A2 ON A2."
+				+ PokeContract.Abilities.ID + "="
+				+ PokeContract.PokemonAbility2.ABILITY_2 + " JOIN "
+				+ PokeContract.Abilities.TABLE_NAME + " AS ADW ON ADW."
+				+ PokeContract.Abilities.ID + "="
+				+ PokeContract.PokemonAbilityDW.ABILITY_DW);
+
+		if (sortOrder == null) {
+			sortOrder = PokeContract.PokemonName.TABLE_NAME + "."
+					+ PokeContract.PokemonName._ID + " ASC";
+		}
+		return builder.query(mDbHelper.getReadableDatabase(), myProjection,
+				selection, selectionArgs, null, null, sortOrder);
 	}
 
 	@Override
