@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.suicune.pokeutils.Natures;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.IVTools;
@@ -687,83 +688,83 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 
 	private String getNature() {
 		if (mNature.equals(getActivity().getString(R.string.nature_lonely))) {
-			return IVTools.NATURE_LONELY;
+			return Natures.LONELY;
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_brave))) {
-			return IVTools.NATURE_BRAVE;
+			return Natures.BRAVE;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_adamant))) {
-			return IVTools.NATURE_ADAMANT;
+			return Natures.ADAMANT;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_naughty))) {
-			return IVTools.NATURE_NAUGHTY;
+			return Natures.NAUGHTY;
 
 		} else if (mNature
 				.equals(getActivity().getString(R.string.nature_bold))) {
-			return IVTools.NATURE_BOLD;
+			return Natures.BOLD;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_relaxed))) {
-			return IVTools.NATURE_RELAXED;
+			return Natures.RELAXED;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_impish))) {
-			return IVTools.NATURE_IMPISH;
+			return Natures.IMPISH;
 		} else if (mNature.equals(getActivity().getString(R.string.nature_lax))) {
-			return IVTools.NATURE_LAX;
+			return Natures.LAX;
 
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_timid))) {
-			return IVTools.NATURE_TIMID;
+			return Natures.TIMID;
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_hasty))) {
-			return IVTools.NATURE_HASTY;
+			return Natures.HASTY;
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_jolly))) {
-			return IVTools.NATURE_JOLLY;
+			return Natures.JOLLY;
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_naive))) {
-			return IVTools.NATURE_NAIVE;
+			return Natures.NAIVE;
 
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_modest))) {
-			return IVTools.NATURE_MODEST;
+			return Natures.MODEST;
 		} else if (mNature
 				.equals(getActivity().getString(R.string.nature_mild))) {
-			return IVTools.NATURE_MILD;
+			return Natures.MILD;
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_quiet))) {
-			return IVTools.NATURE_QUIET;
+			return Natures.QUIET;
 		} else if (mNature
 				.equals(getActivity().getString(R.string.nature_rash))) {
-			return IVTools.NATURE_RASH;
+			return Natures.RASH;
 
 		} else if (mNature
 				.equals(getActivity().getString(R.string.nature_calm))) {
-			return IVTools.NATURE_CALM;
+			return Natures.CALM;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_gentle))) {
-			return IVTools.NATURE_GENTLE;
+			return Natures.GENTLE;
 		} else if (mNature.equals(getActivity()
 				.getString(R.string.nature_sassy))) {
-			return IVTools.NATURE_SASSY;
+			return Natures.SASSY;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_careful))) {
-			return IVTools.NATURE_CAREFUL;
+			return Natures.CAREFUL;
 			
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_hardy))) {
-			return IVTools.NATURE_HARDY;
+			return Natures.HARDY;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_bashful))) {
-			return IVTools.NATURE_BASHFUL;
+			return Natures.BASHFUL;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_docile))) {
-			return IVTools.NATURE_DOCILE;
+			return Natures.DOCILE;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_quirky))) {
-			return IVTools.NATURE_QUIRKY;
+			return Natures.QUIRKY;
 		} else if (mNature.equals(getActivity().getString(
 				R.string.nature_serious))) {
-			return IVTools.NATURE_SERIOUS;
+			return Natures.SERIOUS;
 		} else {
 			return null;
 		}
