@@ -9,6 +9,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,30 +20,44 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.suicune.pokeutils.Attack;
+import com.suicune.pokeutils.Pokemon;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
+import com.suicune.pokeutils.tools.DamageCalcTools;
 
 public class DamageCalcFragment extends Fragment implements
 		LoaderCallbacks<Cursor>, TextWatcher, CursorToStringConverter {
-	private static final int LOADER_AUTO_COMPLETE = 1;
-	protected static final int LOADER_ATTACKS = 2;
+	private static final int LOADER_ATTACKS = 1;
+	private static final int LOADER_ATTACKING_POKEMON_AUTO_COMPLETE = 2;
+	private static final int LOADER_DEFENDING_POKEMON_AUTO_COMPLETE = 3;
+	private static final int LOADER_ATTACKING_POKEMON = 4;
+	private static final int LOADER_DEFENDING_POKEMON = 5;
+	private static final int LOADER_ATTACK = 6;
 
-	protected static final String ARG_POKEMON_ID = "pokemonId";
+	private static final String ARG_POKEMON_ID = "pokemonId";
+	private static final String ARG_ATTACK_ID = "attackId";
 
-	private AutoCompleteTextView mPokemon1View;
-	private AutoCompleteTextView mPokemon2View;
-	private EditText mLevel1View;
-	private EditText mLevel2View;
+	private Pokemon mAttackingPokemon;
+	private Pokemon mDefendingPokemon;
+
+	private AutoCompleteTextView mAttackingPokemonView;
+	private AutoCompleteTextView mDefendingPokemonView;
+	private EditText mLevelView;
 	private Spinner mAttackView;
 	private EditText mAttackBaseDamageView;
 
-	private SimpleCursorAdapter mPokemon1Adapter;
-	private SimpleCursorAdapter mPokemon2Adapter;
+	private TextView mResultView;
 
+	private SimpleCursorAdapter mAttackingPokemonAdapter;
+	private SimpleCursorAdapter mDefendingPokemonAdapter;
 	private SimpleCursorAdapter mAttacksAdapter;
 
 	private String mPokemonName;
+
+	private Attack mAttack;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,36 +76,45 @@ public class DamageCalcFragment extends Fragment implements
 	}
 
 	private void setViews() {
-		mLevel1View = (EditText) getActivity().findViewById(
+		mLevelView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_level1);
-		mLevel1View.setText("100");
-		mLevel2View = (EditText) getActivity().findViewById(
-				R.id.damage_calc_level2);
-		mLevel2View.setText("100");
+		mLevelView.setText("100");
+		mResultView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_damage);
 		prepareAutoCompleteViews();
 		prepareAttackViews();
 	}
 
 	private void prepareAutoCompleteViews() {
-		mPokemon1View = (AutoCompleteTextView) getActivity().findViewById(
-				R.id.damage_calc_pokemon_1);
-		mPokemon2View = (AutoCompleteTextView) getActivity().findViewById(
-				R.id.damage_calc_pokemon_2);
+		mAttackingPokemonView = (AutoCompleteTextView) getActivity()
+				.findViewById(R.id.damage_calc_pokemon_1);
+		mDefendingPokemonView = (AutoCompleteTextView) getActivity()
+				.findViewById(R.id.damage_calc_pokemon_2);
 		setAutoCompleteAdapters();
-		mPokemon1View.setAdapter(mPokemon1Adapter);
-		mPokemon2View.setAdapter(mPokemon2Adapter);
+		mAttackingPokemonView.setAdapter(mAttackingPokemonAdapter);
+		mDefendingPokemonView.setAdapter(mDefendingPokemonAdapter);
 
-		mPokemon1View.addTextChangedListener(this);
-		mPokemon2View.addTextChangedListener(this);
+		mAttackingPokemonView.addTextChangedListener(this);
+		mDefendingPokemonView.addTextChangedListener(this);
 
-		mPokemon1View.setOnItemClickListener(new OnItemClickListener() {
+		mAttackingPokemonView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				Bundle args = new Bundle();
 				args.putLong(ARG_POKEMON_ID, id);
-				getLoaderManager().restartLoader(LOADER_ATTACKS, args,
-						DamageCalcFragment.this);
+				getLoaderManager().restartLoader(LOADER_ATTACKING_POKEMON,
+						args, DamageCalcFragment.this);
+			}
+		});
+		mDefendingPokemonView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view,
+					int position, long id) {
+				Bundle args = new Bundle();
+				args.putLong(ARG_POKEMON_ID, id);
+				getLoaderManager().restartLoader(LOADER_DEFENDING_POKEMON,
+						args, DamageCalcFragment.this);
 			}
 		});
 	}
@@ -98,20 +122,20 @@ public class DamageCalcFragment extends Fragment implements
 	private void setAutoCompleteAdapters() {
 		String[] from = { PokeContract.PokemonName.NAME };
 		int[] to = { android.R.id.text1 };
-		mPokemon1Adapter = new SimpleCursorAdapter(getActivity(),
+		mAttackingPokemonAdapter = new SimpleCursorAdapter(getActivity(),
 				android.R.layout.simple_spinner_dropdown_item, null, from, to,
 				0);
-		mPokemon2Adapter = new SimpleCursorAdapter(getActivity(),
+		mDefendingPokemonAdapter = new SimpleCursorAdapter(getActivity(),
 				android.R.layout.simple_spinner_dropdown_item, null, from, to,
 				0);
 
-		mPokemon1Adapter
+		mAttackingPokemonAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_item);
-		mPokemon2Adapter
+		mDefendingPokemonAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
-		mPokemon1Adapter.setCursorToStringConverter(this);
-		mPokemon2Adapter.setCursorToStringConverter(this);
+		mAttackingPokemonAdapter.setCursorToStringConverter(this);
+		mDefendingPokemonAdapter.setCursorToStringConverter(this);
 	}
 
 	private void prepareAttackViews() {
@@ -150,17 +174,68 @@ public class DamageCalcFragment extends Fragment implements
 	}
 
 	@Override
+	public void afterTextChanged(Editable s) {
+		if (!s.equals("")) {
+			mPokemonName = s.toString();
+			if (s.hashCode() == mAttackingPokemonView.getText().hashCode()) {
+				getLoaderManager().restartLoader(
+						LOADER_ATTACKING_POKEMON_AUTO_COMPLETE, null, this);
+			} else if (s.hashCode() == mDefendingPokemonView.getText()
+					.hashCode()) {
+				getLoaderManager().restartLoader(
+						LOADER_DEFENDING_POKEMON_AUTO_COMPLETE, null, this);
+			}
+		} else {
+			mPokemonName = "";
+		}
+		if ((mAttackingPokemon != null)
+				&& (mDefendingPokemon != null)
+				&& (!TextUtils.isEmpty(mAttackBaseDamageView.getText()
+						.toString()))) {
+			calculateDamage();
+		}
+	}
+
+	private void calculateDamage() {
+		if (TextUtils.isEmpty(mLevelView.getText())) {
+			return;
+		}
+		
+		//TODO replace for actual values.
+		
+		int attackerLevel = Integer.parseInt(mLevelView.getText().toString());
+		int pokemonAttackStat = 0;
+		double attackLevelModifier = 0;
+		int attackingType = mAttack.mType;
+
+		int pokemonDefenseStat = 0;
+		int pokemonHP = 0;
+		double defenseLevelModifier = 0;
+		int defendingType1 = mDefendingPokemon.mType1;
+		int defendingType2 = mDefendingPokemon.mType2;
+
+		double typeModifier = DamageCalcTools.getTypeModifier(attackingType,
+				defendingType1, defendingType2);
+		int attackBasePower = Integer.parseInt(mAttackBaseDamageView.getText()
+				.toString());
+
+		boolean hasStab = ((mAttackingPokemon.mType1 == mAttack.mType) || (mAttackingPokemon.mType2 == mAttack.mType));
+
+		String totalDamage = DamageCalcTools.calculateDamageTotal(
+				pokemonAttackStat, attackerLevel, attackBasePower,
+				pokemonDefenseStat, typeModifier, attackLevelModifier,
+				defenseLevelModifier, hasStab);
+		String porcentDamage = DamageCalcTools.calculateDamagePorcent(
+				pokemonAttackStat, attackerLevel, attackBasePower,
+				pokemonDefenseStat, pokemonHP, typeModifier,
+				attackLevelModifier, defenseLevelModifier, hasStab);
+		mResultView.setText(totalDamage + " (" + porcentDamage + ")");
+	}
+
+	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		Loader<Cursor> loader = null;
 		switch (id) {
-		case LOADER_AUTO_COMPLETE:
-			String autoCompleteSelection = PokeContract.PokemonName.NAME
-					+ " LIKE ?";
-			String[] autoCompleteSelectionArgs = { "%" + mPokemonName + "%" };
-			loader = new CursorLoader(getActivity(),
-					PokeContract.PokemonName.CONTENT_POKEMON_NAME, null,
-					autoCompleteSelection, autoCompleteSelectionArgs, null);
-			break;
 		case LOADER_ATTACKS:
 			// String attacksSelection = PokeContract.PokemonAttacks + "=?";
 			String attacksSelection = "";
@@ -169,19 +244,56 @@ public class DamageCalcFragment extends Fragment implements
 					PokeContract.Attacks.CONTENT_ATTACK, null,
 					attacksSelection, attacksSelectionArgs, null);
 			break;
+		case LOADER_ATTACKING_POKEMON_AUTO_COMPLETE:
+		case LOADER_DEFENDING_POKEMON_AUTO_COMPLETE:
+			String autoCompleteSelection = PokeContract.PokemonName.NAME
+					+ " LIKE ?";
+			String[] autoCompleteSelectionArgs = { "%" + mPokemonName + "%" };
+			loader = new CursorLoader(getActivity(),
+					PokeContract.PokemonName.CONTENT_POKEMON_NAME, null,
+					autoCompleteSelection, autoCompleteSelectionArgs, null);
+			break;
+		case LOADER_ATTACKING_POKEMON:
+		case LOADER_DEFENDING_POKEMON:
+			String pokemonSelection = PokeContract.PokemonName.TABLE_NAME + "."
+					+ PokeContract.PokemonBaseStats._ID + "=?";
+			String[] pokemonSelectionArgs = { args.getString(ARG_POKEMON_ID) };
+			loader = new CursorLoader(getActivity(),
+					PokeContract.Pokedex.CONTENT_POKEDEX, null,
+					pokemonSelection, pokemonSelectionArgs, null);
+			break;
+		case LOADER_ATTACK:
+			String attackSelection = PokeContract.Attacks.NAME + "=?";
+			String[] attackSelectionArgs = { args.getString(ARG_ATTACK_ID) };
+			loader = new CursorLoader(getActivity(),
+					PokeContract.Attacks.CONTENT_ATTACK, null, attackSelection,
+					attackSelectionArgs, null);
+			break;
 		}
+
 		return loader;
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 		switch (loader.getId()) {
-		case LOADER_AUTO_COMPLETE:
-			mPokemon1Adapter.swapCursor(cursor);
-			mPokemon2Adapter.swapCursor(cursor);
-			break;
 		case LOADER_ATTACKS:
 			mAttacksAdapter.swapCursor(cursor);
+			break;
+		case LOADER_ATTACKING_POKEMON_AUTO_COMPLETE:
+			mAttackingPokemonAdapter.swapCursor(cursor);
+			break;
+		case LOADER_DEFENDING_POKEMON_AUTO_COMPLETE:
+			mDefendingPokemonAdapter.swapCursor(cursor);
+			break;
+		case LOADER_ATTACKING_POKEMON:
+			mAttackingPokemon = new Pokemon(cursor);
+			break;
+		case LOADER_DEFENDING_POKEMON:
+			mDefendingPokemon = new Pokemon(cursor);
+			break;
+		case LOADER_ATTACK:
+			mAttack = new Attack(cursor);
 			break;
 		}
 	}
@@ -189,24 +301,22 @@ public class DamageCalcFragment extends Fragment implements
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
 		switch (loader.getId()) {
-		case LOADER_AUTO_COMPLETE:
-			mPokemon1Adapter.swapCursor(null);
-			mPokemon2Adapter.swapCursor(null);
-			break;
 		case LOADER_ATTACKS:
 			mAttacksAdapter.swapCursor(null);
+			break;
+		case LOADER_ATTACKING_POKEMON_AUTO_COMPLETE:
+			mAttackingPokemonAdapter.swapCursor(null);
+			break;
+		case LOADER_DEFENDING_POKEMON_AUTO_COMPLETE:
+			mDefendingPokemonAdapter.swapCursor(null);
 			break;
 		}
 	}
 
 	@Override
-	public void afterTextChanged(Editable s) {
-		if (!s.equals("")) {
-			mPokemonName = s.toString();
-			getLoaderManager().restartLoader(LOADER_AUTO_COMPLETE, null, this);
-		} else {
-			mPokemonName = "";
-		}
+	public CharSequence convertToString(Cursor c) {
+		return c.getString(c
+				.getColumnIndexOrThrow(PokeContract.PokemonName.NAME));
 	}
 
 	@Override
@@ -216,11 +326,5 @@ public class DamageCalcFragment extends Fragment implements
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
-	}
-
-	@Override
-	public CharSequence convertToString(Cursor c) {
-		return c.getString(c
-				.getColumnIndexOrThrow(PokeContract.PokemonName.NAME));
 	}
 }

@@ -143,8 +143,9 @@ public final class PokeContract {
 		public static final String NAME = "attackname";
 		public static final String PP = "attackpp";
 		public static final String POWER = "attackpower";
-		public static final String TARGET = "attacktarget";
 		public static final String ACCURACY = "attackaccuracy";
+		public static final String TARGET = "attacktarget";
+		public static final String TYPE = "attacktype";
 		public static final String DESCRIPTION = "attackdescription";
 	}
 
@@ -158,18 +159,5 @@ public final class PokeContract {
 		public static final String ID = "abilityid";
 		public static final String NAME = "abilityname";
 		public static final String DESCRIPTION = "abilitydescription";
-	}
-
-	public static class Natures implements BaseColumns {
-		public static final String TABLE_NAME = "natures";
-		public static final String DEFAULT_ORDER = _ID + " DESC";
-
-		public static final Uri CONTENT_NATURE = Uri.parse("content://"
-				+ CONTENT_NAME + "/" + TABLE_NAME);
-
-		public static final String ID = "natureid";
-		public static final String NAME = "naturename";
-		public static final String STAT_UP = "naturestatup";
-		public static final String STAT_DOWN = "naturestatdown";
 	}
 }

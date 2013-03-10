@@ -20,37 +20,47 @@ public class DamageCalcTools {
 	public static final double TEMP_MODIFIER_4_LEVEL = 3.0;
 	public static final double TEMP_MODIFIER_5_LEVEL = 3.50;
 	public static final double TEMP_MODIFIER_6_LEVEL = 4.0;
-	
+
 	private static final int MIN_RANDOM = 85;
 	private static final int MAX_RANDOM = 100;
 
 	/**
-	 * This method returns a formated String with the min - max damage of an
-	 * attack Returns null if there is no damage.
+	 * 
+	 * This method returns a formated String as percentages with the min - max
+	 * damage of an attack.
+	 * 
+	 * Returns null if there is no damages.
 	 * 
 	 * @param pokemonAttack
+	 *            The current stat value of the pokemon attack / special attack
+	 * @param attackerLevel
+	 *            The level of the attacking pokemon
 	 * @param attackBasePower
+	 *            The base power of the attack being used
 	 * @param pokemonDefense
+	 *            The current stat value of the pokemon defense / special
+	 *            defense
 	 * @param pokemonHP
 	 * @param typeModifier
-	 * @param attackModifier
-	 * @param defenseModifier
+	 * @param attackLevelModifier
+	 * @param defenseLevelModifier
+	 * @param hasStab
 	 * @return
 	 */
-	public static String calculateDamagePorcent(int pokemonAttack,
-			int attackerLevel, int attackBasePower, int pokemonDefense,
-			int defenderLevel, int pokemonHP, double typeModifier,
-			double attackModifier, double defenseModifier, boolean hasSTAB) {
+	public static String calculateDamagePorcent(int pokemonAttackStat,
+			int attackerLevel, int attackBasePower, int pokemonDefenseStat,
+			int pokemonHP, double typeModifier, double attackLevelModifier,
+			double defenseLevelModifier, boolean hasStab) {
 		if (typeModifier == TYPE_MODIFIER_INMUNE) {
 			return null;
 		}
 
-		long minDamage = getMinDamage(pokemonAttack, attackerLevel,
-				attackBasePower, pokemonDefense, typeModifier, attackModifier,
-				defenseModifier, hasSTAB);
-		long maxDamage = getMaxDamage(pokemonAttack, attackerLevel,
-				attackBasePower, pokemonDefense, typeModifier, attackModifier,
-				defenseModifier, hasSTAB);
+		long minDamage = getMinDamage(pokemonAttackStat, attackerLevel,
+				attackBasePower, pokemonDefenseStat, typeModifier,
+				attackLevelModifier, defenseLevelModifier, hasStab);
+		long maxDamage = getMaxDamage(pokemonAttackStat, attackerLevel,
+				attackBasePower, pokemonDefenseStat, typeModifier,
+				attackLevelModifier, defenseLevelModifier, hasStab);
 
 		double minPorcent = 100 * minDamage / pokemonHP;
 		double maxPorcent = 100 * maxDamage / pokemonHP;
@@ -58,74 +68,147 @@ public class DamageCalcTools {
 		return minPorcent + "% - " + maxPorcent + "%";
 	}
 
-	public static String calculateDamageTotal(int pokemonAttack,
-			int attackerLevel, int attackBasePower, int pokemonDefense,
-			int defenderLevel, int pokemonHP, double typeModifier,
-			double attackModifier, double defenseModifier, boolean hasSTAB) {
+	/**
+	 * This method returns a formated String as total amount with the min - max
+	 * damage of an attack.
+	 * 
+	 * Returns null if there is no damages.
+	 * 
+	 * @param pokemonAttack
+	 * @param attackerLevel
+	 * @param attackBasePower
+	 * @param pokemonDefense
+	 * @param typeModifier
+	 * @param attackLevelModifier
+	 * @param defenseLevelModifier
+	 * @param hasStab
+	 * @return
+	 */
+	public static String calculateDamageTotal(int pokemonAttackStat,
+			int attackerLevel, int attackBasePower, int pokemonDefenseStat,
+			double typeModifier, double attackLevelModifier,
+			double defenseLevelModifier, boolean hasStab) {
 		if (typeModifier == TYPE_MODIFIER_INMUNE) {
 			return null;
 		}
 
-		return getMinDamage(pokemonAttack, attackerLevel, attackBasePower,
-				pokemonDefense, typeModifier, attackModifier, defenseModifier,
-				hasSTAB)
+		return getMinDamage(pokemonAttackStat, attackerLevel, attackBasePower,
+				pokemonDefenseStat, typeModifier, attackLevelModifier,
+				defenseLevelModifier, hasStab)
 				+ " - "
-				+ getMaxDamage(pokemonAttack, attackerLevel, attackBasePower,
-						pokemonDefense, typeModifier, attackModifier,
-						defenseModifier, hasSTAB);
+				+ getMaxDamage(pokemonAttackStat, attackerLevel,
+						attackBasePower, pokemonDefenseStat, typeModifier,
+						attackLevelModifier, defenseLevelModifier, hasStab);
 	}
 
-	public static long getMinDamage(int pokemonAttack, int attackerLevel,
-			int attackBasePower, int pokemonDefense, double typeModifier,
-			double attackModifier, double defenseModifier, boolean hasSTAB) {
-		return Math.round(getDamage(pokemonAttack, attackerLevel,
-				attackBasePower, pokemonDefense, typeModifier, attackModifier,
-				defenseModifier, hasSTAB) * MIN_RANDOM);
+	/**
+	 * This method returns the minimum damage an attack will do.
+	 * 
+	 * @param pokemonAttack
+	 * @param attackerLevel
+	 * @param attackBasePower
+	 * @param pokemonDefense
+	 * @param typeModifier
+	 * @param attackLevelModifier
+	 * @param defenseLevelModifier
+	 * @param hasStab
+	 * @return
+	 */
+	public static long getMinDamage(int pokemonAttackStat, int attackerLevel,
+			int attackBasePower, int pokemonDefenseStat, double typeModifier,
+			double attackLevelModifier, double defenseLevelModifier,
+			boolean hasStab) {
+		return Math.round(getMaxDamage(pokemonAttackStat, attackerLevel,
+				attackBasePower, pokemonDefenseStat, typeModifier,
+				attackLevelModifier, defenseLevelModifier, hasStab)
+				* MIN_RANDOM / 100);
+	}
+	/**
+	 * This method will return a random amount of damage that the attack will do
+	 * 
+	 * @param pokemonAttack
+	 * @param attackerLevel
+	 * @param attackBasePower
+	 * @param pokemonDefense
+	 * @param typeModifier
+	 * @param attackLevelModifier
+	 * @param defenseLevelModifier
+	 * @param hasStab
+	 * @return
+	 */
+	public static long getRandomDamage(int pokemonAttackStat,
+			int attackerLevel, int attackBasePower, int pokemonDefenseStat,
+			double typeModifier, double attackLevelModifier,
+			double defenseLevelModifier, boolean hasStab) {
+
+		int random = Math.round(new Random().nextInt(16) + MIN_RANDOM / 100);
+
+		return getMaxDamage(pokemonAttackStat, attackerLevel, attackBasePower,
+				pokemonDefenseStat, typeModifier, attackLevelModifier,
+				defenseLevelModifier, hasStab)
+				* random;
 	}
 
-	public static long getMaxDamage(int pokemonAttack, int attackerLevel,
-			int attackBasePower, int pokemonDefense, double typeModifier,
-			double attackModifier, double defenseModifier, boolean hasSTAB) {
-		return Math.round(getDamage(pokemonAttack, attackerLevel,
-				attackBasePower, pokemonDefense, typeModifier, attackModifier,
-				defenseModifier, hasSTAB) * MAX_RANDOM);
-	}
-	
-	public static double getRandomDamage(int pokemonAttack, int attackerLevel,
-			int attackBasePower, int pokemonDefense, double typeModifier,
-			double attackModifier, double defenseModifier, boolean hasSTAB){
-		int random = new Random().nextInt(16) + MIN_RANDOM;
-		
-		return (getDamage(pokemonAttack, attackerLevel,
-				attackBasePower, pokemonDefense, typeModifier, attackModifier,
-				defenseModifier, hasSTAB) * random);
-	}
-	
-	public static double getDamage(int pokemonAttack, int attackerLevel,
-			int attackBasePower, int pokemonDefense, double typeModifier,
-			double attackModifier, double defenseModifier, boolean hasSTAB){
+	/**
+	 * This method returns the maximum damage an attack will do
+	 * 
+	 * @param pokemonAttack
+	 * @param attackerLevel
+	 * @param attackBasePower
+	 * @param pokemonDefense
+	 * @param typeModifier
+	 * @param attackLevelModifier
+	 * @param defenseLevelModifier
+	 * @param hasStab
+	 * @return
+	 */
+
+	public static long getMaxDamage(int pokemonAttackStat, int attackerLevel,
+			int attackBasePower, int pokemonDefenseStat, double typeModifier,
+			double attackLevelModifier, double defenseLevelModifier,
+			boolean hasStab) {
+		if (typeModifier == TYPE_MODIFIER_INMUNE) {
+			return 0;
+		}
+		// http://www.smogon.com/dp/articles/damage_formula
+		// The formula requires a Math.floor after each operation.
 		double result;
 		result = 2 * attackerLevel / 5;
 		result += 2;
-		result = result * attackBasePower * pokemonAttack / pokemonDefense;
+		result = result * attackBasePower * pokemonAttackStat
+				/ pokemonDefenseStat;
 		result /= 50;
+		// Mod1
 		result += 2;
-		if(hasSTAB){
+		// Critical hit * Mod2
+		if (hasStab) {
 			result *= 1.50;
 		}
 		result *= typeModifier;
-		result /= 100;
-		return result;
+		// Mod3
+		//If the result is < 1, it will do at least 1 damage.
+		if (result < 1) {
+			return 1;
+		}
+
+		return Math.round(Math.floor(result));
 	}
 
-	public static double getModifier(int attackingType, int defendingType1,
+	/**
+	 * 
+	 * @param attackingType
+	 * @param defendingType1
+	 * @param defendingType2
+	 * @return
+	 */
+	public static double getTypeModifier(int attackingType, int defendingType1,
 			int defendingType2) {
 		double modifier1 = getSingleModifier(attackingType, defendingType1);
 		double modifier2 = getSingleModifier(attackingType, defendingType2);
 		return modifier1 * modifier2;
 	}
 
-	public static double getSingleModifier(int attackingType, int defendingType) {
+	private static double getSingleModifier(int attackingType, int defendingType) {
 		switch (defendingType) {
 		case Types.NORMAL:
 			if (Arrays.binarySearch(Normal.weaknesses, attackingType) > -1) {

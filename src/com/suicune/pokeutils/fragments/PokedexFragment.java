@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.suicune.pokeutils.R;
+import com.suicune.pokeutils.Types;
 import com.suicune.pokeutils.database.PokeContract;
 
 public class PokedexFragment extends ListFragment implements
@@ -48,10 +49,8 @@ public class PokedexFragment extends ListFragment implements
 		String[] from = { PokeContract.Pokedex.ABILITY_1_NAME,
 				PokeContract.Pokedex.ABILITY_2_NAME,
 				PokeContract.Pokedex.ABILITY_DW_NAME,
-				PokeContract.PokemonName.NUMBER,
-				PokeContract.PokemonName.NAME, 
-				PokeContract.PokemonType1.TYPE,
-				PokeContract.PokemonType2.TYPE };
+				PokeContract.PokemonName.NUMBER, PokeContract.PokemonName.NAME,
+				PokeContract.PokemonType1.TYPE, PokeContract.PokemonType2.TYPE };
 		int[] to = { R.id.pokedex_entry_pokemon_ability_1,
 				R.id.pokedex_entry_pokemon_ability_2,
 				R.id.pokedex_entry_pokemon_ability_dw,
@@ -69,7 +68,8 @@ public class PokedexFragment extends ListFragment implements
 		switch (id) {
 		case LOADER_POKEMON:
 			loader = new CursorLoader(getActivity(),
-					PokeContract.Pokedex.CONTENT_POKEDEX, null, null, null, null);
+					PokeContract.Pokedex.CONTENT_POKEDEX, null, null, null,
+					null);
 			break;
 		}
 		return loader;
@@ -82,7 +82,6 @@ public class PokedexFragment extends ListFragment implements
 			mAdapter.swapCursor(cursor);
 			break;
 		}
-
 	}
 
 	@Override
@@ -108,12 +107,17 @@ public class PokedexFragment extends ListFragment implements
 				row = mInflater.inflate(R.layout.pokedex_entry, container,
 						false);
 			}
-			TextView type2 = (TextView) row
+			TextView type1View = (TextView) row
+					.findViewById(R.id.pokedex_entry_pokemon_type_1);
+			TextView type2View = (TextView) row
 					.findViewById(R.id.pokedex_entry_pokemon_type_2);
 
-			if (type2.getText().toString().equals("0")) {
-				type2.setText("-");
-			}
+			int type1 = Types.getTypeName(Integer.parseInt(type1View
+					.getText().toString()));
+			type1View.setText((type1 == 0) ? "-" : getString(type1));
+			int type2 = Types.getTypeName(Integer.parseInt(type2View.getText()
+					.toString()));
+			type2View.setText((type2 == 0) ? "-" : getString(type2));
 			return row;
 		}
 	}

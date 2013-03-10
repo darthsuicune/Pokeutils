@@ -2,7 +2,6 @@ package com.suicune.pokeutils;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 
 import com.suicune.pokeutils.compat.ActionBarActivity;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment;

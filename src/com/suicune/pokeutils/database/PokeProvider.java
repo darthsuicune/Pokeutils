@@ -34,8 +34,6 @@ public class PokeProvider extends ContentProvider {
 	private static final int ATTACK_ID = 16;
 	private static final int ABILITY = 17;
 	private static final int ABILITY_ID = 18;
-	private static final int NATURE = 19;
-	private static final int NATURE_ID = 20;
 
 	static UriMatcher sUriMatcher;
 	static {
@@ -84,11 +82,6 @@ public class PokeProvider extends ContentProvider {
 				PokeContract.Abilities.TABLE_NAME, ABILITY);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
 				PokeContract.Abilities.TABLE_NAME + "/#", ABILITY_ID);
-
-		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.Natures.TABLE_NAME, NATURE);
-		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.Natures.TABLE_NAME + "/#", NATURE_ID);
 	}
 
 	@Override
@@ -169,14 +162,6 @@ public class PokeProvider extends ContentProvider {
 			return ContentResolver.CURSOR_ITEM_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
 					+ PokeContract.Abilities.TABLE_NAME;
-		case NATURE:
-			return ContentResolver.CURSOR_DIR_BASE_TYPE
-					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.Natures.TABLE_NAME;
-		case NATURE_ID:
-			return ContentResolver.CURSOR_ITEM_BASE_TYPE
-					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.Natures.TABLE_NAME;
 		case ATTACK:
 			return ContentResolver.CURSOR_DIR_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
@@ -210,7 +195,7 @@ public class PokeProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 
 		if (sUriMatcher.match(uri) == POKEDEX) {
-			return queryPokedex(projection, selection, selectionArgs, sortOrder);
+			return queryPokedex(selection, selectionArgs, sortOrder);
 		}
 
 		boolean distinct = false;
@@ -225,33 +210,42 @@ public class PokeProvider extends ContentProvider {
 		return cursor;
 	}
 
-	private Cursor queryPokedex(String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
+	private Cursor queryPokedex(String selection, String[] selectionArgs,
+			String sortOrder) {
 
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 		String[] myProjection = {
 				PokeContract.PokemonName.TABLE_NAME + "."
 						+ PokeContract.PokemonName._ID,
-				PokeContract.PokemonName.NAME, PokeContract.PokemonName.NUMBER,
+				PokeContract.PokemonName.NAME,
+				PokeContract.PokemonName.NUMBER,
 				PokeContract.PokemonName.FORM,
+				PokeContract.PokemonBaseStats.BASE_HP,
+				PokeContract.PokemonBaseStats.BASE_ATT,
+				PokeContract.PokemonBaseStats.BASE_DEF,
+				PokeContract.PokemonBaseStats.BASE_SPATT,
+				PokeContract.PokemonBaseStats.BASE_SPDEF,
+				PokeContract.PokemonBaseStats.BASE_SPEED,
 				PokeContract.PokemonAbility1.ABILITY_1,
 				PokeContract.PokemonAbility2.ABILITY_2,
 				PokeContract.PokemonAbilityDW.ABILITY_DW,
-				PokeContract.PokemonType1.TYPE, PokeContract.PokemonType2.TYPE,
-				"A1." + PokeContract.Abilities.NAME + 
-				" AS " + PokeContract.Pokedex.ABILITY_1_NAME,
-				"A2." + PokeContract.Abilities.NAME + 
-				" AS " + PokeContract.Pokedex.ABILITY_2_NAME,
-				"ADW." + PokeContract.Abilities.NAME + 
-				" AS " + PokeContract.Pokedex.ABILITY_DW_NAME,
-				"A1." + PokeContract.Abilities.DESCRIPTION + 
-				" AS " + PokeContract.Pokedex.ABILITY_1_DESCRIPTION,
-				"A2." + PokeContract.Abilities.DESCRIPTION + 
-				" AS " + PokeContract.Pokedex.ABILITY_2_DESCRIPTION,
-				"ADW." + PokeContract.Abilities.DESCRIPTION + 
-				" AS " + PokeContract.Pokedex.ABILITY_DW_DESCRIPTION };
+				PokeContract.PokemonType1.TYPE,
+				PokeContract.PokemonType2.TYPE,
+				"A1." + PokeContract.Abilities.NAME + " AS "
+						+ PokeContract.Pokedex.ABILITY_1_NAME,
+				"A2." + PokeContract.Abilities.NAME + " AS "
+						+ PokeContract.Pokedex.ABILITY_2_NAME,
+				"ADW." + PokeContract.Abilities.NAME + " AS "
+						+ PokeContract.Pokedex.ABILITY_DW_NAME,
+				"A1." + PokeContract.Abilities.DESCRIPTION + " AS "
+						+ PokeContract.Pokedex.ABILITY_1_DESCRIPTION,
+				"A2." + PokeContract.Abilities.DESCRIPTION + " AS "
+						+ PokeContract.Pokedex.ABILITY_2_DESCRIPTION,
+				"ADW." + PokeContract.Abilities.DESCRIPTION + " AS "
+						+ PokeContract.Pokedex.ABILITY_DW_DESCRIPTION };
 
 		builder.setTables(PokeContract.PokemonName.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonBaseStats.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbility1.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbility2.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbilityDW.TABLE_NAME
@@ -321,9 +315,6 @@ public class PokeProvider extends ContentProvider {
 		case ABILITY_ID:
 		case ABILITY:
 			return PokeContract.Abilities.TABLE_NAME;
-		case NATURE_ID:
-		case NATURE:
-			return PokeContract.Natures.TABLE_NAME;
 		case ATTACK_ID:
 		case ATTACK:
 			return PokeContract.Attacks.TABLE_NAME;

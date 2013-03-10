@@ -64,19 +64,12 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonAbility2.FORM + TEXT
 				+ PokeContract.PokemonAbility2.ABILITY_2 + TEXT_END
 				+ ")");
+
 		db.execSQL(CREATE + PokeContract.PokemonAbilityDW.TABLE_NAME + " ("
 				+ PokeContract.PokemonAbilityDW._ID + KEY
 				+ PokeContract.PokemonAbilityDW.NUMBER + TEXT
 				+ PokeContract.PokemonAbilityDW.FORM + TEXT
 				+ PokeContract.PokemonAbilityDW.ABILITY_DW + TEXT_END
-				+ ")");
-
-		db.execSQL("CREATE TABLE " + PokeContract.Natures.TABLE_NAME + " ("
-				+ PokeContract.Natures._ID + KEY
-				+ PokeContract.Natures.ID + TEXT
-				+ PokeContract.Natures.NAME	+ TEXT
-				+ PokeContract.Natures.STAT_DOWN + TEXT
-				+ PokeContract.Natures.STAT_UP + TEXT_END
 				+ ")");
 
 		db.execSQL("CREATE TABLE " + PokeContract.Abilities.TABLE_NAME + " ("
@@ -88,7 +81,14 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 
 		db.execSQL("CREATE TABLE " + PokeContract.Attacks.TABLE_NAME + " ("
 				+ PokeContract.Attacks._ID + KEY
-				+ PokeContract.Attacks.NAME	+ TEXT_END
+				+ PokeContract.Attacks.ID + TEXT
+				+ PokeContract.Attacks.NAME + TEXT
+				+ PokeContract.Attacks.PP + TEXT
+				+ PokeContract.Attacks.POWER + TEXT
+				+ PokeContract.Attacks.ACCURACY + TEXT
+				+ PokeContract.Attacks.TARGET + TEXT
+				+ PokeContract.Attacks.TYPE + TEXT
+				+ PokeContract.Attacks.DESCRIPTION + TEXT_END
 				+ ")");
 	}
 

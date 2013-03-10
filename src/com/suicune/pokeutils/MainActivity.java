@@ -38,7 +38,6 @@ public class MainActivity extends TabCompatActivity {
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		if (prefs.getBoolean(SettingsActivity.FIRST_RUN, true)) {
 			makeFirstRun();
-			prefs.edit().putBoolean(SettingsActivity.FIRST_RUN, false).commit();
 		}
 		setContentView(R.layout.main_activity);
 		setTabs();
@@ -153,10 +152,9 @@ public class MainActivity extends TabCompatActivity {
 		}
 
 		public void run() {
-			loadNatures();
 			loadPokemon();
 			loadAbilities();
-			Toast.makeText(mContext, "Insert finished", Toast.LENGTH_LONG).show();
+			prefs.edit().putBoolean(SettingsActivity.FIRST_RUN, false).commit();
 			return;
 		}
 
@@ -280,26 +278,6 @@ public class MainActivity extends TabCompatActivity {
 			mContext.getContentResolver().bulkInsert(
 					PokeContract.PokemonAbilityDW.CONTENT_POKEMON_ABILITY_DW,
 					abilitydws);
-		}
-
-		public void loadNatures() {
-			ArrayList<String> elements = new ArrayList<String>();
-			elements.add(PokeContract.Natures.NAME);
-
-			ArrayList<HashMap<String, String>> result = DBReader.readDB(
-					getResources().openRawResource(R.raw.natures), elements);
-
-			ContentValues[] natures = new ContentValues[result.size()];
-			for (int i = 0; i < result.size(); i++) {
-				ContentValues values = new ContentValues();
-				HashMap<String, String> nature = result.get(i);
-				for (int j = 0; j < nature.size(); j++) {
-					values.put(elements.get(j), nature.get(elements.get(j)));
-				}
-				natures[i] = values;
-			}
-			mContext.getContentResolver().bulkInsert(
-					PokeContract.Natures.CONTENT_NATURE, natures);
 		}
 
 		public void loadAbilities() {

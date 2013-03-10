@@ -2,7 +2,9 @@ package com.suicune.pokeutils.fragments;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,9 +25,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.suicune.pokeutils.Natures;
+import com.suicune.pokeutils.Pokemon;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.IVTools;
@@ -34,10 +38,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		LoaderCallbacks<Cursor> {
 
 	private static final int LOADER_AUTO_COMPLETE = 1;
-	private static final int LOADER_NATURE = 2;
-	private static final int LOADER_BASE_STATS = 3;
+	private static final int LOADER_POKEMON = 2;
 	protected static final String ROW_ID = "rowId";
-	
+
+	private Pokemon mPokemon;
 
 	private EditText mIVHPView;
 	private EditText mIVAttView;
@@ -72,19 +76,12 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 	private EditText mPokemonLevelEditText;
 	private Spinner mNatureSpinner;
 
-	private int baseHP;
-	private int baseAtt;
-	private int baseDef;
-	private int baseSpAtt;
-	private int baseSpDef;
-	private int baseSpeed;
-
 	private String mNature;
 
 	private String mPokemonName = "";
 
 	private SimpleCursorAdapter mAutoCompleteAdapter;
-	private SimpleCursorAdapter mNatureAdapter;
+	private NaturesAdapter mNatureAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -154,11 +151,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 				R.id.iv_calc_pokemon_level);
 		mNatureSpinner = (Spinner) getActivity().findViewById(
 				R.id.iv_calc_nature);
+		setAutoCompleteAdapter();
 	}
 
 	private void setListeners() {
-		setAutoCompleteAdapter();
-
 		mStatHPView.addTextChangedListener(this);
 		mStatAttView.addTextChangedListener(this);
 		mStatDefView.addTextChangedListener(this);
@@ -212,15 +208,16 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 								.getColumnIndexOrThrow(PokeContract.PokemonName.NAME));
 					}
 				});
-		
+
 		mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
-		mPokemonNameEditText.setOnItemClickListener(new OnItemClickListener(){
+		mPokemonNameEditText.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> adapterView, View v, int position,
-					long id) {
+			public void onItemClick(AdapterView<?> adapterView, View v,
+					int position, long id) {
 				Bundle args = new Bundle();
 				args.putLong(ROW_ID, id);
-				getLoaderManager().restartLoader(LOADER_BASE_STATS, args, IVCalcFragment.this);
+				getLoaderManager().restartLoader(LOADER_POKEMON, args,
+						IVCalcFragment.this);
 			}
 		});
 		mPokemonNameEditText.addTextChangedListener(new TextWatcher() {
@@ -229,8 +226,8 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 			public void afterTextChanged(Editable s) {
 				if (!s.equals("")) {
 					mPokemonName = s.toString();
-					getLoaderManager().restartLoader(
-							LOADER_AUTO_COMPLETE, null, IVCalcFragment.this);
+					getLoaderManager().restartLoader(LOADER_AUTO_COMPLETE,
+							null, IVCalcFragment.this);
 				} else {
 					mPokemonName = "";
 				}
@@ -248,19 +245,15 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 			}
 		});
 
-		getLoaderManager().restartLoader(
-				LOADER_AUTO_COMPLETE, null, this);
+		getLoaderManager().restartLoader(LOADER_AUTO_COMPLETE, null, this);
 	}
 
 	private void setNatureSpinnerAdapter() {
-		getLoaderManager().restartLoader(LOADER_NATURE,
-				null, this);
-		String[] from = { PokeContract.Natures.NAME };
-		int[] to = { android.R.id.text1 };
-		mNatureAdapter = new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_spinner_item, null, from, to, 0);
-		mNatureAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// String[] from = {};
+		// int[] to = { android.R.id.text1 };
+		mNatureAdapter = new NaturesAdapter();
+		// mNatureAdapter = new NaturesAdapter(getActivity(),
+		// android.R.layout.simple_spinner_item, from, to);
 	}
 
 	@Override
@@ -297,7 +290,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_HP, getNature(),
-						statValue, evValue, level, baseHP);
+						statValue, evValue, level, mPokemon.mBaseHP);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_HP, ivs);
 				}
@@ -311,7 +304,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_ATT, getNature(),
-						statValue, evValue, level, baseAtt);
+						statValue, evValue, level, mPokemon.mBaseAtt);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_ATT, ivs);
 				}
@@ -326,7 +319,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_DEF, getNature(),
-						statValue, evValue, level, baseDef);
+						statValue, evValue, level, mPokemon.mBaseDef);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_DEF, ivs);
 				}
@@ -342,7 +335,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_SP_ATT, getNature(),
-						statValue, evValue, level, baseSpAtt);
+						statValue, evValue, level, mPokemon.mBaseSpAtt);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_SP_ATT, ivs);
 				}
@@ -358,7 +351,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_SP_DEF, getNature(),
-						statValue, evValue, level, baseSpDef);
+						statValue, evValue, level, mPokemon.mBaseSpDef);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_SP_DEF, ivs);
 				}
@@ -374,7 +367,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_SPEED, getNature(),
-						statValue, evValue, level, baseSpeed);
+						statValue, evValue, level, mPokemon.mBaseSpeed);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_SPEED, ivs);
 				}
@@ -399,85 +392,34 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		}
 
 		mHiddenPowerTypeView.setText(": "
-				+ getHiddenPowerType(hpIv, attIv, defIv, spAttIv, spDefIv,
-						speedIv));
+				+ getString(IVTools.getHiddenPowerType(hpIv, attIv, defIv,
+						spAttIv, spDefIv, speedIv)));
 		mHiddenPowerPowerView.setText(" "
-				+ getHiddenPowerPower(hpIv, attIv, defIv, spAttIv, spDefIv,
-						speedIv));
+				+ IVTools.getHiddenPowerPower(hpIv, attIv, defIv, spAttIv,
+						spDefIv, speedIv));
 	}
 
-	private String getHiddenPowerType(int hpIv, int attIv, int defIv,
-			int spAttIv, int spDefIv, int speedIv) {
-		int hiddenPowerType = IVTools.getHiddenPowerType(hpIv, attIv, defIv,
-				spAttIv, spDefIv, speedIv);
+	private void showBaseStats() {
+		TextView baseHPView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_base_hp);
+		TextView baseAttView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_base_att);
+		TextView baseDefView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_base_def);
+		TextView baseSpAttView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_base_sp_att);
+		TextView baseSpDefView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_base_sp_def);
+		TextView baseSpeedView = (TextView) getActivity().findViewById(
+				R.id.iv_calc_base_speed);
 
-		switch (hiddenPowerType) {
-		case 0:
-			return getString(R.string.type_fighting);
-		case 1:
-			return getString(R.string.type_flying);
-		case 2:
-			return getString(R.string.type_poison);
-		case 3:
-			return getString(R.string.type_ground);
-		case 4:
-			return getString(R.string.type_rock);
-		case 5:
-			return getString(R.string.type_bug);
-		case 6:
-			return getString(R.string.type_ghost);
-		case 7:
-			return getString(R.string.type_steel);
-		case 8:
-			return getString(R.string.type_fire);
-		case 9:
-			return getString(R.string.type_water);
-		case 10:
-			return getString(R.string.type_grass);
-		case 11:
-			return getString(R.string.type_electric);
-		case 12:
-			return getString(R.string.type_psychic);
-		case 13:
-			return getString(R.string.type_ice);
-		case 14:
-			return getString(R.string.type_dragon);
-		case 15:
-			return getString(R.string.type_dark);
-		default:
-			return null;
-		}
-	}
+		baseHPView.setText("" + mPokemon.mBaseHP);
+		baseAttView.setText("" + mPokemon.mBaseAtt);
+		baseDefView.setText("" + mPokemon.mBaseDef);
+		baseSpAttView.setText("" + mPokemon.mBaseSpAtt);
+		baseSpDefView.setText("" + mPokemon.mBaseSpDef);
+		baseSpeedView.setText("" + mPokemon.mBaseSpeed);
 
-	private int getHiddenPowerPower(int hpIv, int attIv, int defIv,
-			int spAttIv, int spDefIv, int speedIv) {
-		return IVTools.getHiddenPowerPower(hpIv, attIv, defIv, spAttIv,
-				spDefIv, speedIv);
-
-	}
-	
-	private void setBaseStats(int hp, int att, int def, int spatt, int spdef, int speed){
-		TextView baseHPView = (TextView) getActivity().findViewById(R.id.iv_calc_base_hp);
-		TextView baseAttView = (TextView) getActivity().findViewById(R.id.iv_calc_base_att);
-		TextView baseDefView = (TextView) getActivity().findViewById(R.id.iv_calc_base_def);
-		TextView baseSpAttView = (TextView) getActivity().findViewById(R.id.iv_calc_base_sp_att);
-		TextView baseSpDefView = (TextView) getActivity().findViewById(R.id.iv_calc_base_sp_def);
-		TextView baseSpeedView = (TextView) getActivity().findViewById(R.id.iv_calc_base_speed);
-		
-		baseHP = hp;
-		baseAtt = att;
-		baseDef = def;
-		baseSpAtt = spatt;
-		baseSpDef = spdef;
-		baseSpeed = speed;
-		
-		baseHPView.setText("" + hp);
-		baseAttView.setText("" + att);
-		baseDefView.setText("" + def);
-		baseSpAttView.setText("" + spatt);
-		baseSpDefView.setText("" + spdef);
-		baseSpeedView.setText("" + speed);
-		
 	}
 
 	private void showIVs(int code, ArrayList<Integer> ivs) {
@@ -518,34 +460,26 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		Loader<Cursor> loader = null;
 
 		Uri uri;
-		
+
 		switch (id) {
 		case LOADER_AUTO_COMPLETE:
 			uri = PokeContract.PokemonName.CONTENT_POKEMON_NAME;
 			String[] autoCompleteProjection = { PokeContract.PokemonName._ID,
-					PokeContract.PokemonName.NAME,};
+					PokeContract.PokemonName.NAME };
 			String autoCompleteSelection = PokeContract.PokemonName.NAME
 					+ " LIKE ?";
 			String[] autoCompleteSelectionArgs = { "%" + mPokemonName + "%" };
 			loader = new CursorLoader(getActivity(), uri,
-					autoCompleteProjection, autoCompleteSelection, autoCompleteSelectionArgs, null);
+					autoCompleteProjection, autoCompleteSelection,
+					autoCompleteSelectionArgs, null);
 			break;
-		case LOADER_BASE_STATS:
-			uri = PokeContract.PokemonBaseStats.CONTENT_POKEMON_BASE_STATS;
-			String baseStatsSelection = PokeContract.PokemonBaseStats._ID + "=?";
-			String[] selectionArgs = {
-				Long.toString(args.getLong(ROW_ID))	
-			};
-			loader = new CursorLoader(getActivity(), uri, null, baseStatsSelection, selectionArgs, null);
-			break;
-		case LOADER_NATURE:
-			uri = PokeContract.Natures.CONTENT_NATURE;
-
-			String[] natureProjection = { PokeContract.Natures._ID,
-					PokeContract.Natures.NAME };
-
-			loader = new CursorLoader(getActivity(), uri, natureProjection,
-					null, null, null);
+		case LOADER_POKEMON:
+			uri = PokeContract.Pokedex.CONTENT_POKEDEX;
+			String baseStatsSelection = PokeContract.PokemonName.TABLE_NAME
+					+ "." + PokeContract.PokemonBaseStats._ID + "=?";
+			String[] selectionArgs = { Long.toString(args.getLong(ROW_ID)) };
+			loader = new CursorLoader(getActivity(), uri, null,
+					baseStatsSelection, selectionArgs, null);
 			break;
 		}
 
@@ -558,24 +492,12 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		case LOADER_AUTO_COMPLETE:
 			mAutoCompleteAdapter.swapCursor(cursor);
 			break;
-		case LOADER_BASE_STATS:
-			if(cursor.moveToFirst()){
-				setBaseStats(Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_HP))),
-				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_ATT))),
-				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_DEF))),
-				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPATT))),
-				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPDEF))),
-				Integer.parseInt(cursor.getString(cursor.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPEED))));
-			}
-			break;
-		case LOADER_NATURE:
-			mNatureAdapter.swapCursor(cursor);
-
-			if (cursor.getCount() > 0) {
-				cursor.moveToFirst();
-				mNature = cursor.getString(cursor
-						.getColumnIndex(PokeContract.Natures.NAME));
-				setNature();
+		case LOADER_POKEMON:
+			if (cursor.moveToFirst()) {
+				mPokemon = new Pokemon(cursor);
+				if (mPokemon != null) {
+					showBaseStats();
+				}
 			}
 			break;
 		}
@@ -587,10 +509,6 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		case LOADER_AUTO_COMPLETE:
 			mAutoCompleteAdapter.swapCursor(null);
 			break;
-
-		case LOADER_NATURE:
-			mNatureAdapter.swapCursor(null);
-			break;
 		}
 	}
 
@@ -601,172 +519,211 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		mIVSpAttTextView.setBackgroundColor(Color.TRANSPARENT);
 		mIVSpDefTextView.setBackgroundColor(Color.TRANSPARENT);
 
-		if (mNature.equals(getActivity().getString(R.string.nature_lonely))) {
+		if (mNature.equals(getString(R.string.nature_lonely))) {
 			mIVAttTextView.setBackgroundColor(Color.GREEN);
 			mIVDefTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_brave))) {
+		} else if (mNature.equals(getString(R.string.nature_brave))) {
 			mIVAttTextView.setBackgroundColor(Color.GREEN);
 			mIVSpeedTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_adamant))) {
+		} else if (mNature.equals(getString(R.string.nature_adamant))) {
 			mIVAttTextView.setBackgroundColor(Color.GREEN);
 			mIVSpAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_naughty))) {
+		} else if (mNature.equals(getString(R.string.nature_naughty))) {
 			mIVAttTextView.setBackgroundColor(Color.GREEN);
 			mIVSpDefTextView.setBackgroundColor(Color.RED);
 
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_bold))) {
+		} else if (mNature.equals(getString(R.string.nature_bold))) {
 			mIVDefTextView.setBackgroundColor(Color.GREEN);
 			mIVAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_relaxed))) {
+		} else if (mNature.equals(getString(R.string.nature_relaxed))) {
 			mIVDefTextView.setBackgroundColor(Color.GREEN);
 			mIVSpeedTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_impish))) {
+		} else if (mNature.equals(getString(R.string.nature_impish))) {
 			mIVDefTextView.setBackgroundColor(Color.GREEN);
 			mIVSpAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(R.string.nature_lax))) {
+		} else if (mNature.equals(getString(R.string.nature_lax))) {
 			mIVDefTextView.setBackgroundColor(Color.GREEN);
 			mIVSpDefTextView.setBackgroundColor(Color.RED);
 
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_timid))) {
+		} else if (mNature.equals(getString(R.string.nature_timid))) {
 			mIVSpeedTextView.setBackgroundColor(Color.GREEN);
 			mIVAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_hasty))) {
+		} else if (mNature.equals(getString(R.string.nature_hasty))) {
 			mIVSpeedTextView.setBackgroundColor(Color.GREEN);
 			mIVDefTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_jolly))) {
+		} else if (mNature.equals(getString(R.string.nature_jolly))) {
 			mIVSpeedTextView.setBackgroundColor(Color.GREEN);
 			mIVSpAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_naive))) {
+		} else if (mNature.equals(getString(R.string.nature_naive))) {
 			mIVSpeedTextView.setBackgroundColor(Color.GREEN);
 			mIVSpDefTextView.setBackgroundColor(Color.RED);
 
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_modest))) {
+		} else if (mNature.equals(getString(R.string.nature_modest))) {
 			mIVSpAttTextView.setBackgroundColor(Color.GREEN);
 			mIVAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_mild))) {
+		} else if (mNature.equals(getString(R.string.nature_mild))) {
 			mIVSpAttTextView.setBackgroundColor(Color.GREEN);
 			mIVDefTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_quiet))) {
+		} else if (mNature.equals(getString(R.string.nature_quiet))) {
 			mIVSpAttTextView.setBackgroundColor(Color.GREEN);
 			mIVSpeedTextView.setBackgroundColor(Color.RED);
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_rash))) {
+		} else if (mNature.equals(getString(R.string.nature_rash))) {
 			mIVSpAttTextView.setBackgroundColor(Color.GREEN);
 			mIVSpDefTextView.setBackgroundColor(Color.RED);
 
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_calm))) {
+		} else if (mNature.equals(getString(R.string.nature_calm))) {
 			mIVSpDefTextView.setBackgroundColor(Color.GREEN);
 			mIVAttTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_gentle))) {
+		} else if (mNature.equals(getString(R.string.nature_gentle))) {
 			mIVSpDefTextView.setBackgroundColor(Color.GREEN);
 			mIVDefTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_sassy))) {
+		} else if (mNature.equals(getString(R.string.nature_sassy))) {
 			mIVSpDefTextView.setBackgroundColor(Color.GREEN);
 			mIVSpeedTextView.setBackgroundColor(Color.RED);
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_careful))) {
+		} else if (mNature.equals(getString(R.string.nature_careful))) {
 			mIVSpDefTextView.setBackgroundColor(Color.GREEN);
 			mIVSpAttTextView.setBackgroundColor(Color.RED);
 		}
 	}
 
 	private String getNature() {
-		if (mNature.equals(getActivity().getString(R.string.nature_lonely))) {
-			return Natures.LONELY;
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_brave))) {
-			return Natures.BRAVE;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_adamant))) {
-			return Natures.ADAMANT;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_naughty))) {
-			return Natures.NAUGHTY;
+		if (mNature.equals(getString(R.string.nature_lonely))) {
+			return getString(Natures.Lonely.NAME);
+		} else if (mNature.equals(getString(R.string.nature_brave))) {
+			return getString(Natures.Brave.NAME);
+		} else if (mNature.equals(getString(R.string.nature_adamant))) {
+			return getString(Natures.Adamant.NAME);
+		} else if (mNature.equals(getString(R.string.nature_naughty))) {
+			return getString(Natures.Naughty.NAME);
 
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_bold))) {
-			return Natures.BOLD;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_relaxed))) {
-			return Natures.RELAXED;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_impish))) {
-			return Natures.IMPISH;
-		} else if (mNature.equals(getActivity().getString(R.string.nature_lax))) {
-			return Natures.LAX;
+		} else if (mNature.equals(getString(R.string.nature_bold))) {
+			return getString(Natures.Bold.NAME);
+		} else if (mNature.equals(getString(R.string.nature_relaxed))) {
+			return getString(Natures.Relaxed.NAME);
+		} else if (mNature.equals(getString(R.string.nature_impish))) {
+			return getString(Natures.Impish.NAME);
+		} else if (mNature.equals(getString(R.string.nature_lax))) {
+			return getString(Natures.Lax.NAME);
 
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_timid))) {
-			return Natures.TIMID;
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_hasty))) {
-			return Natures.HASTY;
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_jolly))) {
-			return Natures.JOLLY;
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_naive))) {
-			return Natures.NAIVE;
+		} else if (mNature.equals(getString(R.string.nature_timid))) {
+			return getString(Natures.Timid.NAME);
+		} else if (mNature.equals(getString(R.string.nature_hasty))) {
+			return getString(Natures.Hasty.NAME);
+		} else if (mNature.equals(getString(R.string.nature_jolly))) {
+			return getString(Natures.Jolly.NAME);
+		} else if (mNature.equals(getString(R.string.nature_naive))) {
+			return getString(Natures.Naive.NAME);
 
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_modest))) {
-			return Natures.MODEST;
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_mild))) {
-			return Natures.MILD;
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_quiet))) {
-			return Natures.QUIET;
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_rash))) {
-			return Natures.RASH;
+		} else if (mNature.equals(getString(R.string.nature_modest))) {
+			return getString(Natures.Modest.NAME);
+		} else if (mNature.equals(getString(R.string.nature_mild))) {
+			return getString(Natures.Mild.NAME);
+		} else if (mNature.equals(getString(R.string.nature_quiet))) {
+			return getString(Natures.Quiet.NAME);
+		} else if (mNature.equals(getString(R.string.nature_rash))) {
+			return getString(Natures.Rash.NAME);
 
-		} else if (mNature
-				.equals(getActivity().getString(R.string.nature_calm))) {
-			return Natures.CALM;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_gentle))) {
-			return Natures.GENTLE;
-		} else if (mNature.equals(getActivity()
-				.getString(R.string.nature_sassy))) {
-			return Natures.SASSY;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_careful))) {
-			return Natures.CAREFUL;
-			
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_hardy))) {
-			return Natures.HARDY;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_bashful))) {
-			return Natures.BASHFUL;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_docile))) {
-			return Natures.DOCILE;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_quirky))) {
-			return Natures.QUIRKY;
-		} else if (mNature.equals(getActivity().getString(
-				R.string.nature_serious))) {
-			return Natures.SERIOUS;
+		} else if (mNature.equals(getString(R.string.nature_calm))) {
+			return getString(Natures.Calm.NAME);
+		} else if (mNature.equals(getString(R.string.nature_gentle))) {
+			return getString(Natures.Gentle.NAME);
+		} else if (mNature.equals(getString(R.string.nature_sassy))) {
+			return getString(Natures.Sassy.NAME);
+		} else if (mNature.equals(getString(R.string.nature_careful))) {
+			return getString(Natures.Careful.NAME);
+
+		} else if (mNature.equals(getString(R.string.nature_hardy))) {
+			return getString(Natures.Hardy.NAME);
+		} else if (mNature.equals(getString(R.string.nature_bashful))) {
+			return getString(Natures.Bashful.NAME);
+		} else if (mNature.equals(getString(R.string.nature_docile))) {
+			return getString(Natures.Docile.NAME);
+		} else if (mNature.equals(getString(R.string.nature_quirky))) {
+			return getString(Natures.Quirky.NAME);
+		} else if (mNature.equals(getString(R.string.nature_serious))) {
+			return getString(Natures.Serious.NAME);
 		} else {
 			return null;
+		}
+	}
+
+	private class NaturesAdapter implements SpinnerAdapter {
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			View row = convertView;
+			if (row == null) {
+				LayoutInflater inflater = (LayoutInflater) getActivity()
+						.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+				row = inflater.inflate(android.R.layout.simple_spinner_item,
+						parent, false);
+			}
+			((TextView) row.findViewById(android.R.id.text1)).setText(Natures
+					.getNatureName(position));
+			return row;
+		}
+
+		@Override
+		public View getDropDownView(int position, View convertView,
+				ViewGroup parent) {
+			View row = convertView;
+			if (row == null) {
+				LayoutInflater inflater = (LayoutInflater) getActivity()
+						.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+				row = inflater.inflate(
+						android.R.layout.simple_spinner_dropdown_item, parent,
+						false);
+			}
+			((TextView) row.findViewById(android.R.id.text1)).setText(Natures
+					.getNatureName(position));
+			return row;
+		}
+
+		/**
+		 * This data is static so this values dont need to be used/calculated.
+		 */
+
+		@Override
+		public int getCount() {
+			return 25;
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return position;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+
+		@Override
+		public void registerDataSetObserver(DataSetObserver observer) {
+		}
+
+		@Override
+		public void unregisterDataSetObserver(DataSetObserver observer) {
+		}
+
+		@Override
+		public int getItemViewType(int position) {
+			return 0;
+		}
+
+		@Override
+		public int getViewTypeCount() {
+			return 1;
+		}
+
+		@Override
+		public boolean hasStableIds() {
+			return true;
+		}
+
+		@Override
+		public boolean isEmpty() {
+			return false;
 		}
 	}
 }

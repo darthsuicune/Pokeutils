@@ -1,12 +1,13 @@
 package com.suicune.pokeutils;
 
 public class TeamPokemon extends Pokemon {
-	public TeamPokemon(String mName, int mForm, String mType1, String mType2,
-			String mBaseHP, String mBaseAtt, String mBaseDef,
-			String mBaseSpAtt, String mBaseSpDef, String mBaseSpeed,
-			String mAbility1, String mAbility2, String mAbilityDW) {
-		super(mName, mForm, mType1, mType2, mBaseHP, mBaseAtt, mBaseDef, mBaseSpAtt,
-				mBaseSpDef, mBaseSpeed, mAbility1, mAbility2, mAbilityDW);
+	public TeamPokemon(String mName, int mNumber, int mForm, int mType1,
+			int mType2, int mBaseHP, int mBaseAtt, int mBaseDef,
+			int mBaseSpAtt, int mBaseSpDef, int mBaseSpeed, int mAbility1,
+			int mAbility2, int mAbilityDW) {
+		super(mName, mNumber, mForm, mType1, mType2, mBaseHP, mBaseAtt,
+				mBaseDef, mBaseSpAtt, mBaseSpDef, mBaseSpeed, mAbility1,
+				mAbility2, mAbilityDW);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,7 +17,7 @@ public class TeamPokemon extends Pokemon {
 	public static final int SPATT = 3;
 	public static final int SPDEF = 4;
 	public static final int SPEED = 5;
-	
+
 	private Attack mAttack1 = null;
 	private Attack mAttack2 = null;
 	private Attack mAttack3 = null;
@@ -53,16 +54,27 @@ public class TeamPokemon extends Pokemon {
 	public Attack getAttack(int number) {
 		switch (number) {
 		case 1:
-			return mAttack1;
+			if (mAttack1 != null) {
+				return mAttack1;
+			}
+			break;
 		case 2:
-			return mAttack2;
+			if (mAttack2 != null) {
+				return mAttack2;
+			}
+			break;
 		case 3:
-			return mAttack3;
+			if (mAttack3 != null) {
+				return mAttack3;
+			}
+			break;
 		case 4:
-			return mAttack4;
-		default:
-			return null;
+			if (mAttack4 != null) {
+				return mAttack4;
+			}
+			break;
 		}
+		return null;
 	}
 
 	public void setIv(int type, int iv) {
