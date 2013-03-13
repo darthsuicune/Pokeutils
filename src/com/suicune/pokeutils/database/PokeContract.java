@@ -17,8 +17,8 @@ public final class PokeContract {
 		public static final String ABILITY_1_DESCRIPTION = "abilitydesc1";
 		public static final String ABILITY_2_DESCRIPTION = "abilitydesc2";
 		public static final String ABILITY_DW_DESCRIPTION = "abilitydescdw";
-		
-		private Pokedex(){
+
+		private Pokedex() {
 		}
 	}
 
@@ -132,6 +132,22 @@ public final class PokeContract {
 		public static final String ABILITY_DW = "pokemonabilitydw";
 	}
 
+	public static class PokemonAttacks implements BaseColumns {
+		public static final String TABLE_NAME = "pokemonattacks";
+		public static final String DEFAULT_ORDER = _ID + " DESC";
+
+		public static final Uri CONTENT_POKEMON_ATTACKS = Uri
+				.parse("content://" + CONTENT_NAME + "/" + TABLE_NAME);
+		
+		public static final String NUMBER = "pokemonnumber";
+		public static final String FORM = "pokemonform";
+		public static final String ATTACK_ID = "attackid";
+		public static final String GENERATION = "pokemonattackgeneration";
+		public static final String LEVEL = "pokemonattacklevel";
+		public static final String TM_NUMBER = "tmnumber";
+		public static final String HM_NUMBER = "hmnumber";
+	}
+
 	public static class Attacks implements BaseColumns {
 		public static final String TABLE_NAME = "attacks";
 		public static final String DEFAULT_ORDER = _ID + " DESC";
@@ -147,6 +163,7 @@ public final class PokeContract {
 		public static final String TARGET = "attacktarget";
 		public static final String TYPE = "attacktype";
 		public static final String DESCRIPTION = "attackdescription";
+		public static final String GENERATION = "attackgeneration";
 	}
 
 	public static class Abilities implements BaseColumns {

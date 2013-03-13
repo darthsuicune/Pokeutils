@@ -14,6 +14,7 @@ public class DamageCalcTools {
 	public static final double TYPE_MODIFIER_INMUNE = 0;
 	public static final double NO_TYPE_MODIFIER = 1;
 
+	public static final double TEMP_MODIFIER_0_LEVEL = 1;
 	public static final double TEMP_MODIFIER_1_LEVEL = 1.50;
 	public static final double TEMP_MODIFIER_2_LEVEL = 2.0;
 	public static final double TEMP_MODIFIER_3_LEVEL = 2.50;
@@ -22,7 +23,6 @@ public class DamageCalcTools {
 	public static final double TEMP_MODIFIER_6_LEVEL = 4.0;
 
 	private static final int MIN_RANDOM = 85;
-	private static final int MAX_RANDOM = 100;
 
 	/**
 	 * 

@@ -476,7 +476,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		case LOADER_POKEMON:
 			uri = PokeContract.Pokedex.CONTENT_POKEDEX;
 			String baseStatsSelection = PokeContract.PokemonName.TABLE_NAME
-					+ "." + PokeContract.PokemonBaseStats._ID + "=?";
+					+ "." + PokeContract.PokemonName._ID + "=?";
 			String[] selectionArgs = { Long.toString(args.getLong(ROW_ID)) };
 			loader = new CursorLoader(getActivity(), uri, null,
 					baseStatsSelection, selectionArgs, null);

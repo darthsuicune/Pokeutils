@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TableRow>
+
+        <AutoCompleteTextView
+            android:id="@+id/damage_calc_pokemon_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="@string/damage_calc_pokemon_1"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/damage_calc_level1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/pokemon_level"
+            android:inputType="number"
+            android:maxLength="3" />
+    </TableRow>
+
+    <!-- Attacker stats -->
+
+    <TableRow>
+
+        <Spinner
+            android:id="@+id/damage_calc_attack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/damage_calc_base_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/damage_calc_base_damage"
+            android:inputType="number"
+            android:maxLength="3" />
+    </TableRow>
+
+    <!-- Attacker modifiers -->
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/damage_calc_damage" />
+
+        <TextView
+            android:id="@+id/damage_calc_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true" />
+    </TableRow>
+
+</TableLayout>

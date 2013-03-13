@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TableRow>
+
+        <AutoCompleteTextView
+            android:id="@+id/damage_calc_pokemon_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/damage_calc_pokemon_2"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1" />
+    </TableRow>
+    <!-- Defender stats -->
+    <!-- Defender modifiers -->
+
+</TableLayout>
