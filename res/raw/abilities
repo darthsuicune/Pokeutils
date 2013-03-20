@@ -1,165 +1,165 @@
-0    
-1  Stench  The stench helps keep wild Pokémon away.
-2  Drizzle  The Pokémon makes it rain if it appears in battle.
-3  Speed Boost  The Pokémon's Speed stat is gradually boosted.
-4  Battle Armor  The Pokémon is protected against critical hits.
-5  Sturdy  The Pokémon is protected against 1-hit KO attacks.
-6  Damp  Prevents combatants from self destructing.
-7  Limber  The Pokémon is protected from paralysis.
-8  Sand Veil  Boosts the Pokémon's evasion in a sandstorm.
-9  Static  Contact with the Pokémon may cause paralysis.
-10  Volt Absorb  Restores HP if hit by an Electric-type move.
-11  Water Absorb  Restores HP if hit by a Water-type move.
-12  Oblivious  Prevents the Pokémon from becoming infatuated.
-13  Cloud Nine  Eliminates the effects of weather.
-14  Compoundeyes  The Pokémon's accuracy is boosted.
-15  Insomnia  Prevents the Pokémon from falling asleep.
-16  Color Change  Changes the Pokémon's type to the foe's move.
-17  Immunity  Prevents the Pokémon from getting poisoned.
-18  Flash Fire  Powers up Fire-type moves if hit by a fire move.
-19  Shield Dust  Blocks the added effects of attacks taken.
-20  Own Tempo  Prevents the Pokémon from becoming confused.
-21  Suction Cups  Negates moves that force switching out.
-22  Intimidate  Lowers the foe's Attack stat.
-23  Shadow Tag  Prevents the foe from escaping.
-24  Rough Skin  Inflicts damage to the foe on contact.
-25  Wonder Guard  Only supereffective moves will hit.
-26  Levitate  Gives full immunity to all Ground-type moves.
-27  Effect Spore  Contact may paralyze, poison, or cause sleep.
-28  Synchronize  Passes on a burn, poison, or paralysis to the foe.
-29  Clear Body  Prevents the Pokémon's stats from being lowered.
-30  Natural Cure  All status problems are healed upon switching out.
-31  Lightningrod  The Pokémon draws in all Electric-type moves.
-32  Serene Grace  Boosts the likelihood of added effects appearing.
-33  Swift Swim  Boosts the Pokémon's Speed in rain.
-34  Chlorophyll  Boosts the Pokémon's Speed in sunshine.
-35  Illuminate  Raises the likelihood of meeting wild Pokémon.
-36  Trace  The Pokémon copies the foe's ability.
-37  Huge Power  Raises the Pokémon's Attack stat.
-38  Poison Point  Contact with the Pokémon may poison the foe.
-39  Inner Focus  The Pokémon is protected from flinching.
-40  Magma Armor  Prevents the Pokémon from becoming frozen.
-41  Water Veil  Prevents the Pokémon from getting a burn.
-42  Magnet Pull  Prevents Steel-type Pokémon from escaping.
-43  Soundproof  Gives full immunity to all sound-based moves.
-44  Rain Dish  The Pokémon gradually recovers HP in rain.
-45  Sand Stream  The Pokémon summons a sandstorm in battle.
-46  Pressure  The Pokémon raises the foe's PP usage.
-47  Thick Fat  Raises resistance to Fire-and Ice-type moves.
-48  Early Bird  The Pokémon awakens quickly from sleep.
-49  Flame Body  Contact with the Pokémon may burn the foe.
-50  Run Away  Enables sure getaway from wild Pokémon.
-51  Keen Eye  Prevents the Pokémon from losing accuracy.
-52  Hyper Cutter  Prevents the Attack stat from being lowered.
-53  Pickup  The Pokémon may pick up items.
-54  Truant  The Pokémon can't attack on consecutive turns.
-55  Hustle  Boosts the Attack stat, but lowers accuracy.
-56  Cute Charm  Contact with the Pokémon may cause infatuation.
-57  Plus  Boosts Sp. Atk if another Pokémon has Minus.
-58  Minus  Boosts Sp. Atk if another Pokémon has Plus.
-59  Forecast  CASTFORM transforms with the weather.
-60  Sticky Hold  Protects the Pokémon from item theft.
-61  Shed Skin  The Pokémon may heal its own status problems.
-62  Guts  Boosts Attack if there is a status problem.
-63  Marvel Scale  Boosts Defense if there is a status problem.
-64  Liquid Ooze  Inflicts damage on foes using any draining move.
-65  Overgrow  Powers up Grass-type moves in a pinch.
-66  Blaze  Powers up Fire-type moves in a pinch.
-67  Torrent  Powers up Water-type moves in a pinch.
-68  Swarm  Powers up Bug-type moves in a pinch.
-69  Rock Head  Protects the Pokémon from recoil damage.
-70  Drought  The Pokémon makes it sunny if it is in battle.
-71  Arena Trap  Prevents the foe from fleeing.
-72  Vital Spirit  Prevents the Pokémon from falling asleep.
-73  White Smoke  Prevents the Pokémon's stats from being lowered.
-74  Pure Power  Boosts the power of physical attacks.
-75  Shell Armor  The Pokémon is protected against critical hits.
-76  Air Lock  Eliminates the effects of weather.
-77  Tangled Feet  Raises evasion if the Pokémon is confused.
-78  Motor Drive  Raises Speed if hit by an Electric-type move.
-79  Rivalry  Raises Attack if the foe is of the same gender.
-80  Steadfast  Raises Speed each time the Pokémon flinches.
-81  Snow Cloak  Raises evasion in a hailstorm.
-82  Gluttony  Encourages the early use of a held Berry.
-83  Anger Point  Raises Attack upon taking a critical hit.
-84  Unburden  Raises Speed if a held item is used.
-85  Heatproof  Weakens the power of Fire-type moves.
-86  Simple  The Pokémon is prone to wild stat changes.
-87  Dry Skin  Reduces HP if it is hot. Water restores HP.
-88  Download  Adjusts power according to the foe's ability.
-89  Iron Fist  Boosts the power of punching moves.
-90  Poison Heal  Restores HP if the Pokémon is poisoned.
-91  Adaptability  Powers up moves of the same type.
-92  Skill Link  Increases the frequency of multi-strike moves.
-93  Hydration  Heals status problems if it is raining.
-94  Solar Power  Boosts Sp. Atk, but lowers HP in sunshine.
-95  Quick Feet  Boosts Speed if there is a status problem.
-96  Normalize  All the Pokémon's moves become the Normal type.
-97  Sniper  Powers up moves if they become critical hits.
-98  Magic Guard  The Pokémon only takes damage from attacks.
-99  No Guard  Ensures the Pokémon and its foe's attacks land.
-100  Stall  The Pokémon moves after even slower foes.
-101  Technician  Powers up the Pokémon's weaker moves.
-102  Leaf Guard  Prevents status problems in sunny weather.
-103  Klutz  The Pokémon can't use any held items.
-104  Mold Breaker  Moves can be used regardless of abilities.
-105  Super Luck  Heightens the critical-hit ratios of moves.
-106  Aftermath  Damages the foe landing the finishing hit.
-107  Anticipation  Senses the foe's dangerous moves.
-108  Forewarn  Determines what moves the foe has.
-109  Unaware  Ignores any change in ability by the foe.
-110  Tinted Lens  Powers up "not very effective" moves.
-111  Filter  Powers down super-effective moves.
-112  Slow Start  Temporarily halves Attack and Speed.
-113  Scrappy  Enables moves to hit Ghost-type foes.
-114  Storm Drain  The Pokémon draws in all Water-type moves.
-115  Ice Body  The Pokémon regains HP in a hailstorm.
-116  Solid Rock  Powers down super-effective moves.
-117  Snow Warning  The Pokémon summons a hailstorm in battle.
-118  Honey Gather  The Pokémon may gather Honey from somewhere.
-119  Frisk  The Pokémon can check the foe's held item.
-120  Reckless  Powers up moves that have recoil damage.
-121  Multitype  Changes type to match the held Plate.
-122  Flower Gift  Powers up party Pokémon when it is sunny.
-123  Bad Dreams  Reduces a sleeping foe's HP.
-124  Pickpocket  Steals attacking Pokémon's held item on contact.
-125  Sheer Force  Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.
-126  Contrary  Inverts stat modifiers.
-127  Unnerve  Prevents opposing Pokémon from eating held Berries.
-128  Defiant  Raises Attack two stages upon having any stat lowered.
-129  Defeatist  Halves Attack and Special Attack below 50% HP.
-130  Cursed Body  Has a 30% chance of Disabling any move that hits the Pokémon.
-131  Healer  Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.
-132  Friend Guard  Decreases damage inflicted against friendly Pokémon.
-133  Weak Armor  Raises Speed and lowers Defense by one stage each upon being hit by any move.
-134  Heavy Metal  Doubles the Pokémon's weight.
-135  Light Metal  Halves the Pokémon's weight.
-136  Multiscale  Halves damage taken from full HP.
-137  Toxic Boost  Increases Attack to 1.5× when poisoned.
-138  Flare Boost  Increases Special Attack to 1.5× when burned.
-139  Harvest  Restores any held Berry after the turn on which it is used.
-140  Telepathy  Protects against damaging moves from friendly Pokémon.
-141  Moody  Raises a random stat two stages and lowers another one stage after each turn.
-142  Overcoat  Protects against damage from weather.
-143  Poison Touch  Has a 20% chance of poisoning Pokémon upon contact when attacking.
-144  Regenerator  Heals for 1/3 max HP upon leaving battle.
-145  Big Pecks  Protects against Defense drops.
-146  Sand Rush  Doubles Speed during a sandstorm.
-147  Wonder Skin  Has a 50% chance of protecting against non-damaging moves that inflict major status ailments.
-148  Analytic  Strengthens moves when moving last.
-149  Illusion  Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.
-150  Imposter  Transforms upon entering battle.
-151  Infiltrator  Ignores Light Screen, Reflect, and Safeguard.
-152  Mummy  Changes attacking Pokémon's abilities to mummify on contact.
-153  Moxie  Raises Attack one stage upon KOing a Pokémon.
-154  Justified  Raises Attack when hit by dark-type moves.
-155  Rattled  Raises Speed one stage upon being hit by a Dark, Ghost, or Bug move.
-156  Magic Bounce  Reflects most non-damaging moves back at their user.
-157  Sap Sipper  Absorbs Grass moves, raising Attack one stage{mechanic:stat modifier}.
-158  Prankster  Raises non-damaging moves' priority by one stage.
-159  Sand Force  Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm.
-160  Iron Barbs  Damages attacking Pokémon for 1/8 their max HP on contact.
-161  Zen Mode  Changes Darmanitan to daruma mode below 50% max HP.
-162  Victory Star  Raises moves' accuracy to 1.1× for friendly Pokémon.
-163  Turboblaze  Makes moves ignore targets' abilities if they could hinder or prevent them.
-164  Teravolt  Makes moves ignore targets' abilities if they could hinder or prevent them.
+INSERT INTO abilities VALUES (0, "0","","");
+INSERT INTO abilities VALUES (1, "1","Stench","The stench helps keep wild Pokémon away.");
+INSERT INTO abilities VALUES (2, "2","Drizzle","The Pokémon makes it rain if it appears in battle.");
+INSERT INTO abilities VALUES (3, "3","Speed Boost","The Pokémon's Speed stat is gradually boosted.");
+INSERT INTO abilities VALUES (4, "4","Battle Armor","The Pokémon is protected against critical hits.");
+INSERT INTO abilities VALUES (5, "5","Sturdy","The Pokémon is protected against 1-hit KO attacks.");
+INSERT INTO abilities VALUES (6, "6","Damp","Prevents combatants from self destructing.");
+INSERT INTO abilities VALUES (7, "7","Limber","The Pokémon is protected from paralysis.");
+INSERT INTO abilities VALUES (8, "8","Sand Veil","Boosts the Pokémon's evasion in a sandstorm.");
+INSERT INTO abilities VALUES (9, "9","Static","Contact with the Pokémon may cause paralysis.");
+INSERT INTO abilities VALUES (10, "10","Volt Absorb","Restores HP if hit by an Electric-type move.");
+INSERT INTO abilities VALUES (11, "11","Water Absorb","Restores HP if hit by a Water-type move.");
+INSERT INTO abilities VALUES (12, "12","Oblivious","Prevents the Pokémon from becoming infatuated.");
+INSERT INTO abilities VALUES (13, "13","Cloud Nine","Eliminates the effects of weather.");
+INSERT INTO abilities VALUES (14, "14","Compoundeyes","The Pokémon's accuracy is boosted.");
+INSERT INTO abilities VALUES (15, "15","Insomnia","Prevents the Pokémon from falling asleep.");
+INSERT INTO abilities VALUES (16, "16","Color Change","Changes the Pokémon's type to the foe's move.");
+INSERT INTO abilities VALUES (17, "17","Immunity","Prevents the Pokémon from getting poisoned.");
+INSERT INTO abilities VALUES (18, "18","Flash Fire","Powers up Fire-type moves if hit by a fire move.");
+INSERT INTO abilities VALUES (19, "19","Shield Dust","Blocks the added effects of attacks taken.");
+INSERT INTO abilities VALUES (20, "20","Own Tempo","Prevents the Pokémon from becoming confused.");
+INSERT INTO abilities VALUES (21, "21","Suction Cups","Negates moves that force switching out.");
+INSERT INTO abilities VALUES (22, "22","Intimidate","Lowers the foe's Attack stat.");
+INSERT INTO abilities VALUES (23, "23","Shadow Tag","Prevents the foe from escaping.");
+INSERT INTO abilities VALUES (24, "24","Rough Skin","Inflicts damage to the foe on contact.");
+INSERT INTO abilities VALUES (25, "25","Wonder Guard","Only supereffective moves will hit.");
+INSERT INTO abilities VALUES (26, "26","Levitate","Gives full immunity to all Ground-type moves.");
+INSERT INTO abilities VALUES (27, "27","Effect Spore","Contact may paralyze, poison, or cause sleep.");
+INSERT INTO abilities VALUES (28, "28","Synchronize","Passes on a burn, poison, or paralysis to the foe.");
+INSERT INTO abilities VALUES (29, "29","Clear Body","Prevents the Pokémon's stats from being lowered.");
+INSERT INTO abilities VALUES (30, "30","Natural Cure","All status problems are healed upon switching out.");
+INSERT INTO abilities VALUES (31, "31","Lightningrod","The Pokémon draws in all Electric-type moves.");
+INSERT INTO abilities VALUES (32, "32","Serene Grace","Boosts the likelihood of added effects appearing.");
+INSERT INTO abilities VALUES (33, "33","Swift Swim","Boosts the Pokémon's Speed in rain.");
+INSERT INTO abilities VALUES (34, "34","Chlorophyll","Boosts the Pokémon's Speed in sunshine.");
+INSERT INTO abilities VALUES (35, "35","Illuminate","Raises the likelihood of meeting wild Pokémon.");
+INSERT INTO abilities VALUES (36, "36","Trace","The Pokémon copies the foe's ability.");
+INSERT INTO abilities VALUES (37, "37","Huge Power","Raises the Pokémon's Attack stat.");
+INSERT INTO abilities VALUES (38, "38","Poison Point","Contact with the Pokémon may poison the foe.");
+INSERT INTO abilities VALUES (39, "39","Inner Focus","The Pokémon is protected from flinching.");
+INSERT INTO abilities VALUES (40, "40","Magma Armor","Prevents the Pokémon from becoming frozen.");
+INSERT INTO abilities VALUES (41, "41","Water Veil","Prevents the Pokémon from getting a burn.");
+INSERT INTO abilities VALUES (42, "42","Magnet Pull","Prevents Steel-type Pokémon from escaping.");
+INSERT INTO abilities VALUES (43, "43","Soundproof","Gives full immunity to all sound-based moves.");
+INSERT INTO abilities VALUES (44, "44","Rain Dish","The Pokémon gradually recovers HP in rain.");
+INSERT INTO abilities VALUES (45, "45","Sand Stream","The Pokémon summons a sandstorm in battle.");
+INSERT INTO abilities VALUES (46, "46","Pressure","The Pokémon raises the foe's PP usage.");
+INSERT INTO abilities VALUES (47, "47","Thick Fat","Raises resistance to Fire-and Ice-type moves.");
+INSERT INTO abilities VALUES (48, "48","Early Bird","The Pokémon awakens quickly from sleep.");
+INSERT INTO abilities VALUES (49, "49","Flame Body","Contact with the Pokémon may burn the foe.");
+INSERT INTO abilities VALUES (50, "50","Run Away","Enables sure getaway from wild Pokémon.");
+INSERT INTO abilities VALUES (51, "51","Keen Eye","Prevents the Pokémon from losing accuracy.");
+INSERT INTO abilities VALUES (52, "52","Hyper Cutter","Prevents the Attack stat from being lowered.");
+INSERT INTO abilities VALUES (53, "53","Pickup","The Pokémon may pick up items.");
+INSERT INTO abilities VALUES (54, "54","Truant","The Pokémon can't attack on consecutive turns.");
+INSERT INTO abilities VALUES (55, "55","Hustle","Boosts the Attack stat, but lowers accuracy.");
+INSERT INTO abilities VALUES (56, "56","Cute Charm","Contact with the Pokémon may cause infatuation.");
+INSERT INTO abilities VALUES (57, "57","Plus","Boosts Sp. Atk if another Pokémon has Minus.");
+INSERT INTO abilities VALUES (58, "58","Minus","Boosts Sp. Atk if another Pokémon has Plus.");
+INSERT INTO abilities VALUES (59, "59","Forecast","CASTFORM transforms with the weather.");
+INSERT INTO abilities VALUES (60, "60","Sticky Hold","Protects the Pokémon from item theft.");
+INSERT INTO abilities VALUES (61, "61","Shed Skin","The Pokémon may heal its own status problems.");
+INSERT INTO abilities VALUES (62, "62","Guts","Boosts Attack if there is a status problem.");
+INSERT INTO abilities VALUES (63, "63","Marvel Scale","Boosts Defense if there is a status problem.");
+INSERT INTO abilities VALUES (64, "64","Liquid Ooze","Inflicts damage on foes using any draining move.");
+INSERT INTO abilities VALUES (65, "65","Overgrow","Powers up Grass-type moves in a pinch.");
+INSERT INTO abilities VALUES (66, "66","Blaze","Powers up Fire-type moves in a pinch.");
+INSERT INTO abilities VALUES (67, "67","Torrent","Powers up Water-type moves in a pinch.");
+INSERT INTO abilities VALUES (68, "68","Swarm","Powers up Bug-type moves in a pinch.");
+INSERT INTO abilities VALUES (69, "69","Rock Head","Protects the Pokémon from recoil damage.");
+INSERT INTO abilities VALUES (70, "70","Drought","The Pokémon makes it sunny if it is in battle.");
+INSERT INTO abilities VALUES (71, "71","Arena Trap","Prevents the foe from fleeing.");
+INSERT INTO abilities VALUES (72, "72","Vital Spirit","Prevents the Pokémon from falling asleep.");
+INSERT INTO abilities VALUES (73, "73","White Smoke","Prevents the Pokémon's stats from being lowered.");
+INSERT INTO abilities VALUES (74, "74","Pure Power","Boosts the power of physical attacks.");
+INSERT INTO abilities VALUES (75, "75","Shell Armor","The Pokémon is protected against critical hits.");
+INSERT INTO abilities VALUES (76, "76","Air Lock","Eliminates the effects of weather.");
+INSERT INTO abilities VALUES (77, "77","Tangled Feet","Raises evasion if the Pokémon is confused.");
+INSERT INTO abilities VALUES (78, "78","Motor Drive","Raises Speed if hit by an Electric-type move.");
+INSERT INTO abilities VALUES (79, "79","Rivalry","Raises Attack if the foe is of the same gender.");
+INSERT INTO abilities VALUES (80, "80","Steadfast","Raises Speed each time the Pokémon flinches.");
+INSERT INTO abilities VALUES (81, "81","Snow Cloak","Raises evasion in a hailstorm.");
+INSERT INTO abilities VALUES (82, "82","Gluttony","Encourages the early use of a held Berry.");
+INSERT INTO abilities VALUES (83, "83","Anger Point","Raises Attack upon taking a critical hit.");
+INSERT INTO abilities VALUES (84, "84","Unburden","Raises Speed if a held item is used.");
+INSERT INTO abilities VALUES (85, "85","Heatproof","Weakens the power of Fire-type moves.");
+INSERT INTO abilities VALUES (86, "86","Simple","The Pokémon is prone to wild stat changes.");
+INSERT INTO abilities VALUES (87, "87","Dry Skin","Reduces HP if it is hot. Water restores HP.");
+INSERT INTO abilities VALUES (88, "88","Download","Adjusts power according to the foe's ability.");
+INSERT INTO abilities VALUES (89, "89","Iron Fist","Boosts the power of punching moves.");
+INSERT INTO abilities VALUES (90, "90","Poison Heal","Restores HP if the Pokémon is poisoned.");
+INSERT INTO abilities VALUES (91, "91","Adaptability","Powers up moves of the same type.");
+INSERT INTO abilities VALUES (92, "92","Skill Link","Increases the frequency of multi-strike moves.");
+INSERT INTO abilities VALUES (93, "93","Hydration","Heals status problems if it is raining.");
+INSERT INTO abilities VALUES (94, "94","Solar Power","Boosts Sp. Atk, but lowers HP in sunshine.");
+INSERT INTO abilities VALUES (95, "95","Quick Feet","Boosts Speed if there is a status problem.");
+INSERT INTO abilities VALUES (96, "96","Normalize","All the Pokémon's moves become the Normal type.");
+INSERT INTO abilities VALUES (97, "97","Sniper","Powers up moves if they become critical hits.");
+INSERT INTO abilities VALUES (98, "98","Magic Guard","The Pokémon only takes damage from attacks.");
+INSERT INTO abilities VALUES (99, "99","No Guard","Ensures the Pokémon and its foe's attacks land.");
+INSERT INTO abilities VALUES (100, "100","Stall","The Pokémon moves after even slower foes.");
+INSERT INTO abilities VALUES (101, "101","Technician","Powers up the Pokémon's weaker moves.");
+INSERT INTO abilities VALUES (102, "102","Leaf Guard","Prevents status problems in sunny weather.");
+INSERT INTO abilities VALUES (103, "103","Klutz","The Pokémon can't use any held items.");
+INSERT INTO abilities VALUES (104, "104","Mold Breaker","Moves can be used regardless of abilities.");
+INSERT INTO abilities VALUES (105, "105","Super Luck","Heightens the critical-hit ratios of moves.");
+INSERT INTO abilities VALUES (106, "106","Aftermath","Damages the foe landing the finishing hit.");
+INSERT INTO abilities VALUES (107, "107","Anticipation","Senses the foe's dangerous moves.");
+INSERT INTO abilities VALUES (108, "108","Forewarn","Determines what moves the foe has.");
+INSERT INTO abilities VALUES (109, "109","Unaware","Ignores any change in ability by the foe.");
+INSERT INTO abilities VALUES (110, "110","Tinted Lens","Powers up 'not very effective' moves.");
+INSERT INTO abilities VALUES (111, "111","Filter","Powers down super-effective moves.");
+INSERT INTO abilities VALUES (112, "112","Slow Start","Temporarily halves Attack and Speed.");
+INSERT INTO abilities VALUES (113, "113","Scrappy","Enables moves to hit Ghost-type foes.");
+INSERT INTO abilities VALUES (114, "114","Storm Drain","The Pokémon draws in all Water-type moves.");
+INSERT INTO abilities VALUES (115, "115","Ice Body","The Pokémon regains HP in a hailstorm.");
+INSERT INTO abilities VALUES (116, "116","Solid Rock","Powers down super-effective moves.");
+INSERT INTO abilities VALUES (117, "117","Snow Warning","The Pokémon summons a hailstorm in battle.");
+INSERT INTO abilities VALUES (118, "118","Honey Gather","The Pokémon may gather Honey from somewhere.");
+INSERT INTO abilities VALUES (119, "119","Frisk","The Pokémon can check the foe's held item.");
+INSERT INTO abilities VALUES (120, "120","Reckless","Powers up moves that have recoil damage.");
+INSERT INTO abilities VALUES (121, "121","Multitype","Changes type to match the held Plate.");
+INSERT INTO abilities VALUES (122, "122","Flower Gift","Powers up party Pokémon when it is sunny.");
+INSERT INTO abilities VALUES (123, "123","Bad Dreams","Reduces a sleeping foe's HP.");
+INSERT INTO abilities VALUES (124, "124","Pickpocket","Steals attacking Pokémon's held item on contact.");
+INSERT INTO abilities VALUES (125, "125","Sheer Force","Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.");
+INSERT INTO abilities VALUES (126, "126","Contrary","Inverts stat modifiers.");
+INSERT INTO abilities VALUES (127, "127","Unnerve","Prevents opposing Pokémon from eating held Berries.");
+INSERT INTO abilities VALUES (128, "128","Defiant","Raises Attack two stages upon having any stat lowered.");
+INSERT INTO abilities VALUES (129, "129","Defeatist","Halves Attack and Special Attack below 50% HP.");
+INSERT INTO abilities VALUES (130, "130","Cursed Body","Has a 30% chance of Disabling any move that hits the Pokémon.");
+INSERT INTO abilities VALUES (131, "131","Healer","Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.");
+INSERT INTO abilities VALUES (132, "132","Friend Guard","Decreases damage inflicted against friendly Pokémon.");
+INSERT INTO abilities VALUES (133, "133","Weak Armor","Raises Speed and lowers Defense by one stage each upon being hit by any move.");
+INSERT INTO abilities VALUES (134, "134","Heavy Metal","Doubles the Pokémon's weight.");
+INSERT INTO abilities VALUES (135, "135","Light Metal","Halves the Pokémon's weight.");
+INSERT INTO abilities VALUES (136, "136","Multiscale","Halves damage taken from full HP.");
+INSERT INTO abilities VALUES (137, "137","Toxic Boost","Increases Attack to 1.5× when poisoned.");
+INSERT INTO abilities VALUES (138, "138","Flare Boost","Increases Special Attack to 1.5× when burned.");
+INSERT INTO abilities VALUES (139, "139","Harvest","Restores any held Berry after the turn on which it is used.");
+INSERT INTO abilities VALUES (140, "140","Telepathy","Protects against damaging moves from friendly Pokémon.");
+INSERT INTO abilities VALUES (141, "141","Moody","Raises a random stat two stages and lowers another one stage after each turn.");
+INSERT INTO abilities VALUES (142, "142","Overcoat","Protects against damage from weather.");
+INSERT INTO abilities VALUES (143, "143","Poison Touch","Has a 20% chance of poisoning Pokémon upon contact when attacking.");
+INSERT INTO abilities VALUES (144, "144","Regenerator","Heals for 1/3 max HP upon leaving battle.");
+INSERT INTO abilities VALUES (145, "145","Big Pecks","Protects against Defense drops.");
+INSERT INTO abilities VALUES (146, "146","Sand Rush","Doubles Speed during a sandstorm.");
+INSERT INTO abilities VALUES (147, "147","Wonder Skin","Has a 50% chance of protecting against non-damaging moves that inflict major status ailments.");
+INSERT INTO abilities VALUES (148, "148","Analytic","Strengthens moves when moving last.");
+INSERT INTO abilities VALUES (149, "149","Illusion","Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.");
+INSERT INTO abilities VALUES (150, "150","Imposter","Transforms upon entering battle.");
+INSERT INTO abilities VALUES (151, "151","Infiltrator","Ignores Light Screen, Reflect, and Safeguard.");
+INSERT INTO abilities VALUES (152, "152","Mummy","Changes attacking Pokémon's abilities to mummify on contact.");
+INSERT INTO abilities VALUES (153, "153","Moxie","Raises Attack one stage upon KOing a Pokémon.");
+INSERT INTO abilities VALUES (154, "154","Justified","Raises Attack when hit by dark-type moves.");
+INSERT INTO abilities VALUES (155, "155","Rattled","Raises Speed one stage upon being hit by a Dark, Ghost, or Bug move.");
+INSERT INTO abilities VALUES (156, "156","Magic Bounce","Reflects most non-damaging moves back at their user.");
+INSERT INTO abilities VALUES (157, "157","Sap Sipper","Absorbs Grass moves, raising Attack one stage{mechanic:stat modifier}.");
+INSERT INTO abilities VALUES (158, "158","Prankster","Raises non-damaging moves' priority by one stage.");
+INSERT INTO abilities VALUES (159, "159","Sand Force","Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm.");
+INSERT INTO abilities VALUES (160, "160","Iron Barbs","Damages attacking Pokémon for 1/8 their max HP on contact.");
+INSERT INTO abilities VALUES (161, "161","Zen Mode","Changes Darmanitan to daruma mode below 50% max HP.");
+INSERT INTO abilities VALUES (162, "162","Victory Star","Raises moves' accuracy to 1.1× for friendly Pokémon.");
+INSERT INTO abilities VALUES (163, "163","Turboblaze","Makes moves ignore targets' abilities if they could hinder or prevent them.");
+INSERT INTO abilities VALUES (164, "164","Teravolt","Makes moves ignore targets' abilities if they could hinder or prevent them.");

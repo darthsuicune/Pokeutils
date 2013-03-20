@@ -157,7 +157,6 @@ public class MainActivity extends TabCompatActivity {
 
 		public void run() {
 			loadPokemon();
-			loadAbilities();
 			prefs.edit().putBoolean(SettingsActivity.FIRST_RUN, false).commit();
 			return;
 		}
@@ -282,29 +281,6 @@ public class MainActivity extends TabCompatActivity {
 			mContext.getContentResolver().bulkInsert(
 					PokeContract.PokemonAbilityDW.CONTENT_POKEMON_ABILITY_DW,
 					abilitydws);
-		}
-
-		public void loadAbilities() {
-			ArrayList<String> elements = new ArrayList<String>();
-			elements.add(PokeContract.Abilities.ID);
-			elements.add(PokeContract.Abilities.NAME);
-			elements.add(PokeContract.Abilities.DESCRIPTION);
-
-			ArrayList<HashMap<String, String>> result = DBReader.readDB(
-					getResources().openRawResource(R.raw.abilities), elements);
-
-			ContentValues[] abilities = new ContentValues[result.size()];
-			for (int i = 0; i < result.size(); i++) {
-				ContentValues values = new ContentValues();
-				HashMap<String, String> ability = result.get(i);
-				for (int j = 0; j < ability.size(); j++) {
-					values.put(elements.get(j), ability.get(elements.get(j)));
-				}
-				abilities[i] = values;
-			}
-
-			mContext.getContentResolver().bulkInsert(
-					PokeContract.Abilities.CONTENT_ABILITY, abilities);
 		}
 	}
 }

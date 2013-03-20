@@ -1,8 +1,14 @@
 package com.suicune.pokeutils.database;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.suicune.pokeutils.R;
 
 public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "pokeutils";
@@ -32,8 +38,8 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonName.FORM + TEXT
 				+ PokeContract.PokemonName.NAME + TEXT_END);
 
-		db.execSQL("CREATE TABLE " + PokeContract.PokemonBaseStats.TABLE_NAME + " (" 
-				+ PokeContract.PokemonBaseStats._ID + KEY
+		db.execSQL("CREATE TABLE " + PokeContract.PokemonBaseStats.TABLE_NAME
+				+ " (" + PokeContract.PokemonBaseStats._ID + KEY
 				+ PokeContract.PokemonBaseStats.NUMBER + TEXT
 				+ PokeContract.PokemonBaseStats.FORM + TEXT
 				+ PokeContract.PokemonBaseStats.BASE_ATT + TEXT
@@ -74,24 +80,21 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonAbilityDW.ABILITY_DW + TEXT_END);
 
 		db.execSQL("CREATE TABLE " + PokeContract.Abilities.TABLE_NAME + " ("
-				+ PokeContract.Abilities._ID + KEY 
-				+ PokeContract.Abilities.ID	+ TEXT 
-				+ PokeContract.Abilities.NAME + TEXT
+				+ PokeContract.Abilities._ID + KEY + PokeContract.Abilities.ID
+				+ TEXT + PokeContract.Abilities.NAME + TEXT
 				+ PokeContract.Abilities.DESCRIPTION + TEXT_END);
 
 		db.execSQL("CREATE TABLE " + PokeContract.Attacks.TABLE_NAME + " ("
-				+ PokeContract.Attacks._ID + KEY 
-				+ PokeContract.Attacks.ID + TEXT 
-				+ PokeContract.Attacks.NAME + TEXT
-				+ PokeContract.Attacks.PP + TEXT 
-				+ PokeContract.Attacks.POWER + TEXT 
-				+ PokeContract.Attacks.ACCURACY + TEXT
+				+ PokeContract.Attacks._ID + KEY + PokeContract.Attacks.ID
+				+ TEXT + PokeContract.Attacks.NAME + TEXT
+				+ PokeContract.Attacks.PP + TEXT + PokeContract.Attacks.POWER
+				+ TEXT + PokeContract.Attacks.ACCURACY + TEXT
 				+ PokeContract.Attacks.TARGET + TEXT
 				+ PokeContract.Attacks.TYPE + TEXT
 				+ PokeContract.Attacks.DESCRIPTION + TEXT_END);
 
-		db.execSQL("CREATE TABLE " + PokeContract.PokemonAttacks.TABLE_NAME + " (" 
-				+ PokeContract.PokemonAttacks._ID + KEY
+		db.execSQL("CREATE TABLE " + PokeContract.PokemonAttacks.TABLE_NAME
+				+ " (" + PokeContract.PokemonAttacks._ID + KEY
 				+ PokeContract.PokemonAttacks.ATTACK_ID + TEXT
 				+ PokeContract.PokemonAttacks.FORM + TEXT
 				+ PokeContract.PokemonAttacks.GENERATION + TEXT
@@ -102,7 +105,6 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 
 		makeInserts(db);
 
-		db.close();
 	}
 
 	@Override
@@ -122,15 +124,41 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	 * @param db
 	 */
 	private void insertPokemon(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
-
+		 BufferedReader reader = new BufferedReader(new InputStreamReader(
+		 mContext.getResources().openRawResource(R.raw.pokemon)));
+		 String line = null;
+		 try {
+		 while((line = reader.readLine()) != null){
+		 db.execSQL(line);
+		 }
+		 } catch (IOException e) {
+		 e.printStackTrace();
+		 }
 	}
 
 	private void insertAbilities(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				mContext.getResources().openRawResource(R.raw.abilities)));
+		String line = null;
+		try {
+			while ((line = reader.readLine()) != null) {
+				db.execSQL(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void insertAttacks(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				mContext.getResources().openRawResource(R.raw.attacks)));
+		String line = null;
+		try {
+			while ((line = reader.readLine()) != null) {
+				db.execSQL(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
