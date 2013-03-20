@@ -9,19 +9,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class TabHelperHoneycomb extends TabHelper{
+public class TabHelperHoneycomb extends TabHelper {
 	ActionBar mActionBar;
-	
-	protected TabHelperHoneycomb(TabCompatActivity activity){
+
+	protected TabHelperHoneycomb(TabCompatActivity activity) {
 		super(activity);
 	}
-	
+
 	@Override
 	protected void setUp() {
-		if(mActionBar == null){
+		if (mActionBar == null) {
 			mActionBar = mActivity.getActionBar();
 			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-			if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			if (mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 				mActionBar.setDisplayShowTitleEnabled(false);
 			} else {
 				mActionBar.setDisplayShowTitleEnabled(true);
@@ -31,9 +31,11 @@ public class TabHelperHoneycomb extends TabHelper{
 
 	@Override
 	public void addTab(CompatTab tab) {
-		Fragment fragment = mActivity.getSupportFragmentManager().findFragmentByTag(tab.getTag());
-		if(fragment != null && !fragment.isDetached()){
-			FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
+		Fragment fragment = mActivity.getSupportFragmentManager()
+				.findFragmentByTag(tab.getTag());
+		if (fragment != null && !fragment.isDetached()) {
+			FragmentTransaction ft = mActivity.getSupportFragmentManager()
+					.beginTransaction();
 			ft.detach(fragment);
 			ft.commit();
 		}
@@ -42,20 +44,20 @@ public class TabHelperHoneycomb extends TabHelper{
 	}
 
 	@Override
-    protected void onSaveInstanceState(Bundle outState) {
-        int position = mActionBar.getSelectedTab().getPosition();
-        outState.putInt("tab_position", position);
-    }
+	protected void onSaveInstanceState(Bundle outState) {
+		int position = mActionBar.getSelectedTab().getPosition();
+		outState.putInt("tab_position", position);
+	}
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        int position = savedInstanceState.getInt("tab_position");
-        mActionBar.setSelectedNavigationItem(position);
-    }
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		int position = savedInstanceState.getInt("tab_position");
+		mActionBar.setSelectedNavigationItem(position);
+	}
 
 	@Override
 	public void setActiveTab(int position) {
-		if(mActionBar != null){
+		if (mActionBar != null) {
 			mActionBar.setSelectedNavigationItem(position);
 		}
 	}

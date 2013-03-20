@@ -93,12 +93,16 @@ public class MainActivity extends TabCompatActivity {
 			Fragment fragment = tab.getFragment();
 			if (fragment != null) {
 				ft.detach(fragment);
+				fragment.setHasOptionsMenu(false);
 			}
-			fragment.setHasOptionsMenu(false);
 		}
 
 		@Override
 		public void onTabSelected(CompatTab tab, FragmentTransaction ft) {
+			if (getSupportFragmentManager().findFragmentByTag(tab.getTag()) != null) {
+				tab.setFragment(getSupportFragmentManager().findFragmentByTag(
+						tab.getTag()));
+			}
 			Fragment fragment = tab.getFragment();
 			if (fragment == null) {
 				fragment = Fragment.instantiate(mActivity, mClass.getName());

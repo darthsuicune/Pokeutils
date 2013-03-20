@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <TableRow>
 
@@ -12,7 +12,47 @@
             android:inputType="textNoSuggestions"
             android:maxLines="1" />
     </TableRow>
+
     <!-- Defender stats -->
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/damage_calc_defender_hp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hp" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/damage_calc_defender_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/att" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/damage_calc_defender_sp_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sp_att" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/damage_calc_defender_speed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/speed" >
+        </EditText>
+    </TableRow>
+
+    <Spinner
+        android:id="@+id/damage_calc_defense_modifier"
+        android:entries="@array/damage_modifiers" />
     <!-- Defender modifiers -->
 
 </TableLayout>

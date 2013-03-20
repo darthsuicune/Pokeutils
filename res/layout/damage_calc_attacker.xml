@@ -26,6 +26,41 @@
 
     <TableRow>
 
+        <EditText
+            android:id="@+id/damage_calc_attacker_hp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hp" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/damage_calc_attacker_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/att" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/damage_calc_attacker_sp_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sp_att" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/damage_calc_attacker_speed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/speed" >
+        </EditText>
+    </TableRow>
+
+    <TableRow>
+
         <Spinner
             android:id="@+id/damage_calc_attack"
             android:layout_width="wrap_content"
@@ -33,14 +68,18 @@
 
         <EditText
             android:id="@+id/damage_calc_base_damage"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:hint="@string/damage_calc_base_damage"
             android:inputType="number"
             android:maxLength="3" />
+
+        <Spinner
+            android:id="@+id/damage_calc_attack_modifier"
+            android:entries="@array/damage_modifiers" />
     </TableRow>
 
-    <!-- Attacker modifiers -->
+    <!-- Attacker modifiers (Burn / Objects) -->
 
     <TableRow>
 

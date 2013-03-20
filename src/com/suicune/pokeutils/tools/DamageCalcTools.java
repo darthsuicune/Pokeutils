@@ -123,6 +123,7 @@ public class DamageCalcTools {
 				attackLevelModifier, defenseLevelModifier, hasStab)
 				* MIN_RANDOM / 100);
 	}
+
 	/**
 	 * This method will return a random amount of damage that the attack will do
 	 * 
@@ -186,7 +187,7 @@ public class DamageCalcTools {
 		}
 		result *= typeModifier;
 		// Mod3
-		//If the result is < 1, it will do at least 1 damage.
+		// If the result is < 1, it will do at least 1 damage.
 		if (result < 1) {
 			return 1;
 		}
@@ -363,5 +364,38 @@ public class DamageCalcTools {
 			break;
 		}
 		return NO_TYPE_MODIFIER;
+	}
+
+	public static double getStatModifier(int position) {
+		switch (position) {
+		case 0:
+			return (1 / TEMP_MODIFIER_6_LEVEL);
+		case 1:
+			return (1 / TEMP_MODIFIER_5_LEVEL);
+		case 2:
+			return (1 / TEMP_MODIFIER_4_LEVEL);
+		case 3:
+			return (1 / TEMP_MODIFIER_3_LEVEL);
+		case 4:
+			return (1 / TEMP_MODIFIER_2_LEVEL);
+		case 5:
+			return (1 / TEMP_MODIFIER_1_LEVEL);
+		case 6:
+			return TEMP_MODIFIER_0_LEVEL;
+		case 7:
+			return TEMP_MODIFIER_1_LEVEL;
+		case 8:
+			return TEMP_MODIFIER_2_LEVEL;
+		case 9:
+			return TEMP_MODIFIER_3_LEVEL;
+		case 10:
+			return TEMP_MODIFIER_4_LEVEL;
+		case 11:
+			return TEMP_MODIFIER_5_LEVEL;
+		case 12:
+			return TEMP_MODIFIER_6_LEVEL;
+		default:
+			return 0;
+		}
 	}
 }

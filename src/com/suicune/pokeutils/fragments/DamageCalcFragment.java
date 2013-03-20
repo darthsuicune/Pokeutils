@@ -30,7 +30,8 @@ import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.DamageCalcTools;
 
 public class DamageCalcFragment extends Fragment implements
-		LoaderCallbacks<Cursor>, TextWatcher, CursorToStringConverter {
+		LoaderCallbacks<Cursor>, TextWatcher, CursorToStringConverter,
+		OnItemSelectedListener {
 	private static final int LOADER_ATTACKS = 1;
 	private static final int LOADER_ATTACKING_POKEMON_AUTO_COMPLETE = 2;
 	private static final int LOADER_DEFENDING_POKEMON_AUTO_COMPLETE = 3;
@@ -49,6 +50,10 @@ public class DamageCalcFragment extends Fragment implements
 	private EditText mLevelView;
 	private Spinner mAttackView;
 	private EditText mAttackBaseDamageView;
+	private Spinner mAttackModifierView;
+	private int mAttackModifierPosition = 6;
+	private Spinner mDefenseModifierView;
+	private int mDefenseModifierPosition = 6;
 
 	private TextView mResultView;
 
@@ -73,17 +78,34 @@ public class DamageCalcFragment extends Fragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		if (savedInstanceState != null) {
+			mAttackModifierPosition = savedInstanceState
+					.getInt("attack modififer position");
+			mDefenseModifierPosition = savedInstanceState
+					.getInt("defense modifier position");
+		}
 		setViews();
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("attack modififer position", mAttackModifierPosition);
+		outState.putInt("defense modifier position", mDefenseModifierPosition);
 	}
 
 	private void setViews() {
 		mLevelView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_level1);
+		if(mLevelView == null){
+			return;
+		}
 		mLevelView.setText("100");
 		mResultView = (TextView) getActivity().findViewById(
 				R.id.damage_calc_damage);
 		prepareAutoCompleteViews();
 		prepareAttackViews();
+		prepareDefenseViews();
 
 		mAttackingPokemonView.addTextChangedListener(this);
 		mDefendingPokemonView.addTextChangedListener(this);
@@ -148,19 +170,21 @@ public class DamageCalcFragment extends Fragment implements
 		mAttackBaseDamageView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_base_damage);
 
+		mAttackModifierView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_attack_modifier);
+		mAttackModifierView.setSelection(mAttackModifierPosition);
+		mAttackModifierView.setOnItemSelectedListener(this);
+
 		setSpinnerAdapter();
 		mAttackView.setAdapter(mAttacksAdapter);
-		mAttackView.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> adapterView, View view,
-					int position, long id) {
-				setAttackParameters(id);
-			}
+		mAttackView.setOnItemSelectedListener(this);
+	}
 
-			@Override
-			public void onNothingSelected(AdapterView<?> adapterView) {
-			}
-		});
+	private void prepareDefenseViews() {
+		mDefenseModifierView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_defense_modifier);
+		mDefenseModifierView.setSelection(mDefenseModifierPosition);
+		mDefenseModifierView.setOnItemSelectedListener(this);
 	}
 
 	private void setSpinnerAdapter() {
@@ -205,14 +229,16 @@ public class DamageCalcFragment extends Fragment implements
 			return;
 		}
 
-		// TODO replace for actual values.
-
 		int attackerLevel = Integer.parseInt(mLevelView.getText().toString());
+
+		// TODO replace attacker stat
 		int pokemonAttackStat = 300;
-		double attackLevelModifier = DamageCalcTools.TEMP_MODIFIER_0_LEVEL;
+		double attackLevelModifier = DamageCalcTools
+				.getStatModifier(mAttackModifierPosition);
 		// int attackingType = mAttack.mType;
 		int attackingType = Types.ELECTRIC;
 
+		// TODO replace defender stats
 		int pokemonDefenseStat = 300;
 		int pokemonHP = 400;
 		double defenseLevelModifier = DamageCalcTools.TEMP_MODIFIER_0_LEVEL;
@@ -245,8 +271,9 @@ public class DamageCalcFragment extends Fragment implements
 		switch (id) {
 		case LOADER_ATTACKS:
 			String attacksSelection = PokeContract.PokemonAttacks.NUMBER
-					+ "=? AND" + PokeContract.PokemonAttacks.FORM + "=?";
-			String[] attacksSelectionArgs = { Integer.toString(mAttackingPokemon.mNumber),
+					+ "=? AND " + PokeContract.PokemonAttacks.FORM + "=?";
+			String[] attacksSelectionArgs = {
+					Integer.toString(mAttackingPokemon.mNumber),
 					Integer.toString(mAttackingPokemon.mForm) };
 			loader = new CursorLoader(getActivity(),
 					PokeContract.Attacks.CONTENT_ATTACK, null,
@@ -308,7 +335,7 @@ public class DamageCalcFragment extends Fragment implements
 			}
 			break;
 		case LOADER_ATTACK:
-			if(cursor.moveToFirst()){
+			if (cursor.moveToFirst()) {
 				mAttack = new Attack(cursor);
 			}
 			break;
@@ -343,5 +370,27 @@ public class DamageCalcFragment extends Fragment implements
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> adapterView, View view,
+			int position, long id) {
+		switch (adapterView.getId()) {
+		case R.id.damage_calc_attack_modifier:
+			mAttackModifierPosition = position;
+			break;
+		case R.id.damage_calc_defense_modifier:
+			mDefenseModifierPosition = position;
+			break;
+		case R.id.damage_calc_attack:
+			setAttackParameters(id);
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> adapterView) {
 	}
 }
