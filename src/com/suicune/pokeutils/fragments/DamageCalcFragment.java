@@ -97,7 +97,7 @@ public class DamageCalcFragment extends Fragment implements
 	private void setViews() {
 		mLevelView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_level1);
-		if(mLevelView == null){
+		if (mLevelView == null) {
 			return;
 		}
 		mLevelView.setText("100");
@@ -241,7 +241,8 @@ public class DamageCalcFragment extends Fragment implements
 		// TODO replace defender stats
 		int pokemonDefenseStat = 300;
 		int pokemonHP = 400;
-		double defenseLevelModifier = DamageCalcTools.TEMP_MODIFIER_0_LEVEL;
+		double defenseLevelModifier = DamageCalcTools
+				.getStatModifier(mDefenseModifierPosition);
 		int defendingType1 = mDefendingPokemon.mType1;
 		int defendingType2 = mDefendingPokemon.mType2;
 
@@ -276,7 +277,7 @@ public class DamageCalcFragment extends Fragment implements
 					Integer.toString(mAttackingPokemon.mNumber),
 					Integer.toString(mAttackingPokemon.mForm) };
 			loader = new CursorLoader(getActivity(),
-					PokeContract.Attacks.CONTENT_ATTACK, null,
+					PokeContract.PokemonAttacks.CONTENT_POKEMON_ATTACKS, null,
 					attacksSelection, attacksSelectionArgs, null);
 			break;
 		case LOADER_ATTACKING_POKEMON_AUTO_COMPLETE:

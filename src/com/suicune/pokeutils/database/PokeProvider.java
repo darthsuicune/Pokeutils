@@ -34,6 +34,8 @@ public class PokeProvider extends ContentProvider {
 	private static final int ATTACK_ID = 16;
 	private static final int ABILITY = 17;
 	private static final int ABILITY_ID = 18;
+	private static final int POKEMON_ATTACK = 19;
+	private static final int POKEMON_ATTACK_ID = 20;
 
 	static UriMatcher sUriMatcher;
 	static {
@@ -82,6 +84,12 @@ public class PokeProvider extends ContentProvider {
 				PokeContract.Abilities.TABLE_NAME, ABILITY);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
 				PokeContract.Abilities.TABLE_NAME + "/#", ABILITY_ID);
+
+		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
+				PokeContract.PokemonAttacks.TABLE_NAME, POKEMON_ATTACK);
+		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
+				PokeContract.PokemonAttacks.TABLE_NAME + "/#",
+				POKEMON_ATTACK_ID);
 	}
 
 	@Override
@@ -170,6 +178,14 @@ public class PokeProvider extends ContentProvider {
 			return ContentResolver.CURSOR_ITEM_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
 					+ PokeContract.Attacks.TABLE_NAME;
+		case POKEMON_ATTACK:
+			return ContentResolver.CURSOR_DIR_BASE_TYPE
+					+ PokeContract.CONTENT_NAME + "."
+					+ PokeContract.PokemonAttacks.TABLE_NAME;
+		case POKEMON_ATTACK_ID:
+			return ContentResolver.CURSOR_ITEM_BASE_TYPE
+					+ PokeContract.CONTENT_NAME + "."
+					+ PokeContract.PokemonAttacks.TABLE_NAME;
 		default:
 			throw new IllegalArgumentException(getContext().getString(
 					R.string.illegal_uri)
@@ -195,7 +211,9 @@ public class PokeProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 
 		if (sUriMatcher.match(uri) == POKEDEX) {
-			return queryPokedex(selection, selectionArgs, sortOrder);
+			return queryPokedex(projection, selection, selectionArgs, sortOrder);
+		} else if (sUriMatcher.match(uri) == POKEMON_ATTACK) {
+			return queryAttack(projection, selection, selectionArgs, sortOrder);
 		}
 
 		boolean distinct = false;
@@ -210,39 +228,29 @@ public class PokeProvider extends ContentProvider {
 		return cursor;
 	}
 
-	private Cursor queryPokedex(String selection, String[] selectionArgs,
-			String sortOrder) {
+	private Cursor queryAttack(String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
+		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+
+		builder.setTables(PokeContract.PokemonAttacks.TABLE_NAME + " JOIN "
+				+ PokeContract.Attacks.TABLE_NAME + " ON "
+				+ PokeContract.PokemonAttacks.TABLE_NAME + "."
+				+ PokeContract.PokemonAttacks.ATTACK_ID + "="
+				+ PokeContract.Attacks.TABLE_NAME + "."
+				+ PokeContract.Attacks.ID);
+
+		if (sortOrder == null) {
+			sortOrder = PokeContract.Attacks.NAME + " DESC";
+		}
+
+		return builder.query(mDbHelper.getReadableDatabase(), projection,
+				selection, selectionArgs, null, null, sortOrder);
+	}
+
+	private Cursor queryPokedex(String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {
 
 		SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-		String[] myProjection = {
-				PokeContract.PokemonName.TABLE_NAME + "."
-						+ PokeContract.PokemonName._ID,
-				PokeContract.PokemonName.NAME,
-				PokeContract.PokemonName.NUMBER,
-				PokeContract.PokemonName.FORM,
-				PokeContract.PokemonBaseStats.BASE_HP,
-				PokeContract.PokemonBaseStats.BASE_ATT,
-				PokeContract.PokemonBaseStats.BASE_DEF,
-				PokeContract.PokemonBaseStats.BASE_SPATT,
-				PokeContract.PokemonBaseStats.BASE_SPDEF,
-				PokeContract.PokemonBaseStats.BASE_SPEED,
-				PokeContract.PokemonAbility1.ABILITY_1,
-				PokeContract.PokemonAbility2.ABILITY_2,
-				PokeContract.PokemonAbilityDW.ABILITY_DW,
-				PokeContract.PokemonType1.TYPE,
-				PokeContract.PokemonType2.TYPE,
-				"A1." + PokeContract.Abilities.NAME + " AS "
-						+ PokeContract.Pokedex.ABILITY_1_NAME,
-				"A2." + PokeContract.Abilities.NAME + " AS "
-						+ PokeContract.Pokedex.ABILITY_2_NAME,
-				"ADW." + PokeContract.Abilities.NAME + " AS "
-						+ PokeContract.Pokedex.ABILITY_DW_NAME,
-				"A1." + PokeContract.Abilities.DESCRIPTION + " AS "
-						+ PokeContract.Pokedex.ABILITY_1_DESCRIPTION,
-				"A2." + PokeContract.Abilities.DESCRIPTION + " AS "
-						+ PokeContract.Pokedex.ABILITY_2_DESCRIPTION,
-				"ADW." + PokeContract.Abilities.DESCRIPTION + " AS "
-						+ PokeContract.Pokedex.ABILITY_DW_DESCRIPTION };
 
 		builder.setTables(PokeContract.PokemonName.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonBaseStats.TABLE_NAME
@@ -265,8 +273,43 @@ public class PokeProvider extends ContentProvider {
 			sortOrder = PokeContract.PokemonName.TABLE_NAME + "."
 					+ PokeContract.PokemonName._ID + " ASC";
 		}
-		return builder.query(mDbHelper.getReadableDatabase(), myProjection,
-				selection, selectionArgs, null, null, sortOrder);
+		if (projection == null) {
+			String[] myProjection = {
+					PokeContract.PokemonName.TABLE_NAME + "."
+							+ PokeContract.PokemonName._ID,
+					PokeContract.PokemonName.NAME,
+					PokeContract.PokemonName.NUMBER,
+					PokeContract.PokemonName.FORM,
+					PokeContract.PokemonBaseStats.BASE_HP,
+					PokeContract.PokemonBaseStats.BASE_ATT,
+					PokeContract.PokemonBaseStats.BASE_DEF,
+					PokeContract.PokemonBaseStats.BASE_SPATT,
+					PokeContract.PokemonBaseStats.BASE_SPDEF,
+					PokeContract.PokemonBaseStats.BASE_SPEED,
+					PokeContract.PokemonAbility1.ABILITY_1,
+					PokeContract.PokemonAbility2.ABILITY_2,
+					PokeContract.PokemonAbilityDW.ABILITY_DW,
+					PokeContract.PokemonType1.TYPE,
+					PokeContract.PokemonType2.TYPE,
+					"A1." + PokeContract.Abilities.NAME + " AS "
+							+ PokeContract.Pokedex.ABILITY_1_NAME,
+					"A2." + PokeContract.Abilities.NAME + " AS "
+							+ PokeContract.Pokedex.ABILITY_2_NAME,
+					"ADW." + PokeContract.Abilities.NAME + " AS "
+							+ PokeContract.Pokedex.ABILITY_DW_NAME,
+					"A1." + PokeContract.Abilities.DESCRIPTION + " AS "
+							+ PokeContract.Pokedex.ABILITY_1_DESCRIPTION,
+					"A2." + PokeContract.Abilities.DESCRIPTION + " AS "
+							+ PokeContract.Pokedex.ABILITY_2_DESCRIPTION,
+					"ADW." + PokeContract.Abilities.DESCRIPTION + " AS "
+							+ PokeContract.Pokedex.ABILITY_DW_DESCRIPTION };
+			return builder.query(mDbHelper.getReadableDatabase(), myProjection,
+					selection, selectionArgs, null, null, sortOrder);
+		} else {
+			return builder.query(mDbHelper.getReadableDatabase(), projection,
+					selection, selectionArgs, null, null, sortOrder);
+		}
+
 	}
 
 	@Override
@@ -318,6 +361,9 @@ public class PokeProvider extends ContentProvider {
 		case ATTACK_ID:
 		case ATTACK:
 			return PokeContract.Attacks.TABLE_NAME;
+		case POKEMON_ATTACK_ID:
+		case POKEMON_ATTACK:
+			return PokeContract.PokemonAttacks.TABLE_NAME;
 		}
 		return null;
 	}

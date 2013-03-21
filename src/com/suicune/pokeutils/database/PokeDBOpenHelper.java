@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 
 import com.suicune.pokeutils.R;
 
@@ -103,7 +104,7 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonAttacks.NUMBER + TEXT
 				+ PokeContract.PokemonAttacks.TM_NUMBER + TEXT_END);
 
-		makeInserts(db);
+		populateDb(db);
 
 	}
 
@@ -111,7 +112,7 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
 
-	public void makeInserts(SQLiteDatabase db) {
+	public void populateDb(SQLiteDatabase db) {
 		insertPokemon(db);
 		insertAbilities(db);
 		insertAttacks(db);
@@ -124,16 +125,16 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	 * @param db
 	 */
 	private void insertPokemon(SQLiteDatabase db) {
-		 BufferedReader reader = new BufferedReader(new InputStreamReader(
-		 mContext.getResources().openRawResource(R.raw.pokemon)));
-		 String line = null;
-		 try {
-		 while((line = reader.readLine()) != null){
-		 db.execSQL(line);
-		 }
-		 } catch (IOException e) {
-		 e.printStackTrace();
-		 }
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				mContext.getResources().openRawResource(R.raw.pokemon)));
+		String line = null;
+		try {
+			while ((line = reader.readLine()) != null) {
+				db.execSQL(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void insertAbilities(SQLiteDatabase db) {
@@ -155,7 +156,9 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 		String line = null;
 		try {
 			while ((line = reader.readLine()) != null) {
-				db.execSQL(line);
+				if(!TextUtils.isEmpty(line)){
+					db.execSQL(line);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
