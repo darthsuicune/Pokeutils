@@ -11,6 +11,10 @@
             android:hint="@string/damage_calc_pokemon_2"
             android:inputType="textNoSuggestions"
             android:maxLines="1" />
+
+        <Spinner
+            android:id="@+id/damage_calc_defense_modifier"
+            android:entries="@array/damage_modifiers" />
     </TableRow>
 
     <!-- Defender stats -->
@@ -26,7 +30,7 @@
         </EditText>
 
         <EditText
-            android:id="@+id/damage_calc_defender_att"
+            android:id="@+id/damage_calc_defender_def"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -34,7 +38,7 @@
         </EditText>
 
         <EditText
-            android:id="@+id/damage_calc_defender_sp_att"
+            android:id="@+id/damage_calc_defender_sp_def"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -50,9 +54,6 @@
         </EditText>
     </TableRow>
 
-    <Spinner
-        android:id="@+id/damage_calc_defense_modifier"
-        android:entries="@array/damage_modifiers" />
     <!-- Defender modifiers -->
 
 </TableLayout>
