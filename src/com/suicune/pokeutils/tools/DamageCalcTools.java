@@ -3,8 +3,26 @@ package com.suicune.pokeutils.tools;
 import java.util.Arrays;
 import java.util.Random;
 
+import com.suicune.pokeutils.Attack;
+import com.suicune.pokeutils.Pokemon;
 import com.suicune.pokeutils.Types;
-import com.suicune.pokeutils.Types.*;
+import com.suicune.pokeutils.Types.Bug;
+import com.suicune.pokeutils.Types.Dark;
+import com.suicune.pokeutils.Types.Dragon;
+import com.suicune.pokeutils.Types.Electric;
+import com.suicune.pokeutils.Types.Fighting;
+import com.suicune.pokeutils.Types.Fire;
+import com.suicune.pokeutils.Types.Flying;
+import com.suicune.pokeutils.Types.Ghost;
+import com.suicune.pokeutils.Types.Grass;
+import com.suicune.pokeutils.Types.Ground;
+import com.suicune.pokeutils.Types.Ice;
+import com.suicune.pokeutils.Types.Normal;
+import com.suicune.pokeutils.Types.Poison;
+import com.suicune.pokeutils.Types.Psychic;
+import com.suicune.pokeutils.Types.Rock;
+import com.suicune.pokeutils.Types.Steel;
+import com.suicune.pokeutils.Types.Water;
 
 public class DamageCalcTools {
 	public static final double TYPE_MODIFIER_WEAK = 2;
@@ -23,6 +41,16 @@ public class DamageCalcTools {
 	public static final double TEMP_MODIFIER_6_LEVEL = 4.0;
 
 	private static final int MIN_RANDOM = 85;
+	
+	// http://www.smogon.com/dp/articles/damage_formula
+
+	public double getMinDamage(Pokemon attacker, Pokemon defender, Attack attack){
+		return 0;
+	}
+	
+	public double getMaxDamage(Pokemon attacker, Pokemon defender, Attack attack){
+		return 0;
+	}
 
 	/**
 	 * 
@@ -171,7 +199,6 @@ public class DamageCalcTools {
 		if (typeModifier == TYPE_MODIFIER_INMUNE) {
 			return 0;
 		}
-		// http://www.smogon.com/dp/articles/damage_formula
 		// The formula requires a Math.floor after each operation.
 		double result;
 		result = 2 * attackerLevel / 5;

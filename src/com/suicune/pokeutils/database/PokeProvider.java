@@ -237,10 +237,10 @@ public class PokeProvider extends ContentProvider {
 				+ PokeContract.PokemonAttacks.TABLE_NAME + "."
 				+ PokeContract.PokemonAttacks.ATTACK_ID + "="
 				+ PokeContract.Attacks.TABLE_NAME + "."
-				+ PokeContract.Attacks.ID);
+				+ PokeContract.Attacks._ID);
 
 		if (sortOrder == null) {
-			sortOrder = PokeContract.Attacks.NAME + " DESC";
+			sortOrder = PokeContract.Attacks.POWER + " DESC";
 		}
 
 		return builder.query(mDbHelper.getReadableDatabase(), projection,
@@ -260,13 +260,13 @@ public class PokeProvider extends ContentProvider {
 				+ " NATURAL JOIN " + PokeContract.PokemonType1.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonType2.TABLE_NAME
 				+ " JOIN " + PokeContract.Abilities.TABLE_NAME
-				+ " AS A1 ON A1." + PokeContract.Abilities.ID + "="
+				+ " AS A1 ON A1." + PokeContract.Abilities._ID + "="
 				+ PokeContract.PokemonAbility1.ABILITY_1 + " JOIN "
 				+ PokeContract.Abilities.TABLE_NAME + " AS A2 ON A2."
-				+ PokeContract.Abilities.ID + "="
+				+ PokeContract.Abilities._ID + "="
 				+ PokeContract.PokemonAbility2.ABILITY_2 + " JOIN "
 				+ PokeContract.Abilities.TABLE_NAME + " AS ADW ON ADW."
-				+ PokeContract.Abilities.ID + "="
+				+ PokeContract.Abilities._ID + "="
 				+ PokeContract.PokemonAbilityDW.ABILITY_DW);
 
 		if (sortOrder == null) {
@@ -278,8 +278,10 @@ public class PokeProvider extends ContentProvider {
 					PokeContract.PokemonName.TABLE_NAME + "."
 							+ PokeContract.PokemonName._ID,
 					PokeContract.PokemonName.NAME,
-					PokeContract.PokemonName.NUMBER,
-					PokeContract.PokemonName.FORM,
+					PokeContract.PokemonName.TABLE_NAME + "."
+							+ PokeContract.PokemonName.NUMBER,
+					PokeContract.PokemonName.TABLE_NAME + "."
+							+ PokeContract.PokemonName.FORM,
 					PokeContract.PokemonBaseStats.BASE_HP,
 					PokeContract.PokemonBaseStats.BASE_ATT,
 					PokeContract.PokemonBaseStats.BASE_DEF,

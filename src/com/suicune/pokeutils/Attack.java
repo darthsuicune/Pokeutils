@@ -5,41 +5,45 @@ import com.suicune.pokeutils.database.PokeContract;
 import android.database.Cursor;
 
 public class Attack {
-	public String mName;
-	public int mPP;
+	public static final int CLASS_OTHER = 0;
+	public static final int CLASS_PYHISICAL = 1;
+	public static final int CLASS_SPECIAL = 2;
+
+	public int mId;
+	public int mPp;
 	public int mPower;
 	public int mAccuracy;
 	public int mType;
-	public String mTarget;
-	public String mDescription;
+	public int mPriority;
+	public int mAttackClass;
 
 	public Attack(Cursor cursor) {
 		if (cursor.moveToFirst()) {
-			mName = cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.NAME));
-			mPP = Integer.parseInt(cursor.getString(cursor
+			mId = cursor
+					.getInt(cursor.getColumnIndex(PokeContract.Attacks._ID));
+			mPp = Integer.parseInt(cursor.getString(cursor
 					.getColumnIndex(PokeContract.Attacks.PP)));
-			mPower = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.POWER)));
-			mAccuracy = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.ACCURACY)));
+			mPower = cursor.getInt(cursor
+					.getColumnIndex(PokeContract.Attacks.POWER));
+			mAccuracy = cursor.getInt(cursor
+					.getColumnIndex(PokeContract.Attacks.ACCURACY));
 			mType = Integer.parseInt(cursor.getString(cursor
 					.getColumnIndex(PokeContract.Attacks.TYPE)));
-			mTarget = cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.TARGET));
-			mDescription = cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.DESCRIPTION));
+			mPriority = Integer.parseInt(cursor.getString(cursor
+					.getColumnIndex(PokeContract.Attacks.PRIORITY)));
+			mAttackClass = Integer.parseInt(cursor.getString(cursor
+					.getColumnIndex(PokeContract.Attacks.CLASS)));
 		}
 	}
 
-	public Attack(String name, int pp, int power, int accuracy, int type,
-			String target, String description) {
-		mName = name;
-		mPP = pp;
+	public Attack(int id, int pp, int power, int accuracy, int type, int priority,
+			int attackClass) {
+		mId = id;
+		mPp = pp;
 		mPower = power;
 		mAccuracy = accuracy;
 		mType = type;
-		mTarget = target;
-		mDescription = description;
+		mPriority = priority;
+		mAttackClass = attackClass;
 	}
 }

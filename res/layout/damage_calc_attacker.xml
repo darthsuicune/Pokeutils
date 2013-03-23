@@ -68,7 +68,7 @@
 
         <EditText
             android:id="@+id/damage_calc_base_damage"
-            android:layout_width="40dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:hint="@string/damage_calc_base_damage"
             android:inputType="number"

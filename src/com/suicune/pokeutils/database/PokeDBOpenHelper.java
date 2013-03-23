@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.suicune.pokeutils.R;
 
@@ -18,6 +19,7 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	private static final String CREATE = "CREATE TABLE ";
 	private static final String KEY = " INTEGER PRIMARY KEY AUTOINCREMENT, ";
 	private static final String TEXT = " TEXT, ";
+	private static final String INTEGER = " INTEGER, ";
 	private static final String TEXT_END = " TEXT)";
 
 	private Context mContext;
@@ -81,30 +83,30 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonAbilityDW.ABILITY_DW + TEXT_END);
 
 		db.execSQL("CREATE TABLE " + PokeContract.Abilities.TABLE_NAME + " ("
-				+ PokeContract.Abilities._ID + KEY + PokeContract.Abilities.ID
-				+ TEXT + PokeContract.Abilities.NAME + TEXT
+				+ PokeContract.Abilities._ID + KEY
+				+ PokeContract.Abilities.NAME + TEXT
 				+ PokeContract.Abilities.DESCRIPTION + TEXT_END);
 
 		db.execSQL("CREATE TABLE " + PokeContract.Attacks.TABLE_NAME + " ("
-				+ PokeContract.Attacks._ID + KEY + PokeContract.Attacks.ID
-				+ TEXT + PokeContract.Attacks.NAME + TEXT
-				+ PokeContract.Attacks.PP + TEXT + PokeContract.Attacks.POWER
-				+ TEXT + PokeContract.Attacks.ACCURACY + TEXT
-				+ PokeContract.Attacks.TARGET + TEXT
-				+ PokeContract.Attacks.TYPE + TEXT
-				+ PokeContract.Attacks.DESCRIPTION + TEXT_END);
+				+ PokeContract.Attacks._ID + KEY 
+				+ PokeContract.Attacks.PP + TEXT 
+				+ PokeContract.Attacks.POWER + INTEGER
+				+ PokeContract.Attacks.ACCURACY + TEXT
+				+ PokeContract.Attacks.CLASS + TEXT
+				+ PokeContract.Attacks.GENERATION + TEXT
+				+ PokeContract.Attacks.PRIORITY + TEXT
+				+ PokeContract.Attacks.TYPE + TEXT_END);
 
 		db.execSQL("CREATE TABLE " + PokeContract.PokemonAttacks.TABLE_NAME
 				+ " (" + PokeContract.PokemonAttacks._ID + KEY
 				+ PokeContract.PokemonAttacks.ATTACK_ID + TEXT
-				+ PokeContract.PokemonAttacks.FORM + TEXT
-				+ PokeContract.PokemonAttacks.GENERATION + TEXT
-				+ PokeContract.PokemonAttacks.HM_NUMBER + TEXT
-				+ PokeContract.PokemonAttacks.LEVEL + TEXT
 				+ PokeContract.PokemonAttacks.NUMBER + TEXT
-				+ PokeContract.PokemonAttacks.TM_NUMBER + TEXT_END);
+				+ PokeContract.PokemonAttacks.FORM + TEXT_END);
 
+		long time = System.currentTimeMillis();
 		populateDb(db);
+		time = System.currentTimeMillis() - time;
+		Log.d("DATABASE POPULATION FINISHED", "" + time);
 
 	}
 
@@ -116,6 +118,7 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 		insertPokemon(db);
 		insertAbilities(db);
 		insertAttacks(db);
+		insertPokemonAttacks(db);
 	}
 
 	/**
@@ -127,36 +130,32 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	private void insertPokemon(SQLiteDatabase db) {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				mContext.getResources().openRawResource(R.raw.pokemon)));
-		String line = null;
-		try {
-			while ((line = reader.readLine()) != null) {
-				db.execSQL(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		doInsertLine(db, reader);
 	}
 
 	private void insertAbilities(SQLiteDatabase db) {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				mContext.getResources().openRawResource(R.raw.abilities)));
-		String line = null;
-		try {
-			while ((line = reader.readLine()) != null) {
-				db.execSQL(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		doInsertLine(db, reader);
 	}
 
 	private void insertAttacks(SQLiteDatabase db) {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				mContext.getResources().openRawResource(R.raw.attacks)));
+		doInsertLine(db, reader);
+	}
+
+	private void insertPokemonAttacks(SQLiteDatabase db) {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				mContext.getResources().openRawResource(R.raw.pokemonattacks)));
+		doInsertLine(db, reader);
+	}
+
+	private void doInsertLine(SQLiteDatabase db, BufferedReader reader) {
 		String line = null;
 		try {
 			while ((line = reader.readLine()) != null) {
-				if(!TextUtils.isEmpty(line)){
+				if (!TextUtils.isEmpty(line)) {
 					db.execSQL(line);
 				}
 			}
