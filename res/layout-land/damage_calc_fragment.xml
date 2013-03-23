@@ -6,21 +6,18 @@
     android:baselineAligned="false" >
 
     <include
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         layout="@layout/damage_calc_attacker" />
 
     <include
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         layout="@layout/damage_calc_defender" />
 
     <include
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         layout="@layout/damage_calc_other" />
 
 </RelativeLayout>
