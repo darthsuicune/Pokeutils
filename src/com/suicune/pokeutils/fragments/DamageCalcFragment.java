@@ -56,6 +56,14 @@ public class DamageCalcFragment extends Fragment implements
 	private int mDefenseModifierPosition = 6;
 
 	private TextView mResultView;
+	private TextView mAttackerHpView;
+	private TextView mAttackerAttView;
+	private TextView mAttackerSpAttView;
+	private TextView mAttackerSpeedView;
+	private TextView mDefenderHpView;
+	private TextView mDefenderDefView;
+	private TextView mDefenderSpDefView;
+	private TextView mDefenderSpeedView;
 
 	private SimpleCursorAdapter mAttackingPokemonAdapter;
 	private SimpleCursorAdapter mDefendingPokemonAdapter;
@@ -105,6 +113,24 @@ public class DamageCalcFragment extends Fragment implements
 		if (mLevelView == null) {
 			return;
 		}
+
+		mAttackerHpView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_attacker_hp);
+		mAttackerAttView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_attacker_att);
+		mAttackerSpAttView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_attacker_sp_att);
+		mAttackerSpeedView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_attacker_speed);
+		mDefenderHpView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_defender_hp);
+		mDefenderDefView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_defender_def);
+		mDefenderSpDefView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_defender_sp_def);
+		mDefenderSpeedView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_defender_speed);
+
 		mLevelView.setText("100");
 		mResultView = (TextView) getActivity().findViewById(
 				R.id.damage_calc_damage);
@@ -224,16 +250,24 @@ public class DamageCalcFragment extends Fragment implements
 		}
 
 		int attackerLevel = Integer.parseInt(mLevelView.getText().toString());
+		int pokemonAttackStat;
+		int pokemonDefenseStat;
+		int pokemonHP;
+		try {
+			pokemonAttackStat = Integer.parseInt(mAttackerAttView.getText()
+					.toString());
+			pokemonDefenseStat = Integer.parseInt(mDefenderDefView.getText()
+					.toString());
+			pokemonHP = Integer.parseInt(mDefenderHpView.getText().toString());
+		} catch (NumberFormatException e) {
+			// If the user doesn't insert a number, do nothing.
+			return;
+		}
 
-		// TODO replace attacker stat
-		int pokemonAttackStat = 300;
 		double attackLevelModifier = DamageCalcTools
 				.getStatModifier(mAttackModifierPosition);
 		int attackingType = mAttack.mType;
 
-		// TODO replace defender stats
-		int pokemonDefenseStat = 300;
-		int pokemonHP = 400;
 		double defenseLevelModifier = DamageCalcTools
 				.getStatModifier(mDefenseModifierPosition);
 		int defendingType1 = mDefendingPokemon.mType1;
