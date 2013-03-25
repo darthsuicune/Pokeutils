@@ -44,114 +44,56 @@ public class DamageCalcTools {
 
 	// http://www.smogon.com/dp/articles/damage_formula
 
-	public static double getMinDamage(TeamPokemon attacker,
+	public static String calculateDamagePorcent(TeamPokemon attacker,
 			TeamPokemon defender, Attack attack) {
-		return 0;
+		double maxDamage = calculateDamage(attacker, defender, attack);
+		double minDamage = 85 * maxDamage / 100;
+
+		double minPorcent = minDamage * 100
+				/ defender.mStats[TeamPokemon.INDEX_HP];
+		double maxPorcent = maxDamage * 100
+				/ defender.mStats[TeamPokemon.INDEX_HP];
+
+		return Math.round(minPorcent) + "% - " + Math.round(maxPorcent) + "%";
+
 	}
 
-	public static double getMaxDamage(TeamPokemon attacker,
+	public static String calculateDamageTotal(TeamPokemon attacker,
 			TeamPokemon defender, Attack attack) {
-		return 0;
+		double maxDamage = calculateDamage(attacker, defender, attack);
+		double minDamage = 85 * maxDamage / 100;
+		return Math.round(minDamage) + " - " + Math.round(maxDamage);
 	}
 
-	/**
-	 * 
-	 * This method returns a formated String as percentages with the min - max
-	 * damage of an attack.
-	 * 
-	 * Returns null if there is no damages.
-	 * 
-	 * @param pokemonAttack
-	 *            The current stat value of the pokemon attack / special attack
-	 * @param attackerLevel
-	 *            The level of the attacking pokemon
-	 * @param attackBasePower
-	 *            The base power of the attack being used
-	 * @param pokemonDefense
-	 *            The current stat value of the pokemon defense / special
-	 *            defense
-	 * @param pokemonHP
-	 * @param typeModifier
-	 * @param attackLevelModifier
-	 * @param defenseLevelModifier
-	 * @param hasStab
-	 * @return
-	 */
-	public static String calculateDamagePorcent(int pokemonAttackStat,
-			int attackerLevel, int attackBasePower, int pokemonDefenseStat,
-			int pokemonHP, double typeModifier, double attackLevelModifier,
-			double defenseLevelModifier, boolean hasStab) {
-		if (typeModifier == TYPE_MODIFIER_INMUNE) {
-			return null;
+	public static double calculateDamage(TeamPokemon attacker,
+			TeamPokemon defender, Attack attack) {
+		int pokemonAttackStat;
+		int pokemonDefenseStat;
+		double attackLevelModifier;
+		double defenseLevelModifier;
+		boolean hasStab = ((attacker.mType1 == attack.mType) || (attacker.mType2 == attack.mType));
+
+		if (attack.mAttackClass == Attack.CLASS_PHYSICAL) {
+			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_ATT];
+			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_ATT];
+
+			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_DEF];
+			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_DEF];
+		} else {
+			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_SP_ATT];
+			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT];
+
+			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_SP_DEF];
+			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_SP_DEF];
 		}
 
-		long minDamage = getMinDamage(pokemonAttackStat, attackerLevel,
-				attackBasePower, pokemonDefenseStat, typeModifier,
+		return getMaxDamage(
+				pokemonAttackStat,
+				attacker.mLevel,
+				attack.mPower,
+				pokemonDefenseStat,
+				getTypeModifier(attack.mType, defender.mType1, defender.mType2),
 				attackLevelModifier, defenseLevelModifier, hasStab);
-		long maxDamage = getMaxDamage(pokemonAttackStat, attackerLevel,
-				attackBasePower, pokemonDefenseStat, typeModifier,
-				attackLevelModifier, defenseLevelModifier, hasStab);
-
-		double minPorcent = 100 * minDamage / pokemonHP;
-		double maxPorcent = 100 * maxDamage / pokemonHP;
-
-		return minPorcent + "% - " + maxPorcent + "%";
-	}
-
-	/**
-	 * This method returns a formated String as total amount with the min - max
-	 * damage of an attack.
-	 * 
-	 * Returns null if there is no damages.
-	 * 
-	 * @param pokemonAttack
-	 * @param attackerLevel
-	 * @param attackBasePower
-	 * @param pokemonDefense
-	 * @param typeModifier
-	 * @param attackLevelModifier
-	 * @param defenseLevelModifier
-	 * @param hasStab
-	 * @return
-	 */
-	public static String calculateDamageTotal(int pokemonAttackStat,
-			int attackerLevel, int attackBasePower, int pokemonDefenseStat,
-			double typeModifier, double attackLevelModifier,
-			double defenseLevelModifier, boolean hasStab) {
-		if (typeModifier == TYPE_MODIFIER_INMUNE) {
-			return null;
-		}
-
-		return getMinDamage(pokemonAttackStat, attackerLevel, attackBasePower,
-				pokemonDefenseStat, typeModifier, attackLevelModifier,
-				defenseLevelModifier, hasStab)
-				+ " - "
-				+ getMaxDamage(pokemonAttackStat, attackerLevel,
-						attackBasePower, pokemonDefenseStat, typeModifier,
-						attackLevelModifier, defenseLevelModifier, hasStab);
-	}
-
-	/**
-	 * This method returns the minimum damage an attack will do.
-	 * 
-	 * @param pokemonAttack
-	 * @param attackerLevel
-	 * @param attackBasePower
-	 * @param pokemonDefense
-	 * @param typeModifier
-	 * @param attackLevelModifier
-	 * @param defenseLevelModifier
-	 * @param hasStab
-	 * @return
-	 */
-	public static long getMinDamage(int pokemonAttackStat, int attackerLevel,
-			int attackBasePower, int pokemonDefenseStat, double typeModifier,
-			double attackLevelModifier, double defenseLevelModifier,
-			boolean hasStab) {
-		return Math.round(getMaxDamage(pokemonAttackStat, attackerLevel,
-				attackBasePower, pokemonDefenseStat, typeModifier,
-				attackLevelModifier, defenseLevelModifier, hasStab)
-				* MIN_RANDOM / 100);
 	}
 
 	/**
@@ -203,11 +145,11 @@ public class DamageCalcTools {
 		}
 		// The formula requires a Math.floor after each operation.
 		double result;
-		result = 2 * attackerLevel / 5;
+		result = Math.floor(2 * attackerLevel / 5);
 		result += 2;
-		double attack = pokemonAttackStat * attackLevelModifier;
-		double defense = pokemonDefenseStat * defenseLevelModifier;
-		result = result * attackBasePower * attack / defense;
+		double attack = Math.floor(pokemonAttackStat * attackLevelModifier);
+		double defense = Math.floor(pokemonDefenseStat * defenseLevelModifier);
+		result = Math.floor(result * attackBasePower * attack / defense);
 		result /= 50;
 		// Mod1
 		result += 2;

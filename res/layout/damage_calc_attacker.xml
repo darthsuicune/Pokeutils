@@ -74,7 +74,7 @@
 
         <EditText
             android:id="@+id/damage_calc_base_damage"
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:hint="@string/damage_calc_base_damage"
             android:inputType="number"
@@ -82,23 +82,18 @@
 
         <Spinner
             android:id="@+id/damage_calc_attack_modifier"
+            android:layout_width="60dp"
             android:entries="@array/damage_modifiers" />
     </TableRow>
 
-    <!-- Attacker modifiers (Burn / Objects) -->
+    <!-- Attacker modifiers (Status / Objects) -->
 
-    <TableRow>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/damage_calc_damage" />
-
-        <TextView
-            android:id="@+id/damage_calc_damage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textIsSelectable="true" />
-    </TableRow>
+    <TextView
+        android:id="@+id/damage_calc_damage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/damage_calc_damage"
+        android:textIsSelectable="true"
+        android:textSize="20sp" />
 
 </TableLayout>

@@ -38,6 +38,7 @@ public class TeamPokemon extends Pokemon {
 	public int[] mIvs = new int[6];
 	public int[] mEvs = new int[6];
 	public int[] mStats = new int[6];
+	public double[] mStatsModifier = new double[6];
 	public int mLevel;
 	public int mNature;
 
