@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.suicune.pokeutils.Attack;
-import com.suicune.pokeutils.Pokemon;
+import com.suicune.pokeutils.TeamPokemon;
 import com.suicune.pokeutils.Types;
 import com.suicune.pokeutils.Types.Bug;
 import com.suicune.pokeutils.Types.Dark;
@@ -32,23 +32,25 @@ public class DamageCalcTools {
 	public static final double TYPE_MODIFIER_INMUNE = 0;
 	public static final double NO_TYPE_MODIFIER = 1;
 
-	public static final double TEMP_MODIFIER_0_LEVEL = 1;
-	public static final double TEMP_MODIFIER_1_LEVEL = 1.50;
-	public static final double TEMP_MODIFIER_2_LEVEL = 2.0;
-	public static final double TEMP_MODIFIER_3_LEVEL = 2.50;
-	public static final double TEMP_MODIFIER_4_LEVEL = 3.0;
-	public static final double TEMP_MODIFIER_5_LEVEL = 3.50;
-	public static final double TEMP_MODIFIER_6_LEVEL = 4.0;
+	public static final double TEMP_MODIFIER_0_LEVEL = 2;
+	public static final double TEMP_MODIFIER_1_LEVEL = 3;
+	public static final double TEMP_MODIFIER_2_LEVEL = 4;
+	public static final double TEMP_MODIFIER_3_LEVEL = 5;
+	public static final double TEMP_MODIFIER_4_LEVEL = 6;
+	public static final double TEMP_MODIFIER_5_LEVEL = 7;
+	public static final double TEMP_MODIFIER_6_LEVEL = 8;
 
 	private static final int MIN_RANDOM = 85;
-	
+
 	// http://www.smogon.com/dp/articles/damage_formula
 
-	public double getMinDamage(Pokemon attacker, Pokemon defender, Attack attack){
+	public static double getMinDamage(TeamPokemon attacker,
+			TeamPokemon defender, Attack attack) {
 		return 0;
 	}
-	
-	public double getMaxDamage(Pokemon attacker, Pokemon defender, Attack attack){
+
+	public static double getMaxDamage(TeamPokemon attacker,
+			TeamPokemon defender, Attack attack) {
 		return 0;
 	}
 
@@ -203,8 +205,9 @@ public class DamageCalcTools {
 		double result;
 		result = 2 * attackerLevel / 5;
 		result += 2;
-		result = result * attackBasePower * pokemonAttackStat
-				/ pokemonDefenseStat;
+		double attack = pokemonAttackStat * attackLevelModifier;
+		double defense = pokemonDefenseStat * defenseLevelModifier;
+		result = result * attackBasePower * attack / defense;
 		result /= 50;
 		// Mod1
 		result += 2;
@@ -396,31 +399,31 @@ public class DamageCalcTools {
 	public static double getStatModifier(int position) {
 		switch (position) {
 		case 0:
-			return (1 / TEMP_MODIFIER_6_LEVEL);
+			return (2 / TEMP_MODIFIER_6_LEVEL);
 		case 1:
-			return (1 / TEMP_MODIFIER_5_LEVEL);
+			return (2 / TEMP_MODIFIER_5_LEVEL);
 		case 2:
-			return (1 / TEMP_MODIFIER_4_LEVEL);
+			return (2 / TEMP_MODIFIER_4_LEVEL);
 		case 3:
-			return (1 / TEMP_MODIFIER_3_LEVEL);
+			return (2 / TEMP_MODIFIER_3_LEVEL);
 		case 4:
-			return (1 / TEMP_MODIFIER_2_LEVEL);
+			return (2 / TEMP_MODIFIER_2_LEVEL);
 		case 5:
-			return (1 / TEMP_MODIFIER_1_LEVEL);
+			return (2 / TEMP_MODIFIER_1_LEVEL);
 		case 6:
-			return TEMP_MODIFIER_0_LEVEL;
+			return (TEMP_MODIFIER_0_LEVEL / 2);
 		case 7:
-			return TEMP_MODIFIER_1_LEVEL;
+			return (TEMP_MODIFIER_1_LEVEL / 2);
 		case 8:
-			return TEMP_MODIFIER_2_LEVEL;
+			return (TEMP_MODIFIER_2_LEVEL / 2);
 		case 9:
-			return TEMP_MODIFIER_3_LEVEL;
+			return (TEMP_MODIFIER_3_LEVEL / 2);
 		case 10:
-			return TEMP_MODIFIER_4_LEVEL;
+			return (TEMP_MODIFIER_4_LEVEL / 2);
 		case 11:
-			return TEMP_MODIFIER_5_LEVEL;
+			return (TEMP_MODIFIER_5_LEVEL / 2);
 		case 12:
-			return TEMP_MODIFIER_6_LEVEL;
+			return (TEMP_MODIFIER_6_LEVEL / 2);
 		default:
 			return 0;
 		}

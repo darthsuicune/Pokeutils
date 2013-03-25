@@ -2,11 +2,12 @@ package com.suicune.pokeutils;
 
 import java.util.ArrayList;
 
-import com.suicune.pokeutils.database.PokeContract;
-
 import android.database.Cursor;
 
+import com.suicune.pokeutils.database.PokeContract;
+
 public class Pokemon {
+	public long mId;
 	public String mName;
 	public int mNumber;
 	public int mForm;
@@ -25,6 +26,8 @@ public class Pokemon {
 
 	public Pokemon(Cursor cursor) {
 		if (cursor.moveToFirst()) {
+			mId = cursor.getInt(cursor
+					.getColumnIndex(PokeContract.PokemonName._ID));
 			mName = cursor.getString(cursor
 					.getColumnIndex(PokeContract.PokemonName.NAME));
 			mNumber = Integer.parseInt(cursor.getString(cursor
@@ -59,31 +62,32 @@ public class Pokemon {
 		mAttacksList = new ArrayList<Attack>();
 	}
 
-	public Pokemon(String mName, int mNumber, int mForm, int mType1,
-			int mType2, int mBaseHP, int mBaseAtt, int mBaseDef,
-			int mBaseSpAtt, int mBaseSpDef, int mBaseSpeed, int mAbility1,
-			int mAbility2, int mAbilityDW) {
-		this.mName = mName;
-		this.mForm = mForm;
-		this.mType1 = mType1;
-		this.mType2 = mType2;
-		this.mBaseHP = mBaseHP;
-		this.mBaseAtt = mBaseAtt;
-		this.mBaseDef = mBaseDef;
-		this.mBaseSpAtt = mBaseSpAtt;
-		this.mBaseSpDef = mBaseSpDef;
-		this.mBaseSpeed = mBaseSpeed;
-		this.mAbility1 = mAbility1;
-		this.mAbility2 = mAbility2;
-		this.mAbilityDW = mAbilityDW;
+	public Pokemon(long id, String name, int number, int norm, int type1,
+			int type2, int baseHP, int baseAtt, int baseDef,
+			int baseSpAtt, int baseSpDef, int baseSpeed, int ability1,
+			int ability2, int abilityDW) {
+		mId = id;
+		mName = name;
+		mForm = norm;
+		mType1 = type1;
+		mType2 = type2;
+		mBaseHP = baseHP;
+		mBaseAtt = baseAtt;
+		mBaseDef = baseDef;
+		mBaseSpAtt = baseSpAtt;
+		mBaseSpDef = baseSpDef;
+		mBaseSpeed = baseSpeed;
+		mAbility1 = ability1;
+		mAbility2 = ability2;
+		mAbilityDW = abilityDW;
 		mAttacksList = new ArrayList<Attack>();
 	}
-	
-	public void addAttacks(ArrayList<Attack> attacks){
+
+	public void addAttacks(ArrayList<Attack> attacks) {
 		mAttacksList = attacks;
 	}
-	
-	public void addAttack(Attack attack){
+
+	public void addAttack(Attack attack) {
 		mAttacksList.add(attack);
 	}
 }

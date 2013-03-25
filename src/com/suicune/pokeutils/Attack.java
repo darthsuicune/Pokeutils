@@ -6,7 +6,7 @@ import android.database.Cursor;
 
 public class Attack {
 	public static final int CLASS_OTHER = 0;
-	public static final int CLASS_PYHISICAL = 1;
+	public static final int CLASS_PHYSICAL = 1;
 	public static final int CLASS_SPECIAL = 2;
 
 	public int mId;

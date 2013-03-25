@@ -1,6 +1,8 @@
 package com.suicune.pokeutils;
 
+
 public class Natures {
+	public static final int NATURES_COUNT = 25;
 
 	// Neutral natures
 	public static final int HARDY = 0;

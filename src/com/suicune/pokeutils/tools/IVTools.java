@@ -25,6 +25,9 @@ public class IVTools {
 	public static final int MAX_SP_DEF = 614;
 	public static final int MIN_SPEED = 1;
 	public static final int MAX_SPEED = 614;
+	
+	public static final int NATURE_POSITIVE_MODIFIER = 110;
+	public static final int NATURE_NEGATIVE_MODIFIER = 90;
 
 	/**
 	 * This method calculates all the possible IVs that match the given values.
@@ -186,7 +189,7 @@ public class IVTools {
 		Double hiddenPowerTypeDouble = Math.floor(((1 * (hpIv % 2))
 				+ (2 * (attIv % 2)) + (4 * (defIv % 2)) + (8 * (speedIv % 2))
 				+ (16 * (spAttIv % 2)) + (32 * (spDefIv % 2))) * 15 / 63);
-		switch(hiddenPowerTypeDouble.intValue()){
+		switch (hiddenPowerTypeDouble.intValue()) {
 		case 0:
 			return R.string.type_fighting;
 		case 1:
@@ -254,9 +257,11 @@ public class IVTools {
 		calculatedStat = Math.floor(calculatedStat);
 		return calculatedStat.intValue();
 	}
-	
+
 	/**
-	 * Convenience method for calculation hidden power power, based on the stats.
+	 * Convenience method for calculation hidden power power, based on the
+	 * stats.
+	 * 
 	 * @param iv
 	 * @return
 	 */

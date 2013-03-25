@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="nature_hardy">Hardy</string>
+    <string name="nature_bashful">Bashful</string>
+    <string name="nature_docile">Docile</string>
+    <string name="nature_quirky">Quirky</string>
+    <string name="nature_serious">Serious</string>
     <string name="nature_lonely">Lonely</string>
     <string name="nature_brave">Brave</string>
     <string name="nature_adamant">Adamant</string>
     <string name="nature_naughty">Naughty</string>
-    
     <string name="nature_bold">Bold</string>
-    <string name="nature_docile">Docile</string>
     <string name="nature_relaxed">Relaxed</string>
     <string name="nature_impish">Impish</string>
     <string name="nature_lax">Lax</string>
-    
     <string name="nature_timid">Timid</string>
     <string name="nature_hasty">Hasty</string>
-    <string name="nature_serious">Serious</string>
     <string name="nature_jolly">Jolly</string>
     <string name="nature_naive">Naive</string>
-    
     <string name="nature_modest">Modest</string>
     <string name="nature_mild">Mild</string>
     <string name="nature_quiet">Quiet</string>
-    <string name="nature_bashful">Bashful</string>
     <string name="nature_rash">Rash</string>
-    
     <string name="nature_calm">Calm</string>
     <string name="nature_gentle">Gentle</string>
     <string name="nature_sassy">Sassy</string>
     <string name="nature_careful">Careful</string>
-    <string name="nature_quirky">Quirky</string>
+
 </resources>

@@ -7,14 +7,23 @@
             android:id="@+id/damage_calc_pokemon_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:hint="@string/damage_calc_pokemon_2"
             android:inputType="textNoSuggestions"
             android:maxLines="1" />
 
         <Spinner
-            android:id="@+id/damage_calc_defense_modifier"
-            android:entries="@array/damage_modifiers" />
+            android:id="@+id/damage_calc_defender_nature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/damage_calc_defender_level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hp" />
     </TableRow>
 
     <!-- Defender stats -->
@@ -26,34 +35,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/hp" >
-        </EditText>
+            android:hint="@string/hp" />
 
         <EditText
             android:id="@+id/damage_calc_defender_def"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/att" >
-        </EditText>
+            android:hint="@string/att" />
 
         <EditText
             android:id="@+id/damage_calc_defender_sp_def"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/sp_att" >
-        </EditText>
+            android:hint="@string/sp_att" />
 
         <EditText
             android:id="@+id/damage_calc_defender_speed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/speed" >
-        </EditText>
+            android:hint="@string/speed" />
     </TableRow>
 
     <!-- Defender modifiers -->
+
+    <Spinner
+        android:id="@+id/damage_calc_defense_modifier"
+        android:layout_width="wrap_content"
+        android:entries="@array/damage_modifiers" />
 
 </TableLayout>

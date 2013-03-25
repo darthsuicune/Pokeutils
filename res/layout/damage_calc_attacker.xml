@@ -7,13 +7,19 @@
             android:id="@+id/damage_calc_pokemon_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:hint="@string/damage_calc_pokemon_1"
             android:inputType="textNoSuggestions"
             android:maxLines="1" />
 
+        <Spinner
+            android:id="@+id/damage_calc_attacker_nature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
         <EditText
-            android:id="@+id/damage_calc_level1"
+            android:id="@+id/damage_calc_attacker_level"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
