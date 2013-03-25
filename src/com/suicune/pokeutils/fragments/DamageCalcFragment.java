@@ -206,8 +206,6 @@ public class DamageCalcFragment extends Fragment implements
 	}
 
 	private void prepareNatureSpinners() {
-		int aux1 = mAttackerNature;
-		int aux2 = mDefenderNature;
 		mAttackerNatureView.setAdapter(getNaturesAdapter());
 		mDefenderNatureView.setAdapter(getNaturesAdapter());
 
