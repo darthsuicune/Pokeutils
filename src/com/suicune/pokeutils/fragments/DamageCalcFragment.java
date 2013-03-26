@@ -64,10 +64,12 @@ public class DamageCalcFragment extends Fragment implements
 	private TextView mAttackerAttView;
 	private TextView mAttackerSpAttView;
 	private TextView mAttackerSpeedView;
-	private Spinner mAttackModifierView;
-	private int mAttackModifierPosition = 6;
 	private Spinner mAttackerAbilityView;
 	private int mAttackerAbilityPosition = 0;
+	private Spinner mAttackerItemView;
+	private int mAttackerItemPosition = 0;
+	private Spinner mAttackModifierView;
+	private int mAttackModifierPosition = 6;
 
 	// Defender views and constants
 	private TeamPokemon mDefender;
@@ -81,6 +83,8 @@ public class DamageCalcFragment extends Fragment implements
 	private TextView mDefenderSpeedView;
 	private Spinner mDefenderAbilityView;
 	private int mDefenderAbilityPosition = 0;
+	private Spinner mDefenderItemView;
+	private int mDefenderItemPosition = 0;
 
 	private Attack mAttack;
 	private Spinner mAttackView;
@@ -118,6 +122,9 @@ public class DamageCalcFragment extends Fragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		if (getActivity().findViewById(R.id.damage_calc_attack) == null) {
+			return;
+		}
 		mAttackNames = getResources().getStringArray(R.array.moves);
 		if (savedInstanceState != null) {
 			mAttackModifierPosition = savedInstanceState
@@ -150,6 +157,7 @@ public class DamageCalcFragment extends Fragment implements
 			}
 		}
 		setViews();
+		getLoaderManager().restartLoader(LOADER_ABILITIES, null, this);
 	}
 
 	@Override
@@ -176,72 +184,176 @@ public class DamageCalcFragment extends Fragment implements
 	// VIEW RELATED METHODS ON START
 
 	private void setViews() {
+		prepareAttackerViews();
+		prepareAttackViews();
+		prepareDefenderViews();
+		prepareOtherModifierViews();
+	}
+
+	private void prepareAttackerViews() {
+		prepareAttackerAutoCompleteView();
+		prepareAttackerLevelView();
+		prepareAttackerNatureView();
+		prepareAttackerBaseStatsViews();
+		prepareAttackerAbilityView();
+		prepareAttackerItemView();
+	}
+
+	private void prepareAttackerAutoCompleteView() {
+		mAttackerView = (AutoCompleteTextView) getActivity().findViewById(
+				R.id.damage_calc_pokemon_1);
+
+		// Prepare the adapter
+		String[] from = { PokeContract.PokemonName.NAME };
+		int[] to = { android.R.id.text1 };
+		mAttackerAdapter = new SimpleCursorAdapter(getActivity(),
+				android.R.layout.simple_spinner_dropdown_item, null, from, to,
+				0);
+		mAttackerAdapter.setCursorToStringConverter(this);
+
+		// Set the adapter and different options.
+		mAttackerView.setAdapter(mAttackerAdapter);
+		mAttackerView.addTextChangedListener(this);
+		mAttackerView.setOnItemClickListener(this);
+	}
+
+	private void prepareAttackerLevelView() {
 		mAttackerLevelView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_attacker_level);
-		if (mAttackerLevelView == null) {
-			return;
-		}
+		mAttackerLevelView.setText("100");
+		mAttackerLevelView.addTextChangedListener(this);
+	}
 
+	private void prepareAttackerNatureView() {
 		mAttackerNatureView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_attacker_nature);
 
-		mAttackerHpView = (TextView) getActivity().findViewById(
+		mAttackerNatureView.setAdapter(getNaturesAdapter());
+		mAttackerNatureView.setOnItemSelectedListener(this);
+		mAttackerNatureView.setSelection(mAttackerNature);
+	}
+
+	private void prepareAttackerBaseStatsViews() {
+		mAttackerHpView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_attacker_hp);
-		mAttackerAttView = (TextView) getActivity().findViewById(
+		mAttackerAttView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_attacker_att);
-		mAttackerSpAttView = (TextView) getActivity().findViewById(
+		mAttackerSpAttView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_attacker_sp_att);
-		mAttackerSpeedView = (TextView) getActivity().findViewById(
+		mAttackerSpeedView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_attacker_speed);
 
-		mDefenderNatureView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_defender_nature);
-		mDefenderLevelView = (EditText) getActivity().findViewById(
-				R.id.damage_calc_defender_level);
-		mDefenderHpView = (TextView) getActivity().findViewById(
-				R.id.damage_calc_defender_hp);
-		mDefenderDefView = (TextView) getActivity().findViewById(
-				R.id.damage_calc_defender_def);
-		mDefenderSpDefView = (TextView) getActivity().findViewById(
-				R.id.damage_calc_defender_sp_def);
-		mDefenderSpeedView = (TextView) getActivity().findViewById(
-				R.id.damage_calc_defender_speed);
-
-		mAttackerLevelView.setText("100");
-		mDefenderLevelView.setText("100");
-		mResultView = (TextView) getActivity().findViewById(
-				R.id.damage_calc_damage);
-
-		prepareNatureSpinners();
-		prepareAutoCompleteViews();
-		prepareAttackViews();
-		prepareDefenderViews();
-		prepareAbilitiesSpinners();
-
-		mAttackerView.addTextChangedListener(this);
-		mDefenderView.addTextChangedListener(this);
-		mAttackerLevelView.addTextChangedListener(this);
-		mDefenderLevelView.addTextChangedListener(this);
-		mAttackBaseDamageView.addTextChangedListener(this);
-		
 		mAttackerHpView.addTextChangedListener(this);
 		mAttackerAttView.addTextChangedListener(this);
 		mAttackerSpAttView.addTextChangedListener(this);
 		mAttackerSpeedView.addTextChangedListener(this);
+	}
+
+	private void prepareAttackerAbilityView() {
+		mAttackerAbilityView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_attacker_ability);
+		
+		mAttackerAbilityView.setOnItemSelectedListener(this);
+	}
+
+	private void prepareAttackerItemView() {
+		mAttackerItemView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_attacker_item);
+		
+		// TODO: Add items to the equation, yey
+	}
+
+	private void prepareAttackViews() {
+		mAttackView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_attack);
+		mAttackBaseDamageView = (EditText) getActivity().findViewById(
+				R.id.damage_calc_base_damage);
+		mAttackModifierView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_attack_modifier);
+		
+		mAttackModifierView.setSelection(mAttackModifierPosition);
+		mAttackModifierView.setOnItemSelectedListener(this);
+
+		setAttackSpinnerAdapter();
+		mAttackView.setAdapter(mAttacksAdapter);
+		mAttackView.setOnItemSelectedListener(this);
+	}
+
+	private void prepareDefenderViews() {
+		prepareDefenderAutoCompleteView();
+		prepareDefenderLevelView();
+		prepareDefenderNatureView();
+		prepareDefenderBaseStatsViews();
+		prepareDefenderAbilityView();
+		prepareDefenderItemView();
+	}
+
+	private void prepareDefenderAutoCompleteView() {
+		mDefenderView = (AutoCompleteTextView) getActivity().findViewById(
+				R.id.damage_calc_pokemon_1);
+
+		// Prepare the adapter
+		String[] from = { PokeContract.PokemonName.NAME };
+		int[] to = { android.R.id.text1 };
+		mDefenderAdapter = new SimpleCursorAdapter(getActivity(),
+				android.R.layout.simple_spinner_dropdown_item, null, from, to,
+				0);
+		mDefenderAdapter.setCursorToStringConverter(this);
+
+		// Set the adapter and different options.
+		mDefenderView.setAdapter(mDefenderAdapter);
+		mDefenderView.addTextChangedListener(this);
+		mDefenderView.setOnItemClickListener(this);
+	}
+
+	private void prepareDefenderLevelView() {
+		mDefenderLevelView = (EditText) getActivity().findViewById(
+				R.id.damage_calc_defender_level);
+		mDefenderLevelView.setText("100");
+		mDefenderLevelView.addTextChangedListener(this);
+	}
+
+	private void prepareDefenderNatureView() {
+		mDefenderNatureView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_defender_nature);
+
+		mDefenderNatureView.setAdapter(getNaturesAdapter());
+		mDefenderNatureView.setOnItemSelectedListener(this);
+		mDefenderNatureView.setSelection(mDefenderNature);
+	}
+
+	private void prepareDefenderBaseStatsViews() {
+		mDefenderHpView = (EditText) getActivity().findViewById(
+				R.id.damage_calc_defender_hp);
+		mDefenderDefView = (EditText) getActivity().findViewById(
+				R.id.damage_calc_defender_def);
+		mDefenderSpDefView = (EditText) getActivity().findViewById(
+				R.id.damage_calc_defender_sp_def);
+		mDefenderSpeedView = (EditText) getActivity().findViewById(
+				R.id.damage_calc_defender_speed);
+
 		mDefenderHpView.addTextChangedListener(this);
 		mDefenderDefView.addTextChangedListener(this);
 		mDefenderSpDefView.addTextChangedListener(this);
 		mDefenderSpeedView.addTextChangedListener(this);
 	}
 
-	private void prepareNatureSpinners() {
-		mAttackerNatureView.setAdapter(getNaturesAdapter());
-		mDefenderNatureView.setAdapter(getNaturesAdapter());
+	private void prepareDefenderAbilityView() {
+		mDefenderAbilityView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_defender_ability);
+		
+		mDefenderAbilityView.setOnItemSelectedListener(this);
+	}
 
-		mAttackerNatureView.setOnItemSelectedListener(this);
-		mDefenderNatureView.setOnItemSelectedListener(this);
-		mAttackerNatureView.setSelection(mAttackerNature);
-		mDefenderNatureView.setSelection(mDefenderNature);
+	private void prepareDefenderItemView() {
+		mDefenderItemView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_defender_item);
+		
+		// TODO: Add items to the equation, yey
+	}
+
+	private void prepareOtherModifierViews() {
+		// TODO: Add stuff.
 	}
 
 	public SpinnerAdapter getNaturesAdapter() {
@@ -256,63 +368,6 @@ public class DamageCalcFragment extends Fragment implements
 		return adapter;
 	}
 
-	private void prepareAutoCompleteViews() {
-		mAttackerView = (AutoCompleteTextView) getActivity().findViewById(
-				R.id.damage_calc_pokemon_1);
-		mDefenderView = (AutoCompleteTextView) getActivity().findViewById(
-				R.id.damage_calc_pokemon_2);
-		setAutoCompleteAdapters();
-
-		mAttackerView.setOnItemClickListener(this);
-		mDefenderView.setOnItemClickListener(this);
-	}
-
-	private void setAutoCompleteAdapters() {
-		String[] from = { PokeContract.PokemonName.NAME };
-		int[] to = { android.R.id.text1 };
-		mAttackerAdapter = new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, null, from, to,
-				0);
-		mDefenderAdapter = new SimpleCursorAdapter(getActivity(),
-				android.R.layout.simple_spinner_dropdown_item, null, from, to,
-				0);
-
-		mAttackerAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_item);
-		mDefenderAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_item);
-
-		mAttackerAdapter.setCursorToStringConverter(this);
-		mDefenderAdapter.setCursorToStringConverter(this);
-
-		mAttackerView.setAdapter(mAttackerAdapter);
-		mDefenderView.setAdapter(mDefenderAdapter);
-	}
-
-	private void prepareAttackViews() {
-		mAttackView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_attack);
-		mAttackBaseDamageView = (EditText) getActivity().findViewById(
-				R.id.damage_calc_base_damage);
-
-		mAttackModifierView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_attack_modifier);
-		mAttackModifierView.setSelection(mAttackModifierPosition);
-		mAttackModifierView.setOnItemSelectedListener(this);
-
-		setAttackSpinnerAdapter();
-		mAttackView.setAdapter(mAttacksAdapter);
-		mAttackView.setOnItemSelectedListener(this);
-
-	}
-
-	private void prepareDefenderViews() {
-		mDefenseModifierView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_defense_modifier);
-		mDefenseModifierView.setSelection(mDefenseModifierPosition);
-		mDefenseModifierView.setOnItemSelectedListener(this);
-	}
-
 	private void setAttackSpinnerAdapter() {
 		String[] from = { PokeContract.Attacks._ID };
 		int[] to = { android.R.id.text1 };
@@ -320,18 +375,6 @@ public class DamageCalcFragment extends Fragment implements
 				android.R.layout.simple_spinner_item, null, from, to, 0);
 		mAttacksAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	}
-
-	private void prepareAbilitiesSpinners() {
-		mAttackerAbilityView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_attacker_ability);
-		mDefenderAbilityView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_defender_ability);
-
-		mAttackerAbilityView.setOnItemSelectedListener(this);
-		mDefenderAbilityView.setOnItemSelectedListener(this);
-
-		getLoaderManager().restartLoader(LOADER_ABILITIES, null, this);
 	}
 
 	private void setAbilityAdapter(boolean isAttacker) {
@@ -435,10 +478,12 @@ public class DamageCalcFragment extends Fragment implements
 				isAttacker = true;
 				getLoaderManager().restartLoader(
 						LOADER_ATTACKING_POKEMON_AUTO_COMPLETE, null, this);
+				return;
 			} else if (s.hashCode() == mDefenderView.getText().hashCode()) {
 				isAttacker = false;
 				getLoaderManager().restartLoader(
 						LOADER_DEFENDING_POKEMON_AUTO_COMPLETE, null, this);
+				return;
 			}
 		}
 		try {
