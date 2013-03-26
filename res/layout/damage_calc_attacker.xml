@@ -3,6 +3,8 @@
 
     <TableRow>
 
+        <!-- Pokemon, Nature, Level -->
+
         <AutoCompleteTextView
             android:id="@+id/damage_calc_pokemon_1"
             android:layout_width="0dp"
@@ -37,7 +39,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/hp" >
+            android:hint="@string/hp"
+            android:inputType="number" >
         </EditText>
 
         <EditText
@@ -45,7 +48,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/att" >
+            android:hint="@string/att"
+            android:inputType="number" >
         </EditText>
 
         <EditText
@@ -53,7 +57,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/sp_att" >
+            android:hint="@string/sp_att"
+            android:inputType="number" >
         </EditText>
 
         <EditText
@@ -61,9 +66,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/speed" >
+            android:hint="@string/speed"
+            android:inputType="number" >
         </EditText>
     </TableRow>
+
+    <!-- Ability/Item -->
+
+    <TableRow>
+
+        <Spinner
+            android:id="@+id/damage_calc_attacker_ability"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/damage_calc_attacker_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </TableRow>
+
+    <!-- Attack -->
 
     <TableRow>
 
@@ -88,10 +113,14 @@
 
     <!-- Attacker modifiers (Status / Objects) -->
 
+
+    <!-- Result -->
+
     <TextView
         android:id="@+id/damage_calc_damage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/damage_calc_damage"
         android:textIsSelectable="true"
         android:textSize="20sp" />

@@ -23,7 +23,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/hp" />
+            android:hint="@string/hp"
+            android:inputType="number" />
     </TableRow>
 
     <!-- Defender stats -->
@@ -35,28 +36,49 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/hp" />
+            android:hint="@string/hp"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/damage_calc_defender_def"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/att" />
+            android:hint="@string/att"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/damage_calc_defender_sp_def"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/sp_att" />
+            android:hint="@string/sp_att"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/damage_calc_defender_speed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/speed" />
+            android:hint="@string/speed"
+            android:inputType="number" />
+    </TableRow>
+    
+    <!-- Defender ability/item -->
+
+    <TableRow>
+
+        <Spinner
+            android:id="@+id/damage_calc_defender_ability"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/damage_calc_defender_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </TableRow>
 
     <!-- Defender modifiers -->

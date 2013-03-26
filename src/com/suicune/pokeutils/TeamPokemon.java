@@ -8,10 +8,10 @@ public class TeamPokemon extends Pokemon {
 	public TeamPokemon(long id, String mName, int mNumber, int mForm, int mType1,
 			int mType2, int mBaseHP, int mBaseAtt, int mBaseDef,
 			int mBaseSpAtt, int mBaseSpDef, int mBaseSpeed, int mAbility1,
-			int mAbility2, int mAbilityDW) {
+			int mAbility2, int mAbilityDw) {
 		super(id, mName, mNumber, mForm, mType1, mType2, mBaseHP, mBaseAtt,
 				mBaseDef, mBaseSpAtt, mBaseSpDef, mBaseSpeed, mAbility1,
-				mAbility2, mAbilityDW);
+				mAbility2, mAbilityDw);
 	}
 
 	public TeamPokemon(Cursor cursor) {

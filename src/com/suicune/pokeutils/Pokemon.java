@@ -21,7 +21,7 @@ public class Pokemon {
 	public int mBaseSpeed;
 	public int mAbility1;
 	public int mAbility2;
-	public int mAbilityDW;
+	public int mAbilityDw;
 	public ArrayList<Attack> mAttacksList;
 
 	public Pokemon(Cursor cursor) {
@@ -54,7 +54,7 @@ public class Pokemon {
 					.getColumnIndex(PokeContract.PokemonAbility1.ABILITY_1)));
 			mAbility2 = Integer.parseInt(cursor.getString(cursor
 					.getColumnIndex(PokeContract.PokemonAbility2.ABILITY_2)));
-			mAbilityDW = Integer.parseInt(cursor.getString(cursor
+			mAbilityDw = Integer.parseInt(cursor.getString(cursor
 					.getColumnIndex(PokeContract.PokemonAbilityDW.ABILITY_DW)));
 		} else {
 			return;
@@ -65,7 +65,7 @@ public class Pokemon {
 	public Pokemon(long id, String name, int number, int norm, int type1,
 			int type2, int baseHP, int baseAtt, int baseDef,
 			int baseSpAtt, int baseSpDef, int baseSpeed, int ability1,
-			int ability2, int abilityDW) {
+			int ability2, int abilityDw) {
 		mId = id;
 		mName = name;
 		mForm = norm;
@@ -79,7 +79,7 @@ public class Pokemon {
 		mBaseSpeed = baseSpeed;
 		mAbility1 = ability1;
 		mAbility2 = ability2;
-		mAbilityDW = abilityDW;
+		mAbilityDw = abilityDw;
 		mAttacksList = new ArrayList<Attack>();
 	}
 
