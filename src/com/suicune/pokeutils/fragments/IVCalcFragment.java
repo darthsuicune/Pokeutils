@@ -86,19 +86,26 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstancemState) {
+		if (container == null) {
+			return null;
+		}
 		return inflater.inflate(R.layout.iv_calc, container, false);
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstancemState) {
-		super.onActivityCreated(savedInstancemState);
-		setViews();
-		setListeners();
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		if (setViews()) {
+			setListeners();
+		}
 	}
 
-	void setViews() {
+	private boolean setViews() {
 		mHiddenPowerTypeView = (TextView) getActivity().findViewById(
 				R.id.iv_calc_hidden_power_type);
+		if (mHiddenPowerTypeView == null) {
+			return false;
+		}
 		mHiddenPowerPowerView = (TextView) getActivity().findViewById(
 				R.id.iv_calc_hidden_power_power);
 		mIVHPView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_hp);
@@ -152,6 +159,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		mNatureSpinner = (Spinner) getActivity().findViewById(
 				R.id.iv_calc_nature);
 		setAutoCompleteAdapter();
+		return true;
 	}
 
 	private void setListeners() {

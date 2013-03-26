@@ -29,6 +29,9 @@ public class PokedexFragment extends ListFragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		if (container == null) {
+			return null;
+		}
 		return inflater.inflate(R.layout.pokedex, container, false);
 	}
 
@@ -40,6 +43,9 @@ public class PokedexFragment extends ListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		if(getActivity().findViewById(android.R.id.list) == null){
+			return;
+		}
 		prepareAdapter();
 		setListAdapter(mAdapter);
 		getLoaderManager().restartLoader(LOADER_POKEMON, null, this);
@@ -112,8 +118,8 @@ public class PokedexFragment extends ListFragment implements
 			TextView type2View = (TextView) row
 					.findViewById(R.id.pokedex_entry_pokemon_type_2);
 
-			int type1 = Types.getTypeName(Integer.parseInt(type1View
-					.getText().toString()));
+			int type1 = Types.getTypeName(Integer.parseInt(type1View.getText()
+					.toString()));
 			type1View.setText((type1 == 0) ? "-" : getString(type1));
 			int type2 = Types.getTypeName(Integer.parseInt(type2View.getText()
 					.toString()));

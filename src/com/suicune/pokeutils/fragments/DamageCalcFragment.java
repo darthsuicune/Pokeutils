@@ -2,7 +2,6 @@ package com.suicune.pokeutils.fragments;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -13,7 +12,6 @@ import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +51,8 @@ public class DamageCalcFragment extends Fragment implements
 	private static final String ARG_DEFENDER_ID = "defenderId";
 	private static final String ARG_POKEMON_ID = "pokemonId";
 	private static final String ARG_ATTACK_ID = "attackId";
+	private static final String ARG_ATTACKER_ABILITY = "attackerAbility";
+	private static final String ARG_DEFENDER_ABILITY = "defenderAbility";
 
 	// Attacker views and constants
 	private TeamPokemon mAttacker;
@@ -126,6 +126,10 @@ public class DamageCalcFragment extends Fragment implements
 					.getInt(ARG_DEFENDER_MODIFIER);
 			mAttackerNature = savedInstanceState.getInt(ARG_ATTACKER_NATURE);
 			mDefenderNature = savedInstanceState.getInt(ARG_DEFENDER_NATURE);
+			mAttackerAbilityPosition = savedInstanceState
+					.getInt(ARG_ATTACKER_ABILITY);
+			mDefenderAbilityPosition = savedInstanceState
+					.getInt(ARG_DEFENDER_ABILITY);
 			if (savedInstanceState.containsKey(ARG_ATTACKER_ID)) {
 				Bundle args = new Bundle();
 				args.putLong(ARG_POKEMON_ID,
@@ -155,6 +159,8 @@ public class DamageCalcFragment extends Fragment implements
 		outState.putInt(ARG_DEFENDER_MODIFIER, mDefenseModifierPosition);
 		outState.putInt(ARG_ATTACKER_NATURE, mAttackerNature);
 		outState.putInt(ARG_DEFENDER_NATURE, mDefenderNature);
+		outState.putInt(ARG_ATTACKER_ABILITY, mAttackerAbilityPosition);
+		outState.putInt(ARG_DEFENDER_ABILITY, mDefenderAbilityPosition);
 		if (mAttacker != null) {
 			outState.putLong(ARG_ATTACKER_ID, mAttacker.mId);
 		}
@@ -166,6 +172,8 @@ public class DamageCalcFragment extends Fragment implements
 					mAttackView.getSelectedItemPosition());
 		}
 	}
+
+	// VIEW RELATED METHODS ON START
 
 	private void setViews() {
 		mAttackerLevelView = (EditText) getActivity().findViewById(
@@ -215,6 +223,15 @@ public class DamageCalcFragment extends Fragment implements
 		mAttackerLevelView.addTextChangedListener(this);
 		mDefenderLevelView.addTextChangedListener(this);
 		mAttackBaseDamageView.addTextChangedListener(this);
+		
+		mAttackerHpView.addTextChangedListener(this);
+		mAttackerAttView.addTextChangedListener(this);
+		mAttackerSpAttView.addTextChangedListener(this);
+		mAttackerSpeedView.addTextChangedListener(this);
+		mDefenderHpView.addTextChangedListener(this);
+		mDefenderDefView.addTextChangedListener(this);
+		mDefenderSpDefView.addTextChangedListener(this);
+		mDefenderSpeedView.addTextChangedListener(this);
 	}
 
 	private void prepareNatureSpinners() {
@@ -320,6 +337,9 @@ public class DamageCalcFragment extends Fragment implements
 	private void setAbilityAdapter(boolean isAttacker) {
 		String[] pokemonAbilities = new String[3];
 		if (isAttacker) {
+			if (mAttacker == null) {
+				return;
+			}
 			mAttackerAbilityAdapter = new ArrayAdapter<String>(getActivity(),
 					android.R.layout.simple_spinner_item, android.R.id.text1,
 					pokemonAbilities);
@@ -338,6 +358,9 @@ public class DamageCalcFragment extends Fragment implements
 			mAttackerAbilityView.setAdapter(mAttackerAbilityAdapter);
 			mAttackerAbilityView.setSelection(mAttackerAbilityPosition);
 		} else {
+			if (mDefender == null) {
+				return;
+			}
 			mDefenderAbilityAdapter = new ArrayAdapter<String>(getActivity(),
 					android.R.layout.simple_spinner_item, android.R.id.text1,
 					pokemonAbilities);
@@ -358,6 +381,8 @@ public class DamageCalcFragment extends Fragment implements
 		}
 	}
 
+	// INFORMATION LOADING
+
 	private void loadAttack(long attack) {
 		Bundle args = new Bundle();
 		args.putLong(ARG_ATTACK_ID, attack);
@@ -369,9 +394,11 @@ public class DamageCalcFragment extends Fragment implements
 	}
 
 	private void setAttackerStats() {
-		mAttacker.setIvs(new int[] { 31, 31, 31, 31, 31, 31 });
-		mAttacker.setEvs(new int[] { 252, 252, 252, 252, 252, 252 });
 		mAttacker.setStats();
+		mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT] = DamageCalcTools
+				.getStatModifier(mAttackModifierPosition);
+		mAttacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT] = DamageCalcTools
+				.getStatModifier(mAttackModifierPosition);
 
 		mAttackerHpView.setText("" + mAttacker.mStats[TeamPokemon.INDEX_HP]);
 		mAttackerAttView.setText("" + mAttacker.mStats[TeamPokemon.INDEX_ATT]);
@@ -379,33 +406,21 @@ public class DamageCalcFragment extends Fragment implements
 				+ mAttacker.mStats[TeamPokemon.INDEX_SP_ATT]);
 		mAttackerSpeedView.setText(""
 				+ mAttacker.mStats[TeamPokemon.INDEX_SPEED]);
-
-		if (mAttacker != null) {
-			mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT] = DamageCalcTools
-					.getStatModifier(mAttackModifierPosition);
-			mAttacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT] = DamageCalcTools
-					.getStatModifier(mAttackModifierPosition);
-		}
 		setAbilityAdapter(true);
 	}
 
 	private void setDefenderStats() {
-		mDefender.setIvs(new int[] { 31, 31, 31, 31, 31, 31 });
-		mDefender.setEvs(new int[] { 252, 252, 252, 252, 252, 252 });
-		mDefender.setStats();
-
+		mAttacker.setStats();
 		mDefenderHpView.setText("" + mDefender.mStats[TeamPokemon.INDEX_HP]);
 		mDefenderDefView.setText("" + mDefender.mStats[TeamPokemon.INDEX_DEF]);
 		mDefenderSpDefView.setText(""
 				+ mDefender.mStats[TeamPokemon.INDEX_SP_DEF]);
 		mDefenderSpeedView.setText(""
 				+ mDefender.mStats[TeamPokemon.INDEX_SPEED]);
-		if (mDefender != null) {
-			mDefender.mStatsModifier[TeamPokemon.INDEX_DEF] = DamageCalcTools
-					.getStatModifier(mDefenseModifierPosition);
-			mDefender.mStatsModifier[TeamPokemon.INDEX_SP_DEF] = DamageCalcTools
-					.getStatModifier(mDefenseModifierPosition);
-		}
+		mDefender.mStatsModifier[TeamPokemon.INDEX_DEF] = DamageCalcTools
+				.getStatModifier(mDefenseModifierPosition);
+		mDefender.mStatsModifier[TeamPokemon.INDEX_SP_DEF] = DamageCalcTools
+				.getStatModifier(mDefenseModifierPosition);
 		setAbilityAdapter(false);
 	}
 
@@ -414,16 +429,26 @@ public class DamageCalcFragment extends Fragment implements
 		if (s.equals("")) {
 			return;
 		}
+		if (!s.equals("")) {
+			mPokemonName = s.toString();
+			if (s.hashCode() == mAttackerView.getText().hashCode()) {
+				isAttacker = true;
+				getLoaderManager().restartLoader(
+						LOADER_ATTACKING_POKEMON_AUTO_COMPLETE, null, this);
+			} else if (s.hashCode() == mDefenderView.getText().hashCode()) {
+				isAttacker = false;
+				getLoaderManager().restartLoader(
+						LOADER_DEFENDING_POKEMON_AUTO_COMPLETE, null, this);
+			}
+		}
 		try {
 			if (s.hashCode() == mAttackerLevelView.getText().hashCode()) {
 				if (mAttacker != null) {
 					mAttacker.mLevel = Integer.parseInt(s.toString());
-					mAttacker.setStats();
 				}
 			} else if (s.hashCode() == mDefenderLevelView.getText().hashCode()) {
 				if (mDefender != null) {
 					mDefender.mLevel = Integer.parseInt(s.toString());
-					mDefender.setStats();
 				}
 			} else if (s.hashCode() == mAttackerHpView.getText().hashCode()) {
 				if (mAttacker != null) {
@@ -466,25 +491,12 @@ public class DamageCalcFragment extends Fragment implements
 							.parseInt(s.toString());
 				}
 			}
+			calculateDamage();
 		} catch (NumberFormatException e) {
 			return;
 		}
-		if (!s.equals("")) {
-			mPokemonName = s.toString();
-			if (s.hashCode() == mAttackerView.getText().hashCode()) {
-				isAttacker = true;
-				getLoaderManager().restartLoader(
-						LOADER_ATTACKING_POKEMON_AUTO_COMPLETE, null, this);
-			} else if (s.hashCode() == mDefenderView.getText().hashCode()) {
-				isAttacker = false;
-				getLoaderManager().restartLoader(
-						LOADER_DEFENDING_POKEMON_AUTO_COMPLETE, null, this);
-			}
-			calculateDamage();
-		}
 	}
 
-	// TODO: Modify to use new calls
 	private void calculateDamage() {
 		if (mAttacker == null || mDefender == null || mAttack == null
 				|| TextUtils.isEmpty(mAttackerLevelView.getText())
@@ -511,12 +523,17 @@ public class DamageCalcFragment extends Fragment implements
 		Loader<Cursor> loader = null;
 		switch (id) {
 		case LOADER_ATTACKS:
+			int form = 0;
+			if (args != null && args.containsKey(ARG_ATTACKER_ID)) {
+				form = 0;
+			} else {
+				form = mAttacker.mForm;
+			}
 			String attacksSelection = PokeContract.PokemonAttacks.NUMBER
 					+ "=? AND " + PokeContract.PokemonAttacks.FORM + "=? AND "
 					+ PokeContract.Attacks.POWER + " > 0";
 			String[] attacksSelectionArgs = {
-					Integer.toString(mAttacker.mNumber),
-					Integer.toString(mAttacker.mForm) };
+					Integer.toString(mAttacker.mNumber), Integer.toString(form) };
 			loader = new CursorLoader(getActivity(),
 					PokeContract.PokemonAttacks.CONTENT_POKEMON_ATTACKS, null,
 					attacksSelection, attacksSelectionArgs, null);
@@ -562,6 +579,12 @@ public class DamageCalcFragment extends Fragment implements
 	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
 		switch (loader.getId()) {
 		case LOADER_ATTACKS:
+			if (cursor.getCount() == 0) {
+				Bundle args = new Bundle();
+				args.putBoolean(ARG_ATTACKER_ID, true);
+				getLoaderManager().restartLoader(LOADER_ATTACKS, args, this);
+				return;
+			}
 			mAttacksAdapter.swapCursor(cursor);
 			if (mAttackChoicePosition > -1) {
 				mAttackView.setSelection(mAttackChoicePosition);
@@ -609,7 +632,6 @@ public class DamageCalcFragment extends Fragment implements
 
 	private void prepareAbilities(Cursor cursor) {
 		mAbilityNames = new String[cursor.getCount()];
-		Log.d("TEST", DatabaseUtils.dumpCursorToString(cursor));
 		if (cursor.moveToFirst()) {
 			for (int i = 0; i < cursor.getCount(); i++) {
 				mAbilityNames[i] = cursor.getString(cursor
@@ -682,9 +704,36 @@ public class DamageCalcFragment extends Fragment implements
 			break;
 		case R.id.damage_calc_attacker_ability:
 			mAttackerAbilityPosition = position;
+			if (mAttacker != null) {
+				switch (position) {
+				case 0:
+					mAttacker.mSelectedAbility = mAttacker.mAbility1;
+					break;
+				case 1:
+					mAttacker.mSelectedAbility = (mAttacker.mAbility2 != 0) ? mAttacker.mAbility2
+							: mAttacker.mAbility1;
+					break;
+				case 2:
+					break;
+				}
+			}
 			break;
 		case R.id.damage_calc_defender_ability:
 			mDefenderAbilityPosition = position;
+			if (mDefender != null) {
+				switch (position) {
+				case 0:
+					mDefender.mSelectedAbility = mDefender.mAbility1;
+					break;
+				case 1:
+					mDefender.mSelectedAbility = (mDefender.mAbility2 != 0) ? mDefender.mAbility2
+							: mDefender.mAbility1;
+					break;
+				case 2:
+					mDefender.mSelectedAbility = mDefender.mAbilityDw;
+					break;
+				}
+			}
 			break;
 		default:
 			break;
@@ -731,6 +780,6 @@ public class DamageCalcFragment extends Fragment implements
 	}
 
 	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
+	public void onNothingSelected(AdapterView<?> adapterView) {
 	}
 }

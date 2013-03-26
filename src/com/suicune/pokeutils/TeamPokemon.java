@@ -5,17 +5,19 @@ import android.database.Cursor;
 import com.suicune.pokeutils.tools.IVTools;
 
 public class TeamPokemon extends Pokemon {
-	public TeamPokemon(long id, String mName, int mNumber, int mForm, int mType1,
-			int mType2, int mBaseHP, int mBaseAtt, int mBaseDef,
+	public TeamPokemon(long id, String mName, int mNumber, int mForm,
+			int mType1, int mType2, int mBaseHP, int mBaseAtt, int mBaseDef,
 			int mBaseSpAtt, int mBaseSpDef, int mBaseSpeed, int mAbility1,
 			int mAbility2, int mAbilityDw) {
 		super(id, mName, mNumber, mForm, mType1, mType2, mBaseHP, mBaseAtt,
 				mBaseDef, mBaseSpAtt, mBaseSpDef, mBaseSpeed, mAbility1,
 				mAbility2, mAbilityDw);
+		setStats();
 	}
 
 	public TeamPokemon(Cursor cursor) {
 		super(cursor);
+		setStats();
 	}
 
 	public final static int INDEX_HP = 0;
@@ -30,25 +32,17 @@ public class TeamPokemon extends Pokemon {
 	public Attack mAttack3 = null;
 	public Attack mAttack4 = null;
 
-	public Ability mAbility;
-	public Item mAttachedItem;
+	public int mAttachedItem;
+	public int mSelectedAbility;
 
 	public String mNickname;
 
-	public int[] mIvs = new int[6];
-	public int[] mEvs = new int[6];
+	public int[] mIvs = new int[] { 31, 31, 31, 31, 31, 31 };
+	public int[] mEvs = new int[] { 255, 255, 255, 255, 255, 255 };
 	public int[] mStats = new int[6];
-	public double[] mStatsModifier = new double[6];
-	public int mLevel;
-	public int mNature;
-
-	public void setIvs(int[] ivs) {
-		mIvs = ivs;
-	}
-
-	public void setEvs(int[] evs) {
-		mEvs = evs;
-	}
+	public double[] mStatsModifier = new double[] { 2, 2, 2, 2, 2, 2 };
+	public int mLevel = 100;
+	public int mNature = 0;
 
 	public void setStats() {
 		if (mIvs == null || mEvs == null) {
@@ -60,21 +54,21 @@ public class TeamPokemon extends Pokemon {
 		mStats[INDEX_ATT] = IVTools.getStatValue(mBaseAtt, mEvs[INDEX_ATT],
 				mIvs[INDEX_ATT], mLevel, getNatureModifier(mNature, INDEX_ATT));
 		mStats[INDEX_DEF] = IVTools.getStatValue(mBaseDef, mEvs[INDEX_DEF],
-				mIvs[INDEX_HP], mLevel, getNatureModifier(mNature, INDEX_DEF));
+				mIvs[INDEX_DEF], mLevel, getNatureModifier(mNature, INDEX_DEF));
 		mStats[INDEX_SP_ATT] = IVTools.getStatValue(mBaseSpAtt,
-				mEvs[INDEX_SP_ATT], mIvs[INDEX_HP], mLevel,
+				mEvs[INDEX_SP_ATT], mIvs[INDEX_SP_ATT], mLevel,
 				getNatureModifier(mNature, INDEX_SP_ATT));
 		mStats[INDEX_SP_DEF] = IVTools.getStatValue(mBaseSpDef,
-				mEvs[INDEX_SP_DEF], mIvs[INDEX_HP], mLevel,
+				mEvs[INDEX_SP_DEF], mIvs[INDEX_SP_DEF], mLevel,
 				getNatureModifier(mNature, INDEX_SP_DEF));
 		mStats[INDEX_SPEED] = IVTools.getStatValue(mBaseSpeed,
-				mEvs[INDEX_SPEED], mIvs[INDEX_HP], mLevel,
+				mEvs[INDEX_SPEED], mIvs[INDEX_SPEED], mLevel,
 				getNatureModifier(mNature, INDEX_SPEED));
 	}
 
 	public int getNatureModifier(int nature, int stat) {
 		switch (stat) {
-		case INDEX_ATT:
+		case INDEX_ATT: 
 			if (nature == Natures.ADAMANT || nature == Natures.LONELY
 					|| nature == Natures.BRAVE || nature == Natures.NAUGHTY) {
 				return 110;
