@@ -68,8 +68,8 @@ public class DamageCalcFragment extends Fragment implements
 	private int mAttackerAbilityPosition = 0;
 	private Spinner mAttackerItemView;
 	private int mAttackerItemPosition = 0;
-	private Spinner mAttackModifierView;
-	private int mAttackModifierPosition = 6;
+	private Spinner mAttackerModifierView;
+	private int mAttackerModifierPosition = 6;
 
 	// Defender views and constants
 	private TeamPokemon mDefender;
@@ -91,8 +91,8 @@ public class DamageCalcFragment extends Fragment implements
 	private EditText mAttackBaseDamageView;
 	private int mAttackChoicePosition = -1;
 
-	private Spinner mDefenseModifierView;
-	private int mDefenseModifierPosition = 6;
+	private Spinner mDefenderModifierView;
+	private int mDefenderModifierPosition = 6;
 
 	private TextView mResultView;
 
@@ -127,9 +127,9 @@ public class DamageCalcFragment extends Fragment implements
 		}
 		mAttackNames = getResources().getStringArray(R.array.moves);
 		if (savedInstanceState != null) {
-			mAttackModifierPosition = savedInstanceState
+			mAttackerModifierPosition = savedInstanceState
 					.getInt(ARG_ATTACKER_MODIFIER);
-			mDefenseModifierPosition = savedInstanceState
+			mDefenderModifierPosition = savedInstanceState
 					.getInt(ARG_DEFENDER_MODIFIER);
 			mAttackerNature = savedInstanceState.getInt(ARG_ATTACKER_NATURE);
 			mDefenderNature = savedInstanceState.getInt(ARG_DEFENDER_NATURE);
@@ -163,8 +163,8 @@ public class DamageCalcFragment extends Fragment implements
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putInt(ARG_ATTACKER_MODIFIER, mAttackModifierPosition);
-		outState.putInt(ARG_DEFENDER_MODIFIER, mDefenseModifierPosition);
+		outState.putInt(ARG_ATTACKER_MODIFIER, mAttackerModifierPosition);
+		outState.putInt(ARG_DEFENDER_MODIFIER, mDefenderModifierPosition);
 		outState.putInt(ARG_ATTACKER_NATURE, mAttackerNature);
 		outState.putInt(ARG_DEFENDER_NATURE, mDefenderNature);
 		outState.putInt(ARG_ATTACKER_ABILITY, mAttackerAbilityPosition);
@@ -188,6 +188,9 @@ public class DamageCalcFragment extends Fragment implements
 		prepareAttackViews();
 		prepareDefenderViews();
 		prepareOtherModifierViews();
+
+		mResultView = (TextView) getActivity().findViewById(
+				R.id.damage_calc_damage);
 	}
 
 	private void prepareAttackerViews() {
@@ -247,19 +250,25 @@ public class DamageCalcFragment extends Fragment implements
 		mAttackerAttView.addTextChangedListener(this);
 		mAttackerSpAttView.addTextChangedListener(this);
 		mAttackerSpeedView.addTextChangedListener(this);
+		
+		mAttackerModifierView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_attack_modifier);
+
+		mAttackerModifierView.setSelection(mAttackerModifierPosition);
+		mAttackerModifierView.setOnItemSelectedListener(this);
 	}
 
 	private void prepareAttackerAbilityView() {
 		mAttackerAbilityView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_attacker_ability);
-		
+
 		mAttackerAbilityView.setOnItemSelectedListener(this);
 	}
 
 	private void prepareAttackerItemView() {
 		mAttackerItemView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_attacker_item);
-		
+
 		// TODO: Add items to the equation, yey
 	}
 
@@ -268,11 +277,7 @@ public class DamageCalcFragment extends Fragment implements
 				R.id.damage_calc_attack);
 		mAttackBaseDamageView = (EditText) getActivity().findViewById(
 				R.id.damage_calc_base_damage);
-		mAttackModifierView = (Spinner) getActivity().findViewById(
-				R.id.damage_calc_attack_modifier);
 		
-		mAttackModifierView.setSelection(mAttackModifierPosition);
-		mAttackModifierView.setOnItemSelectedListener(this);
 
 		setAttackSpinnerAdapter();
 		mAttackView.setAdapter(mAttacksAdapter);
@@ -290,7 +295,7 @@ public class DamageCalcFragment extends Fragment implements
 
 	private void prepareDefenderAutoCompleteView() {
 		mDefenderView = (AutoCompleteTextView) getActivity().findViewById(
-				R.id.damage_calc_pokemon_1);
+				R.id.damage_calc_pokemon_2);
 
 		// Prepare the adapter
 		String[] from = { PokeContract.PokemonName.NAME };
@@ -336,19 +341,25 @@ public class DamageCalcFragment extends Fragment implements
 		mDefenderDefView.addTextChangedListener(this);
 		mDefenderSpDefView.addTextChangedListener(this);
 		mDefenderSpeedView.addTextChangedListener(this);
+		
+		mDefenderModifierView = (Spinner) getActivity().findViewById(
+				R.id.damage_calc_defense_modifier);
+
+		mDefenderModifierView.setSelection(mDefenderModifierPosition);
+		mDefenderModifierView.setOnItemSelectedListener(this);
 	}
 
 	private void prepareDefenderAbilityView() {
 		mDefenderAbilityView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_defender_ability);
-		
+
 		mDefenderAbilityView.setOnItemSelectedListener(this);
 	}
 
 	private void prepareDefenderItemView() {
 		mDefenderItemView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_defender_item);
-		
+
 		// TODO: Add items to the equation, yey
 	}
 
@@ -439,9 +450,9 @@ public class DamageCalcFragment extends Fragment implements
 	private void setAttackerStats() {
 		mAttacker.setStats();
 		mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT] = DamageCalcTools
-				.getStatModifier(mAttackModifierPosition);
+				.getStatModifier(mAttackerModifierPosition);
 		mAttacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT] = DamageCalcTools
-				.getStatModifier(mAttackModifierPosition);
+				.getStatModifier(mAttackerModifierPosition);
 
 		mAttackerHpView.setText("" + mAttacker.mStats[TeamPokemon.INDEX_HP]);
 		mAttackerAttView.setText("" + mAttacker.mStats[TeamPokemon.INDEX_ATT]);
@@ -461,9 +472,9 @@ public class DamageCalcFragment extends Fragment implements
 		mDefenderSpeedView.setText(""
 				+ mDefender.mStats[TeamPokemon.INDEX_SPEED]);
 		mDefender.mStatsModifier[TeamPokemon.INDEX_DEF] = DamageCalcTools
-				.getStatModifier(mDefenseModifierPosition);
+				.getStatModifier(mDefenderModifierPosition);
 		mDefender.mStatsModifier[TeamPokemon.INDEX_SP_DEF] = DamageCalcTools
-				.getStatModifier(mDefenseModifierPosition);
+				.getStatModifier(mDefenderModifierPosition);
 		setAbilityAdapter(false);
 	}
 
@@ -712,7 +723,7 @@ public class DamageCalcFragment extends Fragment implements
 			int position, long id) {
 		switch (adapterView.getId()) {
 		case R.id.damage_calc_attack_modifier:
-			mAttackModifierPosition = position;
+			mAttackerModifierPosition = position;
 			if (mAttacker != null) {
 				mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT] = DamageCalcTools
 						.getStatModifier(position);
@@ -721,7 +732,7 @@ public class DamageCalcFragment extends Fragment implements
 			}
 			break;
 		case R.id.damage_calc_defense_modifier:
-			mDefenseModifierPosition = position;
+			mDefenderModifierPosition = position;
 			if (mDefender != null) {
 				mDefender.mStatsModifier[TeamPokemon.INDEX_DEF] = DamageCalcTools
 						.getStatModifier(position);
