@@ -293,12 +293,6 @@ public class PokeProvider extends ContentProvider {
 					PokeContract.PokemonAbilityDW.ABILITY_DW,
 					PokeContract.PokemonType1.TYPE,
 					PokeContract.PokemonType2.TYPE,
-					"A1." + PokeContract.Abilities.NAME + " AS "
-							+ PokeContract.Pokedex.ABILITY_1_NAME,
-					"A2." + PokeContract.Abilities.NAME + " AS "
-							+ PokeContract.Pokedex.ABILITY_2_NAME,
-					"ADW." + PokeContract.Abilities.NAME + " AS "
-							+ PokeContract.Pokedex.ABILITY_DW_NAME,
 					"A1." + PokeContract.Abilities.DESCRIPTION + " AS "
 							+ PokeContract.Pokedex.ABILITY_1_DESCRIPTION,
 					"A2." + PokeContract.Abilities.DESCRIPTION + " AS "

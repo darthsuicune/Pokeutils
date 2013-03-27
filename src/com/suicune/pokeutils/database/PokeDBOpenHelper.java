@@ -84,7 +84,6 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 
 		db.execSQL("CREATE TABLE " + PokeContract.Abilities.TABLE_NAME + " ("
 				+ PokeContract.Abilities._ID + KEY
-				+ PokeContract.Abilities.NAME + TEXT
 				+ PokeContract.Abilities.DESCRIPTION + TEXT_END);
 
 		db.execSQL("CREATE TABLE " + PokeContract.Attacks.TABLE_NAME + " ("

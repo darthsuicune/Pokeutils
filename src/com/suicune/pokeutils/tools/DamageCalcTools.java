@@ -60,40 +60,15 @@ public class DamageCalcTools {
 
 	public static String calculateDamageTotal(TeamPokemon attacker,
 			TeamPokemon defender, Attack attack) {
-		double maxDamage = calculateDamage(attacker, defender, attack);
+		double maxDamage = getMaxDamage(attacker, defender, attack);
 		double minDamage = 85 * maxDamage / 100;
 		return Math.round(minDamage) + " - " + Math.round(maxDamage);
 	}
 
 	public static double calculateDamage(TeamPokemon attacker,
 			TeamPokemon defender, Attack attack) {
-		int pokemonAttackStat;
-		int pokemonDefenseStat;
-		double attackLevelModifier;
-		double defenseLevelModifier;
-		boolean hasStab = ((attacker.mType1 == attack.mType) || (attacker.mType2 == attack.mType));
 
-		if (attack.mAttackClass == Attack.CLASS_PHYSICAL) {
-			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_ATT];
-			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_ATT];
-
-			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_DEF];
-			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_DEF];
-		} else {
-			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_SP_ATT];
-			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT];
-
-			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_SP_DEF];
-			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_SP_DEF];
-		}
-
-		return getMaxDamage(
-				pokemonAttackStat,
-				attacker.mLevel,
-				attack.mPower,
-				pokemonDefenseStat,
-				getTypeModifier(attack.mType, defender.mType1, defender.mType2),
-				attackLevelModifier, defenseLevelModifier, hasStab);
+		return getMaxDamage(attacker, defender, attack);
 	}
 
 	/**
@@ -109,16 +84,12 @@ public class DamageCalcTools {
 	 * @param hasStab
 	 * @return
 	 */
-	public static long getRandomDamage(int pokemonAttackStat,
-			int attackerLevel, int attackBasePower, int pokemonDefenseStat,
-			double typeModifier, double attackLevelModifier,
-			double defenseLevelModifier, boolean hasStab) {
+	public static long getRandomDamage(TeamPokemon attacker,
+			TeamPokemon defender, Attack attack) {
 
 		int random = Math.round(new Random().nextInt(16) + MIN_RANDOM / 100);
 
-		return getMaxDamage(pokemonAttackStat, attackerLevel, attackBasePower,
-				pokemonDefenseStat, typeModifier, attackLevelModifier,
-				defenseLevelModifier, hasStab)
+		return getMaxDamage(attacker, defender, attack)
 				* random;
 	}
 
@@ -136,20 +107,43 @@ public class DamageCalcTools {
 	 * @return
 	 */
 
-	public static long getMaxDamage(int pokemonAttackStat, int attackerLevel,
-			int attackBasePower, int pokemonDefenseStat, double typeModifier,
-			double attackLevelModifier, double defenseLevelModifier,
-			boolean hasStab) {
+	public static long getMaxDamage(TeamPokemon attacker, TeamPokemon defender,
+			Attack attack) {
+		
+		int pokemonAttackStat;
+		int pokemonDefenseStat;
+		double attackLevelModifier;
+		double defenseLevelModifier;
+		
+		boolean hasStab = ((attacker.mType1 == attack.mType) || (attacker.mType2 == attack.mType));
+
+		if (attack.mAttackClass == Attack.CLASS_PHYSICAL) {
+			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_ATT];
+			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_ATT];
+
+			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_DEF];
+			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_DEF];
+		} else {
+			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_SP_ATT];
+			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT];
+
+			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_SP_DEF];
+			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_SP_DEF];
+		}
+		
+		double typeModifier = getTypeModifier(attack.mType, defender.mType1,
+				defender.mType2);
+		
 		if (typeModifier == TYPE_MODIFIER_INMUNE) {
 			return 0;
 		}
 		// The formula requires a Math.floor after each operation.
 		double result;
-		result = Math.floor(2 * attackerLevel / 5);
+		result = Math.floor(2 * attacker.mLevel / 5);
 		result += 2;
-		double attack = Math.floor(pokemonAttackStat * attackLevelModifier);
-		double defense = Math.floor(pokemonDefenseStat * defenseLevelModifier);
-		result = Math.floor(result * attackBasePower * attack / defense);
+		double attackStat = Math.floor(pokemonAttackStat * attackLevelModifier);
+		double defenseStat = Math.floor(pokemonDefenseStat * defenseLevelModifier);
+		result = Math.floor(result * attack.mPower * attackStat / defenseStat);
 		result /= 50;
 		// Mod1
 		result += 2;

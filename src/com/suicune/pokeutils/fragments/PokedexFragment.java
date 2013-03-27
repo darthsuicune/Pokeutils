@@ -52,9 +52,9 @@ public class PokedexFragment extends ListFragment implements
 	}
 
 	private void prepareAdapter() {
-		String[] from = { PokeContract.Pokedex.ABILITY_1_NAME,
-				PokeContract.Pokedex.ABILITY_2_NAME,
-				PokeContract.Pokedex.ABILITY_DW_NAME,
+		String[] from = { PokeContract.PokemonAbility1.ABILITY_1,
+				PokeContract.PokemonAbility2.ABILITY_2,
+				PokeContract.PokemonAbilityDW.ABILITY_DW,
 				PokeContract.PokemonName.NUMBER, PokeContract.PokemonName.NAME,
 				PokeContract.PokemonType1.TYPE, PokeContract.PokemonType2.TYPE };
 		int[] to = { R.id.pokedex_entry_pokemon_ability_1,
@@ -98,12 +98,14 @@ public class PokedexFragment extends ListFragment implements
 	public class PokemonAdapter extends SimpleCursorAdapter {
 		LayoutInflater mInflater;
 		Uri mUri = PokeContract.Abilities.CONTENT_ABILITY;
+		String[] mAbilities;
 
 		public PokemonAdapter(Context context, int layout, Cursor c,
 				String[] from, int[] to, int flags) {
 			super(context, layout, c, from, to, flags);
 			mInflater = (LayoutInflater) getActivity().getSystemService(
 					Activity.LAYOUT_INFLATER_SERVICE);
+			mAbilities = getResources().getStringArray(R.array.abilities);
 		}
 
 		@Override
@@ -117,6 +119,9 @@ public class PokedexFragment extends ListFragment implements
 					.findViewById(R.id.pokedex_entry_pokemon_type_1);
 			TextView type2View = (TextView) row
 					.findViewById(R.id.pokedex_entry_pokemon_type_2);
+			TextView ability1View = (TextView) row.findViewById(R.id.pokedex_entry_pokemon_ability_1);
+			TextView ability2View = (TextView) row.findViewById(R.id.pokedex_entry_pokemon_ability_2);
+			TextView abilityDwView = (TextView) row.findViewById(R.id.pokedex_entry_pokemon_ability_dw);
 
 			int type1 = Types.getTypeName(Integer.parseInt(type1View.getText()
 					.toString()));
@@ -124,6 +129,10 @@ public class PokedexFragment extends ListFragment implements
 			int type2 = Types.getTypeName(Integer.parseInt(type2View.getText()
 					.toString()));
 			type2View.setText((type2 == 0) ? "-" : getString(type2));
+			
+			ability1View.setText(mAbilities[Integer.parseInt(ability1View.getText().toString())]);
+			ability2View.setText(mAbilities[Integer.parseInt(ability2View.getText().toString())]);
+			abilityDwView.setText(mAbilities[Integer.parseInt(abilityDwView.getText().toString())]);
 			return row;
 		}
 	}

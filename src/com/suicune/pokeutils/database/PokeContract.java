@@ -167,7 +167,6 @@ public final class PokeContract {
 		public static final Uri CONTENT_ABILITY = Uri.parse("content://"
 				+ CONTENT_NAME + "/" + TABLE_NAME);
 
-		public static final String NAME = "abilityname";
 		public static final String DESCRIPTION = "abilitydescription";
 	}
 }
