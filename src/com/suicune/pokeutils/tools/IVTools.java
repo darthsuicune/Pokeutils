@@ -239,6 +239,9 @@ public class IVTools {
 
 	public static int getHpValue(int baseStat, int currentEv, int iv,
 			int currentLevel) {
+		if(baseStat == 1){
+			return 1;
+		}
 		Double result = Math
 				.floor((((iv + (2 * baseStat) + (currentEv / 4) + 100) * currentLevel) / 100) + 10);
 		return result.intValue();
@@ -246,6 +249,9 @@ public class IVTools {
 
 	public static int getStatValue(int baseStat, int currentEv, int iv,
 			int currentLevel, int currentNatureModifier) {
+		if(baseStat == 1){
+			return 1;
+		}
 		Double calculatedStat = (double) (2 * baseStat);
 		double ev = currentEv / 4;
 		calculatedStat += iv + ev;

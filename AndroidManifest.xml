@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.suicune.pokeutils.MainActivity"
+            android:name="com.suicune.pokeutils.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,12 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.suicune.pokeutils.SettingsActivity"
-            
-        android:label="@string/settings">
+        <activity
+            android:name="com.suicune.pokeutils.activities.SettingsActivity"
+            android:label="@string/settings" >
         </activity>
-        <activity android:name="com.suicune.pokeutils.EditTeamPokemonActivity"
-            android:label="@string/edit_team_pokemon">
+        <activity
+            android:name="com.suicune.pokeutils.activities.EditTeamPokemonActivity"
+            android:label="@string/edit_team_pokemon" >
         </activity>
 
         <provider

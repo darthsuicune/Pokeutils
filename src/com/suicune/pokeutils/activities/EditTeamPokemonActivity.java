@@ -1,8 +1,11 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 
+import com.suicune.pokeutils.R;
+import com.suicune.pokeutils.R.id;
+import com.suicune.pokeutils.R.layout;
 import com.suicune.pokeutils.compat.ActionBarActivity;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment;
 

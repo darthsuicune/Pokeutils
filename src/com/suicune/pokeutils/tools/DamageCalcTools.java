@@ -46,7 +46,10 @@ public class DamageCalcTools {
 
 	public static String calculateDamagePorcent(TeamPokemon attacker,
 			TeamPokemon defender, Attack attack) {
-		double maxDamage = calculateDamage(attacker, defender, attack);
+		double maxDamage = getMaxDamage(attacker, defender, attack);
+		if (maxDamage == 0) {
+			return null;
+		}
 		double minDamage = 85 * maxDamage / 100;
 
 		double minPorcent = minDamage * 100
@@ -61,14 +64,11 @@ public class DamageCalcTools {
 	public static String calculateDamageTotal(TeamPokemon attacker,
 			TeamPokemon defender, Attack attack) {
 		double maxDamage = getMaxDamage(attacker, defender, attack);
+		if (maxDamage == 0) {
+			return null;
+		}
 		double minDamage = 85 * maxDamage / 100;
 		return Math.round(minDamage) + " - " + Math.round(maxDamage);
-	}
-
-	public static double calculateDamage(TeamPokemon attacker,
-			TeamPokemon defender, Attack attack) {
-
-		return getMaxDamage(attacker, defender, attack);
 	}
 
 	/**
@@ -89,8 +89,7 @@ public class DamageCalcTools {
 
 		int random = Math.round(new Random().nextInt(16) + MIN_RANDOM / 100);
 
-		return getMaxDamage(attacker, defender, attack)
-				* random;
+		return getMaxDamage(attacker, defender, attack) * random;
 	}
 
 	/**
@@ -109,12 +108,12 @@ public class DamageCalcTools {
 
 	public static long getMaxDamage(TeamPokemon attacker, TeamPokemon defender,
 			Attack attack) {
-		
+
 		int pokemonAttackStat;
 		int pokemonDefenseStat;
 		double attackLevelModifier;
 		double defenseLevelModifier;
-		
+
 		boolean hasStab = ((attacker.mType1 == attack.mType) || (attacker.mType2 == attack.mType));
 
 		if (attack.mAttackClass == Attack.CLASS_PHYSICAL) {
@@ -130,10 +129,9 @@ public class DamageCalcTools {
 			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_SP_DEF];
 			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_SP_DEF];
 		}
-		
-		double typeModifier = getTypeModifier(attack.mType, defender.mType1,
-				defender.mType2);
-		
+
+		double typeModifier = getTypeModifier(attack, attacker, defender);
+
 		if (typeModifier == TYPE_MODIFIER_INMUNE) {
 			return 0;
 		}
@@ -142,8 +140,10 @@ public class DamageCalcTools {
 		result = Math.floor(2 * attacker.mLevel / 5);
 		result += 2;
 		double attackStat = Math.floor(pokemonAttackStat * attackLevelModifier);
-		double defenseStat = Math.floor(pokemonDefenseStat * defenseLevelModifier);
-		result = Math.floor(result * attack.mPower * attackStat / defenseStat);
+		double defenseStat = Math.floor(pokemonDefenseStat
+				* defenseLevelModifier);
+		result = Math.floor(result * getBasePower(attacker, defender, attack)
+				* attackStat / defenseStat);
 		result /= 50;
 		// Mod1
 		result += 2;
@@ -168,11 +168,92 @@ public class DamageCalcTools {
 	 * @param defendingType2
 	 * @return
 	 */
-	public static double getTypeModifier(int attackingType, int defendingType1,
-			int defendingType2) {
-		double modifier1 = getSingleModifier(attackingType, defendingType1);
-		double modifier2 = getSingleModifier(attackingType, defendingType2);
+	public static double getTypeModifier(Attack attack, TeamPokemon attacker,
+			TeamPokemon defender) {
+		if (!attackerHasMoldBreaker(attacker)
+				&& defenderAbilityGrantsInmunity(attack, defender)) {
+			return TYPE_MODIFIER_INMUNE;
+		}
+		double modifier1 = getSingleModifier(attack.mType, defender.mType1);
+		double modifier2 = getSingleModifier(attack.mType, defender.mType2);
 		return modifier1 * modifier2;
+	}
+
+	private static boolean defenderAbilityGrantsInmunity(Attack attack,
+			TeamPokemon defender) {
+		switch (defender.mSelectedAbility) {
+		case 26: // Levitate
+			if (attack.mType == Types.GROUND) {
+				return true;
+			}
+			return false;
+		case 18: // Flash fire
+			if (attack.mType == Types.FIRE) {
+				return true;
+			}
+			return false;
+		case 10: // Volt absorb
+		case 78: // Motor drive!
+			if (attack.mType == Types.ELECTRIC) {
+				return true;
+			}
+			return false;
+		case 11: // Water absorb
+		case 87: // Dry skin
+			if (attack.mType == Types.WATER) {
+				return true;
+			}
+			return false;
+		case 25: // Wonder guard!!
+			switch (attack.mId) {
+			case 251: // Beat up
+			case 117: // Bide
+			case 353: // Doom desire
+			case 424: // Fire fang
+			case 248: // Future sight
+			case 165: // Struggle
+				return false;
+			default:
+				if (getSingleModifier(attack.mType, defender.mType1)
+						* getSingleModifier(attack.mType, defender.mType2) > 1) {
+					return false;
+				}
+				return true;
+			}
+		case 43: // Soundproof!!
+			// Bug Buzz, Chatter, Echoed Voice, GrassWhistle, Growl, Heal Bell,
+			// Hyper Voice, Metal Sound, Perish Song, Relic Song, Roar, Round,
+			// Screech, Sing, Snarl, Snore, Supersonic, Uproar,
+			switch (attack.mId) {
+			case 405:
+			case 448:
+			case 497:
+			case 320:
+			case 45:
+			case 215:
+			case 304:
+			case 319:
+			case 195:
+			case 547:
+			case 46:
+			case 496:
+			case 103:
+			case 47:
+			case 555:
+			case 173:
+			case 48:
+			case 253:
+				return true;
+			default:
+				return false;
+			}
+		default:
+			return false;
+		}
+	}
+
+	private static boolean attackerHasMoldBreaker(TeamPokemon attacker) {
+		return attacker.mSelectedAbility == 104;
 	}
 
 	private static double getSingleModifier(int attackingType, int defendingType) {
@@ -362,6 +443,32 @@ public class DamageCalcTools {
 			return (TEMP_MODIFIER_6_LEVEL / 2);
 		default:
 			return 0;
+		}
+	}
+
+	public static boolean isVariableAttack(Attack attack) {
+		if (attack.mPower == 1) {
+			return true;
+		}
+		switch (attack.mId) {
+		case 0:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	public static int getBasePower(TeamPokemon attacker, TeamPokemon defender,
+			Attack attack) {
+		if (isVariableAttack(attack)) {
+			switch (attack.mId) {
+			case 0:
+				return 0;
+			default:
+				return 1;
+			}
+		} else {
+			return attack.mPower;
 		}
 	}
 }

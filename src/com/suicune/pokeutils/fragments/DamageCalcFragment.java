@@ -507,11 +507,11 @@ public class DamageCalcFragment extends Fragment implements
 			}
 		}
 		try {
-			if(s.hashCode() == mAttackBaseDamageView.getText().hashCode()){
-				if(mAttack != null){
+			if (s.hashCode() == mAttackBaseDamageView.getText().hashCode()) {
+				if (mAttack != null) {
 					mAttack.mPower = Integer.parseInt(s.toString());
 				}
-			}else if (s.hashCode() == mAttackerLevelView.getText().hashCode()) {
+			} else if (s.hashCode() == mAttackerLevelView.getText().hashCode()) {
 				if (mAttacker != null) {
 					mAttacker.mLevel = Integer.parseInt(s.toString());
 				}
@@ -583,8 +583,12 @@ public class DamageCalcFragment extends Fragment implements
 				mDefender, mAttack);
 		String porcentDamage = DamageCalcTools.calculateDamagePorcent(
 				mAttacker, mDefender, mAttack);
-		mResultView.setText(getString(R.string.damage_calc_damage) + " "
-				+ totalDamage + " (" + porcentDamage + ")");
+		if (totalDamage == null) {
+			mResultView.setText(R.string.no_damage);
+		} else {
+			mResultView.setText(getString(R.string.damage_calc_damage) + " "
+					+ totalDamage + " (" + porcentDamage + ")");
+		}
 	}
 
 	@Override
@@ -663,6 +667,7 @@ public class DamageCalcFragment extends Fragment implements
 		case LOADER_ATTACKING_POKEMON:
 			if (cursor.moveToFirst()) {
 				mAttacker = new TeamPokemon(cursor);
+				mAttackChoicePosition = 0;
 				mAttacker.mLevel = Integer.parseInt(mAttackerLevelView
 						.getText().toString());
 				mAttacker.mNature = mAttackerNatureView
@@ -788,11 +793,14 @@ public class DamageCalcFragment extends Fragment implements
 				}
 			}
 			break;
+		case R.id.damage_calc_attacker_item:
+			break;
+		case R.id.damage_calc_defender_item:
+			break;
 		default:
 			break;
 		}
 		calculateDamage();
-
 	}
 
 	@Override

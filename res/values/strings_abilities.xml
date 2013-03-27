@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="abilities">
+        <item>""</item>
+        <item>"Stench"</item>
+        <item>"Drizzle"</item>
+        <item>"Speed Boost"</item>
+        <item>"Battle Armor"</item>
+        <item>"Sturdy"</item>
+        <item>"Damp"</item>
+        <item>"Limber"</item>
+        <item>"Sand Veil"</item>
+        <item>"Static"</item>
+        <item>"Volt Absorb"</item>
+        <item>"Water Absorb"</item>
+        <item>"Oblivious"</item>
+        <item>"Cloud Nine"</item>
+        <item>"Compoundeyes"</item>
+        <item>"Insomnia"</item>
+        <item>"Color Change"</item>
+        <item>"Immunity"</item>
+        <item>"Flash Fire"</item>
+        <item>"Shield Dust"</item>
+        <item>"Own Tempo"</item>
+        <item>"Suction Cups"</item>
+        <item>"Intimidate"</item>
+        <item>"Shadow Tag"</item>
+        <item>"Rough Skin"</item>
+        <item>"Wonder Guard"</item>
+        <item>"Levitate"</item>
+        <item>"Effect Spore"</item>
+        <item>"Synchronize"</item>
+        <item>"Clear Body"</item>
+        <item>"Natural Cure"</item>
+        <item>"Lightningrod"</item>
+        <item>"Serene Grace"</item>
+        <item>"Swift Swim"</item>
+        <item>"Chlorophyll"</item>
+        <item>"Illuminate"</item>
+        <item>"Trace"</item>
+        <item>"Huge Power"</item>
+        <item>"Poison Point"</item>
+        <item>"Inner Focus"</item>
+        <item>"Magma Armor"</item>
+        <item>"Water Veil"</item>
+        <item>"Magnet Pull"</item>
+        <item>"Soundproof"</item>
+        <item>"Rain Dish"</item>
+        <item>"Sand Stream"</item>
+        <item>"Pressure"</item>
+        <item>"Thick Fat"</item>
+        <item>"Early Bird"</item>
+        <item>"Flame Body"</item>
+        <item>"Run Away"</item>
+        <item>"Keen Eye"</item>
+        <item>"Hyper Cutter"</item>
+        <item>"Pickup"</item>
+        <item>"Truant"</item>
+        <item>"Hustle"</item>
+        <item>"Cute Charm"</item>
+        <item>"Plus"</item>
+        <item>"Minus"</item>
+        <item>"Forecast"</item>
+        <item>"Sticky Hold"</item>
+        <item>"Shed Skin"</item>
+        <item>"Guts"</item>
+        <item>"Marvel Scale"</item>
+        <item>"Liquid Ooze"</item>
+        <item>"Overgrow"</item>
+        <item>"Blaze"</item>
+        <item>"Torrent"</item>
+        <item>"Swarm"</item>
+        <item>"Rock Head"</item>
+        <item>"Drought"</item>
+        <item>"Arena Trap"</item>
+        <item>"Vital Spirit"</item>
+        <item>"White Smoke"</item>
+        <item>"Pure Power"</item>
+        <item>"Shell Armor"</item>
+        <item>"Air Lock"</item>
+        <item>"Tangled Feet"</item>
+        <item>"Motor Drive"</item>
+        <item>"Rivalry"</item>
+        <item>"Steadfast"</item>
+        <item>"Snow Cloak"</item>
+        <item>"Gluttony"</item>
+        <item>"Anger Point"</item>
+        <item>"Unburden"</item>
+        <item>"Heatproof"</item>
+        <item>"Simple"</item>
+        <item>"Dry Skin"</item>
+        <item>"Download"</item>
+        <item>"Iron Fist"</item>
+        <item>"Poison Heal"</item>
+        <item>"Adaptability"</item>
+        <item>"Skill Link"</item>
+        <item>"Hydration"</item>
+        <item>"Solar Power"</item>
+        <item>"Quick Feet"</item>
+        <item>"Normalize"</item>
+        <item>"Sniper"</item>
+        <item>"Magic Guard"</item>
+        <item>"No Guard"</item>
+        <item>"Stall"</item>
+        <item>"Technician"</item>
+        <item>"Leaf Guard"</item>
+        <item>"Klutz"</item>
+        <item>"Mold Breaker"</item>
+        <item>"Super Luck"</item>
+        <item>"Aftermath"</item>
+        <item>"Anticipation"</item>
+        <item>"Forewarn"</item>
+        <item>"Unaware"</item>
+        <item>"Tinted Lens"</item>
+        <item>"Filter"</item>
+        <item>"Slow Start"</item>
+        <item>"Scrappy"</item>
+        <item>"Storm Drain"</item>
+        <item>"Ice Body"</item>
+        <item>"Solid Rock"</item>
+        <item>"Snow Warning"</item>
+        <item>"Honey Gather"</item>
+        <item>"Frisk"</item>
+        <item>"Reckless"</item>
+        <item>"Multitype"</item>
+        <item>"Flower Gift"</item>
+        <item>"Bad Dreams"</item>
+        <item>"Pickpocket"</item>
+        <item>"Sheer Force"</item>
+        <item>"Contrary"</item>
+        <item>"Unnerve"</item>
+        <item>"Defiant"</item>
+        <item>"Defeatist"</item>
+        <item>"Cursed Body"</item>
+        <item>"Healer"</item>
+        <item>"Friend Guard"</item>
+        <item>"Weak Armor"</item>
+        <item>"Heavy Metal"</item>
+        <item>"Light Metal"</item>
+        <item>"Multiscale"</item>
+        <item>"Toxic Boost"</item>
+        <item>"Flare Boost"</item>
+        <item>"Harvest"</item>
+        <item>"Telepathy"</item>
+        <item>"Moody"</item>
+        <item>"Overcoat"</item>
+        <item>"Poison Touch"</item>
+        <item>"Regenerator"</item>
+        <item>"Big Pecks"</item>
+        <item>"Sand Rush"</item>
+        <item>"Wonder Skin"</item>
+        <item>"Analytic"</item>
+        <item>"Illusion"</item>
+        <item>"Imposter"</item>
+        <item>"Infiltrator"</item>
+        <item>"Mummy"</item>
+        <item>"Moxie"</item>
+        <item>"Justified"</item>
+        <item>"Rattled"</item>
+        <item>"Magic Bounce"</item>
+        <item>"Sap Sipper"</item>
+        <item>"Prankster"</item>
+        <item>"Sand Force"</item>
+        <item>"Iron Barbs"</item>
+        <item>"Zen Mode"</item>
+        <item>"Victory Star"</item>
+        <item>"Turboblaze"</item>
+        <item>"Teravolt"</item>
+    </string-array>
+
+</resources>

@@ -15,9 +15,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.suicune.pokeutils.EditTeamPokemonActivity;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.TeamPokemon;
+import com.suicune.pokeutils.activities.EditTeamPokemonActivity;
 
 /**
  * This Fragment will be automatically opened when the user selects to open a
