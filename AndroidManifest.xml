@@ -35,7 +35,8 @@
 
         <provider
             android:name="com.suicune.pokeutils.database.PokeProvider"
-            android:authorities="com.suicune.pokeutils.database.PokeProvider" >
+            android:authorities="com.suicune.pokeutils.database.PokeProvider"
+            android:exported="false" >
         </provider>
     </application>
 

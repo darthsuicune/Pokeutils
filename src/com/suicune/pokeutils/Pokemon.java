@@ -3,10 +3,15 @@ package com.suicune.pokeutils;
 import java.util.ArrayList;
 
 import android.database.Cursor;
+import android.os.Bundle;
 
 import com.suicune.pokeutils.database.PokeContract;
 
 public class Pokemon {
+	public static final int ABILITY_INDEX_1 = 0;
+	public static final int ABILITY_INDEX_2 = 1;
+	public static final int ABILITY_INDEX_DW = 2;
+
 	public long mId;
 	public String mName;
 	public int mNumber;
@@ -19,9 +24,7 @@ public class Pokemon {
 	public int mBaseSpAtt;
 	public int mBaseSpDef;
 	public int mBaseSpeed;
-	public int mAbility1;
-	public int mAbility2;
-	public int mAbilityDw;
+	public int[] mAbilities = new int[3];
 	public ArrayList<Attack> mAttacksList;
 
 	public Pokemon(Cursor cursor) {
@@ -50,36 +53,40 @@ public class Pokemon {
 					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPDEF)));
 			mBaseSpeed = Integer.parseInt(cursor.getString(cursor
 					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPEED)));
-			mAbility1 = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonAbility1.ABILITY_1)));
-			mAbility2 = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonAbility2.ABILITY_2)));
-			mAbilityDw = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonAbilityDW.ABILITY_DW)));
+			mAbilities[ABILITY_INDEX_1] = Integer
+					.parseInt(cursor.getString(cursor
+							.getColumnIndex(PokeContract.PokemonAbility1.ABILITY_1)));
+			mAbilities[ABILITY_INDEX_2] = Integer
+					.parseInt(cursor.getString(cursor
+							.getColumnIndex(PokeContract.PokemonAbility2.ABILITY_2)));
+			mAbilities[ABILITY_INDEX_DW] = Integer
+					.parseInt(cursor.getString(cursor
+							.getColumnIndex(PokeContract.PokemonAbilityDW.ABILITY_DW)));
 		} else {
 			return;
 		}
 		mAttacksList = new ArrayList<Attack>();
 	}
 
-	public Pokemon(long id, String name, int number, int norm, int type1,
-			int type2, int baseHP, int baseAtt, int baseDef,
-			int baseSpAtt, int baseSpDef, int baseSpeed, int ability1,
-			int ability2, int abilityDw) {
-		mId = id;
-		mName = name;
-		mForm = norm;
-		mType1 = type1;
-		mType2 = type2;
-		mBaseHP = baseHP;
-		mBaseAtt = baseAtt;
-		mBaseDef = baseDef;
-		mBaseSpAtt = baseSpAtt;
-		mBaseSpDef = baseSpDef;
-		mBaseSpeed = baseSpeed;
-		mAbility1 = ability1;
-		mAbility2 = ability2;
-		mAbilityDw = abilityDw;
+	public Pokemon(Bundle args) {
+		mId = args.getLong(PokeContract.PokemonBaseStats._ID);
+		mName = args.getString(PokeContract.PokemonName.NAME);
+		mNumber = args.getInt(PokeContract.PokemonBaseStats.NUMBER);
+		mForm = args.getInt(PokeContract.PokemonBaseStats.FORM);
+		mType1 = args.getInt(PokeContract.PokemonType1.TYPE);
+		mType2 = args.getInt(PokeContract.PokemonType2.TYPE);
+		mBaseHP = args.getInt(PokeContract.PokemonBaseStats.BASE_HP);
+		mBaseAtt = args.getInt(PokeContract.PokemonBaseStats.BASE_ATT);
+		mBaseDef = args.getInt(PokeContract.PokemonBaseStats.BASE_DEF);
+		mBaseSpAtt = args.getInt(PokeContract.PokemonBaseStats.BASE_SPATT);
+		mBaseSpDef = args.getInt(PokeContract.PokemonBaseStats.BASE_SPDEF);
+		mBaseSpeed = args.getInt(PokeContract.PokemonBaseStats.BASE_SPEED);
+		mAbilities[ABILITY_INDEX_1] = args
+				.getInt(PokeContract.PokemonAbility1.ABILITY_1);
+		mAbilities[ABILITY_INDEX_2] = args
+				.getInt(PokeContract.PokemonAbility2.ABILITY_2);
+		mAbilities[ABILITY_INDEX_DW] = args
+				.getInt(PokeContract.PokemonAbilityDW.ABILITY_DW);
 		mAttacksList = new ArrayList<Attack>();
 	}
 
@@ -89,5 +96,26 @@ public class Pokemon {
 
 	public void addAttack(Attack attack) {
 		mAttacksList.add(attack);
+	}
+
+	public void saveStatus(Bundle status) {
+		status.putLong(PokeContract.PokemonBaseStats._ID, mId);
+		status.putString(PokeContract.PokemonName.NAME, mName);
+		status.putInt(PokeContract.PokemonBaseStats.NUMBER, mNumber);
+		status.putInt(PokeContract.PokemonBaseStats.FORM, mForm);
+		status.putInt(PokeContract.PokemonType1.TYPE, mType1);
+		status.putInt(PokeContract.PokemonType2.TYPE, mType2);
+		status.putInt(PokeContract.PokemonBaseStats.BASE_HP, mBaseHP);
+		status.putInt(PokeContract.PokemonBaseStats.BASE_ATT, mBaseAtt);
+		status.putInt(PokeContract.PokemonBaseStats.BASE_DEF, mBaseDef);
+		status.putInt(PokeContract.PokemonBaseStats.BASE_SPATT, mBaseSpAtt);
+		status.putInt(PokeContract.PokemonBaseStats.BASE_SPDEF, mBaseSpDef);
+		status.putInt(PokeContract.PokemonBaseStats.BASE_SPEED, mBaseSpeed);
+		status.putInt(PokeContract.PokemonAbility1.ABILITY_1,
+				mAbilities[ABILITY_INDEX_1]);
+		status.putInt(PokeContract.PokemonAbility2.ABILITY_2,
+				mAbilities[ABILITY_INDEX_2]);
+		status.putInt(PokeContract.PokemonAbilityDW.ABILITY_DW,
+				mAbilities[ABILITY_INDEX_DW]);
 	}
 }

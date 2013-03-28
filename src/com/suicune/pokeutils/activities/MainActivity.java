@@ -9,9 +9,6 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.R.layout;
-import com.suicune.pokeutils.R.menu;
-import com.suicune.pokeutils.R.string;
 import com.suicune.pokeutils.compat.CompatTab;
 import com.suicune.pokeutils.compat.CompatTabListener;
 import com.suicune.pokeutils.compat.TabCompatActivity;

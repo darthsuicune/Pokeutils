@@ -1,8 +1,5 @@
 package com.suicune.pokeutils.fragments;
 
-import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.R.layout;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.suicune.pokeutils.R;
 
 public class EditTeamPokemonFragment extends Fragment {
 

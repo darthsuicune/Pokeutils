@@ -118,16 +118,16 @@ public class DamageCalcTools {
 
 		if (attack.mAttackClass == Attack.CLASS_PHYSICAL) {
 			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_ATT];
-			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_ATT];
+			attackLevelModifier = getStatModifier(attacker.mStatsModifier[TeamPokemon.INDEX_ATT]);
 
 			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_DEF];
-			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_DEF];
+			defenseLevelModifier = getStatModifier(defender.mStatsModifier[TeamPokemon.INDEX_DEF]);
 		} else {
 			pokemonAttackStat = attacker.mStats[TeamPokemon.INDEX_SP_ATT];
-			attackLevelModifier = attacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT];
+			attackLevelModifier = getStatModifier(attacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT]);
 
 			pokemonDefenseStat = defender.mStats[TeamPokemon.INDEX_SP_DEF];
-			defenseLevelModifier = defender.mStatsModifier[TeamPokemon.INDEX_SP_DEF];
+			defenseLevelModifier = getStatModifier(defender.mStatsModifier[TeamPokemon.INDEX_SP_DEF]);
 		}
 
 		double typeModifier = getTypeModifier(attack, attacker, defender);
@@ -221,28 +221,25 @@ public class DamageCalcTools {
 				return true;
 			}
 		case 43: // Soundproof!!
-			// Bug Buzz, Chatter, Echoed Voice, GrassWhistle, Growl, Heal Bell,
-			// Hyper Voice, Metal Sound, Perish Song, Relic Song, Roar, Round,
-			// Screech, Sing, Snarl, Snore, Supersonic, Uproar,
 			switch (attack.mId) {
-			case 405:
-			case 448:
-			case 497:
-			case 320:
-			case 45:
-			case 215:
-			case 304:
-			case 319:
-			case 195:
-			case 547:
-			case 46:
-			case 496:
-			case 103:
-			case 47:
-			case 555:
-			case 173:
-			case 48:
-			case 253:
+			case 405: // Bug buzz
+			case 448: // Chatter
+			case 497: // Echoed Voice
+			case 320: // GrassWhistle
+			case 45: // Growl
+			case 215: // Heal Bell
+			case 304: // Hyper Voice
+			case 319: // Metal Sound
+			case 195: // Perish Song
+			case 547: // Relic Song
+			case 46: // Roar
+			case 496: // Round
+			case 103: // Screech
+			case 47: // Sing
+			case 555: // Snarl
+			case 173: // Snore
+			case 48: // Supersonic
+			case 253: // Uproar
 				return true;
 			default:
 				return false;

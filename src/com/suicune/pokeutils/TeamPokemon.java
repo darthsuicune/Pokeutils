@@ -1,17 +1,32 @@
 package com.suicune.pokeutils;
 
 import android.database.Cursor;
+import android.os.Bundle;
 
 import com.suicune.pokeutils.tools.IVTools;
 
 public class TeamPokemon extends Pokemon {
-	public TeamPokemon(long id, String mName, int mNumber, int mForm,
-			int mType1, int mType2, int mBaseHP, int mBaseAtt, int mBaseDef,
-			int mBaseSpAtt, int mBaseSpDef, int mBaseSpeed, int mAbility1,
-			int mAbility2, int mAbilityDw) {
-		super(id, mName, mNumber, mForm, mType1, mType2, mBaseHP, mBaseAtt,
-				mBaseDef, mBaseSpAtt, mBaseSpDef, mBaseSpeed, mAbility1,
-				mAbility2, mAbilityDw);
+	private static final String ITEM = "item";
+	private static final String SELECTED_ABILITY = "selectedAbility";
+	private static final String NICK_NAME = "nickName";
+	private static final String IVS = "ivs";
+	private static final String EVS = "evs";
+	private static final String STATS = "stats";
+	private static final String STATS_MODIFIER = "statsModifier";
+	private static final String LEVEL = "level";
+	private static final String NATURE = "nature";
+
+	public TeamPokemon(Bundle args) {
+		super(args);
+		mAttachedItem = args.getInt(ITEM);
+		mSelectedAbility = args.getInt(SELECTED_ABILITY);
+		mNickname = args.getString(NICK_NAME);
+		mIvs = args.getIntArray(IVS);
+		mEvs = args.getIntArray(EVS);
+		mStats = args.getIntArray(STATS);
+		mStatsModifier = args.getIntArray(STATS_MODIFIER);
+		mLevel = args.getInt(LEVEL);
+		mNature = args.getInt(NATURE);
 		setStats();
 	}
 
@@ -40,7 +55,7 @@ public class TeamPokemon extends Pokemon {
 	public int[] mIvs = new int[] { 31, 31, 31, 31, 31, 31 };
 	public int[] mEvs = new int[] { 255, 255, 255, 255, 255, 255 };
 	public int[] mStats = new int[6];
-	public double[] mStatsModifier = new double[] { 2, 2, 2, 2, 2, 2 };
+	public int[] mStatsModifier = new int[] { 6, 6, 6, 6, 6, 6 };
 	public int mLevel = 100;
 	public int mNature = 0;
 
@@ -68,7 +83,7 @@ public class TeamPokemon extends Pokemon {
 
 	public int getNatureModifier(int nature, int stat) {
 		switch (stat) {
-		case INDEX_ATT: 
+		case INDEX_ATT:
 			if (nature == Natures.ADAMANT || nature == Natures.LONELY
 					|| nature == Natures.BRAVE || nature == Natures.NAUGHTY) {
 				return 110;
@@ -115,5 +130,18 @@ public class TeamPokemon extends Pokemon {
 			break;
 		}
 		return 100;
+	}
+
+	public void saveStatus(Bundle status) {
+		super.saveStatus(status);
+		status.putInt(ITEM, mAttachedItem);
+		status.putInt(SELECTED_ABILITY, mSelectedAbility);
+		status.putString(NICK_NAME, mNickname);
+		status.putIntArray(IVS, mIvs);
+		status.putIntArray(EVS, mEvs);
+		status.putIntArray(STATS, mStats);
+		status.putIntArray(STATS_MODIFIER, mStatsModifier);
+		status.putInt(LEVEL, mLevel);
+		status.putInt(NATURE, mNature);
 	}
 }
