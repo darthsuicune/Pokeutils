@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.suicune.pokeutils.tools.IVTools;
 
 public class TeamPokemon extends Pokemon {
+	private static final String ATTACKS = "attacks";
 	private static final String ITEM = "item";
 	private static final String SELECTED_ABILITY = "selectedAbility";
 	private static final String NICK_NAME = "nickName";
@@ -27,6 +28,7 @@ public class TeamPokemon extends Pokemon {
 		mStatsModifier = args.getIntArray(STATS_MODIFIER);
 		mLevel = args.getInt(LEVEL);
 		mNature = args.getInt(NATURE);
+		mAttacks = args.getIntArray(ATTACKS);
 		setStats();
 	}
 
@@ -42,10 +44,7 @@ public class TeamPokemon extends Pokemon {
 	public final static int INDEX_SP_DEF = 4;
 	public final static int INDEX_SPEED = 5;
 
-	public Attack mAttack1 = null;
-	public Attack mAttack2 = null;
-	public Attack mAttack3 = null;
-	public Attack mAttack4 = null;
+	public int[] mAttacks = { 0, 0, 0, 0 };
 
 	public int mAttachedItem;
 	public int mSelectedAbility;
@@ -53,7 +52,7 @@ public class TeamPokemon extends Pokemon {
 	public String mNickname;
 
 	public int[] mIvs = new int[] { 31, 31, 31, 31, 31, 31 };
-	public int[] mEvs = new int[] { 255, 255, 255, 255, 255, 255 };
+	public int[] mEvs = new int[] { 0, 0, 0, 0, 0, 0 };
 	public int[] mStats = new int[6];
 	public int[] mStatsModifier = new int[] { 6, 6, 6, 6, 6, 6 };
 	public int mLevel = 100;
@@ -143,5 +142,6 @@ public class TeamPokemon extends Pokemon {
 		status.putIntArray(STATS_MODIFIER, mStatsModifier);
 		status.putInt(LEVEL, mLevel);
 		status.putInt(NATURE, mNature);
+		status.putIntArray(ATTACKS, mAttacks);
 	}
 }

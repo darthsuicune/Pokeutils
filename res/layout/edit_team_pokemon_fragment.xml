@@ -3,6 +3,332 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <!-- Pokemon name and nickname -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_team_pokemon_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/pokemon_name" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_nickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/pokemon_nickname"
+            android:inputType="text"
+            android:maxLength="10" />
+    </LinearLayout>
+
+    <!-- Pokemon Level + Ability + Nature -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_level"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/pokemon_level"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <Spinner
+            android:id="@+id/edit_team_pokemon_ability"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/edit_team_pokemon_nature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/edit_team_pokemon_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Pokemon Base Stats -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/iv_calc_title_base_stats" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_base_stat_hp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_base_stat_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_base_stat_def"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_base_stat_spatt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_base_stat_spdef"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_base_stat_speed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+    </LinearLayout>
+
+    <!-- Pokemon Stats (EVs/IVs + autocalc) -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/iv_calc_title_ivs" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_iv_hp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_iv_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/att"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_iv_def"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/def"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_iv_spatt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sp_att"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_iv_spdef"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sp_def"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_iv_speed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/speed"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/iv_calc_title_evs" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_ev_hp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hp"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_ev_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/att"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_ev_def"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/def"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_ev_spatt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sp_att"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_ev_spdef"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/sp_def"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_team_pokemon_ev_speed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/speed"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/iv_calc_title_stats" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_stat_hp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_stat_att"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_stat_def"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_stat_spatt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_stat_spdef"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/edit_team_pokemon_stat_speed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textIsSelectable="true" />
+    </LinearLayout>
+
+    <!-- Pokemon attacks -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/edit_team_pokemon_attack1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/edit_team_pokemon_attack2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/edit_team_pokemon_attack3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/edit_team_pokemon_attack4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </LinearLayout>

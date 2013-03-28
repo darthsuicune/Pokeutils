@@ -113,6 +113,9 @@ public class DamageCalcFragment extends Fragment implements
 			if (savedInstanceState.containsKey(ARG_ATTACKER_ID)) {
 				mAttacker = new TeamPokemon(
 						savedInstanceState.getBundle(ARG_ATTACKER_ID));
+				for(int i = 0; i < 6; i++){
+					mAttacker.mEvs[i] = 252;
+				}
 				if (savedInstanceState.containsKey(ARG_ATTACK_ID)) {
 					mAttackChoicePosition = savedInstanceState
 							.getInt(ARG_ATTACK_ID);
@@ -122,6 +125,9 @@ public class DamageCalcFragment extends Fragment implements
 			if (savedInstanceState.containsKey(ARG_DEFENDER_ID)) {
 				mDefender = new TeamPokemon(
 						savedInstanceState.getBundle(ARG_DEFENDER_ID));
+				for(int i = 0; i < 6; i++){
+					mAttacker.mEvs[i] = 252;
+				}
 				loadDefenderData();
 			}
 		}
@@ -233,6 +239,7 @@ public class DamageCalcFragment extends Fragment implements
 		mAttackerItemView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_attacker_item);
 
+		mAttackerItemView.setOnItemSelectedListener(this);
 		// TODO: Add items to the equation, yey
 	}
 
@@ -323,6 +330,7 @@ public class DamageCalcFragment extends Fragment implements
 		mDefenderItemView = (Spinner) getActivity().findViewById(
 				R.id.damage_calc_defender_item);
 
+		mDefenderItemView.setOnItemSelectedListener(this);
 		// TODO: Add items to the equation, yey
 	}
 
@@ -415,30 +423,6 @@ public class DamageCalcFragment extends Fragment implements
 		getLoaderManager().restartLoader(LOADER_ATTACKS, null, this);
 	}
 
-	private void loadDefenderData() {
-		try {
-			mDefender.mLevel = Integer.parseInt(mDefenderLevelView.getText()
-					.toString());
-			mDefenderModifierView
-					.setSelection(mDefender.mStatsModifier[TeamPokemon.INDEX_DEF]);
-			mDefenderNatureView.setSelection(mDefender.mNature);
-			setDefenderStats();
-			mDefenderAbilityView.setSelection(mDefender.mSelectedAbility);
-		} catch (NumberFormatException e) {
-			mDefender.mLevel = 100;
-		}
-	}
-
-	private void loadAttack(long attack) {
-		Bundle args = new Bundle();
-		args.putLong(ARG_ATTACK_ID, attack);
-		getLoaderManager().restartLoader(LOADER_ATTACK, args, this);
-	}
-
-	private void setAttackParameters() {
-		mAttackBaseDamageView.setText("" + mAttack.mPower);
-	}
-
 	private void setAttackerStats() {
 		if (mAttacker == null) {
 			return;
@@ -456,6 +440,20 @@ public class DamageCalcFragment extends Fragment implements
 		mAttackerSpeedView.setText(""
 				+ mAttacker.mStats[TeamPokemon.INDEX_SPEED]);
 		setAbilityAdapter(true);
+	}
+
+	private void loadDefenderData() {
+		try {
+			mDefender.mLevel = Integer.parseInt(mDefenderLevelView.getText()
+					.toString());
+			mDefenderModifierView
+					.setSelection(mDefender.mStatsModifier[TeamPokemon.INDEX_DEF]);
+			mDefenderNatureView.setSelection(mDefender.mNature);
+			setDefenderStats();
+			mDefenderAbilityView.setSelection(mDefender.mSelectedAbility);
+		} catch (NumberFormatException e) {
+			mDefender.mLevel = 100;
+		}
 	}
 
 	private void setDefenderStats() {
@@ -476,86 +474,14 @@ public class DamageCalcFragment extends Fragment implements
 		setAbilityAdapter(false);
 	}
 
-	@Override
-	public void afterTextChanged(Editable s) {
-		if (s.equals("")) {
-			return;
-		}
-		if (!s.equals("")) {
-			if (s.hashCode() == mAttackerView.getText().hashCode()) {
-				mPokemonName = s.toString();
+	private void loadAttack(long attack) {
+		Bundle args = new Bundle();
+		args.putLong(ARG_ATTACK_ID, attack);
+		getLoaderManager().restartLoader(LOADER_ATTACK, args, this);
+	}
 
-				isAttacker = true;
-				getLoaderManager().restartLoader(
-						LOADER_ATTACKING_POKEMON_AUTO_COMPLETE, null, this);
-				return;
-			} else if (s.hashCode() == mDefenderView.getText().hashCode()) {
-				mPokemonName = s.toString();
-
-				isAttacker = false;
-				getLoaderManager().restartLoader(
-						LOADER_DEFENDING_POKEMON_AUTO_COMPLETE, null, this);
-				return;
-			}
-		}
-		try {
-			if (s.hashCode() == mAttackBaseDamageView.getText().hashCode()) {
-				if (mAttack != null) {
-					mAttack.mPower = Integer.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mAttackerLevelView.getText().hashCode()) {
-				if (mAttacker != null) {
-					mAttacker.mLevel = Integer.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mDefenderLevelView.getText().hashCode()) {
-				if (mDefender != null) {
-					mDefender.mLevel = Integer.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mAttackerHpView.getText().hashCode()) {
-				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_HP] = Integer.parseInt(s
-							.toString());
-				}
-			} else if (s.hashCode() == mAttackerAttView.getText().hashCode()) {
-				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_ATT] = Integer
-							.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mAttackerSpAttView.getText().hashCode()) {
-				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_SP_ATT] = Integer
-							.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mAttackerSpeedView.getText().hashCode()) {
-				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_SPEED] = Integer
-							.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mDefenderHpView.getText().hashCode()) {
-				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_HP] = Integer.parseInt(s
-							.toString());
-				}
-			} else if (s.hashCode() == mDefenderDefView.getText().hashCode()) {
-				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_DEF] = Integer
-							.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mDefenderSpDefView.getText().hashCode()) {
-				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_SP_DEF] = Integer
-							.parseInt(s.toString());
-				}
-			} else if (s.hashCode() == mDefenderSpeedView.getText().hashCode()) {
-				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_SPEED] = Integer
-							.parseInt(s.toString());
-				}
-			}
-			calculateDamage();
-		} catch (NumberFormatException e) {
-			return;
-		}
+	private void setAttackParameters() {
+		mAttackBaseDamageView.setText("" + mAttack.mPower);
 	}
 
 	private void calculateDamage() {
@@ -662,12 +588,18 @@ public class DamageCalcFragment extends Fragment implements
 		case LOADER_ATTACKING_POKEMON:
 			if (cursor.moveToFirst()) {
 				mAttacker = new TeamPokemon(cursor);
+				for(int i = 0; i < 6; i++){
+					mAttacker.mEvs[i] = 252;
+				}
 				loadAttackerData();
 			}
 			break;
 		case LOADER_DEFENDING_POKEMON:
 			if (cursor.moveToFirst()) {
 				mDefender = new TeamPokemon(cursor);
+				for(int i = 0; i < 6; i++){
+					mDefender.mEvs[i] = 252;
+				}
 				loadDefenderData();
 			}
 			break;
@@ -700,6 +632,88 @@ public class DamageCalcFragment extends Fragment implements
 	public CharSequence convertToString(Cursor c) {
 		return c.getString(c
 				.getColumnIndexOrThrow(PokeContract.PokemonName.NAME));
+	}
+
+	@Override
+	public void afterTextChanged(Editable s) {
+		if (s.equals("")) {
+			return;
+		}
+		if (!s.equals("")) {
+			if (s.hashCode() == mAttackerView.getText().hashCode()) {
+				mPokemonName = s.toString();
+
+				isAttacker = true;
+				getLoaderManager().restartLoader(
+						LOADER_ATTACKING_POKEMON_AUTO_COMPLETE, null, this);
+				return;
+			} else if (s.hashCode() == mDefenderView.getText().hashCode()) {
+				mPokemonName = s.toString();
+
+				isAttacker = false;
+				getLoaderManager().restartLoader(
+						LOADER_DEFENDING_POKEMON_AUTO_COMPLETE, null, this);
+				return;
+			}
+		}
+		try {
+			if (s.hashCode() == mAttackBaseDamageView.getText().hashCode()) {
+				if (mAttack != null) {
+					mAttack.mPower = Integer.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mAttackerLevelView.getText().hashCode()) {
+				if (mAttacker != null) {
+					mAttacker.mLevel = Integer.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mDefenderLevelView.getText().hashCode()) {
+				if (mDefender != null) {
+					mDefender.mLevel = Integer.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mAttackerHpView.getText().hashCode()) {
+				if (mAttacker != null) {
+					mAttacker.mStats[TeamPokemon.INDEX_HP] = Integer.parseInt(s
+							.toString());
+				}
+			} else if (s.hashCode() == mAttackerAttView.getText().hashCode()) {
+				if (mAttacker != null) {
+					mAttacker.mStats[TeamPokemon.INDEX_ATT] = Integer
+							.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mAttackerSpAttView.getText().hashCode()) {
+				if (mAttacker != null) {
+					mAttacker.mStats[TeamPokemon.INDEX_SP_ATT] = Integer
+							.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mAttackerSpeedView.getText().hashCode()) {
+				if (mAttacker != null) {
+					mAttacker.mStats[TeamPokemon.INDEX_SPEED] = Integer
+							.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mDefenderHpView.getText().hashCode()) {
+				if (mDefender != null) {
+					mDefender.mStats[TeamPokemon.INDEX_HP] = Integer.parseInt(s
+							.toString());
+				}
+			} else if (s.hashCode() == mDefenderDefView.getText().hashCode()) {
+				if (mDefender != null) {
+					mDefender.mStats[TeamPokemon.INDEX_DEF] = Integer
+							.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mDefenderSpDefView.getText().hashCode()) {
+				if (mDefender != null) {
+					mDefender.mStats[TeamPokemon.INDEX_SP_DEF] = Integer
+							.parseInt(s.toString());
+				}
+			} else if (s.hashCode() == mDefenderSpeedView.getText().hashCode()) {
+				if (mDefender != null) {
+					mDefender.mStats[TeamPokemon.INDEX_SPEED] = Integer
+							.parseInt(s.toString());
+				}
+			}
+			calculateDamage();
+		} catch (NumberFormatException e) {
+			return;
+		}
 	}
 
 	@Override
@@ -787,11 +801,11 @@ public class DamageCalcFragment extends Fragment implements
 		args.putLong(ARG_POKEMON_ID, id);
 		if (isAttacker) {
 			getLoaderManager().restartLoader(LOADER_ATTACKING_POKEMON, args,
-					DamageCalcFragment.this);
+					this);
 		} else {
 
 			getLoaderManager().restartLoader(LOADER_DEFENDING_POKEMON, args,
-					DamageCalcFragment.this);
+					this);
 		}
 	}
 

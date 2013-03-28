@@ -13,7 +13,11 @@ public class EditTeamPokemonActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.edit_team_pokemon);
+		if(savedInstanceState != null){
+			return;
+		}
 		EditTeamPokemonFragment fragment = new EditTeamPokemonFragment();
+		fragment.setHasOptionsMenu(true);
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.edit_team_pokemon_container, fragment).commit();
 	}
