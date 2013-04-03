@@ -9,7 +9,6 @@
     
     <string name="load_team">Load team</string>
     <string name="save_team">Save team</string>
-    
-    <string name="edit_team_pokemon_load_pokemon">Load Pokemon</string>
-	<string name="edit_team_pokemon_save_pokemon">Save Pokemon</string>
+    <string name="view_team_stats">View team stats</string>
+    <string name="team_builder_team_name">Team name</string>
 </resources>

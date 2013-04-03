@@ -113,7 +113,7 @@ public class DamageCalcFragment extends Fragment implements
 			if (savedInstanceState.containsKey(ARG_ATTACKER_ID)) {
 				mAttacker = new TeamPokemon(
 						savedInstanceState.getBundle(ARG_ATTACKER_ID));
-				for(int i = 0; i < 6; i++){
+				for (int i = 0; i < 6; i++) {
 					mAttacker.mEvs[i] = 252;
 				}
 				if (savedInstanceState.containsKey(ARG_ATTACK_ID)) {
@@ -125,7 +125,7 @@ public class DamageCalcFragment extends Fragment implements
 			if (savedInstanceState.containsKey(ARG_DEFENDER_ID)) {
 				mDefender = new TeamPokemon(
 						savedInstanceState.getBundle(ARG_DEFENDER_ID));
-				for(int i = 0; i < 6; i++){
+				for (int i = 0; i < 6; i++) {
 					mAttacker.mEvs[i] = 252;
 				}
 				loadDefenderData();
@@ -511,11 +511,10 @@ public class DamageCalcFragment extends Fragment implements
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		Loader<Cursor> loader = null;
 		switch (id) {
-
-		// This loader accepts no parameters. If arg_attacker_id is supplied, it
-		// will take the form from the attacker too
+		// This loader accepts empty parameters. If arg_attacker_id is supplied,
+		// it
+		// will leave the form from the attacker (as it has no attacks)
 		case LOADER_ATTACKS:
 			int form = 0;
 			if (args != null && args.containsKey(ARG_ATTACKER_ID)) {
@@ -523,45 +522,51 @@ public class DamageCalcFragment extends Fragment implements
 			} else {
 				form = mAttacker.mForm;
 			}
+			String[] attacksProjection = { PokeContract.Attacks.TABLE_NAME
+					+ "." + PokeContract.Attacks._ID };
 			String attacksSelection = PokeContract.PokemonAttacks.NUMBER
 					+ "=? AND " + PokeContract.PokemonAttacks.FORM + "=? AND "
 					+ PokeContract.Attacks.POWER + " > 0";
 			String[] attacksSelectionArgs = {
 					Integer.toString(mAttacker.mNumber), Integer.toString(form) };
-			loader = new CursorLoader(getActivity(),
-					PokeContract.PokemonAttacks.CONTENT_POKEMON_ATTACKS, null,
-					attacksSelection, attacksSelectionArgs, null);
-			break;
+			return new CursorLoader(getActivity(),
+					PokeContract.PokemonAttacks.CONTENT_POKEMON_ATTACKS,
+					attacksProjection, attacksSelection, attacksSelectionArgs,
+					null);
 		case LOADER_ATTACKING_POKEMON_AUTO_COMPLETE:
+			// This two loaders are identical to each other. The difference is
+			// only on the result handling
 		case LOADER_DEFENDING_POKEMON_AUTO_COMPLETE:
+			String[] autoCompleteProjection = { PokeContract.PokemonName._ID,
+					PokeContract.PokemonName.NAME };
 			String autoCompleteSelection = PokeContract.PokemonName.NAME
 					+ " LIKE ?";
 			String[] autoCompleteSelectionArgs = { "%" + mPokemonName + "%" };
-			loader = new CursorLoader(getActivity(),
-					PokeContract.PokemonName.CONTENT_POKEMON_NAME, null,
-					autoCompleteSelection, autoCompleteSelectionArgs, null);
-			break;
+			return new CursorLoader(getActivity(),
+					PokeContract.PokemonName.CONTENT_POKEMON_NAME,
+					autoCompleteProjection, autoCompleteSelection,
+					autoCompleteSelectionArgs, null);
 		case LOADER_ATTACKING_POKEMON:
+			// This two loaders are identical to each other. The difference is
+			// only on the result handling
 		case LOADER_DEFENDING_POKEMON:
 			String pokemonSelection = PokeContract.PokemonName.TABLE_NAME + "."
 					+ PokeContract.PokemonName._ID + "=?";
 			String[] pokemonSelectionArgs = { Long.toString(args
 					.getLong(ARG_POKEMON_ID)) };
-			loader = new CursorLoader(getActivity(),
+			return new CursorLoader(getActivity(),
 					PokeContract.Pokedex.CONTENT_POKEDEX, null,
 					pokemonSelection, pokemonSelectionArgs, null);
-			break;
 		case LOADER_ATTACK:
 			String attackSelection = PokeContract.Attacks._ID + "=?";
 			String[] attackSelectionArgs = { Long.toString(args
 					.getLong(ARG_ATTACK_ID)) };
-			loader = new CursorLoader(getActivity(),
+			return new CursorLoader(getActivity(),
 					PokeContract.Attacks.CONTENT_ATTACK, null, attackSelection,
 					attackSelectionArgs, null);
-			break;
+		default:
+			return null;
 		}
-
-		return loader;
 	}
 
 	@Override
@@ -588,7 +593,7 @@ public class DamageCalcFragment extends Fragment implements
 		case LOADER_ATTACKING_POKEMON:
 			if (cursor.moveToFirst()) {
 				mAttacker = new TeamPokemon(cursor);
-				for(int i = 0; i < 6; i++){
+				for (int i = 0; i < 6; i++) {
 					mAttacker.mEvs[i] = 252;
 				}
 				loadAttackerData();
@@ -597,7 +602,7 @@ public class DamageCalcFragment extends Fragment implements
 		case LOADER_DEFENDING_POKEMON:
 			if (cursor.moveToFirst()) {
 				mDefender = new TeamPokemon(cursor);
-				for(int i = 0; i < 6; i++){
+				for (int i = 0; i < 6; i++) {
 					mDefender.mEvs[i] = 252;
 				}
 				loadDefenderData();

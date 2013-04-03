@@ -1,6 +1,11 @@
 package com.suicune.pokeutils.fragments;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -9,6 +14,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suicune.pokeutils.Natures;
+import com.suicune.pokeutils.Pokemon;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.TeamPokemon;
 import com.suicune.pokeutils.database.PokeContract;
@@ -37,7 +44,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 	private static final String ARG_POKEMON = "pokemon";
 	private static final int LOADER_NAME_AUTO_COMPLETE = 1;
 	private static final int LOADER_POKEMON = 2;
-	private static final String ARG_POKEMON_ID = "pokemonId";
+	private static final int LOADER_ATTACKS = 3;
+
+	public static final String ARG_POKEMON_ID = "pokemonId";
 
 	private TeamPokemon mPokemon;
 
@@ -77,12 +86,16 @@ public class EditTeamPokemonFragment extends Fragment implements
 	private Spinner mAttack4View;
 
 	private SimpleCursorAdapter mPokemonNameAdapter;
+	private AttacksAdapter mAttacksAdapter;
 
 	private String mPokemonName;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		if (container == null) {
+			return null;
+		}
 		return inflater.inflate(R.layout.edit_team_pokemon_fragment, container,
 				false);
 	}
@@ -91,7 +104,16 @@ public class EditTeamPokemonFragment extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setViews();
-		if (savedInstanceState != null) {
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+			setActionBar();
+		}
+		if (savedInstanceState == null) {
+			if (getActivity().getIntent().getExtras() != null) {
+				mPokemon = new TeamPokemon(getActivity().getIntent()
+						.getBundleExtra(TeamBuilderFragment.EXTRA_POKEMON));
+				loadPokemonStats();
+			}
+		} else {
 			if (savedInstanceState.containsKey(ARG_POKEMON)) {
 				mPokemon = new TeamPokemon(
 						savedInstanceState.getBundle(ARG_POKEMON));
@@ -104,7 +126,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		Bundle status = new Bundle();
-		mPokemon.saveStatus(status);
+		if (mPokemon != null) {
+			mPokemon.saveStatus(status);
+		}
 		outState.putBundle(ARG_POKEMON, status);
 	}
 
@@ -116,6 +140,14 @@ public class EditTeamPokemonFragment extends Fragment implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case android.R.id.home:
+			saveData();
+			getActivity().finish();
+			return true;
+		case R.id.edit_team_pokemon_validate:
+			saveData();
+			getActivity().finish();
+			return true;
 		case R.id.edit_team_pokemon_load_pokemon:
 			loadPokemonFromFile();
 			return true;
@@ -127,7 +159,23 @@ public class EditTeamPokemonFragment extends Fragment implements
 		}
 	}
 
+	private void saveData() {
+		if (mPokemon == null) {
+			return;
+		}
+		Intent intent = new Intent();
+		Bundle pokemon = new Bundle();
+
+		mPokemon.saveStatus(pokemon);
+		intent.putExtra(TeamBuilderFragment.EXTRA_POKEMON, pokemon);
+		getActivity().setResult(Activity.RESULT_OK, intent);
+
+	}
+
 	private void setViews() {
+		if (getActivity().findViewById(R.id.edit_team_pokemon_name) == null) {
+			return;
+		}
 		prepareNameViews();
 		prepareLevelView();
 		prepareNatureView();
@@ -135,6 +183,11 @@ public class EditTeamPokemonFragment extends Fragment implements
 		prepareAbilityView();
 		prepareItemView();
 		prepareAttacksViews();
+	}
+
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private void setActionBar() {
+		getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private void prepareNameViews() {
@@ -167,9 +220,11 @@ public class EditTeamPokemonFragment extends Fragment implements
 				R.id.edit_team_pokemon_nature);
 
 		String[] natures = new String[Natures.NATURES_COUNT];
+
 		for (int i = 0; i < Natures.NATURES_COUNT; i++) {
 			natures[i] = getString(Natures.getNatureName(i));
 		}
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_spinner_item, android.R.id.text1,
 				natures);
@@ -271,6 +326,18 @@ public class EditTeamPokemonFragment extends Fragment implements
 		mAttack4View = (Spinner) getActivity().findViewById(
 				R.id.edit_team_pokemon_attack4);
 
+		mAttacksAdapter = new AttacksAdapter(getActivity(),
+				android.R.layout.simple_spinner_item, null,
+				new String[] { PokeContract.Attacks._ID },
+				new int[] { android.R.id.text1 }, 0);
+		mAttacksAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		mAttack1View.setAdapter(mAttacksAdapter);
+		mAttack2View.setAdapter(mAttacksAdapter);
+		mAttack3View.setAdapter(mAttacksAdapter);
+		mAttack4View.setAdapter(mAttacksAdapter);
+
 		mAttack1View.setOnItemSelectedListener(this);
 		mAttack2View.setOnItemSelectedListener(this);
 		mAttack3View.setOnItemSelectedListener(this);
@@ -278,6 +345,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 	}
 
 	private void loadPokemonStats() {
+		mNameView.setText(mPokemon.mName);
+		mNicknameView.setText(mPokemon.mNickname);
+
 		mBaseHpView.setText("" + mPokemon.mBaseHP);
 		mBaseAttView.setText("" + mPokemon.mBaseAtt);
 		mBaseDefView.setText("" + mPokemon.mBaseDef);
@@ -308,7 +378,21 @@ public class EditTeamPokemonFragment extends Fragment implements
 	}
 
 	private void loadPokemonAbilities() {
+		String[] abilities = new String[3];
+		abilities[Pokemon.ABILITY_INDEX_1] = getResources().getStringArray(
+				R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_1]];
+		abilities[Pokemon.ABILITY_INDEX_2] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
+				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2]];
+		abilities[Pokemon.ABILITY_INDEX_DW] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0) ? "-"
+				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW]];
 
+		ArrayAdapter<String> pokemonAbilityAdapter = new ArrayAdapter<String>(
+				getActivity(), android.R.layout.simple_spinner_item,
+				android.R.id.text1, abilities);
+		pokemonAbilityAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		mAbilityView.setAdapter(pokemonAbilityAdapter);
 	}
 
 	private void setStats() {
@@ -343,6 +427,19 @@ public class EditTeamPokemonFragment extends Fragment implements
 			int position, long id) {
 		switch (adapterView.getId()) {
 		case R.id.edit_team_pokemon_ability:
+			if (mPokemon != null) {
+				if ((mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2] == 0)
+						&& (position == Pokemon.ABILITY_INDEX_2)) {
+					mPokemon.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
+					mAbilityView.setSelection(mPokemon.mSelectedAbility);
+				} else if ((mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0)
+						&& (position == Pokemon.ABILITY_INDEX_DW)) {
+					mPokemon.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
+					mAbilityView.setSelection(mPokemon.mSelectedAbility);
+				} else {
+					mPokemon.mSelectedAbility = position;
+				}
+			}
 			break;
 		case R.id.edit_team_pokemon_attack1:
 			break;
@@ -355,6 +452,11 @@ public class EditTeamPokemonFragment extends Fragment implements
 		case R.id.edit_team_pokemon_item:
 			break;
 		case R.id.edit_team_pokemon_nature:
+			if (mPokemon != null) {
+				mPokemon.mNature = position;
+				mPokemon.setStats();
+				setStats();
+			}
 			break;
 		default:
 			break;
@@ -460,28 +562,43 @@ public class EditTeamPokemonFragment extends Fragment implements
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		CursorLoader loader = null;
 		switch (id) {
 		case LOADER_NAME_AUTO_COMPLETE:
+			String[] autoCompleteProjection = { PokeContract.PokemonName._ID,
+					PokeContract.PokemonName.NAME };
 			String selection = PokeContract.PokemonName.NAME + " LIKE ?";
 			String[] selectionArgs = { "%" + mPokemonName + "%" };
-			loader = new CursorLoader(getActivity(),
-					PokeContract.PokemonName.CONTENT_POKEMON_NAME, null,
-					selection, selectionArgs, null);
-			break;
+			return new CursorLoader(getActivity(),
+					PokeContract.PokemonName.CONTENT_POKEMON_NAME,
+					autoCompleteProjection, selection, selectionArgs, null);
 		case LOADER_POKEMON:
 			String pokemonSelection = PokeContract.PokemonName.TABLE_NAME + "."
 					+ PokeContract.PokemonName._ID + "=?";
 			String[] pokemonSelectionArgs = { Long.toString(args
 					.getLong(ARG_POKEMON_ID)) };
-			loader = new CursorLoader(getActivity(),
+			return new CursorLoader(getActivity(),
 					PokeContract.Pokedex.CONTENT_POKEDEX, null,
 					pokemonSelection, pokemonSelectionArgs, null);
-			break;
+		case LOADER_ATTACKS:
+			int form = 0;
+			if (args != null && args.containsKey(ARG_POKEMON_ID)) {
+				form = 0;
+			} else {
+				form = mPokemon.mForm;
+			}
+			String[] attacksProjection = { PokeContract.Attacks.TABLE_NAME
+					+ "." + PokeContract.Attacks._ID };
+			String attacksSelection = PokeContract.PokemonAttacks.NUMBER
+					+ "=? AND " + PokeContract.PokemonAttacks.FORM + "=?";
+			String[] attacksSelectionArgs = {
+					Integer.toString(mPokemon.mNumber), Integer.toString(form) };
+			return new CursorLoader(getActivity(),
+					PokeContract.PokemonAttacks.CONTENT_POKEMON_ATTACKS,
+					attacksProjection, attacksSelection, attacksSelectionArgs,
+					null);
 		default:
-			break;
+			return null;
 		}
-		return loader;
 	}
 
 	@Override
@@ -489,12 +606,29 @@ public class EditTeamPokemonFragment extends Fragment implements
 		switch (loader.getId()) {
 		case LOADER_NAME_AUTO_COMPLETE:
 			mPokemonNameAdapter.swapCursor(cursor);
-			break;
+			return;
 		case LOADER_POKEMON:
 			mPokemon = new TeamPokemon(cursor);
+			getLoaderManager().restartLoader(LOADER_ATTACKS, null, this);
+			if (TextUtils.isEmpty(mNicknameView.getText())) {
+				mNicknameView.setText(mPokemon.mName);
+				mPokemon.mNickname = mNicknameView.getText().toString();
+			}
 			loadPokemonStats();
+
+			return;
+		case LOADER_ATTACKS:
+			if (cursor.getCount() == 0) {
+				Bundle args = new Bundle();
+				args.putBoolean(ARG_POKEMON_ID, true);
+				getLoaderManager().restartLoader(LOADER_ATTACKS, args, this);
+				return;
+			} else {
+				mAttacksAdapter.swapCursor(cursor);
+			}
+			return;
 		default:
-			break;
+			return;
 		}
 	}
 
@@ -503,9 +637,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 		switch (loader.getId()) {
 		case LOADER_NAME_AUTO_COMPLETE:
 			mPokemonNameAdapter.swapCursor(null);
-			break;
+			return;
 		default:
-			break;
+			return;
 		}
 	}
 
@@ -520,5 +654,18 @@ public class EditTeamPokemonFragment extends Fragment implements
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
+	}
+
+	public class AttacksAdapter extends SimpleCursorAdapter {
+		public AttacksAdapter(Context context, int layout, Cursor c,
+				String[] from, int[] to, int flags) {
+			super(context, layout, c, from, to, flags);
+		}
+
+		@Override
+		public void setViewText(TextView v, String text) {
+			v.setText(getResources().getStringArray(R.array.moves)[Integer
+					.parseInt(text)]);
+		}
 	}
 }

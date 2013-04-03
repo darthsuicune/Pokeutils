@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="pokemon_nickname">Nickname</string>
+    
+    <string name="edit_team_pokemon_load_pokemon">Load Pokemon</string>
+	<string name="edit_team_pokemon_save_pokemon">Save Pokemon</string>
+    <string name="edit_team_pokemon_save">Save</string>
 </resources>

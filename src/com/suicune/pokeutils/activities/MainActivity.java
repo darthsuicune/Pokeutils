@@ -123,7 +123,7 @@ public class MainActivity extends TabCompatActivity {
 		int currentTab = 0;
 		if (tab.getTag().equals(getString(R.string.tab_iv_calculator))) {
 			currentTab = TAB_IV_CALCULATOR;
-		} else if (tab.getTag().equals(getString(R.string.tab_iv_calculator))) {
+		} else if (tab.getTag().equals(getString(R.string.tab_team_builder))) {
 			currentTab = TAB_TEAM_BUILDER;
 		} else if (tab.getTag().equals(getString(R.string.tab_pokedex))) {
 			currentTab = TAB_POKEDEX;
