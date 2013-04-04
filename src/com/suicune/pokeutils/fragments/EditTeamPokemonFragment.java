@@ -1,18 +1,14 @@
 package com.suicune.pokeutils.fragments;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -28,6 +24,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
+import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,9 +102,6 @@ public class EditTeamPokemonFragment extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setViews();
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
-			setActionBar();
-		}
 		if (savedInstanceState == null) {
 			if (getActivity().getIntent().getExtras() != null) {
 				mPokemon = new TeamPokemon(getActivity().getIntent()
@@ -183,11 +178,6 @@ public class EditTeamPokemonFragment extends Fragment implements
 		prepareAbilityView();
 		prepareItemView();
 		prepareAttacksViews();
-	}
-
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setActionBar() {
-		getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private void prepareNameViews() {

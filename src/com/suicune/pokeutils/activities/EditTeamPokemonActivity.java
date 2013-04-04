@@ -1,12 +1,12 @@
 package com.suicune.pokeutils.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.compat.ActionBarActivity;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment;
 
-public class EditTeamPokemonActivity extends ActionBarActivity {
+public class EditTeamPokemonActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class EditTeamPokemonActivity extends ActionBarActivity {
 		}
 		EditTeamPokemonFragment fragment = new EditTeamPokemonFragment();
 		fragment.setHasOptionsMenu(true);
-		getSupportFragmentManager().beginTransaction()
+		getFragmentManager().beginTransaction()
 				.replace(R.id.edit_team_pokemon_container, fragment).commit();
 	}
 }
