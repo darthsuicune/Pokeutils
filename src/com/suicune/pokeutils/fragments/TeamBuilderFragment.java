@@ -28,7 +28,6 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	private static final int REQUEST_EDIT_POKEMON = 1;
 	private static final int REQUEST_LOAD_TEAM = 2;
 
-	public static final String EXTRA_POKEMON = "pokemon";
 	public static final String ARGUMENT_TEAM = "team";
 
 	private boolean isTwoPane;
@@ -73,22 +72,22 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 			case REQUEST_EDIT_POKEMON:
 				Bundle team = data.getBundleExtra(ARGUMENT_TEAM);
 				if (team.containsKey("0")) {
-
+					mPokemon1 = new TeamPokemon(team.getBundle("0"));
 				}
 				if (team.containsKey("1")) {
-
+					mPokemon2 = new TeamPokemon(team.getBundle("1"));
 				}
 				if (team.containsKey("2")) {
-
+					mPokemon3 = new TeamPokemon(team.getBundle("2"));
 				}
 				if (team.containsKey("3")) {
-
+					mPokemon4 = new TeamPokemon(team.getBundle("3"));
 				}
 				if (team.containsKey("4")) {
-
+					mPokemon5 = new TeamPokemon(team.getBundle("4"));
 				}
 				if (team.containsKey("5")) {
-
+					mPokemon6 = new TeamPokemon(team.getBundle("5"));
 				}
 				break;
 			case REQUEST_LOAD_TEAM:
@@ -222,7 +221,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 			intent.putExtra(EditTeamPokemonActivity.EXTRA_TEAM_NUMBER,
 					pokemonNumber);
 			if (pokemon != null) {
-				intent.putExtra(EXTRA_POKEMON, pokemon);
+				intent.putExtra(EditTeamPokemonActivity.EXTRA_POKEMON, pokemon);
 			}
 			startActivityForResult(intent, REQUEST_EDIT_POKEMON);
 		}

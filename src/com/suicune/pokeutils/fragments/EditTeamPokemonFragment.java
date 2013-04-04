@@ -106,9 +106,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 		if (savedInstanceState == null) {
 			if (getArguments() != null) {
 				if (getArguments().containsKey(
-						TeamBuilderFragment.EXTRA_POKEMON)) {
+						EditTeamPokemonActivity.EXTRA_POKEMON)) {
 					mPokemon = new TeamPokemon(getArguments().getBundle(
-							TeamBuilderFragment.EXTRA_POKEMON));
+							EditTeamPokemonActivity.EXTRA_POKEMON));
 					loadPokemonStats();
 				}
 			}
@@ -124,11 +124,11 @@ public class EditTeamPokemonFragment extends Fragment implements
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		Bundle status = new Bundle();
 		if (mPokemon != null) {
+			Bundle status = new Bundle();
 			mPokemon.saveStatus(status);
+			outState.putBundle(ARG_POKEMON, status);
 		}
-		outState.putBundle(ARG_POKEMON, status);
 	}
 
 	@Override
@@ -166,7 +166,7 @@ public class EditTeamPokemonFragment extends Fragment implements
 		Bundle pokemon = new Bundle();
 
 		mPokemon.saveStatus(pokemon);
-		intent.putExtra(TeamBuilderFragment.EXTRA_POKEMON, pokemon);
+		intent.putExtra(EditTeamPokemonActivity.EXTRA_POKEMON, pokemon);
 		getActivity().setResult(Activity.RESULT_OK, intent);
 		((EditTeamPokemonActivity) getActivity()).registerPokemon(pokemon);
 
@@ -340,6 +340,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 	}
 
 	private void loadPokemonStats() {
+		if (mNameView == null) {
+			return;
+		}
 		mNameView.setText(mPokemon.mName);
 		mNicknameView.setText(mPokemon.mNickname);
 

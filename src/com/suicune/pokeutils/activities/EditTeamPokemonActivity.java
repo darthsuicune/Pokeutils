@@ -12,6 +12,7 @@ import com.suicune.pokeutils.fragments.EditTeamPokemonFragment.EditTeamPokemonCa
 public class EditTeamPokemonActivity extends Activity implements
 		EditTeamPokemonCallback {
 	public static final String EXTRA_TEAM_NUMBER = "teamNumber";
+	public static final String EXTRA_POKEMON = "pokemon";
 
 	Intent mResult;
 
@@ -27,7 +28,6 @@ public class EditTeamPokemonActivity extends Activity implements
 		if (savedInstanceState != null) {
 			return;
 		}
-
 		if (getIntent().getExtras() == null) {
 			return;
 		}
@@ -35,7 +35,12 @@ public class EditTeamPokemonActivity extends Activity implements
 			mTeamNumber = getIntent().getIntExtra(EXTRA_TEAM_NUMBER, 0);
 		}
 		EditTeamPokemonFragment fragment = new EditTeamPokemonFragment();
-
+		if (getIntent().getExtras().containsKey(EXTRA_POKEMON)) {
+			Bundle args = new Bundle();
+			args.putBundle(EXTRA_POKEMON,
+					getIntent().getBundleExtra(EXTRA_POKEMON));
+			fragment.setArguments(args);
+		}
 		fragment.setHasOptionsMenu(true);
 		getFragmentManager().beginTransaction()
 				.replace(R.id.edit_team_pokemon_container, fragment).commit();
