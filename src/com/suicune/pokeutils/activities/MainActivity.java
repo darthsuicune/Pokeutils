@@ -101,7 +101,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 				fragment = Fragment.instantiate(this,
 						PokedexFragment.class.getName());
 			}
-			ft.add(R.id.main_activity_fragment, fragment, tab.getText()
+			ft.add(R.id.main_activity_container, fragment, tab.getText()
 					.toString());
 			prefs.edit()
 					.putInt(SettingsActivity.DEFAULT_TAB,

@@ -34,6 +34,7 @@ import com.suicune.pokeutils.Natures;
 import com.suicune.pokeutils.Pokemon;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.TeamPokemon;
+import com.suicune.pokeutils.activities.EditTeamPokemonActivity;
 import com.suicune.pokeutils.database.PokeContract;
 
 public class EditTeamPokemonFragment extends Fragment implements
@@ -103,10 +104,13 @@ public class EditTeamPokemonFragment extends Fragment implements
 		super.onActivityCreated(savedInstanceState);
 		setViews();
 		if (savedInstanceState == null) {
-			if (getActivity().getIntent().getExtras() != null) {
-				mPokemon = new TeamPokemon(getActivity().getIntent()
-						.getBundleExtra(TeamBuilderFragment.EXTRA_POKEMON));
-				loadPokemonStats();
+			if (getArguments() != null) {
+				if (getArguments().containsKey(
+						TeamBuilderFragment.EXTRA_POKEMON)) {
+					mPokemon = new TeamPokemon(getArguments().getBundle(
+							TeamBuilderFragment.EXTRA_POKEMON));
+					loadPokemonStats();
+				}
 			}
 		} else {
 			if (savedInstanceState.containsKey(ARG_POKEMON)) {
@@ -164,6 +168,7 @@ public class EditTeamPokemonFragment extends Fragment implements
 		mPokemon.saveStatus(pokemon);
 		intent.putExtra(TeamBuilderFragment.EXTRA_POKEMON, pokemon);
 		getActivity().setResult(Activity.RESULT_OK, intent);
+		((EditTeamPokemonActivity) getActivity()).registerPokemon(pokemon);
 
 	}
 
@@ -657,5 +662,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 			v.setText(getResources().getStringArray(R.array.moves)[Integer
 					.parseInt(text)]);
 		}
+	}
+
+	public interface EditTeamPokemonCallback {
+		void registerPokemon(Bundle pokemon);
 	}
 }

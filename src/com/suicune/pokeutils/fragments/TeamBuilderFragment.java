@@ -25,15 +25,11 @@ import com.suicune.pokeutils.tools.FileTools;
  * file with a team definition from storage.
  */
 public class TeamBuilderFragment extends Fragment implements OnClickListener {
-	private static final int REQUEST_EDIT_POKEMON_1 = 1;
-	private static final int REQUEST_EDIT_POKEMON_2 = 2;
-	private static final int REQUEST_EDIT_POKEMON_3 = 3;
-	private static final int REQUEST_EDIT_POKEMON_4 = 4;
-	private static final int REQUEST_EDIT_POKEMON_5 = 5;
-	private static final int REQUEST_EDIT_POKEMON_6 = 6;
-	private static final int REQUEST_LOAD_TEAM = 7;
+	private static final int REQUEST_EDIT_POKEMON = 1;
+	private static final int REQUEST_LOAD_TEAM = 2;
 
 	public static final String EXTRA_POKEMON = "pokemon";
+	public static final String ARGUMENT_TEAM = "team";
 
 	private boolean isTwoPane;
 
@@ -74,35 +70,26 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == Activity.RESULT_OK) {
 			switch (requestCode) {
-			case REQUEST_EDIT_POKEMON_1:
-				mPokemon1 = new TeamPokemon(data.getBundleExtra(EXTRA_POKEMON));
-				mPokemonButton1.setText(mPokemon1.mNickname + "("
-						+ mPokemon1.mName + ")");
-				break;
-			case REQUEST_EDIT_POKEMON_2:
-				mPokemon2 = new TeamPokemon(data.getBundleExtra(EXTRA_POKEMON));
-				mPokemonButton2.setText(mPokemon2.mNickname + "("
-						+ mPokemon2.mName + ")");
-				break;
-			case REQUEST_EDIT_POKEMON_3:
-				mPokemon3 = new TeamPokemon(data.getBundleExtra(EXTRA_POKEMON));
-				mPokemonButton3.setText(mPokemon3.mNickname + "("
-						+ mPokemon3.mName + ")");
-				break;
-			case REQUEST_EDIT_POKEMON_4:
-				mPokemon4 = new TeamPokemon(data.getBundleExtra(EXTRA_POKEMON));
-				mPokemonButton4.setText(mPokemon4.mNickname + "("
-						+ mPokemon4.mName + ")");
-				break;
-			case REQUEST_EDIT_POKEMON_5:
-				mPokemon5 = new TeamPokemon(data.getBundleExtra(EXTRA_POKEMON));
-				mPokemonButton5.setText(mPokemon5.mNickname + "("
-						+ mPokemon5.mName + ")");
-				break;
-			case REQUEST_EDIT_POKEMON_6:
-				mPokemon6 = new TeamPokemon(data.getBundleExtra(EXTRA_POKEMON));
-				mPokemonButton6.setText(mPokemon6.mNickname + "("
-						+ mPokemon6.mName + ")");
+			case REQUEST_EDIT_POKEMON:
+				Bundle team = data.getBundleExtra(ARGUMENT_TEAM);
+				if (team.containsKey("0")) {
+
+				}
+				if (team.containsKey("1")) {
+
+				}
+				if (team.containsKey("2")) {
+
+				}
+				if (team.containsKey("3")) {
+
+				}
+				if (team.containsKey("4")) {
+
+				}
+				if (team.containsKey("5")) {
+
+				}
 				break;
 			case REQUEST_LOAD_TEAM:
 				loadTeam(data.getData());
@@ -171,54 +158,54 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 			if (mPokemon1 != null) {
 				Bundle pokemon = new Bundle();
 				mPokemon1.saveStatus(pokemon);
-				editPokemon(REQUEST_EDIT_POKEMON_1, pokemon);
+				editPokemon(0, pokemon);
 			} else {
-				editPokemon(REQUEST_EDIT_POKEMON_1, null);
+				editPokemon(0, null);
 			}
 			break;
 		case R.id.team_builder_pokemon_2:
 			if (mPokemon2 != null) {
 				Bundle pokemon = new Bundle();
 				mPokemon2.saveStatus(pokemon);
-				editPokemon(REQUEST_EDIT_POKEMON_2, pokemon);
+				editPokemon(1, pokemon);
 			} else {
-				editPokemon(REQUEST_EDIT_POKEMON_2, null);
+				editPokemon(1, null);
 			}
 			break;
 		case R.id.team_builder_pokemon_3:
 			if (mPokemon3 != null) {
 				Bundle pokemon = new Bundle();
 				mPokemon3.saveStatus(pokemon);
-				editPokemon(REQUEST_EDIT_POKEMON_3, pokemon);
+				editPokemon(2, pokemon);
 			} else {
-				editPokemon(REQUEST_EDIT_POKEMON_3, null);
+				editPokemon(2, null);
 			}
 			break;
 		case R.id.team_builder_pokemon_4:
 			if (mPokemon4 != null) {
 				Bundle pokemon = new Bundle();
 				mPokemon4.saveStatus(pokemon);
-				editPokemon(REQUEST_EDIT_POKEMON_4, pokemon);
+				editPokemon(3, pokemon);
 			} else {
-				editPokemon(REQUEST_EDIT_POKEMON_4, null);
+				editPokemon(3, null);
 			}
 			break;
 		case R.id.team_builder_pokemon_5:
 			if (mPokemon5 != null) {
 				Bundle pokemon = new Bundle();
 				mPokemon5.saveStatus(pokemon);
-				editPokemon(REQUEST_EDIT_POKEMON_5, pokemon);
+				editPokemon(4, pokemon);
 			} else {
-				editPokemon(REQUEST_EDIT_POKEMON_5, null);
+				editPokemon(4, null);
 			}
 			break;
 		case R.id.team_builder_pokemon_6:
 			if (mPokemon6 != null) {
 				Bundle pokemon = new Bundle();
 				mPokemon6.saveStatus(pokemon);
-				editPokemon(REQUEST_EDIT_POKEMON_6, pokemon);
+				editPokemon(5, pokemon);
 			} else {
-				editPokemon(REQUEST_EDIT_POKEMON_6, null);
+				editPokemon(5, null);
 			}
 			break;
 		default:
@@ -226,16 +213,18 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		}
 	}
 
-	private void editPokemon(int requestCode, Bundle pokemon) {
+	private void editPokemon(int pokemonNumber, Bundle pokemon) {
 		if (isTwoPane) {
 
 		} else {
 			Intent intent = new Intent(getActivity(),
 					EditTeamPokemonActivity.class);
+			intent.putExtra(EditTeamPokemonActivity.EXTRA_TEAM_NUMBER,
+					pokemonNumber);
 			if (pokemon != null) {
 				intent.putExtra(EXTRA_POKEMON, pokemon);
 			}
-			startActivityForResult(intent, requestCode);
+			startActivityForResult(intent, REQUEST_EDIT_POKEMON);
 		}
 	}
 
@@ -290,13 +279,13 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	// break;
 	// }
 	// }
-	
-	private void viewTeamStats(){
-		//Handle view stats
-		if(isTwoPane){
-			
+
+	private void viewTeamStats() {
+		// Handle view stats
+		if (isTwoPane) {
+
 		} else {
-			
+
 		}
 	}
 
@@ -306,7 +295,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 
 	private void saveTeam() {
 		Bundle team = createTeamBundle();
-		if(team != null){
+		if (team != null) {
 			FileTools.exportTeamToXml(team);
 		}
 	}
@@ -316,7 +305,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 				&& mPokemon4 == null && mPokemon5 == null && mPokemon6 == null) {
 			return null;
 		}
-		
+
 		Bundle team = new Bundle();
 		Bundle pokemon1 = new Bundle();
 		if (mPokemon1 != null) {
