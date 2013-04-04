@@ -1,6 +1,7 @@
 package com.suicune.pokeutils.activities;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -34,7 +35,8 @@ public class EditTeamPokemonActivity extends Activity implements
 		if (getIntent().getExtras().containsKey(EXTRA_TEAM_NUMBER)) {
 			mTeamNumber = getIntent().getIntExtra(EXTRA_TEAM_NUMBER, 0);
 		}
-		EditTeamPokemonFragment fragment = new EditTeamPokemonFragment();
+		Fragment fragment = Fragment.instantiate(this,
+				EditTeamPokemonFragment.class.getName());
 		if (getIntent().getExtras().containsKey(EXTRA_POKEMON)) {
 			Bundle args = new Bundle();
 			args.putBundle(EXTRA_POKEMON,
@@ -43,7 +45,7 @@ public class EditTeamPokemonActivity extends Activity implements
 		}
 		fragment.setHasOptionsMenu(true);
 		getFragmentManager().beginTransaction()
-				.replace(R.id.edit_team_pokemon_container, fragment).commit();
+				.add(R.id.edit_team_pokemon_container, fragment).commit();
 	}
 
 	@Override
