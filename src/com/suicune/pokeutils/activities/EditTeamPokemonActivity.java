@@ -1,19 +1,26 @@
 package com.suicune.pokeutils.activities;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment;
-import com.suicune.pokeutils.fragments.TeamBuilderFragment;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment.EditTeamPokemonCallback;
+import com.suicune.pokeutils.fragments.TeamBuilderFragment;
 
-public class EditTeamPokemonActivity extends Activity implements
+public class EditTeamPokemonActivity extends FragmentActivity implements
 		EditTeamPokemonCallback {
+
+	EditTeamAdapter mEditTeamAdapter;
+	ViewPager mViewPager;
+
 	public static final String EXTRA_TEAM_NUMBER = "teamNumber";
-	public static final String EXTRA_POKEMON = "pokemon";
+	public static final String EXTRA_TEAM = "team";
 
 	Intent mResult;
 
@@ -23,29 +30,33 @@ public class EditTeamPokemonActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_team_pokemon);
-		mResult = new Intent();
-		Bundle team = new Bundle();
-		mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, team);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		if (savedInstanceState != null) {
 			return;
 		}
 		if (getIntent().getExtras() == null) {
 			return;
 		}
+
 		if (getIntent().getExtras().containsKey(EXTRA_TEAM_NUMBER)) {
 			mTeamNumber = getIntent().getIntExtra(EXTRA_TEAM_NUMBER, 0);
 		}
-		Fragment fragment = Fragment.instantiate(this,
-				EditTeamPokemonFragment.class.getName());
-		if (getIntent().getExtras().containsKey(EXTRA_POKEMON)) {
-			Bundle args = new Bundle();
-			args.putBundle(EXTRA_POKEMON,
-					getIntent().getBundleExtra(EXTRA_POKEMON));
-			fragment.setArguments(args);
+		if (getIntent().getExtras().containsKey(EXTRA_TEAM)) {
+			// Initialize result
+			mResult = new Intent();
+			mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, getIntent()
+					.getBundleExtra(EXTRA_TEAM));
 		}
-		fragment.setHasOptionsMenu(true);
-		getFragmentManager().beginTransaction()
-				.add(R.id.edit_team_pokemon_container, fragment).commit();
+		
+		preparePager();
+	}
+
+	private void preparePager() {
+		mEditTeamAdapter = new EditTeamAdapter(getSupportFragmentManager());
+		mViewPager = (ViewPager) findViewById(R.id.edit_team_pokemon_container);
+		mViewPager.setOffscreenPageLimit(5);
+		mViewPager.setAdapter(mEditTeamAdapter);
+		mViewPager.setCurrentItem(mTeamNumber);
 	}
 
 	@Override
@@ -55,5 +66,60 @@ public class EditTeamPokemonActivity extends Activity implements
 		team.putBundle(Integer.toString(mTeamNumber), pokemon);
 		mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, team);
 		setResult(RESULT_OK, mResult);
+	}
+
+	public class EditTeamAdapter extends FragmentStatePagerAdapter {
+		FragmentManager mFragmentManager;
+
+		public EditTeamAdapter(FragmentManager fm) {
+			super(fm);
+			mFragmentManager = fm;
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			Fragment fragment = Fragment.instantiate(
+					EditTeamPokemonActivity.this,
+					EditTeamPokemonFragment.class.getName());
+			fragment.setHasOptionsMenu(true);
+			if ((getIntent().getExtras() != null)
+					&& (getIntent().getExtras().containsKey(EXTRA_TEAM))
+					&& (getIntent().getBundleExtra(EXTRA_TEAM)
+							.containsKey(Integer.toString(position)))) {
+				fragment.setArguments(getIntent().getBundleExtra(EXTRA_TEAM)
+						.getBundle(Integer.toString(position)));
+
+			}
+			return fragment;
+		}
+
+		@Override
+		public int getCount() {
+			// We have just 6 pokemon on the list
+			return 6;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			switch (position) {
+			case 0:
+				return getString(R.string.pokemon_1) + " ("
+						+ getString(R.string.lead) + ")";
+			case 1:
+				return getString(R.string.pokemon_2);
+			case 2:
+				return getString(R.string.pokemon_3);
+			case 3:
+				return getString(R.string.pokemon_4);
+			case 4:
+				return getString(R.string.pokemon_5);
+			case 5:
+				return getString(R.string.pokemon_6);
+			default:
+				return super.getPageTitle(position);
+			}
+
+		}
+
 	}
 }

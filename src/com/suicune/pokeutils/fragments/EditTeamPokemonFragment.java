@@ -1,14 +1,14 @@
 package com.suicune.pokeutils.fragments;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
-import android.content.CursorLoader;
-import android.content.Intent;
-import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -24,8 +24,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -92,12 +90,20 @@ public class EditTeamPokemonFragment extends Fragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		if (container == null) {
-			return null;
-		}
+//		if (container == null) {
+//			return null;
+//		}
 		return inflater.inflate(R.layout.edit_team_pokemon_fragment, container,
 				false);
 	}
+
+//	@Override
+//	public void setUserVisibleHint(boolean isVisibleToUser) {
+//		super.setUserVisibleHint(isVisibleToUser);
+//		if(isVisibleToUser){
+//			setViews();
+//		}
+//	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -106,9 +112,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 		if (savedInstanceState == null) {
 			if (getArguments() != null) {
 				if (getArguments().containsKey(
-						EditTeamPokemonActivity.EXTRA_POKEMON)) {
+						EditTeamPokemonActivity.EXTRA_TEAM)) {
 					mPokemon = new TeamPokemon(getArguments().getBundle(
-							EditTeamPokemonActivity.EXTRA_POKEMON));
+							EditTeamPokemonActivity.EXTRA_TEAM));
 					loadPokemonStats();
 				}
 			}
@@ -162,20 +168,17 @@ public class EditTeamPokemonFragment extends Fragment implements
 		if (mPokemon == null) {
 			return;
 		}
-		Intent intent = new Intent();
 		Bundle pokemon = new Bundle();
 
 		mPokemon.saveStatus(pokemon);
-		intent.putExtra(EditTeamPokemonActivity.EXTRA_POKEMON, pokemon);
-		getActivity().setResult(Activity.RESULT_OK, intent);
 		((EditTeamPokemonActivity) getActivity()).registerPokemon(pokemon);
 
 	}
 
 	private void setViews() {
-		if (getActivity().findViewById(R.id.edit_team_pokemon_name) == null) {
-			return;
-		}
+//		if (getActivity().findViewById(R.id.edit_team_pokemon_name) == null) {
+//			return;
+//		}
 		prepareNameViews();
 		prepareLevelView();
 		prepareNatureView();

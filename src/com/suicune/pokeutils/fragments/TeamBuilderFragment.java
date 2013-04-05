@@ -160,65 +160,30 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.team_builder_pokemon_1:
-			if (mPokemon1 != null) {
-				Bundle pokemon = new Bundle();
-				mPokemon1.saveStatus(pokemon);
-				editPokemon(0, pokemon);
-			} else {
-				editPokemon(0, null);
-			}
+			editTeam(0);
 			break;
 		case R.id.team_builder_pokemon_2:
-			if (mPokemon2 != null) {
-				Bundle pokemon = new Bundle();
-				mPokemon2.saveStatus(pokemon);
-				editPokemon(1, pokemon);
-			} else {
-				editPokemon(1, null);
-			}
+			editTeam(1);
 			break;
 		case R.id.team_builder_pokemon_3:
-			if (mPokemon3 != null) {
-				Bundle pokemon = new Bundle();
-				mPokemon3.saveStatus(pokemon);
-				editPokemon(2, pokemon);
-			} else {
-				editPokemon(2, null);
-			}
+			editTeam(2);
 			break;
 		case R.id.team_builder_pokemon_4:
-			if (mPokemon4 != null) {
-				Bundle pokemon = new Bundle();
-				mPokemon4.saveStatus(pokemon);
-				editPokemon(3, pokemon);
-			} else {
-				editPokemon(3, null);
-			}
+			editTeam(3);
 			break;
 		case R.id.team_builder_pokemon_5:
-			if (mPokemon5 != null) {
-				Bundle pokemon = new Bundle();
-				mPokemon5.saveStatus(pokemon);
-				editPokemon(4, pokemon);
-			} else {
-				editPokemon(4, null);
-			}
+			editTeam(4);
 			break;
 		case R.id.team_builder_pokemon_6:
-			if (mPokemon6 != null) {
-				Bundle pokemon = new Bundle();
-				mPokemon6.saveStatus(pokemon);
-				editPokemon(5, pokemon);
-			} else {
-				editPokemon(5, null);
-			}
+			editTeam(5);
 			break;
 		default:
 			break;
 		}
 	}
 
-	private void editPokemon(int pokemonNumber, Bundle pokemon) {
+	private void editTeam(int pokemonNumber) {
+		Bundle team = createTeamBundle();
 		if (isTwoPane) {
 
 		} else {
@@ -226,67 +191,68 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 					EditTeamPokemonActivity.class);
 			intent.putExtra(EditTeamPokemonActivity.EXTRA_TEAM_NUMBER,
 					pokemonNumber);
-			if (pokemon != null) {
-				intent.putExtra(EditTeamPokemonActivity.EXTRA_POKEMON, pokemon);
+			if (team != null) {
+				intent.putExtra(EditTeamPokemonActivity.EXTRA_TEAM, team);
 			}
 			startActivityForResult(intent, REQUEST_EDIT_POKEMON);
 		}
 	}
 
-	// protected void setPokemonIcon(int number, int pokemon) {
-	// switch (number) {
-	// case 1:
-	// mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-	// 0, 0);
-	// break;
-	// case 2:
-	// mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-	// 0, 0);
-	// break;
-	// case 3:
-	// mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-	// 0, 0);
-	// break;
-	// case 4:
-	// mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-	// 0, 0);
-	// break;
-	// case 5:
-	// mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-	// 0, 0);
-	// break;
-	// case 6:
-	// mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-	// 0, 0);
-	// break;
-	// }
-	// }
-
-	protected void setPokemonName(int number) {
+	private void setPokemonIcon(int number, int pokemon) {
 		switch (number) {
 		case 1:
-			mPokemonButton1.setText(mPokemon1.mName + " (" + mPokemon1.mNickname
-					+ " - " + getString(R.string.lead) + ")");
+			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 2:
-			mPokemonButton2.setText(mPokemon2.mName + " (" + mPokemon2.mNickname
-					+ ")");
+			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 3:
-			mPokemonButton3.setText(mPokemon3.mName + " (" + mPokemon3.mNickname
-					+ ")");
+			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 4:
-			mPokemonButton4.setText(mPokemon4.mName + " (" + mPokemon4.mNickname
-					+ ")");
+			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 5:
-			mPokemonButton5.setText(mPokemon5.mName + " (" + mPokemon5.mNickname
-					+ ")");
+			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
 			break;
 		case 6:
-			mPokemonButton6.setText(mPokemon6.mName + " (" + mPokemon6.mNickname
+			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
+					0, 0);
+			break;
+		}
+	}
+
+	private void setPokemonName(int number) {
+		switch (number) {
+		case 1:
+			mPokemonButton1.setText(mPokemon1.mName + " ("
+					+ mPokemon1.mNickname + " - " + getString(R.string.lead)
 					+ ")");
+			break;
+		case 2:
+			mPokemonButton2.setText(mPokemon2.mName + " ("
+					+ mPokemon2.mNickname + ")");
+			break;
+		case 3:
+			mPokemonButton3.setText(mPokemon3.mName + " ("
+					+ mPokemon3.mNickname + ")");
+			break;
+		case 4:
+			mPokemonButton4.setText(mPokemon4.mName + " ("
+					+ mPokemon4.mNickname + ")");
+			break;
+		case 5:
+			mPokemonButton5.setText(mPokemon5.mName + " ("
+					+ mPokemon5.mNickname + ")");
+			break;
+		case 6:
+			mPokemonButton6.setText(mPokemon6.mName + " ("
+					+ mPokemon6.mNickname + ")");
 			break;
 		}
 	}
