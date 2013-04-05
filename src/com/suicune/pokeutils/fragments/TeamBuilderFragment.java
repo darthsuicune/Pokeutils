@@ -73,21 +73,27 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 				Bundle team = data.getBundleExtra(ARGUMENT_TEAM);
 				if (team.containsKey("0")) {
 					mPokemon1 = new TeamPokemon(team.getBundle("0"));
+					setPokemonName(1);
 				}
 				if (team.containsKey("1")) {
 					mPokemon2 = new TeamPokemon(team.getBundle("1"));
+					setPokemonName(2);
 				}
 				if (team.containsKey("2")) {
 					mPokemon3 = new TeamPokemon(team.getBundle("2"));
+					setPokemonName(3);
 				}
 				if (team.containsKey("3")) {
 					mPokemon4 = new TeamPokemon(team.getBundle("3"));
+					setPokemonName(4);
 				}
 				if (team.containsKey("4")) {
 					mPokemon5 = new TeamPokemon(team.getBundle("4"));
+					setPokemonName(5);
 				}
 				if (team.containsKey("5")) {
 					mPokemon6 = new TeamPokemon(team.getBundle("5"));
+					setPokemonName(6);
 				}
 				break;
 			case REQUEST_LOAD_TEAM:
@@ -256,28 +262,34 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	// }
 	// }
 
-	// protected void setPokemonName(int number) {
-	// switch (number) {
-	// case 1:
-	// mPokemonButton1.setText(mPokemon1.mNickname);
-	// break;
-	// case 2:
-	// mPokemonButton2.setText(mPokemon2.mNickname);
-	// break;
-	// case 3:
-	// mPokemonButton3.setText(mPokemon3.mNickname);
-	// break;
-	// case 4:
-	// mPokemonButton4.setText(mPokemon4.mNickname);
-	// break;
-	// case 5:
-	// mPokemonButton5.setText(mPokemon5.mNickname);
-	// break;
-	// case 6:
-	// mPokemonButton6.setText(mPokemon6.mNickname);
-	// break;
-	// }
-	// }
+	protected void setPokemonName(int number) {
+		switch (number) {
+		case 1:
+			mPokemonButton1.setText(mPokemon1.mName + " (" + mPokemon1.mNickname
+					+ " - " + getString(R.string.lead) + ")");
+			break;
+		case 2:
+			mPokemonButton2.setText(mPokemon2.mName + " (" + mPokemon2.mNickname
+					+ ")");
+			break;
+		case 3:
+			mPokemonButton3.setText(mPokemon3.mName + " (" + mPokemon3.mNickname
+					+ ")");
+			break;
+		case 4:
+			mPokemonButton4.setText(mPokemon4.mName + " (" + mPokemon4.mNickname
+					+ ")");
+			break;
+		case 5:
+			mPokemonButton5.setText(mPokemon5.mName + " (" + mPokemon5.mNickname
+					+ ")");
+			break;
+		case 6:
+			mPokemonButton6.setText(mPokemon6.mName + " (" + mPokemon6.mNickname
+					+ ")");
+			break;
+		}
+	}
 
 	private void viewTeamStats() {
 		// Handle view stats

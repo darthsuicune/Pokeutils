@@ -53,6 +53,7 @@ public class EditTeamPokemonActivity extends Activity implements
 		Bundle team = mResult.getExtras().getBundle(
 				TeamBuilderFragment.ARGUMENT_TEAM);
 		team.putBundle(Integer.toString(mTeamNumber), pokemon);
+		mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, team);
 		setResult(RESULT_OK, mResult);
 	}
 }

@@ -7,6 +7,7 @@
     <string name="pokemon_5">Pokemon 5</string>
     <string name="pokemon_6">Pokemon 6</string>
     
+    <string name="lead">Lead</string>
     <string name="load_team">Load team</string>
     <string name="save_team">Save team</string>
     <string name="view_team_stats">View team stats</string>
