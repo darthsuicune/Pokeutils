@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.suicune.pokeutils.R;
@@ -31,9 +31,11 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_team_pokemon);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		if (savedInstanceState != null) {
-			return;
-		}
+		preparePager();
+
+//		if (savedInstanceState != null) {
+//			return;
+//		}
 		if (getIntent().getExtras() == null) {
 			return;
 		}
@@ -42,13 +44,11 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 			mTeamNumber = getIntent().getIntExtra(EXTRA_TEAM_NUMBER, 0);
 		}
 		if (getIntent().getExtras().containsKey(EXTRA_TEAM)) {
-			// Initialize result
 			mResult = new Intent();
 			mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, getIntent()
 					.getBundleExtra(EXTRA_TEAM));
 		}
 		
-		preparePager();
 	}
 
 	private void preparePager() {
@@ -61,19 +61,27 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 
 	@Override
 	public void registerPokemon(Bundle pokemon) {
-		Bundle team = mResult.getExtras().getBundle(
-				TeamBuilderFragment.ARGUMENT_TEAM);
+		if(mResult == null){
+			mResult = new Intent();
+		}
+		Bundle team;
+		if(mResult.getExtras() != null && mResult.getExtras().containsKey(TeamBuilderFragment.ARGUMENT_TEAM)){
+			team = mResult.getExtras().getBundle(
+					TeamBuilderFragment.ARGUMENT_TEAM);
+		} else {
+			team = new Bundle();
+		}
+				
+		
 		team.putBundle(Integer.toString(mTeamNumber), pokemon);
 		mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, team);
 		setResult(RESULT_OK, mResult);
 	}
 
-	public class EditTeamAdapter extends FragmentStatePagerAdapter {
-		FragmentManager mFragmentManager;
+	public class EditTeamAdapter extends FragmentPagerAdapter {
 
 		public EditTeamAdapter(FragmentManager fm) {
 			super(fm);
-			mFragmentManager = fm;
 		}
 
 		@Override
