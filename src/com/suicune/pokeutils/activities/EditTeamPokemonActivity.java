@@ -12,6 +12,7 @@ import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment;
 import com.suicune.pokeutils.fragments.EditTeamPokemonFragment.EditTeamPokemonCallback;
 import com.suicune.pokeutils.fragments.TeamBuilderFragment;
+import com.suicune.pokeutils.tools.FileTools;
 
 public class EditTeamPokemonActivity extends FragmentActivity implements
 		EditTeamPokemonCallback {
@@ -24,8 +25,6 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 
 	Intent mResult;
 
-	int mTeamNumber;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,22 +32,23 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		preparePager();
 
-//		if (savedInstanceState != null) {
-//			return;
-//		}
+		if (savedInstanceState != null) {
+			return;
+		}
 		if (getIntent().getExtras() == null) {
 			return;
 		}
 
 		if (getIntent().getExtras().containsKey(EXTRA_TEAM_NUMBER)) {
-			mTeamNumber = getIntent().getIntExtra(EXTRA_TEAM_NUMBER, 0);
+			int teamNumber = getIntent().getIntExtra(EXTRA_TEAM_NUMBER, 0);
+			mViewPager.setCurrentItem(teamNumber);
 		}
 		if (getIntent().getExtras().containsKey(EXTRA_TEAM)) {
 			mResult = new Intent();
 			mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, getIntent()
 					.getBundleExtra(EXTRA_TEAM));
 		}
-		
+
 	}
 
 	private void preparePager() {
@@ -56,24 +56,48 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 		mViewPager = (ViewPager) findViewById(R.id.edit_team_pokemon_container);
 		mViewPager.setOffscreenPageLimit(5);
 		mViewPager.setAdapter(mEditTeamAdapter);
-		mViewPager.setCurrentItem(mTeamNumber);
 	}
 
 	@Override
 	public void registerPokemon(Bundle pokemon) {
-		if(mResult == null){
+		if (mResult == null) {
 			mResult = new Intent();
 		}
 		Bundle team;
-		if(mResult.getExtras() != null && mResult.getExtras().containsKey(TeamBuilderFragment.ARGUMENT_TEAM)){
+		if (mResult.getExtras() != null
+				&& mResult.getExtras().containsKey(
+						TeamBuilderFragment.ARGUMENT_TEAM)) {
 			team = mResult.getExtras().getBundle(
 					TeamBuilderFragment.ARGUMENT_TEAM);
 		} else {
 			team = new Bundle();
 		}
-				
-		
-		team.putBundle(Integer.toString(mTeamNumber), pokemon);
+
+		String tag;
+		switch (mViewPager.getCurrentItem()) {
+		case 0:
+			tag = FileTools.TAG_POKEMON_1;
+			break;
+		case 1:
+			tag = FileTools.TAG_POKEMON_2;
+			break;
+		case 2:
+			tag = FileTools.TAG_POKEMON_3;
+			break;
+		case 3:
+			tag = FileTools.TAG_POKEMON_4;
+			break;
+		case 4:
+			tag = FileTools.TAG_POKEMON_5;
+			break;
+		case 5:
+			tag = FileTools.TAG_POKEMON_6;
+			break;
+		default:
+			tag = "";
+			break;
+		}
+		team.putBundle(tag, pokemon);
 		mResult.putExtra(TeamBuilderFragment.ARGUMENT_TEAM, team);
 		setResult(RESULT_OK, mResult);
 	}
@@ -94,8 +118,32 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 					&& (getIntent().getExtras().containsKey(EXTRA_TEAM))
 					&& (getIntent().getBundleExtra(EXTRA_TEAM)
 							.containsKey(Integer.toString(position)))) {
+				String tag;
+				switch (position) {
+				case 0:
+					tag = FileTools.TAG_POKEMON_1;
+					break;
+				case 1:
+					tag = FileTools.TAG_POKEMON_2;
+					break;
+				case 2:
+					tag = FileTools.TAG_POKEMON_3;
+					break;
+				case 3:
+					tag = FileTools.TAG_POKEMON_4;
+					break;
+				case 4:
+					tag = FileTools.TAG_POKEMON_5;
+					break;
+				case 5:
+					tag = FileTools.TAG_POKEMON_6;
+					break;
+				default:
+					tag = "";
+					break;
+				}
 				fragment.setArguments(getIntent().getBundleExtra(EXTRA_TEAM)
-						.getBundle(Integer.toString(position)));
+						.getBundle(tag));
 
 			}
 			return fragment;

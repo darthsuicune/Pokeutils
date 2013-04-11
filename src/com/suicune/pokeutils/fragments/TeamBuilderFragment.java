@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.TeamPokemon;
@@ -31,7 +32,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	public static final String ARGUMENT_TEAM = "team";
 
 	private boolean isTwoPane;
-
+	
 	private Button mPokemonButton1;
 	private Button mPokemonButton2;
 	private Button mPokemonButton3;
@@ -71,28 +72,34 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 			switch (requestCode) {
 			case REQUEST_EDIT_POKEMON:
 				Bundle team = data.getBundleExtra(ARGUMENT_TEAM);
-				if (team.containsKey("0")) {
-					mPokemon1 = new TeamPokemon(team.getBundle("0"));
+				if (team.containsKey(FileTools.TAG_POKEMON_1)) {
+					mPokemon1 = new TeamPokemon(
+							team.getBundle(FileTools.TAG_POKEMON_1));
 					setPokemonName(1);
 				}
-				if (team.containsKey("1")) {
-					mPokemon2 = new TeamPokemon(team.getBundle("1"));
+				if (team.containsKey(FileTools.TAG_POKEMON_2)) {
+					mPokemon2 = new TeamPokemon(
+							team.getBundle(FileTools.TAG_POKEMON_2));
 					setPokemonName(2);
 				}
-				if (team.containsKey("2")) {
-					mPokemon3 = new TeamPokemon(team.getBundle("2"));
+				if (team.containsKey(FileTools.TAG_POKEMON_3)) {
+					mPokemon3 = new TeamPokemon(
+							team.getBundle(FileTools.TAG_POKEMON_3));
 					setPokemonName(3);
 				}
-				if (team.containsKey("3")) {
-					mPokemon4 = new TeamPokemon(team.getBundle("3"));
+				if (team.containsKey(FileTools.TAG_POKEMON_4)) {
+					mPokemon4 = new TeamPokemon(
+							team.getBundle(FileTools.TAG_POKEMON_4));
 					setPokemonName(4);
 				}
-				if (team.containsKey("4")) {
-					mPokemon5 = new TeamPokemon(team.getBundle("4"));
+				if (team.containsKey(FileTools.TAG_POKEMON_5)) {
+					mPokemon5 = new TeamPokemon(
+							team.getBundle(FileTools.TAG_POKEMON_5));
 					setPokemonName(5);
 				}
-				if (team.containsKey("5")) {
-					mPokemon6 = new TeamPokemon(team.getBundle("5"));
+				if (team.containsKey(FileTools.TAG_POKEMON_6)) {
+					mPokemon6 = new TeamPokemon(
+							team.getBundle(FileTools.TAG_POKEMON_6));
 					setPokemonName(6);
 				}
 				break;
@@ -201,28 +208,22 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 	private void setPokemonIcon(int number, int pokemon) {
 		switch (number) {
 		case 1:
-			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-					0, 0);
+			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 			break;
 		case 2:
-			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-					0, 0);
+			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 			break;
 		case 3:
-			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-					0, 0);
+			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 			break;
 		case 4:
-			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-					0, 0);
+			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 			break;
 		case 5:
-			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-					0, 0);
+			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 			break;
 		case 6:
-			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, pokemon,
-					0, 0);
+			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 			break;
 		}
 	}
@@ -262,7 +263,7 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		if (isTwoPane) {
 
 		} else {
-
+			Toast.makeText(getActivity(), "EEEOOOO", Toast.LENGTH_LONG).show();
 		}
 	}
 
@@ -284,38 +285,38 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		}
 
 		Bundle team = new Bundle();
-		Bundle pokemon1 = new Bundle();
 		if (mPokemon1 != null) {
+			Bundle pokemon1 = new Bundle();
 			mPokemon1.saveStatus(pokemon1);
 			team.putBundle(FileTools.TAG_POKEMON_1, pokemon1);
 		}
 
-		Bundle pokemon2 = new Bundle();
 		if (mPokemon2 != null) {
+			Bundle pokemon2 = new Bundle();
 			mPokemon2.saveStatus(pokemon2);
 			team.putBundle(FileTools.TAG_POKEMON_2, pokemon2);
 		}
 
-		Bundle pokemon3 = new Bundle();
 		if (mPokemon3 != null) {
+			Bundle pokemon3 = new Bundle();
 			mPokemon3.saveStatus(pokemon3);
 			team.putBundle(FileTools.TAG_POKEMON_3, pokemon3);
 		}
 
-		Bundle pokemon4 = new Bundle();
 		if (mPokemon4 != null) {
+			Bundle pokemon4 = new Bundle();
 			mPokemon4.saveStatus(pokemon4);
 			team.putBundle(FileTools.TAG_POKEMON_4, pokemon4);
 		}
 
-		Bundle pokemon5 = new Bundle();
 		if (mPokemon5 != null) {
+			Bundle pokemon5 = new Bundle();
 			mPokemon5.saveStatus(pokemon5);
 			team.putBundle(FileTools.TAG_POKEMON_5, pokemon5);
 		}
 
-		Bundle pokemon6 = new Bundle();
 		if (mPokemon6 != null) {
+			Bundle pokemon6 = new Bundle();
 			mPokemon6.saveStatus(pokemon6);
 			team.putBundle(FileTools.TAG_POKEMON_6, pokemon6);
 		}
