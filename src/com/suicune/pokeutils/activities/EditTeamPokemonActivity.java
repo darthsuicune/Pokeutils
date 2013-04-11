@@ -54,12 +54,11 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 	private void preparePager() {
 		mEditTeamAdapter = new EditTeamAdapter(getSupportFragmentManager());
 		mViewPager = (ViewPager) findViewById(R.id.edit_team_pokemon_container);
-		mViewPager.setOffscreenPageLimit(5);
 		mViewPager.setAdapter(mEditTeamAdapter);
 	}
 
 	@Override
-	public void registerPokemon(Bundle pokemon) {
+	public void registerPokemon(Bundle pokemon, int number) {
 		if (mResult == null) {
 			mResult = new Intent();
 		}
@@ -74,7 +73,7 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 		}
 
 		String tag;
-		switch (mViewPager.getCurrentItem()) {
+		switch (number) {
 		case 0:
 			tag = FileTools.TAG_POKEMON_1;
 			break;
@@ -114,38 +113,60 @@ public class EditTeamPokemonActivity extends FragmentActivity implements
 					EditTeamPokemonActivity.this,
 					EditTeamPokemonFragment.class.getName());
 			fragment.setHasOptionsMenu(true);
-			if ((getIntent().getExtras() != null)
-					&& (getIntent().getExtras().containsKey(EXTRA_TEAM))
-					&& (getIntent().getBundleExtra(EXTRA_TEAM)
-							.containsKey(Integer.toString(position)))) {
-				String tag;
-				switch (position) {
-				case 0:
+			Bundle team;
+			if (mResult != null && mResult.getBundleExtra(EXTRA_TEAM) != null) {
+				team = mResult.getBundleExtra(EXTRA_TEAM);
+			} else if ((getIntent().getExtras() != null)
+					&& (getIntent().getExtras().containsKey(EXTRA_TEAM))) {
+				team = getIntent().getBundleExtra(EXTRA_TEAM);
+			} else {
+				team = new Bundle();
+			}
+			String tag = null;
+			switch (position) {
+			case 0:
+				if (team.containsKey(FileTools.TAG_POKEMON_1)) {
 					tag = FileTools.TAG_POKEMON_1;
-					break;
-				case 1:
-					tag = FileTools.TAG_POKEMON_2;
-					break;
-				case 2:
-					tag = FileTools.TAG_POKEMON_3;
-					break;
-				case 3:
-					tag = FileTools.TAG_POKEMON_4;
-					break;
-				case 4:
-					tag = FileTools.TAG_POKEMON_5;
-					break;
-				case 5:
-					tag = FileTools.TAG_POKEMON_6;
-					break;
-				default:
-					tag = "";
-					break;
 				}
-				fragment.setArguments(getIntent().getBundleExtra(EXTRA_TEAM)
-						.getBundle(tag));
+				break;
+			case 1:
+				if (team.containsKey(FileTools.TAG_POKEMON_2)) {
+					tag = FileTools.TAG_POKEMON_2;
+				}
+				break;
+			case 2:
+				if (team.containsKey(FileTools.TAG_POKEMON_3)) {
+					tag = FileTools.TAG_POKEMON_3;
+				}
+				break;
+			case 3:
+				if (team.containsKey(FileTools.TAG_POKEMON_4)) {
+					tag = FileTools.TAG_POKEMON_4;
+				}
+				break;
+			case 4:
+				if (team.containsKey(FileTools.TAG_POKEMON_5)) {
+					tag = FileTools.TAG_POKEMON_5;
+				}
+				break;
+			case 5:
+				if (team.containsKey(FileTools.TAG_POKEMON_6)) {
+					tag = FileTools.TAG_POKEMON_6;
+				}
+				break;
+			default:
+				tag = null;
+				break;
+			}
+			Bundle args = new Bundle();
+			args.putInt(EditTeamPokemonFragment.ARG_TEAM_POSITION, position);
+			if (tag != null) {
+				args.putBundle(EditTeamPokemonFragment.ARG_POKEMON,
+						team.getBundle(tag));
 
 			}
+			fragment.setArguments(args);
+
 			return fragment;
 		}
 

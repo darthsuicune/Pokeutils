@@ -17,6 +17,27 @@ public class TeamPokemon extends Pokemon {
 	private static final String LEVEL = "level";
 	private static final String NATURE = "nature";
 
+	public final static int INDEX_HP = 0;
+	public final static int INDEX_ATT = 1;
+	public final static int INDEX_DEF = 2;
+	public final static int INDEX_SP_ATT = 3;
+	public final static int INDEX_SP_DEF = 4;
+	public final static int INDEX_SPEED = 5;
+
+	public int[] mAttacks;
+
+	public int mAttachedItem;
+	public int mSelectedAbility;
+
+	public String mNickname;
+
+	public int[] mIvs;
+	public int[] mEvs;
+	public int[] mStats = new int[6];
+	public int[] mStatsModifier;
+	public int mLevel;
+	public int mNature;
+
 	public TeamPokemon(Bundle args) {
 		super(args);
 		mAttachedItem = args.getInt(ITEM);
@@ -34,29 +55,14 @@ public class TeamPokemon extends Pokemon {
 
 	public TeamPokemon(Cursor cursor) {
 		super(cursor);
+		mIvs = new int[] { 31, 31, 31, 31, 31, 31 };
+		mEvs = new int[] { 0, 0, 0, 0, 0, 0 };
+		mStatsModifier = new int[] { 6, 6, 6, 6, 6, 6 };
+		mLevel = 100;
+		mNature = 0;
+		mAttacks = new int[]{ 0, 0, 0, 0 };
 		setStats();
 	}
-
-	public final static int INDEX_HP = 0;
-	public final static int INDEX_ATT = 1;
-	public final static int INDEX_DEF = 2;
-	public final static int INDEX_SP_ATT = 3;
-	public final static int INDEX_SP_DEF = 4;
-	public final static int INDEX_SPEED = 5;
-
-	public int[] mAttacks = { 0, 0, 0, 0 };
-
-	public int mAttachedItem;
-	public int mSelectedAbility;
-
-	public String mNickname;
-
-	public int[] mIvs = new int[] { 31, 31, 31, 31, 31, 31 };
-	public int[] mEvs = new int[] { 0, 0, 0, 0, 0, 0 };
-	public int[] mStats = new int[6];
-	public int[] mStatsModifier = new int[] { 6, 6, 6, 6, 6, 6 };
-	public int mLevel = 100;
-	public int mNature = 0;
 
 	public void setStats() {
 		if (mIvs == null || mEvs == null) {
