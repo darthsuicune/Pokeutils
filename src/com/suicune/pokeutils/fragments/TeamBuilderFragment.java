@@ -205,28 +205,28 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 		}
 	}
 
-	private void setPokemonIcon(int number, int pokemon) {
-		switch (number) {
-		case 1:
-			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			break;
-		case 2:
-			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			break;
-		case 3:
-			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			break;
-		case 4:
-			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			break;
-		case 5:
-			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			break;
-		case 6:
-			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			break;
-		}
-	}
+//	private void setPokemonIcon(int number, int pokemon) {
+//		switch (number) {
+//		case 1:
+//			mPokemonButton1.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+//			break;
+//		case 2:
+//			mPokemonButton2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+//			break;
+//		case 3:
+//			mPokemonButton3.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+//			break;
+//		case 4:
+//			mPokemonButton4.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+//			break;
+//		case 5:
+//			mPokemonButton5.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+//			break;
+//		case 6:
+//			mPokemonButton6.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+//			break;
+//		}
+//	}
 
 	private void setPokemonName(int number) {
 		switch (number) {
