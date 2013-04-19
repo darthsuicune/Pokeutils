@@ -19,6 +19,7 @@ public class Types {
 	public static final int ICE = 15;
 	public static final int DRAGON = 16;
 	public static final int DARK = 17;
+	public static final int COUNT = 17;
 
 	public static int getTypeName(int type) {
 		switch (type) {

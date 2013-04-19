@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="type">Type</string>
+    <string name="multiplier_0">*0</string>
+    <string name="multiplier_1_4">*1/4</string>
+    <string name="multiplier_1_2">*1/2</string>
+    <string name="multiplier_1">*1</string>
+    <string name="multiplier_2">*2</string>
+    <string name="multiplier_4">*4</string>
+
+</resources>

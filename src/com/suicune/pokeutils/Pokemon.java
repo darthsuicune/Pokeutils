@@ -26,6 +26,8 @@ public class Pokemon {
 	public int mBaseSpeed;
 	public int[] mAbilities = new int[3];
 	public ArrayList<Attack> mAttacksList;
+	
+	public double[] mDefenseModifiers = new double[Types.COUNT];
 
 	public Pokemon(Cursor cursor) {
 		if (cursor.moveToFirst()) {
@@ -66,6 +68,7 @@ public class Pokemon {
 			return;
 		}
 		mAttacksList = new ArrayList<Attack>();
+		setDefenseModifiers();
 	}
 
 	public Pokemon(Bundle args) {
@@ -88,6 +91,7 @@ public class Pokemon {
 		mAbilities[ABILITY_INDEX_DW] = args
 				.getInt(PokeContract.PokemonAbilityDW.ABILITY_DW);
 		mAttacksList = new ArrayList<Attack>();
+		setDefenseModifiers();
 	}
 
 	public void addAttacks(ArrayList<Attack> attacks) {
@@ -117,5 +121,16 @@ public class Pokemon {
 				mAbilities[ABILITY_INDEX_2]);
 		status.putInt(PokeContract.PokemonAbilityDW.ABILITY_DW,
 				mAbilities[ABILITY_INDEX_DW]);
+	}
+
+	public void setDefenseModifiers() {
+		for(int i = 1; i <= Types.DARK; i++){
+			mDefenseModifiers[i] = getDefenseModifiers(i);
+		}
+	}
+
+	private double getDefenseModifiers(int i) {
+		
+		return 0;
 	}
 }

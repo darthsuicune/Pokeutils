@@ -181,9 +181,6 @@ public class EditTeamPokemonFragment extends Fragment implements
 	}
 
 	private void setViews(View v) {
-		// if (v.findViewById(R.id.edit_team_pokemon_name) == null) {
-		// return;
-		// }
 		prepareNameViews(v);
 		prepareLevelView(v);
 		prepareNatureView(v);
