@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.fragments;
+package com.suicune.pokeutils.ui.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.TeamPokemon;
-import com.suicune.pokeutils.activities.EditTeamPokemonActivity;
+import com.suicune.pokeutils.app.TeamPokemon;
+import com.suicune.pokeutils.ui.activities.EditTeamPokemonActivity;
 import com.suicune.pokeutils.tools.FileTools;
 
 /**

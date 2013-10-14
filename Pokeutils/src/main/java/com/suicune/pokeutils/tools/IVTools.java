@@ -1,9 +1,9 @@
 package com.suicune.pokeutils.tools;
 
-import java.util.ArrayList;
-
-import com.suicune.pokeutils.Natures;
 import com.suicune.pokeutils.R;
+import com.suicune.pokeutils.app.Natures;
+
+import java.util.ArrayList;
 
 public class IVTools {
 	public static final int CODE_HP = 0;

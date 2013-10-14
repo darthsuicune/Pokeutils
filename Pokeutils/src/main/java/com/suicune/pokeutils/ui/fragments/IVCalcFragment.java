@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.fragments;
+package com.suicune.pokeutils.ui.fragments;
 
 import java.util.ArrayList;
 
@@ -28,8 +28,8 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import com.suicune.pokeutils.Natures;
-import com.suicune.pokeutils.Pokemon;
+import com.suicune.pokeutils.app.Natures;
+import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.IVTools;

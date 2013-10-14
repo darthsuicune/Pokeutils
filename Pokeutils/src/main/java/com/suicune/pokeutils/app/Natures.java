@@ -1,5 +1,7 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.app;
 
+
+import com.suicune.pokeutils.R;
 
 public class Natures {
 	public static final int NATURES_COUNT = 25;

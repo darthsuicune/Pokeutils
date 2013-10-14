@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.activities;
+package com.suicune.pokeutils.ui.activities;
 
 import android.preference.PreferenceActivity;
 

@@ -1,27 +1,26 @@
-package com.suicune.pokeutils.activities;
+package com.suicune.pokeutils.ui.activities;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.widget.Toast;
-
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.fragments.DamageCalcFragment;
-import com.suicune.pokeutils.fragments.IVCalcFragment;
-import com.suicune.pokeutils.fragments.PokedexFragment;
-import com.suicune.pokeutils.fragments.TeamBuilderFragment;
+import com.suicune.pokeutils.ui.fragments.DamageCalcFragment;
+import com.suicune.pokeutils.ui.fragments.IVCalcFragment;
+import com.suicune.pokeutils.ui.fragments.PokedexFragment;
+import com.suicune.pokeutils.ui.fragments.TeamBuilderFragment;
 
-public class MainActivity extends FragmentActivity implements
+public class MainActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
 
 	private SharedPreferences prefs;
@@ -57,7 +56,7 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	private void setTabs() {
-		mActionBar = getActionBar();
+		mActionBar = getSupportActionBar();
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		mActionBar.addTab(createTab(R.string.tab_damage_calculator), false);

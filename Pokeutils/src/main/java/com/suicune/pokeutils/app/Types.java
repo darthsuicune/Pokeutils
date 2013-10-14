@@ -1,4 +1,6 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.app;
+
+import com.suicune.pokeutils.R;
 
 public class Types {
 	public static final int NONE = 0;

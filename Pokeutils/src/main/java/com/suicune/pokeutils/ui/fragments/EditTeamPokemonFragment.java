@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.fragments;
+package com.suicune.pokeutils.ui.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -30,11 +30,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.suicune.pokeutils.Natures;
-import com.suicune.pokeutils.Pokemon;
+import com.suicune.pokeutils.app.Natures;
+import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.TeamPokemon;
-import com.suicune.pokeutils.activities.EditTeamPokemonActivity;
+import com.suicune.pokeutils.app.TeamPokemon;
+import com.suicune.pokeutils.ui.activities.EditTeamPokemonActivity;
 import com.suicune.pokeutils.database.PokeContract;
 
 public class EditTeamPokemonFragment extends Fragment implements
@@ -381,8 +381,8 @@ public class EditTeamPokemonFragment extends Fragment implements
 				R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_1]];
 		abilities[Pokemon.ABILITY_INDEX_2] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
 				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2]];
-		abilities[Pokemon.ABILITY_INDEX_DW] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0) ? "-"
-				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW]];
+		abilities[Pokemon.ABILITY_INDEX_DW_1] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0) ? "-"
+				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW_1]];
 
 		ArrayAdapter<String> pokemonAbilityAdapter = new ArrayAdapter<String>(
 				getActivity(), android.R.layout.simple_spinner_item,
@@ -430,8 +430,8 @@ public class EditTeamPokemonFragment extends Fragment implements
 						&& (position == Pokemon.ABILITY_INDEX_2)) {
 					mPokemon.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
 					mAbilityView.setSelection(mPokemon.mSelectedAbility);
-				} else if ((mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0)
-						&& (position == Pokemon.ABILITY_INDEX_DW)) {
+				} else if ((mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0)
+						&& (position == Pokemon.ABILITY_INDEX_DW_1)) {
 					mPokemon.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
 					mAbilityView.setSelection(mPokemon.mSelectedAbility);
 				} else {

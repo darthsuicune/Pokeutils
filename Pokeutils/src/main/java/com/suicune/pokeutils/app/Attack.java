@@ -1,4 +1,4 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.app;
 
 import com.suicune.pokeutils.database.PokeContract;
 

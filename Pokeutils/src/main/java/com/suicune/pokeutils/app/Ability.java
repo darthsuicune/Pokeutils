@@ -1,4 +1,4 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.app;
 
 
 public class Ability {

@@ -1,24 +1,24 @@
-package com.suicune.pokeutils;
+package com.suicune.pokeutils.app;
 
 import android.database.Cursor;
 import android.os.Bundle;
 
 import com.suicune.pokeutils.tools.IVTools;
 
-public class TeamPokemon extends Pokemon {
-	private static final String ATTACKS = "attacks";
-	private static final String ITEM = "item";
-	private static final String SELECTED_ABILITY = "selectedAbility";
-	private static final String NICK_NAME = "nickName";
-	private static final String IVS = "ivs";
-	private static final String EVS = "evs";
-	private static final String STATS = "stats";
-	private static final String STATS_MODIFIER = "statsModifier";
-	private static final String LEVEL = "level";
-	private static final String NATURE = "nature";
+public class TeamPokemon extends IPokemon {
+    private static final String ATTACKS = "attacks";
+    private static final String ITEM = "item";
+    private static final String SELECTED_ABILITY = "selectedAbility";
+    private static final String NICK_NAME = "nickName";
+    private static final String IVS = "ivs";
+    private static final String EVS = "evs";
+    private static final String STATS = "stats";
+    private static final String STATS_MODIFIER = "statsModifier";
+    private static final String LEVEL = "level";
+    private static final String NATURE = "nature";
 
 	public TeamPokemon(Bundle args) {
-		super(args);
+        super(args);
 		mAttachedItem = args.getInt(ITEM);
 		mSelectedAbility = args.getInt(SELECTED_ABILITY);
 		mNickname = args.getString(NICK_NAME);
@@ -33,7 +33,7 @@ public class TeamPokemon extends Pokemon {
 	}
 
 	public TeamPokemon(Cursor cursor) {
-		super(cursor);
+        super(cursor);
 		setStats();
 	}
 

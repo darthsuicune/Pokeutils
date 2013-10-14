@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.fragments;
+package com.suicune.pokeutils.ui.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.Types;
+import com.suicune.pokeutils.app.Types;
 import com.suicune.pokeutils.database.PokeContract;
 
 public class PokedexFragment extends ListFragment implements

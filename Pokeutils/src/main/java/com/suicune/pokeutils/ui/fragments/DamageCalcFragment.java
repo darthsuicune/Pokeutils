@@ -1,4 +1,4 @@
-package com.suicune.pokeutils.fragments;
+package com.suicune.pokeutils.ui.fragments;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -25,11 +25,11 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-import com.suicune.pokeutils.Attack;
-import com.suicune.pokeutils.Natures;
-import com.suicune.pokeutils.Pokemon;
+import com.suicune.pokeutils.app.Attack;
+import com.suicune.pokeutils.app.Natures;
+import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.TeamPokemon;
+import com.suicune.pokeutils.app.TeamPokemon;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.DamageCalcTools;
 
@@ -372,8 +372,8 @@ public class DamageCalcFragment extends Fragment implements
 			pokemonAbilities[Pokemon.ABILITY_INDEX_1] = abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_1]];
 			pokemonAbilities[Pokemon.ABILITY_INDEX_2] = (mAttacker.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
 					: abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_2]];
-			pokemonAbilities[Pokemon.ABILITY_INDEX_DW] = (mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0) ? "-"
-					: abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW]];
+			pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] = (mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0) ? "-"
+					: abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW_1]];
 			mAttackerAbilityAdapter = new ArrayAdapter<String>(getActivity(),
 					android.R.layout.simple_spinner_item, android.R.id.text1,
 					pokemonAbilities);
@@ -391,8 +391,8 @@ public class DamageCalcFragment extends Fragment implements
 			pokemonAbilities[Pokemon.ABILITY_INDEX_1] = abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_1]];
 			pokemonAbilities[Pokemon.ABILITY_INDEX_2] = (mDefender.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
 					: abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_2]];
-			pokemonAbilities[Pokemon.ABILITY_INDEX_DW] = (mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0) ? "-"
-					: abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW]];
+			pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] = (mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0) ? "-"
+					: abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW_1]];
 			mDefenderAbilityAdapter = new ArrayAdapter<String>(getActivity(),
 					android.R.layout.simple_spinner_item, android.R.id.text1,
 					pokemonAbilities);
@@ -762,8 +762,8 @@ public class DamageCalcFragment extends Fragment implements
 					mAttacker.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
 					mAttackerAbilityView
 							.setSelection(mAttacker.mSelectedAbility);
-				} else if ((mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0)
-						&& (position == Pokemon.ABILITY_INDEX_DW)) {
+				} else if ((mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0)
+						&& (position == Pokemon.ABILITY_INDEX_DW_1)) {
 					mAttacker.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
 					mAttackerAbilityView
 							.setSelection(mAttacker.mSelectedAbility);
@@ -779,8 +779,8 @@ public class DamageCalcFragment extends Fragment implements
 					mDefender.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
 					mDefenderAbilityView
 							.setSelection(mDefender.mSelectedAbility);
-				} else if ((position == Pokemon.ABILITY_INDEX_DW)
-						&& (mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW] == 0)) {
+				} else if ((position == Pokemon.ABILITY_INDEX_DW_1)
+						&& (mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0)) {
 					mDefender.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
 					mDefenderAbilityView
 							.setSelection(mDefender.mSelectedAbility);
