@@ -9,13 +9,18 @@ public class Attack {
 	public static final int CLASS_PHYSICAL = 1;
 	public static final int CLASS_SPECIAL = 2;
 
-	public int mId;
+	final public int mId;
 	public int mPp;
 	public int mPower;
 	public int mAccuracy;
 	public int mType;
 	public int mPriority;
 	public int mAttackClass;
+
+    public Attack(int id){
+        mId = id;
+        //TODO: ALL
+    }
 
 	public Attack(Cursor cursor) {
 		if (cursor.moveToFirst()) {
@@ -33,7 +38,9 @@ public class Attack {
 					.getColumnIndex(PokeContract.Attacks.PRIORITY)));
 			mAttackClass = Integer.parseInt(cursor.getString(cursor
 					.getColumnIndex(PokeContract.Attacks.CLASS)));
-		}
+		} else {
+            mId = 0;
+        }
 	}
 
 	public Attack(int id, int pp, int power, int accuracy, int type, int priority,

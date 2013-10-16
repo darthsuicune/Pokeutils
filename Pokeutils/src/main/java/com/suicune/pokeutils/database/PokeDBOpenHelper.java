@@ -48,8 +48,8 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonBaseStats.BASE_ATT + TEXT
 				+ PokeContract.PokemonBaseStats.BASE_DEF + TEXT
 				+ PokeContract.PokemonBaseStats.BASE_HP + TEXT
-				+ PokeContract.PokemonBaseStats.BASE_SPATT + TEXT
-				+ PokeContract.PokemonBaseStats.BASE_SPDEF + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_SP_ATT + TEXT
+				+ PokeContract.PokemonBaseStats.BASE_SP_DEF + TEXT
 				+ PokeContract.PokemonBaseStats.BASE_SPEED + TEXT_END);
 
 		db.execSQL(CREATE + PokeContract.PokemonType1.TABLE_NAME + " ("

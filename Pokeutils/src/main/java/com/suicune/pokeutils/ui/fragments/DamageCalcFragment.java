@@ -13,23 +13,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.CursorToStringConverter;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.TextView;
-
-import com.suicune.pokeutils.app.Attack;
-import com.suicune.pokeutils.app.Natures;
-import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.app.TeamPokemon;
+import com.suicune.pokeutils.app.*;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.DamageCalcTools;
 
@@ -362,21 +351,22 @@ public class DamageCalcFragment extends Fragment implements
 	private void setAbilityAdapter(boolean isAttacker) {
 
 		String[] pokemonAbilities = new String[3];
-		String[] abilityNames = getResources()
-				.getStringArray(R.array.abilities);
 		if (isAttacker) {
 			if (mAttacker == null) {
 				return;
 			}
-			int currentAbility = mAttacker.mSelectedAbility;
-			pokemonAbilities[Pokemon.ABILITY_INDEX_1] = abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_1]];
-			pokemonAbilities[Pokemon.ABILITY_INDEX_2] = (mAttacker.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
-					: abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_2]];
-			pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] = (mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0) ? "-"
-					: abilityNames[mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW_1]];
-			mAttackerAbilityAdapter = new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_spinner_item, android.R.id.text1,
-					pokemonAbilities);
+            int currentAbility = mAttacker.mSelectedAbility.mId;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_1] =
+                    mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mName;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_2] =
+                    (mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0) ? "-"
+                    : mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_2).mName;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] =
+                    (mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0) ? "-"
+                    : mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mName;
+            mAttackerAbilityAdapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_spinner_item, android.R.id.text1,
+                    pokemonAbilities);
 
 			mAttackerAbilityAdapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -387,15 +377,18 @@ public class DamageCalcFragment extends Fragment implements
 			if (mDefender == null) {
 				return;
 			}
-			int currentAbility = mDefender.mSelectedAbility;
-			pokemonAbilities[Pokemon.ABILITY_INDEX_1] = abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_1]];
-			pokemonAbilities[Pokemon.ABILITY_INDEX_2] = (mDefender.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
-					: abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_2]];
-			pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] = (mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0) ? "-"
-					: abilityNames[mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW_1]];
-			mDefenderAbilityAdapter = new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_spinner_item, android.R.id.text1,
-					pokemonAbilities);
+            int currentAbility = mDefender.mSelectedAbility.mId;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_1] =
+                    mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mName;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_2] =
+                    (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0) ? "-"
+                            : mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_2).mName;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] =
+                    (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0) ? "-"
+                            : mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mName;
+            mDefenderAbilityAdapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_spinner_item, android.R.id.text1,
+                    pokemonAbilities);
 
 			mDefenderAbilityAdapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -413,10 +406,10 @@ public class DamageCalcFragment extends Fragment implements
 			mAttacker.mLevel = Integer.parseInt(mAttackerLevelView.getText()
 					.toString());
 			mAttackerModifierView
-					.setSelection(mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT]);
+					.setSelection(mAttacker.mStatsModifier[TeamPokemon.STAT_INDEX_ATT]);
 			mAttackerNatureView.setSelection(mAttacker.mNature);
 			setAttackerStats();
-			mAttackerAbilityView.setSelection(mAttacker.mSelectedAbility);
+			mAttackerAbilityView.setSelection(mAttacker.mSelectedAbility.mId);
 		} catch (NumberFormatException e) {
 			mAttacker.mLevel = 100;
 		}
@@ -427,18 +420,18 @@ public class DamageCalcFragment extends Fragment implements
 		if (mAttacker == null) {
 			return;
 		}
-		mAttacker.setStats();
-		mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT] = mAttackerModifierView
+		mAttacker.showStats();
+		mAttacker.mStatsModifier[TeamPokemon.STAT_INDEX_ATT] = mAttackerModifierView
 				.getSelectedItemPosition();
-		mAttacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT] = mAttackerModifierView
+		mAttacker.mStatsModifier[TeamPokemon.STAT_INDEX_SP_ATT] = mAttackerModifierView
 				.getSelectedItemPosition();
 
-		mAttackerHpView.setText("" + mAttacker.mStats[TeamPokemon.INDEX_HP]);
-		mAttackerAttView.setText("" + mAttacker.mStats[TeamPokemon.INDEX_ATT]);
+		mAttackerHpView.setText("" + mAttacker.mStats[TeamPokemon.STAT_INDEX_HP]);
+		mAttackerAttView.setText("" + mAttacker.mStats[TeamPokemon.STAT_INDEX_ATT]);
 		mAttackerSpAttView.setText(""
-				+ mAttacker.mStats[TeamPokemon.INDEX_SP_ATT]);
+				+ mAttacker.mStats[TeamPokemon.STAT_INDEX_SP_ATT]);
 		mAttackerSpeedView.setText(""
-				+ mAttacker.mStats[TeamPokemon.INDEX_SPEED]);
+				+ mAttacker.mStats[TeamPokemon.STAT_INDEX_SPEED]);
 		setAbilityAdapter(true);
 	}
 
@@ -447,10 +440,10 @@ public class DamageCalcFragment extends Fragment implements
 			mDefender.mLevel = Integer.parseInt(mDefenderLevelView.getText()
 					.toString());
 			mDefenderModifierView
-					.setSelection(mDefender.mStatsModifier[TeamPokemon.INDEX_DEF]);
+					.setSelection(mDefender.mStatsModifier[TeamPokemon.STAT_INDEX_DEF]);
 			mDefenderNatureView.setSelection(mDefender.mNature);
 			setDefenderStats();
-			mDefenderAbilityView.setSelection(mDefender.mSelectedAbility);
+			mDefenderAbilityView.setSelection(mDefender.mSelectedAbility.mId);
 		} catch (NumberFormatException e) {
 			mDefender.mLevel = 100;
 		}
@@ -460,16 +453,16 @@ public class DamageCalcFragment extends Fragment implements
 		if (mDefender == null) {
 			return;
 		}
-		mDefender.setStats();
-		mDefenderHpView.setText("" + mDefender.mStats[TeamPokemon.INDEX_HP]);
-		mDefenderDefView.setText("" + mDefender.mStats[TeamPokemon.INDEX_DEF]);
+		mDefender.showStats();
+		mDefenderHpView.setText("" + mDefender.mStats[TeamPokemon.STAT_INDEX_HP]);
+		mDefenderDefView.setText("" + mDefender.mStats[TeamPokemon.STAT_INDEX_DEF]);
 		mDefenderSpDefView.setText(""
-				+ mDefender.mStats[TeamPokemon.INDEX_SP_DEF]);
+				+ mDefender.mStats[TeamPokemon.STAT_INDEX_SP_DEF]);
 		mDefenderSpeedView.setText(""
-				+ mDefender.mStats[TeamPokemon.INDEX_SPEED]);
-		mDefender.mStatsModifier[TeamPokemon.INDEX_DEF] = mDefenderModifierView
+				+ mDefender.mStats[TeamPokemon.STAT_INDEX_SPEED]);
+		mDefender.mStatsModifier[TeamPokemon.STAT_INDEX_DEF] = mDefenderModifierView
 				.getSelectedItemPosition();
-		mDefender.mStatsModifier[TeamPokemon.INDEX_SP_DEF] = mDefenderModifierView
+		mDefender.mStatsModifier[TeamPokemon.STAT_INDEX_SP_DEF] = mDefenderModifierView
 				.getSelectedItemPosition();
 		setAbilityAdapter(false);
 	}
@@ -497,10 +490,10 @@ public class DamageCalcFragment extends Fragment implements
 			return;
 		}
 
-		String totalDamage = DamageCalcTools.calculateDamageTotal(mAttacker,
-				mDefender, mAttack);
-		String porcentDamage = DamageCalcTools.calculateDamagePorcent(
-				mAttacker, mDefender, mAttack);
+		String totalDamage = DamageCalcTools.calculateDamageAmount(mAttacker,
+                mDefender, mAttack);
+		String porcentDamage = DamageCalcTools.calculateDamagePercent(
+                mAttacker, mDefender, mAttack);
 		if (totalDamage == null) {
 			mResultView.setText(R.string.no_damage);
 		} else {
@@ -676,42 +669,42 @@ public class DamageCalcFragment extends Fragment implements
 				}
 			} else if (s.hashCode() == mAttackerHpView.getText().hashCode()) {
 				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_HP] = Integer.parseInt(s
+					mAttacker.mStats[TeamPokemon.STAT_INDEX_HP] = Integer.parseInt(s
 							.toString());
 				}
 			} else if (s.hashCode() == mAttackerAttView.getText().hashCode()) {
 				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_ATT] = Integer
+					mAttacker.mStats[TeamPokemon.STAT_INDEX_ATT] = Integer
 							.parseInt(s.toString());
 				}
 			} else if (s.hashCode() == mAttackerSpAttView.getText().hashCode()) {
 				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_SP_ATT] = Integer
+					mAttacker.mStats[TeamPokemon.STAT_INDEX_SP_ATT] = Integer
 							.parseInt(s.toString());
 				}
 			} else if (s.hashCode() == mAttackerSpeedView.getText().hashCode()) {
 				if (mAttacker != null) {
-					mAttacker.mStats[TeamPokemon.INDEX_SPEED] = Integer
+					mAttacker.mStats[TeamPokemon.STAT_INDEX_SPEED] = Integer
 							.parseInt(s.toString());
 				}
 			} else if (s.hashCode() == mDefenderHpView.getText().hashCode()) {
 				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_HP] = Integer.parseInt(s
+					mDefender.mStats[TeamPokemon.STAT_INDEX_HP] = Integer.parseInt(s
 							.toString());
 				}
 			} else if (s.hashCode() == mDefenderDefView.getText().hashCode()) {
 				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_DEF] = Integer
+					mDefender.mStats[TeamPokemon.STAT_INDEX_DEF] = Integer
 							.parseInt(s.toString());
 				}
 			} else if (s.hashCode() == mDefenderSpDefView.getText().hashCode()) {
 				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_SP_DEF] = Integer
+					mDefender.mStats[TeamPokemon.STAT_INDEX_SP_DEF] = Integer
 							.parseInt(s.toString());
 				}
 			} else if (s.hashCode() == mDefenderSpeedView.getText().hashCode()) {
 				if (mDefender != null) {
-					mDefender.mStats[TeamPokemon.INDEX_SPEED] = Integer
+					mDefender.mStats[TeamPokemon.STAT_INDEX_SPEED] = Integer
 							.parseInt(s.toString());
 				}
 			}
@@ -727,15 +720,15 @@ public class DamageCalcFragment extends Fragment implements
 		switch (adapterView.getId()) {
 		case R.id.damage_calc_attack_modifier:
 			if (mAttacker != null) {
-				mAttacker.mStatsModifier[TeamPokemon.INDEX_ATT] = position;
-				mAttacker.mStatsModifier[TeamPokemon.INDEX_SP_ATT] = position;
+				mAttacker.mStatsModifier[TeamPokemon.STAT_INDEX_ATT] = position;
+				mAttacker.mStatsModifier[TeamPokemon.STAT_INDEX_SP_ATT] = position;
 				setAttackerStats();
 			}
 			break;
 		case R.id.damage_calc_defense_modifier:
 			if (mDefender != null) {
-				mDefender.mStatsModifier[TeamPokemon.INDEX_DEF] = position;
-				mDefender.mStatsModifier[TeamPokemon.INDEX_SP_DEF] = position;
+				mDefender.mStatsModifier[TeamPokemon.STAT_INDEX_DEF] = position;
+				mDefender.mStatsModifier[TeamPokemon.STAT_INDEX_SP_DEF] = position;
 				setDefenderStats();
 			}
 			break;
@@ -757,35 +750,35 @@ public class DamageCalcFragment extends Fragment implements
 			break;
 		case R.id.damage_calc_attacker_ability:
 			if (mAttacker != null) {
-				if ((mAttacker.mAbilities[Pokemon.ABILITY_INDEX_2] == 0)
+				if ((mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0)
 						&& (position == Pokemon.ABILITY_INDEX_2)) {
-					mAttacker.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
+					mAttacker.setAbility(mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mAttackerAbilityView
-							.setSelection(mAttacker.mSelectedAbility);
-				} else if ((mAttacker.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0)
+							.setSelection(Pokemon.ABILITY_INDEX_1);
+				} else if ((mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0)
 						&& (position == Pokemon.ABILITY_INDEX_DW_1)) {
-					mAttacker.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
+                    mAttacker.setAbility(mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mAttackerAbilityView
-							.setSelection(mAttacker.mSelectedAbility);
+							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else {
-					mAttacker.mSelectedAbility = position;
+					mAttacker.setAbility(mAttacker.mAbilities.get(position).mId);
 				}
 			}
 			break;
 		case R.id.damage_calc_defender_ability:
 			if (mDefender != null) {
 				if ((position == Pokemon.ABILITY_INDEX_2)
-						&& (mDefender.mAbilities[Pokemon.ABILITY_INDEX_2] == 0)) {
-					mDefender.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
+						&& (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0)) {
+					mDefender.setAbility(mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mDefenderAbilityView
-							.setSelection(mDefender.mSelectedAbility);
+							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else if ((position == Pokemon.ABILITY_INDEX_DW_1)
-						&& (mDefender.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0)) {
-					mDefender.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
+						&& (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0)) {
+                    mDefender.setAbility(mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mDefenderAbilityView
-							.setSelection(mDefender.mSelectedAbility);
+							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else {
-					mDefender.mSelectedAbility = position;
+					mDefender.setAbility(position);
 				}
 			}
 			break;

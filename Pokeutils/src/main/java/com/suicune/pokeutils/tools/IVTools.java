@@ -232,7 +232,8 @@ public class IVTools {
 		Double hiddenPowerPowerDouble = Math
 				.floor((((1 * getValue(hpIv)) + (2 * getValue(attIv))
 						+ (4 * getValue(defIv)) + (8 * getValue(speedIv))
-						+ (16 * getValue(spAttIv)) + (32 * getValue(spDefIv))) * 40 / 63) + 30);
+						+ (16 * getValue(spAttIv)) + (32 * getValue(spDefIv)))
+                        * 40 / 63) + 30);
 
 		return hiddenPowerPowerDouble.intValue();
 	}
@@ -243,7 +244,8 @@ public class IVTools {
 			return 1;
 		}
 		Double result = Math
-				.floor((((iv + (2 * baseStat) + (currentEv / 4) + 100) * currentLevel) / 100) + 10);
+				.floor((((iv + (2 * baseStat) + (currentEv / 4) + 100) * currentLevel) / 100)
+                        + 10);
 		return result.intValue();
 	}
 

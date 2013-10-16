@@ -82,8 +82,8 @@ public final class PokeContract {
 		public static final String BASE_HP = "pokemonbasehp";
 		public static final String BASE_ATT = "pokemonbaseatt";
 		public static final String BASE_DEF = "pokemonbasedef";
-		public static final String BASE_SPATT = "pokemonbasespatt";
-		public static final String BASE_SPDEF = "pokemonbasespdef";
+		public static final String BASE_SP_ATT = "pokemonbasespatt";
+		public static final String BASE_SP_DEF = "pokemonbasespdef";
 		public static final String BASE_SPEED = "pokemonbasespeed";
 	}
 
