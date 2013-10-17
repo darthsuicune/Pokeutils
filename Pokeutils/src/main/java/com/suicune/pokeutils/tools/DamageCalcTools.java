@@ -136,7 +136,7 @@ public class DamageCalcTools {
      */
     public static double getTypeModifier(Attack attack, TeamPokemon attacker,
                                          TeamPokemon defender) {
-        if (attacker.mSelectedAbility.mId != 104 // Mold breaker makes defender ability useless
+        if (attacker.mCurrentAbility.mId != 104 // Mold breaker makes defender ability useless
                 && abilityGrantsInmunity(attack, defender)) {
             return TYPE_MODIFIER_INMUNE;
         }
@@ -146,7 +146,7 @@ public class DamageCalcTools {
     }
 
     public static boolean abilityGrantsInmunity(Attack attack, TeamPokemon defender) {
-        switch (defender.mSelectedAbility.mId) {
+        switch (defender.mCurrentAbility.mId) {
             case 26: // Levitate
                 return attack.mType == Types.GROUND;
             case 18: // Flash fire

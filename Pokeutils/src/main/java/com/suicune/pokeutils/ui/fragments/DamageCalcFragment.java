@@ -355,7 +355,7 @@ public class DamageCalcFragment extends Fragment implements
 			if (mAttacker == null) {
 				return;
 			}
-            int currentAbility = mAttacker.mSelectedAbility.mId;
+            int currentAbility = mAttacker.mCurrentAbility.mId;
             pokemonAbilities[Pokemon.ABILITY_INDEX_1] =
                     mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mName;
             pokemonAbilities[Pokemon.ABILITY_INDEX_2] =
@@ -377,7 +377,7 @@ public class DamageCalcFragment extends Fragment implements
 			if (mDefender == null) {
 				return;
 			}
-            int currentAbility = mDefender.mSelectedAbility.mId;
+            int currentAbility = mDefender.mCurrentAbility.mId;
             pokemonAbilities[Pokemon.ABILITY_INDEX_1] =
                     mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mName;
             pokemonAbilities[Pokemon.ABILITY_INDEX_2] =
@@ -409,7 +409,7 @@ public class DamageCalcFragment extends Fragment implements
 					.setSelection(mAttacker.mStatsModifier[TeamPokemon.STAT_INDEX_ATT]);
 			mAttackerNatureView.setSelection(mAttacker.mNature);
 			setAttackerStats();
-			mAttackerAbilityView.setSelection(mAttacker.mSelectedAbility.mId);
+			mAttackerAbilityView.setSelection(mAttacker.mCurrentAbility.mId);
 		} catch (NumberFormatException e) {
 			mAttacker.mLevel = 100;
 		}
@@ -443,7 +443,7 @@ public class DamageCalcFragment extends Fragment implements
 					.setSelection(mDefender.mStatsModifier[TeamPokemon.STAT_INDEX_DEF]);
 			mDefenderNatureView.setSelection(mDefender.mNature);
 			setDefenderStats();
-			mDefenderAbilityView.setSelection(mDefender.mSelectedAbility.mId);
+			mDefenderAbilityView.setSelection(mDefender.mCurrentAbility.mId);
 		} catch (NumberFormatException e) {
 			mDefender.mLevel = 100;
 		}

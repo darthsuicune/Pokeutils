@@ -18,8 +18,8 @@ public class TeamPokemon extends Pokemon {
 
     public Attack[] mAttacks = { new Attack(0), new Attack(0), new Attack(0), new Attack(0) };
 
-    public Item mAttachedItem;
-    public Ability mSelectedAbility;
+    public Item mAttachedItem = new Item(0);
+    public Ability mCurrentAbility = new Ability(0);
 
     public String mNickname;
 
@@ -38,7 +38,7 @@ public class TeamPokemon extends Pokemon {
     public TeamPokemon(Bundle args) {
         super(args);
         mAttachedItem = new Item(args.getInt(ITEM));
-        mSelectedAbility = new Ability(args.getInt(SELECTED_ABILITY));
+        mCurrentAbility = new Ability(args.getInt(SELECTED_ABILITY));
         mNickname = args.getString(NICK_NAME);
         mIvs = args.getIntArray(IVS);
         mEvs = args.getIntArray(EVS);
@@ -84,7 +84,7 @@ public class TeamPokemon extends Pokemon {
     public void setAbility(int abilityId){
         Ability ability = new Ability(abilityId);
         if(mAbilities.contains(ability)){
-            mSelectedAbility = ability;
+            mCurrentAbility = ability;
         }
     }
 
@@ -167,7 +167,7 @@ public class TeamPokemon extends Pokemon {
 
 	public void saveStatus(Bundle status) {
 		status.putInt(ITEM, mAttachedItem.mId);
-		status.putInt(SELECTED_ABILITY, mSelectedAbility.mId);
+		status.putInt(SELECTED_ABILITY, mCurrentAbility.mId);
 		status.putString(NICK_NAME, mNickname);
 		status.putIntArray(IVS, mIvs);
 		status.putIntArray(EVS, mEvs);

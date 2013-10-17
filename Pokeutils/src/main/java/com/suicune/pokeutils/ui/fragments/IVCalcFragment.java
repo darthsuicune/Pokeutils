@@ -1,7 +1,5 @@
 package com.suicune.pokeutils.ui.fragments;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.database.Cursor;
 import android.database.DataSetObserver;
@@ -22,17 +20,20 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.SimpleCursorAdapter.CursorToStringConverter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Natures;
 import com.suicune.pokeutils.app.Pokemon;
-import com.suicune.pokeutils.R;
+import com.suicune.pokeutils.app.TeamPokemon;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.IVTools;
+
+import java.util.ArrayList;
 
 public class IVCalcFragment extends Fragment implements TextWatcher,
 		LoaderCallbacks<Cursor> {
@@ -298,7 +299,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_HP, getNature(),
-						statValue, evValue, level, mPokemon.mBaseHP);
+						statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_HP]);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_HP, ivs);
 				}
@@ -312,7 +313,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_ATT, getNature(),
-						statValue, evValue, level, mPokemon.mBaseAtt);
+						statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_ATT, ivs);
 				}
@@ -327,7 +328,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_DEF, getNature(),
-						statValue, evValue, level, mPokemon.mBaseDef);
+						statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_DEF]);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_DEF, ivs);
 				}
@@ -342,9 +343,9 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 				} catch (NumberFormatException e) {
 					return;
 				}
-				ivs = IVTools.calculateIVs(IVTools.CODE_SP_ATT, getNature(),
-						statValue, evValue, level, mPokemon.mBaseSpAtt);
-				if (ivs != null) {
+				ivs = IVTools.calculateIVs(IVTools.CODE_SP_ATT, getNature(), statValue,
+                        evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_ATT]);
+                if (ivs != null) {
 					showIVs(IVTools.CODE_SP_ATT, ivs);
 				}
 
@@ -359,7 +360,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_SP_DEF, getNature(),
-						statValue, evValue, level, mPokemon.mBaseSpDef);
+						statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_SP_DEF, ivs);
 				}
@@ -375,7 +376,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 					return;
 				}
 				ivs = IVTools.calculateIVs(IVTools.CODE_SPEED, getNature(),
-						statValue, evValue, level, mPokemon.mBaseSpeed);
+						statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SPEED]);
 				if (ivs != null) {
 					showIVs(IVTools.CODE_SPEED, ivs);
 				}
@@ -421,12 +422,12 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 		TextView baseSpeedView = (TextView) getActivity().findViewById(
 				R.id.iv_calc_base_speed);
 
-		baseHPView.setText("" + mPokemon.mBaseHP);
-		baseAttView.setText("" + mPokemon.mBaseAtt);
-		baseDefView.setText("" + mPokemon.mBaseDef);
-		baseSpAttView.setText("" + mPokemon.mBaseSpAtt);
-		baseSpDefView.setText("" + mPokemon.mBaseSpDef);
-		baseSpeedView.setText("" + mPokemon.mBaseSpeed);
+		baseHPView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_HP]);
+		baseAttView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
+		baseDefView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_DEF]);
+		baseSpAttView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_ATT]);
+		baseSpDefView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_DEF]);
+		baseSpeedView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SPEED]);
 
 	}
 

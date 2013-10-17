@@ -1,12 +1,12 @@
 package com.suicune.pokeutils.ui.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
-import android.content.CursorLoader;
+import android.support.v4.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
+import android.support.v4.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,8 +24,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
-import android.widget.SimpleCursorAdapter.CursorToStringConverter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -346,29 +346,29 @@ public class EditTeamPokemonFragment extends Fragment implements
 		mNameView.setText(mPokemon.mName);
 		mNicknameView.setText(mPokemon.mNickname);
 
-		mBaseHpView.setText("" + mPokemon.mBaseHP);
-		mBaseAttView.setText("" + mPokemon.mBaseAtt);
-		mBaseDefView.setText("" + mPokemon.mBaseDef);
-		mBaseSpAttView.setText("" + mPokemon.mBaseSpAtt);
-		mBaseSpDefView.setText("" + mPokemon.mBaseSpDef);
-		mBaseSpeedView.setText("" + mPokemon.mBaseSpeed);
+		mBaseHpView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_HP]);
+		mBaseAttView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
+		mBaseDefView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_DEF]);
+		mBaseSpAttView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_ATT]);
+		mBaseSpDefView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_DEF]);
+		mBaseSpeedView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SPEED]);
 
 		mLevelView.setText("" + mPokemon.mLevel);
 
-		mIvHpView.setText("" + mPokemon.mIvs[TeamPokemon.INDEX_HP]);
-		mIvAttView.setText("" + mPokemon.mIvs[TeamPokemon.INDEX_ATT]);
-		mIvDefView.setText("" + mPokemon.mIvs[TeamPokemon.INDEX_DEF]);
-		mIvSpAttView.setText("" + mPokemon.mIvs[TeamPokemon.INDEX_SP_ATT]);
-		mIvSpDefView.setText("" + mPokemon.mIvs[TeamPokemon.INDEX_SP_DEF]);
-		mIvSpeedView.setText("" + mPokemon.mIvs[TeamPokemon.INDEX_SPEED]);
-		mEvHpView.setText("" + mPokemon.mEvs[TeamPokemon.INDEX_HP]);
-		mEvAttView.setText("" + mPokemon.mEvs[TeamPokemon.INDEX_ATT]);
-		mEvDefView.setText("" + mPokemon.mEvs[TeamPokemon.INDEX_DEF]);
-		mEvSpAttView.setText("" + mPokemon.mEvs[TeamPokemon.INDEX_SP_ATT]);
-		mEvSpDefView.setText("" + mPokemon.mEvs[TeamPokemon.INDEX_SP_DEF]);
-		mEvSpeedView.setText("" + mPokemon.mEvs[TeamPokemon.INDEX_SPEED]);
+		mIvHpView.setText("" + mPokemon.mIvs[TeamPokemon.STAT_INDEX_HP]);
+		mIvAttView.setText("" + mPokemon.mIvs[TeamPokemon.STAT_INDEX_ATT]);
+		mIvDefView.setText("" + mPokemon.mIvs[TeamPokemon.STAT_INDEX_DEF]);
+		mIvSpAttView.setText("" + mPokemon.mIvs[TeamPokemon.STAT_INDEX_SP_ATT]);
+		mIvSpDefView.setText("" + mPokemon.mIvs[TeamPokemon.STAT_INDEX_SP_DEF]);
+		mIvSpeedView.setText("" + mPokemon.mIvs[TeamPokemon.STAT_INDEX_SPEED]);
+		mEvHpView.setText("" + mPokemon.mEvs[TeamPokemon.STAT_INDEX_HP]);
+		mEvAttView.setText("" + mPokemon.mEvs[TeamPokemon.STAT_INDEX_ATT]);
+		mEvDefView.setText("" + mPokemon.mEvs[TeamPokemon.STAT_INDEX_DEF]);
+		mEvSpAttView.setText("" + mPokemon.mEvs[TeamPokemon.STAT_INDEX_SP_ATT]);
+		mEvSpDefView.setText("" + mPokemon.mEvs[TeamPokemon.STAT_INDEX_SP_DEF]);
+		mEvSpeedView.setText("" + mPokemon.mEvs[TeamPokemon.STAT_INDEX_SPEED]);
 
-		mPokemon.setStats();
+		mPokemon.showStats();
 
 		setStats();
 
@@ -377,12 +377,13 @@ public class EditTeamPokemonFragment extends Fragment implements
 
 	private void loadPokemonAbilities() {
 		String[] abilities = new String[3];
-		abilities[Pokemon.ABILITY_INDEX_1] = getResources().getStringArray(
-				R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_1]];
-		abilities[Pokemon.ABILITY_INDEX_2] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2] == 0) ? "-"
-				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2]];
-		abilities[Pokemon.ABILITY_INDEX_DW_1] = (mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0) ? "-"
-				: getResources().getStringArray(R.array.abilities)[mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW_1]];
+		abilities[Pokemon.ABILITY_INDEX_1] = mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_1).mName;
+		abilities[Pokemon.ABILITY_INDEX_2] =
+                (mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0) ? "-"
+				: mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_2).mName;
+		abilities[Pokemon.ABILITY_INDEX_DW_1] =
+                (mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0) ? "-"
+				: mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mName;
 
 		ArrayAdapter<String> pokemonAbilityAdapter = new ArrayAdapter<String>(
 				getActivity(), android.R.layout.simple_spinner_item,
@@ -394,12 +395,12 @@ public class EditTeamPokemonFragment extends Fragment implements
 	}
 
 	private void setStats() {
-		mStatHpView.setText("" + mPokemon.mStats[TeamPokemon.INDEX_HP]);
-		mStatAttView.setText("" + mPokemon.mStats[TeamPokemon.INDEX_ATT]);
-		mStatDefView.setText("" + mPokemon.mStats[TeamPokemon.INDEX_DEF]);
-		mStatSpAttView.setText("" + mPokemon.mStats[TeamPokemon.INDEX_SP_ATT]);
-		mStatSpDefView.setText("" + mPokemon.mStats[TeamPokemon.INDEX_SP_DEF]);
-		mStatSpeedView.setText("" + mPokemon.mStats[TeamPokemon.INDEX_SPEED]);
+		mStatHpView.setText("" + mPokemon.mStats[TeamPokemon.STAT_INDEX_HP]);
+		mStatAttView.setText("" + mPokemon.mStats[TeamPokemon.STAT_INDEX_ATT]);
+		mStatDefView.setText("" + mPokemon.mStats[TeamPokemon.STAT_INDEX_DEF]);
+		mStatSpAttView.setText("" + mPokemon.mStats[TeamPokemon.STAT_INDEX_SP_ATT]);
+		mStatSpDefView.setText("" + mPokemon.mStats[TeamPokemon.STAT_INDEX_SP_DEF]);
+		mStatSpeedView.setText("" + mPokemon.mStats[TeamPokemon.STAT_INDEX_SPEED]);
 	}
 
 	private void loadPokemonFromFile() {
@@ -426,16 +427,16 @@ public class EditTeamPokemonFragment extends Fragment implements
 		switch (adapterView.getId()) {
 		case R.id.edit_team_pokemon_ability:
 			if (mPokemon != null) {
-				if ((mPokemon.mAbilities[Pokemon.ABILITY_INDEX_2] == 0)
+				if ((mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0)
 						&& (position == Pokemon.ABILITY_INDEX_2)) {
-					mPokemon.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
-					mAbilityView.setSelection(mPokemon.mSelectedAbility);
-				} else if ((mPokemon.mAbilities[Pokemon.ABILITY_INDEX_DW_1] == 0)
+					mPokemon.mCurrentAbility = mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_1);
+					mAbilityView.setSelection(Pokemon.ABILITY_INDEX_1);
+				} else if ((mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0)
 						&& (position == Pokemon.ABILITY_INDEX_DW_1)) {
-					mPokemon.mSelectedAbility = Pokemon.ABILITY_INDEX_1;
-					mAbilityView.setSelection(mPokemon.mSelectedAbility);
+					mPokemon.mCurrentAbility = mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_1);
+					mAbilityView.setSelection(Pokemon.ABILITY_INDEX_2);
 				} else {
-					mPokemon.mSelectedAbility = position;
+					mPokemon.mCurrentAbility = mPokemon.mAbilities.get(position);
 				}
 			}
 			break;
@@ -452,7 +453,7 @@ public class EditTeamPokemonFragment extends Fragment implements
 		case R.id.edit_team_pokemon_nature:
 			if (mPokemon != null) {
 				mPokemon.mNature = position;
-				mPokemon.setStats();
+				mPokemon.showStats();
 				setStats();
 			}
 			break;
@@ -491,66 +492,66 @@ public class EditTeamPokemonFragment extends Fragment implements
 					}
 				} else if (s.hashCode() == mIvHpView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mIvs[TeamPokemon.INDEX_HP] = Integer
+						mPokemon.mIvs[TeamPokemon.STAT_INDEX_HP] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mIvAttView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mIvs[TeamPokemon.INDEX_ATT] = Integer
+						mPokemon.mIvs[TeamPokemon.STAT_INDEX_ATT] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mIvDefView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mIvs[TeamPokemon.INDEX_DEF] = Integer
+						mPokemon.mIvs[TeamPokemon.STAT_INDEX_DEF] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mIvSpAttView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mIvs[TeamPokemon.INDEX_SP_ATT] = Integer
+						mPokemon.mIvs[TeamPokemon.STAT_INDEX_SP_ATT] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mIvSpDefView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mIvs[TeamPokemon.INDEX_SP_DEF] = Integer
+						mPokemon.mIvs[TeamPokemon.STAT_INDEX_SP_DEF] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mIvSpeedView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mIvs[TeamPokemon.INDEX_SPEED] = Integer
+						mPokemon.mIvs[TeamPokemon.STAT_INDEX_SPEED] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mEvHpView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mEvs[TeamPokemon.INDEX_HP] = Integer
+						mPokemon.mEvs[TeamPokemon.STAT_INDEX_HP] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mEvAttView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mEvs[TeamPokemon.INDEX_ATT] = Integer
+						mPokemon.mEvs[TeamPokemon.STAT_INDEX_ATT] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mEvDefView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mEvs[TeamPokemon.INDEX_DEF] = Integer
+						mPokemon.mEvs[TeamPokemon.STAT_INDEX_DEF] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mEvSpAttView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mEvs[TeamPokemon.INDEX_SP_ATT] = Integer
+						mPokemon.mEvs[TeamPokemon.STAT_INDEX_SP_ATT] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mEvSpDefView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mEvs[TeamPokemon.INDEX_SP_DEF] = Integer
+						mPokemon.mEvs[TeamPokemon.STAT_INDEX_SP_DEF] = Integer
 								.parseInt(s.toString());
 					}
 				} else if (s.hashCode() == mEvSpeedView.getText().hashCode()) {
 					if (mPokemon != null) {
-						mPokemon.mEvs[TeamPokemon.INDEX_SPEED] = Integer
+						mPokemon.mEvs[TeamPokemon.STAT_INDEX_SPEED] = Integer
 								.parseInt(s.toString());
 					}
 				}
-				mPokemon.setStats();
+				mPokemon.showStats();
 				setStats();
 			} catch (Exception e) {
 				return;
