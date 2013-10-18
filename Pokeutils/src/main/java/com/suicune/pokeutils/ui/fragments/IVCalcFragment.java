@@ -86,7 +86,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstancemState) {
+			Bundle savedInstanceState) {
 		if (container == null) {
 			return null;
 		}

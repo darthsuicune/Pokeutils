@@ -69,11 +69,11 @@ public class TeamPokemon extends Pokemon {
 
     }
 
-    public void getInBattle(){
+    public void getInBattle(Battlefield field){
 
     }
 
-    public void retreat(){
+    public void retreat(Battlefield field){
 
     }
 
