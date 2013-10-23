@@ -90,7 +90,8 @@ public class MainActivity extends ActionBarActivity implements
 	}
 
 	private void makeFirstRun() {
-		Toast.makeText(this, R.string.first_run_load, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, R.string.first_run_load,
+                Toast.LENGTH_LONG).show();
 		new Thread(new FirstRunTask()).start();
 	}
 

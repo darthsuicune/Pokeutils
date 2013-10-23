@@ -381,9 +381,9 @@ public class EditTeamPokemonFragment extends Fragment implements
 		abilities[Pokemon.ABILITY_INDEX_2] =
                 (mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0) ? "-"
 				: mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_2).mName;
-		abilities[Pokemon.ABILITY_INDEX_DW_1] =
-                (mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0) ? "-"
-				: mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mName;
+		abilities[Pokemon.ABILITY_INDEX_DW] =
+                (mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0) ? "-"
+				: mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mName;
 
 		ArrayAdapter<String> pokemonAbilityAdapter = new ArrayAdapter<String>(
 				getActivity(), android.R.layout.simple_spinner_item,
@@ -431,8 +431,8 @@ public class EditTeamPokemonFragment extends Fragment implements
 						&& (position == Pokemon.ABILITY_INDEX_2)) {
 					mPokemon.mCurrentAbility = mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_1);
 					mAbilityView.setSelection(Pokemon.ABILITY_INDEX_1);
-				} else if ((mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0)
-						&& (position == Pokemon.ABILITY_INDEX_DW_1)) {
+				} else if ((mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0)
+						&& (position == Pokemon.ABILITY_INDEX_DW)) {
 					mPokemon.mCurrentAbility = mPokemon.mAbilities.get(Pokemon.ABILITY_INDEX_1);
 					mAbilityView.setSelection(Pokemon.ABILITY_INDEX_2);
 				} else {

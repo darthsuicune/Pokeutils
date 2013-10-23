@@ -42,13 +42,12 @@
                 android:layout_height="wrap_content" >
             </Spinner>
         </LinearLayout>
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:showDividers="middle" >
-            
+
             <!-- Base Stats Block -->
 
             <TableRow>
@@ -325,7 +324,7 @@
                     android:maxLength="3" >
                 </EditText>
             </TableRow>
-            
+
             <!-- IV Block -->
 
             <TableRow>
@@ -455,9 +454,9 @@
                     android:gravity="center" >
                 </EditText>
             </TableRow>
-            
+
             <!-- Hidden Power block -->
-            
+
             <TableRow >
                 <TextView
                     android:text="@string/hidden_power"
@@ -476,6 +475,21 @@
                 </TextView>
             </TableRow>
         </TableLayout>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iv_calc_calculate_iv"
+                android:id="@+id/iv_calc_calculate_iv"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iv_calc_calculate_stats"
+                android:id="@+id/iv_calc_calculate_stats"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iv_calc_calculate_hidden_power"
+                android:id="@+id/iv_calc_calculate_hidden_power"/>
     </LinearLayout>
 
 </ScrollView>

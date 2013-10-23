@@ -361,9 +361,9 @@ public class DamageCalcFragment extends Fragment implements
             pokemonAbilities[Pokemon.ABILITY_INDEX_2] =
                     (mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0) ? "-"
                     : mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_2).mName;
-            pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] =
-                    (mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0) ? "-"
-                    : mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mName;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_DW] =
+                    (mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0) ? "-"
+                    : mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mName;
             mAttackerAbilityAdapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_spinner_item, android.R.id.text1,
                     pokemonAbilities);
@@ -383,9 +383,9 @@ public class DamageCalcFragment extends Fragment implements
             pokemonAbilities[Pokemon.ABILITY_INDEX_2] =
                     (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0) ? "-"
                             : mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_2).mName;
-            pokemonAbilities[Pokemon.ABILITY_INDEX_DW_1] =
-                    (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0) ? "-"
-                            : mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mName;
+            pokemonAbilities[Pokemon.ABILITY_INDEX_DW] =
+                    (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0) ? "-"
+                            : mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mName;
             mDefenderAbilityAdapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_spinner_item, android.R.id.text1,
                     pokemonAbilities);
@@ -755,8 +755,8 @@ public class DamageCalcFragment extends Fragment implements
 					mAttacker.setAbility(mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mAttackerAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
-				} else if ((mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0)
-						&& (position == Pokemon.ABILITY_INDEX_DW_1)) {
+				} else if ((mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0)
+						&& (position == Pokemon.ABILITY_INDEX_DW)) {
                     mAttacker.setAbility(mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mAttackerAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
@@ -772,8 +772,8 @@ public class DamageCalcFragment extends Fragment implements
 					mDefender.setAbility(mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mDefenderAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
-				} else if ((position == Pokemon.ABILITY_INDEX_DW_1)
-						&& (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW_1).mId == 0)) {
+				} else if ((position == Pokemon.ABILITY_INDEX_DW)
+						&& (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0)) {
                     mDefender.setAbility(mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mDefenderAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);

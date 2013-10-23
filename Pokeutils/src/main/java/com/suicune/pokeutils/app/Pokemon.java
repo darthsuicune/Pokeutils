@@ -1,5 +1,6 @@
 package com.suicune.pokeutils.app;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import com.suicune.pokeutils.database.PokeContract;
@@ -10,8 +11,7 @@ public class Pokemon{
     //Indexes for tables
     public static final int ABILITY_INDEX_1 = 0;
     public static final int ABILITY_INDEX_2 = 1;
-    public static final int ABILITY_INDEX_DW_1 = 2;
-    public static final int ABILITY_INDEX_DW_2 = 3;
+    public static final int ABILITY_INDEX_DW = 2;
     public static final int STAT_INDEX_HP = 0;
     public static final int STAT_INDEX_ATT = 1;
     public static final int STAT_INDEX_DEF = 2;
@@ -29,6 +29,10 @@ public class Pokemon{
 
     public ArrayList<Ability> mAbilities;
 	public ArrayList<Attack> mAttacksList;
+
+    public Pokemon(int id, Context context){
+
+    }
 
 	public Pokemon(Cursor cursor) {
 		if (cursor.moveToFirst()) {
@@ -62,7 +66,7 @@ public class Pokemon{
 			mAbilities.add(ABILITY_INDEX_2, new Ability(Integer
 					.parseInt(cursor.getString(cursor
 							.getColumnIndex(PokeContract.PokemonAbility2.ABILITY_2)))));
-			mAbilities.add(ABILITY_INDEX_DW_1, new Ability(Integer
+			mAbilities.add(ABILITY_INDEX_DW, new Ability(Integer
 					.parseInt(cursor.getString(cursor
 							.getColumnIndex(PokeContract.PokemonAbilityDW.ABILITY_DW)))));
 		} else {
@@ -83,7 +87,7 @@ public class Pokemon{
 				.getInt(PokeContract.PokemonAbility1.ABILITY_1)));
         mAbilities.add(ABILITY_INDEX_2, new Ability(args
 				.getInt(PokeContract.PokemonAbility2.ABILITY_2)));
-		mAbilities.add(ABILITY_INDEX_DW_1, new Ability(args
+		mAbilities.add(ABILITY_INDEX_DW, new Ability(args
 				.getInt(PokeContract.PokemonAbilityDW.ABILITY_DW)));
 		mAttacksList = new ArrayList<Attack>();
 	}
@@ -109,6 +113,6 @@ public class Pokemon{
         status.putInt(PokeContract.PokemonAbility2.ABILITY_2,
                 mAbilities.get(ABILITY_INDEX_2).mId);
         status.putInt(PokeContract.PokemonAbilityDW.ABILITY_DW,
-                mAbilities.get(ABILITY_INDEX_DW_1).mId);
+                mAbilities.get(ABILITY_INDEX_DW).mId);
     }
 }
