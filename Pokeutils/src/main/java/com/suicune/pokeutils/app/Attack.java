@@ -1,8 +1,7 @@
 package com.suicune.pokeutils.app;
 
-import com.suicune.pokeutils.database.PokeContract;
-
-import android.database.Cursor;
+import android.content.Context;
+import com.suicune.pokeutils.R;
 
 public class Attack {
 	public static final int CLASS_OTHER = 0;
@@ -10,47 +9,24 @@ public class Attack {
 	public static final int CLASS_SPECIAL = 2;
 
 	final public int mId;
-	public int mPp;
+    final public String mName;
+	final public int mPp;
 	public int mPower;
-	public int mAccuracy;
-	public int mType;
-	public int mPriority;
-	public int mAttackClass;
+	final public int mAccuracy;
+	final public Types.Type mType;
+	final public int mPriority;
+	final public int mAttackClass;
 
-    public Attack(int id){
+    public Attack(Context context, final int id){
         mId = id;
         //TODO: ALL
+        mName = context.getResources().getStringArray(R.array.attack_names)[id];
+        context.getResources().getIntArray(R.array.attack_names);
+        mPp = 0;
+        mPower = 0;
+        mAccuracy = 0;
+        mType = Types.Type.NONE;
+        mPriority = -1;
+        mAttackClass = CLASS_OTHER;
     }
-
-	public Attack(Cursor cursor) {
-		if (cursor.moveToFirst()) {
-			mId = cursor
-					.getInt(cursor.getColumnIndex(PokeContract.Attacks._ID));
-			mPp = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.PP)));
-			mPower = cursor.getInt(cursor
-					.getColumnIndex(PokeContract.Attacks.POWER));
-			mAccuracy = cursor.getInt(cursor
-					.getColumnIndex(PokeContract.Attacks.ACCURACY));
-			mType = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.TYPE)));
-			mPriority = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.PRIORITY)));
-			mAttackClass = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.Attacks.CLASS)));
-		} else {
-            mId = 0;
-        }
-	}
-
-	public Attack(int id, int pp, int power, int accuracy, int type, int priority,
-			int attackClass) {
-		mId = id;
-		mPp = pp;
-		mPower = power;
-		mAccuracy = accuracy;
-		mType = type;
-		mPriority = priority;
-		mAttackClass = attackClass;
-	}
 }

@@ -13,9 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Types;
 import com.suicune.pokeutils.database.PokeContract;
@@ -123,12 +122,12 @@ public class PokedexFragment extends ListFragment implements
 			TextView ability2View = (TextView) row.findViewById(R.id.pokedex_entry_pokemon_ability_2);
 			TextView abilityDwView = (TextView) row.findViewById(R.id.pokedex_entry_pokemon_ability_dw);
 
-			int type1 = Types.getTypeName(Integer.parseInt(type1View.getText()
-					.toString()));
-			type1View.setText((type1 == 0) ? "-" : getString(type1));
-			int type2 = Types.getTypeName(Integer.parseInt(type2View.getText()
-					.toString()));
-			type2View.setText((type2 == 0) ? "-" : getString(type2));
+			Types.Type type1 = Types.getType(Integer.parseInt(type1View.getText()
+                    .toString()));
+			type1View.setText((type1 == Types.Type.NONE) ? "-" : getString(type1.mName));
+			Types.Type type2 = Types.getType(Integer.parseInt(type2View.getText()
+                    .toString()));
+			type2View.setText((type2 == Types.Type.NONE) ? "-" : getString(type2.mName));
 			
 			ability1View.setText(mAbilities[Integer.parseInt(ability1View.getText().toString())]);
 			ability2View.setText(mAbilities[Integer.parseInt(ability2View.getText().toString())]);

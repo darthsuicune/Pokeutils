@@ -1,21 +1,14 @@
 package com.suicune.pokeutils.app;
 
+import android.content.Context;
+import com.suicune.pokeutils.R;
 
 public class Ability {
     final public int mId;
-	public String mName;
-	public String mDescription;
+	final public String mName;
 
-    public Ability(final int id){
+    public Ability(Context context, final int id){
         mId = id;
-        //TODO: ALL
-        //String[] abilityNames = getResources().getStringArray(R.array.abilities);
+        mName = context.getResources().getStringArray(R.array.abilities)[id];
     }
-	
-	public Ability(String name, String description){
-        mId = 0;
-		mName = name;
-		mDescription = description;
-	}
-
 }

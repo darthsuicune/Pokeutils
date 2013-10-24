@@ -111,8 +111,8 @@ public class DamageCalcFragment extends Fragment implements
 
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(ARG_ATTACKER_ID)) {
-				mAttacker = new TeamPokemon(
-						savedInstanceState.getBundle(ARG_ATTACKER_ID));
+//				mAttacker = new TeamPokemon(
+//						savedInstanceState.getBundle(ARG_ATTACKER_ID));
 				for (int i = 0; i < 6; i++) {
 					mAttacker.mEvs[i] = 252;
 				}
@@ -123,8 +123,8 @@ public class DamageCalcFragment extends Fragment implements
 				loadAttackerData();
 			}
 			if (savedInstanceState.containsKey(ARG_DEFENDER_ID)) {
-				mDefender = new TeamPokemon(
-						savedInstanceState.getBundle(ARG_DEFENDER_ID));
+//				mDefender = new TeamPokemon(
+//						savedInstanceState.getBundle(ARG_DEFENDER_ID));
 				for (int i = 0; i < 6; i++) {
 					mAttacker.mEvs[i] = 252;
 				}
@@ -596,7 +596,7 @@ public class DamageCalcFragment extends Fragment implements
 			break;
 		case LOADER_ATTACKING_POKEMON:
 			if (cursor.moveToFirst()) {
-				mAttacker = new TeamPokemon(cursor);
+//				mAttacker = new TeamPokemon(cursor);
 				for (int i = 0; i < 6; i++) {
 					mAttacker.mEvs[i] = 252;
 				}
@@ -605,7 +605,7 @@ public class DamageCalcFragment extends Fragment implements
 			break;
 		case LOADER_DEFENDING_POKEMON:
 			if (cursor.moveToFirst()) {
-				mDefender = new TeamPokemon(cursor);
+//				mDefender = new TeamPokemon(cursor);
 				for (int i = 0; i < 6; i++) {
 					mDefender.mEvs[i] = 252;
 				}
@@ -614,7 +614,7 @@ public class DamageCalcFragment extends Fragment implements
 			break;
 		case LOADER_ATTACK:
 			if (cursor.moveToFirst()) {
-				mAttack = new Attack(cursor);
+//				mAttack = new Attack(cursor);
 			}
 			setAttackParameters();
 			break;
@@ -763,16 +763,16 @@ public class DamageCalcFragment extends Fragment implements
 			if (mAttacker != null) {
 				if ((mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0)
 						&& (position == Pokemon.ABILITY_INDEX_2)) {
-					mAttacker.setAbility(mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
+					mAttacker.setAbility(getActivity(), mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mAttackerAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else if ((mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0)
 						&& (position == Pokemon.ABILITY_INDEX_DW)) {
-                    mAttacker.setAbility(mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
+                    mAttacker.setAbility(getActivity(), mAttacker.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mAttackerAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else {
-					mAttacker.setAbility(mAttacker.mAbilities.get(position).mId);
+					mAttacker.setAbility(getActivity(), mAttacker.mAbilities.get(position).mId);
 				}
 			}
 			break;
@@ -780,16 +780,16 @@ public class DamageCalcFragment extends Fragment implements
 			if (mDefender != null) {
 				if ((position == Pokemon.ABILITY_INDEX_2)
 						&& (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_2).mId == 0)) {
-					mDefender.setAbility(mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
+					mDefender.setAbility(getActivity(), mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mDefenderAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else if ((position == Pokemon.ABILITY_INDEX_DW)
 						&& (mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_DW).mId == 0)) {
-                    mDefender.setAbility(mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
+                    mDefender.setAbility(getActivity(), mDefender.mAbilities.get(Pokemon.ABILITY_INDEX_1).mId);
 					mDefenderAbilityView
 							.setSelection(Pokemon.ABILITY_INDEX_1);
 				} else {
-					mDefender.setAbility(position);
+					mDefender.setAbility(getActivity(), position);
 				}
 			}
 			break;

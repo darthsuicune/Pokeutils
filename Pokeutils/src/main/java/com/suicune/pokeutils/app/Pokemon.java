@@ -1,13 +1,21 @@
 package com.suicune.pokeutils.app;
 
 import android.content.Context;
-import android.database.Cursor;
+import android.content.res.Resources;
 import android.os.Bundle;
+import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Pokemon{
+    private static final String TYPE = "array";
+    private static final String POKEMON_FORM_PATTERN = "pokemon_form_";
+    private static final String POKEMON_TYPES_PATTERN = "pokemon_types_";
+    private static final String POKEMON_BASE_STATS_PATTERN = "pokemon_base_stats_";
+    private static final String POKEMON_ABILITIES_PATTERN = "pokemon_abilities_";
     //Indexes for tables
     public static final int ABILITY_INDEX_1 = 0;
     public static final int ABILITY_INDEX_2 = 1;
@@ -19,94 +27,52 @@ public class Pokemon{
     public static final int STAT_INDEX_SP_DEF = 4;
     public static final int STAT_INDEX_SPEED = 5;
 
-    public long mId;
-    public String mName;
-    public int mNumber;
-    public int mForm;
-    public int mType1;
-    public int mType2;
-    public int[] mBaseStats;
+    final public long mId;
+    final public String mName;
+    final public int mNumber;
+    final public int mForm;
+    final public Types.Type mType1;
+    final public Types.Type mType2;
+    final public int[] mBaseStats;
 
-    public ArrayList<Ability> mAbilities;
+    final public List<Ability> mAbilities;
 	public ArrayList<Attack> mAttacksList;
 
-    public Pokemon(int id, Context context){
+    /**
+     * WARNING:
+     * Creation of the pokemon involves reflection. This might (And probably should) be modified
+     * by future self, but at this point in time creating the huge database from scratch is a pain
+     *
+     * @param id
+     * @param context
+     */
+    public Pokemon(Context context, int id){
+        mId = id;
+        Resources res = context.getResources();
+        mName = res.getStringArray(R.array.pokemon_names)[id];
+        int formsId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
+        int typesId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
+        int statsId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
+        int abilitiesId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
+        mNumber = res.getIntArray(formsId)[0];
+        mForm = res.getIntArray(formsId)[1];
+        mType1 = Types.getType(res.getIntArray(typesId)[0]);
+        mType2 = Types.getType(res.getIntArray(typesId)[1]);
+        mBaseStats = res.getIntArray(statsId);
+        Ability ability1 = new Ability(context, res.getIntArray(abilitiesId)[0]);
+        Ability ability2 = new Ability(context, res.getIntArray(abilitiesId)[1]);
+        Ability abilityDW = new Ability(context, res.getIntArray(abilitiesId)[2]);
+        mAbilities = Arrays.asList(ability1, ability2, abilityDW);
 
     }
-
-	public Pokemon(Cursor cursor) {
-		if (cursor.moveToFirst()) {
-			mId = cursor.getInt(cursor
-					.getColumnIndex(PokeContract.PokemonName._ID));
-			mName = cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonName.NAME));
-			mNumber = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonName.NUMBER)));
-			mForm = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonName.FORM)));
-			mType1 = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonType1.TYPE)));
-			mType2 = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonType2.TYPE)));
-			mBaseStats[STAT_INDEX_HP] = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_HP)));
-			mBaseStats[STAT_INDEX_ATT] = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_ATT)));
-			mBaseStats[STAT_INDEX_DEF] = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_DEF)));
-			mBaseStats[STAT_INDEX_SP_ATT] = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SP_ATT)));
-			mBaseStats[STAT_INDEX_SP_DEF] = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SP_DEF)));
-			mBaseStats[STAT_INDEX_SPEED] = Integer.parseInt(cursor.getString(cursor
-					.getColumnIndex(PokeContract.PokemonBaseStats.BASE_SPEED)));
-			mAbilities.add(ABILITY_INDEX_1, new Ability(Integer
-					.parseInt(cursor.getString(cursor
-							.getColumnIndex(PokeContract.PokemonAbility1.ABILITY_1)))));
-			mAbilities.add(ABILITY_INDEX_2, new Ability(Integer
-					.parseInt(cursor.getString(cursor
-							.getColumnIndex(PokeContract.PokemonAbility2.ABILITY_2)))));
-			mAbilities.add(ABILITY_INDEX_DW, new Ability(Integer
-					.parseInt(cursor.getString(cursor
-							.getColumnIndex(PokeContract.PokemonAbilityDW.ABILITY_DW)))));
-		} else {
-			return;
-		}
-		mAttacksList = new ArrayList<Attack>();
-	}
-
-	public Pokemon(Bundle args) {
-		mId = args.getLong(PokeContract.PokemonBaseStats._ID);
-		mName = args.getString(PokeContract.PokemonName.NAME);
-		mNumber = args.getInt(PokeContract.PokemonBaseStats.NUMBER);
-		mForm = args.getInt(PokeContract.PokemonBaseStats.FORM);
-		mType1 = args.getInt(PokeContract.PokemonType1.TYPE);
-		mType2 = args.getInt(PokeContract.PokemonType2.TYPE);
-		mBaseStats = args.getIntArray(PokeContract.PokemonBaseStats.BASE_HP);
-		mAbilities.add(ABILITY_INDEX_1, new Ability(args
-				.getInt(PokeContract.PokemonAbility1.ABILITY_1)));
-        mAbilities.add(ABILITY_INDEX_2, new Ability(args
-				.getInt(PokeContract.PokemonAbility2.ABILITY_2)));
-		mAbilities.add(ABILITY_INDEX_DW, new Ability(args
-				.getInt(PokeContract.PokemonAbilityDW.ABILITY_DW)));
-		mAttacksList = new ArrayList<Attack>();
-	}
-
-    public void addAttacks(ArrayList<Attack> Attacks) {
-		mAttacksList = Attacks;
-	}
-
-	public void addAttack(Attack Attack) {
-		mAttacksList.add(Attack);
-	}
 
     public void saveStatus(Bundle status) {
         status.putLong(PokeContract.PokemonBaseStats._ID, mId);
         status.putString(PokeContract.PokemonName.NAME, mName);
         status.putInt(PokeContract.PokemonBaseStats.NUMBER, mNumber);
         status.putInt(PokeContract.PokemonBaseStats.FORM, mForm);
-        status.putInt(PokeContract.PokemonType1.TYPE, mType1);
-        status.putInt(PokeContract.PokemonType2.TYPE, mType2);
+//        status.putInt(PokeContract.PokemonType1.TYPE, mType1);
+//        status.putInt(PokeContract.PokemonType2.TYPE, mType2);
         status.putIntArray(PokeContract.PokemonBaseStats.BASE_HP, mBaseStats);
         status.putInt(PokeContract.PokemonAbility1.ABILITY_1,
                 mAbilities.get(ABILITY_INDEX_1).mId);

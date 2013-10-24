@@ -107,15 +107,15 @@ public class EditTeamPokemonFragment extends Fragment implements
 			if (getArguments() != null) {
 				if (getArguments().containsKey(
 						EditTeamPokemonActivity.EXTRA_POKEMON)) {
-					mPokemon = new TeamPokemon(getArguments().getBundle(
-							EditTeamPokemonActivity.EXTRA_POKEMON));
+//					mPokemon = new TeamPokemon(getArguments().getBundle(
+//							EditTeamPokemonActivity.EXTRA_POKEMON));
 					loadPokemonStats();
 				}
 			}
 		} else {
 			if (savedInstanceState.containsKey(ARG_POKEMON)) {
-				mPokemon = new TeamPokemon(
-						savedInstanceState.getBundle(ARG_POKEMON));
+//				mPokemon = new TeamPokemon(
+//						savedInstanceState.getBundle(ARG_POKEMON));
 				loadPokemonStats();
 			}
 		}
@@ -607,7 +607,7 @@ public class EditTeamPokemonFragment extends Fragment implements
 			mPokemonNameAdapter.swapCursor(cursor);
 			return;
 		case LOADER_POKEMON:
-			mPokemon = new TeamPokemon(cursor);
+//			mPokemon = new TeamPokemon(cursor);
 			getLoaderManager().restartLoader(LOADER_ATTACKS, null, this);
 			if (TextUtils.isEmpty(mNicknameView.getText())) {
 				mNicknameView.setText(mPokemon.mName);

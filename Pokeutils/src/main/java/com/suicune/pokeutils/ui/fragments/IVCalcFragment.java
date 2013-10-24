@@ -503,7 +503,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 			break;
 		case LOADER_POKEMON:
 			if (cursor.moveToFirst()) {
-				mPokemon = new Pokemon(cursor);
+				mPokemon = new Pokemon(getActivity(), 1);
 				if (mPokemon != null) {
 					showBaseStats();
 				}

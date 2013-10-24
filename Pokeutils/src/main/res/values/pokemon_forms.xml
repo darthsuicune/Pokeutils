@@ -1,0 +1,2940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <int-array name="pokemon_form_0">
+        <item>0</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_1">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_2">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_3">
+        <item>3</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_4">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_5">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_6">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_7">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_8">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_9">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_10">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_11">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_12">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_13">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_14">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_15">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_16">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_17">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_18">
+        <item>18</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_19">
+        <item>19</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_20">
+        <item>20</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_21">
+        <item>21</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_22">
+        <item>22</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_23">
+        <item>23</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_24">
+        <item>24</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_25">
+        <item>25</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_26">
+        <item>26</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_27">
+        <item>27</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_28">
+        <item>28</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_29">
+        <item>29</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_30">
+        <item>30</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_31">
+        <item>31</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_32">
+        <item>32</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_33">
+        <item>33</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_34">
+        <item>34</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_35">
+        <item>35</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_36">
+        <item>36</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_37">
+        <item>37</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_38">
+        <item>38</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_39">
+        <item>39</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_40">
+        <item>40</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_41">
+        <item>41</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_42">
+        <item>42</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_43">
+        <item>43</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_44">
+        <item>44</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_45">
+        <item>45</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_46">
+        <item>46</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_47">
+        <item>47</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_48">
+        <item>48</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_49">
+        <item>49</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_50">
+        <item>50</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_51">
+        <item>51</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_52">
+        <item>52</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_53">
+        <item>53</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_54">
+        <item>54</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_55">
+        <item>55</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_56">
+        <item>56</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_57">
+        <item>57</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_58">
+        <item>58</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_59">
+        <item>59</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_60">
+        <item>60</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_61">
+        <item>61</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_62">
+        <item>62</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_63">
+        <item>63</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_64">
+        <item>64</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_65">
+        <item>65</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_66">
+        <item>66</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_67">
+        <item>67</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_68">
+        <item>68</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_69">
+        <item>69</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_70">
+        <item>70</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_71">
+        <item>71</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_72">
+        <item>72</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_73">
+        <item>73</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_74">
+        <item>74</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_75">
+        <item>75</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_76">
+        <item>76</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_77">
+        <item>77</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_78">
+        <item>78</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_79">
+        <item>79</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_80">
+        <item>80</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_81">
+        <item>81</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_82">
+        <item>82</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_83">
+        <item>83</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_84">
+        <item>84</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_85">
+        <item>85</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_86">
+        <item>86</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_87">
+        <item>87</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_88">
+        <item>88</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_89">
+        <item>89</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_90">
+        <item>90</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_91">
+        <item>91</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_92">
+        <item>92</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_93">
+        <item>93</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_94">
+        <item>94</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_95">
+        <item>95</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_96">
+        <item>96</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_97">
+        <item>97</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_98">
+        <item>98</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_99">
+        <item>99</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_100">
+        <item>100</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_101">
+        <item>101</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_102">
+        <item>102</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_103">
+        <item>103</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_104">
+        <item>104</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_105">
+        <item>105</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_106">
+        <item>106</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_107">
+        <item>107</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_108">
+        <item>108</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_109">
+        <item>109</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_110">
+        <item>110</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_111">
+        <item>111</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_112">
+        <item>112</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_113">
+        <item>113</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_114">
+        <item>114</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_115">
+        <item>115</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_116">
+        <item>116</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_117">
+        <item>117</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_118">
+        <item>118</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_119">
+        <item>119</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_120">
+        <item>120</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_121">
+        <item>121</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_122">
+        <item>122</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_123">
+        <item>123</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_124">
+        <item>124</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_125">
+        <item>125</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_126">
+        <item>126</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_127">
+        <item>127</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_128">
+        <item>128</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_129">
+        <item>129</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_130">
+        <item>130</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_131">
+        <item>131</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_132">
+        <item>132</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_133">
+        <item>133</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_134">
+        <item>134</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_135">
+        <item>135</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_136">
+        <item>136</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_137">
+        <item>137</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_138">
+        <item>138</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_139">
+        <item>139</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_140">
+        <item>140</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_141">
+        <item>141</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_142">
+        <item>142</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_143">
+        <item>143</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_144">
+        <item>144</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_145">
+        <item>145</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_146">
+        <item>146</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_147">
+        <item>147</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_148">
+        <item>148</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_149">
+        <item>149</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_150">
+        <item>150</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_151">
+        <item>151</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_152">
+        <item>152</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_153">
+        <item>153</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_154">
+        <item>154</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_155">
+        <item>155</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_156">
+        <item>156</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_157">
+        <item>157</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_158">
+        <item>158</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_159">
+        <item>159</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_160">
+        <item>160</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_161">
+        <item>161</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_162">
+        <item>162</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_163">
+        <item>163</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_164">
+        <item>164</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_165">
+        <item>165</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_166">
+        <item>166</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_167">
+        <item>167</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_168">
+        <item>168</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_169">
+        <item>169</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_170">
+        <item>170</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_171">
+        <item>171</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_172">
+        <item>172</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_173">
+        <item>172</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_174">
+        <item>173</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_175">
+        <item>174</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_176">
+        <item>175</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_177">
+        <item>176</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_178">
+        <item>177</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_179">
+        <item>178</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_180">
+        <item>179</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_181">
+        <item>180</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_182">
+        <item>181</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_183">
+        <item>182</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_184">
+        <item>183</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_185">
+        <item>184</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_186">
+        <item>185</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_187">
+        <item>186</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_188">
+        <item>187</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_189">
+        <item>188</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_190">
+        <item>189</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_191">
+        <item>190</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_192">
+        <item>191</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_193">
+        <item>192</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_194">
+        <item>193</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_195">
+        <item>194</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_196">
+        <item>195</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_197">
+        <item>196</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_198">
+        <item>197</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_199">
+        <item>198</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_200">
+        <item>199</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_201">
+        <item>200</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_202">
+        <item>201</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_203">
+        <item>201</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_204">
+        <item>201</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_205">
+        <item>201</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_206">
+        <item>201</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_form_207">
+        <item>201</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_form_208">
+        <item>201</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_form_209">
+        <item>201</item>
+        <item>7</item>
+    </int-array>
+    <int-array name="pokemon_form_210">
+        <item>201</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_form_211">
+        <item>201</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_form_212">
+        <item>201</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_form_213">
+        <item>201</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_form_214">
+        <item>201</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_form_215">
+        <item>201</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_form_216">
+        <item>201</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_form_217">
+        <item>201</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_form_218">
+        <item>201</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_form_219">
+        <item>201</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_form_220">
+        <item>201</item>
+        <item>18</item>
+    </int-array>
+    <int-array name="pokemon_form_221">
+        <item>201</item>
+        <item>19</item>
+    </int-array>
+    <int-array name="pokemon_form_222">
+        <item>201</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_form_223">
+        <item>201</item>
+        <item>21</item>
+    </int-array>
+    <int-array name="pokemon_form_224">
+        <item>201</item>
+        <item>22</item>
+    </int-array>
+    <int-array name="pokemon_form_225">
+        <item>201</item>
+        <item>23</item>
+    </int-array>
+    <int-array name="pokemon_form_226">
+        <item>201</item>
+        <item>24</item>
+    </int-array>
+    <int-array name="pokemon_form_227">
+        <item>201</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_form_228">
+        <item>201</item>
+        <item>26</item>
+    </int-array>
+    <int-array name="pokemon_form_229">
+        <item>201</item>
+        <item>27</item>
+    </int-array>
+    <int-array name="pokemon_form_230">
+        <item>202</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_231">
+        <item>203</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_232">
+        <item>204</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_233">
+        <item>205</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_234">
+        <item>206</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_235">
+        <item>207</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_236">
+        <item>208</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_237">
+        <item>209</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_238">
+        <item>210</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_239">
+        <item>211</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_240">
+        <item>212</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_241">
+        <item>213</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_242">
+        <item>214</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_243">
+        <item>215</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_244">
+        <item>216</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_245">
+        <item>217</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_246">
+        <item>218</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_247">
+        <item>219</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_248">
+        <item>220</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_249">
+        <item>221</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_250">
+        <item>222</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_251">
+        <item>223</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_252">
+        <item>224</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_253">
+        <item>225</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_254">
+        <item>226</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_255">
+        <item>227</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_256">
+        <item>228</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_257">
+        <item>229</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_258">
+        <item>230</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_259">
+        <item>231</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_260">
+        <item>232</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_261">
+        <item>233</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_262">
+        <item>234</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_263">
+        <item>235</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_264">
+        <item>236</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_265">
+        <item>237</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_266">
+        <item>238</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_267">
+        <item>239</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_268">
+        <item>240</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_269">
+        <item>241</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_270">
+        <item>242</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_271">
+        <item>243</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_272">
+        <item>244</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_273">
+        <item>245</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_274">
+        <item>246</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_275">
+        <item>247</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_276">
+        <item>248</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_277">
+        <item>249</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_278">
+        <item>250</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_279">
+        <item>251</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_280">
+        <item>252</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_281">
+        <item>253</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_282">
+        <item>254</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_283">
+        <item>255</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_284">
+        <item>256</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_285">
+        <item>257</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_286">
+        <item>258</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_287">
+        <item>259</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_288">
+        <item>260</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_289">
+        <item>261</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_290">
+        <item>262</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_291">
+        <item>263</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_292">
+        <item>264</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_293">
+        <item>265</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_294">
+        <item>266</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_295">
+        <item>267</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_296">
+        <item>268</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_297">
+        <item>269</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_298">
+        <item>270</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_299">
+        <item>271</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_300">
+        <item>272</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_301">
+        <item>273</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_302">
+        <item>274</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_303">
+        <item>275</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_304">
+        <item>276</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_305">
+        <item>277</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_306">
+        <item>278</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_307">
+        <item>279</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_308">
+        <item>280</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_309">
+        <item>281</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_310">
+        <item>282</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_311">
+        <item>283</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_312">
+        <item>284</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_313">
+        <item>285</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_314">
+        <item>286</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_315">
+        <item>287</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_316">
+        <item>288</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_317">
+        <item>289</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_318">
+        <item>290</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_319">
+        <item>291</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_320">
+        <item>292</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_321">
+        <item>293</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_322">
+        <item>294</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_323">
+        <item>295</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_324">
+        <item>296</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_325">
+        <item>297</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_326">
+        <item>298</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_327">
+        <item>299</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_328">
+        <item>300</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_329">
+        <item>301</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_330">
+        <item>302</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_331">
+        <item>303</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_332">
+        <item>304</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_333">
+        <item>305</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_334">
+        <item>306</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_335">
+        <item>307</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_336">
+        <item>308</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_337">
+        <item>309</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_338">
+        <item>310</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_339">
+        <item>311</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_340">
+        <item>312</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_341">
+        <item>313</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_342">
+        <item>314</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_343">
+        <item>315</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_344">
+        <item>316</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_345">
+        <item>317</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_346">
+        <item>318</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_347">
+        <item>319</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_348">
+        <item>320</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_349">
+        <item>321</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_350">
+        <item>322</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_351">
+        <item>323</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_352">
+        <item>324</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_353">
+        <item>325</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_354">
+        <item>326</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_355">
+        <item>327</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_356">
+        <item>328</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_357">
+        <item>329</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_358">
+        <item>330</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_359">
+        <item>331</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_360">
+        <item>332</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_361">
+        <item>333</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_362">
+        <item>334</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_363">
+        <item>335</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_364">
+        <item>336</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_365">
+        <item>337</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_366">
+        <item>338</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_367">
+        <item>339</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_368">
+        <item>340</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_369">
+        <item>341</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_370">
+        <item>342</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_371">
+        <item>343</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_372">
+        <item>344</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_373">
+        <item>345</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_374">
+        <item>346</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_375">
+        <item>347</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_376">
+        <item>348</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_377">
+        <item>349</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_378">
+        <item>350</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_379">
+        <item>351</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_380">
+        <item>351</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_381">
+        <item>351</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_382">
+        <item>351</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_form_383">
+        <item>352</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_384">
+        <item>353</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_385">
+        <item>354</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_386">
+        <item>355</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_387">
+        <item>356</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_388">
+        <item>357</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_389">
+        <item>358</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_390">
+        <item>359</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_391">
+        <item>360</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_392">
+        <item>361</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_393">
+        <item>362</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_394">
+        <item>363</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_395">
+        <item>364</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_396">
+        <item>365</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_397">
+        <item>366</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_398">
+        <item>367</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_399">
+        <item>368</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_400">
+        <item>369</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_401">
+        <item>370</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_402">
+        <item>371</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_403">
+        <item>372</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_404">
+        <item>373</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_405">
+        <item>374</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_406">
+        <item>375</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_407">
+        <item>376</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_408">
+        <item>377</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_409">
+        <item>378</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_410">
+        <item>379</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_411">
+        <item>380</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_412">
+        <item>381</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_413">
+        <item>382</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_414">
+        <item>383</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_415">
+        <item>384</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_416">
+        <item>385</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_417">
+        <item>386</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_418">
+        <item>386</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_419">
+        <item>386</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_420">
+        <item>386</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_421">
+        <item>387</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_422">
+        <item>388</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_423">
+        <item>389</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_424">
+        <item>390</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_425">
+        <item>391</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_426">
+        <item>392</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_427">
+        <item>393</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_428">
+        <item>394</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_429">
+        <item>395</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_430">
+        <item>396</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_431">
+        <item>397</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_432">
+        <item>398</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_433">
+        <item>399</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_434">
+        <item>400</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_435">
+        <item>401</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_436">
+        <item>402</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_437">
+        <item>403</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_438">
+        <item>404</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_439">
+        <item>405</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_440">
+        <item>406</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_441">
+        <item>407</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_442">
+        <item>408</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_443">
+        <item>409</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_444">
+        <item>410</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_445">
+        <item>411</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_446">
+        <item>412</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_447">
+        <item>412</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_448">
+        <item>412</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_449">
+        <item>413</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_450">
+        <item>413</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_451">
+        <item>413</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_452">
+        <item>414</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_453">
+        <item>415</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_454">
+        <item>416</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_455">
+        <item>417</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_456">
+        <item>418</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_457">
+        <item>419</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_458">
+        <item>420</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_459">
+        <item>421</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_460">
+        <item>421</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_461">
+        <item>422</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_462">
+        <item>422</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_463">
+        <item>423</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_464">
+        <item>423</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_465">
+        <item>424</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_466">
+        <item>425</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_467">
+        <item>426</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_468">
+        <item>427</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_469">
+        <item>428</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_470">
+        <item>429</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_471">
+        <item>430</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_472">
+        <item>431</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_473">
+        <item>432</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_474">
+        <item>433</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_475">
+        <item>434</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_476">
+        <item>435</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_477">
+        <item>436</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_478">
+        <item>437</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_479">
+        <item>438</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_480">
+        <item>439</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_481">
+        <item>440</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_482">
+        <item>441</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_483">
+        <item>442</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_484">
+        <item>443</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_485">
+        <item>444</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_486">
+        <item>445</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_487">
+        <item>446</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_488">
+        <item>447</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_489">
+        <item>448</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_490">
+        <item>449</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_491">
+        <item>450</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_492">
+        <item>451</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_493">
+        <item>452</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_494">
+        <item>453</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_495">
+        <item>454</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_496">
+        <item>455</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_497">
+        <item>456</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_498">
+        <item>457</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_499">
+        <item>458</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_500">
+        <item>459</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_501">
+        <item>460</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_502">
+        <item>461</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_503">
+        <item>462</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_504">
+        <item>463</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_505">
+        <item>464</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_506">
+        <item>465</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_507">
+        <item>466</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_508">
+        <item>467</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_509">
+        <item>468</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_510">
+        <item>469</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_511">
+        <item>470</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_512">
+        <item>471</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_513">
+        <item>472</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_514">
+        <item>473</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_515">
+        <item>474</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_516">
+        <item>475</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_517">
+        <item>476</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_518">
+        <item>477</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_519">
+        <item>478</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_520">
+        <item>479</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_521">
+        <item>479</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_522">
+        <item>479</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_523">
+        <item>479</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_524">
+        <item>479</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_form_525">
+        <item>479</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_form_526">
+        <item>480</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_527">
+        <item>481</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_528">
+        <item>482</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_529">
+        <item>483</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_530">
+        <item>484</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_531">
+        <item>485</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_532">
+        <item>486</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_533">
+        <item>487</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_534">
+        <item>487</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_535">
+        <item>488</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_536">
+        <item>489</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_537">
+        <item>490</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_538">
+        <item>491</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_539">
+        <item>492</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_540">
+        <item>492</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_541">
+        <item>493</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_542">
+        <item>493</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_543">
+        <item>493</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_544">
+        <item>493</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_545">
+        <item>493</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_form_546">
+        <item>493</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_form_547">
+        <item>493</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_form_548">
+        <item>493</item>
+        <item>7</item>
+    </int-array>
+    <int-array name="pokemon_form_549">
+        <item>493</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_form_550">
+        <item>493</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_form_551">
+        <item>493</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_form_552">
+        <item>493</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_form_553">
+        <item>493</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_form_554">
+        <item>493</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_form_555">
+        <item>493</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_form_556">
+        <item>493</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_form_557">
+        <item>493</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_form_558">
+        <item>493</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_form_559">
+        <item>494</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_560">
+        <item>495</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_561">
+        <item>496</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_562">
+        <item>497</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_563">
+        <item>498</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_564">
+        <item>499</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_565">
+        <item>500</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_566">
+        <item>501</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_567">
+        <item>502</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_568">
+        <item>503</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_569">
+        <item>504</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_570">
+        <item>505</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_571">
+        <item>506</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_572">
+        <item>507</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_573">
+        <item>508</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_574">
+        <item>509</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_575">
+        <item>510</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_576">
+        <item>511</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_577">
+        <item>512</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_578">
+        <item>513</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_579">
+        <item>514</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_580">
+        <item>515</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_581">
+        <item>516</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_582">
+        <item>517</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_583">
+        <item>518</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_584">
+        <item>519</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_585">
+        <item>520</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_586">
+        <item>521</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_587">
+        <item>522</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_588">
+        <item>523</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_589">
+        <item>524</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_590">
+        <item>525</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_591">
+        <item>526</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_592">
+        <item>527</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_593">
+        <item>528</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_594">
+        <item>529</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_595">
+        <item>530</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_596">
+        <item>531</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_597">
+        <item>532</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_598">
+        <item>533</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_599">
+        <item>534</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_600">
+        <item>535</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_601">
+        <item>536</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_602">
+        <item>537</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_603">
+        <item>538</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_604">
+        <item>539</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_605">
+        <item>540</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_606">
+        <item>541</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_607">
+        <item>542</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_608">
+        <item>543</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_609">
+        <item>544</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_610">
+        <item>545</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_611">
+        <item>546</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_612">
+        <item>547</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_613">
+        <item>548</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_614">
+        <item>549</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_615">
+        <item>550</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_616">
+        <item>550</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_617">
+        <item>551</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_618">
+        <item>552</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_619">
+        <item>553</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_620">
+        <item>554</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_621">
+        <item>555</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_622">
+        <item>555</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_623">
+        <item>556</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_624">
+        <item>557</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_625">
+        <item>558</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_626">
+        <item>559</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_627">
+        <item>560</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_628">
+        <item>561</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_629">
+        <item>562</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_630">
+        <item>563</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_631">
+        <item>564</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_632">
+        <item>565</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_633">
+        <item>566</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_634">
+        <item>567</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_635">
+        <item>568</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_636">
+        <item>569</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_637">
+        <item>570</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_638">
+        <item>571</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_639">
+        <item>572</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_640">
+        <item>573</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_641">
+        <item>574</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_642">
+        <item>575</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_643">
+        <item>576</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_644">
+        <item>577</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_645">
+        <item>578</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_646">
+        <item>579</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_647">
+        <item>580</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_648">
+        <item>581</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_649">
+        <item>582</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_650">
+        <item>583</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_651">
+        <item>584</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_652">
+        <item>585</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_653">
+        <item>585</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_654">
+        <item>585</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_655">
+        <item>585</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_656">
+        <item>586</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_657">
+        <item>586</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_658">
+        <item>586</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_659">
+        <item>586</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_660">
+        <item>587</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_661">
+        <item>588</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_662">
+        <item>589</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_663">
+        <item>590</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_664">
+        <item>591</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_665">
+        <item>592</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_666">
+        <item>593</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_667">
+        <item>594</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_668">
+        <item>595</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_669">
+        <item>596</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_670">
+        <item>597</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_671">
+        <item>598</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_672">
+        <item>599</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_673">
+        <item>600</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_674">
+        <item>601</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_675">
+        <item>602</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_676">
+        <item>603</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_677">
+        <item>604</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_678">
+        <item>605</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_679">
+        <item>606</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_680">
+        <item>607</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_681">
+        <item>608</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_682">
+        <item>609</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_683">
+        <item>610</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_684">
+        <item>611</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_685">
+        <item>612</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_686">
+        <item>613</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_687">
+        <item>614</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_688">
+        <item>615</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_689">
+        <item>616</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_690">
+        <item>617</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_691">
+        <item>618</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_692">
+        <item>619</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_693">
+        <item>620</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_694">
+        <item>621</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_695">
+        <item>622</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_696">
+        <item>623</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_697">
+        <item>624</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_698">
+        <item>625</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_699">
+        <item>626</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_700">
+        <item>627</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_701">
+        <item>628</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_702">
+        <item>629</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_703">
+        <item>630</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_704">
+        <item>631</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_705">
+        <item>632</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_706">
+        <item>633</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_707">
+        <item>634</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_708">
+        <item>635</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_709">
+        <item>636</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_710">
+        <item>637</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_711">
+        <item>638</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_712">
+        <item>639</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_713">
+        <item>640</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_714">
+        <item>641</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_715">
+        <item>641</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_716">
+        <item>642</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_717">
+        <item>642</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_718">
+        <item>643</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_719">
+        <item>644</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_720">
+        <item>645</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_721">
+        <item>645</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_722">
+        <item>646</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_723">
+        <item>646</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_724">
+        <item>646</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_725">
+        <item>647</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_726">
+        <item>647</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_727">
+        <item>648</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_728">
+        <item>648</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_729">
+        <item>649</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_form_730">
+        <item>649</item>
+        <item>1</item>
+    </int-array>
+    <int-array name="pokemon_form_731">
+        <item>649</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_form_732">
+        <item>649</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_form_733">
+        <item>649</item>
+        <item>4</item>
+    </int-array>
+
+</resources>

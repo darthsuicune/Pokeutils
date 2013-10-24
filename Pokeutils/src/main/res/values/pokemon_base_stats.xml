@@ -1,0 +1,5876 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <int-array name="pokemon_base_stats_0">
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>45</item>
+        <item>49</item>
+        <item>49</item>
+        <item>65</item>
+        <item>65</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>62</item>
+        <item>63</item>
+        <item>80</item>
+        <item>80</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>80</item>
+        <item>82</item>
+        <item>83</item>
+        <item>100</item>
+        <item>100</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>39</item>
+        <item>52</item>
+        <item>43</item>
+        <item>60</item>
+        <item>50</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>58</item>
+        <item>64</item>
+        <item>58</item>
+        <item>80</item>
+        <item>65</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>78</item>
+        <item>84</item>
+        <item>78</item>
+        <item>109</item>
+        <item>85</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>44</item>
+        <item>48</item>
+        <item>65</item>
+        <item>50</item>
+        <item>64</item>
+        <item>43</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>59</item>
+        <item>63</item>
+        <item>80</item>
+        <item>65</item>
+        <item>80</item>
+        <item>58</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>79</item>
+        <item>83</item>
+        <item>100</item>
+        <item>85</item>
+        <item>105</item>
+        <item>78</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>45</item>
+        <item>30</item>
+        <item>35</item>
+        <item>20</item>
+        <item>20</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>50</item>
+        <item>20</item>
+        <item>55</item>
+        <item>25</item>
+        <item>25</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>45</item>
+        <item>50</item>
+        <item>80</item>
+        <item>80</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>35</item>
+        <item>30</item>
+        <item>20</item>
+        <item>20</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>45</item>
+        <item>25</item>
+        <item>50</item>
+        <item>25</item>
+        <item>25</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>80</item>
+        <item>40</item>
+        <item>45</item>
+        <item>80</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>45</item>
+        <item>40</item>
+        <item>35</item>
+        <item>35</item>
+        <item>56</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>63</item>
+        <item>60</item>
+        <item>55</item>
+        <item>50</item>
+        <item>50</item>
+        <item>71</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>83</item>
+        <item>80</item>
+        <item>75</item>
+        <item>70</item>
+        <item>70</item>
+        <item>91</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>30</item>
+        <item>56</item>
+        <item>35</item>
+        <item>25</item>
+        <item>35</item>
+        <item>72</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>55</item>
+        <item>81</item>
+        <item>60</item>
+        <item>50</item>
+        <item>70</item>
+        <item>97</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>40</item>
+        <item>60</item>
+        <item>30</item>
+        <item>31</item>
+        <item>31</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>65</item>
+        <item>90</item>
+        <item>65</item>
+        <item>61</item>
+        <item>61</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>35</item>
+        <item>60</item>
+        <item>44</item>
+        <item>40</item>
+        <item>54</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>85</item>
+        <item>69</item>
+        <item>65</item>
+        <item>79</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>35</item>
+        <item>55</item>
+        <item>30</item>
+        <item>50</item>
+        <item>40</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>90</item>
+        <item>55</item>
+        <item>90</item>
+        <item>80</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>75</item>
+        <item>85</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>75</item>
+        <item>100</item>
+        <item>110</item>
+        <item>45</item>
+        <item>55</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>55</item>
+        <item>47</item>
+        <item>52</item>
+        <item>40</item>
+        <item>40</item>
+        <item>41</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>62</item>
+        <item>67</item>
+        <item>55</item>
+        <item>55</item>
+        <item>56</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>90</item>
+        <item>82</item>
+        <item>87</item>
+        <item>75</item>
+        <item>85</item>
+        <item>76</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>46</item>
+        <item>57</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>61</item>
+        <item>72</item>
+        <item>57</item>
+        <item>55</item>
+        <item>55</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>81</item>
+        <item>92</item>
+        <item>77</item>
+        <item>85</item>
+        <item>75</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>45</item>
+        <item>48</item>
+        <item>60</item>
+        <item>65</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>95</item>
+        <item>70</item>
+        <item>73</item>
+        <item>85</item>
+        <item>90</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>38</item>
+        <item>41</item>
+        <item>40</item>
+        <item>50</item>
+        <item>65</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>73</item>
+        <item>76</item>
+        <item>75</item>
+        <item>81</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>115</item>
+        <item>45</item>
+        <item>20</item>
+        <item>45</item>
+        <item>25</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>140</item>
+        <item>70</item>
+        <item>45</item>
+        <item>75</item>
+        <item>50</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>45</item>
+        <item>35</item>
+        <item>30</item>
+        <item>40</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>75</item>
+        <item>80</item>
+        <item>70</item>
+        <item>65</item>
+        <item>75</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>75</item>
+        <item>65</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>85</item>
+        <item>75</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>100</item>
+        <item>90</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>35</item>
+        <item>70</item>
+        <item>55</item>
+        <item>45</item>
+        <item>55</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>95</item>
+        <item>80</item>
+        <item>60</item>
+        <item>80</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>55</item>
+        <item>50</item>
+        <item>40</item>
+        <item>55</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>65</item>
+        <item>60</item>
+        <item>90</item>
+        <item>75</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>10</item>
+        <item>55</item>
+        <item>25</item>
+        <item>35</item>
+        <item>45</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>35</item>
+        <item>80</item>
+        <item>50</item>
+        <item>50</item>
+        <item>70</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>40</item>
+        <item>45</item>
+        <item>35</item>
+        <item>40</item>
+        <item>40</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>65</item>
+        <item>70</item>
+        <item>60</item>
+        <item>65</item>
+        <item>65</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>52</item>
+        <item>48</item>
+        <item>65</item>
+        <item>50</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>80</item>
+        <item>82</item>
+        <item>78</item>
+        <item>95</item>
+        <item>80</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>40</item>
+        <item>80</item>
+        <item>35</item>
+        <item>35</item>
+        <item>45</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>65</item>
+        <item>105</item>
+        <item>60</item>
+        <item>60</item>
+        <item>70</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>55</item>
+        <item>70</item>
+        <item>45</item>
+        <item>70</item>
+        <item>50</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>90</item>
+        <item>110</item>
+        <item>80</item>
+        <item>100</item>
+        <item>80</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>40</item>
+        <item>50</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>65</item>
+        <item>65</item>
+        <item>65</item>
+        <item>50</item>
+        <item>50</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>90</item>
+        <item>85</item>
+        <item>95</item>
+        <item>70</item>
+        <item>90</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>25</item>
+        <item>20</item>
+        <item>15</item>
+        <item>105</item>
+        <item>55</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>40</item>
+        <item>35</item>
+        <item>30</item>
+        <item>120</item>
+        <item>70</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>50</item>
+        <item>45</item>
+        <item>135</item>
+        <item>85</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>80</item>
+        <item>50</item>
+        <item>35</item>
+        <item>35</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>100</item>
+        <item>70</item>
+        <item>50</item>
+        <item>60</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>90</item>
+        <item>130</item>
+        <item>80</item>
+        <item>65</item>
+        <item>85</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>75</item>
+        <item>35</item>
+        <item>70</item>
+        <item>30</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>65</item>
+        <item>90</item>
+        <item>50</item>
+        <item>85</item>
+        <item>45</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>80</item>
+        <item>105</item>
+        <item>65</item>
+        <item>100</item>
+        <item>60</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>40</item>
+        <item>40</item>
+        <item>35</item>
+        <item>50</item>
+        <item>100</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>80</item>
+        <item>70</item>
+        <item>65</item>
+        <item>80</item>
+        <item>120</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>40</item>
+        <item>80</item>
+        <item>100</item>
+        <item>30</item>
+        <item>30</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>55</item>
+        <item>95</item>
+        <item>115</item>
+        <item>45</item>
+        <item>45</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>80</item>
+        <item>110</item>
+        <item>130</item>
+        <item>55</item>
+        <item>65</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>50</item>
+        <item>85</item>
+        <item>55</item>
+        <item>65</item>
+        <item>65</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>65</item>
+        <item>100</item>
+        <item>70</item>
+        <item>80</item>
+        <item>80</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>90</item>
+        <item>65</item>
+        <item>65</item>
+        <item>40</item>
+        <item>40</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>95</item>
+        <item>75</item>
+        <item>110</item>
+        <item>100</item>
+        <item>80</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>25</item>
+        <item>35</item>
+        <item>70</item>
+        <item>95</item>
+        <item>55</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>50</item>
+        <item>60</item>
+        <item>95</item>
+        <item>120</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>52</item>
+        <item>65</item>
+        <item>55</item>
+        <item>58</item>
+        <item>62</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>35</item>
+        <item>85</item>
+        <item>45</item>
+        <item>35</item>
+        <item>35</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>60</item>
+        <item>110</item>
+        <item>70</item>
+        <item>60</item>
+        <item>60</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>65</item>
+        <item>45</item>
+        <item>55</item>
+        <item>45</item>
+        <item>70</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>90</item>
+        <item>70</item>
+        <item>80</item>
+        <item>70</item>
+        <item>95</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>80</item>
+        <item>80</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_8">
+        <item>105</item>
+        <item>105</item>
+        <item>75</item>
+        <item>65</item>
+        <item>100</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>30</item>
+        <item>65</item>
+        <item>100</item>
+        <item>45</item>
+        <item>25</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>50</item>
+        <item>95</item>
+        <item>180</item>
+        <item>85</item>
+        <item>45</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>30</item>
+        <item>35</item>
+        <item>30</item>
+        <item>100</item>
+        <item>35</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>45</item>
+        <item>50</item>
+        <item>45</item>
+        <item>115</item>
+        <item>55</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>60</item>
+        <item>65</item>
+        <item>60</item>
+        <item>130</item>
+        <item>75</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>35</item>
+        <item>45</item>
+        <item>160</item>
+        <item>30</item>
+        <item>45</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>60</item>
+        <item>48</item>
+        <item>45</item>
+        <item>43</item>
+        <item>90</item>
+        <item>42</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>85</item>
+        <item>73</item>
+        <item>70</item>
+        <item>73</item>
+        <item>115</item>
+        <item>67</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>30</item>
+        <item>105</item>
+        <item>90</item>
+        <item>25</item>
+        <item>25</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_9">
+        <item>55</item>
+        <item>130</item>
+        <item>115</item>
+        <item>50</item>
+        <item>50</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>30</item>
+        <item>50</item>
+        <item>55</item>
+        <item>55</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>50</item>
+        <item>70</item>
+        <item>80</item>
+        <item>80</item>
+        <item>140</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>40</item>
+        <item>80</item>
+        <item>60</item>
+        <item>45</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>95</item>
+        <item>95</item>
+        <item>85</item>
+        <item>125</item>
+        <item>65</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>50</item>
+        <item>50</item>
+        <item>95</item>
+        <item>40</item>
+        <item>50</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>80</item>
+        <item>110</item>
+        <item>50</item>
+        <item>80</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>50</item>
+        <item>120</item>
+        <item>53</item>
+        <item>35</item>
+        <item>110</item>
+        <item>87</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>50</item>
+        <item>105</item>
+        <item>79</item>
+        <item>35</item>
+        <item>110</item>
+        <item>76</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>55</item>
+        <item>75</item>
+        <item>60</item>
+        <item>75</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>65</item>
+        <item>95</item>
+        <item>60</item>
+        <item>45</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>90</item>
+        <item>120</item>
+        <item>85</item>
+        <item>70</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>80</item>
+        <item>85</item>
+        <item>95</item>
+        <item>30</item>
+        <item>30</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>105</item>
+        <item>130</item>
+        <item>120</item>
+        <item>45</item>
+        <item>45</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>250</item>
+        <item>5</item>
+        <item>5</item>
+        <item>35</item>
+        <item>105</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>55</item>
+        <item>115</item>
+        <item>100</item>
+        <item>40</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>105</item>
+        <item>95</item>
+        <item>80</item>
+        <item>40</item>
+        <item>80</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>30</item>
+        <item>40</item>
+        <item>70</item>
+        <item>70</item>
+        <item>25</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>65</item>
+        <item>95</item>
+        <item>95</item>
+        <item>45</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>45</item>
+        <item>67</item>
+        <item>60</item>
+        <item>35</item>
+        <item>50</item>
+        <item>63</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>80</item>
+        <item>92</item>
+        <item>65</item>
+        <item>65</item>
+        <item>80</item>
+        <item>68</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>30</item>
+        <item>45</item>
+        <item>55</item>
+        <item>70</item>
+        <item>55</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>75</item>
+        <item>85</item>
+        <item>100</item>
+        <item>85</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>45</item>
+        <item>65</item>
+        <item>100</item>
+        <item>120</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>70</item>
+        <item>110</item>
+        <item>80</item>
+        <item>55</item>
+        <item>80</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>50</item>
+        <item>35</item>
+        <item>115</item>
+        <item>95</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>83</item>
+        <item>57</item>
+        <item>95</item>
+        <item>85</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>95</item>
+        <item>57</item>
+        <item>100</item>
+        <item>85</item>
+        <item>93</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>125</item>
+        <item>100</item>
+        <item>55</item>
+        <item>70</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>75</item>
+        <item>100</item>
+        <item>95</item>
+        <item>40</item>
+        <item>70</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>20</item>
+        <item>10</item>
+        <item>55</item>
+        <item>15</item>
+        <item>20</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>95</item>
+        <item>125</item>
+        <item>79</item>
+        <item>60</item>
+        <item>100</item>
+        <item>81</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>130</item>
+        <item>85</item>
+        <item>80</item>
+        <item>85</item>
+        <item>95</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>48</item>
+        <item>48</item>
+        <item>48</item>
+        <item>48</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>55</item>
+        <item>50</item>
+        <item>45</item>
+        <item>65</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>130</item>
+        <item>65</item>
+        <item>60</item>
+        <item>110</item>
+        <item>95</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>65</item>
+        <item>60</item>
+        <item>110</item>
+        <item>95</item>
+        <item>130</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>130</item>
+        <item>60</item>
+        <item>95</item>
+        <item>110</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>60</item>
+        <item>70</item>
+        <item>85</item>
+        <item>75</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>35</item>
+        <item>40</item>
+        <item>100</item>
+        <item>90</item>
+        <item>55</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>70</item>
+        <item>60</item>
+        <item>125</item>
+        <item>115</item>
+        <item>70</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>30</item>
+        <item>80</item>
+        <item>90</item>
+        <item>55</item>
+        <item>45</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>115</item>
+        <item>105</item>
+        <item>65</item>
+        <item>70</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>80</item>
+        <item>105</item>
+        <item>65</item>
+        <item>60</item>
+        <item>75</item>
+        <item>130</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>160</item>
+        <item>110</item>
+        <item>65</item>
+        <item>65</item>
+        <item>110</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>85</item>
+        <item>100</item>
+        <item>95</item>
+        <item>125</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>90</item>
+        <item>85</item>
+        <item>125</item>
+        <item>90</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>100</item>
+        <item>90</item>
+        <item>125</item>
+        <item>85</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>41</item>
+        <item>64</item>
+        <item>45</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>61</item>
+        <item>84</item>
+        <item>65</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>91</item>
+        <item>134</item>
+        <item>95</item>
+        <item>100</item>
+        <item>100</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>106</item>
+        <item>110</item>
+        <item>90</item>
+        <item>154</item>
+        <item>90</item>
+        <item>130</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>45</item>
+        <item>49</item>
+        <item>65</item>
+        <item>49</item>
+        <item>65</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>62</item>
+        <item>80</item>
+        <item>63</item>
+        <item>80</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>80</item>
+        <item>82</item>
+        <item>100</item>
+        <item>83</item>
+        <item>100</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>39</item>
+        <item>52</item>
+        <item>43</item>
+        <item>60</item>
+        <item>50</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>58</item>
+        <item>64</item>
+        <item>58</item>
+        <item>80</item>
+        <item>65</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>78</item>
+        <item>84</item>
+        <item>78</item>
+        <item>109</item>
+        <item>85</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>50</item>
+        <item>65</item>
+        <item>64</item>
+        <item>44</item>
+        <item>48</item>
+        <item>43</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>80</item>
+        <item>80</item>
+        <item>59</item>
+        <item>63</item>
+        <item>58</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>85</item>
+        <item>105</item>
+        <item>100</item>
+        <item>79</item>
+        <item>83</item>
+        <item>78</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>35</item>
+        <item>46</item>
+        <item>34</item>
+        <item>35</item>
+        <item>45</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>85</item>
+        <item>76</item>
+        <item>64</item>
+        <item>45</item>
+        <item>55</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>30</item>
+        <item>30</item>
+        <item>36</item>
+        <item>56</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>100</item>
+        <item>50</item>
+        <item>50</item>
+        <item>76</item>
+        <item>96</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>80</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>35</item>
+        <item>50</item>
+        <item>55</item>
+        <item>110</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>60</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>70</item>
+        <item>90</item>
+        <item>70</item>
+        <item>60</item>
+        <item>60</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>85</item>
+        <item>90</item>
+        <item>80</item>
+        <item>70</item>
+        <item>80</item>
+        <item>130</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>75</item>
+        <item>38</item>
+        <item>38</item>
+        <item>56</item>
+        <item>56</item>
+        <item>67</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>125</item>
+        <item>58</item>
+        <item>58</item>
+        <item>76</item>
+        <item>76</item>
+        <item>67</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>20</item>
+        <item>40</item>
+        <item>15</item>
+        <item>35</item>
+        <item>35</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>20</item>
+        <item>40</item>
+        <item>15</item>
+        <item>35</item>
+        <item>35</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>50</item>
+        <item>25</item>
+        <item>28</item>
+        <item>45</item>
+        <item>55</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>30</item>
+        <item>15</item>
+        <item>40</item>
+        <item>20</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>35</item>
+        <item>20</item>
+        <item>65</item>
+        <item>40</item>
+        <item>65</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>40</item>
+        <item>85</item>
+        <item>80</item>
+        <item>105</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>40</item>
+        <item>50</item>
+        <item>45</item>
+        <item>70</item>
+        <item>45</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>75</item>
+        <item>70</item>
+        <item>95</item>
+        <item>70</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>40</item>
+        <item>40</item>
+        <item>65</item>
+        <item>45</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>70</item>
+        <item>55</item>
+        <item>55</item>
+        <item>80</item>
+        <item>60</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>75</item>
+        <item>75</item>
+        <item>115</item>
+        <item>90</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>100</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>70</item>
+        <item>20</item>
+        <item>50</item>
+        <item>20</item>
+        <item>50</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>100</item>
+        <item>50</item>
+        <item>80</item>
+        <item>50</item>
+        <item>80</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>70</item>
+        <item>100</item>
+        <item>115</item>
+        <item>30</item>
+        <item>65</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>90</item>
+        <item>75</item>
+        <item>75</item>
+        <item>90</item>
+        <item>100</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>35</item>
+        <item>35</item>
+        <item>40</item>
+        <item>35</item>
+        <item>55</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>45</item>
+        <item>50</item>
+        <item>45</item>
+        <item>65</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>75</item>
+        <item>55</item>
+        <item>70</item>
+        <item>55</item>
+        <item>85</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>70</item>
+        <item>55</item>
+        <item>40</item>
+        <item>55</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>75</item>
+        <item>75</item>
+        <item>55</item>
+        <item>105</item>
+        <item>85</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>65</item>
+        <item>45</item>
+        <item>75</item>
+        <item>45</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>55</item>
+        <item>45</item>
+        <item>45</item>
+        <item>25</item>
+        <item>25</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>95</item>
+        <item>85</item>
+        <item>85</item>
+        <item>65</item>
+        <item>65</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>65</item>
+        <item>65</item>
+        <item>60</item>
+        <item>130</item>
+        <item>95</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>95</item>
+        <item>65</item>
+        <item>110</item>
+        <item>60</item>
+        <item>130</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_1">
+        <item>60</item>
+        <item>85</item>
+        <item>42</item>
+        <item>85</item>
+        <item>42</item>
+        <item>91</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>95</item>
+        <item>75</item>
+        <item>80</item>
+        <item>100</item>
+        <item>110</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>85</item>
+        <item>85</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>72</item>
+        <item>48</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>190</item>
+        <item>33</item>
+        <item>58</item>
+        <item>33</item>
+        <item>58</item>
+        <item>33</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>70</item>
+        <item>80</item>
+        <item>65</item>
+        <item>90</item>
+        <item>65</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>65</item>
+        <item>90</item>
+        <item>35</item>
+        <item>35</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>75</item>
+        <item>90</item>
+        <item>140</item>
+        <item>60</item>
+        <item>60</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>100</item>
+        <item>70</item>
+        <item>70</item>
+        <item>65</item>
+        <item>65</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>65</item>
+        <item>75</item>
+        <item>105</item>
+        <item>35</item>
+        <item>65</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>75</item>
+        <item>85</item>
+        <item>200</item>
+        <item>55</item>
+        <item>65</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>80</item>
+        <item>50</item>
+        <item>40</item>
+        <item>40</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>90</item>
+        <item>120</item>
+        <item>75</item>
+        <item>60</item>
+        <item>60</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>65</item>
+        <item>95</item>
+        <item>75</item>
+        <item>55</item>
+        <item>55</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>70</item>
+        <item>130</item>
+        <item>100</item>
+        <item>55</item>
+        <item>80</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>20</item>
+        <item>10</item>
+        <item>230</item>
+        <item>10</item>
+        <item>230</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>80</item>
+        <item>125</item>
+        <item>75</item>
+        <item>40</item>
+        <item>95</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>55</item>
+        <item>95</item>
+        <item>55</item>
+        <item>35</item>
+        <item>75</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>80</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>90</item>
+        <item>130</item>
+        <item>75</item>
+        <item>75</item>
+        <item>75</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>70</item>
+        <item>40</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>50</item>
+        <item>120</item>
+        <item>80</item>
+        <item>80</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>50</item>
+        <item>40</item>
+        <item>30</item>
+        <item>30</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>100</item>
+        <item>100</item>
+        <item>80</item>
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>55</item>
+        <item>55</item>
+        <item>85</item>
+        <item>65</item>
+        <item>85</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>35</item>
+        <item>65</item>
+        <item>35</item>
+        <item>65</item>
+        <item>35</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>75</item>
+        <item>105</item>
+        <item>75</item>
+        <item>105</item>
+        <item>75</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>55</item>
+        <item>45</item>
+        <item>65</item>
+        <item>45</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>65</item>
+        <item>40</item>
+        <item>70</item>
+        <item>80</item>
+        <item>140</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>65</item>
+        <item>80</item>
+        <item>140</item>
+        <item>40</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>60</item>
+        <item>30</item>
+        <item>80</item>
+        <item>50</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>75</item>
+        <item>90</item>
+        <item>50</item>
+        <item>110</item>
+        <item>80</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>75</item>
+        <item>95</item>
+        <item>95</item>
+        <item>95</item>
+        <item>95</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>90</item>
+        <item>60</item>
+        <item>60</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>90</item>
+        <item>120</item>
+        <item>120</item>
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>85</item>
+        <item>80</item>
+        <item>90</item>
+        <item>105</item>
+        <item>95</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>73</item>
+        <item>95</item>
+        <item>62</item>
+        <item>85</item>
+        <item>65</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>55</item>
+        <item>20</item>
+        <item>35</item>
+        <item>20</item>
+        <item>45</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>35</item>
+        <item>35</item>
+        <item>35</item>
+        <item>35</item>
+        <item>35</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>95</item>
+        <item>95</item>
+        <item>35</item>
+        <item>110</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>30</item>
+        <item>15</item>
+        <item>85</item>
+        <item>65</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>63</item>
+        <item>37</item>
+        <item>65</item>
+        <item>55</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>75</item>
+        <item>37</item>
+        <item>70</item>
+        <item>55</item>
+        <item>83</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>95</item>
+        <item>80</item>
+        <item>105</item>
+        <item>40</item>
+        <item>70</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>255</item>
+        <item>10</item>
+        <item>10</item>
+        <item>75</item>
+        <item>135</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>90</item>
+        <item>85</item>
+        <item>75</item>
+        <item>115</item>
+        <item>100</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>115</item>
+        <item>115</item>
+        <item>85</item>
+        <item>90</item>
+        <item>75</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>100</item>
+        <item>75</item>
+        <item>115</item>
+        <item>90</item>
+        <item>115</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>64</item>
+        <item>50</item>
+        <item>45</item>
+        <item>50</item>
+        <item>41</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>70</item>
+        <item>84</item>
+        <item>70</item>
+        <item>65</item>
+        <item>70</item>
+        <item>51</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>100</item>
+        <item>134</item>
+        <item>110</item>
+        <item>95</item>
+        <item>100</item>
+        <item>61</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>106</item>
+        <item>90</item>
+        <item>130</item>
+        <item>90</item>
+        <item>154</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>106</item>
+        <item>130</item>
+        <item>90</item>
+        <item>110</item>
+        <item>154</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>40</item>
+        <item>45</item>
+        <item>35</item>
+        <item>65</item>
+        <item>55</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>65</item>
+        <item>45</item>
+        <item>85</item>
+        <item>65</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>70</item>
+        <item>85</item>
+        <item>65</item>
+        <item>105</item>
+        <item>85</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>60</item>
+        <item>40</item>
+        <item>70</item>
+        <item>50</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>85</item>
+        <item>60</item>
+        <item>85</item>
+        <item>60</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>80</item>
+        <item>120</item>
+        <item>70</item>
+        <item>110</item>
+        <item>70</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>70</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>70</item>
+        <item>85</item>
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>100</item>
+        <item>110</item>
+        <item>90</item>
+        <item>85</item>
+        <item>90</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>35</item>
+        <item>55</item>
+        <item>35</item>
+        <item>30</item>
+        <item>30</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>70</item>
+        <item>90</item>
+        <item>70</item>
+        <item>60</item>
+        <item>60</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>38</item>
+        <item>30</item>
+        <item>41</item>
+        <item>30</item>
+        <item>41</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>78</item>
+        <item>70</item>
+        <item>61</item>
+        <item>50</item>
+        <item>61</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>45</item>
+        <item>45</item>
+        <item>35</item>
+        <item>20</item>
+        <item>30</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>35</item>
+        <item>55</item>
+        <item>25</item>
+        <item>25</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>70</item>
+        <item>50</item>
+        <item>90</item>
+        <item>50</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>50</item>
+        <item>35</item>
+        <item>55</item>
+        <item>25</item>
+        <item>25</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>50</item>
+        <item>70</item>
+        <item>50</item>
+        <item>90</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>40</item>
+        <item>30</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_2">
+        <item>60</item>
+        <item>50</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>80</item>
+        <item>70</item>
+        <item>70</item>
+        <item>90</item>
+        <item>100</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>40</item>
+        <item>50</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>70</item>
+        <item>40</item>
+        <item>60</item>
+        <item>40</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>90</item>
+        <item>100</item>
+        <item>60</item>
+        <item>90</item>
+        <item>60</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>55</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>85</item>
+        <item>60</item>
+        <item>50</item>
+        <item>50</item>
+        <item>125</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>30</item>
+        <item>30</item>
+        <item>55</item>
+        <item>30</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>50</item>
+        <item>100</item>
+        <item>85</item>
+        <item>70</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>28</item>
+        <item>25</item>
+        <item>25</item>
+        <item>45</item>
+        <item>35</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>38</item>
+        <item>35</item>
+        <item>35</item>
+        <item>65</item>
+        <item>55</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>68</item>
+        <item>65</item>
+        <item>65</item>
+        <item>125</item>
+        <item>115</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>30</item>
+        <item>32</item>
+        <item>50</item>
+        <item>52</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>60</item>
+        <item>62</item>
+        <item>80</item>
+        <item>82</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>40</item>
+        <item>60</item>
+        <item>40</item>
+        <item>60</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>130</item>
+        <item>80</item>
+        <item>60</item>
+        <item>60</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>35</item>
+        <item>35</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>55</item>
+        <item>55</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>150</item>
+        <item>160</item>
+        <item>100</item>
+        <item>95</item>
+        <item>65</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>31</item>
+        <item>45</item>
+        <item>90</item>
+        <item>30</item>
+        <item>30</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>61</item>
+        <item>90</item>
+        <item>45</item>
+        <item>50</item>
+        <item>50</item>
+        <item>160</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>1</item>
+        <item>90</item>
+        <item>45</item>
+        <item>30</item>
+        <item>30</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>64</item>
+        <item>51</item>
+        <item>23</item>
+        <item>51</item>
+        <item>23</item>
+        <item>28</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>84</item>
+        <item>71</item>
+        <item>43</item>
+        <item>71</item>
+        <item>43</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>104</item>
+        <item>91</item>
+        <item>63</item>
+        <item>91</item>
+        <item>63</item>
+        <item>68</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>72</item>
+        <item>60</item>
+        <item>30</item>
+        <item>20</item>
+        <item>30</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>144</item>
+        <item>120</item>
+        <item>60</item>
+        <item>40</item>
+        <item>60</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>20</item>
+        <item>40</item>
+        <item>20</item>
+        <item>40</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>30</item>
+        <item>45</item>
+        <item>135</item>
+        <item>45</item>
+        <item>90</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>45</item>
+        <item>45</item>
+        <item>35</item>
+        <item>35</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>65</item>
+        <item>65</item>
+        <item>55</item>
+        <item>55</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>75</item>
+        <item>75</item>
+        <item>65</item>
+        <item>65</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>85</item>
+        <item>85</item>
+        <item>55</item>
+        <item>55</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>70</item>
+        <item>100</item>
+        <item>40</item>
+        <item>40</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>90</item>
+        <item>140</item>
+        <item>50</item>
+        <item>50</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>110</item>
+        <item>180</item>
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>30</item>
+        <item>40</item>
+        <item>55</item>
+        <item>40</item>
+        <item>55</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>60</item>
+        <item>75</item>
+        <item>60</item>
+        <item>75</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>45</item>
+        <item>40</item>
+        <item>65</item>
+        <item>40</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>75</item>
+        <item>60</item>
+        <item>105</item>
+        <item>60</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>50</item>
+        <item>40</item>
+        <item>85</item>
+        <item>75</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>40</item>
+        <item>50</item>
+        <item>75</item>
+        <item>85</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>65</item>
+        <item>73</item>
+        <item>55</item>
+        <item>47</item>
+        <item>75</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>65</item>
+        <item>47</item>
+        <item>55</item>
+        <item>73</item>
+        <item>75</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>60</item>
+        <item>45</item>
+        <item>100</item>
+        <item>80</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>43</item>
+        <item>53</item>
+        <item>43</item>
+        <item>53</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>100</item>
+        <item>73</item>
+        <item>83</item>
+        <item>73</item>
+        <item>83</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>45</item>
+        <item>90</item>
+        <item>20</item>
+        <item>65</item>
+        <item>20</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>120</item>
+        <item>40</item>
+        <item>95</item>
+        <item>40</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>130</item>
+        <item>70</item>
+        <item>35</item>
+        <item>70</item>
+        <item>35</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>170</item>
+        <item>90</item>
+        <item>45</item>
+        <item>90</item>
+        <item>45</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>60</item>
+        <item>40</item>
+        <item>65</item>
+        <item>45</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>100</item>
+        <item>70</item>
+        <item>105</item>
+        <item>75</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>85</item>
+        <item>140</item>
+        <item>85</item>
+        <item>70</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>25</item>
+        <item>35</item>
+        <item>70</item>
+        <item>80</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>80</item>
+        <item>45</item>
+        <item>65</item>
+        <item>90</item>
+        <item>110</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>45</item>
+        <item>100</item>
+        <item>45</item>
+        <item>45</item>
+        <item>45</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>70</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>80</item>
+        <item>100</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>85</item>
+        <item>40</item>
+        <item>85</item>
+        <item>40</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>115</item>
+        <item>60</item>
+        <item>115</item>
+        <item>60</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>45</item>
+        <item>40</item>
+        <item>60</item>
+        <item>40</item>
+        <item>75</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>75</item>
+        <item>70</item>
+        <item>90</item>
+        <item>70</item>
+        <item>105</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>73</item>
+        <item>115</item>
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>73</item>
+        <item>100</item>
+        <item>60</item>
+        <item>100</item>
+        <item>60</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>55</item>
+        <item>65</item>
+        <item>95</item>
+        <item>85</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>95</item>
+        <item>85</item>
+        <item>55</item>
+        <item>65</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>48</item>
+        <item>43</item>
+        <item>46</item>
+        <item>41</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>110</item>
+        <item>78</item>
+        <item>73</item>
+        <item>76</item>
+        <item>71</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>43</item>
+        <item>80</item>
+        <item>65</item>
+        <item>50</item>
+        <item>35</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>63</item>
+        <item>120</item>
+        <item>85</item>
+        <item>90</item>
+        <item>55</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>40</item>
+        <item>55</item>
+        <item>40</item>
+        <item>70</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>70</item>
+        <item>105</item>
+        <item>70</item>
+        <item>120</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>66</item>
+        <item>41</item>
+        <item>77</item>
+        <item>61</item>
+        <item>87</item>
+        <item>23</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>86</item>
+        <item>81</item>
+        <item>97</item>
+        <item>81</item>
+        <item>107</item>
+        <item>43</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>45</item>
+        <item>95</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>75</item>
+        <item>125</item>
+        <item>100</item>
+        <item>70</item>
+        <item>80</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>20</item>
+        <item>15</item>
+        <item>20</item>
+        <item>10</item>
+        <item>55</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>95</item>
+        <item>60</item>
+        <item>79</item>
+        <item>100</item>
+        <item>125</item>
+        <item>81</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>60</item>
+        <item>90</item>
+        <item>70</item>
+        <item>60</item>
+        <item>120</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>44</item>
+        <item>75</item>
+        <item>35</item>
+        <item>63</item>
+        <item>33</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>64</item>
+        <item>115</item>
+        <item>65</item>
+        <item>83</item>
+        <item>63</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>20</item>
+        <item>40</item>
+        <item>90</item>
+        <item>30</item>
+        <item>90</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>40</item>
+        <item>70</item>
+        <item>130</item>
+        <item>60</item>
+        <item>130</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>99</item>
+        <item>68</item>
+        <item>83</item>
+        <item>72</item>
+        <item>87</item>
+        <item>51</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>65</item>
+        <item>50</item>
+        <item>70</item>
+        <item>95</item>
+        <item>80</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>65</item>
+        <item>130</item>
+        <item>60</item>
+        <item>75</item>
+        <item>60</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>95</item>
+        <item>23</item>
+        <item>48</item>
+        <item>23</item>
+        <item>48</item>
+        <item>23</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>70</item>
+        <item>40</item>
+        <item>50</item>
+        <item>55</item>
+        <item>50</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>90</item>
+        <item>60</item>
+        <item>70</item>
+        <item>75</item>
+        <item>70</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>110</item>
+        <item>80</item>
+        <item>90</item>
+        <item>95</item>
+        <item>90</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>35</item>
+        <item>64</item>
+        <item>85</item>
+        <item>74</item>
+        <item>55</item>
+        <item>32</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>55</item>
+        <item>104</item>
+        <item>105</item>
+        <item>94</item>
+        <item>75</item>
+        <item>52</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_3">
+        <item>55</item>
+        <item>84</item>
+        <item>105</item>
+        <item>114</item>
+        <item>75</item>
+        <item>52</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>100</item>
+        <item>90</item>
+        <item>130</item>
+        <item>45</item>
+        <item>65</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>43</item>
+        <item>30</item>
+        <item>55</item>
+        <item>40</item>
+        <item>65</item>
+        <item>97</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>45</item>
+        <item>75</item>
+        <item>60</item>
+        <item>40</item>
+        <item>30</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>65</item>
+        <item>95</item>
+        <item>100</item>
+        <item>60</item>
+        <item>50</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>95</item>
+        <item>135</item>
+        <item>80</item>
+        <item>110</item>
+        <item>80</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>55</item>
+        <item>80</item>
+        <item>35</item>
+        <item>60</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>75</item>
+        <item>100</item>
+        <item>55</item>
+        <item>80</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>135</item>
+        <item>130</item>
+        <item>95</item>
+        <item>90</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>100</item>
+        <item>200</item>
+        <item>50</item>
+        <item>100</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>50</item>
+        <item>100</item>
+        <item>100</item>
+        <item>200</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>75</item>
+        <item>150</item>
+        <item>75</item>
+        <item>150</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>80</item>
+        <item>90</item>
+        <item>110</item>
+        <item>130</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>90</item>
+        <item>80</item>
+        <item>130</item>
+        <item>110</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>100</item>
+        <item>100</item>
+        <item>90</item>
+        <item>150</item>
+        <item>140</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>100</item>
+        <item>150</item>
+        <item>140</item>
+        <item>100</item>
+        <item>90</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>105</item>
+        <item>150</item>
+        <item>90</item>
+        <item>150</item>
+        <item>90</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>50</item>
+        <item>150</item>
+        <item>50</item>
+        <item>150</item>
+        <item>50</item>
+        <item>150</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>50</item>
+        <item>180</item>
+        <item>20</item>
+        <item>180</item>
+        <item>20</item>
+        <item>150</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>50</item>
+        <item>70</item>
+        <item>160</item>
+        <item>70</item>
+        <item>160</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>50</item>
+        <item>95</item>
+        <item>90</item>
+        <item>95</item>
+        <item>90</item>
+        <item>180</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>55</item>
+        <item>68</item>
+        <item>64</item>
+        <item>45</item>
+        <item>55</item>
+        <item>31</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>75</item>
+        <item>89</item>
+        <item>85</item>
+        <item>55</item>
+        <item>65</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>95</item>
+        <item>109</item>
+        <item>105</item>
+        <item>75</item>
+        <item>85</item>
+        <item>56</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>44</item>
+        <item>58</item>
+        <item>44</item>
+        <item>58</item>
+        <item>44</item>
+        <item>61</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>64</item>
+        <item>78</item>
+        <item>52</item>
+        <item>78</item>
+        <item>52</item>
+        <item>81</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>76</item>
+        <item>104</item>
+        <item>71</item>
+        <item>104</item>
+        <item>71</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>53</item>
+        <item>51</item>
+        <item>53</item>
+        <item>61</item>
+        <item>56</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>64</item>
+        <item>66</item>
+        <item>68</item>
+        <item>81</item>
+        <item>76</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>84</item>
+        <item>86</item>
+        <item>88</item>
+        <item>111</item>
+        <item>101</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>55</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>55</item>
+        <item>75</item>
+        <item>50</item>
+        <item>40</item>
+        <item>40</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>85</item>
+        <item>120</item>
+        <item>70</item>
+        <item>50</item>
+        <item>50</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>59</item>
+        <item>45</item>
+        <item>40</item>
+        <item>35</item>
+        <item>40</item>
+        <item>31</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>79</item>
+        <item>85</item>
+        <item>60</item>
+        <item>55</item>
+        <item>60</item>
+        <item>71</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>37</item>
+        <item>25</item>
+        <item>41</item>
+        <item>25</item>
+        <item>41</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>77</item>
+        <item>85</item>
+        <item>51</item>
+        <item>55</item>
+        <item>51</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>45</item>
+        <item>65</item>
+        <item>34</item>
+        <item>40</item>
+        <item>34</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>85</item>
+        <item>49</item>
+        <item>60</item>
+        <item>49</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>80</item>
+        <item>120</item>
+        <item>79</item>
+        <item>95</item>
+        <item>79</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>30</item>
+        <item>35</item>
+        <item>50</item>
+        <item>70</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>70</item>
+        <item>55</item>
+        <item>125</item>
+        <item>105</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>67</item>
+        <item>125</item>
+        <item>40</item>
+        <item>30</item>
+        <item>30</item>
+        <item>58</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>97</item>
+        <item>165</item>
+        <item>60</item>
+        <item>65</item>
+        <item>50</item>
+        <item>58</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>30</item>
+        <item>42</item>
+        <item>118</item>
+        <item>42</item>
+        <item>88</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>52</item>
+        <item>168</item>
+        <item>47</item>
+        <item>138</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>29</item>
+        <item>45</item>
+        <item>29</item>
+        <item>45</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>29</item>
+        <item>45</item>
+        <item>29</item>
+        <item>45</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>29</item>
+        <item>45</item>
+        <item>29</item>
+        <item>45</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>59</item>
+        <item>85</item>
+        <item>79</item>
+        <item>105</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>79</item>
+        <item>105</item>
+        <item>59</item>
+        <item>85</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>69</item>
+        <item>95</item>
+        <item>69</item>
+        <item>95</item>
+        <item>36</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>94</item>
+        <item>50</item>
+        <item>94</item>
+        <item>50</item>
+        <item>66</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>30</item>
+        <item>30</item>
+        <item>42</item>
+        <item>30</item>
+        <item>42</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>80</item>
+        <item>102</item>
+        <item>80</item>
+        <item>102</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>45</item>
+        <item>70</item>
+        <item>45</item>
+        <item>90</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>55</item>
+        <item>65</item>
+        <item>35</item>
+        <item>60</item>
+        <item>30</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>85</item>
+        <item>105</item>
+        <item>55</item>
+        <item>85</item>
+        <item>50</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>45</item>
+        <item>35</item>
+        <item>45</item>
+        <item>62</item>
+        <item>53</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>87</item>
+        <item>78</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>87</item>
+        <item>78</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>76</item>
+        <item>48</item>
+        <item>48</item>
+        <item>57</item>
+        <item>62</item>
+        <item>34</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>76</item>
+        <item>48</item>
+        <item>48</item>
+        <item>57</item>
+        <item>62</item>
+        <item>34</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>111</item>
+        <item>83</item>
+        <item>68</item>
+        <item>92</item>
+        <item>82</item>
+        <item>39</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>111</item>
+        <item>83</item>
+        <item>68</item>
+        <item>92</item>
+        <item>82</item>
+        <item>39</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>75</item>
+        <item>100</item>
+        <item>66</item>
+        <item>60</item>
+        <item>66</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>90</item>
+        <item>50</item>
+        <item>34</item>
+        <item>60</item>
+        <item>44</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>150</item>
+        <item>80</item>
+        <item>44</item>
+        <item>90</item>
+        <item>54</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>55</item>
+        <item>66</item>
+        <item>44</item>
+        <item>44</item>
+        <item>56</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>65</item>
+        <item>76</item>
+        <item>84</item>
+        <item>54</item>
+        <item>96</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>60</item>
+        <item>60</item>
+        <item>60</item>
+        <item>105</item>
+        <item>105</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>100</item>
+        <item>125</item>
+        <item>52</item>
+        <item>105</item>
+        <item>52</item>
+        <item>71</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>49</item>
+        <item>55</item>
+        <item>42</item>
+        <item>42</item>
+        <item>37</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>71</item>
+        <item>82</item>
+        <item>64</item>
+        <item>64</item>
+        <item>59</item>
+        <item>112</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>45</item>
+        <item>30</item>
+        <item>50</item>
+        <item>65</item>
+        <item>50</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>63</item>
+        <item>63</item>
+        <item>47</item>
+        <item>41</item>
+        <item>41</item>
+        <item>74</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>103</item>
+        <item>93</item>
+        <item>67</item>
+        <item>71</item>
+        <item>61</item>
+        <item>84</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>57</item>
+        <item>24</item>
+        <item>86</item>
+        <item>24</item>
+        <item>86</item>
+        <item>23</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>67</item>
+        <item>89</item>
+        <item>116</item>
+        <item>79</item>
+        <item>116</item>
+        <item>33</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>50</item>
+        <item>80</item>
+        <item>95</item>
+        <item>10</item>
+        <item>45</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>20</item>
+        <item>25</item>
+        <item>45</item>
+        <item>70</item>
+        <item>90</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>100</item>
+        <item>5</item>
+        <item>5</item>
+        <item>15</item>
+        <item>65</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>76</item>
+        <item>65</item>
+        <item>45</item>
+        <item>92</item>
+        <item>42</item>
+        <item>91</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>50</item>
+        <item>92</item>
+        <item>108</item>
+        <item>92</item>
+        <item>108</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>58</item>
+        <item>70</item>
+        <item>45</item>
+        <item>40</item>
+        <item>45</item>
+        <item>42</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>68</item>
+        <item>90</item>
+        <item>65</item>
+        <item>50</item>
+        <item>55</item>
+        <item>82</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>108</item>
+        <item>130</item>
+        <item>95</item>
+        <item>80</item>
+        <item>85</item>
+        <item>102</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>135</item>
+        <item>85</item>
+        <item>40</item>
+        <item>40</item>
+        <item>85</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>70</item>
+        <item>40</item>
+        <item>35</item>
+        <item>40</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>110</item>
+        <item>70</item>
+        <item>115</item>
+        <item>70</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>68</item>
+        <item>72</item>
+        <item>78</item>
+        <item>38</item>
+        <item>42</item>
+        <item>32</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>108</item>
+        <item>112</item>
+        <item>118</item>
+        <item>68</item>
+        <item>72</item>
+        <item>47</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>40</item>
+        <item>50</item>
+        <item>90</item>
+        <item>30</item>
+        <item>55</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>70</item>
+        <item>90</item>
+        <item>110</item>
+        <item>60</item>
+        <item>75</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>48</item>
+        <item>61</item>
+        <item>40</item>
+        <item>61</item>
+        <item>40</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>83</item>
+        <item>106</item>
+        <item>65</item>
+        <item>86</item>
+        <item>65</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>74</item>
+        <item>100</item>
+        <item>72</item>
+        <item>90</item>
+        <item>72</item>
+        <item>46</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>49</item>
+        <item>49</item>
+        <item>56</item>
+        <item>49</item>
+        <item>61</item>
+        <item>66</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>69</item>
+        <item>69</item>
+        <item>76</item>
+        <item>69</item>
+        <item>86</item>
+        <item>91</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_4">
+        <item>45</item>
+        <item>20</item>
+        <item>50</item>
+        <item>60</item>
+        <item>120</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>60</item>
+        <item>62</item>
+        <item>50</item>
+        <item>62</item>
+        <item>60</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>90</item>
+        <item>92</item>
+        <item>75</item>
+        <item>92</item>
+        <item>85</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>70</item>
+        <item>120</item>
+        <item>65</item>
+        <item>45</item>
+        <item>85</item>
+        <item>125</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>70</item>
+        <item>70</item>
+        <item>115</item>
+        <item>130</item>
+        <item>90</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>110</item>
+        <item>85</item>
+        <item>95</item>
+        <item>80</item>
+        <item>95</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>115</item>
+        <item>140</item>
+        <item>130</item>
+        <item>55</item>
+        <item>55</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>100</item>
+        <item>100</item>
+        <item>125</item>
+        <item>110</item>
+        <item>50</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>123</item>
+        <item>67</item>
+        <item>95</item>
+        <item>85</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>95</item>
+        <item>67</item>
+        <item>125</item>
+        <item>95</item>
+        <item>83</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>85</item>
+        <item>50</item>
+        <item>95</item>
+        <item>120</item>
+        <item>115</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>86</item>
+        <item>76</item>
+        <item>86</item>
+        <item>116</item>
+        <item>56</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>65</item>
+        <item>110</item>
+        <item>130</item>
+        <item>60</item>
+        <item>65</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>65</item>
+        <item>60</item>
+        <item>110</item>
+        <item>130</item>
+        <item>95</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>95</item>
+        <item>125</item>
+        <item>45</item>
+        <item>75</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>110</item>
+        <item>130</item>
+        <item>80</item>
+        <item>70</item>
+        <item>60</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>85</item>
+        <item>80</item>
+        <item>70</item>
+        <item>135</item>
+        <item>75</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>68</item>
+        <item>125</item>
+        <item>65</item>
+        <item>65</item>
+        <item>115</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>60</item>
+        <item>55</item>
+        <item>145</item>
+        <item>75</item>
+        <item>150</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>45</item>
+        <item>100</item>
+        <item>135</item>
+        <item>65</item>
+        <item>135</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>70</item>
+        <item>80</item>
+        <item>70</item>
+        <item>80</item>
+        <item>70</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>50</item>
+        <item>77</item>
+        <item>95</item>
+        <item>77</item>
+        <item>91</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>65</item>
+        <item>107</item>
+        <item>105</item>
+        <item>107</item>
+        <item>86</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>65</item>
+        <item>107</item>
+        <item>105</item>
+        <item>107</item>
+        <item>86</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>65</item>
+        <item>107</item>
+        <item>105</item>
+        <item>107</item>
+        <item>86</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>65</item>
+        <item>107</item>
+        <item>105</item>
+        <item>107</item>
+        <item>86</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>65</item>
+        <item>107</item>
+        <item>105</item>
+        <item>107</item>
+        <item>86</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>75</item>
+        <item>130</item>
+        <item>75</item>
+        <item>130</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>80</item>
+        <item>105</item>
+        <item>105</item>
+        <item>105</item>
+        <item>105</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>125</item>
+        <item>70</item>
+        <item>125</item>
+        <item>70</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>100</item>
+        <item>120</item>
+        <item>120</item>
+        <item>150</item>
+        <item>100</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>90</item>
+        <item>120</item>
+        <item>100</item>
+        <item>150</item>
+        <item>120</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>91</item>
+        <item>90</item>
+        <item>106</item>
+        <item>130</item>
+        <item>106</item>
+        <item>77</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>110</item>
+        <item>160</item>
+        <item>110</item>
+        <item>80</item>
+        <item>110</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>150</item>
+        <item>100</item>
+        <item>120</item>
+        <item>100</item>
+        <item>120</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>150</item>
+        <item>120</item>
+        <item>100</item>
+        <item>120</item>
+        <item>100</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>70</item>
+        <item>120</item>
+        <item>75</item>
+        <item>130</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>70</item>
+        <item>90</item>
+        <item>90</item>
+        <item>135</item>
+        <item>90</item>
+        <item>125</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>100</item>
+        <item>103</item>
+        <item>75</item>
+        <item>120</item>
+        <item>75</item>
+        <item>127</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+        <item>120</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>45</item>
+        <item>45</item>
+        <item>55</item>
+        <item>45</item>
+        <item>55</item>
+        <item>63</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>60</item>
+        <item>60</item>
+        <item>75</item>
+        <item>60</item>
+        <item>75</item>
+        <item>83</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>75</item>
+        <item>95</item>
+        <item>75</item>
+        <item>95</item>
+        <item>113</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>65</item>
+        <item>63</item>
+        <item>45</item>
+        <item>45</item>
+        <item>45</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>90</item>
+        <item>93</item>
+        <item>55</item>
+        <item>70</item>
+        <item>55</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>110</item>
+        <item>123</item>
+        <item>65</item>
+        <item>100</item>
+        <item>65</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>55</item>
+        <item>55</item>
+        <item>45</item>
+        <item>63</item>
+        <item>45</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>75</item>
+        <item>60</item>
+        <item>83</item>
+        <item>60</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>95</item>
+        <item>100</item>
+        <item>85</item>
+        <item>108</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>45</item>
+        <item>55</item>
+        <item>39</item>
+        <item>35</item>
+        <item>39</item>
+        <item>42</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>60</item>
+        <item>85</item>
+        <item>69</item>
+        <item>60</item>
+        <item>69</item>
+        <item>77</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>45</item>
+        <item>60</item>
+        <item>45</item>
+        <item>25</item>
+        <item>45</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>65</item>
+        <item>80</item>
+        <item>65</item>
+        <item>35</item>
+        <item>65</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>85</item>
+        <item>100</item>
+        <item>90</item>
+        <item>45</item>
+        <item>90</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>41</item>
+        <item>50</item>
+        <item>37</item>
+        <item>50</item>
+        <item>37</item>
+        <item>66</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>64</item>
+        <item>88</item>
+        <item>50</item>
+        <item>88</item>
+        <item>50</item>
+        <item>106</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>53</item>
+        <item>48</item>
+        <item>53</item>
+        <item>48</item>
+        <item>64</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>98</item>
+        <item>63</item>
+        <item>98</item>
+        <item>63</item>
+        <item>101</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>53</item>
+        <item>48</item>
+        <item>53</item>
+        <item>48</item>
+        <item>64</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>98</item>
+        <item>63</item>
+        <item>98</item>
+        <item>63</item>
+        <item>101</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>53</item>
+        <item>48</item>
+        <item>53</item>
+        <item>48</item>
+        <item>64</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>98</item>
+        <item>63</item>
+        <item>98</item>
+        <item>63</item>
+        <item>101</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>76</item>
+        <item>25</item>
+        <item>45</item>
+        <item>67</item>
+        <item>55</item>
+        <item>24</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>116</item>
+        <item>55</item>
+        <item>85</item>
+        <item>107</item>
+        <item>95</item>
+        <item>29</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>50</item>
+        <item>55</item>
+        <item>50</item>
+        <item>36</item>
+        <item>30</item>
+        <item>43</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>62</item>
+        <item>77</item>
+        <item>62</item>
+        <item>50</item>
+        <item>42</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>80</item>
+        <item>105</item>
+        <item>80</item>
+        <item>65</item>
+        <item>55</item>
+        <item>93</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>45</item>
+        <item>60</item>
+        <item>32</item>
+        <item>50</item>
+        <item>32</item>
+        <item>76</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>100</item>
+        <item>63</item>
+        <item>80</item>
+        <item>63</item>
+        <item>116</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>55</item>
+        <item>75</item>
+        <item>85</item>
+        <item>25</item>
+        <item>25</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>70</item>
+        <item>105</item>
+        <item>105</item>
+        <item>50</item>
+        <item>40</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>85</item>
+        <item>135</item>
+        <item>130</item>
+        <item>60</item>
+        <item>70</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>55</item>
+        <item>45</item>
+        <item>43</item>
+        <item>55</item>
+        <item>43</item>
+        <item>72</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>67</item>
+        <item>57</item>
+        <item>55</item>
+        <item>77</item>
+        <item>55</item>
+        <item>114</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>60</item>
+        <item>85</item>
+        <item>40</item>
+        <item>30</item>
+        <item>45</item>
+        <item>68</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>110</item>
+        <item>135</item>
+        <item>60</item>
+        <item>50</item>
+        <item>65</item>
+        <item>88</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>103</item>
+        <item>60</item>
+        <item>86</item>
+        <item>60</item>
+        <item>86</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>75</item>
+        <item>80</item>
+        <item>55</item>
+        <item>25</item>
+        <item>35</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>85</item>
+        <item>105</item>
+        <item>85</item>
+        <item>40</item>
+        <item>50</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_5">
+        <item>105</item>
+        <item>140</item>
+        <item>95</item>
+        <item>55</item>
+        <item>65</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>40</item>
+        <item>64</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>65</item>
+        <item>55</item>
+        <item>65</item>
+        <item>55</item>
+        <item>69</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>105</item>
+        <item>85</item>
+        <item>75</item>
+        <item>85</item>
+        <item>75</item>
+        <item>74</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>120</item>
+        <item>100</item>
+        <item>85</item>
+        <item>30</item>
+        <item>85</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>125</item>
+        <item>75</item>
+        <item>30</item>
+        <item>75</item>
+        <item>85</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>45</item>
+        <item>53</item>
+        <item>70</item>
+        <item>40</item>
+        <item>60</item>
+        <item>42</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>63</item>
+        <item>90</item>
+        <item>50</item>
+        <item>80</item>
+        <item>42</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>103</item>
+        <item>80</item>
+        <item>70</item>
+        <item>70</item>
+        <item>92</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>30</item>
+        <item>45</item>
+        <item>59</item>
+        <item>30</item>
+        <item>39</item>
+        <item>57</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>40</item>
+        <item>55</item>
+        <item>99</item>
+        <item>40</item>
+        <item>79</item>
+        <item>47</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>90</item>
+        <item>89</item>
+        <item>55</item>
+        <item>69</item>
+        <item>112</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>40</item>
+        <item>27</item>
+        <item>60</item>
+        <item>37</item>
+        <item>50</item>
+        <item>66</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>67</item>
+        <item>85</item>
+        <item>77</item>
+        <item>75</item>
+        <item>116</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>45</item>
+        <item>35</item>
+        <item>50</item>
+        <item>70</item>
+        <item>50</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>60</item>
+        <item>75</item>
+        <item>110</item>
+        <item>75</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>92</item>
+        <item>65</item>
+        <item>80</item>
+        <item>55</item>
+        <item>98</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>92</item>
+        <item>65</item>
+        <item>80</item>
+        <item>55</item>
+        <item>98</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>72</item>
+        <item>35</item>
+        <item>35</item>
+        <item>35</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>82</item>
+        <item>45</item>
+        <item>45</item>
+        <item>45</item>
+        <item>74</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>95</item>
+        <item>117</item>
+        <item>70</item>
+        <item>65</item>
+        <item>70</item>
+        <item>92</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>90</item>
+        <item>45</item>
+        <item>15</item>
+        <item>45</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>105</item>
+        <item>140</item>
+        <item>55</item>
+        <item>30</item>
+        <item>55</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>105</item>
+        <item>30</item>
+        <item>105</item>
+        <item>140</item>
+        <item>105</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>86</item>
+        <item>67</item>
+        <item>106</item>
+        <item>67</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>65</item>
+        <item>85</item>
+        <item>35</item>
+        <item>35</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>95</item>
+        <item>125</item>
+        <item>65</item>
+        <item>75</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>75</item>
+        <item>70</item>
+        <item>35</item>
+        <item>70</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>65</item>
+        <item>90</item>
+        <item>115</item>
+        <item>45</item>
+        <item>115</item>
+        <item>58</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>72</item>
+        <item>58</item>
+        <item>80</item>
+        <item>103</item>
+        <item>80</item>
+        <item>97</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>38</item>
+        <item>30</item>
+        <item>85</item>
+        <item>55</item>
+        <item>65</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>58</item>
+        <item>50</item>
+        <item>145</item>
+        <item>95</item>
+        <item>105</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>54</item>
+        <item>78</item>
+        <item>103</item>
+        <item>53</item>
+        <item>45</item>
+        <item>22</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>74</item>
+        <item>108</item>
+        <item>133</item>
+        <item>83</item>
+        <item>65</item>
+        <item>32</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>112</item>
+        <item>45</item>
+        <item>74</item>
+        <item>45</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>140</item>
+        <item>65</item>
+        <item>112</item>
+        <item>65</item>
+        <item>110</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>50</item>
+        <item>62</item>
+        <item>40</item>
+        <item>62</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>95</item>
+        <item>82</item>
+        <item>60</item>
+        <item>82</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>40</item>
+        <item>65</item>
+        <item>40</item>
+        <item>80</item>
+        <item>40</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>105</item>
+        <item>60</item>
+        <item>120</item>
+        <item>60</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>50</item>
+        <item>40</item>
+        <item>40</item>
+        <item>40</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>95</item>
+        <item>60</item>
+        <item>65</item>
+        <item>60</item>
+        <item>115</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>45</item>
+        <item>30</item>
+        <item>50</item>
+        <item>55</item>
+        <item>65</item>
+        <item>45</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>45</item>
+        <item>70</item>
+        <item>75</item>
+        <item>85</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>55</item>
+        <item>95</item>
+        <item>95</item>
+        <item>110</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>45</item>
+        <item>30</item>
+        <item>40</item>
+        <item>105</item>
+        <item>50</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>65</item>
+        <item>40</item>
+        <item>50</item>
+        <item>125</item>
+        <item>60</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>110</item>
+        <item>65</item>
+        <item>75</item>
+        <item>125</item>
+        <item>85</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>62</item>
+        <item>44</item>
+        <item>50</item>
+        <item>44</item>
+        <item>50</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>87</item>
+        <item>63</item>
+        <item>87</item>
+        <item>63</item>
+        <item>98</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>36</item>
+        <item>50</item>
+        <item>50</item>
+        <item>65</item>
+        <item>60</item>
+        <item>44</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>51</item>
+        <item>65</item>
+        <item>65</item>
+        <item>80</item>
+        <item>75</item>
+        <item>59</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>71</item>
+        <item>95</item>
+        <item>85</item>
+        <item>110</item>
+        <item>95</item>
+        <item>79</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>60</item>
+        <item>50</item>
+        <item>40</item>
+        <item>50</item>
+        <item>75</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>100</item>
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>100</item>
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>100</item>
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>100</item>
+        <item>70</item>
+        <item>60</item>
+        <item>70</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>75</item>
+        <item>60</item>
+        <item>75</item>
+        <item>60</item>
+        <item>103</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>75</item>
+        <item>45</item>
+        <item>40</item>
+        <item>45</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>135</item>
+        <item>105</item>
+        <item>60</item>
+        <item>105</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>69</item>
+        <item>55</item>
+        <item>45</item>
+        <item>55</item>
+        <item>55</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>114</item>
+        <item>85</item>
+        <item>70</item>
+        <item>85</item>
+        <item>80</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>40</item>
+        <item>50</item>
+        <item>65</item>
+        <item>85</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>100</item>
+        <item>60</item>
+        <item>70</item>
+        <item>85</item>
+        <item>105</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>165</item>
+        <item>75</item>
+        <item>80</item>
+        <item>40</item>
+        <item>45</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>47</item>
+        <item>50</item>
+        <item>57</item>
+        <item>50</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>77</item>
+        <item>60</item>
+        <item>97</item>
+        <item>60</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>44</item>
+        <item>50</item>
+        <item>91</item>
+        <item>24</item>
+        <item>86</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>74</item>
+        <item>94</item>
+        <item>131</item>
+        <item>54</item>
+        <item>116</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>40</item>
+        <item>55</item>
+        <item>70</item>
+        <item>45</item>
+        <item>60</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>80</item>
+        <item>95</item>
+        <item>70</item>
+        <item>85</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>100</item>
+        <item>115</item>
+        <item>70</item>
+        <item>85</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>35</item>
+        <item>55</item>
+        <item>40</item>
+        <item>45</item>
+        <item>40</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>65</item>
+        <item>85</item>
+        <item>70</item>
+        <item>75</item>
+        <item>70</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>85</item>
+        <item>115</item>
+        <item>80</item>
+        <item>105</item>
+        <item>80</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>55</item>
+        <item>55</item>
+        <item>85</item>
+        <item>55</item>
+        <item>30</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>75</item>
+        <item>75</item>
+        <item>75</item>
+        <item>125</item>
+        <item>95</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>30</item>
+        <item>55</item>
+        <item>65</item>
+        <item>55</item>
+        <item>20</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>40</item>
+        <item>60</item>
+        <item>95</item>
+        <item>60</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>60</item>
+        <item>55</item>
+        <item>90</item>
+        <item>145</item>
+        <item>90</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>46</item>
+        <item>87</item>
+        <item>60</item>
+        <item>30</item>
+        <item>40</item>
+        <item>57</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>66</item>
+        <item>117</item>
+        <item>70</item>
+        <item>40</item>
+        <item>50</item>
+        <item>67</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>76</item>
+        <item>147</item>
+        <item>90</item>
+        <item>60</item>
+        <item>70</item>
+        <item>97</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>55</item>
+        <item>70</item>
+        <item>40</item>
+        <item>60</item>
+        <item>40</item>
+        <item>40</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>95</item>
+        <item>110</item>
+        <item>80</item>
+        <item>70</item>
+        <item>80</item>
+        <item>50</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>70</item>
+        <item>50</item>
+        <item>30</item>
+        <item>95</item>
+        <item>135</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>50</item>
+        <item>40</item>
+        <item>85</item>
+        <item>40</item>
+        <item>65</item>
+        <item>25</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>80</item>
+        <item>70</item>
+        <item>40</item>
+        <item>100</item>
+        <item>60</item>
+        <item>145</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>109</item>
+        <item>66</item>
+        <item>84</item>
+        <item>81</item>
+        <item>99</item>
+        <item>32</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>45</item>
+        <item>85</item>
+        <item>50</item>
+        <item>55</item>
+        <item>50</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>65</item>
+        <item>125</item>
+        <item>60</item>
+        <item>95</item>
+        <item>60</item>
+        <item>105</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>77</item>
+        <item>120</item>
+        <item>90</item>
+        <item>60</item>
+        <item>90</item>
+        <item>48</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>59</item>
+        <item>74</item>
+        <item>50</item>
+        <item>35</item>
+        <item>50</item>
+        <item>35</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>89</item>
+        <item>124</item>
+        <item>80</item>
+        <item>55</item>
+        <item>80</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>45</item>
+        <item>85</item>
+        <item>70</item>
+        <item>40</item>
+        <item>40</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>65</item>
+        <item>125</item>
+        <item>100</item>
+        <item>60</item>
+        <item>70</item>
+        <item>70</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_6">
+        <item>95</item>
+        <item>110</item>
+        <item>95</item>
+        <item>40</item>
+        <item>95</item>
+        <item>55</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>70</item>
+        <item>83</item>
+        <item>50</item>
+        <item>37</item>
+        <item>50</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>100</item>
+        <item>123</item>
+        <item>75</item>
+        <item>57</item>
+        <item>75</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>70</item>
+        <item>55</item>
+        <item>75</item>
+        <item>45</item>
+        <item>65</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>110</item>
+        <item>65</item>
+        <item>105</item>
+        <item>55</item>
+        <item>95</item>
+        <item>80</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>85</item>
+        <item>97</item>
+        <item>66</item>
+        <item>105</item>
+        <item>66</item>
+        <item>65</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>58</item>
+        <item>109</item>
+        <item>112</item>
+        <item>48</item>
+        <item>48</item>
+        <item>109</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>52</item>
+        <item>65</item>
+        <item>50</item>
+        <item>45</item>
+        <item>50</item>
+        <item>38</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>72</item>
+        <item>85</item>
+        <item>70</item>
+        <item>65</item>
+        <item>70</item>
+        <item>58</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>92</item>
+        <item>105</item>
+        <item>90</item>
+        <item>125</item>
+        <item>90</item>
+        <item>98</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>55</item>
+        <item>85</item>
+        <item>55</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>85</item>
+        <item>60</item>
+        <item>65</item>
+        <item>135</item>
+        <item>105</item>
+        <item>100</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>91</item>
+        <item>90</item>
+        <item>129</item>
+        <item>90</item>
+        <item>72</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>91</item>
+        <item>129</item>
+        <item>90</item>
+        <item>72</item>
+        <item>90</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>91</item>
+        <item>90</item>
+        <item>72</item>
+        <item>90</item>
+        <item>129</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>79</item>
+        <item>115</item>
+        <item>70</item>
+        <item>125</item>
+        <item>80</item>
+        <item>111</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>79</item>
+        <item>100</item>
+        <item>80</item>
+        <item>110</item>
+        <item>90</item>
+        <item>121</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>79</item>
+        <item>115</item>
+        <item>70</item>
+        <item>125</item>
+        <item>80</item>
+        <item>111</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>79</item>
+        <item>105</item>
+        <item>70</item>
+        <item>145</item>
+        <item>80</item>
+        <item>101</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>100</item>
+        <item>120</item>
+        <item>100</item>
+        <item>150</item>
+        <item>120</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>100</item>
+        <item>150</item>
+        <item>120</item>
+        <item>120</item>
+        <item>100</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>89</item>
+        <item>125</item>
+        <item>90</item>
+        <item>115</item>
+        <item>80</item>
+        <item>101</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>89</item>
+        <item>145</item>
+        <item>90</item>
+        <item>105</item>
+        <item>80</item>
+        <item>91</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>125</item>
+        <item>130</item>
+        <item>90</item>
+        <item>130</item>
+        <item>90</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>125</item>
+        <item>120</item>
+        <item>90</item>
+        <item>170</item>
+        <item>100</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>125</item>
+        <item>170</item>
+        <item>100</item>
+        <item>120</item>
+        <item>90</item>
+        <item>95</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>91</item>
+        <item>72</item>
+        <item>90</item>
+        <item>129</item>
+        <item>90</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>91</item>
+        <item>72</item>
+        <item>90</item>
+        <item>129</item>
+        <item>90</item>
+        <item>108</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>100</item>
+        <item>77</item>
+        <item>77</item>
+        <item>128</item>
+        <item>128</item>
+        <item>90</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>100</item>
+        <item>128</item>
+        <item>90</item>
+        <item>77</item>
+        <item>77</item>
+        <item>128</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>71</item>
+        <item>120</item>
+        <item>95</item>
+        <item>120</item>
+        <item>95</item>
+        <item>99</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>71</item>
+        <item>120</item>
+        <item>95</item>
+        <item>120</item>
+        <item>95</item>
+        <item>99</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>71</item>
+        <item>120</item>
+        <item>95</item>
+        <item>120</item>
+        <item>95</item>
+        <item>99</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>71</item>
+        <item>120</item>
+        <item>95</item>
+        <item>120</item>
+        <item>95</item>
+        <item>99</item>
+    </int-array>
+    <int-array name="pokemon_base_stats_7">
+        <item>71</item>
+        <item>120</item>
+        <item>95</item>
+        <item>120</item>
+        <item>95</item>
+        <item>99</item>
+    </int-array>
+
+</resources>

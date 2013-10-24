@@ -5098,7 +5098,7 @@ INSERT INTO pokemonname (pokemonnumber,pokemonform,pokemonname) VALUES ("648","1
 INSERT INTO pokemontypeone (pokemonnumber,pokemonform,pokemontypeone) VALUES ("648","1","1");
 INSERT INTO pokemontypetwo (pokemonnumber,pokemonform,pokemontypetwo) VALUES ("648","1","2");
 INSERT INTO pokemonbasestats (pokemonnumber,pokemonform,pokemonbasehp,pokemonbaseatt,pokemonbasedef,pokemonbasespatt,pokemonbasespdef,pokemonbasespeed) VALUES ("648","1","100","128","90","77","77","128");
-INSERT INTO pokemonabilityone (pokemonnumber,pokemonform,pokemonabilityone) VALUES ("648","1","");
+INSERT INTO pokemonabilityone (pokemonnumber,pokemonform,pokemonabilityone) VALUES ("648","1","32");
 INSERT INTO pokemonabilitytwo (pokemonnumber,pokemonform,pokemonabilitytwo) VALUES ("648","1","0");
 INSERT INTO pokemonabilitydw (pokemonnumber,pokemonform,pokemonabilitydw) VALUES ("648","1","0");
 INSERT INTO pokemonname (pokemonnumber,pokemonform,pokemonname) VALUES ("649","0","Genesect");

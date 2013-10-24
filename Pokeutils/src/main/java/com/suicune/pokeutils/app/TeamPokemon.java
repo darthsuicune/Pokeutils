@@ -1,6 +1,6 @@
 package com.suicune.pokeutils.app;
 
-import android.database.Cursor;
+import android.content.Context;
 import android.os.Bundle;
 import com.suicune.pokeutils.tools.IVTools;
 
@@ -16,10 +16,10 @@ public class TeamPokemon extends Pokemon {
     private static final String LEVEL = "level";
     private static final String NATURE = "nature";
 
-    public Attack[] mAttacks = { new Attack(0), new Attack(0), new Attack(0), new Attack(0) };
+    public Attack[] mAttacks;
 
-    public Item mAttachedItem = new Item(0);
-    public Ability mCurrentAbility = new Ability(0);
+    public Item mAttachedItem;
+    public Ability mCurrentAbility;
 
     public String mNickname;
 
@@ -30,15 +30,15 @@ public class TeamPokemon extends Pokemon {
     public int mLevel = 100;
     public int mNature = 0;
 
-    public TeamPokemon(Cursor cursor) {
-        super(cursor);
+    public TeamPokemon(Context context, int id) {
+        super(context, id);
 		setStats();
 	}
 
-    public TeamPokemon(Bundle args) {
-        super(args);
+    public TeamPokemon(Context context, int id, Bundle args) {
+        super(context, id);
         mAttachedItem = new Item(args.getInt(ITEM));
-        mCurrentAbility = new Ability(args.getInt(SELECTED_ABILITY));
+        mCurrentAbility = new Ability(context, args.getInt(SELECTED_ABILITY));
         mNickname = args.getString(NICK_NAME);
         mIvs = args.getIntArray(IVS);
         mEvs = args.getIntArray(EVS);
@@ -46,10 +46,10 @@ public class TeamPokemon extends Pokemon {
         mStatsModifier = args.getIntArray(STATS_MODIFIER);
         mLevel = args.getInt(LEVEL);
         mNature = args.getInt(NATURE);
-        mAttacks[0] = new Attack(args.getIntArray(ATTACKS)[0]);
-        mAttacks[1] = new Attack(args.getIntArray(ATTACKS)[1]);
-        mAttacks[2] = new Attack(args.getIntArray(ATTACKS)[2]);
-        mAttacks[3] = new Attack(args.getIntArray(ATTACKS)[3]);
+        mAttacks[0] = new Attack(context, args.getIntArray(ATTACKS)[0]);
+        mAttacks[1] = new Attack(context, args.getIntArray(ATTACKS)[1]);
+        mAttacks[2] = new Attack(context, args.getIntArray(ATTACKS)[2]);
+        mAttacks[3] = new Attack(context, args.getIntArray(ATTACKS)[3]);
         setStats();
     }
 
@@ -81,8 +81,8 @@ public class TeamPokemon extends Pokemon {
         setStats();
     }
 
-    public void setAbility(int abilityId){
-        Ability ability = new Ability(abilityId);
+    public void setAbility(Context context, int abilityId){
+        Ability ability = new Ability(context, abilityId);
         if(mAbilities.contains(ability)){
             mCurrentAbility = ability;
         }

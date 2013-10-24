@@ -3,9 +3,8 @@ package com.suicune.pokeutils.tools;
 import com.suicune.pokeutils.app.Attack;
 import com.suicune.pokeutils.app.TeamPokemon;
 import com.suicune.pokeutils.app.Types;
-import com.suicune.pokeutils.app.Types.*;
+import com.suicune.pokeutils.app.Types.Type;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class DamageCalcTools {
@@ -83,7 +82,7 @@ public class DamageCalcTools {
         double attackLevelModifier;
         double defenseLevelModifier;
 
-        boolean hasStab = ((attacker.mType1 == attack.mType) || (attacker.mType2 == attack.mType));
+        boolean hasStab = ((attacker.mType1.equals(attack.mType)) || (attacker.mType2.equals(attack.mType)));
 
         if (attack.mAttackClass == Attack.CLASS_PHYSICAL) {
             pokemonAttackStat = attacker.mStats[TeamPokemon.STAT_INDEX_ATT];
@@ -148,17 +147,17 @@ public class DamageCalcTools {
     public static boolean abilityGrantsInmunity(Attack attack, TeamPokemon defender) {
         switch (defender.mCurrentAbility.mId) {
             case 26: // Levitate
-                return attack.mType == Types.GROUND;
+                return attack.mType.equals(Types.Type.GROUND);
             case 18: // Flash fire
-                return attack.mType == Types.FIRE;
+                return attack.mType.equals(Types.Type.FIRE);
             case 10: // Volt absorb
             case 78: // Motor drive!
-                return attack.mType == Types.ELECTRIC;
+                return attack.mType.equals(Types.Type.ELECTRIC);
             case 11: // Water absorb
             case 87: // Dry skin
-                return attack.mType == Types.WATER;
+                return attack.mType.equals(Types.Type.WATER);
             case 0: // Sap Sipper!!
-                return attack.mType == Types.GRASS;
+                return attack.mType.equals(Types.Type.GRASS);
             case 25: // Wonder guard!!
                 switch (attack.mId) {
                     case 251: // Beat up
@@ -204,161 +203,16 @@ public class DamageCalcTools {
         }
     }
 
-    public static double getSingleModifier(int attackingType, int defendingType) {
-        switch (defendingType) {
-            case Types.NORMAL:
-                if (Arrays.binarySearch(Normal.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Normal.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Normal.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.FIGHTING:
-                if (Arrays.binarySearch(Fighting.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Fighting.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Fighting.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.FLYING:
-                if (Arrays.binarySearch(Flying.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Flying.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Flying.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.POISON:
-                if (Arrays.binarySearch(Poison.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Poison.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                }
-                break;
-            case Types.GROUND:
-                if (Arrays.binarySearch(Ground.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Ground.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Ground.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.ROCK:
-                if (Arrays.binarySearch(Rock.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Rock.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Rock.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.BUG:
-                if (Arrays.binarySearch(Bug.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Bug.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Bug.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.GHOST:
-                if (Arrays.binarySearch(Ghost.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Ghost.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Ghost.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.STEEL:
-                if (Arrays.binarySearch(Steel.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Steel.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Steel.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.FIRE:
-                if (Arrays.binarySearch(Fire.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Fire.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Fire.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.WATER:
-                if (Arrays.binarySearch(Water.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Water.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Water.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.GRASS:
-                if (Arrays.binarySearch(Grass.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Grass.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Grass.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.ELECTRIC:
-                if (Arrays.binarySearch(Electric.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Electric.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Electric.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.PSYCHIC:
-                if (Arrays.binarySearch(Psychic.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Psychic.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Psychic.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.ICE:
-                if (Arrays.binarySearch(Ice.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Ice.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Ice.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.DRAGON:
-                if (Arrays.binarySearch(Dragon.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Dragon.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Dragon.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
-            case Types.DARK:
-                if (Arrays.binarySearch(Dark.weaknesses, attackingType) > -1) {
-                    return TYPE_MODIFIER_WEAK;
-                } else if (Arrays.binarySearch(Dark.resistances, attackingType) > -1) {
-                    return TYPE_MODIFIER_RESISTANT;
-                } else if (Arrays.binarySearch(Dark.inmunities, attackingType) > -1) {
-                    return TYPE_MODIFIER_INMUNE;
-                }
-                break;
+    public static double getSingleModifier(Type attackingType, Type defendingType) {
+        if(defendingType.mInmunities.contains(attackingType)){
+            return TYPE_MODIFIER_INMUNE;
+        } else if(defendingType.mWeakness.contains(attackingType)){
+            return TYPE_MODIFIER_WEAK;
+        } else if(defendingType.mResistances.contains(attackingType)){
+            return TYPE_MODIFIER_RESISTANT;
+        } else {
+            return NO_TYPE_MODIFIER;
         }
-        return NO_TYPE_MODIFIER;
     }
 
     public static double getStatModifier(int position) {

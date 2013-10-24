@@ -72,27 +72,27 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
 			case REQUEST_EDIT_POKEMON:
 				Bundle team = data.getBundleExtra(ARGUMENT_TEAM);
 				if (team.containsKey("0")) {
-					mPokemon1 = new TeamPokemon(team.getBundle("0"));
+//					mPokemon1 = new TeamPokemon(team.getBundle("0"));
 					setPokemonName(1);
 				}
 				if (team.containsKey("1")) {
-					mPokemon2 = new TeamPokemon(team.getBundle("1"));
+//					mPokemon2 = new TeamPokemon(team.getBundle("1"));
 					setPokemonName(2);
 				}
 				if (team.containsKey("2")) {
-					mPokemon3 = new TeamPokemon(team.getBundle("2"));
+//					mPokemon3 = new TeamPokemon(team.getBundle("2"));
 					setPokemonName(3);
 				}
 				if (team.containsKey("3")) {
-					mPokemon4 = new TeamPokemon(team.getBundle("3"));
+//					mPokemon4 = new TeamPokemon(team.getBundle("3"));
 					setPokemonName(4);
 				}
 				if (team.containsKey("4")) {
-					mPokemon5 = new TeamPokemon(team.getBundle("4"));
+//					mPokemon5 = new TeamPokemon(team.getBundle("4"));
 					setPokemonName(5);
 				}
 				if (team.containsKey("5")) {
-					mPokemon6 = new TeamPokemon(team.getBundle("5"));
+//					mPokemon6 = new TeamPokemon(team.getBundle("5"));
 					setPokemonName(6);
 				}
 				break;

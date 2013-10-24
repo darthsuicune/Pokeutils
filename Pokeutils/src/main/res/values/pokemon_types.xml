@@ -1,0 +1,2940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <int-array name="pokemon_types_0">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_1">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_2">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_3">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_4">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_5">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_6">
+        <item>10</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_7">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_8">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_9">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_10">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_11">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_12">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_13">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_14">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_15">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_16">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_17">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_18">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_19">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_20">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_21">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_22">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_23">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_24">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_25">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_26">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_27">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_28">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_29">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_30">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_31">
+        <item>4</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_32">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_33">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_34">
+        <item>4</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_35">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_36">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_37">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_38">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_39">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_40">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_41">
+        <item>4</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_42">
+        <item>4</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_43">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_44">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_45">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_46">
+        <item>7</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_47">
+        <item>7</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_48">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_49">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_50">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_51">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_52">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_53">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_54">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_55">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_56">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_57">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_58">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_59">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_60">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_61">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_62">
+        <item>11</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_63">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_64">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_65">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_66">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_67">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_68">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_69">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_70">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_71">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_72">
+        <item>11</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_73">
+        <item>11</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_74">
+        <item>6</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_75">
+        <item>6</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_76">
+        <item>6</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_77">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_78">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_79">
+        <item>11</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_80">
+        <item>11</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_81">
+        <item>13</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_82">
+        <item>13</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_83">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_84">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_85">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_86">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_87">
+        <item>11</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_88">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_89">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_90">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_91">
+        <item>11</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_92">
+        <item>8</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_93">
+        <item>8</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_94">
+        <item>8</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_95">
+        <item>6</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_96">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_97">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_98">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_99">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_100">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_101">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_102">
+        <item>12</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_103">
+        <item>12</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_104">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_105">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_106">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_107">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_108">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_109">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_110">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_111">
+        <item>5</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_112">
+        <item>5</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_113">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_114">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_115">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_116">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_117">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_118">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_119">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_120">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_121">
+        <item>11</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_122">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_123">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_124">
+        <item>15</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_125">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_126">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_127">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_128">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_129">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_130">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_131">
+        <item>11</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_132">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_133">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_134">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_135">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_136">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_137">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_138">
+        <item>6</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_139">
+        <item>6</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_140">
+        <item>6</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_141">
+        <item>6</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_142">
+        <item>6</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_143">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_144">
+        <item>15</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_145">
+        <item>13</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_146">
+        <item>10</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_147">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_148">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_149">
+        <item>16</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_150">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_151">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_152">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_153">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_154">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_155">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_156">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_157">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_158">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_159">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_160">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_161">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_162">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_163">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_164">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_165">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_166">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_167">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_168">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_169">
+        <item>4</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_170">
+        <item>11</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_types_171">
+        <item>11</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_types_172">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_173">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_174">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_175">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_176">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_177">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_178">
+        <item>14</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_179">
+        <item>14</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_180">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_181">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_182">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_183">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_184">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_185">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_186">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_187">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_188">
+        <item>12</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_189">
+        <item>12</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_190">
+        <item>12</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_191">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_192">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_193">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_194">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_195">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_196">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_197">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_198">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_199">
+        <item>17</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_200">
+        <item>11</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_201">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_202">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_203">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_204">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_205">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_206">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_207">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_208">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_209">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_210">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_211">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_212">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_213">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_214">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_215">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_216">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_217">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_218">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_219">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_220">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_221">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_222">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_223">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_224">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_225">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_226">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_227">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_228">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_229">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_230">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_231">
+        <item>1</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_232">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_233">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_234">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_235">
+        <item>5</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_236">
+        <item>9</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_237">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_238">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_239">
+        <item>11</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_240">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_241">
+        <item>7</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_242">
+        <item>7</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_243">
+        <item>17</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_244">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_245">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_246">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_247">
+        <item>10</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_248">
+        <item>15</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_249">
+        <item>15</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_250">
+        <item>11</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_251">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_252">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_253">
+        <item>15</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_254">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_255">
+        <item>9</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_256">
+        <item>17</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_257">
+        <item>17</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_258">
+        <item>11</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_259">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_260">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_261">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_262">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_263">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_264">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_265">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_266">
+        <item>15</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_267">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_268">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_269">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_270">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_271">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_272">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_273">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_274">
+        <item>6</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_275">
+        <item>6</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_276">
+        <item>6</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_277">
+        <item>14</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_278">
+        <item>10</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_279">
+        <item>14</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_280">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_281">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_282">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_283">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_284">
+        <item>10</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_285">
+        <item>10</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_286">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_287">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_288">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_289">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_290">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_291">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_292">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_293">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_294">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_295">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_296">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_297">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_298">
+        <item>11</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_299">
+        <item>11</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_300">
+        <item>11</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_301">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_302">
+        <item>12</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_303">
+        <item>12</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_304">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_305">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_306">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_307">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_308">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_309">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_310">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_311">
+        <item>7</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_312">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_313">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_314">
+        <item>12</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_315">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_316">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_317">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_318">
+        <item>7</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_319">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_320">
+        <item>7</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_321">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_322">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_323">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_324">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_325">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_326">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_327">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_328">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_329">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_330">
+        <item>17</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_331">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_332">
+        <item>9</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_333">
+        <item>9</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_334">
+        <item>9</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_335">
+        <item>2</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_336">
+        <item>2</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_337">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_338">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_339">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_340">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_341">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_342">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_343">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_344">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_345">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_346">
+        <item>11</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_347">
+        <item>11</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_348">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_349">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_350">
+        <item>10</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_351">
+        <item>10</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_352">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_353">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_354">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_355">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_356">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_357">
+        <item>5</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_358">
+        <item>5</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_359">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_360">
+        <item>12</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_361">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_362">
+        <item>16</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_363">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_364">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_365">
+        <item>6</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_366">
+        <item>6</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_367">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_368">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_369">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_370">
+        <item>11</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_371">
+        <item>5</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_372">
+        <item>5</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_373">
+        <item>6</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_374">
+        <item>6</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_375">
+        <item>6</item>
+        <item>7</item>
+    </int-array>
+    <int-array name="pokemon_types_376">
+        <item>6</item>
+        <item>7</item>
+    </int-array>
+    <int-array name="pokemon_types_377">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_378">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_379">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_380">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_381">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_382">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_383">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_384">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_385">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_386">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_387">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_388">
+        <item>12</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_389">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_390">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_391">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_392">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_393">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_394">
+        <item>15</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_395">
+        <item>15</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_396">
+        <item>15</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_397">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_398">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_399">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_400">
+        <item>11</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_401">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_402">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_403">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_404">
+        <item>16</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_405">
+        <item>9</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_406">
+        <item>9</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_407">
+        <item>9</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_408">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_409">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_410">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_411">
+        <item>16</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_412">
+        <item>16</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_413">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_414">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_415">
+        <item>16</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_416">
+        <item>9</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_417">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_418">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_419">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_420">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_421">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_422">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_423">
+        <item>12</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_424">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_425">
+        <item>10</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_426">
+        <item>10</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_427">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_428">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_429">
+        <item>11</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_430">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_431">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_432">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_433">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_434">
+        <item>1</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_435">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_436">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_437">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_438">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_439">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_440">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_441">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_442">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_443">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_444">
+        <item>6</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_445">
+        <item>6</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_446">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_447">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_448">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_449">
+        <item>7</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_450">
+        <item>7</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_451">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_452">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_453">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_454">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_455">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_456">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_457">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_458">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_459">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_460">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_461">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_462">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_463">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_464">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_465">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_466">
+        <item>8</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_467">
+        <item>8</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_468">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_469">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_470">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_471">
+        <item>17</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_472">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_473">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_474">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_475">
+        <item>4</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_476">
+        <item>4</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_477">
+        <item>9</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_478">
+        <item>9</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_479">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_480">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_481">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_482">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_483">
+        <item>8</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_484">
+        <item>16</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_485">
+        <item>16</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_486">
+        <item>16</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_487">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_488">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_489">
+        <item>2</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_490">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_491">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_492">
+        <item>4</item>
+        <item>7</item>
+    </int-array>
+    <int-array name="pokemon_types_493">
+        <item>4</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_494">
+        <item>4</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_495">
+        <item>4</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_496">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_497">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_498">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_499">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_500">
+        <item>15</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_501">
+        <item>15</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_502">
+        <item>17</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_503">
+        <item>13</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_504">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_505">
+        <item>5</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_506">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_507">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_508">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_509">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_510">
+        <item>7</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_511">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_512">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_513">
+        <item>5</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_514">
+        <item>15</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_515">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_516">
+        <item>14</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_517">
+        <item>6</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_518">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_519">
+        <item>15</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_520">
+        <item>13</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_521">
+        <item>13</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_522">
+        <item>13</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_523">
+        <item>13</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_524">
+        <item>13</item>
+        <item>11</item>
+    </int-array>
+    <int-array name="pokemon_types_525">
+        <item>13</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_526">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_527">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_528">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_529">
+        <item>9</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_530">
+        <item>11</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_531">
+        <item>10</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_532">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_533">
+        <item>8</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_534">
+        <item>8</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_535">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_536">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_537">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_538">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_539">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_540">
+        <item>12</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_541">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_542">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_543">
+        <item>3</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_544">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_545">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_546">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_547">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_548">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_549">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_550">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_551">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_552">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_553">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_554">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_555">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_556">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_557">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_558">
+        <item>0</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_559">
+        <item>14</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_560">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_561">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_562">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_563">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_564">
+        <item>10</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_565">
+        <item>10</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_566">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_567">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_568">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_569">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_570">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_571">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_572">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_573">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_574">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_575">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_576">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_577">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_578">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_579">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_580">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_581">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_582">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_583">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_584">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_585">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_586">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_587">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_588">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_589">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_590">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_591">
+        <item>6</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_592">
+        <item>14</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_593">
+        <item>14</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_594">
+        <item>5</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_595">
+        <item>5</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_596">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_597">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_598">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_599">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_600">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_601">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_602">
+        <item>11</item>
+        <item>5</item>
+    </int-array>
+    <int-array name="pokemon_types_603">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_604">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_605">
+        <item>7</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_606">
+        <item>7</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_607">
+        <item>7</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_608">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_609">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_610">
+        <item>7</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_611">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_612">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_613">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_614">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_615">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_616">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_617">
+        <item>5</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_618">
+        <item>5</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_619">
+        <item>5</item>
+        <item>17</item>
+    </int-array>
+    <int-array name="pokemon_types_620">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_621">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_622">
+        <item>10</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_623">
+        <item>12</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_624">
+        <item>7</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_625">
+        <item>7</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_626">
+        <item>17</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_627">
+        <item>17</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_628">
+        <item>14</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_629">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_630">
+        <item>8</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_631">
+        <item>11</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_632">
+        <item>11</item>
+        <item>6</item>
+    </int-array>
+    <int-array name="pokemon_types_633">
+        <item>6</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_634">
+        <item>6</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_635">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_636">
+        <item>4</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_637">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_638">
+        <item>17</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_639">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_640">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_641">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_642">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_643">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_644">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_645">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_646">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_647">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_648">
+        <item>11</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_649">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_650">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_651">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_652">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_653">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_654">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_655">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_656">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_657">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_658">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_659">
+        <item>1</item>
+        <item>12</item>
+    </int-array>
+    <int-array name="pokemon_types_660">
+        <item>13</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_661">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_662">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_663">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_664">
+        <item>12</item>
+        <item>4</item>
+    </int-array>
+    <int-array name="pokemon_types_665">
+        <item>11</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_666">
+        <item>11</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_667">
+        <item>11</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_668">
+        <item>7</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_types_669">
+        <item>7</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_types_670">
+        <item>12</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_671">
+        <item>12</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_672">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_673">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_674">
+        <item>9</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_675">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_676">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_677">
+        <item>13</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_678">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_679">
+        <item>14</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_680">
+        <item>8</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_681">
+        <item>8</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_682">
+        <item>8</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_683">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_684">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_685">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_686">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_687">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_688">
+        <item>15</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_689">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_690">
+        <item>7</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_691">
+        <item>5</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_types_692">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_693">
+        <item>2</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_694">
+        <item>16</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_695">
+        <item>5</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_696">
+        <item>5</item>
+        <item>8</item>
+    </int-array>
+    <int-array name="pokemon_types_697">
+        <item>17</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_698">
+        <item>17</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_699">
+        <item>1</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_700">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_701">
+        <item>1</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_702">
+        <item>17</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_703">
+        <item>17</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_704">
+        <item>10</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_705">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_706">
+        <item>17</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_707">
+        <item>17</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_708">
+        <item>17</item>
+        <item>16</item>
+    </int-array>
+    <int-array name="pokemon_types_709">
+        <item>7</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_710">
+        <item>7</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_711">
+        <item>9</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_712">
+        <item>6</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_713">
+        <item>12</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_714">
+        <item>3</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_715">
+        <item>3</item>
+        <item>0</item>
+    </int-array>
+    <int-array name="pokemon_types_716">
+        <item>13</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_717">
+        <item>13</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_718">
+        <item>16</item>
+        <item>10</item>
+    </int-array>
+    <int-array name="pokemon_types_719">
+        <item>16</item>
+        <item>13</item>
+    </int-array>
+    <int-array name="pokemon_types_720">
+        <item>5</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_721">
+        <item>5</item>
+        <item>3</item>
+    </int-array>
+    <int-array name="pokemon_types_722">
+        <item>16</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_723">
+        <item>16</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_724">
+        <item>16</item>
+        <item>15</item>
+    </int-array>
+    <int-array name="pokemon_types_725">
+        <item>11</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_726">
+        <item>11</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_727">
+        <item>1</item>
+        <item>14</item>
+    </int-array>
+    <int-array name="pokemon_types_728">
+        <item>1</item>
+        <item>2</item>
+    </int-array>
+    <int-array name="pokemon_types_729">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_730">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_731">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_732">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+    <int-array name="pokemon_types_733">
+        <item>7</item>
+        <item>9</item>
+    </int-array>
+
+</resources>
