@@ -1,11 +1,18 @@
 package com.suicune.pokeutils.ui.fragments;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.TeamPokemon;
 
@@ -45,10 +52,13 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
     private EditText mEVSpDefView;
     private EditText mEVSpeedView;
 
+    private Button mCalculateIVs;
+    private Button mCalculateHiddenPower;
+    private Button mCalculateStats;
+
     private TextView mHiddenPowerTypeView;
 
     private AutoCompleteTextView mPokemonNameEditText;
-    private String mPokemonNameHelper = "";
     private EditText mPokemonLevelEditText;
     private Spinner mNatureSpinner;
 
@@ -69,14 +79,49 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-
+        switch (view.getId()) {
+            case R.id.iv_calc_calculate_iv:
+                calculateIVs();
+                break;
+            case R.id.iv_calc_calculate_stats:
+                calculateStats();
+                break;
+            case R.id.iv_calc_calculate_hidden_power:
+                calculateHiddenPower();
+                break;
         }
     }
 
     // Private methods
 
-    private void prepareViews(View v){
+    private void prepareViews(View v) {
+        setAutoCompleteView(v);
+    }
+
+    private void setAutoCompleteView(View v) {
+        mPokemonNameEditText = (AutoCompleteTextView) v.findViewById(R.id.iv_calc_pokemon_name);
+        mAutoCompleteAdapter = new ArrayAdapter<String>(getActivity(), R.id.iv_calc_pokemon_name,
+                getResources().getStringArray(R.array.pokemon_names));
+        mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
+        mPokemonNameEditText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View v,
+                                    int position, long id) {
+                //Create pokemon here
+                mPokemon = new TeamPokemon(getActivity(), position);
+            }
+        });
+    }
+
+    private void calculateIVs(){
+
+    }
+
+    private void calculateStats() {
+
+    }
+
+    private void calculateHiddenPower() {
 
     }
 }

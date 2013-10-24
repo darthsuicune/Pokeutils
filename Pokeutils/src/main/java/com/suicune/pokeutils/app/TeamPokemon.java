@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.suicune.pokeutils.tools.IVTools;
 
 public class TeamPokemon extends Pokemon {
+    private static final int STAT_MODIFIER_0 = 6;
     private static final String ATTACKS = "attacks";
     private static final String ITEM = "item";
     private static final String SELECTED_ABILITY = "selectedAbility";
@@ -25,10 +26,11 @@ public class TeamPokemon extends Pokemon {
 
     public int[] mIvs = { 31, 31, 31, 31, 31, 31 };
     public int[] mEvs = { 0, 0, 0, 0, 0, 0 };
-    public int[] mStats = new int[6];
-    public int[] mStatsModifier = { 6, 6, 6, 6, 6, 6 };
+    public int[] mStats;
+    public int[] mStatsModifier = { STAT_MODIFIER_0, STAT_MODIFIER_0, STAT_MODIFIER_0,
+            STAT_MODIFIER_0, STAT_MODIFIER_0, STAT_MODIFIER_0 };
     public int mLevel = 100;
-    public int mNature = 0;
+    public Natures.Nature mNature;
 
     public TeamPokemon(Context context, int id) {
         super(context, id);
@@ -45,7 +47,7 @@ public class TeamPokemon extends Pokemon {
         mStats = args.getIntArray(STATS);
         mStatsModifier = args.getIntArray(STATS_MODIFIER);
         mLevel = args.getInt(LEVEL);
-        mNature = args.getInt(NATURE);
+        mNature = Natures.getNature(args.getInt(NATURE));
         mAttacks[0] = new Attack(context, args.getIntArray(ATTACKS)[0]);
         mAttacks[1] = new Attack(context, args.getIntArray(ATTACKS)[1]);
         mAttacks[2] = new Attack(context, args.getIntArray(ATTACKS)[2]);
@@ -66,6 +68,14 @@ public class TeamPokemon extends Pokemon {
     }
 
     public void receiveAttack(Attack attack, TeamPokemon source, Bundle conditions) {
+
+    }
+
+    public void levelUp(){
+        levelUp(null);
+    }
+
+    public void levelUp(Integer a){
 
     }
 
@@ -100,69 +110,18 @@ public class TeamPokemon extends Pokemon {
 		mStats[STAT_INDEX_HP] = IVTools.getHpValue(mBaseStats[STAT_INDEX_HP], mEvs[STAT_INDEX_HP],
 				mIvs[STAT_INDEX_HP], mLevel);
 		mStats[STAT_INDEX_ATT] = IVTools.getStatValue(mBaseStats[STAT_INDEX_ATT], mEvs[STAT_INDEX_ATT],
-				mIvs[STAT_INDEX_ATT], mLevel, getNatureModifier(mNature, STAT_INDEX_ATT));
+				mIvs[STAT_INDEX_ATT], mLevel, Natures.getModifier(mNature, STAT_INDEX_ATT));
 		mStats[STAT_INDEX_DEF] = IVTools.getStatValue(mBaseStats[STAT_INDEX_DEF], mEvs[STAT_INDEX_DEF],
-				mIvs[STAT_INDEX_DEF], mLevel, getNatureModifier(mNature, STAT_INDEX_DEF));
+				mIvs[STAT_INDEX_DEF], mLevel, Natures.getModifier(mNature, STAT_INDEX_DEF));
 		mStats[STAT_INDEX_SP_ATT] = IVTools.getStatValue(mBaseStats[STAT_INDEX_SP_ATT],
 				mEvs[STAT_INDEX_SP_ATT], mIvs[STAT_INDEX_SP_ATT], mLevel,
-				getNatureModifier(mNature, STAT_INDEX_SP_ATT));
+				Natures.getModifier(mNature, STAT_INDEX_SP_ATT));
 		mStats[STAT_INDEX_SP_DEF] = IVTools.getStatValue(mBaseStats[STAT_INDEX_SP_DEF],
 				mEvs[STAT_INDEX_SP_DEF], mIvs[STAT_INDEX_SP_DEF], mLevel,
-				getNatureModifier(mNature, STAT_INDEX_SP_DEF));
+				Natures.getModifier(mNature, STAT_INDEX_SP_DEF));
 		mStats[STAT_INDEX_SPEED] = IVTools.getStatValue(mBaseStats[STAT_INDEX_SPEED],
 				mEvs[STAT_INDEX_SPEED], mIvs[STAT_INDEX_SPEED], mLevel,
-				getNatureModifier(mNature, STAT_INDEX_SPEED));
-	}
-
-	private int getNatureModifier(int nature, int stat) {
-		switch (stat) {
-		case STAT_INDEX_ATT:
-			if (nature == Natures.ADAMANT || nature == Natures.LONELY
-					|| nature == Natures.BRAVE || nature == Natures.NAUGHTY) {
-				return 110;
-			} else if (nature == Natures.BOLD || nature == Natures.TIMID
-					|| nature == Natures.MODEST || nature == Natures.CALM) {
-				return 90;
-			}
-			break;
-		case STAT_INDEX_DEF:
-			if (nature == Natures.BOLD || nature == Natures.RELAXED
-					|| nature == Natures.IMPISH || nature == Natures.LAX) {
-				return 110;
-			} else if (nature == Natures.LONELY || nature == Natures.HASTY
-					|| nature == Natures.MILD || nature == Natures.GENTLE) {
-				return 90;
-			}
-			break;
-		case STAT_INDEX_SP_ATT:
-			if (nature == Natures.MODEST || nature == Natures.MILD
-					|| nature == Natures.QUIET || nature == Natures.RASH) {
-				return 110;
-			} else if (nature == Natures.ADAMANT || nature == Natures.IMPISH
-					|| nature == Natures.JOLLY || nature == Natures.CAREFUL) {
-				return 90;
-			}
-			break;
-		case STAT_INDEX_SP_DEF:
-			if (nature == Natures.CALM || nature == Natures.GENTLE
-					|| nature == Natures.SASSY || nature == Natures.CAREFUL) {
-				return 110;
-			} else if (nature == Natures.NAUGHTY || nature == Natures.LAX
-					|| nature == Natures.NAIVE || nature == Natures.RASH) {
-				return 90;
-			}
-			break;
-		case STAT_INDEX_SPEED:
-			if (nature == Natures.TIMID || nature == Natures.HASTY
-					|| nature == Natures.JOLLY || nature == Natures.NAIVE) {
-				return 110;
-			} else if (nature == Natures.BRAVE || nature == Natures.RELAXED
-					|| nature == Natures.QUIET || nature == Natures.SASSY) {
-				return 90;
-			}
-			break;
-		}
-		return 100;
+				Natures.getModifier(mNature, STAT_INDEX_SPEED));
 	}
 
 	public void saveStatus(Bundle status) {
@@ -174,7 +133,7 @@ public class TeamPokemon extends Pokemon {
 		status.putIntArray(STATS, mStats);
 		status.putIntArray(STATS_MODIFIER, mStatsModifier);
 		status.putInt(LEVEL, mLevel);
-		status.putInt(NATURE, mNature);
+//		status.putInt(NATURE, mNature);
         int[] attackIds = {mAttacks[0].mId, mAttacks[1].mId, mAttacks[2].mId, mAttacks[3].mId};
         status.putIntArray(ATTACKS, attackIds);
 	}

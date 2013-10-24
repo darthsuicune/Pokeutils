@@ -40,7 +40,7 @@ public class IVTools {
 	 * @param baseStat
 	 * @return An ArrayList<Integer> with the calculated IVs
 	 */
-	public static ArrayList<Integer> calculateIVs(int code, String nature,
+	public static ArrayList<Integer> calculateIVs(int code, Natures.Nature nature,
 			int currentStat, int currentEv, int currentLevel, int baseStat) {
 
 		if (currentEv < 0 || currentEv > 255) {
@@ -73,14 +73,14 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(Natures.LONELY) || nature.equals(Natures.BRAVE)
-					|| nature.equals(Natures.ADAMANT)
-					|| nature.equals(Natures.NAUGHTY)) {
+			if (nature.equals(Natures.Nature.LONELY) || nature.equals(Natures.Nature.BRAVE)
+					|| nature.equals(Natures.Nature.ADAMANT)
+					|| nature.equals(Natures.Nature.NAUGHTY)) {
 				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.BOLD)
-					|| nature.equals(Natures.TIMID)
-					|| nature.equals(Natures.MODEST)
-					|| nature.equals(Natures.CALM)) {
+			} else if (nature.equals(Natures.Nature.BOLD)
+					|| nature.equals(Natures.Nature.TIMID)
+					|| nature.equals(Natures.Nature.MODEST)
+					|| nature.equals(Natures.Nature.CALM)) {
 				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
 			}
 			break;
@@ -89,14 +89,14 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(Natures.BOLD) || nature.equals(Natures.RELAXED)
-					|| nature.equals(Natures.IMPISH)
-					|| nature.equals(Natures.LAX)) {
+			if (nature.equals(Natures.Nature.BOLD) || nature.equals(Natures.Nature.RELAXED)
+					|| nature.equals(Natures.Nature.IMPISH)
+					|| nature.equals(Natures.Nature.LAX)) {
 				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.LONELY)
-					|| nature.equals(Natures.HASTY)
-					|| nature.equals(Natures.MILD)
-					|| nature.equals(Natures.GENTLE)) {
+			} else if (nature.equals(Natures.Nature.LONELY)
+					|| nature.equals(Natures.Nature.HASTY)
+					|| nature.equals(Natures.Nature.MILD)
+					|| nature.equals(Natures.Nature.GENTLE)) {
 				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
 			}
 			break;
@@ -105,14 +105,14 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(Natures.TIMID) || nature.equals(Natures.HASTY)
-					|| nature.equals(Natures.JOLLY)
-					|| nature.equals(Natures.NAIVE)) {
+			if (nature.equals(Natures.Nature.TIMID) || nature.equals(Natures.Nature.HASTY)
+					|| nature.equals(Natures.Nature.JOLLY)
+					|| nature.equals(Natures.Nature.NAIVE)) {
 				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.BRAVE)
-					|| nature.equals(Natures.RELAXED)
-					|| nature.equals(Natures.QUIET)
-					|| nature.equals(Natures.SASSY)) {
+			} else if (nature.equals(Natures.Nature.BRAVE)
+					|| nature.equals(Natures.Nature.RELAXED)
+					|| nature.equals(Natures.Nature.QUIET)
+					|| nature.equals(Natures.Nature.SASSY)) {
 				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
 			}
 			break;
@@ -121,14 +121,14 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(Natures.MODEST) || nature.equals(Natures.MILD)
-					|| nature.equals(Natures.QUIET)
-					|| nature.equals(Natures.RASH)) {
+			if (nature.equals(Natures.Nature.MODEST) || nature.equals(Natures.Nature.MILD)
+					|| nature.equals(Natures.Nature.QUIET)
+					|| nature.equals(Natures.Nature.RASH)) {
 				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.ADAMANT)
-					|| nature.equals(Natures.IMPISH)
-					|| nature.equals(Natures.JOLLY)
-					|| nature.equals(Natures.CAREFUL)) {
+			} else if (nature.equals(Natures.Nature.ADAMANT)
+					|| nature.equals(Natures.Nature.IMPISH)
+					|| nature.equals(Natures.Nature.JOLLY)
+					|| nature.equals(Natures.Nature.CAREFUL)) {
 				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
 			}
 			break;
@@ -137,14 +137,14 @@ public class IVTools {
 				return null;
 			}
 
-			if (nature.equals(Natures.CALM) || nature.equals(Natures.GENTLE)
-					|| nature.equals(Natures.SASSY)
-					|| nature.equals(Natures.CAREFUL)) {
+			if (nature.equals(Natures.Nature.CALM) || nature.equals(Natures.Nature.GENTLE)
+					|| nature.equals(Natures.Nature.SASSY)
+					|| nature.equals(Natures.Nature.CAREFUL)) {
 				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.NAUGHTY)
-					|| nature.equals(Natures.LAX)
-					|| nature.equals(Natures.NAIVE)
-					|| nature.equals(Natures.RASH)) {
+			} else if (nature.equals(Natures.Nature.NAUGHTY)
+					|| nature.equals(Natures.Nature.LAX)
+					|| nature.equals(Natures.Nature.NAIVE)
+					|| nature.equals(Natures.Nature.RASH)) {
 				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
 			}
 			break;

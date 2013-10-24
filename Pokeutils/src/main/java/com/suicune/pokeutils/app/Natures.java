@@ -4,198 +4,108 @@ package com.suicune.pokeutils.app;
 import com.suicune.pokeutils.R;
 
 public class Natures {
-	public static final int NATURES_COUNT = 25;
+    public static final int NATURES_COUNT = 25;
+    public static final int MODIFIER_POSITIVE = 110;
+    public static final int MODIFIER_NEUTRAL = 100;
+    public static final int MODIFIER_NEGATIVE = 90;
 
-	// Neutral natures
-	public static final int HARDY = 0;
-	public static final int BASHFUL = 1;
-	public static final int DOCILE = 2;
-	public static final int QUIRKY = 3;
-	public static final int SERIOUS = 4;
+    public static int getModifier(Nature nature, int stat){
+        switch (stat) {
+            case Pokemon.STAT_INDEX_ATT:
+                if (nature == Natures.Nature.ADAMANT || nature == Natures.Nature.LONELY
+                        || nature == Natures.Nature.BRAVE || nature == Natures.Nature.NAUGHTY) {
+                    return MODIFIER_POSITIVE;
+                } else if (nature == Natures.Nature.BOLD || nature == Natures.Nature.TIMID
+                        || nature == Natures.Nature.MODEST || nature == Natures.Nature.CALM) {
+                    return MODIFIER_NEGATIVE;
+                }
+                break;
+            case Pokemon.STAT_INDEX_DEF:
+                if (nature == Natures.Nature.BOLD || nature == Natures.Nature.RELAXED
+                        || nature == Natures.Nature.IMPISH || nature == Natures.Nature.LAX) {
+                    return MODIFIER_POSITIVE;
+                } else if (nature == Natures.Nature.LONELY || nature == Natures.Nature.HASTY
+                        || nature == Natures.Nature.MILD || nature == Natures.Nature.GENTLE) {
+                    return MODIFIER_NEGATIVE;
+                }
+                break;
+            case Pokemon.STAT_INDEX_SP_ATT:
+                if (nature == Natures.Nature.MODEST || nature == Natures.Nature.MILD
+                        || nature == Natures.Nature.QUIET || nature == Natures.Nature.RASH) {
+                    return MODIFIER_POSITIVE;
+                } else if (nature == Natures.Nature.ADAMANT || nature == Natures.Nature.IMPISH
+                        || nature == Natures.Nature.JOLLY || nature == Natures.Nature.CAREFUL) {
+                    return MODIFIER_NEGATIVE;
+                }
+                break;
+            case Pokemon.STAT_INDEX_SP_DEF:
+                if (nature == Natures.Nature.CALM || nature == Natures.Nature.GENTLE
+                        || nature == Natures.Nature.SASSY || nature == Natures.Nature.CAREFUL) {
+                    return MODIFIER_POSITIVE;
+                } else if (nature == Natures.Nature.NAUGHTY || nature == Natures.Nature.LAX
+                        || nature == Natures.Nature.NAIVE || nature == Natures.Nature.RASH) {
+                    return MODIFIER_NEGATIVE;
+                }
+                break;
+            case Pokemon.STAT_INDEX_SPEED:
+                if (nature == Natures.Nature.TIMID || nature == Natures.Nature.HASTY
+                        || nature == Natures.Nature.JOLLY || nature == Natures.Nature.NAIVE) {
+                    return MODIFIER_POSITIVE;
+                } else if (nature == Natures.Nature.BRAVE || nature == Natures.Nature.RELAXED
+                        || nature == Natures.Nature.QUIET || nature == Natures.Nature.SASSY) {
+                    return MODIFIER_NEGATIVE;
+                }
+                break;
+        }
+        return MODIFIER_NEUTRAL;
+    }
 
-	// +Attack
-	public static final int LONELY = 5; // -Defense
-	public static final int BRAVE = 6; // -Speed
-	public static final int ADAMANT = 7; // -Special attack
-	public static final int NAUGHTY = 8; // -Special defense
+    public static Nature getNature(int id){
+        return Nature.values()[id];
+    }
 
-	// +Defense
-	public static final int BOLD = 9; // -Attack
-	public static final int RELAXED = 10; // -Speed
-	public static final int IMPISH = 11; // -Special attack
-	public static final int LAX = 12; // -Special defense
+    public enum Nature {
+        // Neutral natures
+        HARDY(R.string.nature_hardy),
+        BASHFUL(R.string.nature_bashful),
+        DOCILE(R.string.nature_docile),
+        QUIRKY(R.string.nature_quirky),
+        SERIOUS(R.string.nature_serious),
 
-	// +Speed
-	public static final int TIMID = 13; // -Attack
-	public static final int HASTY = 14; // -Defense
-	public static final int JOLLY = 15; // -Special attack
-	public static final int NAIVE = 16; // -Special defense
+        // +Attack
+        LONELY(R.string.nature_lonely), // -Defense
+        BRAVE(R.string.nature_brave), // -Speed
+        ADAMANT(R.string.nature_adamant), // -Special attack
+        NAUGHTY(R.string.nature_naughty), // -Special defense
 
-	// +Special attack
-	public static final int MODEST = 17; // -Attack
-	public static final int MILD = 18; // -Defense
-	public static final int QUIET = 19; // -Speed
-	public static final int RASH = 20; // -Special defense
+        // +Defense
+        BOLD(R.string.nature_bold), // -Attack
+        RELAXED(R.string.nature_relaxed), // -Speed
+        IMPISH(R.string.nature_impish), // -Special attack
+        LAX(R.string.nature_lax), // -Special defense
 
-	// +Special defense
-	public static final int CALM = 21; // -Attack
-	public static final int GENTLE = 22; // -Defense
-	public static final int SASSY = 23; // -Speed
-	public static final int CAREFUL = 24; // -Special attack
+        // +Speed
+        TIMID(R.string.nature_timid), // -Attack
+        HASTY(R.string.nature_hasty), // -Defense
+        JOLLY(R.string.nature_jolly), // -Special attack
+        NAIVE(R.string.nature_naive), // -Special defense
 
-	public static int getNatureName(int nature) {
-		switch (nature) {
-		case HARDY:
-			return Hardy.NAME;
-		case BASHFUL:
-			return Bashful.NAME;
-		case DOCILE:
-			return Docile.NAME;
-		case QUIRKY:
-			return Quirky.NAME;
-		case SERIOUS:
-			return Serious.NAME;
-		case LONELY:
-			return Lonely.NAME;
-		case BRAVE:
-			return Brave.NAME;
-		case ADAMANT:
-			return Adamant.NAME;
-		case NAUGHTY:
-			return Naughty.NAME;
-		case BOLD:
-			return Bold.NAME;
-		case RELAXED:
-			return Relaxed.NAME;
-		case IMPISH:
-			return Impish.NAME;
-		case LAX:
-			return Lax.NAME;
-		case TIMID:
-			return Timid.NAME;
-		case HASTY:
-			return Hasty.NAME;
-		case JOLLY:
-			return Jolly.NAME;
-		case NAIVE:
-			return Naive.NAME;
-		case MODEST:
-			return Modest.NAME;
-		case MILD:
-			return Mild.NAME;
-		case QUIET:
-			return Quiet.NAME;
-		case RASH:
-			return Rash.NAME;
-		case CALM:
-			return Calm.NAME;
-		case GENTLE:
-			return Gentle.NAME;
-		case SASSY:
-			return Sassy.NAME;
-		case CAREFUL:
-			return Careful.NAME;
-		}
-		return 0;
-	}
+        // +Special attack
+        MODEST(R.string.nature_modest), // -Attack
+        MILD(R.string.nature_mild), // -Defense
+        QUIET(R.string.nature_quiet), // -Speed
+        RASH(R.string.nature_rash), // -Special defense
 
-	public static class Hardy {
-		public static int NAME = R.string.nature_hardy;
-	}
+        // +Special defense
+        CALM(R.string.nature_calm), // -Attack
+        GENTLE(R.string.nature_gentle), // -Defense
+        SASSY(R.string.nature_sassy), // -Speed
+        CAREFUL(R.string.nature_careful); // -Special attack
 
-	public static class Bashful {
-		public static int NAME = R.string.nature_bashful;
-	}
+        public final int mName;
 
-	public static class Docile {
-		public static int NAME = R.string.nature_docile;
-	}
-
-	public static class Quirky {
-		public static int NAME = R.string.nature_quirky;
-	}
-
-	public static class Serious {
-		public static int NAME = R.string.nature_serious;
-	}
-
-	public static class Lonely {
-		public static int NAME = R.string.nature_lonely;
-	}
-
-	public static class Brave {
-		public static int NAME = R.string.nature_brave;
-	}
-
-	public static class Adamant {
-		public static int NAME = R.string.nature_adamant;
-	}
-
-	public static class Naughty {
-		public static int NAME = R.string.nature_naughty;
-	}
-
-	public static class Bold {
-		public static int NAME = R.string.nature_bold;
-	}
-
-	public static class Relaxed {
-		public static int NAME = R.string.nature_relaxed;
-	}
-
-	public static class Impish {
-		public static int NAME = R.string.nature_impish;
-	}
-
-	public static class Lax {
-		public static int NAME = R.string.nature_lax;
-	}
-
-	public static class Timid {
-		public static int NAME = R.string.nature_timid;
-	}
-
-	public static class Hasty {
-		public static int NAME = R.string.nature_hasty;
-	}
-
-	public static class Jolly {
-		public static int NAME = R.string.nature_jolly;
-	}
-
-	public static class Naive {
-		public static int NAME = R.string.nature_naive;
-	}
-
-	public static class Modest {
-		public static int NAME = R.string.nature_modest;
-	}
-
-	public static class Mild {
-		public static int NAME = R.string.nature_mild;
-	}
-
-	public static class Quiet {
-		public static int NAME = R.string.nature_quiet;
-	}
-
-	public static class Rash {
-		public static int NAME = R.string.nature_rash;
-	}
-
-	public static class Calm {
-		public static int NAME = R.string.nature_calm;
-	}
-
-	public static class Gentle {
-		public static int NAME = R.string.nature_gentle;
-	}
-
-	public static class Sassy {
-		public static int NAME = R.string.nature_sassy;
-	}
-
-	public static class Careful {
-		public static int NAME = R.string.nature_careful;
-	}
+        private Nature(int name) {
+            mName = name;
+        }
+    }
 }
