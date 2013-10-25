@@ -26,18 +26,18 @@ public class TeamPokemon extends Pokemon {
 
     public int[] mIvs = { 31, 31, 31, 31, 31, 31 };
     public int[] mEvs = { 0, 0, 0, 0, 0, 0 };
-    public int[] mStats;
+    public int[] mStats = new int[6];
     public int[] mStatsModifier = { STAT_MODIFIER_0, STAT_MODIFIER_0, STAT_MODIFIER_0,
             STAT_MODIFIER_0, STAT_MODIFIER_0, STAT_MODIFIER_0 };
     public int mLevel = 100;
     public Natures.Nature mNature;
 
-    public TeamPokemon(Context context, int id) {
+    public TeamPokemon(Context context, long id) {
         super(context, id);
 		setStats();
 	}
 
-    public TeamPokemon(Context context, int id, Bundle args) {
+    public TeamPokemon(Context context, long id, Bundle args) {
         super(context, id);
         mAttachedItem = new Item(args.getInt(ITEM));
         mCurrentAbility = new Ability(context, args.getInt(SELECTED_ABILITY));
@@ -106,9 +106,11 @@ public class TeamPokemon extends Pokemon {
 		if (mIvs == null || mEvs == null) {
 			return;
 		}
-
 		mStats[STAT_INDEX_HP] = IVTools.getHpValue(mBaseStats[STAT_INDEX_HP], mEvs[STAT_INDEX_HP],
 				mIvs[STAT_INDEX_HP], mLevel);
+        if(mNature == null){
+            mNature = Natures.Nature.DOCILE;
+        }
 		mStats[STAT_INDEX_ATT] = IVTools.getStatValue(mBaseStats[STAT_INDEX_ATT], mEvs[STAT_INDEX_ATT],
 				mIvs[STAT_INDEX_ATT], mLevel, Natures.getModifier(mNature, STAT_INDEX_ATT));
 		mStats[STAT_INDEX_DEF] = IVTools.getStatValue(mBaseStats[STAT_INDEX_DEF], mEvs[STAT_INDEX_DEF],
@@ -133,7 +135,7 @@ public class TeamPokemon extends Pokemon {
 		status.putIntArray(STATS, mStats);
 		status.putIntArray(STATS_MODIFIER, mStatsModifier);
 		status.putInt(LEVEL, mLevel);
-//		status.putInt(NATURE, mNature);
+		status.putInt(NATURE, mNature.ordinal());
         int[] attackIds = {mAttacks[0].mId, mAttacks[1].mId, mAttacks[2].mId, mAttacks[3].mId};
         status.putIntArray(ATTACKS, attackIds);
 	}

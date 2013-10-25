@@ -1,16 +1,8 @@
 package com.suicune.pokeutils.database;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.TextUtils;
-import android.util.Log;
-
-import com.suicune.pokeutils.R;
 
 public class PokeDBOpenHelper extends SQLiteOpenHelper {
 	private static final String DB_NAME = "pokeutils";
@@ -41,7 +33,7 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonName.FORM + TEXT
 				+ PokeContract.PokemonName.NAME + TEXT_END);
 
-		db.execSQL("CREATE TABLE " + PokeContract.PokemonBaseStats.TABLE_NAME
+		db.execSQL(CREATE + PokeContract.PokemonBaseStats.TABLE_NAME
 				+ " (" + PokeContract.PokemonBaseStats._ID + KEY
 				+ PokeContract.PokemonBaseStats.NUMBER + TEXT
 				+ PokeContract.PokemonBaseStats.FORM + TEXT
@@ -82,11 +74,11 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonAbilityDW.FORM + TEXT
 				+ PokeContract.PokemonAbilityDW.ABILITY_DW + TEXT_END);
 
-		db.execSQL("CREATE TABLE " + PokeContract.Abilities.TABLE_NAME + " ("
+		db.execSQL(CREATE + PokeContract.Abilities.TABLE_NAME + " ("
 				+ PokeContract.Abilities._ID + KEY
 				+ PokeContract.Abilities.DESCRIPTION + TEXT_END);
 
-		db.execSQL("CREATE TABLE " + PokeContract.Attacks.TABLE_NAME + " ("
+		db.execSQL(CREATE + PokeContract.Attacks.TABLE_NAME + " ("
 				+ PokeContract.Attacks._ID + KEY 
 				+ PokeContract.Attacks.PP + TEXT 
 				+ PokeContract.Attacks.POWER + INTEGER
@@ -96,70 +88,67 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.Attacks.PRIORITY + TEXT
 				+ PokeContract.Attacks.TYPE + TEXT_END);
 
-		db.execSQL("CREATE TABLE " + PokeContract.PokemonAttacks.TABLE_NAME
+		db.execSQL(CREATE + PokeContract.PokemonAttacks.TABLE_NAME
 				+ " (" + PokeContract.PokemonAttacks._ID + KEY
 				+ PokeContract.PokemonAttacks.ATTACK_ID + TEXT
 				+ PokeContract.PokemonAttacks.NUMBER + TEXT
 				+ PokeContract.PokemonAttacks.FORM + TEXT_END);
 
-		long time = System.currentTimeMillis();
-		populateDb(db);
-		time = System.currentTimeMillis() - time;
-		Log.d("DATABASE POPULATION FINISHED", "" + time);
-
+        // Unused after moving to xml files.
+//		populateDb(db);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
-
-	public void populateDb(SQLiteDatabase db) {
-		insertPokemon(db);
-		insertAbilities(db);
-		insertAttacks(db);
-		insertPokemonAttacks(db);
-	}
-
-	/**
-	 * This method retrieves the data from the context, parses it into a
-	 * insertable format and inserts it into the database
-	 * 
-	 * @param db
-	 */
-	private void insertPokemon(SQLiteDatabase db) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				mContext.getResources().openRawResource(R.raw.pokemon)));
-		doInsertLine(db, reader);
-	}
-
-	private void insertAbilities(SQLiteDatabase db) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				mContext.getResources().openRawResource(R.raw.abilities)));
-		doInsertLine(db, reader);
-	}
-
-	private void insertAttacks(SQLiteDatabase db) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				mContext.getResources().openRawResource(R.raw.attacks)));
-		doInsertLine(db, reader);
-	}
-
-	private void insertPokemonAttacks(SQLiteDatabase db) {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				mContext.getResources().openRawResource(R.raw.pokemonattacks)));
-		doInsertLine(db, reader);
-	}
-
-	private void doInsertLine(SQLiteDatabase db, BufferedReader reader) {
-		String line = null;
-		try {
-			while ((line = reader.readLine()) != null) {
-				if (!TextUtils.isEmpty(line)) {
-					db.execSQL(line);
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//
+//	public void populateDb(SQLiteDatabase db) {
+//		insertPokemon(db);
+//		insertAbilities(db);
+//		insertAttacks(db);
+//		insertPokemonAttacks(db);
+//	}
+//
+//	/**
+//	 * This method retrieves the data from the context, parses it into a
+//	 * insertable format and inserts it into the database
+//	 *
+//	 * @param db
+//	 */
+//	private void insertPokemon(SQLiteDatabase db) {
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(
+//				mContext.getResources().openRawResource(R.raw.pokemon)));
+//		doInsertLine(db, reader);
+//	}
+//
+//	private void insertAbilities(SQLiteDatabase db) {
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(
+//				mContext.getResources().openRawResource(R.raw.abilities)));
+//		doInsertLine(db, reader);
+//	}
+//
+//	private void insertAttacks(SQLiteDatabase db) {
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(
+//				mContext.getResources().openRawResource(R.raw.attacks)));
+//		doInsertLine(db, reader);
+//	}
+//
+//	private void insertPokemonAttacks(SQLiteDatabase db) {
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(
+//				mContext.getResources().openRawResource(R.raw.pokemonattacks)));
+//		doInsertLine(db, reader);
+//	}
+//
+//	private void doInsertLine(SQLiteDatabase db, BufferedReader reader) {
+//		String line = null;
+//		try {
+//			while ((line = reader.readLine()) != null) {
+//				if (!TextUtils.isEmpty(line)) {
+//					db.execSQL(line);
+//				}
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

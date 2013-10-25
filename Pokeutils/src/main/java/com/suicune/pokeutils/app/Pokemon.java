@@ -1,7 +1,6 @@
 package com.suicune.pokeutils.app;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.database.PokeContract;
@@ -10,12 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Pokemon{
-    private static final String TYPE = "array";
-    private static final String POKEMON_FORM_PATTERN = "pokemon_form_";
-    private static final String POKEMON_TYPES_PATTERN = "pokemon_types_";
-    private static final String POKEMON_BASE_STATS_PATTERN = "pokemon_base_stats_";
-    private static final String POKEMON_ABILITIES_PATTERN = "pokemon_abilities_";
+public class Pokemon {
     //Indexes for tables
     public static final int ABILITY_INDEX_1 = 0;
     public static final int ABILITY_INDEX_2 = 1;
@@ -26,7 +20,11 @@ public class Pokemon{
     public static final int STAT_INDEX_SP_ATT = 3;
     public static final int STAT_INDEX_SP_DEF = 4;
     public static final int STAT_INDEX_SPEED = 5;
-
+    private static final String TYPE = "array";
+    private static final String POKEMON_FORM_PATTERN = "pokemon_form_";
+    private static final String POKEMON_TYPES_PATTERN = "pokemon_types_";
+    private static final String POKEMON_BASE_STATS_PATTERN = "pokemon_base_stats_";
+    private static final String POKEMON_ABILITIES_PATTERN = "pokemon_abilities_";
     final public long mId;
     final public String mName;
     final public int mNumber;
@@ -34,9 +32,8 @@ public class Pokemon{
     final public Types.Type mType1;
     final public Types.Type mType2;
     final public int[] mBaseStats;
-
     final public List<Ability> mAbilities;
-	public ArrayList<Attack> mAttacksList;
+    public ArrayList<Attack> mAttacksList;
 
     /**
      * WARNING:
@@ -46,22 +43,25 @@ public class Pokemon{
      * @param id
      * @param context
      */
-    public Pokemon(Context context, int id){
+    public Pokemon(Context context, long id) {
         mId = id;
-        Resources res = context.getResources();
-        mName = res.getStringArray(R.array.pokemon_names)[id];
-        int formsId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
-        int typesId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
-        int statsId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
-        int abilitiesId = res.getIdentifier(POKEMON_FORM_PATTERN + id, context.getPackageName(), TYPE);
-        mNumber = res.getIntArray(formsId)[0];
-        mForm = res.getIntArray(formsId)[1];
-        mType1 = Types.getType(res.getIntArray(typesId)[0]);
-        mType2 = Types.getType(res.getIntArray(typesId)[1]);
-        mBaseStats = res.getIntArray(statsId);
-        Ability ability1 = new Ability(context, res.getIntArray(abilitiesId)[0]);
-        Ability ability2 = new Ability(context, res.getIntArray(abilitiesId)[1]);
-        Ability abilityDW = new Ability(context, res.getIntArray(abilitiesId)[2]);
+        mName = context.getResources().getStringArray(R.array.pokemon_names)[(int) id];
+        int formsId = context.getResources().getIdentifier(POKEMON_FORM_PATTERN + id, TYPE,
+                context.getPackageName());
+        int typesId = context.getResources().getIdentifier(POKEMON_TYPES_PATTERN + id, TYPE,
+                context.getPackageName());
+        int statsId = context.getResources().getIdentifier(POKEMON_BASE_STATS_PATTERN + id, TYPE,
+                context.getPackageName());
+        int abilitiesId = context.getResources().getIdentifier(POKEMON_ABILITIES_PATTERN + id, TYPE,
+                context.getPackageName());
+        mNumber = context.getResources().getIntArray(formsId)[0];
+        mForm = context.getResources().getIntArray(formsId)[1];
+        mType1 = Types.getType(context.getResources().getIntArray(typesId)[0]);
+        mType2 = Types.getType(context.getResources().getIntArray(typesId)[1]);
+        mBaseStats = context.getResources().getIntArray(statsId);
+        Ability ability1 = new Ability(context, context.getResources().getIntArray(abilitiesId)[0]);
+        Ability ability2 = new Ability(context, context.getResources().getIntArray(abilitiesId)[1]);
+        Ability abilityDW = new Ability(context, context.getResources().getIntArray(abilitiesId)[2]);
         mAbilities = Arrays.asList(ability1, ability2, abilityDW);
 
     }
@@ -80,5 +80,10 @@ public class Pokemon{
                 mAbilities.get(ABILITY_INDEX_2).mId);
         status.putInt(PokeContract.PokemonAbilityDW.ABILITY_DW,
                 mAbilities.get(ABILITY_INDEX_DW).mId);
+    }
+
+    @Override
+    public String toString(){
+        return mName;
     }
 }

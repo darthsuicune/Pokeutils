@@ -38,7 +38,7 @@
 
             <Spinner
                 android:id="@+id/iv_calc_nature"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
             </Spinner>
         </LinearLayout>
@@ -61,52 +61,57 @@
             <TableRow>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@string/hp" >
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/hp" >
                 </TextView>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/att" >
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/iv_calc_iv_att_text"
+                        android:text="@string/att" >
                 </TextView>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/def" >
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/iv_calc_iv_def_text"
+                        android:text="@string/def" >
                 </TextView>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/sp_att" >
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/iv_calc_iv_sp_att_text"
+                        android:text="@string/sp_att" >
                 </TextView>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/sp_def" >
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/iv_calc_iv_sp_def_text"
+                        android:text="@string/sp_def" >
                 </TextView>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/speed" >
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/iv_calc_iv_speed_text"
+                        android:text="@string/speed" >
                 </TextView>
             </TableRow>
 
@@ -337,63 +342,6 @@
 
             <TableRow>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="@string/hp" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:id="@+id/iv_calc_iv_att_text"
-                    android:text="@string/att" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:id="@+id/iv_calc_iv_def_text"
-                    android:text="@string/def" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:id="@+id/iv_calc_iv_sp_att_text"
-                    android:text="@string/sp_att" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:id="@+id/iv_calc_iv_sp_def_text"
-                    android:text="@string/sp_def" >
-                </TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:id="@+id/iv_calc_iv_speed_text"
-                    android:text="@string/speed" >
-                </TextView>
-            </TableRow>
-
-            <TableRow>
-
                 <EditText
                     android:id="@+id/iv_calc_iv_hp"
                     android:layout_width="0dp"
@@ -401,7 +349,8 @@
                     android:layout_weight="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:hint="@string/hp" >
                 </EditText>
 
                 <EditText
@@ -411,7 +360,8 @@
                     android:layout_weight="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:hint="@string/att" >
                 </EditText>
 
                 <EditText
@@ -421,7 +371,8 @@
                     android:layout_weight="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:hint="@string/def" >
                 </EditText>
 
                 <EditText
@@ -431,7 +382,8 @@
                     android:layout_weight="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:hint="@string/sp_att" >
                 </EditText>
 
                 <EditText
@@ -441,7 +393,8 @@
                     android:layout_weight="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:hint="@string/sp_def" >
                 </EditText>
 
                 <EditText
@@ -451,7 +404,8 @@
                     android:layout_weight="1"
                     android:maxLength="2"
                     android:inputType="number"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:hint="@string/speed" >
                 </EditText>
             </TableRow>
 

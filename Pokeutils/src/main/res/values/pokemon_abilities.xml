@@ -1,3674 +1,3674 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <int-array name="pokemon_abilities_0">
+    <integer-array name="pokemon_abilities_0">
         <item>0</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_1">
+    </integer-array>
+    <integer-array name="pokemon_abilities_1">
         <item>65</item>
         <item>0</item>
         <item>34</item>
-    </int-array>
-    <int-array name="pokemon_abilities_2">
+    </integer-array>
+    <integer-array name="pokemon_abilities_2">
         <item>65</item>
         <item>0</item>
         <item>34</item>
-    </int-array>
-    <int-array name="pokemon_abilities_3">
+    </integer-array>
+    <integer-array name="pokemon_abilities_3">
         <item>65</item>
         <item>0</item>
         <item>34</item>
-    </int-array>
-    <int-array name="pokemon_abilities_4">
+    </integer-array>
+    <integer-array name="pokemon_abilities_4">
         <item>66</item>
         <item>0</item>
         <item>94</item>
-    </int-array>
-    <int-array name="pokemon_abilities_5">
+    </integer-array>
+    <integer-array name="pokemon_abilities_5">
         <item>66</item>
         <item>0</item>
         <item>94</item>
-    </int-array>
-    <int-array name="pokemon_abilities_6">
+    </integer-array>
+    <integer-array name="pokemon_abilities_6">
         <item>66</item>
         <item>0</item>
         <item>94</item>
-    </int-array>
-    <int-array name="pokemon_abilities_7">
+    </integer-array>
+    <integer-array name="pokemon_abilities_7">
         <item>67</item>
         <item>0</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_8">
+    </integer-array>
+    <integer-array name="pokemon_abilities_8">
         <item>67</item>
         <item>0</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_9">
+    </integer-array>
+    <integer-array name="pokemon_abilities_9">
         <item>67</item>
         <item>0</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_10">
+    </integer-array>
+    <integer-array name="pokemon_abilities_10">
         <item>19</item>
         <item>0</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_11">
+    </integer-array>
+    <integer-array name="pokemon_abilities_11">
         <item>61</item>
         <item>0</item>
         <item>61</item>
-    </int-array>
-    <int-array name="pokemon_abilities_12">
+    </integer-array>
+    <integer-array name="pokemon_abilities_12">
         <item>14</item>
         <item>0</item>
         <item>110</item>
-    </int-array>
-    <int-array name="pokemon_abilities_13">
+    </integer-array>
+    <integer-array name="pokemon_abilities_13">
         <item>19</item>
         <item>0</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_14">
+    </integer-array>
+    <integer-array name="pokemon_abilities_14">
         <item>61</item>
         <item>0</item>
         <item>61</item>
-    </int-array>
-    <int-array name="pokemon_abilities_15">
+    </integer-array>
+    <integer-array name="pokemon_abilities_15">
         <item>68</item>
         <item>0</item>
         <item>97</item>
-    </int-array>
-    <int-array name="pokemon_abilities_16">
+    </integer-array>
+    <integer-array name="pokemon_abilities_16">
         <item>51</item>
         <item>77</item>
         <item>145</item>
-    </int-array>
-    <int-array name="pokemon_abilities_17">
+    </integer-array>
+    <integer-array name="pokemon_abilities_17">
         <item>51</item>
         <item>77</item>
         <item>145</item>
-    </int-array>
-    <int-array name="pokemon_abilities_18">
+    </integer-array>
+    <integer-array name="pokemon_abilities_18">
         <item>51</item>
         <item>77</item>
         <item>145</item>
-    </int-array>
-    <int-array name="pokemon_abilities_19">
+    </integer-array>
+    <integer-array name="pokemon_abilities_19">
         <item>50</item>
         <item>62</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_20">
+    </integer-array>
+    <integer-array name="pokemon_abilities_20">
         <item>50</item>
         <item>62</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_21">
+    </integer-array>
+    <integer-array name="pokemon_abilities_21">
         <item>51</item>
         <item>0</item>
         <item>97</item>
-    </int-array>
-    <int-array name="pokemon_abilities_22">
+    </integer-array>
+    <integer-array name="pokemon_abilities_22">
         <item>51</item>
         <item>0</item>
         <item>97</item>
-    </int-array>
-    <int-array name="pokemon_abilities_23">
+    </integer-array>
+    <integer-array name="pokemon_abilities_23">
         <item>22</item>
         <item>61</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_24">
+    </integer-array>
+    <integer-array name="pokemon_abilities_24">
         <item>22</item>
         <item>61</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_25">
+    </integer-array>
+    <integer-array name="pokemon_abilities_25">
         <item>9</item>
         <item>0</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_26">
+    </integer-array>
+    <integer-array name="pokemon_abilities_26">
         <item>9</item>
         <item>0</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_27">
+    </integer-array>
+    <integer-array name="pokemon_abilities_27">
         <item>8</item>
         <item>0</item>
         <item>146</item>
-    </int-array>
-    <int-array name="pokemon_abilities_28">
+    </integer-array>
+    <integer-array name="pokemon_abilities_28">
         <item>8</item>
         <item>0</item>
         <item>146</item>
-    </int-array>
-    <int-array name="pokemon_abilities_29">
+    </integer-array>
+    <integer-array name="pokemon_abilities_29">
         <item>38</item>
         <item>79</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_30">
+    </integer-array>
+    <integer-array name="pokemon_abilities_30">
         <item>38</item>
         <item>79</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_31">
+    </integer-array>
+    <integer-array name="pokemon_abilities_31">
         <item>38</item>
         <item>79</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_32">
+    </integer-array>
+    <integer-array name="pokemon_abilities_32">
         <item>38</item>
         <item>79</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_33">
+    </integer-array>
+    <integer-array name="pokemon_abilities_33">
         <item>38</item>
         <item>79</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_34">
+    </integer-array>
+    <integer-array name="pokemon_abilities_34">
         <item>38</item>
         <item>79</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_35">
+    </integer-array>
+    <integer-array name="pokemon_abilities_35">
         <item>56</item>
         <item>98</item>
         <item>132</item>
-    </int-array>
-    <int-array name="pokemon_abilities_36">
+    </integer-array>
+    <integer-array name="pokemon_abilities_36">
         <item>56</item>
         <item>98</item>
         <item>109</item>
-    </int-array>
-    <int-array name="pokemon_abilities_37">
+    </integer-array>
+    <integer-array name="pokemon_abilities_37">
         <item>18</item>
         <item>0</item>
         <item>70</item>
-    </int-array>
-    <int-array name="pokemon_abilities_38">
+    </integer-array>
+    <integer-array name="pokemon_abilities_38">
         <item>18</item>
         <item>0</item>
         <item>70</item>
-    </int-array>
-    <int-array name="pokemon_abilities_39">
+    </integer-array>
+    <integer-array name="pokemon_abilities_39">
         <item>56</item>
         <item>0</item>
         <item>132</item>
-    </int-array>
-    <int-array name="pokemon_abilities_40">
+    </integer-array>
+    <integer-array name="pokemon_abilities_40">
         <item>56</item>
         <item>0</item>
         <item>119</item>
-    </int-array>
-    <int-array name="pokemon_abilities_41">
+    </integer-array>
+    <integer-array name="pokemon_abilities_41">
         <item>39</item>
         <item>0</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_42">
+    </integer-array>
+    <integer-array name="pokemon_abilities_42">
         <item>39</item>
         <item>0</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_43">
+    </integer-array>
+    <integer-array name="pokemon_abilities_43">
         <item>34</item>
         <item>0</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_44">
+    </integer-array>
+    <integer-array name="pokemon_abilities_44">
         <item>34</item>
         <item>0</item>
         <item>1</item>
-    </int-array>
-    <int-array name="pokemon_abilities_45">
+    </integer-array>
+    <integer-array name="pokemon_abilities_45">
         <item>34</item>
         <item>0</item>
         <item>27</item>
-    </int-array>
-    <int-array name="pokemon_abilities_46">
+    </integer-array>
+    <integer-array name="pokemon_abilities_46">
         <item>27</item>
         <item>87</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_47">
+    </integer-array>
+    <integer-array name="pokemon_abilities_47">
         <item>27</item>
         <item>87</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_48">
+    </integer-array>
+    <integer-array name="pokemon_abilities_48">
         <item>14</item>
         <item>110</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_49">
+    </integer-array>
+    <integer-array name="pokemon_abilities_49">
         <item>19</item>
         <item>110</item>
         <item>147</item>
-    </int-array>
-    <int-array name="pokemon_abilities_50">
+    </integer-array>
+    <integer-array name="pokemon_abilities_50">
         <item>8</item>
         <item>71</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_51">
+    </integer-array>
+    <integer-array name="pokemon_abilities_51">
         <item>8</item>
         <item>71</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_52">
+    </integer-array>
+    <integer-array name="pokemon_abilities_52">
         <item>53</item>
         <item>101</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_53">
+    </integer-array>
+    <integer-array name="pokemon_abilities_53">
         <item>7</item>
         <item>101</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_54">
+    </integer-array>
+    <integer-array name="pokemon_abilities_54">
         <item>6</item>
         <item>13</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_55">
+    </integer-array>
+    <integer-array name="pokemon_abilities_55">
         <item>6</item>
         <item>13</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_56">
+    </integer-array>
+    <integer-array name="pokemon_abilities_56">
         <item>72</item>
         <item>83</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_57">
+    </integer-array>
+    <integer-array name="pokemon_abilities_57">
         <item>72</item>
         <item>83</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_58">
+    </integer-array>
+    <integer-array name="pokemon_abilities_58">
         <item>22</item>
         <item>18</item>
         <item>154</item>
-    </int-array>
-    <int-array name="pokemon_abilities_59">
+    </integer-array>
+    <integer-array name="pokemon_abilities_59">
         <item>22</item>
         <item>18</item>
         <item>154</item>
-    </int-array>
-    <int-array name="pokemon_abilities_60">
+    </integer-array>
+    <integer-array name="pokemon_abilities_60">
         <item>11</item>
         <item>6</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_61">
+    </integer-array>
+    <integer-array name="pokemon_abilities_61">
         <item>11</item>
         <item>6</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_62">
+    </integer-array>
+    <integer-array name="pokemon_abilities_62">
         <item>11</item>
         <item>6</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_63">
+    </integer-array>
+    <integer-array name="pokemon_abilities_63">
         <item>28</item>
         <item>39</item>
         <item>98</item>
-    </int-array>
-    <int-array name="pokemon_abilities_64">
+    </integer-array>
+    <integer-array name="pokemon_abilities_64">
         <item>28</item>
         <item>39</item>
         <item>98</item>
-    </int-array>
-    <int-array name="pokemon_abilities_65">
+    </integer-array>
+    <integer-array name="pokemon_abilities_65">
         <item>28</item>
         <item>39</item>
         <item>98</item>
-    </int-array>
-    <int-array name="pokemon_abilities_66">
+    </integer-array>
+    <integer-array name="pokemon_abilities_66">
         <item>62</item>
         <item>99</item>
         <item>80</item>
-    </int-array>
-    <int-array name="pokemon_abilities_67">
+    </integer-array>
+    <integer-array name="pokemon_abilities_67">
         <item>62</item>
         <item>99</item>
         <item>80</item>
-    </int-array>
-    <int-array name="pokemon_abilities_68">
+    </integer-array>
+    <integer-array name="pokemon_abilities_68">
         <item>62</item>
         <item>99</item>
         <item>80</item>
-    </int-array>
-    <int-array name="pokemon_abilities_69">
+    </integer-array>
+    <integer-array name="pokemon_abilities_69">
         <item>34</item>
         <item>0</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_70">
+    </integer-array>
+    <integer-array name="pokemon_abilities_70">
         <item>34</item>
         <item>0</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_71">
+    </integer-array>
+    <integer-array name="pokemon_abilities_71">
         <item>34</item>
         <item>0</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_72">
+    </integer-array>
+    <integer-array name="pokemon_abilities_72">
         <item>29</item>
         <item>64</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_73">
+    </integer-array>
+    <integer-array name="pokemon_abilities_73">
         <item>29</item>
         <item>64</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_74">
+    </integer-array>
+    <integer-array name="pokemon_abilities_74">
         <item>69</item>
         <item>5</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_75">
+    </integer-array>
+    <integer-array name="pokemon_abilities_75">
         <item>69</item>
         <item>5</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_76">
+    </integer-array>
+    <integer-array name="pokemon_abilities_76">
         <item>69</item>
         <item>5</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_77">
+    </integer-array>
+    <integer-array name="pokemon_abilities_77">
         <item>50</item>
         <item>18</item>
         <item>49</item>
-    </int-array>
-    <int-array name="pokemon_abilities_78">
+    </integer-array>
+    <integer-array name="pokemon_abilities_78">
         <item>50</item>
         <item>18</item>
         <item>49</item>
-    </int-array>
-    <int-array name="pokemon_abilities_79">
+    </integer-array>
+    <integer-array name="pokemon_abilities_79">
         <item>12</item>
         <item>20</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_80">
+    </integer-array>
+    <integer-array name="pokemon_abilities_80">
         <item>12</item>
         <item>20</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_81">
+    </integer-array>
+    <integer-array name="pokemon_abilities_81">
         <item>42</item>
         <item>5</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_82">
+    </integer-array>
+    <integer-array name="pokemon_abilities_82">
         <item>42</item>
         <item>5</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_83">
+    </integer-array>
+    <integer-array name="pokemon_abilities_83">
         <item>51</item>
         <item>39</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_84">
+    </integer-array>
+    <integer-array name="pokemon_abilities_84">
         <item>50</item>
         <item>48</item>
         <item>77</item>
-    </int-array>
-    <int-array name="pokemon_abilities_85">
+    </integer-array>
+    <integer-array name="pokemon_abilities_85">
         <item>50</item>
         <item>48</item>
         <item>77</item>
-    </int-array>
-    <int-array name="pokemon_abilities_86">
+    </integer-array>
+    <integer-array name="pokemon_abilities_86">
         <item>47</item>
         <item>93</item>
         <item>115</item>
-    </int-array>
-    <int-array name="pokemon_abilities_87">
+    </integer-array>
+    <integer-array name="pokemon_abilities_87">
         <item>47</item>
         <item>93</item>
         <item>115</item>
-    </int-array>
-    <int-array name="pokemon_abilities_88">
+    </integer-array>
+    <integer-array name="pokemon_abilities_88">
         <item>1</item>
         <item>60</item>
         <item>143</item>
-    </int-array>
-    <int-array name="pokemon_abilities_89">
+    </integer-array>
+    <integer-array name="pokemon_abilities_89">
         <item>1</item>
         <item>60</item>
         <item>143</item>
-    </int-array>
-    <int-array name="pokemon_abilities_90">
+    </integer-array>
+    <integer-array name="pokemon_abilities_90">
         <item>75</item>
         <item>92</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_91">
+    </integer-array>
+    <integer-array name="pokemon_abilities_91">
         <item>75</item>
         <item>92</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_92">
+    </integer-array>
+    <integer-array name="pokemon_abilities_92">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_93">
+    </integer-array>
+    <integer-array name="pokemon_abilities_93">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_94">
+    </integer-array>
+    <integer-array name="pokemon_abilities_94">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_95">
+    </integer-array>
+    <integer-array name="pokemon_abilities_95">
         <item>69</item>
         <item>5</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_96">
+    </integer-array>
+    <integer-array name="pokemon_abilities_96">
         <item>15</item>
         <item>108</item>
         <item>39</item>
-    </int-array>
-    <int-array name="pokemon_abilities_97">
+    </integer-array>
+    <integer-array name="pokemon_abilities_97">
         <item>15</item>
         <item>108</item>
         <item>39</item>
-    </int-array>
-    <int-array name="pokemon_abilities_98">
+    </integer-array>
+    <integer-array name="pokemon_abilities_98">
         <item>52</item>
         <item>75</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_99">
+    </integer-array>
+    <integer-array name="pokemon_abilities_99">
         <item>52</item>
         <item>75</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_100">
+    </integer-array>
+    <integer-array name="pokemon_abilities_100">
         <item>43</item>
         <item>9</item>
         <item>106</item>
-    </int-array>
-    <int-array name="pokemon_abilities_101">
+    </integer-array>
+    <integer-array name="pokemon_abilities_101">
         <item>43</item>
         <item>9</item>
         <item>106</item>
-    </int-array>
-    <int-array name="pokemon_abilities_102">
+    </integer-array>
+    <integer-array name="pokemon_abilities_102">
         <item>34</item>
         <item>0</item>
         <item>139</item>
-    </int-array>
-    <int-array name="pokemon_abilities_103">
+    </integer-array>
+    <integer-array name="pokemon_abilities_103">
         <item>34</item>
         <item>0</item>
         <item>139</item>
-    </int-array>
-    <int-array name="pokemon_abilities_104">
+    </integer-array>
+    <integer-array name="pokemon_abilities_104">
         <item>69</item>
         <item>31</item>
         <item>4</item>
-    </int-array>
-    <int-array name="pokemon_abilities_105">
+    </integer-array>
+    <integer-array name="pokemon_abilities_105">
         <item>69</item>
         <item>31</item>
         <item>4</item>
-    </int-array>
-    <int-array name="pokemon_abilities_106">
+    </integer-array>
+    <integer-array name="pokemon_abilities_106">
         <item>7</item>
         <item>120</item>
         <item>84</item>
-    </int-array>
-    <int-array name="pokemon_abilities_107">
+    </integer-array>
+    <integer-array name="pokemon_abilities_107">
         <item>51</item>
         <item>89</item>
         <item>39</item>
-    </int-array>
-    <int-array name="pokemon_abilities_108">
+    </integer-array>
+    <integer-array name="pokemon_abilities_108">
         <item>20</item>
         <item>12</item>
         <item>13</item>
-    </int-array>
-    <int-array name="pokemon_abilities_109">
+    </integer-array>
+    <integer-array name="pokemon_abilities_109">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_110">
+    </integer-array>
+    <integer-array name="pokemon_abilities_110">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_111">
+    </integer-array>
+    <integer-array name="pokemon_abilities_111">
         <item>31</item>
         <item>69</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_112">
+    </integer-array>
+    <integer-array name="pokemon_abilities_112">
         <item>31</item>
         <item>69</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_113">
+    </integer-array>
+    <integer-array name="pokemon_abilities_113">
         <item>30</item>
         <item>32</item>
         <item>131</item>
-    </int-array>
-    <int-array name="pokemon_abilities_114">
+    </integer-array>
+    <integer-array name="pokemon_abilities_114">
         <item>34</item>
         <item>102</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_115">
+    </integer-array>
+    <integer-array name="pokemon_abilities_115">
         <item>48</item>
         <item>113</item>
         <item>39</item>
-    </int-array>
-    <int-array name="pokemon_abilities_116">
+    </integer-array>
+    <integer-array name="pokemon_abilities_116">
         <item>33</item>
         <item>97</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_117">
+    </integer-array>
+    <integer-array name="pokemon_abilities_117">
         <item>38</item>
         <item>97</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_118">
+    </integer-array>
+    <integer-array name="pokemon_abilities_118">
         <item>33</item>
         <item>41</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_119">
+    </integer-array>
+    <integer-array name="pokemon_abilities_119">
         <item>33</item>
         <item>41</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_120">
+    </integer-array>
+    <integer-array name="pokemon_abilities_120">
         <item>35</item>
         <item>30</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_121">
+    </integer-array>
+    <integer-array name="pokemon_abilities_121">
         <item>35</item>
         <item>30</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_122">
+    </integer-array>
+    <integer-array name="pokemon_abilities_122">
         <item>43</item>
         <item>111</item>
         <item>101</item>
-    </int-array>
-    <int-array name="pokemon_abilities_123">
+    </integer-array>
+    <integer-array name="pokemon_abilities_123">
         <item>68</item>
         <item>101</item>
         <item>80</item>
-    </int-array>
-    <int-array name="pokemon_abilities_124">
+    </integer-array>
+    <integer-array name="pokemon_abilities_124">
         <item>12</item>
         <item>108</item>
         <item>87</item>
-    </int-array>
-    <int-array name="pokemon_abilities_125">
+    </integer-array>
+    <integer-array name="pokemon_abilities_125">
         <item>9</item>
         <item>0</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_126">
+    </integer-array>
+    <integer-array name="pokemon_abilities_126">
         <item>49</item>
         <item>0</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_127">
+    </integer-array>
+    <integer-array name="pokemon_abilities_127">
         <item>52</item>
         <item>104</item>
         <item>153</item>
-    </int-array>
-    <int-array name="pokemon_abilities_128">
+    </integer-array>
+    <integer-array name="pokemon_abilities_128">
         <item>22</item>
         <item>83</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_129">
+    </integer-array>
+    <integer-array name="pokemon_abilities_129">
         <item>33</item>
         <item>0</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_130">
+    </integer-array>
+    <integer-array name="pokemon_abilities_130">
         <item>22</item>
         <item>0</item>
         <item>153</item>
-    </int-array>
-    <int-array name="pokemon_abilities_131">
+    </integer-array>
+    <integer-array name="pokemon_abilities_131">
         <item>11</item>
         <item>75</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_132">
+    </integer-array>
+    <integer-array name="pokemon_abilities_132">
         <item>7</item>
         <item>0</item>
         <item>150</item>
-    </int-array>
-    <int-array name="pokemon_abilities_133">
+    </integer-array>
+    <integer-array name="pokemon_abilities_133">
         <item>50</item>
         <item>91</item>
         <item>107</item>
-    </int-array>
-    <int-array name="pokemon_abilities_134">
+    </integer-array>
+    <integer-array name="pokemon_abilities_134">
         <item>11</item>
         <item>0</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_135">
+    </integer-array>
+    <integer-array name="pokemon_abilities_135">
         <item>10</item>
         <item>0</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_136">
+    </integer-array>
+    <integer-array name="pokemon_abilities_136">
         <item>18</item>
         <item>0</item>
         <item>62</item>
-    </int-array>
-    <int-array name="pokemon_abilities_137">
+    </integer-array>
+    <integer-array name="pokemon_abilities_137">
         <item>36</item>
         <item>88</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_138">
+    </integer-array>
+    <integer-array name="pokemon_abilities_138">
         <item>33</item>
         <item>75</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_139">
+    </integer-array>
+    <integer-array name="pokemon_abilities_139">
         <item>33</item>
         <item>75</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_140">
+    </integer-array>
+    <integer-array name="pokemon_abilities_140">
         <item>33</item>
         <item>4</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_141">
+    </integer-array>
+    <integer-array name="pokemon_abilities_141">
         <item>33</item>
         <item>4</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_142">
+    </integer-array>
+    <integer-array name="pokemon_abilities_142">
         <item>69</item>
         <item>46</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_143">
+    </integer-array>
+    <integer-array name="pokemon_abilities_143">
         <item>17</item>
         <item>47</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_144">
+    </integer-array>
+    <integer-array name="pokemon_abilities_144">
         <item>46</item>
         <item>0</item>
         <item>81</item>
-    </int-array>
-    <int-array name="pokemon_abilities_145">
+    </integer-array>
+    <integer-array name="pokemon_abilities_145">
         <item>46</item>
         <item>0</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_146">
+    </integer-array>
+    <integer-array name="pokemon_abilities_146">
         <item>46</item>
         <item>0</item>
         <item>49</item>
-    </int-array>
-    <int-array name="pokemon_abilities_147">
+    </integer-array>
+    <integer-array name="pokemon_abilities_147">
         <item>61</item>
         <item>0</item>
         <item>63</item>
-    </int-array>
-    <int-array name="pokemon_abilities_148">
+    </integer-array>
+    <integer-array name="pokemon_abilities_148">
         <item>61</item>
         <item>0</item>
         <item>63</item>
-    </int-array>
-    <int-array name="pokemon_abilities_149">
+    </integer-array>
+    <integer-array name="pokemon_abilities_149">
         <item>39</item>
         <item>0</item>
         <item>136</item>
-    </int-array>
-    <int-array name="pokemon_abilities_150">
+    </integer-array>
+    <integer-array name="pokemon_abilities_150">
         <item>46</item>
         <item>0</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_151">
+    </integer-array>
+    <integer-array name="pokemon_abilities_151">
         <item>28</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_152">
+    </integer-array>
+    <integer-array name="pokemon_abilities_152">
         <item>65</item>
         <item>0</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_153">
+    </integer-array>
+    <integer-array name="pokemon_abilities_153">
         <item>65</item>
         <item>0</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_154">
+    </integer-array>
+    <integer-array name="pokemon_abilities_154">
         <item>65</item>
         <item>0</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_155">
+    </integer-array>
+    <integer-array name="pokemon_abilities_155">
         <item>66</item>
         <item>0</item>
         <item>18</item>
-    </int-array>
-    <int-array name="pokemon_abilities_156">
+    </integer-array>
+    <integer-array name="pokemon_abilities_156">
         <item>66</item>
         <item>0</item>
         <item>18</item>
-    </int-array>
-    <int-array name="pokemon_abilities_157">
+    </integer-array>
+    <integer-array name="pokemon_abilities_157">
         <item>66</item>
         <item>0</item>
         <item>18</item>
-    </int-array>
-    <int-array name="pokemon_abilities_158">
+    </integer-array>
+    <integer-array name="pokemon_abilities_158">
         <item>67</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_159">
+    </integer-array>
+    <integer-array name="pokemon_abilities_159">
         <item>67</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_160">
+    </integer-array>
+    <integer-array name="pokemon_abilities_160">
         <item>67</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_161">
+    </integer-array>
+    <integer-array name="pokemon_abilities_161">
         <item>50</item>
         <item>51</item>
         <item>119</item>
-    </int-array>
-    <int-array name="pokemon_abilities_162">
+    </integer-array>
+    <integer-array name="pokemon_abilities_162">
         <item>50</item>
         <item>51</item>
         <item>119</item>
-    </int-array>
-    <int-array name="pokemon_abilities_163">
+    </integer-array>
+    <integer-array name="pokemon_abilities_163">
         <item>15</item>
         <item>51</item>
         <item>110</item>
-    </int-array>
-    <int-array name="pokemon_abilities_164">
+    </integer-array>
+    <integer-array name="pokemon_abilities_164">
         <item>15</item>
         <item>51</item>
         <item>110</item>
-    </int-array>
-    <int-array name="pokemon_abilities_165">
+    </integer-array>
+    <integer-array name="pokemon_abilities_165">
         <item>68</item>
         <item>48</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_166">
+    </integer-array>
+    <integer-array name="pokemon_abilities_166">
         <item>68</item>
         <item>48</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_167">
+    </integer-array>
+    <integer-array name="pokemon_abilities_167">
         <item>68</item>
         <item>15</item>
         <item>97</item>
-    </int-array>
-    <int-array name="pokemon_abilities_168">
+    </integer-array>
+    <integer-array name="pokemon_abilities_168">
         <item>68</item>
         <item>15</item>
         <item>97</item>
-    </int-array>
-    <int-array name="pokemon_abilities_169">
+    </integer-array>
+    <integer-array name="pokemon_abilities_169">
         <item>39</item>
         <item>0</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_170">
+    </integer-array>
+    <integer-array name="pokemon_abilities_170">
         <item>10</item>
         <item>35</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_171">
+    </integer-array>
+    <integer-array name="pokemon_abilities_171">
         <item>10</item>
         <item>35</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_172">
+    </integer-array>
+    <integer-array name="pokemon_abilities_172">
         <item>9</item>
         <item>0</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_173">
+    </integer-array>
+    <integer-array name="pokemon_abilities_173">
         <item>9</item>
         <item>0</item>
         <item>31</item>
-    </int-array>
-    <int-array name="pokemon_abilities_174">
+    </integer-array>
+    <integer-array name="pokemon_abilities_174">
         <item>56</item>
         <item>98</item>
         <item>132</item>
-    </int-array>
-    <int-array name="pokemon_abilities_175">
+    </integer-array>
+    <integer-array name="pokemon_abilities_175">
         <item>56</item>
         <item>0</item>
         <item>132</item>
-    </int-array>
-    <int-array name="pokemon_abilities_176">
+    </integer-array>
+    <integer-array name="pokemon_abilities_176">
         <item>55</item>
         <item>32</item>
         <item>105</item>
-    </int-array>
-    <int-array name="pokemon_abilities_177">
+    </integer-array>
+    <integer-array name="pokemon_abilities_177">
         <item>55</item>
         <item>32</item>
         <item>105</item>
-    </int-array>
-    <int-array name="pokemon_abilities_178">
+    </integer-array>
+    <integer-array name="pokemon_abilities_178">
         <item>28</item>
         <item>48</item>
         <item>156</item>
-    </int-array>
-    <int-array name="pokemon_abilities_179">
+    </integer-array>
+    <integer-array name="pokemon_abilities_179">
         <item>28</item>
         <item>48</item>
         <item>156</item>
-    </int-array>
-    <int-array name="pokemon_abilities_180">
+    </integer-array>
+    <integer-array name="pokemon_abilities_180">
         <item>9</item>
         <item>0</item>
         <item>57</item>
-    </int-array>
-    <int-array name="pokemon_abilities_181">
+    </integer-array>
+    <integer-array name="pokemon_abilities_181">
         <item>9</item>
         <item>0</item>
         <item>57</item>
-    </int-array>
-    <int-array name="pokemon_abilities_182">
+    </integer-array>
+    <integer-array name="pokemon_abilities_182">
         <item>9</item>
         <item>0</item>
         <item>57</item>
-    </int-array>
-    <int-array name="pokemon_abilities_183">
+    </integer-array>
+    <integer-array name="pokemon_abilities_183">
         <item>34</item>
         <item>0</item>
         <item>131</item>
-    </int-array>
-    <int-array name="pokemon_abilities_184">
+    </integer-array>
+    <integer-array name="pokemon_abilities_184">
         <item>47</item>
         <item>37</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_185">
+    </integer-array>
+    <integer-array name="pokemon_abilities_185">
         <item>47</item>
         <item>37</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_186">
+    </integer-array>
+    <integer-array name="pokemon_abilities_186">
         <item>5</item>
         <item>69</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_187">
+    </integer-array>
+    <integer-array name="pokemon_abilities_187">
         <item>11</item>
         <item>6</item>
         <item>2</item>
-    </int-array>
-    <int-array name="pokemon_abilities_188">
+    </integer-array>
+    <integer-array name="pokemon_abilities_188">
         <item>34</item>
         <item>102</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_189">
+    </integer-array>
+    <integer-array name="pokemon_abilities_189">
         <item>34</item>
         <item>102</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_190">
+    </integer-array>
+    <integer-array name="pokemon_abilities_190">
         <item>34</item>
         <item>102</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_191">
+    </integer-array>
+    <integer-array name="pokemon_abilities_191">
         <item>50</item>
         <item>53</item>
         <item>92</item>
-    </int-array>
-    <int-array name="pokemon_abilities_192">
+    </integer-array>
+    <integer-array name="pokemon_abilities_192">
         <item>34</item>
         <item>94</item>
         <item>48</item>
-    </int-array>
-    <int-array name="pokemon_abilities_193">
+    </integer-array>
+    <integer-array name="pokemon_abilities_193">
         <item>34</item>
         <item>94</item>
         <item>48</item>
-    </int-array>
-    <int-array name="pokemon_abilities_194">
+    </integer-array>
+    <integer-array name="pokemon_abilities_194">
         <item>3</item>
         <item>14</item>
         <item>119</item>
-    </int-array>
-    <int-array name="pokemon_abilities_195">
+    </integer-array>
+    <integer-array name="pokemon_abilities_195">
         <item>6</item>
         <item>11</item>
         <item>109</item>
-    </int-array>
-    <int-array name="pokemon_abilities_196">
+    </integer-array>
+    <integer-array name="pokemon_abilities_196">
         <item>6</item>
         <item>11</item>
         <item>109</item>
-    </int-array>
-    <int-array name="pokemon_abilities_197">
+    </integer-array>
+    <integer-array name="pokemon_abilities_197">
         <item>28</item>
         <item>0</item>
         <item>156</item>
-    </int-array>
-    <int-array name="pokemon_abilities_198">
+    </integer-array>
+    <integer-array name="pokemon_abilities_198">
         <item>28</item>
         <item>0</item>
         <item>39</item>
-    </int-array>
-    <int-array name="pokemon_abilities_199">
+    </integer-array>
+    <integer-array name="pokemon_abilities_199">
         <item>15</item>
         <item>105</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_200">
+    </integer-array>
+    <integer-array name="pokemon_abilities_200">
         <item>12</item>
         <item>20</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_201">
+    </integer-array>
+    <integer-array name="pokemon_abilities_201">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_202">
+    </integer-array>
+    <integer-array name="pokemon_abilities_202">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_203">
+    </integer-array>
+    <integer-array name="pokemon_abilities_203">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_204">
+    </integer-array>
+    <integer-array name="pokemon_abilities_204">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_205">
+    </integer-array>
+    <integer-array name="pokemon_abilities_205">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_206">
+    </integer-array>
+    <integer-array name="pokemon_abilities_206">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_207">
+    </integer-array>
+    <integer-array name="pokemon_abilities_207">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_208">
+    </integer-array>
+    <integer-array name="pokemon_abilities_208">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_209">
+    </integer-array>
+    <integer-array name="pokemon_abilities_209">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_210">
+    </integer-array>
+    <integer-array name="pokemon_abilities_210">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_211">
+    </integer-array>
+    <integer-array name="pokemon_abilities_211">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_212">
+    </integer-array>
+    <integer-array name="pokemon_abilities_212">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_213">
+    </integer-array>
+    <integer-array name="pokemon_abilities_213">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_214">
+    </integer-array>
+    <integer-array name="pokemon_abilities_214">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_215">
+    </integer-array>
+    <integer-array name="pokemon_abilities_215">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_216">
+    </integer-array>
+    <integer-array name="pokemon_abilities_216">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_217">
+    </integer-array>
+    <integer-array name="pokemon_abilities_217">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_218">
+    </integer-array>
+    <integer-array name="pokemon_abilities_218">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_219">
+    </integer-array>
+    <integer-array name="pokemon_abilities_219">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_220">
+    </integer-array>
+    <integer-array name="pokemon_abilities_220">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_221">
+    </integer-array>
+    <integer-array name="pokemon_abilities_221">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_222">
+    </integer-array>
+    <integer-array name="pokemon_abilities_222">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_223">
+    </integer-array>
+    <integer-array name="pokemon_abilities_223">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_224">
+    </integer-array>
+    <integer-array name="pokemon_abilities_224">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_225">
+    </integer-array>
+    <integer-array name="pokemon_abilities_225">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_226">
+    </integer-array>
+    <integer-array name="pokemon_abilities_226">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_227">
+    </integer-array>
+    <integer-array name="pokemon_abilities_227">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_228">
+    </integer-array>
+    <integer-array name="pokemon_abilities_228">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_229">
+    </integer-array>
+    <integer-array name="pokemon_abilities_229">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_230">
+    </integer-array>
+    <integer-array name="pokemon_abilities_230">
         <item>23</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_231">
+    </integer-array>
+    <integer-array name="pokemon_abilities_231">
         <item>39</item>
         <item>48</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_232">
+    </integer-array>
+    <integer-array name="pokemon_abilities_232">
         <item>5</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_233">
+    </integer-array>
+    <integer-array name="pokemon_abilities_233">
         <item>5</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_234">
+    </integer-array>
+    <integer-array name="pokemon_abilities_234">
         <item>32</item>
         <item>50</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_235">
+    </integer-array>
+    <integer-array name="pokemon_abilities_235">
         <item>52</item>
         <item>8</item>
         <item>17</item>
-    </int-array>
-    <int-array name="pokemon_abilities_236">
+    </integer-array>
+    <integer-array name="pokemon_abilities_236">
         <item>69</item>
         <item>5</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_237">
+    </integer-array>
+    <integer-array name="pokemon_abilities_237">
         <item>22</item>
         <item>50</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_238">
+    </integer-array>
+    <integer-array name="pokemon_abilities_238">
         <item>22</item>
         <item>95</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_239">
+    </integer-array>
+    <integer-array name="pokemon_abilities_239">
         <item>38</item>
         <item>33</item>
         <item>22</item>
-    </int-array>
-    <int-array name="pokemon_abilities_240">
+    </integer-array>
+    <integer-array name="pokemon_abilities_240">
         <item>68</item>
         <item>101</item>
         <item>135</item>
-    </int-array>
-    <int-array name="pokemon_abilities_241">
+    </integer-array>
+    <integer-array name="pokemon_abilities_241">
         <item>5</item>
         <item>82</item>
         <item>126</item>
-    </int-array>
-    <int-array name="pokemon_abilities_242">
+    </integer-array>
+    <integer-array name="pokemon_abilities_242">
         <item>68</item>
         <item>62</item>
         <item>153</item>
-    </int-array>
-    <int-array name="pokemon_abilities_243">
+    </integer-array>
+    <integer-array name="pokemon_abilities_243">
         <item>39</item>
         <item>51</item>
         <item>124</item>
-    </int-array>
-    <int-array name="pokemon_abilities_244">
+    </integer-array>
+    <integer-array name="pokemon_abilities_244">
         <item>53</item>
         <item>95</item>
         <item>118</item>
-    </int-array>
-    <int-array name="pokemon_abilities_245">
+    </integer-array>
+    <integer-array name="pokemon_abilities_245">
         <item>62</item>
         <item>95</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_246">
+    </integer-array>
+    <integer-array name="pokemon_abilities_246">
         <item>40</item>
         <item>49</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_247">
+    </integer-array>
+    <integer-array name="pokemon_abilities_247">
         <item>40</item>
         <item>49</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_248">
+    </integer-array>
+    <integer-array name="pokemon_abilities_248">
         <item>12</item>
         <item>81</item>
         <item>47</item>
-    </int-array>
-    <int-array name="pokemon_abilities_249">
+    </integer-array>
+    <integer-array name="pokemon_abilities_249">
         <item>12</item>
         <item>81</item>
         <item>47</item>
-    </int-array>
-    <int-array name="pokemon_abilities_250">
+    </integer-array>
+    <integer-array name="pokemon_abilities_250">
         <item>55</item>
         <item>30</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_251">
+    </integer-array>
+    <integer-array name="pokemon_abilities_251">
         <item>55</item>
         <item>97</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_252">
+    </integer-array>
+    <integer-array name="pokemon_abilities_252">
         <item>21</item>
         <item>97</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_253">
+    </integer-array>
+    <integer-array name="pokemon_abilities_253">
         <item>72</item>
         <item>55</item>
         <item>15</item>
-    </int-array>
-    <int-array name="pokemon_abilities_254">
+    </integer-array>
+    <integer-array name="pokemon_abilities_254">
         <item>33</item>
         <item>11</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_255">
+    </integer-array>
+    <integer-array name="pokemon_abilities_255">
         <item>51</item>
         <item>5</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_256">
+    </integer-array>
+    <integer-array name="pokemon_abilities_256">
         <item>48</item>
         <item>18</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_257">
+    </integer-array>
+    <integer-array name="pokemon_abilities_257">
         <item>48</item>
         <item>18</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_258">
+    </integer-array>
+    <integer-array name="pokemon_abilities_258">
         <item>33</item>
         <item>97</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_259">
+    </integer-array>
+    <integer-array name="pokemon_abilities_259">
         <item>53</item>
         <item>0</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_260">
+    </integer-array>
+    <integer-array name="pokemon_abilities_260">
         <item>5</item>
         <item>0</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_261">
+    </integer-array>
+    <integer-array name="pokemon_abilities_261">
         <item>36</item>
         <item>88</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_262">
+    </integer-array>
+    <integer-array name="pokemon_abilities_262">
         <item>22</item>
         <item>119</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_263">
+    </integer-array>
+    <integer-array name="pokemon_abilities_263">
         <item>20</item>
         <item>101</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_264">
+    </integer-array>
+    <integer-array name="pokemon_abilities_264">
         <item>62</item>
         <item>80</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_265">
+    </integer-array>
+    <integer-array name="pokemon_abilities_265">
         <item>22</item>
         <item>101</item>
         <item>80</item>
-    </int-array>
-    <int-array name="pokemon_abilities_266">
+    </integer-array>
+    <integer-array name="pokemon_abilities_266">
         <item>12</item>
         <item>108</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_267">
+    </integer-array>
+    <integer-array name="pokemon_abilities_267">
         <item>9</item>
         <item>0</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_268">
+    </integer-array>
+    <integer-array name="pokemon_abilities_268">
         <item>49</item>
         <item>0</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_269">
+    </integer-array>
+    <integer-array name="pokemon_abilities_269">
         <item>47</item>
         <item>113</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_270">
+    </integer-array>
+    <integer-array name="pokemon_abilities_270">
         <item>30</item>
         <item>32</item>
         <item>131</item>
-    </int-array>
-    <int-array name="pokemon_abilities_271">
+    </integer-array>
+    <integer-array name="pokemon_abilities_271">
         <item>46</item>
         <item>0</item>
         <item>10</item>
-    </int-array>
-    <int-array name="pokemon_abilities_272">
+    </integer-array>
+    <integer-array name="pokemon_abilities_272">
         <item>46</item>
         <item>0</item>
         <item>18</item>
-    </int-array>
-    <int-array name="pokemon_abilities_273">
+    </integer-array>
+    <integer-array name="pokemon_abilities_273">
         <item>46</item>
         <item>0</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_274">
+    </integer-array>
+    <integer-array name="pokemon_abilities_274">
         <item>62</item>
         <item>0</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_275">
+    </integer-array>
+    <integer-array name="pokemon_abilities_275">
         <item>61</item>
         <item>0</item>
         <item>61</item>
-    </int-array>
-    <int-array name="pokemon_abilities_276">
+    </integer-array>
+    <integer-array name="pokemon_abilities_276">
         <item>45</item>
         <item>0</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_277">
+    </integer-array>
+    <integer-array name="pokemon_abilities_277">
         <item>46</item>
         <item>0</item>
         <item>136</item>
-    </int-array>
-    <int-array name="pokemon_abilities_278">
+    </integer-array>
+    <integer-array name="pokemon_abilities_278">
         <item>46</item>
         <item>0</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_279">
+    </integer-array>
+    <integer-array name="pokemon_abilities_279">
         <item>30</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_280">
+    </integer-array>
+    <integer-array name="pokemon_abilities_280">
         <item>65</item>
         <item>0</item>
         <item>84</item>
-    </int-array>
-    <int-array name="pokemon_abilities_281">
+    </integer-array>
+    <integer-array name="pokemon_abilities_281">
         <item>65</item>
         <item>0</item>
         <item>84</item>
-    </int-array>
-    <int-array name="pokemon_abilities_282">
+    </integer-array>
+    <integer-array name="pokemon_abilities_282">
         <item>65</item>
         <item>0</item>
         <item>84</item>
-    </int-array>
-    <int-array name="pokemon_abilities_283">
+    </integer-array>
+    <integer-array name="pokemon_abilities_283">
         <item>66</item>
         <item>0</item>
         <item>3</item>
-    </int-array>
-    <int-array name="pokemon_abilities_284">
+    </integer-array>
+    <integer-array name="pokemon_abilities_284">
         <item>66</item>
         <item>0</item>
         <item>3</item>
-    </int-array>
-    <int-array name="pokemon_abilities_285">
+    </integer-array>
+    <integer-array name="pokemon_abilities_285">
         <item>66</item>
         <item>0</item>
         <item>3</item>
-    </int-array>
-    <int-array name="pokemon_abilities_286">
+    </integer-array>
+    <integer-array name="pokemon_abilities_286">
         <item>67</item>
         <item>0</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_287">
+    </integer-array>
+    <integer-array name="pokemon_abilities_287">
         <item>67</item>
         <item>0</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_288">
+    </integer-array>
+    <integer-array name="pokemon_abilities_288">
         <item>67</item>
         <item>0</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_289">
+    </integer-array>
+    <integer-array name="pokemon_abilities_289">
         <item>50</item>
         <item>95</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_290">
+    </integer-array>
+    <integer-array name="pokemon_abilities_290">
         <item>22</item>
         <item>95</item>
         <item>153</item>
-    </int-array>
-    <int-array name="pokemon_abilities_291">
+    </integer-array>
+    <integer-array name="pokemon_abilities_291">
         <item>53</item>
         <item>82</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_292">
+    </integer-array>
+    <integer-array name="pokemon_abilities_292">
         <item>53</item>
         <item>82</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_293">
+    </integer-array>
+    <integer-array name="pokemon_abilities_293">
         <item>19</item>
         <item>0</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_294">
+    </integer-array>
+    <integer-array name="pokemon_abilities_294">
         <item>61</item>
         <item>0</item>
         <item>61</item>
-    </int-array>
-    <int-array name="pokemon_abilities_295">
+    </integer-array>
+    <integer-array name="pokemon_abilities_295">
         <item>68</item>
         <item>0</item>
         <item>79</item>
-    </int-array>
-    <int-array name="pokemon_abilities_296">
+    </integer-array>
+    <integer-array name="pokemon_abilities_296">
         <item>61</item>
         <item>0</item>
         <item>61</item>
-    </int-array>
-    <int-array name="pokemon_abilities_297">
+    </integer-array>
+    <integer-array name="pokemon_abilities_297">
         <item>19</item>
         <item>0</item>
         <item>14</item>
-    </int-array>
-    <int-array name="pokemon_abilities_298">
+    </integer-array>
+    <integer-array name="pokemon_abilities_298">
         <item>33</item>
         <item>44</item>
         <item>20</item>
-    </int-array>
-    <int-array name="pokemon_abilities_299">
+    </integer-array>
+    <integer-array name="pokemon_abilities_299">
         <item>33</item>
         <item>44</item>
         <item>20</item>
-    </int-array>
-    <int-array name="pokemon_abilities_300">
+    </integer-array>
+    <integer-array name="pokemon_abilities_300">
         <item>33</item>
         <item>44</item>
         <item>20</item>
-    </int-array>
-    <int-array name="pokemon_abilities_301">
+    </integer-array>
+    <integer-array name="pokemon_abilities_301">
         <item>34</item>
         <item>48</item>
         <item>124</item>
-    </int-array>
-    <int-array name="pokemon_abilities_302">
+    </integer-array>
+    <integer-array name="pokemon_abilities_302">
         <item>34</item>
         <item>48</item>
         <item>124</item>
-    </int-array>
-    <int-array name="pokemon_abilities_303">
+    </integer-array>
+    <integer-array name="pokemon_abilities_303">
         <item>34</item>
         <item>48</item>
         <item>124</item>
-    </int-array>
-    <int-array name="pokemon_abilities_304">
+    </integer-array>
+    <integer-array name="pokemon_abilities_304">
         <item>62</item>
         <item>0</item>
         <item>113</item>
-    </int-array>
-    <int-array name="pokemon_abilities_305">
+    </integer-array>
+    <integer-array name="pokemon_abilities_305">
         <item>62</item>
         <item>0</item>
         <item>113</item>
-    </int-array>
-    <int-array name="pokemon_abilities_306">
+    </integer-array>
+    <integer-array name="pokemon_abilities_306">
         <item>51</item>
         <item>0</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_307">
+    </integer-array>
+    <integer-array name="pokemon_abilities_307">
         <item>51</item>
         <item>0</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_308">
+    </integer-array>
+    <integer-array name="pokemon_abilities_308">
         <item>28</item>
         <item>36</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_309">
+    </integer-array>
+    <integer-array name="pokemon_abilities_309">
         <item>28</item>
         <item>36</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_310">
+    </integer-array>
+    <integer-array name="pokemon_abilities_310">
         <item>28</item>
         <item>36</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_311">
+    </integer-array>
+    <integer-array name="pokemon_abilities_311">
         <item>33</item>
         <item>0</item>
         <item>44</item>
-    </int-array>
-    <int-array name="pokemon_abilities_312">
+    </integer-array>
+    <integer-array name="pokemon_abilities_312">
         <item>22</item>
         <item>0</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_313">
+    </integer-array>
+    <integer-array name="pokemon_abilities_313">
         <item>27</item>
         <item>90</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_314">
+    </integer-array>
+    <integer-array name="pokemon_abilities_314">
         <item>27</item>
         <item>90</item>
         <item>101</item>
-    </int-array>
-    <int-array name="pokemon_abilities_315">
+    </integer-array>
+    <integer-array name="pokemon_abilities_315">
         <item>54</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_316">
+    </integer-array>
+    <integer-array name="pokemon_abilities_316">
         <item>72</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_317">
+    </integer-array>
+    <integer-array name="pokemon_abilities_317">
         <item>54</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_318">
+    </integer-array>
+    <integer-array name="pokemon_abilities_318">
         <item>14</item>
         <item>0</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_319">
+    </integer-array>
+    <integer-array name="pokemon_abilities_319">
         <item>3</item>
         <item>0</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_320">
+    </integer-array>
+    <integer-array name="pokemon_abilities_320">
         <item>25</item>
         <item>0</item>
         <item>25</item>
-    </int-array>
-    <int-array name="pokemon_abilities_321">
+    </integer-array>
+    <integer-array name="pokemon_abilities_321">
         <item>43</item>
         <item>0</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_322">
+    </integer-array>
+    <integer-array name="pokemon_abilities_322">
         <item>43</item>
         <item>0</item>
         <item>113</item>
-    </int-array>
-    <int-array name="pokemon_abilities_323">
+    </integer-array>
+    <integer-array name="pokemon_abilities_323">
         <item>43</item>
         <item>0</item>
         <item>113</item>
-    </int-array>
-    <int-array name="pokemon_abilities_324">
+    </integer-array>
+    <integer-array name="pokemon_abilities_324">
         <item>47</item>
         <item>62</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_325">
+    </integer-array>
+    <integer-array name="pokemon_abilities_325">
         <item>47</item>
         <item>62</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_326">
+    </integer-array>
+    <integer-array name="pokemon_abilities_326">
         <item>47</item>
         <item>37</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_327">
+    </integer-array>
+    <integer-array name="pokemon_abilities_327">
         <item>5</item>
         <item>42</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_328">
+    </integer-array>
+    <integer-array name="pokemon_abilities_328">
         <item>56</item>
         <item>96</item>
         <item>147</item>
-    </int-array>
-    <int-array name="pokemon_abilities_329">
+    </integer-array>
+    <integer-array name="pokemon_abilities_329">
         <item>56</item>
         <item>96</item>
         <item>147</item>
-    </int-array>
-    <int-array name="pokemon_abilities_330">
+    </integer-array>
+    <integer-array name="pokemon_abilities_330">
         <item>51</item>
         <item>100</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_331">
+    </integer-array>
+    <integer-array name="pokemon_abilities_331">
         <item>52</item>
         <item>22</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_332">
+    </integer-array>
+    <integer-array name="pokemon_abilities_332">
         <item>5</item>
         <item>69</item>
         <item>134</item>
-    </int-array>
-    <int-array name="pokemon_abilities_333">
+    </integer-array>
+    <integer-array name="pokemon_abilities_333">
         <item>5</item>
         <item>69</item>
         <item>134</item>
-    </int-array>
-    <int-array name="pokemon_abilities_334">
+    </integer-array>
+    <integer-array name="pokemon_abilities_334">
         <item>5</item>
         <item>69</item>
         <item>134</item>
-    </int-array>
-    <int-array name="pokemon_abilities_335">
+    </integer-array>
+    <integer-array name="pokemon_abilities_335">
         <item>74</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_336">
+    </integer-array>
+    <integer-array name="pokemon_abilities_336">
         <item>74</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_337">
+    </integer-array>
+    <integer-array name="pokemon_abilities_337">
         <item>9</item>
         <item>31</item>
         <item>58</item>
-    </int-array>
-    <int-array name="pokemon_abilities_338">
+    </integer-array>
+    <integer-array name="pokemon_abilities_338">
         <item>9</item>
         <item>31</item>
         <item>58</item>
-    </int-array>
-    <int-array name="pokemon_abilities_339">
+    </integer-array>
+    <integer-array name="pokemon_abilities_339">
         <item>57</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_340">
+    </integer-array>
+    <integer-array name="pokemon_abilities_340">
         <item>58</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_341">
+    </integer-array>
+    <integer-array name="pokemon_abilities_341">
         <item>35</item>
         <item>68</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_342">
+    </integer-array>
+    <integer-array name="pokemon_abilities_342">
         <item>12</item>
         <item>110</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_343">
+    </integer-array>
+    <integer-array name="pokemon_abilities_343">
         <item>30</item>
         <item>38</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_344">
+    </integer-array>
+    <integer-array name="pokemon_abilities_344">
         <item>64</item>
         <item>60</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_345">
+    </integer-array>
+    <integer-array name="pokemon_abilities_345">
         <item>64</item>
         <item>60</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_346">
+    </integer-array>
+    <integer-array name="pokemon_abilities_346">
         <item>24</item>
         <item>0</item>
         <item>3</item>
-    </int-array>
-    <int-array name="pokemon_abilities_347">
+    </integer-array>
+    <integer-array name="pokemon_abilities_347">
         <item>24</item>
         <item>0</item>
         <item>3</item>
-    </int-array>
-    <int-array name="pokemon_abilities_348">
+    </integer-array>
+    <integer-array name="pokemon_abilities_348">
         <item>41</item>
         <item>12</item>
         <item>46</item>
-    </int-array>
-    <int-array name="pokemon_abilities_349">
+    </integer-array>
+    <integer-array name="pokemon_abilities_349">
         <item>41</item>
         <item>12</item>
         <item>46</item>
-    </int-array>
-    <int-array name="pokemon_abilities_350">
+    </integer-array>
+    <integer-array name="pokemon_abilities_350">
         <item>12</item>
         <item>86</item>
         <item>20</item>
-    </int-array>
-    <int-array name="pokemon_abilities_351">
+    </integer-array>
+    <integer-array name="pokemon_abilities_351">
         <item>40</item>
         <item>116</item>
         <item>83</item>
-    </int-array>
-    <int-array name="pokemon_abilities_352">
+    </integer-array>
+    <integer-array name="pokemon_abilities_352">
         <item>73</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_353">
+    </integer-array>
+    <integer-array name="pokemon_abilities_353">
         <item>47</item>
         <item>20</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_354">
+    </integer-array>
+    <integer-array name="pokemon_abilities_354">
         <item>47</item>
         <item>20</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_355">
+    </integer-array>
+    <integer-array name="pokemon_abilities_355">
         <item>20</item>
         <item>77</item>
         <item>126</item>
-    </int-array>
-    <int-array name="pokemon_abilities_356">
+    </integer-array>
+    <integer-array name="pokemon_abilities_356">
         <item>52</item>
         <item>71</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_357">
+    </integer-array>
+    <integer-array name="pokemon_abilities_357">
         <item>26</item>
         <item>0</item>
         <item>26</item>
-    </int-array>
-    <int-array name="pokemon_abilities_358">
+    </integer-array>
+    <integer-array name="pokemon_abilities_358">
         <item>26</item>
         <item>0</item>
         <item>26</item>
-    </int-array>
-    <int-array name="pokemon_abilities_359">
+    </integer-array>
+    <integer-array name="pokemon_abilities_359">
         <item>8</item>
         <item>0</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_360">
+    </integer-array>
+    <integer-array name="pokemon_abilities_360">
         <item>8</item>
         <item>0</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_361">
+    </integer-array>
+    <integer-array name="pokemon_abilities_361">
         <item>30</item>
         <item>0</item>
         <item>13</item>
-    </int-array>
-    <int-array name="pokemon_abilities_362">
+    </integer-array>
+    <integer-array name="pokemon_abilities_362">
         <item>30</item>
         <item>0</item>
         <item>13</item>
-    </int-array>
-    <int-array name="pokemon_abilities_363">
+    </integer-array>
+    <integer-array name="pokemon_abilities_363">
         <item>17</item>
         <item>0</item>
         <item>137</item>
-    </int-array>
-    <int-array name="pokemon_abilities_364">
+    </integer-array>
+    <integer-array name="pokemon_abilities_364">
         <item>61</item>
         <item>0</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_365">
+    </integer-array>
+    <integer-array name="pokemon_abilities_365">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_366">
+    </integer-array>
+    <integer-array name="pokemon_abilities_366">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_367">
+    </integer-array>
+    <integer-array name="pokemon_abilities_367">
         <item>12</item>
         <item>107</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_368">
+    </integer-array>
+    <integer-array name="pokemon_abilities_368">
         <item>12</item>
         <item>107</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_369">
+    </integer-array>
+    <integer-array name="pokemon_abilities_369">
         <item>52</item>
         <item>75</item>
         <item>91</item>
-    </int-array>
-    <int-array name="pokemon_abilities_370">
+    </integer-array>
+    <integer-array name="pokemon_abilities_370">
         <item>52</item>
         <item>75</item>
         <item>91</item>
-    </int-array>
-    <int-array name="pokemon_abilities_371">
+    </integer-array>
+    <integer-array name="pokemon_abilities_371">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_372">
+    </integer-array>
+    <integer-array name="pokemon_abilities_372">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_373">
+    </integer-array>
+    <integer-array name="pokemon_abilities_373">
         <item>21</item>
         <item>0</item>
         <item>114</item>
-    </int-array>
-    <int-array name="pokemon_abilities_374">
+    </integer-array>
+    <integer-array name="pokemon_abilities_374">
         <item>21</item>
         <item>0</item>
         <item>114</item>
-    </int-array>
-    <int-array name="pokemon_abilities_375">
+    </integer-array>
+    <integer-array name="pokemon_abilities_375">
         <item>4</item>
         <item>0</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_376">
+    </integer-array>
+    <integer-array name="pokemon_abilities_376">
         <item>4</item>
         <item>0</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_377">
+    </integer-array>
+    <integer-array name="pokemon_abilities_377">
         <item>33</item>
         <item>0</item>
         <item>91</item>
-    </int-array>
-    <int-array name="pokemon_abilities_378">
+    </integer-array>
+    <integer-array name="pokemon_abilities_378">
         <item>63</item>
         <item>0</item>
         <item>56</item>
-    </int-array>
-    <int-array name="pokemon_abilities_379">
+    </integer-array>
+    <integer-array name="pokemon_abilities_379">
         <item>59</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_380">
+    </integer-array>
+    <integer-array name="pokemon_abilities_380">
         <item>59</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_381">
+    </integer-array>
+    <integer-array name="pokemon_abilities_381">
         <item>59</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_382">
+    </integer-array>
+    <integer-array name="pokemon_abilities_382">
         <item>59</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_383">
+    </integer-array>
+    <integer-array name="pokemon_abilities_383">
         <item>16</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_384">
+    </integer-array>
+    <integer-array name="pokemon_abilities_384">
         <item>15</item>
         <item>119</item>
         <item>130</item>
-    </int-array>
-    <int-array name="pokemon_abilities_385">
+    </integer-array>
+    <integer-array name="pokemon_abilities_385">
         <item>15</item>
         <item>119</item>
         <item>130</item>
-    </int-array>
-    <int-array name="pokemon_abilities_386">
+    </integer-array>
+    <integer-array name="pokemon_abilities_386">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_387">
+    </integer-array>
+    <integer-array name="pokemon_abilities_387">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_388">
+    </integer-array>
+    <integer-array name="pokemon_abilities_388">
         <item>34</item>
         <item>94</item>
         <item>139</item>
-    </int-array>
-    <int-array name="pokemon_abilities_389">
+    </integer-array>
+    <integer-array name="pokemon_abilities_389">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_390">
+    </integer-array>
+    <integer-array name="pokemon_abilities_390">
         <item>46</item>
         <item>105</item>
         <item>154</item>
-    </int-array>
-    <int-array name="pokemon_abilities_391">
+    </integer-array>
+    <integer-array name="pokemon_abilities_391">
         <item>23</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_392">
+    </integer-array>
+    <integer-array name="pokemon_abilities_392">
         <item>39</item>
         <item>115</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_393">
+    </integer-array>
+    <integer-array name="pokemon_abilities_393">
         <item>39</item>
         <item>115</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_394">
+    </integer-array>
+    <integer-array name="pokemon_abilities_394">
         <item>47</item>
         <item>115</item>
         <item>12</item>
-    </int-array>
-    <int-array name="pokemon_abilities_395">
+    </integer-array>
+    <integer-array name="pokemon_abilities_395">
         <item>47</item>
         <item>115</item>
         <item>12</item>
-    </int-array>
-    <int-array name="pokemon_abilities_396">
+    </integer-array>
+    <integer-array name="pokemon_abilities_396">
         <item>47</item>
         <item>115</item>
         <item>12</item>
-    </int-array>
-    <int-array name="pokemon_abilities_397">
+    </integer-array>
+    <integer-array name="pokemon_abilities_397">
         <item>75</item>
         <item>0</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_398">
+    </integer-array>
+    <integer-array name="pokemon_abilities_398">
         <item>33</item>
         <item>0</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_399">
+    </integer-array>
+    <integer-array name="pokemon_abilities_399">
         <item>33</item>
         <item>0</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_400">
+    </integer-array>
+    <integer-array name="pokemon_abilities_400">
         <item>33</item>
         <item>69</item>
         <item>5</item>
-    </int-array>
-    <int-array name="pokemon_abilities_401">
+    </integer-array>
+    <integer-array name="pokemon_abilities_401">
         <item>33</item>
         <item>0</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_402">
+    </integer-array>
+    <integer-array name="pokemon_abilities_402">
         <item>69</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_403">
+    </integer-array>
+    <integer-array name="pokemon_abilities_403">
         <item>69</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_404">
+    </integer-array>
+    <integer-array name="pokemon_abilities_404">
         <item>22</item>
         <item>0</item>
         <item>153</item>
-    </int-array>
-    <int-array name="pokemon_abilities_405">
+    </integer-array>
+    <integer-array name="pokemon_abilities_405">
         <item>29</item>
         <item>0</item>
         <item>135</item>
-    </int-array>
-    <int-array name="pokemon_abilities_406">
+    </integer-array>
+    <integer-array name="pokemon_abilities_406">
         <item>29</item>
         <item>0</item>
         <item>135</item>
-    </int-array>
-    <int-array name="pokemon_abilities_407">
+    </integer-array>
+    <integer-array name="pokemon_abilities_407">
         <item>29</item>
         <item>0</item>
         <item>135</item>
-    </int-array>
-    <int-array name="pokemon_abilities_408">
+    </integer-array>
+    <integer-array name="pokemon_abilities_408">
         <item>29</item>
         <item>0</item>
         <item>5</item>
-    </int-array>
-    <int-array name="pokemon_abilities_409">
+    </integer-array>
+    <integer-array name="pokemon_abilities_409">
         <item>29</item>
         <item>0</item>
         <item>115</item>
-    </int-array>
-    <int-array name="pokemon_abilities_410">
+    </integer-array>
+    <integer-array name="pokemon_abilities_410">
         <item>29</item>
         <item>0</item>
         <item>135</item>
-    </int-array>
-    <int-array name="pokemon_abilities_411">
+    </integer-array>
+    <integer-array name="pokemon_abilities_411">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_412">
+    </integer-array>
+    <integer-array name="pokemon_abilities_412">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_413">
+    </integer-array>
+    <integer-array name="pokemon_abilities_413">
         <item>2</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_414">
+    </integer-array>
+    <integer-array name="pokemon_abilities_414">
         <item>70</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_415">
+    </integer-array>
+    <integer-array name="pokemon_abilities_415">
         <item>76</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_416">
+    </integer-array>
+    <integer-array name="pokemon_abilities_416">
         <item>32</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_417">
+    </integer-array>
+    <integer-array name="pokemon_abilities_417">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_418">
+    </integer-array>
+    <integer-array name="pokemon_abilities_418">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_419">
+    </integer-array>
+    <integer-array name="pokemon_abilities_419">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_420">
+    </integer-array>
+    <integer-array name="pokemon_abilities_420">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_421">
+    </integer-array>
+    <integer-array name="pokemon_abilities_421">
         <item>65</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_422">
+    </integer-array>
+    <integer-array name="pokemon_abilities_422">
         <item>65</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_423">
+    </integer-array>
+    <integer-array name="pokemon_abilities_423">
         <item>65</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_424">
+    </integer-array>
+    <integer-array name="pokemon_abilities_424">
         <item>66</item>
         <item>0</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_425">
+    </integer-array>
+    <integer-array name="pokemon_abilities_425">
         <item>66</item>
         <item>0</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_426">
+    </integer-array>
+    <integer-array name="pokemon_abilities_426">
         <item>66</item>
         <item>0</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_427">
+    </integer-array>
+    <integer-array name="pokemon_abilities_427">
         <item>67</item>
         <item>0</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_428">
+    </integer-array>
+    <integer-array name="pokemon_abilities_428">
         <item>67</item>
         <item>0</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_429">
+    </integer-array>
+    <integer-array name="pokemon_abilities_429">
         <item>67</item>
         <item>0</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_430">
+    </integer-array>
+    <integer-array name="pokemon_abilities_430">
         <item>51</item>
         <item>0</item>
         <item>51</item>
-    </int-array>
-    <int-array name="pokemon_abilities_431">
+    </integer-array>
+    <integer-array name="pokemon_abilities_431">
         <item>22</item>
         <item>0</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_432">
+    </integer-array>
+    <integer-array name="pokemon_abilities_432">
         <item>22</item>
         <item>0</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_433">
+    </integer-array>
+    <integer-array name="pokemon_abilities_433">
         <item>86</item>
         <item>109</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_434">
+    </integer-array>
+    <integer-array name="pokemon_abilities_434">
         <item>86</item>
         <item>109</item>
         <item>141</item>
-    </int-array>
-    <int-array name="pokemon_abilities_435">
+    </integer-array>
+    <integer-array name="pokemon_abilities_435">
         <item>61</item>
         <item>0</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_436">
+    </integer-array>
+    <integer-array name="pokemon_abilities_436">
         <item>68</item>
         <item>0</item>
         <item>101</item>
-    </int-array>
-    <int-array name="pokemon_abilities_437">
+    </integer-array>
+    <integer-array name="pokemon_abilities_437">
         <item>79</item>
         <item>22</item>
         <item>62</item>
-    </int-array>
-    <int-array name="pokemon_abilities_438">
+    </integer-array>
+    <integer-array name="pokemon_abilities_438">
         <item>79</item>
         <item>22</item>
         <item>62</item>
-    </int-array>
-    <int-array name="pokemon_abilities_439">
+    </integer-array>
+    <integer-array name="pokemon_abilities_439">
         <item>79</item>
         <item>22</item>
         <item>62</item>
-    </int-array>
-    <int-array name="pokemon_abilities_440">
+    </integer-array>
+    <integer-array name="pokemon_abilities_440">
         <item>30</item>
         <item>38</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_441">
+    </integer-array>
+    <integer-array name="pokemon_abilities_441">
         <item>30</item>
         <item>38</item>
         <item>101</item>
-    </int-array>
-    <int-array name="pokemon_abilities_442">
+    </integer-array>
+    <integer-array name="pokemon_abilities_442">
         <item>104</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_443">
+    </integer-array>
+    <integer-array name="pokemon_abilities_443">
         <item>104</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_444">
+    </integer-array>
+    <integer-array name="pokemon_abilities_444">
         <item>5</item>
         <item>0</item>
         <item>43</item>
-    </int-array>
-    <int-array name="pokemon_abilities_445">
+    </integer-array>
+    <integer-array name="pokemon_abilities_445">
         <item>5</item>
         <item>0</item>
         <item>43</item>
-    </int-array>
-    <int-array name="pokemon_abilities_446">
+    </integer-array>
+    <integer-array name="pokemon_abilities_446">
         <item>61</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_447">
+    </integer-array>
+    <integer-array name="pokemon_abilities_447">
         <item>61</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_448">
+    </integer-array>
+    <integer-array name="pokemon_abilities_448">
         <item>61</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_449">
+    </integer-array>
+    <integer-array name="pokemon_abilities_449">
         <item>107</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_450">
+    </integer-array>
+    <integer-array name="pokemon_abilities_450">
         <item>107</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_451">
+    </integer-array>
+    <integer-array name="pokemon_abilities_451">
         <item>107</item>
         <item>0</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_452">
+    </integer-array>
+    <integer-array name="pokemon_abilities_452">
         <item>68</item>
         <item>0</item>
         <item>110</item>
-    </int-array>
-    <int-array name="pokemon_abilities_453">
+    </integer-array>
+    <integer-array name="pokemon_abilities_453">
         <item>118</item>
         <item>0</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_454">
+    </integer-array>
+    <integer-array name="pokemon_abilities_454">
         <item>46</item>
         <item>0</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_455">
+    </integer-array>
+    <integer-array name="pokemon_abilities_455">
         <item>50</item>
         <item>53</item>
         <item>10</item>
-    </int-array>
-    <int-array name="pokemon_abilities_456">
+    </integer-array>
+    <integer-array name="pokemon_abilities_456">
         <item>33</item>
         <item>0</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_457">
+    </integer-array>
+    <integer-array name="pokemon_abilities_457">
         <item>33</item>
         <item>0</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_458">
+    </integer-array>
+    <integer-array name="pokemon_abilities_458">
         <item>34</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_459">
+    </integer-array>
+    <integer-array name="pokemon_abilities_459">
         <item>122</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_460">
+    </integer-array>
+    <integer-array name="pokemon_abilities_460">
         <item>122</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_461">
+    </integer-array>
+    <integer-array name="pokemon_abilities_461">
         <item>60</item>
         <item>114</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_462">
+    </integer-array>
+    <integer-array name="pokemon_abilities_462">
         <item>60</item>
         <item>114</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_463">
+    </integer-array>
+    <integer-array name="pokemon_abilities_463">
         <item>60</item>
         <item>114</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_464">
+    </integer-array>
+    <integer-array name="pokemon_abilities_464">
         <item>60</item>
         <item>114</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_465">
+    </integer-array>
+    <integer-array name="pokemon_abilities_465">
         <item>101</item>
         <item>53</item>
         <item>92</item>
-    </int-array>
-    <int-array name="pokemon_abilities_466">
+    </integer-array>
+    <integer-array name="pokemon_abilities_466">
         <item>106</item>
         <item>84</item>
         <item>138</item>
-    </int-array>
-    <int-array name="pokemon_abilities_467">
+    </integer-array>
+    <integer-array name="pokemon_abilities_467">
         <item>106</item>
         <item>84</item>
         <item>138</item>
-    </int-array>
-    <int-array name="pokemon_abilities_468">
+    </integer-array>
+    <integer-array name="pokemon_abilities_468">
         <item>50</item>
         <item>103</item>
         <item>7</item>
-    </int-array>
-    <int-array name="pokemon_abilities_469">
+    </integer-array>
+    <integer-array name="pokemon_abilities_469">
         <item>56</item>
         <item>103</item>
         <item>7</item>
-    </int-array>
-    <int-array name="pokemon_abilities_470">
+    </integer-array>
+    <integer-array name="pokemon_abilities_470">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_471">
+    </integer-array>
+    <integer-array name="pokemon_abilities_471">
         <item>15</item>
         <item>105</item>
         <item>153</item>
-    </int-array>
-    <int-array name="pokemon_abilities_472">
+    </integer-array>
+    <integer-array name="pokemon_abilities_472">
         <item>7</item>
         <item>20</item>
         <item>51</item>
-    </int-array>
-    <int-array name="pokemon_abilities_473">
+    </integer-array>
+    <integer-array name="pokemon_abilities_473">
         <item>47</item>
         <item>20</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_474">
+    </integer-array>
+    <integer-array name="pokemon_abilities_474">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_475">
+    </integer-array>
+    <integer-array name="pokemon_abilities_475">
         <item>1</item>
         <item>106</item>
         <item>51</item>
-    </int-array>
-    <int-array name="pokemon_abilities_476">
+    </integer-array>
+    <integer-array name="pokemon_abilities_476">
         <item>1</item>
         <item>106</item>
         <item>51</item>
-    </int-array>
-    <int-array name="pokemon_abilities_477">
+    </integer-array>
+    <integer-array name="pokemon_abilities_477">
         <item>26</item>
         <item>85</item>
         <item>134</item>
-    </int-array>
-    <int-array name="pokemon_abilities_478">
+    </integer-array>
+    <integer-array name="pokemon_abilities_478">
         <item>26</item>
         <item>85</item>
         <item>134</item>
-    </int-array>
-    <int-array name="pokemon_abilities_479">
+    </integer-array>
+    <integer-array name="pokemon_abilities_479">
         <item>5</item>
         <item>69</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_480">
+    </integer-array>
+    <integer-array name="pokemon_abilities_480">
         <item>43</item>
         <item>111</item>
         <item>101</item>
-    </int-array>
-    <int-array name="pokemon_abilities_481">
+    </integer-array>
+    <integer-array name="pokemon_abilities_481">
         <item>30</item>
         <item>32</item>
         <item>132</item>
-    </int-array>
-    <int-array name="pokemon_abilities_482">
+    </integer-array>
+    <integer-array name="pokemon_abilities_482">
         <item>51</item>
         <item>77</item>
         <item>145</item>
-    </int-array>
-    <int-array name="pokemon_abilities_483">
+    </integer-array>
+    <integer-array name="pokemon_abilities_483">
         <item>46</item>
         <item>0</item>
         <item>151</item>
-    </int-array>
-    <int-array name="pokemon_abilities_484">
+    </integer-array>
+    <integer-array name="pokemon_abilities_484">
         <item>8</item>
         <item>0</item>
         <item>24</item>
-    </int-array>
-    <int-array name="pokemon_abilities_485">
+    </integer-array>
+    <integer-array name="pokemon_abilities_485">
         <item>8</item>
         <item>0</item>
         <item>24</item>
-    </int-array>
-    <int-array name="pokemon_abilities_486">
+    </integer-array>
+    <integer-array name="pokemon_abilities_486">
         <item>8</item>
         <item>0</item>
         <item>24</item>
-    </int-array>
-    <int-array name="pokemon_abilities_487">
+    </integer-array>
+    <integer-array name="pokemon_abilities_487">
         <item>53</item>
         <item>47</item>
         <item>82</item>
-    </int-array>
-    <int-array name="pokemon_abilities_488">
+    </integer-array>
+    <integer-array name="pokemon_abilities_488">
         <item>80</item>
         <item>39</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_489">
+    </integer-array>
+    <integer-array name="pokemon_abilities_489">
         <item>80</item>
         <item>39</item>
         <item>154</item>
-    </int-array>
-    <int-array name="pokemon_abilities_490">
+    </integer-array>
+    <integer-array name="pokemon_abilities_490">
         <item>45</item>
         <item>0</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_491">
+    </integer-array>
+    <integer-array name="pokemon_abilities_491">
         <item>45</item>
         <item>0</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_492">
+    </integer-array>
+    <integer-array name="pokemon_abilities_492">
         <item>4</item>
         <item>97</item>
         <item>51</item>
-    </int-array>
-    <int-array name="pokemon_abilities_493">
+    </integer-array>
+    <integer-array name="pokemon_abilities_493">
         <item>4</item>
         <item>97</item>
         <item>51</item>
-    </int-array>
-    <int-array name="pokemon_abilities_494">
+    </integer-array>
+    <integer-array name="pokemon_abilities_494">
         <item>107</item>
         <item>87</item>
         <item>143</item>
-    </int-array>
-    <int-array name="pokemon_abilities_495">
+    </integer-array>
+    <integer-array name="pokemon_abilities_495">
         <item>107</item>
         <item>87</item>
         <item>143</item>
-    </int-array>
-    <int-array name="pokemon_abilities_496">
+    </integer-array>
+    <integer-array name="pokemon_abilities_496">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_497">
+    </integer-array>
+    <integer-array name="pokemon_abilities_497">
         <item>33</item>
         <item>114</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_498">
+    </integer-array>
+    <integer-array name="pokemon_abilities_498">
         <item>33</item>
         <item>114</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_499">
+    </integer-array>
+    <integer-array name="pokemon_abilities_499">
         <item>33</item>
         <item>11</item>
         <item>41</item>
-    </int-array>
-    <int-array name="pokemon_abilities_500">
+    </integer-array>
+    <integer-array name="pokemon_abilities_500">
         <item>117</item>
         <item>0</item>
         <item>43</item>
-    </int-array>
-    <int-array name="pokemon_abilities_501">
+    </integer-array>
+    <integer-array name="pokemon_abilities_501">
         <item>117</item>
         <item>0</item>
         <item>43</item>
-    </int-array>
-    <int-array name="pokemon_abilities_502">
+    </integer-array>
+    <integer-array name="pokemon_abilities_502">
         <item>46</item>
         <item>0</item>
         <item>124</item>
-    </int-array>
-    <int-array name="pokemon_abilities_503">
+    </integer-array>
+    <integer-array name="pokemon_abilities_503">
         <item>42</item>
         <item>5</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_504">
+    </integer-array>
+    <integer-array name="pokemon_abilities_504">
         <item>20</item>
         <item>12</item>
         <item>13</item>
-    </int-array>
-    <int-array name="pokemon_abilities_505">
+    </integer-array>
+    <integer-array name="pokemon_abilities_505">
         <item>31</item>
         <item>116</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_506">
+    </integer-array>
+    <integer-array name="pokemon_abilities_506">
         <item>34</item>
         <item>102</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_507">
+    </integer-array>
+    <integer-array name="pokemon_abilities_507">
         <item>78</item>
         <item>0</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_508">
+    </integer-array>
+    <integer-array name="pokemon_abilities_508">
         <item>49</item>
         <item>0</item>
         <item>72</item>
-    </int-array>
-    <int-array name="pokemon_abilities_509">
+    </integer-array>
+    <integer-array name="pokemon_abilities_509">
         <item>55</item>
         <item>32</item>
         <item>105</item>
-    </int-array>
-    <int-array name="pokemon_abilities_510">
+    </integer-array>
+    <integer-array name="pokemon_abilities_510">
         <item>3</item>
         <item>110</item>
         <item>119</item>
-    </int-array>
-    <int-array name="pokemon_abilities_511">
+    </integer-array>
+    <integer-array name="pokemon_abilities_511">
         <item>102</item>
         <item>0</item>
         <item>34</item>
-    </int-array>
-    <int-array name="pokemon_abilities_512">
+    </integer-array>
+    <integer-array name="pokemon_abilities_512">
         <item>81</item>
         <item>0</item>
         <item>115</item>
-    </int-array>
-    <int-array name="pokemon_abilities_513">
+    </integer-array>
+    <integer-array name="pokemon_abilities_513">
         <item>52</item>
         <item>8</item>
         <item>90</item>
-    </int-array>
-    <int-array name="pokemon_abilities_514">
+    </integer-array>
+    <integer-array name="pokemon_abilities_514">
         <item>12</item>
         <item>81</item>
         <item>47</item>
-    </int-array>
-    <int-array name="pokemon_abilities_515">
+    </integer-array>
+    <integer-array name="pokemon_abilities_515">
         <item>91</item>
         <item>88</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_516">
+    </integer-array>
+    <integer-array name="pokemon_abilities_516">
         <item>80</item>
         <item>0</item>
         <item>154</item>
-    </int-array>
-    <int-array name="pokemon_abilities_517">
+    </integer-array>
+    <integer-array name="pokemon_abilities_517">
         <item>5</item>
         <item>42</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_518">
+    </integer-array>
+    <integer-array name="pokemon_abilities_518">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_519">
+    </integer-array>
+    <integer-array name="pokemon_abilities_519">
         <item>81</item>
         <item>0</item>
         <item>130</item>
-    </int-array>
-    <int-array name="pokemon_abilities_520">
+    </integer-array>
+    <integer-array name="pokemon_abilities_520">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_521">
+    </integer-array>
+    <integer-array name="pokemon_abilities_521">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_522">
+    </integer-array>
+    <integer-array name="pokemon_abilities_522">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_523">
+    </integer-array>
+    <integer-array name="pokemon_abilities_523">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_524">
+    </integer-array>
+    <integer-array name="pokemon_abilities_524">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_525">
+    </integer-array>
+    <integer-array name="pokemon_abilities_525">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_526">
+    </integer-array>
+    <integer-array name="pokemon_abilities_526">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_527">
+    </integer-array>
+    <integer-array name="pokemon_abilities_527">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_528">
+    </integer-array>
+    <integer-array name="pokemon_abilities_528">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_529">
+    </integer-array>
+    <integer-array name="pokemon_abilities_529">
         <item>46</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_530">
+    </integer-array>
+    <integer-array name="pokemon_abilities_530">
         <item>46</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_531">
+    </integer-array>
+    <integer-array name="pokemon_abilities_531">
         <item>18</item>
         <item>0</item>
         <item>49</item>
-    </int-array>
-    <int-array name="pokemon_abilities_532">
+    </integer-array>
+    <integer-array name="pokemon_abilities_532">
         <item>112</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_533">
+    </integer-array>
+    <integer-array name="pokemon_abilities_533">
         <item>46</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_534">
+    </integer-array>
+    <integer-array name="pokemon_abilities_534">
         <item>26</item>
         <item>0</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_535">
+    </integer-array>
+    <integer-array name="pokemon_abilities_535">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_536">
+    </integer-array>
+    <integer-array name="pokemon_abilities_536">
         <item>93</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_537">
+    </integer-array>
+    <integer-array name="pokemon_abilities_537">
         <item>93</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_538">
+    </integer-array>
+    <integer-array name="pokemon_abilities_538">
         <item>123</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_539">
+    </integer-array>
+    <integer-array name="pokemon_abilities_539">
         <item>30</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_540">
+    </integer-array>
+    <integer-array name="pokemon_abilities_540">
         <item>32</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_541">
+    </integer-array>
+    <integer-array name="pokemon_abilities_541">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_542">
+    </integer-array>
+    <integer-array name="pokemon_abilities_542">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_543">
+    </integer-array>
+    <integer-array name="pokemon_abilities_543">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_544">
+    </integer-array>
+    <integer-array name="pokemon_abilities_544">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_545">
+    </integer-array>
+    <integer-array name="pokemon_abilities_545">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_546">
+    </integer-array>
+    <integer-array name="pokemon_abilities_546">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_547">
+    </integer-array>
+    <integer-array name="pokemon_abilities_547">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_548">
+    </integer-array>
+    <integer-array name="pokemon_abilities_548">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_549">
+    </integer-array>
+    <integer-array name="pokemon_abilities_549">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_550">
+    </integer-array>
+    <integer-array name="pokemon_abilities_550">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_551">
+    </integer-array>
+    <integer-array name="pokemon_abilities_551">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_552">
+    </integer-array>
+    <integer-array name="pokemon_abilities_552">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_553">
+    </integer-array>
+    <integer-array name="pokemon_abilities_553">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_554">
+    </integer-array>
+    <integer-array name="pokemon_abilities_554">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_555">
+    </integer-array>
+    <integer-array name="pokemon_abilities_555">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_556">
+    </integer-array>
+    <integer-array name="pokemon_abilities_556">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_557">
+    </integer-array>
+    <integer-array name="pokemon_abilities_557">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_558">
+    </integer-array>
+    <integer-array name="pokemon_abilities_558">
         <item>121</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_559">
+    </integer-array>
+    <integer-array name="pokemon_abilities_559">
         <item>162</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_560">
+    </integer-array>
+    <integer-array name="pokemon_abilities_560">
         <item>65</item>
         <item>0</item>
         <item>126</item>
-    </int-array>
-    <int-array name="pokemon_abilities_561">
+    </integer-array>
+    <integer-array name="pokemon_abilities_561">
         <item>65</item>
         <item>0</item>
         <item>126</item>
-    </int-array>
-    <int-array name="pokemon_abilities_562">
+    </integer-array>
+    <integer-array name="pokemon_abilities_562">
         <item>65</item>
         <item>0</item>
         <item>126</item>
-    </int-array>
-    <int-array name="pokemon_abilities_563">
+    </integer-array>
+    <integer-array name="pokemon_abilities_563">
         <item>66</item>
         <item>0</item>
         <item>47</item>
-    </int-array>
-    <int-array name="pokemon_abilities_564">
+    </integer-array>
+    <integer-array name="pokemon_abilities_564">
         <item>66</item>
         <item>0</item>
         <item>47</item>
-    </int-array>
-    <int-array name="pokemon_abilities_565">
+    </integer-array>
+    <integer-array name="pokemon_abilities_565">
         <item>66</item>
         <item>0</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_566">
+    </integer-array>
+    <integer-array name="pokemon_abilities_566">
         <item>67</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_567">
+    </integer-array>
+    <integer-array name="pokemon_abilities_567">
         <item>67</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_568">
+    </integer-array>
+    <integer-array name="pokemon_abilities_568">
         <item>67</item>
         <item>0</item>
         <item>75</item>
-    </int-array>
-    <int-array name="pokemon_abilities_569">
+    </integer-array>
+    <integer-array name="pokemon_abilities_569">
         <item>50</item>
         <item>51</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_570">
+    </integer-array>
+    <integer-array name="pokemon_abilities_570">
         <item>35</item>
         <item>51</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_571">
+    </integer-array>
+    <integer-array name="pokemon_abilities_571">
         <item>72</item>
         <item>53</item>
         <item>50</item>
-    </int-array>
-    <int-array name="pokemon_abilities_572">
+    </integer-array>
+    <integer-array name="pokemon_abilities_572">
         <item>22</item>
         <item>146</item>
         <item>113</item>
-    </int-array>
-    <int-array name="pokemon_abilities_573">
+    </integer-array>
+    <integer-array name="pokemon_abilities_573">
         <item>22</item>
         <item>146</item>
         <item>113</item>
-    </int-array>
-    <int-array name="pokemon_abilities_574">
+    </integer-array>
+    <integer-array name="pokemon_abilities_574">
         <item>7</item>
         <item>84</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_575">
+    </integer-array>
+    <integer-array name="pokemon_abilities_575">
         <item>7</item>
         <item>84</item>
         <item>158</item>
-    </int-array>
-    <int-array name="pokemon_abilities_576">
+    </integer-array>
+    <integer-array name="pokemon_abilities_576">
         <item>82</item>
         <item>0</item>
         <item>65</item>
-    </int-array>
-    <int-array name="pokemon_abilities_577">
+    </integer-array>
+    <integer-array name="pokemon_abilities_577">
         <item>82</item>
         <item>0</item>
         <item>65</item>
-    </int-array>
-    <int-array name="pokemon_abilities_578">
+    </integer-array>
+    <integer-array name="pokemon_abilities_578">
         <item>82</item>
         <item>0</item>
         <item>66</item>
-    </int-array>
-    <int-array name="pokemon_abilities_579">
+    </integer-array>
+    <integer-array name="pokemon_abilities_579">
         <item>82</item>
         <item>0</item>
         <item>66</item>
-    </int-array>
-    <int-array name="pokemon_abilities_580">
+    </integer-array>
+    <integer-array name="pokemon_abilities_580">
         <item>82</item>
         <item>0</item>
         <item>67</item>
-    </int-array>
-    <int-array name="pokemon_abilities_581">
+    </integer-array>
+    <integer-array name="pokemon_abilities_581">
         <item>82</item>
         <item>0</item>
         <item>67</item>
-    </int-array>
-    <int-array name="pokemon_abilities_582">
+    </integer-array>
+    <integer-array name="pokemon_abilities_582">
         <item>108</item>
         <item>28</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_583">
+    </integer-array>
+    <integer-array name="pokemon_abilities_583">
         <item>108</item>
         <item>28</item>
         <item>140</item>
-    </int-array>
-    <int-array name="pokemon_abilities_584">
+    </integer-array>
+    <integer-array name="pokemon_abilities_584">
         <item>145</item>
         <item>105</item>
         <item>79</item>
-    </int-array>
-    <int-array name="pokemon_abilities_585">
+    </integer-array>
+    <integer-array name="pokemon_abilities_585">
         <item>145</item>
         <item>105</item>
         <item>79</item>
-    </int-array>
-    <int-array name="pokemon_abilities_586">
+    </integer-array>
+    <integer-array name="pokemon_abilities_586">
         <item>145</item>
         <item>105</item>
         <item>79</item>
-    </int-array>
-    <int-array name="pokemon_abilities_587">
+    </integer-array>
+    <integer-array name="pokemon_abilities_587">
         <item>31</item>
         <item>78</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_588">
+    </integer-array>
+    <integer-array name="pokemon_abilities_588">
         <item>31</item>
         <item>78</item>
         <item>157</item>
-    </int-array>
-    <int-array name="pokemon_abilities_589">
+    </integer-array>
+    <integer-array name="pokemon_abilities_589">
         <item>5</item>
         <item>0</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_590">
+    </integer-array>
+    <integer-array name="pokemon_abilities_590">
         <item>5</item>
         <item>0</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_591">
+    </integer-array>
+    <integer-array name="pokemon_abilities_591">
         <item>5</item>
         <item>0</item>
         <item>159</item>
-    </int-array>
-    <int-array name="pokemon_abilities_592">
+    </integer-array>
+    <integer-array name="pokemon_abilities_592">
         <item>109</item>
         <item>103</item>
         <item>86</item>
-    </int-array>
-    <int-array name="pokemon_abilities_593">
+    </integer-array>
+    <integer-array name="pokemon_abilities_593">
         <item>109</item>
         <item>103</item>
         <item>86</item>
-    </int-array>
-    <int-array name="pokemon_abilities_594">
+    </integer-array>
+    <integer-array name="pokemon_abilities_594">
         <item>146</item>
         <item>159</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_595">
+    </integer-array>
+    <integer-array name="pokemon_abilities_595">
         <item>146</item>
         <item>159</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_596">
+    </integer-array>
+    <integer-array name="pokemon_abilities_596">
         <item>131</item>
         <item>144</item>
         <item>103</item>
-    </int-array>
-    <int-array name="pokemon_abilities_597">
+    </integer-array>
+    <integer-array name="pokemon_abilities_597">
         <item>62</item>
         <item>125</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_598">
+    </integer-array>
+    <integer-array name="pokemon_abilities_598">
         <item>62</item>
         <item>125</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_599">
+    </integer-array>
+    <integer-array name="pokemon_abilities_599">
         <item>62</item>
         <item>125</item>
         <item>89</item>
-    </int-array>
-    <int-array name="pokemon_abilities_600">
+    </integer-array>
+    <integer-array name="pokemon_abilities_600">
         <item>33</item>
         <item>93</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_601">
+    </integer-array>
+    <integer-array name="pokemon_abilities_601">
         <item>33</item>
         <item>93</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_602">
+    </integer-array>
+    <integer-array name="pokemon_abilities_602">
         <item>33</item>
         <item>143</item>
         <item>11</item>
-    </int-array>
-    <int-array name="pokemon_abilities_603">
+    </integer-array>
+    <integer-array name="pokemon_abilities_603">
         <item>62</item>
         <item>39</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_604">
+    </integer-array>
+    <integer-array name="pokemon_abilities_604">
         <item>5</item>
         <item>39</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_605">
+    </integer-array>
+    <integer-array name="pokemon_abilities_605">
         <item>68</item>
         <item>34</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_606">
+    </integer-array>
+    <integer-array name="pokemon_abilities_606">
         <item>102</item>
         <item>34</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_607">
+    </integer-array>
+    <integer-array name="pokemon_abilities_607">
         <item>68</item>
         <item>34</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_608">
+    </integer-array>
+    <integer-array name="pokemon_abilities_608">
         <item>38</item>
         <item>68</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_609">
+    </integer-array>
+    <integer-array name="pokemon_abilities_609">
         <item>38</item>
         <item>68</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_610">
+    </integer-array>
+    <integer-array name="pokemon_abilities_610">
         <item>38</item>
         <item>68</item>
         <item>95</item>
-    </int-array>
-    <int-array name="pokemon_abilities_611">
+    </integer-array>
+    <integer-array name="pokemon_abilities_611">
         <item>158</item>
         <item>151</item>
         <item>34</item>
-    </int-array>
-    <int-array name="pokemon_abilities_612">
+    </integer-array>
+    <integer-array name="pokemon_abilities_612">
         <item>158</item>
         <item>151</item>
         <item>34</item>
-    </int-array>
-    <int-array name="pokemon_abilities_613">
+    </integer-array>
+    <integer-array name="pokemon_abilities_613">
         <item>34</item>
         <item>20</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_614">
+    </integer-array>
+    <integer-array name="pokemon_abilities_614">
         <item>34</item>
         <item>20</item>
         <item>102</item>
-    </int-array>
-    <int-array name="pokemon_abilities_615">
+    </integer-array>
+    <integer-array name="pokemon_abilities_615">
         <item>120</item>
         <item>91</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_616">
+    </integer-array>
+    <integer-array name="pokemon_abilities_616">
         <item>69</item>
         <item>91</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_617">
+    </integer-array>
+    <integer-array name="pokemon_abilities_617">
         <item>22</item>
         <item>153</item>
         <item>83</item>
-    </int-array>
-    <int-array name="pokemon_abilities_618">
+    </integer-array>
+    <integer-array name="pokemon_abilities_618">
         <item>22</item>
         <item>153</item>
         <item>83</item>
-    </int-array>
-    <int-array name="pokemon_abilities_619">
+    </integer-array>
+    <integer-array name="pokemon_abilities_619">
         <item>22</item>
         <item>153</item>
         <item>83</item>
-    </int-array>
-    <int-array name="pokemon_abilities_620">
+    </integer-array>
+    <integer-array name="pokemon_abilities_620">
         <item>55</item>
         <item>0</item>
         <item>39</item>
-    </int-array>
-    <int-array name="pokemon_abilities_621">
+    </integer-array>
+    <integer-array name="pokemon_abilities_621">
         <item>125</item>
         <item>0</item>
         <item>161</item>
-    </int-array>
-    <int-array name="pokemon_abilities_622">
+    </integer-array>
+    <integer-array name="pokemon_abilities_622">
         <item>125</item>
         <item>0</item>
         <item>161</item>
-    </int-array>
-    <int-array name="pokemon_abilities_623">
+    </integer-array>
+    <integer-array name="pokemon_abilities_623">
         <item>11</item>
         <item>34</item>
         <item>114</item>
-    </int-array>
-    <int-array name="pokemon_abilities_624">
+    </integer-array>
+    <integer-array name="pokemon_abilities_624">
         <item>5</item>
         <item>75</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_625">
+    </integer-array>
+    <integer-array name="pokemon_abilities_625">
         <item>5</item>
         <item>75</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_626">
+    </integer-array>
+    <integer-array name="pokemon_abilities_626">
         <item>61</item>
         <item>153</item>
         <item>22</item>
-    </int-array>
-    <int-array name="pokemon_abilities_627">
+    </integer-array>
+    <integer-array name="pokemon_abilities_627">
         <item>61</item>
         <item>153</item>
         <item>22</item>
-    </int-array>
-    <int-array name="pokemon_abilities_628">
+    </integer-array>
+    <integer-array name="pokemon_abilities_628">
         <item>147</item>
         <item>98</item>
         <item>110</item>
-    </int-array>
-    <int-array name="pokemon_abilities_629">
+    </integer-array>
+    <integer-array name="pokemon_abilities_629">
         <item>152</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_630">
+    </integer-array>
+    <integer-array name="pokemon_abilities_630">
         <item>152</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_631">
+    </integer-array>
+    <integer-array name="pokemon_abilities_631">
         <item>116</item>
         <item>5</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_632">
+    </integer-array>
+    <integer-array name="pokemon_abilities_632">
         <item>116</item>
         <item>5</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_633">
+    </integer-array>
+    <integer-array name="pokemon_abilities_633">
         <item>129</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_634">
+    </integer-array>
+    <integer-array name="pokemon_abilities_634">
         <item>129</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_635">
+    </integer-array>
+    <integer-array name="pokemon_abilities_635">
         <item>1</item>
         <item>60</item>
         <item>106</item>
-    </int-array>
-    <int-array name="pokemon_abilities_636">
+    </integer-array>
+    <integer-array name="pokemon_abilities_636">
         <item>1</item>
         <item>133</item>
         <item>106</item>
-    </int-array>
-    <int-array name="pokemon_abilities_637">
+    </integer-array>
+    <integer-array name="pokemon_abilities_637">
         <item>149</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_638">
+    </integer-array>
+    <integer-array name="pokemon_abilities_638">
         <item>149</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_639">
+    </integer-array>
+    <integer-array name="pokemon_abilities_639">
         <item>56</item>
         <item>101</item>
         <item>92</item>
-    </int-array>
-    <int-array name="pokemon_abilities_640">
+    </integer-array>
+    <integer-array name="pokemon_abilities_640">
         <item>56</item>
         <item>101</item>
         <item>92</item>
-    </int-array>
-    <int-array name="pokemon_abilities_641">
+    </integer-array>
+    <integer-array name="pokemon_abilities_641">
         <item>119</item>
         <item>0</item>
         <item>23</item>
-    </int-array>
-    <int-array name="pokemon_abilities_642">
+    </integer-array>
+    <integer-array name="pokemon_abilities_642">
         <item>119</item>
         <item>0</item>
         <item>23</item>
-    </int-array>
-    <int-array name="pokemon_abilities_643">
+    </integer-array>
+    <integer-array name="pokemon_abilities_643">
         <item>119</item>
         <item>0</item>
         <item>23</item>
-    </int-array>
-    <int-array name="pokemon_abilities_644">
+    </integer-array>
+    <integer-array name="pokemon_abilities_644">
         <item>142</item>
         <item>98</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_645">
+    </integer-array>
+    <integer-array name="pokemon_abilities_645">
         <item>142</item>
         <item>98</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_646">
+    </integer-array>
+    <integer-array name="pokemon_abilities_646">
         <item>142</item>
         <item>98</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_647">
+    </integer-array>
+    <integer-array name="pokemon_abilities_647">
         <item>51</item>
         <item>145</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_648">
+    </integer-array>
+    <integer-array name="pokemon_abilities_648">
         <item>51</item>
         <item>145</item>
         <item>93</item>
-    </int-array>
-    <int-array name="pokemon_abilities_649">
+    </integer-array>
+    <integer-array name="pokemon_abilities_649">
         <item>115</item>
         <item>0</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_650">
+    </integer-array>
+    <integer-array name="pokemon_abilities_650">
         <item>115</item>
         <item>0</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_651">
+    </integer-array>
+    <integer-array name="pokemon_abilities_651">
         <item>115</item>
         <item>0</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_652">
+    </integer-array>
+    <integer-array name="pokemon_abilities_652">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_653">
+    </integer-array>
+    <integer-array name="pokemon_abilities_653">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_654">
+    </integer-array>
+    <integer-array name="pokemon_abilities_654">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_655">
+    </integer-array>
+    <integer-array name="pokemon_abilities_655">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_656">
+    </integer-array>
+    <integer-array name="pokemon_abilities_656">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_657">
+    </integer-array>
+    <integer-array name="pokemon_abilities_657">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_658">
+    </integer-array>
+    <integer-array name="pokemon_abilities_658">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_659">
+    </integer-array>
+    <integer-array name="pokemon_abilities_659">
         <item>34</item>
         <item>157</item>
         <item>32</item>
-    </int-array>
-    <int-array name="pokemon_abilities_660">
+    </integer-array>
+    <integer-array name="pokemon_abilities_660">
         <item>9</item>
         <item>0</item>
         <item>78</item>
-    </int-array>
-    <int-array name="pokemon_abilities_661">
+    </integer-array>
+    <integer-array name="pokemon_abilities_661">
         <item>68</item>
         <item>61</item>
         <item>99</item>
-    </int-array>
-    <int-array name="pokemon_abilities_662">
+    </integer-array>
+    <integer-array name="pokemon_abilities_662">
         <item>68</item>
         <item>75</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_663">
+    </integer-array>
+    <integer-array name="pokemon_abilities_663">
         <item>27</item>
         <item>0</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_664">
+    </integer-array>
+    <integer-array name="pokemon_abilities_664">
         <item>27</item>
         <item>0</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_665">
+    </integer-array>
+    <integer-array name="pokemon_abilities_665">
         <item>11</item>
         <item>130</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_666">
+    </integer-array>
+    <integer-array name="pokemon_abilities_666">
         <item>11</item>
         <item>130</item>
         <item>6</item>
-    </int-array>
-    <int-array name="pokemon_abilities_667">
+    </integer-array>
+    <integer-array name="pokemon_abilities_667">
         <item>131</item>
         <item>93</item>
         <item>144</item>
-    </int-array>
-    <int-array name="pokemon_abilities_668">
+    </integer-array>
+    <integer-array name="pokemon_abilities_668">
         <item>14</item>
         <item>127</item>
         <item>68</item>
-    </int-array>
-    <int-array name="pokemon_abilities_669">
+    </integer-array>
+    <integer-array name="pokemon_abilities_669">
         <item>14</item>
         <item>127</item>
         <item>68</item>
-    </int-array>
-    <int-array name="pokemon_abilities_670">
+    </integer-array>
+    <integer-array name="pokemon_abilities_670">
         <item>160</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_671">
+    </integer-array>
+    <integer-array name="pokemon_abilities_671">
         <item>160</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_672">
+    </integer-array>
+    <integer-array name="pokemon_abilities_672">
         <item>57</item>
         <item>58</item>
         <item>29</item>
-    </int-array>
-    <int-array name="pokemon_abilities_673">
+    </integer-array>
+    <integer-array name="pokemon_abilities_673">
         <item>57</item>
         <item>58</item>
         <item>29</item>
-    </int-array>
-    <int-array name="pokemon_abilities_674">
+    </integer-array>
+    <integer-array name="pokemon_abilities_674">
         <item>57</item>
         <item>58</item>
         <item>29</item>
-    </int-array>
-    <int-array name="pokemon_abilities_675">
+    </integer-array>
+    <integer-array name="pokemon_abilities_675">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_676">
+    </integer-array>
+    <integer-array name="pokemon_abilities_676">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_677">
+    </integer-array>
+    <integer-array name="pokemon_abilities_677">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_678">
+    </integer-array>
+    <integer-array name="pokemon_abilities_678">
         <item>140</item>
         <item>28</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_679">
+    </integer-array>
+    <integer-array name="pokemon_abilities_679">
         <item>140</item>
         <item>28</item>
         <item>148</item>
-    </int-array>
-    <int-array name="pokemon_abilities_680">
+    </integer-array>
+    <integer-array name="pokemon_abilities_680">
         <item>18</item>
         <item>49</item>
         <item>23</item>
-    </int-array>
-    <int-array name="pokemon_abilities_681">
+    </integer-array>
+    <integer-array name="pokemon_abilities_681">
         <item>18</item>
         <item>49</item>
         <item>23</item>
-    </int-array>
-    <int-array name="pokemon_abilities_682">
+    </integer-array>
+    <integer-array name="pokemon_abilities_682">
         <item>18</item>
         <item>49</item>
         <item>23</item>
-    </int-array>
-    <int-array name="pokemon_abilities_683">
+    </integer-array>
+    <integer-array name="pokemon_abilities_683">
         <item>79</item>
         <item>104</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_684">
+    </integer-array>
+    <integer-array name="pokemon_abilities_684">
         <item>79</item>
         <item>104</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_685">
+    </integer-array>
+    <integer-array name="pokemon_abilities_685">
         <item>79</item>
         <item>104</item>
         <item>127</item>
-    </int-array>
-    <int-array name="pokemon_abilities_686">
+    </integer-array>
+    <integer-array name="pokemon_abilities_686">
         <item>81</item>
         <item>0</item>
         <item>155</item>
-    </int-array>
-    <int-array name="pokemon_abilities_687">
+    </integer-array>
+    <integer-array name="pokemon_abilities_687">
         <item>81</item>
         <item>0</item>
         <item>33</item>
-    </int-array>
-    <int-array name="pokemon_abilities_688">
+    </integer-array>
+    <integer-array name="pokemon_abilities_688">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_689">
+    </integer-array>
+    <integer-array name="pokemon_abilities_689">
         <item>93</item>
         <item>75</item>
         <item>142</item>
-    </int-array>
-    <int-array name="pokemon_abilities_690">
+    </integer-array>
+    <integer-array name="pokemon_abilities_690">
         <item>93</item>
         <item>60</item>
         <item>84</item>
-    </int-array>
-    <int-array name="pokemon_abilities_691">
+    </integer-array>
+    <integer-array name="pokemon_abilities_691">
         <item>9</item>
         <item>7</item>
         <item>8</item>
-    </int-array>
-    <int-array name="pokemon_abilities_692">
+    </integer-array>
+    <integer-array name="pokemon_abilities_692">
         <item>39</item>
         <item>144</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_693">
+    </integer-array>
+    <integer-array name="pokemon_abilities_693">
         <item>39</item>
         <item>144</item>
         <item>120</item>
-    </int-array>
-    <int-array name="pokemon_abilities_694">
+    </integer-array>
+    <integer-array name="pokemon_abilities_694">
         <item>24</item>
         <item>125</item>
         <item>104</item>
-    </int-array>
-    <int-array name="pokemon_abilities_695">
+    </integer-array>
+    <integer-array name="pokemon_abilities_695">
         <item>89</item>
         <item>103</item>
         <item>99</item>
-    </int-array>
-    <int-array name="pokemon_abilities_696">
+    </integer-array>
+    <integer-array name="pokemon_abilities_696">
         <item>89</item>
         <item>103</item>
         <item>99</item>
-    </int-array>
-    <int-array name="pokemon_abilities_697">
+    </integer-array>
+    <integer-array name="pokemon_abilities_697">
         <item>128</item>
         <item>39</item>
         <item>46</item>
-    </int-array>
-    <int-array name="pokemon_abilities_698">
+    </integer-array>
+    <integer-array name="pokemon_abilities_698">
         <item>128</item>
         <item>39</item>
         <item>46</item>
-    </int-array>
-    <int-array name="pokemon_abilities_699">
+    </integer-array>
+    <integer-array name="pokemon_abilities_699">
         <item>120</item>
         <item>157</item>
         <item>43</item>
-    </int-array>
-    <int-array name="pokemon_abilities_700">
+    </integer-array>
+    <integer-array name="pokemon_abilities_700">
         <item>51</item>
         <item>125</item>
         <item>55</item>
-    </int-array>
-    <int-array name="pokemon_abilities_701">
+    </integer-array>
+    <integer-array name="pokemon_abilities_701">
         <item>51</item>
         <item>125</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_702">
+    </integer-array>
+    <integer-array name="pokemon_abilities_702">
         <item>145</item>
         <item>142</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_703">
+    </integer-array>
+    <integer-array name="pokemon_abilities_703">
         <item>145</item>
         <item>142</item>
         <item>133</item>
-    </int-array>
-    <int-array name="pokemon_abilities_704">
+    </integer-array>
+    <integer-array name="pokemon_abilities_704">
         <item>82</item>
         <item>18</item>
         <item>73</item>
-    </int-array>
-    <int-array name="pokemon_abilities_705">
+    </integer-array>
+    <integer-array name="pokemon_abilities_705">
         <item>68</item>
         <item>55</item>
         <item>54</item>
-    </int-array>
-    <int-array name="pokemon_abilities_706">
+    </integer-array>
+    <integer-array name="pokemon_abilities_706">
         <item>55</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_707">
+    </integer-array>
+    <integer-array name="pokemon_abilities_707">
         <item>55</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_708">
+    </integer-array>
+    <integer-array name="pokemon_abilities_708">
         <item>26</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_709">
+    </integer-array>
+    <integer-array name="pokemon_abilities_709">
         <item>49</item>
         <item>0</item>
         <item>68</item>
-    </int-array>
-    <int-array name="pokemon_abilities_710">
+    </integer-array>
+    <integer-array name="pokemon_abilities_710">
         <item>49</item>
         <item>0</item>
         <item>68</item>
-    </int-array>
-    <int-array name="pokemon_abilities_711">
+    </integer-array>
+    <integer-array name="pokemon_abilities_711">
         <item>154</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_712">
+    </integer-array>
+    <integer-array name="pokemon_abilities_712">
         <item>154</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_713">
+    </integer-array>
+    <integer-array name="pokemon_abilities_713">
         <item>154</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_714">
+    </integer-array>
+    <integer-array name="pokemon_abilities_714">
         <item>158</item>
         <item>0</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_715">
+    </integer-array>
+    <integer-array name="pokemon_abilities_715">
         <item>144</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_716">
+    </integer-array>
+    <integer-array name="pokemon_abilities_716">
         <item>158</item>
         <item>0</item>
         <item>128</item>
-    </int-array>
-    <int-array name="pokemon_abilities_717">
+    </integer-array>
+    <integer-array name="pokemon_abilities_717">
         <item>10</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_718">
+    </integer-array>
+    <integer-array name="pokemon_abilities_718">
         <item>163</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_719">
+    </integer-array>
+    <integer-array name="pokemon_abilities_719">
         <item>164</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_720">
+    </integer-array>
+    <integer-array name="pokemon_abilities_720">
         <item>159</item>
         <item>0</item>
         <item>125</item>
-    </int-array>
-    <int-array name="pokemon_abilities_721">
+    </integer-array>
+    <integer-array name="pokemon_abilities_721">
         <item>22</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_722">
+    </integer-array>
+    <integer-array name="pokemon_abilities_722">
         <item>46</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_723">
+    </integer-array>
+    <integer-array name="pokemon_abilities_723">
         <item>163</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_724">
+    </integer-array>
+    <integer-array name="pokemon_abilities_724">
         <item>164</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_725">
+    </integer-array>
+    <integer-array name="pokemon_abilities_725">
         <item>154</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_726">
+    </integer-array>
+    <integer-array name="pokemon_abilities_726">
         <item>154</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_727">
+    </integer-array>
+    <integer-array name="pokemon_abilities_727">
         <item>32</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_728">
+    </integer-array>
+    <integer-array name="pokemon_abilities_728">
         <item>32</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_729">
+    </integer-array>
+    <integer-array name="pokemon_abilities_729">
         <item>88</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_730">
+    </integer-array>
+    <integer-array name="pokemon_abilities_730">
         <item>88</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_731">
+    </integer-array>
+    <integer-array name="pokemon_abilities_731">
         <item>88</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_732">
+    </integer-array>
+    <integer-array name="pokemon_abilities_732">
         <item>88</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
-    <int-array name="pokemon_abilities_733">
+    </integer-array>
+    <integer-array name="pokemon_abilities_733">
         <item>88</item>
         <item>0</item>
         <item>0</item>
-    </int-array>
+    </integer-array>
 
 </resources>

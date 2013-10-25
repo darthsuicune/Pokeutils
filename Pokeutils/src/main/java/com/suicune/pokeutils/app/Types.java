@@ -1,5 +1,6 @@
 package com.suicune.pokeutils.app;
 
+import com.suicune.pokeutils.App;
 import com.suicune.pokeutils.R;
 
 import java.util.Arrays;
@@ -7,6 +8,7 @@ import java.util.List;
 
 
 public class Types {
+
     public static Type getType(int typeId) {
         switch (typeId) {
             case 0:
@@ -142,6 +144,12 @@ public class Types {
         FAIRY(R.string.type_fairy, Arrays.asList(TypeList.POISON, TypeList.STEEL),
                 Arrays.asList(TypeList.FIGHTING, TypeList.DARK, TypeList.BUG),
                 Arrays.asList(TypeList.DRAGON));
+
+        @Override
+        public String toString(){
+            return App.getResourceString(mName);
+        }
+
         public final int mName;
         public final List<TypeList> mWeakness;
         public final List<TypeList> mResistances;

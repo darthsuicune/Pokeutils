@@ -1,6 +1,7 @@
 package com.suicune.pokeutils.app;
 
 
+import com.suicune.pokeutils.App;
 import com.suicune.pokeutils.R;
 
 public class Natures {
@@ -10,6 +11,9 @@ public class Natures {
     public static final int MODIFIER_NEGATIVE = 90;
 
     public static int getModifier(Nature nature, int stat){
+        if(nature == null){
+            nature = Nature.DOCILE;
+        }
         switch (stat) {
             case Pokemon.STAT_INDEX_ATT:
                 if (nature == Natures.Nature.ADAMANT || nature == Natures.Nature.LONELY
@@ -103,6 +107,11 @@ public class Natures {
         CAREFUL(R.string.nature_careful); // -Special attack
 
         public final int mName;
+
+        @Override
+        public String toString(){
+            return App.getResourceString(mName);
+        }
 
         private Nature(int name) {
             mName = name;

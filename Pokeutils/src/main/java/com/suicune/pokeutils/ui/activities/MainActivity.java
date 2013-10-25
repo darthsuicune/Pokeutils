@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.widget.Toast;
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.ui.fragments.DamageCalcFragment;
-import com.suicune.pokeutils.ui.fragments.IVCalcFragment;
+import com.suicune.pokeutils.ui.fragments.IVCalcFragmen;
 import com.suicune.pokeutils.ui.fragments.PokedexFragment;
 import com.suicune.pokeutils.ui.fragments.TeamBuilderFragment;
 
@@ -137,7 +137,7 @@ public class MainActivity extends ActionBarActivity implements
 				break;
 			case 1:
 				fragment = Fragment.instantiate(MainActivity.this,
-						IVCalcFragment.class.getName());
+						IVCalcFragmen.class.getName());
 				break;
 			case 2:
 				fragment = Fragment.instantiate(MainActivity.this,

@@ -17,17 +17,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.TextView;
-
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Natures;
+import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.app.TeamPokemon;
 import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.IVTools;
@@ -277,10 +272,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
                 } catch (NumberFormatException e) {
                     return;
                 }
-                ivs = IVTools.calculateIVs(IVTools.CODE_HP, mPokemon.mNature,
+                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_HP, mPokemon.mNature,
                         statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_HP]);
                 if (ivs != null) {
-                    showIVs(IVTools.CODE_HP, ivs);
+                    showIVs(Pokemon.STAT_INDEX_HP, ivs);
                 }
             } else if (s.hashCode() == mStatAttView.getText().hashCode()
                     || s.hashCode() == mEVAttView.getText().hashCode()) {
@@ -291,10 +286,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
                 } catch (NumberFormatException e) {
                     return;
                 }
-                ivs = IVTools.calculateIVs(IVTools.CODE_ATT, mPokemon.mNature,
+                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_ATT, mPokemon.mNature,
                         statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
                 if (ivs != null) {
-                    showIVs(IVTools.CODE_ATT, ivs);
+                    showIVs(Pokemon.STAT_INDEX_ATT, ivs);
                 }
 
             } else if (s.hashCode() == mStatDefView.getText().hashCode()
@@ -306,10 +301,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
                 } catch (NumberFormatException e) {
                     return;
                 }
-                ivs = IVTools.calculateIVs(IVTools.CODE_DEF, mPokemon.mNature,
+                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_DEF, mPokemon.mNature,
                         statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_DEF]);
                 if (ivs != null) {
-                    showIVs(IVTools.CODE_DEF, ivs);
+                    showIVs(Pokemon.STAT_INDEX_DEF, ivs);
                 }
 
             } else if (s.hashCode() == mStatSpAttView.getText().hashCode()
@@ -322,10 +317,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
                 } catch (NumberFormatException e) {
                     return;
                 }
-                ivs = IVTools.calculateIVs(IVTools.CODE_SP_ATT, mPokemon.mNature, statValue,
+                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_SP_ATT, mPokemon.mNature, statValue,
                         evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_ATT]);
                 if (ivs != null) {
-                    showIVs(IVTools.CODE_SP_ATT, ivs);
+                    showIVs(Pokemon.STAT_INDEX_SP_ATT, ivs);
                 }
 
             } else if (s.hashCode() == mStatSpDefView.getText().hashCode()
@@ -338,10 +333,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
                 } catch (NumberFormatException e) {
                     return;
                 }
-                ivs = IVTools.calculateIVs(IVTools.CODE_SP_DEF, mPokemon.mNature,
+                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_SP_DEF, mPokemon.mNature,
                         statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
                 if (ivs != null) {
-                    showIVs(IVTools.CODE_SP_DEF, ivs);
+                    showIVs(Pokemon.STAT_INDEX_SP_DEF, ivs);
                 }
 
             } else if (s.hashCode() == mStatSpeedView.getText().hashCode()
@@ -354,10 +349,10 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
                 } catch (NumberFormatException e) {
                     return;
                 }
-                ivs = IVTools.calculateIVs(IVTools.CODE_SPEED, mPokemon.mNature,
+                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_SPEED, mPokemon.mNature,
                         statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SPEED]);
                 if (ivs != null) {
-                    showIVs(IVTools.CODE_SPEED, ivs);
+                    showIVs(Pokemon.STAT_INDEX_SPEED, ivs);
                 }
             }
         }
@@ -410,25 +405,28 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
 
     }
 
-    private void showIVs(int code, ArrayList<Integer> ivs) {
-        String result = IVTools.showIVs(code, ivs);
-        switch (code) {
-            case IVTools.CODE_HP:
+    private void showIVs(int stat, ArrayList<Integer> ivs) {
+        String result = IVTools.showIVs(ivs);
+        if(result == null){
+            return;
+        }
+        switch (stat) {
+            case Pokemon.STAT_INDEX_HP:
                 mIVHPView.setText(result);
                 break;
-            case IVTools.CODE_ATT:
+            case Pokemon.STAT_INDEX_ATT:
                 mIVAttView.setText(result);
                 break;
-            case IVTools.CODE_DEF:
+            case Pokemon.STAT_INDEX_DEF:
                 mIVDefView.setText(result);
                 break;
-            case IVTools.CODE_SP_ATT:
+            case Pokemon.STAT_INDEX_SP_ATT:
                 mIVSpAttView.setText(result);
                 break;
-            case IVTools.CODE_SP_DEF:
+            case Pokemon.STAT_INDEX_SP_DEF:
                 mIVSpDefView.setText(result);
                 break;
-            case IVTools.CODE_SPEED:
+            case Pokemon.STAT_INDEX_SPEED:
                 mIVSpeedView.setText(result);
                 break;
         }

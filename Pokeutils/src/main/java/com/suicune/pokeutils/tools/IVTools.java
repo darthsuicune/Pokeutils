@@ -2,37 +2,15 @@ package com.suicune.pokeutils.tools;
 
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Natures;
+import com.suicune.pokeutils.app.Pokemon;
 
 import java.util.ArrayList;
 
 public class IVTools {
-	public static final int CODE_HP = 0;
-	public static final int CODE_ATT = 1;
-	public static final int CODE_DEF = 2;
-	public static final int CODE_SP_ATT = 3;
-	public static final int CODE_SP_DEF = 4;
-	public static final int CODE_SPEED = 5;
-
-	public static final int MIN_HP = 1;
-	public static final int MAX_HP = 714;
-	public static final int MIN_ATT = 1;
-	public static final int MAX_ATT = 614;
-	public static final int MIN_DEF = 1;
-	public static final int MAX_DEF = 614;
-	public static final int MIN_SP_ATT = 1;
-	public static final int MAX_SP_ATT = 614;
-	public static final int MIN_SP_DEF = 1;
-	public static final int MAX_SP_DEF = 614;
-	public static final int MIN_SPEED = 1;
-	public static final int MAX_SPEED = 614;
-	
-	public static final int NATURE_POSITIVE_MODIFIER = 110;
-	public static final int NATURE_NEGATIVE_MODIFIER = 90;
-
 	/**
 	 * This method calculates all the possible IVs that match the given values.
 	 * 
-	 * @param code
+	 * @param stat
 	 * @param nature
 	 * @param currentStat
 	 * @param currentEv
@@ -40,7 +18,7 @@ public class IVTools {
 	 * @param baseStat
 	 * @return An ArrayList<Integer> with the calculated IVs
 	 */
-	public static ArrayList<Integer> calculateIVs(int code, Natures.Nature nature,
+	public static ArrayList<Integer> calculatePossibleIVs(int stat, Natures.Nature nature,
 			int currentStat, int currentEv, int currentLevel, int baseStat) {
 
 		if (currentEv < 0 || currentEv > 255) {
@@ -48,14 +26,7 @@ public class IVTools {
 		}
 		ArrayList<Integer> ivList = new ArrayList<Integer>();
 
-		int currentNatureModifier = 100;
-
-		switch (code) {
-		case CODE_HP:
-			if (currentStat < MIN_HP || currentStat > MAX_HP) {
-				return null;
-			}
-
+		if(stat == Pokemon.STAT_INDEX_HP) {
 			for (int iv = 0; iv <= 31; iv++) {
 				if (currentStat == getHpValue(baseStat, currentEv, iv,
 						currentLevel)) {
@@ -63,105 +34,23 @@ public class IVTools {
 				}
 			}
 
-			if (ivList.size() < 1) {
-				return null;
-			}
 
-			return ivList;
-		case CODE_ATT:
-			if (currentStat < MIN_ATT || currentStat > MAX_ATT) {
-				return null;
-			}
-
-			if (nature.equals(Natures.Nature.LONELY) || nature.equals(Natures.Nature.BRAVE)
-					|| nature.equals(Natures.Nature.ADAMANT)
-					|| nature.equals(Natures.Nature.NAUGHTY)) {
-				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.Nature.BOLD)
-					|| nature.equals(Natures.Nature.TIMID)
-					|| nature.equals(Natures.Nature.MODEST)
-					|| nature.equals(Natures.Nature.CALM)) {
-				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
-			}
-			break;
-		case CODE_DEF:
-			if (currentStat < MIN_DEF || currentStat > MAX_DEF) {
-				return null;
-			}
-
-			if (nature.equals(Natures.Nature.BOLD) || nature.equals(Natures.Nature.RELAXED)
-					|| nature.equals(Natures.Nature.IMPISH)
-					|| nature.equals(Natures.Nature.LAX)) {
-				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.Nature.LONELY)
-					|| nature.equals(Natures.Nature.HASTY)
-					|| nature.equals(Natures.Nature.MILD)
-					|| nature.equals(Natures.Nature.GENTLE)) {
-				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
-			}
-			break;
-		case CODE_SPEED:
-			if (currentStat < MIN_SPEED || currentStat > MAX_SPEED) {
-				return null;
-			}
-
-			if (nature.equals(Natures.Nature.TIMID) || nature.equals(Natures.Nature.HASTY)
-					|| nature.equals(Natures.Nature.JOLLY)
-					|| nature.equals(Natures.Nature.NAIVE)) {
-				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.Nature.BRAVE)
-					|| nature.equals(Natures.Nature.RELAXED)
-					|| nature.equals(Natures.Nature.QUIET)
-					|| nature.equals(Natures.Nature.SASSY)) {
-				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
-			}
-			break;
-		case CODE_SP_ATT:
-			if (currentStat < MIN_SP_ATT || currentStat > MAX_SP_ATT) {
-				return null;
-			}
-
-			if (nature.equals(Natures.Nature.MODEST) || nature.equals(Natures.Nature.MILD)
-					|| nature.equals(Natures.Nature.QUIET)
-					|| nature.equals(Natures.Nature.RASH)) {
-				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.Nature.ADAMANT)
-					|| nature.equals(Natures.Nature.IMPISH)
-					|| nature.equals(Natures.Nature.JOLLY)
-					|| nature.equals(Natures.Nature.CAREFUL)) {
-				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
-			}
-			break;
-		case CODE_SP_DEF:
-			if (currentStat < MIN_SP_DEF || currentStat > MAX_SP_DEF) {
-				return null;
-			}
-
-			if (nature.equals(Natures.Nature.CALM) || nature.equals(Natures.Nature.GENTLE)
-					|| nature.equals(Natures.Nature.SASSY)
-					|| nature.equals(Natures.Nature.CAREFUL)) {
-				currentNatureModifier = NATURE_POSITIVE_MODIFIER;
-			} else if (nature.equals(Natures.Nature.NAUGHTY)
-					|| nature.equals(Natures.Nature.LAX)
-					|| nature.equals(Natures.Nature.NAIVE)
-					|| nature.equals(Natures.Nature.RASH)) {
-				currentNatureModifier = NATURE_NEGATIVE_MODIFIER;
-			}
-			break;
-		}
-
-		for (int iv = 0; iv <= 31; iv++) {
-			int calculated = getStatValue(baseStat, currentEv, iv,
-					currentLevel, currentNatureModifier);
-			if (currentStat == calculated) {
-				ivList.add(iv);
-			}
-		}
-
+        } else {
+            for (int iv = 0; iv <= 31; iv++) {
+                int calculated = getStatValue(baseStat, currentEv, iv,
+                        currentLevel, Natures.getModifier(nature, stat));
+                if (currentStat == calculated) {
+                    ivList.add(iv);
+                }
+            }
+        }
+        if (ivList.size() < 1) {
+            return null;
+        }
 		return ivList;
 	}
 
-	public static String showIVs(int code, ArrayList<Integer> ivs) {
+	public static String showIVs(ArrayList<Integer> ivs) {
 		int minIVValue = 32;
 		int maxIVValue = -1;
 		for (int i = 0; i < ivs.size(); i++) {
@@ -169,7 +58,7 @@ public class IVTools {
 			if (iv > maxIVValue) {
 				maxIVValue = iv;
 			}
-			if (iv < minIVValue) {
+			if (iv < milnIVValue) {
 				minIVValue = iv;
 			}
 		}
