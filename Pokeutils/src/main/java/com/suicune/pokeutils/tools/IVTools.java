@@ -33,8 +33,6 @@ public class IVTools {
 					ivList.add(iv);
 				}
 			}
-
-
         } else {
             for (int iv = 0; iv <= 31; iv++) {
                 int calculated = getStatValue(baseStat, currentEv, iv,
@@ -58,7 +56,7 @@ public class IVTools {
 			if (iv > maxIVValue) {
 				maxIVValue = iv;
 			}
-			if (iv < milnIVValue) {
+			if (iv < minIVValue) {
 				minIVValue = iv;
 			}
 		}
