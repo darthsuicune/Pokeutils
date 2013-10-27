@@ -347,8 +347,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLength="2"
-                    android:inputType="number"
+                    android:maxLength="5"
                     android:gravity="center"
                     android:hint="@string/hp" >
                 </EditText>
@@ -358,8 +357,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLength="2"
-                    android:inputType="number"
+                    android:maxLength="5"
                     android:gravity="center"
                     android:hint="@string/att" >
                 </EditText>
@@ -369,8 +367,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLength="2"
-                    android:inputType="number"
+                    android:maxLength="5"
                     android:gravity="center"
                     android:hint="@string/def" >
                 </EditText>
@@ -380,8 +377,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLength="2"
-                    android:inputType="number"
+                    android:maxLength="5"
                     android:gravity="center"
                     android:hint="@string/sp_att" >
                 </EditText>
@@ -391,8 +387,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLength="2"
-                    android:inputType="number"
+                    android:maxLength="5"
                     android:gravity="center"
                     android:hint="@string/sp_def" >
                 </EditText>
@@ -402,8 +397,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:maxLength="2"
-                    android:inputType="number"
+                    android:maxLength="5"
                     android:gravity="center"
                     android:hint="@string/speed" >
                 </EditText>

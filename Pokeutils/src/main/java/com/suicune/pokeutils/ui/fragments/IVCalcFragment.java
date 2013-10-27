@@ -406,7 +406,7 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
     }
 
     private void showIVs(int stat, ArrayList<Integer> ivs) {
-        String result = IVTools.showIVs(ivs);
+        String result = IVTools.getIVsAsString(ivs);
         if(result == null){
             return;
         }

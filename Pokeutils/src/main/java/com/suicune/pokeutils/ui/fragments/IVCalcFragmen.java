@@ -3,14 +3,24 @@ package com.suicune.pokeutils.ui.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Natures;
 import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.app.TeamPokemon;
+import com.suicune.pokeutils.tools.IVTools;
 
 import java.util.HashMap;
 
@@ -76,6 +86,24 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
         setButtons(v);
         setStatViews(v);
         mPokemonLevelEditText = (EditText) v.findViewById(R.id.iv_calc_pokemon_level);
+        mPokemonLevelEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(mPokemon == null){
+                    return;
+                } else {
+
+                }
+            }
+        });
     }
 
     private void setButtons(View v) {
@@ -109,6 +137,7 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
                 //Create pokemon here
                 mPokemon = new TeamPokemon(getActivity(),
                         pokemonList.get(adapterView.getItemAtPosition(position)));
+                mPokemonLevelEditText.setText(Integer.toString(mPokemon.mLevel));
                 updatePokemon();
 
             }
@@ -142,6 +171,13 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
         mIVSpDefView = (EditText) v.findViewById(R.id.iv_calc_iv_sp_def);
         mIVSpeedView = (EditText) v.findViewById(R.id.iv_calc_iv_speed);
 
+        mIVHPView.setText("31");
+        mIVAttView.setText("31");
+        mIVDefView.setText("31");
+        mIVSpAttView.setText("31");
+        mIVSpDefView.setText("31");
+        mIVSpeedView.setText("31");
+
         mStatHPView = (EditText) v.findViewById(R.id.iv_calc_stat_hp);
         mStatAttView = (EditText) v.findViewById(R.id.iv_calc_stat_att);
         mStatDefView = (EditText) v.findViewById(R.id.iv_calc_stat_def);
@@ -155,6 +191,13 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
         mEVSpAttView = (EditText) v.findViewById(R.id.iv_calc_ev_sp_att);
         mEVSpDefView = (EditText) v.findViewById(R.id.iv_calc_ev_sp_def);
         mEVSpeedView = (EditText) v.findViewById(R.id.iv_calc_ev_speed);
+
+        mEVHPView.setText("0");
+        mEVAttView.setText("0");
+        mEVDefView.setText("0");
+        mEVSpAttView.setText("0");
+        mEVSpDefView.setText("0");
+        mEVSpeedView.setText("0");
     }
 
     private void updatePokemon() {
@@ -276,42 +319,31 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
     }
 
     private void calculateIVs() {
-        if(mPokemon != null) {
+        if(mPokemon == null) {
             return;
         }
-        try{
-            int hpEv = Integer.parseInt(mEVHPView.getText().toString());
-            int hpStat = Integer.parseInt(mStatHPView.getText().toString());
-            mPokemon.mEvs[Pokemon.STAT_INDEX_HP] = hpEv;
-            mPokemon.mStats[Pokemon.STAT_INDEX_HP] = hpStat;
-        } catch(NumberFormatException e) {
-            // Bad entry, nothing to do.
-        }
-        try{
+        mIVHPView.setText(getIVs(Pokemon.STAT_INDEX_HP, mEVHPView, mStatHPView));
+        mIVAttView.setText(getIVs(Pokemon.STAT_INDEX_ATT, mEVAttView, mStatAttView));
+        mIVDefView.setText(getIVs(Pokemon.STAT_INDEX_DEF, mEVDefView, mStatDefView));
+        mIVSpAttView.setText(getIVs(Pokemon.STAT_INDEX_SP_ATT, mEVSpAttView, mStatSpAttView));
+        mIVSpDefView.setText(getIVs(Pokemon.STAT_INDEX_SP_DEF, mEVSpDefView, mStatSpDefView));
+        mIVSpeedView.setText(getIVs(Pokemon.STAT_INDEX_SPEED, mEVSpeedView, mStatSpeedView));
+    }
 
-        } catch(NumberFormatException e) {
-            // Bad entry, nothing to do.
-        }
+    private String getIVs(int stat, TextView evView, TextView statView){
         try{
-
+            int evValue = Integer.parseInt(evView.getText().toString());
+            int statValue = Integer.parseInt(statView.getText().toString());
+            int level = Integer.parseInt(mPokemonLevelEditText.getText().toString());
+            mPokemon.mEvs[stat] = evValue;
+            mPokemon.mStats[stat] = statValue;
+            mPokemon.mLevel = level;
+            return IVTools.getIVsAsString(IVTools.calculatePossibleIVs(stat, mPokemon.mNature,
+                    statValue, evValue, mPokemon.mLevel, mPokemon.mBaseStats[stat]));
         } catch(NumberFormatException e) {
-            // Bad entry, nothing to do.
+            return "";
         }
-        try{
 
-        } catch(NumberFormatException e) {
-            // Bad entry, nothing to do.
-        }
-        try{
-
-        } catch(NumberFormatException e) {
-            // Bad entry, nothing to do.
-        }
-        try{
-
-        } catch(NumberFormatException e) {
-            // Bad entry, nothing to do.
-        }
     }
 
     private void calculateStats() {
@@ -324,6 +356,6 @@ public class IVCalcFragmen extends Fragment implements View.OnClickListener {
     private void calculateHiddenPower() {
         TextView hiddenPowerTypeView = (TextView)
                 getActivity().findViewById(R.id.iv_calc_hidden_power_type);
-        hiddenPowerTypeView.setText("Not available at the moment");
+        hiddenPowerTypeView.setText(": Not available at the moment");
     }
 }

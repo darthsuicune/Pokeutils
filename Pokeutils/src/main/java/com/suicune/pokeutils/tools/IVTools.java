@@ -24,6 +24,9 @@ public class IVTools {
 		if (currentEv < 0 || currentEv > 255) {
 			return null;
 		}
+        if(nature == null){
+            nature = Natures.Nature.DOCILE;
+        }
 		ArrayList<Integer> ivList = new ArrayList<Integer>();
 
 		if(stat == Pokemon.STAT_INDEX_HP) {
@@ -48,25 +51,16 @@ public class IVTools {
 		return ivList;
 	}
 
-	public static String showIVs(ArrayList<Integer> ivs) {
-		int minIVValue = 32;
-		int maxIVValue = -1;
-		for (int i = 0; i < ivs.size(); i++) {
-			int iv = ivs.get(i);
-			if (iv > maxIVValue) {
-				maxIVValue = iv;
-			}
-			if (iv < minIVValue) {
-				minIVValue = iv;
-			}
-		}
-		if (minIVValue == 32 || maxIVValue == -1) {
-			return null;
-		}
-		if (minIVValue == maxIVValue) {
-			return "" + minIVValue;
-		} else {
-			return "" + minIVValue + "-" + maxIVValue;
+	public static String getIVsAsString(ArrayList<Integer> ivs) {
+        if(ivs == null){
+            return "Invalid";
+        }
+        if (ivs.size() < 1){
+            return "";
+        } else if(ivs.size() == 1){
+            return "" + ivs.get(0);
+        } else {
+			return "" + ivs.get(0) + "-" + ivs.get(ivs.size() - 1);
 		}
 	}
 
