@@ -1,8 +1,6 @@
 package com.suicune.pokeutils.ui.fragments;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,28 +12,15 @@ import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.view.*;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Natures;
 import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.app.TeamPokemon;
 import com.suicune.pokeutils.database.PokeContract;
-import com.suicune.pokeutils.ui.activities.EditTeamPokemonActivity;
 
 public class EditTeamPokemonFragment extends Fragment implements
         LoaderCallbacks<Cursor>, TextWatcher, CursorToStringConverter,
@@ -95,40 +80,42 @@ public class EditTeamPokemonFragment extends Fragment implements
         if (container == null) {
             return null;
         }
-        return inflater.inflate(R.layout.edit_team_pokemon_fragment, container,
+        View v = inflater.inflate(R.layout.edit_team_pokemon_fragment, container,
                 false);
+        setViews(v);
+        return v;
+
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setViews();
-        if (savedInstanceState == null) {
-            if (getArguments() != null) {
-                if (getArguments().containsKey(
-                        EditTeamPokemonActivity.EXTRA_POKEMON)) {
+//        if (savedInstanceState == null) {
+//            if (getArguments() != null) {
+//                if (getArguments().containsKey(
+//                        EditTeamPokemonActivity.EXTRA_POKEMON)) {
 //					mPokemon = new TeamPokemon(getArguments().getBundle(
 //							EditTeamPokemonActivity.EXTRA_POKEMON));
-                    loadPokemonStats();
-                }
-            }
-        } else {
-            if (savedInstanceState.containsKey(ARG_POKEMON)) {
+//                    loadPokemonStats();
+//                }
+//            }
+//        } else {
+//            if (savedInstanceState.containsKey(ARG_POKEMON)) {
 //				mPokemon = new TeamPokemon(
 //						savedInstanceState.getBundle(ARG_POKEMON));
-                loadPokemonStats();
-            }
-        }
+//                loadPokemonStats();
+//            }
+//        }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (mPokemon != null) {
-            Bundle status = new Bundle();
-            mPokemon.saveStatus(status);
-            outState.putBundle(ARG_POKEMON, status);
-        }
+//        if (mPokemon != null) {
+//            Bundle status = new Bundle();
+//            mPokemon.saveStatus(status);
+//            outState.putBundle(ARG_POKEMON, status);
+//        }
     }
 
     @Override
@@ -159,36 +146,36 @@ public class EditTeamPokemonFragment extends Fragment implements
     }
 
     private void saveData() {
-        if (mPokemon == null) {
-            return;
-        }
-        Intent intent = new Intent();
-        Bundle pokemon = new Bundle();
-
-        mPokemon.saveStatus(pokemon);
-        intent.putExtra(EditTeamPokemonActivity.EXTRA_POKEMON, pokemon);
-        getActivity().setResult(Activity.RESULT_OK, intent);
-        ((EditTeamPokemonActivity) getActivity()).registerPokemon(pokemon);
+//        if (mPokemon == null) {
+//            return;
+//        }
+//        Intent intent = new Intent();
+//        Bundle pokemon = new Bundle();
+//
+//        mPokemon.saveStatus(pokemon);
+//        intent.putExtra(EditTeamPokemonActivity.EXTRA_POKEMON, pokemon);
+//        getActivity().setResult(Activity.RESULT_OK, intent);
+//        ((EditTeamPokemonActivity) getActivity()).registerPokemon(pokemon);
 
     }
 
-    private void setViews() {
-        if (getActivity().findViewById(R.id.edit_team_pokemon_name) == null) {
+    private void setViews(View v) {
+        if (v.findViewById(R.id.edit_team_pokemon_name) == null) {
             return;
         }
-        prepareNameViews();
-        prepareLevelView();
-        prepareNatureView();
-        prepareStatsViews();
-        prepareAbilityView();
-        prepareItemView();
-        prepareAttacksViews();
+        prepareNameViews(v);
+        prepareLevelView(v);
+        prepareNatureView(v);
+        prepareStatsViews(v);
+        prepareAbilityView(v);
+        prepareItemView(v);
+        prepareAttacksViews(v);
     }
 
-    private void prepareNameViews() {
-        mNicknameView = (EditText) getActivity().findViewById(
+    private void prepareNameViews(View v) {
+        mNicknameView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_nickname);
-        mNameView = (AutoCompleteTextView) getActivity().findViewById(
+        mNameView = (AutoCompleteTextView) v.findViewById(
                 R.id.edit_team_pokemon_name);
 
         String[] from = {PokeContract.PokemonName.NAME};
@@ -204,14 +191,14 @@ public class EditTeamPokemonFragment extends Fragment implements
         mNicknameView.addTextChangedListener(this);
     }
 
-    private void prepareLevelView() {
-        mLevelView = (EditText) getActivity().findViewById(
+    private void prepareLevelView(View v) {
+        mLevelView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_level);
         mLevelView.addTextChangedListener(this);
     }
 
-    private void prepareNatureView() {
-        mNatureView = (Spinner) getActivity().findViewById(
+    private void prepareNatureView(View v) {
+        mNatureView = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_nature);
 
         String[] natures = new String[Natures.NATURES_COUNT];
@@ -229,57 +216,57 @@ public class EditTeamPokemonFragment extends Fragment implements
         mNatureView.setOnItemSelectedListener(this);
     }
 
-    private void prepareStatsViews() {
-        mBaseHpView = (TextView) getActivity().findViewById(
+    private void prepareStatsViews(View v) {
+        mBaseHpView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_base_stat_hp);
-        mBaseAttView = (TextView) getActivity().findViewById(
+        mBaseAttView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_base_stat_att);
-        mBaseDefView = (TextView) getActivity().findViewById(
+        mBaseDefView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_base_stat_def);
-        mBaseSpAttView = (TextView) getActivity().findViewById(
+        mBaseSpAttView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_base_stat_spatt);
-        mBaseSpDefView = (TextView) getActivity().findViewById(
+        mBaseSpDefView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_base_stat_spdef);
-        mBaseSpeedView = (TextView) getActivity().findViewById(
+        mBaseSpeedView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_base_stat_speed);
 
-        mIvHpView = (EditText) getActivity().findViewById(
+        mIvHpView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_iv_hp);
-        mIvAttView = (EditText) getActivity().findViewById(
+        mIvAttView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_iv_att);
-        mIvDefView = (EditText) getActivity().findViewById(
+        mIvDefView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_iv_def);
-        mIvSpAttView = (EditText) getActivity().findViewById(
+        mIvSpAttView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_iv_spatt);
-        mIvSpDefView = (EditText) getActivity().findViewById(
+        mIvSpDefView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_iv_spdef);
-        mIvSpeedView = (EditText) getActivity().findViewById(
+        mIvSpeedView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_iv_speed);
 
-        mEvHpView = (EditText) getActivity().findViewById(
+        mEvHpView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_ev_hp);
-        mEvAttView = (EditText) getActivity().findViewById(
+        mEvAttView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_ev_att);
-        mEvDefView = (EditText) getActivity().findViewById(
+        mEvDefView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_ev_def);
-        mEvSpAttView = (EditText) getActivity().findViewById(
+        mEvSpAttView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_ev_spatt);
-        mEvSpDefView = (EditText) getActivity().findViewById(
+        mEvSpDefView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_ev_spdef);
-        mEvSpeedView = (EditText) getActivity().findViewById(
+        mEvSpeedView = (EditText) v.findViewById(
                 R.id.edit_team_pokemon_ev_speed);
 
-        mStatHpView = (TextView) getActivity().findViewById(
+        mStatHpView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_stat_hp);
-        mStatAttView = (TextView) getActivity().findViewById(
+        mStatAttView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_stat_att);
-        mStatDefView = (TextView) getActivity().findViewById(
+        mStatDefView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_stat_def);
-        mStatSpAttView = (TextView) getActivity().findViewById(
+        mStatSpAttView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_stat_spatt);
-        mStatSpDefView = (TextView) getActivity().findViewById(
+        mStatSpDefView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_stat_spdef);
-        mStatSpeedView = (TextView) getActivity().findViewById(
+        mStatSpeedView = (TextView) v.findViewById(
                 R.id.edit_team_pokemon_stat_speed);
 
         mIvHpView.addTextChangedListener(this);
@@ -297,28 +284,28 @@ public class EditTeamPokemonFragment extends Fragment implements
         mEvSpeedView.addTextChangedListener(this);
     }
 
-    private void prepareAbilityView() {
-        mAbilityView = (Spinner) getActivity().findViewById(
+    private void prepareAbilityView(View v) {
+        mAbilityView = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_ability);
 
         mAbilityView.setOnItemSelectedListener(this);
     }
 
-    private void prepareItemView() {
-        mItemView = (Spinner) getActivity().findViewById(
+    private void prepareItemView(View v) {
+        mItemView = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_item);
 
         mItemView.setOnItemSelectedListener(this);
     }
 
-    private void prepareAttacksViews() {
-        mAttack1View = (Spinner) getActivity().findViewById(
+    private void prepareAttacksViews(View v) {
+        mAttack1View = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_attack1);
-        mAttack2View = (Spinner) getActivity().findViewById(
+        mAttack2View = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_attack2);
-        mAttack3View = (Spinner) getActivity().findViewById(
+        mAttack3View = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_attack3);
-        mAttack4View = (Spinner) getActivity().findViewById(
+        mAttack4View = (Spinner) v.findViewById(
                 R.id.edit_team_pokemon_attack4);
 
         mAttacksAdapter = new AttacksAdapter(getActivity(),

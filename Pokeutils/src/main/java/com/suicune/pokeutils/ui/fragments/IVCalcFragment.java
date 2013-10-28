@@ -1,82 +1,56 @@
 package com.suicune.pokeutils.ui.fragments;
 
-import android.app.Activity;
-import android.database.Cursor;
-import android.database.DataSetObserver;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.suicune.pokeutils.R;
 import com.suicune.pokeutils.app.Natures;
 import com.suicune.pokeutils.app.Pokemon;
 import com.suicune.pokeutils.app.TeamPokemon;
-import com.suicune.pokeutils.database.PokeContract;
 import com.suicune.pokeutils.tools.IVTools;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public class IVCalcFragment extends Fragment implements TextWatcher,
-        LoaderCallbacks<Cursor> {
-
-    private static final int LOADER_AUTO_COMPLETE = 1;
-    private static final int LOADER_POKEMON = 2;
-    protected static final String ROW_ID = "rowId";
-
-    private TeamPokemon mPokemon;
-
+/**
+ * Created by lapuente on 23.10.13.
+ */
+public class IVCalcFragment extends Fragment implements View.OnClickListener {
     private EditText mIVHPView;
     private EditText mIVAttView;
     private EditText mIVDefView;
     private EditText mIVSpAttView;
     private EditText mIVSpDefView;
     private EditText mIVSpeedView;
-    private TextView mIVAttTextView;
-    private TextView mIVDefTextView;
-    private TextView mIVSpAttTextView;
-    private TextView mIVSpDefTextView;
-    private TextView mIVSpeedTextView;
-
     private EditText mStatHPView;
     private EditText mStatAttView;
     private EditText mStatDefView;
     private EditText mStatSpAttView;
     private EditText mStatSpDefView;
     private EditText mStatSpeedView;
-
     private EditText mEVHPView;
     private EditText mEVAttView;
     private EditText mEVDefView;
     private EditText mEVSpAttView;
     private EditText mEVSpDefView;
     private EditText mEVSpeedView;
-
-    private TextView mHiddenPowerTypeView;
-    private TextView mHiddenPowerPowerView;
-
-    private AutoCompleteTextView mPokemonNameEditText;
+    private TeamPokemon mPokemon;
     private EditText mPokemonLevelEditText;
     private Spinner mNatureSpinner;
 
-    private String mNature;
-
-    private String mPokemonName = "";
-
-    private SimpleCursorAdapter mAutoCompleteAdapter;
-    private NaturesAdapter mNatureAdapter;
+    // Mandatory overrides
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,302 +58,155 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
         if (container == null) {
             return null;
         }
-        return inflater.inflate(R.layout.iv_calc, container, false);
+        View v = inflater.inflate(R.layout.iv_calc, container, false);
+        prepareViews(v);
+        return v;
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (setViews()) {
-            setListeners();
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_calc_calculate_iv:
+                calculateIVs();
+                break;
+            case R.id.iv_calc_calculate_stats:
+                calculateStats();
+                break;
+            case R.id.iv_calc_calculate_hidden_power:
+                calculateHiddenPower();
+                break;
         }
     }
 
-    private boolean setViews() {
-        mHiddenPowerTypeView = (TextView) getActivity().findViewById(R.id.iv_calc_hidden_power_type);
-        if (mHiddenPowerTypeView == null) {
-            return false;
-        }
-        mHiddenPowerPowerView = (TextView) getActivity().findViewById(
-                R.id.iv_calc_hidden_power_power);
-        mIVHPView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_hp);
-        mIVAttView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_att);
-        mIVDefView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_def);
-        mIVSpAttView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_sp_att);
-        mIVSpDefView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_sp_def);
-        mIVSpeedView = (EditText) getActivity().findViewById(R.id.iv_calc_iv_speed);
+    // Private methods
 
-        mIVAttTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_att_text);
-        mIVDefTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_def_text);
-        mIVSpAttTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_sp_att_text);
-        mIVSpDefTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_sp_def_text);
-        mIVSpeedTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_speed_text);
-
-        mStatHPView = (EditText) getActivity().findViewById(R.id.iv_calc_stat_hp);
-        mStatAttView = (EditText) getActivity().findViewById(R.id.iv_calc_stat_att);
-        mStatDefView = (EditText) getActivity().findViewById(R.id.iv_calc_stat_def);
-        mStatSpAttView = (EditText) getActivity().findViewById(R.id.iv_calc_stat_sp_att);
-        mStatSpDefView = (EditText) getActivity().findViewById(R.id.iv_calc_stat_sp_def);
-        mStatSpeedView = (EditText) getActivity().findViewById(R.id.iv_calc_stat_speed);
-
-        mEVHPView = (EditText) getActivity().findViewById(R.id.iv_calc_ev_hp);
-        mEVAttView = (EditText) getActivity().findViewById(R.id.iv_calc_ev_att);
-        mEVDefView = (EditText) getActivity().findViewById(R.id.iv_calc_ev_def);
-        mEVSpAttView = (EditText) getActivity().findViewById(R.id.iv_calc_ev_sp_att);
-        mEVSpDefView = (EditText) getActivity().findViewById(R.id.iv_calc_ev_sp_def);
-        mEVSpeedView = (EditText) getActivity().findViewById(R.id.iv_calc_ev_speed);
-
-        mPokemonNameEditText = (AutoCompleteTextView) getActivity()
-                .findViewById(R.id.iv_calc_pokemon_name);
-        mPokemonLevelEditText = (EditText) getActivity().findViewById(R.id.iv_calc_pokemon_level);
-        mNatureSpinner = (Spinner) getActivity().findViewById(R.id.iv_calc_nature);
-        setAutoCompleteAdapter();
-        return true;
-    }
-
-    private void setListeners() {
-        mStatHPView.addTextChangedListener(this);
-        mStatAttView.addTextChangedListener(this);
-        mStatDefView.addTextChangedListener(this);
-        mStatSpAttView.addTextChangedListener(this);
-        mStatSpDefView.addTextChangedListener(this);
-        mStatSpeedView.addTextChangedListener(this);
-
-        mEVHPView.addTextChangedListener(this);
-        mEVAttView.addTextChangedListener(this);
-        mEVDefView.addTextChangedListener(this);
-        mEVSpAttView.addTextChangedListener(this);
-        mEVSpDefView.addTextChangedListener(this);
-        mEVSpeedView.addTextChangedListener(this);
-
-        mIVHPView.addTextChangedListener(this);
-        mIVAttView.addTextChangedListener(this);
-        mIVDefView.addTextChangedListener(this);
-        mIVSpAttView.addTextChangedListener(this);
-        mIVSpDefView.addTextChangedListener(this);
-        mIVSpeedView.addTextChangedListener(this);
-
-        setNatureSpinnerAdapter();
-        mNatureSpinner.setAdapter(mNatureAdapter);
-        mNatureSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+    private void prepareViews(View v) {
+        setAutoCompleteView(v);
+        setNatureView(v);
+        setButtons(v);
+        setStatViews(v);
+        mPokemonLevelEditText = (EditText) v.findViewById(R.id.iv_calc_pokemon_level);
+        mPokemonLevelEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view,
-                                       int position, long id) {
-                mNature = ((TextView) view.findViewById(android.R.id.text1))
-                        .getText().toString();
-                setNature();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (mPokemon == null) {
+                    return;
+                } else {
+
+                }
             }
         });
     }
 
-    private void setAutoCompleteAdapter() {
-        String[] from = {PokeContract.PokemonName.NAME};
-        int[] to = {android.R.id.text1};
-        mAutoCompleteAdapter = new SimpleCursorAdapter(getActivity(),
-                android.R.layout.simple_spinner_dropdown_item, null, from, to,
-                0);
-        mAutoCompleteAdapter
-                .setCursorToStringConverter(new CursorToStringConverter() {
+    private void setButtons(View v) {
+        Button calculateIVs = (Button) v.findViewById(R.id.iv_calc_calculate_iv);
+        Button calculateHiddenPower = (Button) v.findViewById(R.id.iv_calc_calculate_hidden_power);
+        Button calculateStats = (Button) v.findViewById(R.id.iv_calc_calculate_stats);
+        calculateIVs.setOnClickListener(this);
+        calculateHiddenPower.setOnClickListener(this);
+        calculateStats.setOnClickListener(this);
+    }
 
-                    @Override
-                    public CharSequence convertToString(Cursor c) {
-                        return c.getString(c
-                                .getColumnIndexOrThrow(PokeContract.PokemonName.NAME));
-                    }
-                });
+    private void setAutoCompleteView(View v) {
+        AutoCompleteTextView pokemonNameEditText = (AutoCompleteTextView)
+                v.findViewById(R.id.iv_calc_pokemon_name);
+        // Create a Hashmap that for each pokemon name assigns it its id. This will allow
+        // us to recover the id later from the autocomplete view, as if we didn't do this,
+        // it would get the value of the filtered list.
+        final HashMap<String, Integer> pokemonList = new HashMap<String, Integer>();
+        String[] pokemonNames = getResources().getStringArray(R.array.pokemon_names);
 
-        mPokemonNameEditText.setAdapter(mAutoCompleteAdapter);
-        mPokemonNameEditText.setOnItemClickListener(new OnItemClickListener() {
+        for (int i = 0; i < pokemonNames.length; i++) {
+            pokemonList.put(pokemonNames[i], i);
+        }
+        ArrayAdapter<String> autoCompleteAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item, pokemonNames);
+        pokemonNameEditText.setAdapter(autoCompleteAdapter);
+        pokemonNameEditText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View v,
                                     int position, long id) {
-                Bundle args = new Bundle();
-                args.putLong(ROW_ID, id);
-                getLoaderManager().restartLoader(LOADER_POKEMON, args,
-                        IVCalcFragment.this);
+                //Create pokemon here
+                mPokemon = new TeamPokemon(getActivity(),
+                        pokemonList.get(adapterView.getItemAtPosition(position)));
+                mPokemonLevelEditText.setText(Integer.toString(mPokemon.mLevel));
+                updatePokemon();
+
             }
         });
-        mPokemonNameEditText.addTextChangedListener(new TextWatcher() {
+    }
 
+    private void setNatureView(final View v) {
+        mNatureSpinner = (Spinner) v.findViewById(R.id.iv_calc_nature);
+        ArrayAdapter<Natures.Nature> adapter = new ArrayAdapter<Natures.Nature>(getActivity(),
+                android.R.layout.simple_spinner_item, Natures.Nature.values());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mNatureSpinner.setAdapter(adapter);
+        mNatureSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void afterTextChanged(Editable s) {
-                if (!s.equals("")) {
-                    mPokemonName = s.toString();
-                    getLoaderManager().restartLoader(LOADER_AUTO_COMPLETE,
-                            null, IVCalcFragment.this);
-                } else {
-                    mPokemonName = "";
-                }
-
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                updatePokemon();
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int count) {
             }
         });
-
-        getLoaderManager().restartLoader(LOADER_AUTO_COMPLETE, null, this);
     }
 
-    private void setNatureSpinnerAdapter() {
-        // String[] from = {};
-        // int[] to = { android.R.id.text1 };
-        mNatureAdapter = new NaturesAdapter();
-        // mNatureAdapter = new NaturesAdapter(getActivity(),
-        // android.R.layout.simple_spinner_item, from, to);
+    private void setStatViews(final View v) {
+        mIVHPView = (EditText) v.findViewById(R.id.iv_calc_iv_hp);
+        mIVAttView = (EditText) v.findViewById(R.id.iv_calc_iv_att);
+        mIVDefView = (EditText) v.findViewById(R.id.iv_calc_iv_def);
+        mIVSpAttView = (EditText) v.findViewById(R.id.iv_calc_iv_sp_att);
+        mIVSpDefView = (EditText) v.findViewById(R.id.iv_calc_iv_sp_def);
+        mIVSpeedView = (EditText) v.findViewById(R.id.iv_calc_iv_speed);
+
+        mIVHPView.setText("31");
+        mIVAttView.setText("31");
+        mIVDefView.setText("31");
+        mIVSpAttView.setText("31");
+        mIVSpDefView.setText("31");
+        mIVSpeedView.setText("31");
+
+        mStatHPView = (EditText) v.findViewById(R.id.iv_calc_stat_hp);
+        mStatAttView = (EditText) v.findViewById(R.id.iv_calc_stat_att);
+        mStatDefView = (EditText) v.findViewById(R.id.iv_calc_stat_def);
+        mStatSpAttView = (EditText) v.findViewById(R.id.iv_calc_stat_sp_att);
+        mStatSpDefView = (EditText) v.findViewById(R.id.iv_calc_stat_sp_def);
+        mStatSpeedView = (EditText) v.findViewById(R.id.iv_calc_stat_speed);
+
+        mEVHPView = (EditText) v.findViewById(R.id.iv_calc_ev_hp);
+        mEVAttView = (EditText) v.findViewById(R.id.iv_calc_ev_att);
+        mEVDefView = (EditText) v.findViewById(R.id.iv_calc_ev_def);
+        mEVSpAttView = (EditText) v.findViewById(R.id.iv_calc_ev_sp_att);
+        mEVSpDefView = (EditText) v.findViewById(R.id.iv_calc_ev_sp_def);
+        mEVSpeedView = (EditText) v.findViewById(R.id.iv_calc_ev_speed);
+
+        mEVHPView.setText("0");
+        mEVAttView.setText("0");
+        mEVDefView.setText("0");
+        mEVSpAttView.setText("0");
+        mEVSpDefView.setText("0");
+        mEVSpeedView.setText("0");
     }
 
-    @Override
-    public void afterTextChanged(Editable s) {
-        if (s.hashCode() != mIVHPView.getText().hashCode()
-                && s.hashCode() != mIVAttView.getText().hashCode()
-                && s.hashCode() != mIVDefView.getText().hashCode()
-                && s.hashCode() != mIVSpAttView.getText().hashCode()
-                && s.hashCode() != mIVSpDefView.getText().hashCode()
-                && s.hashCode() != mIVSpeedView.getText().hashCode()) {
-            int level;
-            try {
-                level = Integer.parseInt(mPokemonLevelEditText.getText()
-                        .toString());
-            } catch (NumberFormatException e) {
-                return;
-            }
-
-            if (level > 100 || level < 1) {
-                return;
-            }
-
-            ArrayList<Integer> ivs = null;
-            int statValue;
-            int evValue;
-
-            if (s.hashCode() == mStatHPView.getText().hashCode()
-                    || s.hashCode() == mEVHPView.getText().hashCode()) {
-                try {
-                    statValue = Integer.parseInt(mStatHPView.getText()
-                            .toString());
-                    evValue = Integer.parseInt(mEVHPView.getText().toString());
-                } catch (NumberFormatException e) {
-                    return;
-                }
-                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_HP, mPokemon.mNature,
-                        statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_HP]);
-                if (ivs != null) {
-                    showIVs(Pokemon.STAT_INDEX_HP, ivs);
-                }
-            } else if (s.hashCode() == mStatAttView.getText().hashCode()
-                    || s.hashCode() == mEVAttView.getText().hashCode()) {
-                try {
-                    statValue = Integer.parseInt(mStatAttView.getText()
-                            .toString());
-                    evValue = Integer.parseInt(mEVAttView.getText().toString());
-                } catch (NumberFormatException e) {
-                    return;
-                }
-                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_ATT, mPokemon.mNature,
-                        statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
-                if (ivs != null) {
-                    showIVs(Pokemon.STAT_INDEX_ATT, ivs);
-                }
-
-            } else if (s.hashCode() == mStatDefView.getText().hashCode()
-                    || s.hashCode() == mEVDefView.getText().hashCode()) {
-                try {
-                    statValue = Integer.parseInt(mStatDefView.getText()
-                            .toString());
-                    evValue = Integer.parseInt(mEVDefView.getText().toString());
-                } catch (NumberFormatException e) {
-                    return;
-                }
-                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_DEF, mPokemon.mNature,
-                        statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_DEF]);
-                if (ivs != null) {
-                    showIVs(Pokemon.STAT_INDEX_DEF, ivs);
-                }
-
-            } else if (s.hashCode() == mStatSpAttView.getText().hashCode()
-                    || s.hashCode() == mEVSpAttView.getText().hashCode()) {
-                try {
-                    statValue = Integer.parseInt(mStatSpAttView.getText()
-                            .toString());
-                    evValue = Integer.parseInt(mEVSpAttView.getText()
-                            .toString());
-                } catch (NumberFormatException e) {
-                    return;
-                }
-                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_SP_ATT, mPokemon.mNature, statValue,
-                        evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_ATT]);
-                if (ivs != null) {
-                    showIVs(Pokemon.STAT_INDEX_SP_ATT, ivs);
-                }
-
-            } else if (s.hashCode() == mStatSpDefView.getText().hashCode()
-                    || s.hashCode() == mEVSpDefView.getText().hashCode()) {
-                try {
-                    statValue = Integer.parseInt(mStatSpDefView.getText()
-                            .toString());
-                    evValue = Integer.parseInt(mEVSpDefView.getText()
-                            .toString());
-                } catch (NumberFormatException e) {
-                    return;
-                }
-                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_SP_DEF, mPokemon.mNature,
-                        statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_ATT]);
-                if (ivs != null) {
-                    showIVs(Pokemon.STAT_INDEX_SP_DEF, ivs);
-                }
-
-            } else if (s.hashCode() == mStatSpeedView.getText().hashCode()
-                    || s.hashCode() == mEVSpeedView.getText().hashCode()) {
-                try {
-                    statValue = Integer.parseInt(mStatSpeedView.getText()
-                            .toString());
-                    evValue = Integer.parseInt(mEVSpeedView.getText()
-                            .toString());
-                } catch (NumberFormatException e) {
-                    return;
-                }
-                ivs = IVTools.calculatePossibleIVs(Pokemon.STAT_INDEX_SPEED, mPokemon.mNature,
-                        statValue, evValue, level, mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SPEED]);
-                if (ivs != null) {
-                    showIVs(Pokemon.STAT_INDEX_SPEED, ivs);
-                }
-            }
+    private void updatePokemon() {
+        if (mPokemon != null) {
+            showBaseStats();
         }
-
-        int hpIv = -1;
-        int attIv = -1;
-        int defIv = -1;
-        int spAttIv = -1;
-        int spDefIv = -1;
-        int speedIv = -1;
-        try {
-            hpIv = Integer.parseInt(mIVHPView.getText().toString());
-            attIv = Integer.parseInt(mIVAttView.getText().toString());
-            defIv = Integer.parseInt(mIVDefView.getText().toString());
-            speedIv = Integer.parseInt(mIVSpeedView.getText().toString());
-            spAttIv = Integer.parseInt(mIVSpAttView.getText().toString());
-            spDefIv = Integer.parseInt(mIVSpDefView.getText().toString());
-        } catch (NumberFormatException e) {
-            return;
+        if (mNatureSpinner != null) {
+            setNature((Natures.Nature) mNatureSpinner.getSelectedItem());
         }
-
-        mHiddenPowerTypeView.setText(": "
-                + getString(IVTools.getHiddenPowerType(hpIv, attIv, defIv,
-                spAttIv, spDefIv, speedIv)));
-        mHiddenPowerPowerView.setText(" "
-                + IVTools.getHiddenPowerPower(hpIv, attIv, defIv, spAttIv,
-                spDefIv, speedIv));
     }
 
     private void showBaseStats() {
@@ -402,253 +229,161 @@ public class IVCalcFragment extends Fragment implements TextWatcher,
         baseSpAttView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_ATT]);
         baseSpDefView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SP_DEF]);
         baseSpeedView.setText("" + mPokemon.mBaseStats[TeamPokemon.STAT_INDEX_SPEED]);
-
     }
 
-    private void showIVs(int stat, ArrayList<Integer> ivs) {
-        String result = IVTools.getIVsAsString(ivs);
-        if(result == null){
+    private void setNature(Natures.Nature nature) {
+        if (mPokemon != null) {
+            mPokemon.mNature = nature;
+        }
+
+        TextView iVAttTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_att_text);
+        TextView iVDefTextView = (TextView) getActivity().findViewById(R.id.iv_calc_iv_def_text);
+        TextView iVSpAttTextView = (TextView) getActivity()
+                .findViewById(R.id.iv_calc_iv_sp_att_text);
+        TextView iVSpDefTextView = (TextView) getActivity()
+                .findViewById(R.id.iv_calc_iv_sp_def_text);
+        TextView iVSpeedTextView = (TextView) getActivity()
+                .findViewById(R.id.iv_calc_iv_speed_text);
+
+        iVAttTextView.setBackgroundColor(Color.TRANSPARENT);
+        iVDefTextView.setBackgroundColor(Color.TRANSPARENT);
+        iVSpAttTextView.setBackgroundColor(Color.TRANSPARENT);
+        iVSpDefTextView.setBackgroundColor(Color.TRANSPARENT);
+        iVSpeedTextView.setBackgroundColor(Color.TRANSPARENT);
+
+        switch (nature) {
+            case LONELY: // +Atk -Def
+                iVAttTextView.setBackgroundColor(Color.GREEN);
+                iVDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case ADAMANT: // +Atk -SpA
+                iVAttTextView.setBackgroundColor(Color.GREEN);
+                iVSpAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case NAUGHTY: // +Atk -SpD
+                iVAttTextView.setBackgroundColor(Color.GREEN);
+                iVSpDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case BRAVE: // +Atk -Spe
+                iVAttTextView.setBackgroundColor(Color.GREEN);
+                iVSpeedTextView.setBackgroundColor(Color.RED);
+                break;
+            case BOLD: // +Def -Atk
+                iVDefTextView.setBackgroundColor(Color.GREEN);
+                iVAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case IMPISH: // +Def -SpA
+                iVDefTextView.setBackgroundColor(Color.GREEN);
+                iVSpAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case LAX: // +Def -SpD
+                iVDefTextView.setBackgroundColor(Color.GREEN);
+                iVSpDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case RELAXED: // +Def -Spe
+                iVDefTextView.setBackgroundColor(Color.GREEN);
+                iVSpeedTextView.setBackgroundColor(Color.RED);
+                break;
+            case MODEST: // +SpA -Atk
+                iVSpAttTextView.setBackgroundColor(Color.GREEN);
+                iVAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case MILD: // +SpA -Def
+                iVSpAttTextView.setBackgroundColor(Color.GREEN);
+                iVDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case RASH: // +SpA -SpD
+                iVSpAttTextView.setBackgroundColor(Color.GREEN);
+                iVSpDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case QUIET: // +SpA -Spe
+                iVSpAttTextView.setBackgroundColor(Color.GREEN);
+                iVSpeedTextView.setBackgroundColor(Color.RED);
+                break;
+            case CALM: // +SpD -Atk
+                iVSpDefTextView.setBackgroundColor(Color.GREEN);
+                iVAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case GENTLE: // +SpD -Def
+                iVSpDefTextView.setBackgroundColor(Color.GREEN);
+                iVDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case CAREFUL: // +SpD -SpA
+                iVSpDefTextView.setBackgroundColor(Color.GREEN);
+                iVSpAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case SASSY: // +SpD -Spe
+                iVSpDefTextView.setBackgroundColor(Color.GREEN);
+                iVSpeedTextView.setBackgroundColor(Color.RED);
+                break;
+            case TIMID: // +Spe -Atk
+                iVSpeedTextView.setBackgroundColor(Color.GREEN);
+                iVAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case HASTY: // +Spe -Def
+                iVSpeedTextView.setBackgroundColor(Color.GREEN);
+                iVDefTextView.setBackgroundColor(Color.RED);
+                break;
+            case JOLLY: // +Spe -SpA
+                iVSpeedTextView.setBackgroundColor(Color.GREEN);
+                iVSpAttTextView.setBackgroundColor(Color.RED);
+                break;
+            case NAIVE: // +Spe -SpD
+                iVSpeedTextView.setBackgroundColor(Color.GREEN);
+                iVSpDefTextView.setBackgroundColor(Color.RED);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void calculateIVs() {
+        if (mPokemon == null) {
             return;
         }
-        switch (stat) {
-            case Pokemon.STAT_INDEX_HP:
-                mIVHPView.setText(result);
-                break;
-            case Pokemon.STAT_INDEX_ATT:
-                mIVAttView.setText(result);
-                break;
-            case Pokemon.STAT_INDEX_DEF:
-                mIVDefView.setText(result);
-                break;
-            case Pokemon.STAT_INDEX_SP_ATT:
-                mIVSpAttView.setText(result);
-                break;
-            case Pokemon.STAT_INDEX_SP_DEF:
-                mIVSpDefView.setText(result);
-                break;
-            case Pokemon.STAT_INDEX_SPEED:
-                mIVSpeedView.setText(result);
-                break;
-        }
+        mIVHPView.setText(getIVs(Pokemon.STAT_INDEX_HP, mEVHPView, mStatHPView));
+        mIVAttView.setText(getIVs(Pokemon.STAT_INDEX_ATT, mEVAttView, mStatAttView));
+        mIVDefView.setText(getIVs(Pokemon.STAT_INDEX_DEF, mEVDefView, mStatDefView));
+        mIVSpAttView.setText(getIVs(Pokemon.STAT_INDEX_SP_ATT, mEVSpAttView, mStatSpAttView));
+        mIVSpDefView.setText(getIVs(Pokemon.STAT_INDEX_SP_DEF, mEVSpDefView, mStatSpDefView));
+        mIVSpeedView.setText(getIVs(Pokemon.STAT_INDEX_SPEED, mEVSpeedView, mStatSpeedView));
     }
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count,
-                                  int after) {
+    private String getIVs(int stat, TextView evView, TextView statView) {
+        try {
+            int evValue = Integer.parseInt(evView.getText().toString());
+            int statValue = Integer.parseInt(statView.getText().toString());
+            int level = Integer.parseInt(mPokemonLevelEditText.getText().toString());
+            mPokemon.mEvs[stat] = evValue;
+            mPokemon.mStats[stat] = statValue;
+            mPokemon.mLevel = level;
+            return IVTools.getIVsAsString(IVTools.calculatePossibleIVs(stat, mPokemon.mNature,
+                    statValue, evValue, mPokemon.mLevel, mPokemon.mBaseStats[stat]));
+        } catch (NumberFormatException e) {
+            return "";
+        }
+
     }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    private void levelUp(){
+        if(mPokemon == null || mPokemon.mLevel == 100) {
+            return;
+        }
+        calculateIVs();
+        mPokemon.levelUp();
+
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Loader<Cursor> loader = null;
-
-        Uri uri;
-
-        switch (id) {
-            case LOADER_AUTO_COMPLETE:
-                uri = PokeContract.PokemonName.CONTENT_POKEMON_NAME;
-                String[] autoCompleteProjection = {PokeContract.PokemonName._ID,
-                        PokeContract.PokemonName.NAME};
-                String autoCompleteSelection = PokeContract.PokemonName.NAME
-                        + " LIKE ?";
-                String[] autoCompleteSelectionArgs = {"%" + mPokemonName + "%"};
-                loader = new CursorLoader(getActivity(), uri,
-                        autoCompleteProjection, autoCompleteSelection,
-                        autoCompleteSelectionArgs, null);
-                break;
-            case LOADER_POKEMON:
-                uri = PokeContract.Pokedex.CONTENT_POKEDEX;
-                String baseStatsSelection = PokeContract.PokemonName.TABLE_NAME
-                        + "." + PokeContract.PokemonName._ID + "=?";
-                String[] selectionArgs = {Long.toString(args.getLong(ROW_ID))};
-                loader = new CursorLoader(getActivity(), uri, null,
-                        baseStatsSelection, selectionArgs, null);
-                break;
-        }
-
-        return loader;
+    private void calculateStats() {
+        levelUp();
     }
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        switch (loader.getId()) {
-            case LOADER_AUTO_COMPLETE:
-                mAutoCompleteAdapter.swapCursor(cursor);
-                break;
-            case LOADER_POKEMON:
-                if (cursor.moveToFirst()) {
-                    mPokemon = new TeamPokemon(getActivity(), 1);
-                    if (mPokemon != null) {
-                        showBaseStats();
-                    }
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        switch (loader.getId()) {
-            case LOADER_AUTO_COMPLETE:
-                mAutoCompleteAdapter.swapCursor(null);
-                break;
-        }
-    }
-
-    private void setNature() {
-        mIVAttTextView.setBackgroundColor(Color.TRANSPARENT);
-        mIVDefTextView.setBackgroundColor(Color.TRANSPARENT);
-        mIVSpeedTextView.setBackgroundColor(Color.TRANSPARENT);
-        mIVSpAttTextView.setBackgroundColor(Color.TRANSPARENT);
-        mIVSpDefTextView.setBackgroundColor(Color.TRANSPARENT);
-
-        if (mNature.equals(getString(R.string.nature_lonely))) {
-            mIVAttTextView.setBackgroundColor(Color.GREEN);
-            mIVDefTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_brave))) {
-            mIVAttTextView.setBackgroundColor(Color.GREEN);
-            mIVSpeedTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_adamant))) {
-            mIVAttTextView.setBackgroundColor(Color.GREEN);
-            mIVSpAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_naughty))) {
-            mIVAttTextView.setBackgroundColor(Color.GREEN);
-            mIVSpDefTextView.setBackgroundColor(Color.RED);
-
-        } else if (mNature.equals(getString(R.string.nature_bold))) {
-            mIVDefTextView.setBackgroundColor(Color.GREEN);
-            mIVAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_relaxed))) {
-            mIVDefTextView.setBackgroundColor(Color.GREEN);
-            mIVSpeedTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_impish))) {
-            mIVDefTextView.setBackgroundColor(Color.GREEN);
-            mIVSpAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_lax))) {
-            mIVDefTextView.setBackgroundColor(Color.GREEN);
-            mIVSpDefTextView.setBackgroundColor(Color.RED);
-
-        } else if (mNature.equals(getString(R.string.nature_timid))) {
-            mIVSpeedTextView.setBackgroundColor(Color.GREEN);
-            mIVAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_hasty))) {
-            mIVSpeedTextView.setBackgroundColor(Color.GREEN);
-            mIVDefTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_jolly))) {
-            mIVSpeedTextView.setBackgroundColor(Color.GREEN);
-            mIVSpAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_naive))) {
-            mIVSpeedTextView.setBackgroundColor(Color.GREEN);
-            mIVSpDefTextView.setBackgroundColor(Color.RED);
-
-        } else if (mNature.equals(getString(R.string.nature_modest))) {
-            mIVSpAttTextView.setBackgroundColor(Color.GREEN);
-            mIVAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_mild))) {
-            mIVSpAttTextView.setBackgroundColor(Color.GREEN);
-            mIVDefTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_quiet))) {
-            mIVSpAttTextView.setBackgroundColor(Color.GREEN);
-            mIVSpeedTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_rash))) {
-            mIVSpAttTextView.setBackgroundColor(Color.GREEN);
-            mIVSpDefTextView.setBackgroundColor(Color.RED);
-
-        } else if (mNature.equals(getString(R.string.nature_calm))) {
-            mIVSpDefTextView.setBackgroundColor(Color.GREEN);
-            mIVAttTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_gentle))) {
-            mIVSpDefTextView.setBackgroundColor(Color.GREEN);
-            mIVDefTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_sassy))) {
-            mIVSpDefTextView.setBackgroundColor(Color.GREEN);
-            mIVSpeedTextView.setBackgroundColor(Color.RED);
-        } else if (mNature.equals(getString(R.string.nature_careful))) {
-            mIVSpDefTextView.setBackgroundColor(Color.GREEN);
-            mIVSpAttTextView.setBackgroundColor(Color.RED);
-        }
-    }
-
-    private class NaturesAdapter implements SpinnerAdapter {
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View row = convertView;
-            if (row == null) {
-                LayoutInflater inflater = (LayoutInflater) getActivity()
-                        .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-                row = inflater.inflate(android.R.layout.simple_spinner_item,
-                        parent, false);
-            }
-            ((TextView) row.findViewById(android.R.id.text1)).setText(Natures
-                    .getNature(position).mName);
-            return row;
-        }
-
-        @Override
-        public View getDropDownView(int position, View convertView,
-                                    ViewGroup parent) {
-            View row = convertView;
-            if (row == null) {
-                LayoutInflater inflater = (LayoutInflater) getActivity()
-                        .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-                row = inflater.inflate(
-                        android.R.layout.simple_spinner_dropdown_item, parent,
-                        false);
-            }
-            ((TextView) row.findViewById(android.R.id.text1)).setText(Natures
-                    .getNature(position).mName);
-            return row;
-        }
-
-        /**
-         * This data is static so this values dont need to be used/calculated.
-         */
-
-        @Override
-        public int getCount() {
-            return 25;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public void registerDataSetObserver(DataSetObserver observer) {
-        }
-
-        @Override
-        public void unregisterDataSetObserver(DataSetObserver observer) {
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            return 0;
-        }
-
-        @Override
-        public int getViewTypeCount() {
-            return 1;
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
+    /**
+     * In the works.
+     */
+    private void calculateHiddenPower() {
+        TextView hiddenPowerTypeView = (TextView)
+                getActivity().findViewById(R.id.iv_calc_hidden_power_type);
+        hiddenPowerTypeView.setText(": Not available at the moment");
     }
 }

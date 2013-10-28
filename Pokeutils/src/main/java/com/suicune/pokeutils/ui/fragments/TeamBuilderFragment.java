@@ -159,60 +159,60 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.team_builder_pokemon_1:
-                if (mPokemon1 != null) {
-                    Bundle pokemon = new Bundle();
-                    mPokemon1.saveStatus(pokemon);
-                    editPokemon(0, pokemon);
-                } else {
-                    editPokemon(0, null);
-                }
-                break;
-            case R.id.team_builder_pokemon_2:
-                if (mPokemon2 != null) {
-                    Bundle pokemon = new Bundle();
-                    mPokemon2.saveStatus(pokemon);
-                    editPokemon(1, pokemon);
-                } else {
-                    editPokemon(1, null);
-                }
-                break;
-            case R.id.team_builder_pokemon_3:
-                if (mPokemon3 != null) {
-                    Bundle pokemon = new Bundle();
-                    mPokemon3.saveStatus(pokemon);
-                    editPokemon(2, pokemon);
-                } else {
-                    editPokemon(2, null);
-                }
-                break;
-            case R.id.team_builder_pokemon_4:
-                if (mPokemon4 != null) {
-                    Bundle pokemon = new Bundle();
-                    mPokemon4.saveStatus(pokemon);
-                    editPokemon(3, pokemon);
-                } else {
-                    editPokemon(3, null);
-                }
-                break;
-            case R.id.team_builder_pokemon_5:
-                if (mPokemon5 != null) {
-                    Bundle pokemon = new Bundle();
-                    mPokemon5.saveStatus(pokemon);
-                    editPokemon(4, pokemon);
-                } else {
-                    editPokemon(4, null);
-                }
-                break;
-            case R.id.team_builder_pokemon_6:
-                if (mPokemon6 != null) {
-                    Bundle pokemon = new Bundle();
-                    mPokemon6.saveStatus(pokemon);
-                    editPokemon(5, pokemon);
-                } else {
-                    editPokemon(5, null);
-                }
-                break;
+//            case R.id.team_builder_pokemon_1:
+//                if (mPokemon1 != null) {
+//                    Bundle pokemon = new Bundle();
+//                    mPokemon1.saveStatus(pokemon);
+//                    editPokemon(0, pokemon);
+//                } else {
+//                    editPokemon(0, null);
+//                }
+//                break;
+//            case R.id.team_builder_pokemon_2:
+//                if (mPokemon2 != null) {
+//                    Bundle pokemon = new Bundle();
+//                    mPokemon2.saveStatus(pokemon);
+//                    editPokemon(1, pokemon);
+//                } else {
+//                    editPokemon(1, null);
+//                }
+//                break;
+//            case R.id.team_builder_pokemon_3:
+//                if (mPokemon3 != null) {
+//                    Bundle pokemon = new Bundle();
+//                    mPokemon3.saveStatus(pokemon);
+//                    editPokemon(2, pokemon);
+//                } else {
+//                    editPokemon(2, null);
+//                }
+//                break;
+//            case R.id.team_builder_pokemon_4:
+//                if (mPokemon4 != null) {
+//                    Bundle pokemon = new Bundle();
+//                    mPokemon4.saveStatus(pokemon);
+//                    editPokemon(3, pokemon);
+//                } else {
+//                    editPokemon(3, null);
+//                }
+//                break;
+//            case R.id.team_builder_pokemon_5:
+//                if (mPokemon5 != null) {
+//                    Bundle pokemon = new Bundle();
+//                    mPokemon5.saveStatus(pokemon);
+//                    editPokemon(4, pokemon);
+//                } else {
+//                    editPokemon(4, null);
+//                }
+//                break;
+//            case R.id.team_builder_pokemon_6:
+//                if (mPokemon6 != null) {
+//                    Bundle pokemon = new Bundle();
+//                    mPokemon6.saveStatus(pokemon);
+//                    editPokemon(5, pokemon);
+//                } else {
+//                    editPokemon(5, null);
+//                }
+//                break;
             default:
                 break;
         }
@@ -312,47 +312,48 @@ public class TeamBuilderFragment extends Fragment implements OnClickListener {
     }
 
     private Bundle createTeamBundle() {
-        if (mPokemon1 == null && mPokemon2 == null && mPokemon3 == null
-                && mPokemon4 == null && mPokemon5 == null && mPokemon6 == null) {
-            return null;
-        }
-
-        Bundle team = new Bundle();
-        Bundle pokemon1 = new Bundle();
-        if (mPokemon1 != null) {
-            mPokemon1.saveStatus(pokemon1);
-            team.putBundle(FileTools.TAG_POKEMON_1, pokemon1);
-        }
-
-        Bundle pokemon2 = new Bundle();
-        if (mPokemon2 != null) {
-            mPokemon2.saveStatus(pokemon2);
-            team.putBundle(FileTools.TAG_POKEMON_2, pokemon2);
-        }
-
-        Bundle pokemon3 = new Bundle();
-        if (mPokemon3 != null) {
-            mPokemon3.saveStatus(pokemon3);
-            team.putBundle(FileTools.TAG_POKEMON_3, pokemon3);
-        }
-
-        Bundle pokemon4 = new Bundle();
-        if (mPokemon4 != null) {
-            mPokemon4.saveStatus(pokemon4);
-            team.putBundle(FileTools.TAG_POKEMON_4, pokemon4);
-        }
-
-        Bundle pokemon5 = new Bundle();
-        if (mPokemon5 != null) {
-            mPokemon5.saveStatus(pokemon5);
-            team.putBundle(FileTools.TAG_POKEMON_5, pokemon5);
-        }
-
-        Bundle pokemon6 = new Bundle();
-        if (mPokemon6 != null) {
-            mPokemon6.saveStatus(pokemon6);
-            team.putBundle(FileTools.TAG_POKEMON_6, pokemon6);
-        }
-        return team;
+//        if (mPokemon1 == null && mPokemon2 == null && mPokemon3 == null
+//                && mPokemon4 == null && mPokemon5 == null && mPokemon6 == null) {
+//            return null;
+//        }
+//
+//        Bundle team = new Bundle();
+//        Bundle pokemon1 = new Bundle();
+//        if (mPokemon1 != null) {
+//            mPokemon1.saveStatus(pokemon1);
+//            team.putBundle(FileTools.TAG_POKEMON_1, pokemon1);
+//        }
+//
+//        Bundle pokemon2 = new Bundle();
+//        if (mPokemon2 != null) {
+//            mPokemon2.saveStatus(pokemon2);
+//            team.putBundle(FileTools.TAG_POKEMON_2, pokemon2);
+//        }
+//
+//        Bundle pokemon3 = new Bundle();
+//        if (mPokemon3 != null) {
+//            mPokemon3.saveStatus(pokemon3);
+//            team.putBundle(FileTools.TAG_POKEMON_3, pokemon3);
+//        }
+//
+//        Bundle pokemon4 = new Bundle();
+//        if (mPokemon4 != null) {
+//            mPokemon4.saveStatus(pokemon4);
+//            team.putBundle(FileTools.TAG_POKEMON_4, pokemon4);
+//        }
+//
+//        Bundle pokemon5 = new Bundle();
+//        if (mPokemon5 != null) {
+//            mPokemon5.saveStatus(pokemon5);
+//            team.putBundle(FileTools.TAG_POKEMON_5, pokemon5);
+//        }
+//
+//        Bundle pokemon6 = new Bundle();
+//        if (mPokemon6 != null) {
+//            mPokemon6.saveStatus(pokemon6);
+//            team.putBundle(FileTools.TAG_POKEMON_6, pokemon6);
+//        }
+//        return team;
+        return null;
     }
 }

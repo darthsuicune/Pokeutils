@@ -97,84 +97,86 @@ public class DamageCalcFragment extends Fragment implements
         if (container == null) {
             return null;
         }
-        return inflater
+        View v = inflater
                 .inflate(R.layout.damage_calc_fragment, container, false);
+        setViews(v);
+
+        return v;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (getActivity().findViewById(R.id.damage_calc_attack) == null) {
-            return;
-        }
-        setViews();
-
-        if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey(ARG_ATTACKER_ID)) {
-//				mAttacker = new TeamPokemon(
-//						savedInstanceState.getBundle(ARG_ATTACKER_ID));
-                for (int i = 0; i < 6; i++) {
-                    mAttacker.mEvs[i] = 252;
-                }
-                if (savedInstanceState.containsKey(ARG_ATTACK_ID)) {
-                    mAttackChoicePosition = savedInstanceState
-                            .getInt(ARG_ATTACK_ID);
-                }
-                loadAttackerData();
-            }
-            if (savedInstanceState.containsKey(ARG_DEFENDER_ID)) {
-//				mDefender = new TeamPokemon(
-//						savedInstanceState.getBundle(ARG_DEFENDER_ID));
-                for (int i = 0; i < 6; i++) {
-                    mAttacker.mEvs[i] = 252;
-                }
-                loadDefenderData();
-            }
-        }
+//        if (getActivity().findViewById(R.id.damage_calc_attack) == null) {
+//            return;
+//        }
+//
+//        if (savedInstanceState != null) {
+//            if (savedInstanceState.containsKey(ARG_ATTACKER_ID)) {
+////				mAttacker = new TeamPokemon(
+////						savedInstanceState.getBundle(ARG_ATTACKER_ID));
+//                for (int i = 0; i < 6; i++) {
+//                    mAttacker.mEvs[i] = 252;
+//                }
+//                if (savedInstanceState.containsKey(ARG_ATTACK_ID)) {
+//                    mAttackChoicePosition = savedInstanceState
+//                            .getInt(ARG_ATTACK_ID);
+//                }
+//                loadAttackerData();
+//            }
+//            if (savedInstanceState.containsKey(ARG_DEFENDER_ID)) {
+//                mDefender = new TeamPokemon(
+//				      savedInstanceState.getBundle(ARG_DEFENDER_ID));
+//                for (int i = 0; i < 6; i++) {
+//                    mAttacker.mEvs[i] = 252;
+//                }
+//                loadDefenderData();
+//            }
+//        }
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (mAttacker != null) {
-            Bundle attacker = new Bundle();
-            mAttacker.saveStatus(attacker);
-            outState.putBundle(ARG_ATTACKER_ID, attacker);
-            if (mAttack != null) {
-                outState.putInt(ARG_ATTACK_ID,
-                        mAttackView.getSelectedItemPosition());
-            }
-        }
-        if (mDefender != null) {
-            Bundle defender = new Bundle();
-            mDefender.saveStatus(defender);
-            outState.putBundle(ARG_DEFENDER_ID, defender);
-        }
+//        if (mAttacker != null) {
+//            Bundle attacker = new Bundle();
+//            mAttacker.saveStatus(attacker);
+//            outState.putBundle(ARG_ATTACKER_ID, attacker);
+//            if (mAttack != null) {
+//                outState.putInt(ARG_ATTACK_ID,
+//                        mAttackView.getSelectedItemPosition());
+//            }
+//        }
+//        if (mDefender != null) {
+//            Bundle defender = new Bundle();
+//            mDefender.saveStatus(defender);
+//            outState.putBundle(ARG_DEFENDER_ID, defender);
+//        }
     }
 
     // VIEW RELATED METHODS ON START
 
-    private void setViews() {
-        prepareAttackerViews();
-        prepareAttackViews();
-        prepareDefenderViews();
-        prepareOtherModifierViews();
+    private void setViews(View v) {
+        prepareAttackerViews(v);
+        prepareAttackViews(v);
+        prepareDefenderViews(v);
+        prepareOtherModifierViews(v);
 
-        mResultView = (TextView) getActivity().findViewById(
+        mResultView = (TextView) v.findViewById(
                 R.id.damage_calc_damage);
     }
 
-    private void prepareAttackerViews() {
-        prepareAttackerAutoCompleteView();
-        prepareAttackerLevelView();
-        prepareAttackerNatureView();
-        prepareAttackerBaseStatsViews();
-        prepareAttackerAbilityView();
-        prepareAttackerItemView();
+    private void prepareAttackerViews(View v) {
+        prepareAttackerAutoCompleteView(v);
+        prepareAttackerLevelView(v);
+        prepareAttackerNatureView(v);
+        prepareAttackerBaseStatsViews(v);
+        prepareAttackerAbilityView(v);
+        prepareAttackerItemView(v);
     }
 
-    private void prepareAttackerAutoCompleteView() {
-        mAttackerView = (AutoCompleteTextView) getActivity().findViewById(
+    private void prepareAttackerAutoCompleteView(View v) {
+        mAttackerView = (AutoCompleteTextView) v.findViewById(
                 R.id.damage_calc_pokemon_1);
 
         // Prepare the adapter
@@ -191,29 +193,29 @@ public class DamageCalcFragment extends Fragment implements
         mAttackerView.setOnItemClickListener(this);
     }
 
-    private void prepareAttackerLevelView() {
-        mAttackerLevelView = (EditText) getActivity().findViewById(
+    private void prepareAttackerLevelView(View v) {
+        mAttackerLevelView = (EditText) v.findViewById(
                 R.id.damage_calc_attacker_level);
         mAttackerLevelView.setText("100");
         mAttackerLevelView.addTextChangedListener(this);
     }
 
-    private void prepareAttackerNatureView() {
-        mAttackerNatureView = (Spinner) getActivity().findViewById(
+    private void prepareAttackerNatureView(View v) {
+        mAttackerNatureView = (Spinner) v.findViewById(
                 R.id.damage_calc_attacker_nature);
 
         mAttackerNatureView.setAdapter(getNaturesAdapter());
         mAttackerNatureView.setOnItemSelectedListener(this);
     }
 
-    private void prepareAttackerBaseStatsViews() {
-        mAttackerHpView = (EditText) getActivity().findViewById(
+    private void prepareAttackerBaseStatsViews(View v) {
+        mAttackerHpView = (EditText) v.findViewById(
                 R.id.damage_calc_attacker_hp);
-        mAttackerAttView = (EditText) getActivity().findViewById(
+        mAttackerAttView = (EditText) v.findViewById(
                 R.id.damage_calc_attacker_att);
-        mAttackerSpAttView = (EditText) getActivity().findViewById(
+        mAttackerSpAttView = (EditText) v.findViewById(
                 R.id.damage_calc_attacker_sp_att);
-        mAttackerSpeedView = (EditText) getActivity().findViewById(
+        mAttackerSpeedView = (EditText) v.findViewById(
                 R.id.damage_calc_attacker_speed);
 
         mAttackerHpView.addTextChangedListener(this);
@@ -221,32 +223,32 @@ public class DamageCalcFragment extends Fragment implements
         mAttackerSpAttView.addTextChangedListener(this);
         mAttackerSpeedView.addTextChangedListener(this);
 
-        mAttackerModifierView = (Spinner) getActivity().findViewById(
+        mAttackerModifierView = (Spinner) v.findViewById(
                 R.id.damage_calc_attack_modifier);
 
         mAttackerModifierView.setOnItemSelectedListener(this);
         mAttackerModifierView.setSelection(6);
     }
 
-    private void prepareAttackerAbilityView() {
-        mAttackerAbilityView = (Spinner) getActivity().findViewById(
+    private void prepareAttackerAbilityView(View v) {
+        mAttackerAbilityView = (Spinner) v.findViewById(
                 R.id.damage_calc_attacker_ability);
 
         mAttackerAbilityView.setOnItemSelectedListener(this);
     }
 
-    private void prepareAttackerItemView() {
-        mAttackerItemView = (Spinner) getActivity().findViewById(
+    private void prepareAttackerItemView(View v) {
+        mAttackerItemView = (Spinner) v.findViewById(
                 R.id.damage_calc_attacker_item);
 
         mAttackerItemView.setOnItemSelectedListener(this);
         // TODO: Add items to the equation, yey
     }
 
-    private void prepareAttackViews() {
-        mAttackView = (Spinner) getActivity().findViewById(
+    private void prepareAttackViews(View v) {
+        mAttackView = (Spinner) v.findViewById(
                 R.id.damage_calc_attack);
-        mAttackBaseDamageView = (EditText) getActivity().findViewById(
+        mAttackBaseDamageView = (EditText) v.findViewById(
                 R.id.damage_calc_base_damage);
 
         setAttackSpinnerAdapter();
@@ -255,17 +257,17 @@ public class DamageCalcFragment extends Fragment implements
         mAttackBaseDamageView.addTextChangedListener(this);
     }
 
-    private void prepareDefenderViews() {
-        prepareDefenderAutoCompleteView();
-        prepareDefenderLevelView();
-        prepareDefenderNatureView();
-        prepareDefenderBaseStatsViews();
-        prepareDefenderAbilityView();
-        prepareDefenderItemView();
+    private void prepareDefenderViews(View v) {
+        prepareDefenderAutoCompleteView(v);
+        prepareDefenderLevelView(v);
+        prepareDefenderNatureView(v);
+        prepareDefenderBaseStatsViews(v);
+        prepareDefenderAbilityView(v);
+        prepareDefenderItemView(v);
     }
 
-    private void prepareDefenderAutoCompleteView() {
-        mDefenderView = (AutoCompleteTextView) getActivity().findViewById(
+    private void prepareDefenderAutoCompleteView(View v) {
+        mDefenderView = (AutoCompleteTextView) v.findViewById(
                 R.id.damage_calc_pokemon_2);
 
         // Prepare the adapter
@@ -282,29 +284,29 @@ public class DamageCalcFragment extends Fragment implements
         mDefenderView.setOnItemClickListener(this);
     }
 
-    private void prepareDefenderLevelView() {
-        mDefenderLevelView = (EditText) getActivity().findViewById(
+    private void prepareDefenderLevelView(View v) {
+        mDefenderLevelView = (EditText) v.findViewById(
                 R.id.damage_calc_defender_level);
         mDefenderLevelView.setText("100");
         mDefenderLevelView.addTextChangedListener(this);
     }
 
-    private void prepareDefenderNatureView() {
-        mDefenderNatureView = (Spinner) getActivity().findViewById(
+    private void prepareDefenderNatureView(View v) {
+        mDefenderNatureView = (Spinner) v.findViewById(
                 R.id.damage_calc_defender_nature);
 
         mDefenderNatureView.setAdapter(getNaturesAdapter());
         mDefenderNatureView.setOnItemSelectedListener(this);
     }
 
-    private void prepareDefenderBaseStatsViews() {
-        mDefenderHpView = (EditText) getActivity().findViewById(
+    private void prepareDefenderBaseStatsViews(View v) {
+        mDefenderHpView = (EditText) v.findViewById(
                 R.id.damage_calc_defender_hp);
-        mDefenderDefView = (EditText) getActivity().findViewById(
+        mDefenderDefView = (EditText) v.findViewById(
                 R.id.damage_calc_defender_def);
-        mDefenderSpDefView = (EditText) getActivity().findViewById(
+        mDefenderSpDefView = (EditText) v.findViewById(
                 R.id.damage_calc_defender_sp_def);
-        mDefenderSpeedView = (EditText) getActivity().findViewById(
+        mDefenderSpeedView = (EditText) v.findViewById(
                 R.id.damage_calc_defender_speed);
 
         mDefenderHpView.addTextChangedListener(this);
@@ -312,29 +314,29 @@ public class DamageCalcFragment extends Fragment implements
         mDefenderSpDefView.addTextChangedListener(this);
         mDefenderSpeedView.addTextChangedListener(this);
 
-        mDefenderModifierView = (Spinner) getActivity().findViewById(
+        mDefenderModifierView = (Spinner) v.findViewById(
                 R.id.damage_calc_defense_modifier);
 
         mDefenderModifierView.setOnItemSelectedListener(this);
         mDefenderModifierView.setSelection(6);
     }
 
-    private void prepareDefenderAbilityView() {
-        mDefenderAbilityView = (Spinner) getActivity().findViewById(
+    private void prepareDefenderAbilityView(View v) {
+        mDefenderAbilityView = (Spinner) v.findViewById(
                 R.id.damage_calc_defender_ability);
 
         mDefenderAbilityView.setOnItemSelectedListener(this);
     }
 
-    private void prepareDefenderItemView() {
-        mDefenderItemView = (Spinner) getActivity().findViewById(
+    private void prepareDefenderItemView(View v) {
+        mDefenderItemView = (Spinner) v.findViewById(
                 R.id.damage_calc_defender_item);
 
         mDefenderItemView.setOnItemSelectedListener(this);
         // TODO: Add items to the equation, yey
     }
 
-    private void prepareOtherModifierViews() {
+    private void prepareOtherModifierViews(View v) {
         // TODO: Add stuff.
     }
 

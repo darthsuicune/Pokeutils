@@ -29,24 +29,18 @@ public class IVTools {
         }
 		ArrayList<Integer> ivList = new ArrayList<Integer>();
 
-		if(stat == Pokemon.STAT_INDEX_HP) {
-			for (int iv = 0; iv <= 31; iv++) {
+        for (int iv = 0; iv <= 31; iv++) {
+    		if(stat == Pokemon.STAT_INDEX_HP) {
 				if (currentStat == getHpValue(baseStat, currentEv, iv,
 						currentLevel)) {
 					ivList.add(iv);
 				}
-			}
-        } else {
-            for (int iv = 0; iv <= 31; iv++) {
-                int calculated = getStatValue(baseStat, currentEv, iv,
-                        currentLevel, Natures.getModifier(nature, stat));
-                if (currentStat == calculated) {
+			} else {
+                if (currentStat == getStatValue(baseStat, currentEv, iv,
+                        currentLevel, Natures.getModifier(nature, stat))) {
                     ivList.add(iv);
                 }
             }
-        }
-        if (ivList.size() < 1) {
-            return null;
         }
 		return ivList;
 	}

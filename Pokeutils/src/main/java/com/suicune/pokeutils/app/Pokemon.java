@@ -66,22 +66,6 @@ public class Pokemon {
 
     }
 
-    public void saveStatus(Bundle status) {
-        status.putLong(PokeContract.PokemonBaseStats._ID, mId);
-        status.putString(PokeContract.PokemonName.NAME, mName);
-        status.putInt(PokeContract.PokemonBaseStats.NUMBER, mNumber);
-        status.putInt(PokeContract.PokemonBaseStats.FORM, mForm);
-//        status.putInt(PokeContract.PokemonType1.TYPE, mType1);
-//        status.putInt(PokeContract.PokemonType2.TYPE, mType2);
-        status.putIntArray(PokeContract.PokemonBaseStats.BASE_HP, mBaseStats);
-        status.putInt(PokeContract.PokemonAbility1.ABILITY_1,
-                mAbilities.get(ABILITY_INDEX_1).mId);
-        status.putInt(PokeContract.PokemonAbility2.ABILITY_2,
-                mAbilities.get(ABILITY_INDEX_2).mId);
-        status.putInt(PokeContract.PokemonAbilityDW.ABILITY_DW,
-                mAbilities.get(ABILITY_INDEX_DW).mId);
-    }
-
     @Override
     public String toString(){
         return mName;
