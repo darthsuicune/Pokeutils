@@ -10,18 +10,19 @@
 
         <!-- Pokemon Information block -->
 
-        <AutoCompleteTextView
-            android:id="@+id/iv_calc_pokemon_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/pokemon_name"
-            android:inputType="text" >
-        </AutoCompleteTextView>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/iv_calc_pokemon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/pokemon_name"
+                android:inputType="text" >
+            </AutoCompleteTextView>
+
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/iv_calc_title_level"
@@ -423,11 +424,29 @@
                 </TextView>
             </TableRow>
         </TableLayout>
-        <Button
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/iv_calc_calculate_iv"
                 android:id="@+id/iv_calc_calculate_iv"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iv_calc_level_up"
+                android:id="@+id/iv_calc_level_up"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iv_calc_clear_stats"
+                android:id="@+id/iv_calc_clear_stats"/>
+        </LinearLayout>
+
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
