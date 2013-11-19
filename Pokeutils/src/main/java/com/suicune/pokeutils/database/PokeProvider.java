@@ -70,9 +70,9 @@ public class PokeProvider extends ContentProvider {
 				PokeContract.PokemonAbility2.TABLE_NAME + "/#",
 				POKEMON_ABILITY_2_ID);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.PokemonAbilityDW.TABLE_NAME, POKEMON_ABILITY_DW);
+				PokeContract.PokemonAbilityHidden.TABLE_NAME, POKEMON_ABILITY_DW);
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
-				PokeContract.PokemonAbilityDW.TABLE_NAME + "/#",
+				PokeContract.PokemonAbilityHidden.TABLE_NAME + "/#",
 				POKEMON_ABILITY_DW_ID);
 
 		sUriMatcher.addURI(PokeContract.CONTENT_NAME,
@@ -156,11 +156,11 @@ public class PokeProvider extends ContentProvider {
 		case POKEMON_ABILITY_DW:
 			return ContentResolver.CURSOR_DIR_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.PokemonAbilityDW.TABLE_NAME;
+					+ PokeContract.PokemonAbilityHidden.TABLE_NAME;
 		case POKEMON_ABILITY_DW_ID:
 			return ContentResolver.CURSOR_ITEM_BASE_TYPE
 					+ PokeContract.CONTENT_NAME + "."
-					+ PokeContract.PokemonAbilityDW.TABLE_NAME;
+					+ PokeContract.PokemonAbilityHidden.TABLE_NAME;
 
 		case ABILITY:
 			return ContentResolver.CURSOR_DIR_BASE_TYPE
@@ -256,7 +256,7 @@ public class PokeProvider extends ContentProvider {
 				+ " NATURAL JOIN " + PokeContract.PokemonBaseStats.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbility1.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonAbility2.TABLE_NAME
-				+ " NATURAL JOIN " + PokeContract.PokemonAbilityDW.TABLE_NAME
+				+ " NATURAL JOIN " + PokeContract.PokemonAbilityHidden.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonType1.TABLE_NAME
 				+ " NATURAL JOIN " + PokeContract.PokemonType2.TABLE_NAME
 				+ " JOIN " + PokeContract.Abilities.TABLE_NAME
@@ -267,7 +267,7 @@ public class PokeProvider extends ContentProvider {
 				+ PokeContract.PokemonAbility2.ABILITY_2 + " JOIN "
 				+ PokeContract.Abilities.TABLE_NAME + " AS ADW ON ADW."
 				+ PokeContract.Abilities._ID + "="
-				+ PokeContract.PokemonAbilityDW.ABILITY_DW);
+				+ PokeContract.PokemonAbilityHidden.ABILITY_DW);
 
 		if (sortOrder == null) {
 			sortOrder = PokeContract.PokemonName.TABLE_NAME + "."
@@ -290,7 +290,7 @@ public class PokeProvider extends ContentProvider {
 					PokeContract.PokemonBaseStats.BASE_SPEED,
 					PokeContract.PokemonAbility1.ABILITY_1,
 					PokeContract.PokemonAbility2.ABILITY_2,
-					PokeContract.PokemonAbilityDW.ABILITY_DW,
+					PokeContract.PokemonAbilityHidden.ABILITY_DW,
 					PokeContract.PokemonType1.TYPE,
 					PokeContract.PokemonType2.TYPE,
 					"A1." + PokeContract.Abilities.DESCRIPTION + " AS "
@@ -298,7 +298,7 @@ public class PokeProvider extends ContentProvider {
 					"A2." + PokeContract.Abilities.DESCRIPTION + " AS "
 							+ PokeContract.Pokedex.ABILITY_2_DESCRIPTION,
 					"ADW." + PokeContract.Abilities.DESCRIPTION + " AS "
-							+ PokeContract.Pokedex.ABILITY_DW_DESCRIPTION };
+							+ PokeContract.Pokedex.ABILITY_HIDDEN_DESCRIPTION};
 			return builder.query(mDbHelper.getReadableDatabase(), myProjection,
 					selection, selectionArgs, null, null, sortOrder);
 		} else {
@@ -350,7 +350,7 @@ public class PokeProvider extends ContentProvider {
 			return PokeContract.PokemonAbility2.TABLE_NAME;
 		case POKEMON_ABILITY_DW_ID:
 		case POKEMON_ABILITY_DW:
-			return PokeContract.PokemonAbilityDW.TABLE_NAME;
+			return PokeContract.PokemonAbilityHidden.TABLE_NAME;
 		case ABILITY_ID:
 		case ABILITY:
 			return PokeContract.Abilities.TABLE_NAME;

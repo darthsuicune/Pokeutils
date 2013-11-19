@@ -68,11 +68,11 @@ public class PokeDBOpenHelper extends SQLiteOpenHelper {
 				+ PokeContract.PokemonAbility2.FORM + TEXT
 				+ PokeContract.PokemonAbility2.ABILITY_2 + TEXT_END);
 
-		db.execSQL(CREATE + PokeContract.PokemonAbilityDW.TABLE_NAME + " ("
-				+ PokeContract.PokemonAbilityDW._ID + KEY
-				+ PokeContract.PokemonAbilityDW.NUMBER + TEXT
-				+ PokeContract.PokemonAbilityDW.FORM + TEXT
-				+ PokeContract.PokemonAbilityDW.ABILITY_DW + TEXT_END);
+		db.execSQL(CREATE + PokeContract.PokemonAbilityHidden.TABLE_NAME + " ("
+				+ PokeContract.PokemonAbilityHidden._ID + KEY
+				+ PokeContract.PokemonAbilityHidden.NUMBER + TEXT
+				+ PokeContract.PokemonAbilityHidden.FORM + TEXT
+				+ PokeContract.PokemonAbilityHidden.ABILITY_DW + TEXT_END);
 
 		db.execSQL(CREATE + PokeContract.Abilities.TABLE_NAME + " ("
 				+ PokeContract.Abilities._ID + KEY

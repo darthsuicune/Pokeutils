@@ -1,9 +1,7 @@
 package com.suicune.pokeutils.app;
 
 import android.content.Context;
-import android.os.Bundle;
 import com.suicune.pokeutils.R;
-import com.suicune.pokeutils.database.PokeContract;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +11,7 @@ public class Pokemon {
     //Indexes for tables
     public static final int ABILITY_INDEX_1 = 0;
     public static final int ABILITY_INDEX_2 = 1;
-    public static final int ABILITY_INDEX_DW = 2;
+    public static final int ABILITY_INDEX_HIDDEN = 2;
     public static final int STAT_INDEX_HP = 0;
     public static final int STAT_INDEX_ATT = 1;
     public static final int STAT_INDEX_DEF = 2;
