@@ -405,6 +405,25 @@ public class IVCalcFragment extends Fragment implements View.OnClickListener, Te
     }
 
     private void calculateStats() {
+        try{
+            int[] evs = new int[6];
+            int[] ivs = new int[6];
+            evs[Pokemon.STAT_INDEX_HP] = 0;
+            evs[Pokemon.STAT_INDEX_ATT] = 0;
+            evs[Pokemon.STAT_INDEX_DEF] = 0;
+            evs[Pokemon.STAT_INDEX_SP_ATT] = 0;
+            evs[Pokemon.STAT_INDEX_SP_DEF] = 0;
+            evs[Pokemon.STAT_INDEX_SPEED] = 0;
+            ivs[Pokemon.STAT_INDEX_HP] = 0;
+            ivs[Pokemon.STAT_INDEX_ATT] = 0;
+            ivs[Pokemon.STAT_INDEX_DEF] = 0;
+            ivs[Pokemon.STAT_INDEX_SP_ATT] = 0;
+            ivs[Pokemon.STAT_INDEX_SP_DEF] = 0;
+            ivs[Pokemon.STAT_INDEX_SPEED] = 0;
+            mPokemon.showStats(evs, ivs);
+        }catch (NumberFormatException e){
+
+        }
     }
 
     /**

@@ -82,7 +82,9 @@ public class TeamPokemon extends Pokemon {
         return ivs;
     }
 
-    public void showStats(){
+    public void showStats(int[] evs, int[] ivs){
+        mEvs = evs;
+        mIvs = ivs;
         setStats();
     }
 
