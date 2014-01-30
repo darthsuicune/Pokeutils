@@ -1,5 +1,8 @@
 package com.suicune.poketools.app;
 
+import com.suicune.poketools.utils.IvTools;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,12 +44,13 @@ public class Gen6Pokemon {
     /**
      * Mutable properties
      */
-    public Stats mIvs;
-    public Stats mEvs;
-    public Stats mCurrentStats;
+    public int mLevel;
+    public Stats mIvs = new Stats(Stats.StatType.IV);
+    public Stats mEvs = new Stats(Stats.StatType.EV);
+    public Stats mCurrentStats = new Stats(Stats.StatType.VALUE);
     public Attack[] mAttackSet = new Attack[4];
     public Ability mAbility;
-    public int mHappiness;
+    public int mHappiness = 70;
 
     Gen6Pokemon(int pokedexNumber, int form, int femaleRatio, int maleRatio, Stats baseStats,
                 Type type1, Type type2, double height, double weight, String classification,
@@ -55,7 +59,7 @@ public class Gen6Pokemon {
                 EggGroup eggGroup1, EggGroup eggGroup2, boolean isHiddenAbilityAvailable,
                 Map<Integer, Attack> levelAttacks, Map<String,Attack> tmAttacks,
                 List<Attack> eggMoves, int raceResId, List<Attack> tutorMoves,
-                Map<String,Attack> transferAttacks) {
+                Map<String,Attack> transferAttacks, int level) {
 
         mRaceResId = raceResId;
         mPokedexNumber = pokedexNumber;
@@ -84,5 +88,48 @@ public class Gen6Pokemon {
         mEggMoves = eggMoves;
         mTutorMoves = tutorMoves;
         mTransferAttacks = transferAttacks;
+        mLevel = level;
+    }
+
+    public Gen6Pokemon setIvs(Stats newIvs){
+        mIvs = newIvs;
+        calculateStats();
+        return this;
+    }
+
+    public Gen6Pokemon setEvs(Stats newEvs){
+        mEvs = newEvs;
+        calculateStats();
+        return this;
+    }
+
+    public Gen6Pokemon setStats(Stats newStats){
+        mCurrentStats = newStats;
+        return this;
+    }
+
+    public Gen6Pokemon setAttack(Attack attack, int position){
+        if(position > 0 && position < 3){
+            mAttackSet[position] = attack;
+        }
+        return this;
+    }
+
+    public Gen6Pokemon setAbility(Ability ability){
+        mAbility = ability;
+        return this;
+    }
+
+    public Gen6Pokemon setHappiness(int happiness){
+        mHappiness = happiness;
+        return this;
+    }
+
+    public Map<Stats.Stat, ArrayList<Integer>> calculateIvs(){
+        return IvTools.getIvs(this);
+    }
+
+    private void calculateStats(){
+        mCurrentStats = IvTools.calculateStats(this);
     }
 }

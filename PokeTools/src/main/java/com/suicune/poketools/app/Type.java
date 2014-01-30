@@ -1,6 +1,6 @@
 package com.suicune.poketools.app;
 
-import com.suicune.PokeTools.R;
+import com.suicune.poketools.R;
 
 import java.util.Arrays;
 import java.util.List;

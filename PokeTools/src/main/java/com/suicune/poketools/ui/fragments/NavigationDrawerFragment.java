@@ -1,6 +1,6 @@
 package com.suicune.poketools.ui.fragments;
 
-import android.support.v7.app.ActionBarActivity;;
+import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -22,7 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.suicune.PokeTools.R;
+import com.suicune.poketools.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

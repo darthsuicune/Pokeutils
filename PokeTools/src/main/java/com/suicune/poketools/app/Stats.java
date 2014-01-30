@@ -1,5 +1,7 @@
 package com.suicune.poketools.app;
 
+import java.util.Map;
+
 /**
  * Created by denis on min1.min1.14.
  */
@@ -10,23 +12,30 @@ public class Stats {
     private static final int MIN_EV = 0;
     private static final int MIN_IV = 0;
     private static final int MIN_BASE = 1;
-    public int hp;
-    public int attack;
-    public int defense;
-    public int specialAttack;
-    public int specialDefense;
-    public int speed;
+    public Map<Stat, Integer> values;
 
     public StatType statType;
 
+    public Stats(StatType statType){
+        this.statType = statType;
+        if(statType == StatType.BASE || statType == StatType.VALUE){
+            values.put(Stat.HP, MIN_BASE);
+            values.put(Stat.ATTACK, MIN_BASE);
+            values.put(Stat.DEFENSE, MIN_BASE);
+            values.put(Stat.SPECIAL_ATTACK, MIN_BASE);
+            values.put(Stat.SPECIAL_DEFENSE, MIN_BASE);
+            values.put(Stat.SPECIAL_ATTACK, MIN_BASE);
+        }
+    }
+
     public Stats(StatType statType, int hp, int attack, int defense, int specialAttack,
                  int specialDefense, int speed) {
-        this.hp = hp;
-        this.attack = attack;
-        this.defense = defense;
-        this.specialAttack = specialAttack;
-        this.specialDefense = specialDefense;
-        this.speed = speed;
+        values.put(Stat.HP, hp);
+        values.put(Stat.ATTACK, attack);
+        values.put(Stat.DEFENSE, defense);
+        values.put(Stat.SPECIAL_ATTACK, specialAttack);
+        values.put(Stat.SPECIAL_DEFENSE, specialDefense);
+        values.put(Stat.SPEED, speed);
         checkForValidValues();
     }
 
@@ -47,23 +56,23 @@ public class Stats {
     }
     
     private void checkForValidValues(int max, int min){
-        if (hp > max || hp < min) {
-            hp = min;
+        if (values.get(Stat.HP) > max || values.get(Stat.HP) < min) {
+            values.put(Stat.HP, min);
         }
-        if (attack > max || attack < min) {
-            attack = min;
+        if (values.get(Stat.ATTACK) > max || values.get(Stat.ATTACK) < min) {
+            values.put(Stat.ATTACK, min);
         }
-        if (defense > max || defense < min) {
-            defense = min;
+        if (values.get(Stat.DEFENSE) > max || values.get(Stat.DEFENSE) < min) {
+            values.put(Stat.DEFENSE, min);
         }
-        if (specialAttack > max || specialAttack < min) {
-            specialAttack = min;
+        if (values.get(Stat.SPECIAL_ATTACK) > max || values.get(Stat.SPECIAL_ATTACK) < min) {
+            values.put(Stat.SPECIAL_ATTACK, min);
         }
-        if (specialDefense > max || specialDefense < min) {
-            specialDefense = min;
+        if (values.get(Stat.SPECIAL_DEFENSE) > max || values.get(Stat.SPECIAL_DEFENSE) < min) {
+            values.put(Stat.SPECIAL_DEFENSE, min);
         }
-        if (speed > max || speed < min) {
-            speed = min;
+        if (values.get(Stat.SPEED) > max || values.get(Stat.SPEED) < min) {
+            values.put(Stat.SPEED, min);
         }
     }
 
@@ -72,6 +81,15 @@ public class Stats {
         IV,
         BASE,
         VALUE
+    }
+
+    public enum Stat {
+        HP,
+        ATTACK,
+        DEFENSE,
+        SPECIAL_ATTACK,
+        SPECIAL_DEFENSE,
+        SPEED;
     }
 
 }

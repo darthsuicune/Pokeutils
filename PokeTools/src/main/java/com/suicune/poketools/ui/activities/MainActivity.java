@@ -9,7 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.suicune.PokeTools.R;
+import com.suicune.poketools.R;
 import com.suicune.poketools.ui.fragments.DamageCalcFragment;
 import com.suicune.poketools.ui.fragments.IvBreedingCalcFragment;
 import com.suicune.poketools.ui.fragments.IvCalcFragment;

@@ -1,6 +1,5 @@
 package com.suicune.poketools.ui.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +9,9 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
-import android.widget.TextView;
 
-import com.suicune.PokeTools.R;
-import com.suicune.poketools.ui.fragments.dummy.DummyContent;
+import com.suicune.poketools.R;
+import com.suicune.poketools.ui.fragments.teams.TeamList;
 
 /**
  * A fragment representing a list of Items.
@@ -54,9 +52,7 @@ public class TeamBuilderFragment extends Fragment implements AbsListView.OnItemC
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        // TODO: Create Adapter to display your content
     }
 
     @Override
