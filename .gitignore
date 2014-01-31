@@ -22,6 +22,6 @@ local.properties
 .idea
 *.iml
 
-Pokeutils/build
+poketools/build
 gradle*
 .gradle
