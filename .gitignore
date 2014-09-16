@@ -19,9 +19,14 @@ local.properties
 .classpath
 .project
 .settings
-.idea
-*.iml
 
-poketools/build
-gradle*
+# Intellij IDEA project files
+.idea/workspace.xml
+.idea/libraries
+
+# Build directories
+PokeTools/build/
+build/
+
+#Gradle folder
 .gradle
