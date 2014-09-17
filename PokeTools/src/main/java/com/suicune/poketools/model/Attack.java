@@ -1,7 +1,14 @@
 package com.suicune.poketools.model;
 
 /**
- * Created by denis on 01.01.14.
+ * Created by lapuente on 17.09.14.
  */
-public class Attack {
+public interface Attack {
+	public Type type();
+	public boolean hasSpecialTreatment();
+	public String category();
+	public int power();
+	public int accuracy();
+	public int nameResId();
+	public int descriptionResId();
 }

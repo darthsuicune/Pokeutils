@@ -1,4 +1,4 @@
-package com.suicune.poketools.model;
+package com.suicune.poketools.model.gen6;
 
 /**
  * Created by denis on 01.01.14.
