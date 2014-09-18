@@ -13,4 +13,6 @@ public class IvTools {
     public static Stats calculateStats(Gen6Pokemon pokemon){
         return null;
     }
+	public static int calculateHp(int level, int base, int iv, int ev) {return 0;}
+	public static int calculateStat(int level, int base, int iv, int ev) {return 0;}
 }

@@ -5,9 +5,11 @@ import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.Type;
+import com.suicune.poketools.model.factories.StatsFactory;
 import com.suicune.poketools.utils.IvTools;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,14 +56,47 @@ public class Gen6Pokemon implements Pokemon {
 	public Gen6Ability mAbility;
 	public int mHappiness = 70;
 
-	Gen6Pokemon(int pokedexNumber, int form, double femaleRatio, double maleRatio, Stats baseStats,
-				Type type1, Type type2, double height, double weight, String classification,
-				int captureRate, int baseEggSteps, Gen6Ability ability1, Gen6Ability ability2,
-				Gen6Ability abilityHidden, int experienceGrowth, int baseHappiness,
-				Map<Gen6Stats.Stat, Integer> evsEarned, EggGroup eggGroup1, EggGroup eggGroup2,
-				boolean isHiddenAbilityAvailable, Map<Integer, Attack> levelAttacks,
-				Map<String, Attack> tmAttacks, List<Attack> eggMoves, int raceResId,
-				Map<String, Attack> tutorMoves, Map<String, Attack> transferAttacks, int level) {
+	public Gen6Pokemon(int resId, int level) {
+		mLevel = level;
+		mRaceResId = resId;
+		mPokedexNumber = 0;
+		mForm = 0;
+		mFemaleRatio = 0;
+		mMaleRatio = 0;
+		mStats = StatsFactory.createStats(6, level);
+		mType1 = null;
+		mType2 = null;
+		mHeight = 0;
+		mWeight = 0;
+		mClassification = "";
+		mCaptureRate = 0;
+		mBaseEggSteps = 0;
+		mAbility1 = null;
+		mAbility2 = null;
+		mAbilityHidden = null;
+		mExperienceGrowth = 0;
+		mBaseHappiness = 0;
+		mEvsEarned = new HashMap<>();
+		mEggGroup1 = null;
+		mEggGroup2 = null;
+		this.isHiddenAbilityAvailable = false;
+		mLevelAttacks = new HashMap<>();
+		mTmAttacks = new HashMap<>();
+		mEggMoves = new ArrayList<>();
+		mTutorMoves = new HashMap<>();
+		mTransferAttacks = new HashMap<>();
+		mAttackSet = new ArrayList<>();
+	}
+
+	public Gen6Pokemon(int raceResId, int pokedexNumber, int form, double femaleRatio, double maleRatio,
+				Stats baseStats, Type type1, Type type2, double height, double weight,
+				String classification, int captureRate, int baseEggSteps, Gen6Ability ability1,
+				Gen6Ability ability2, Gen6Ability abilityHidden, int experienceGrowth,
+				int baseHappiness, Map<Gen6Stats.Stat, Integer> evsEarned, EggGroup eggGroup1,
+				EggGroup eggGroup2, boolean isHiddenAbilityAvailable,
+				Map<Integer, Attack> levelAttacks, Map<String, Attack> tmAttacks,
+				List<Attack> eggMoves, Map<String, Attack> tutorMoves,
+				Map<String, Attack> transferAttacks, int level) {
 
 		mRaceResId = raceResId;
 		mPokedexNumber = pokedexNumber;

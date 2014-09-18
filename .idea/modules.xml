@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PokeTools/PokeTools.iml" filepath="$PROJECT_DIR$/PokeTools/PokeTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PokeTools/PokeTools.iml" filepath="$PROJECT_DIR$/PokeTools/PokeTools.iml" />
       <module fileurl="file://$PROJECT_DIR$/Poketools.iml" filepath="$PROJECT_DIR$/Poketools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pokeutils.iml" filepath="$PROJECT_DIR$/Pokeutils.iml" />
     </modules>
   </component>
 </project>
