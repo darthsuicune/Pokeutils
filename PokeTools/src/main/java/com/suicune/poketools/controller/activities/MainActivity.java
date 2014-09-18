@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -14,7 +15,6 @@ import com.suicune.poketools.view.fragments.DamageCalcFragment;
 import com.suicune.poketools.view.fragments.IvBreedingCalcFragment;
 import com.suicune.poketools.view.fragments.IvCalcFragment;
 import com.suicune.poketools.view.fragments.NavigationDrawerFragment;
-import com.suicune.poketools.view.fragments.teambuilder.TeamBuilderFragment;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -59,9 +59,6 @@ public class MainActivity extends Activity
             case 2:
                 fragment = IvCalcFragment.newInstance();
                 break;
-            case 3:
-                fragment = TeamBuilderFragment.newInstance();
-                break;
             default:
                 break;
         }
@@ -70,7 +67,9 @@ public class MainActivity extends Activity
                     .replace(R.id.container, fragment)
                     .commit();
             onSectionAttached(position);
-        }
+        } else {
+			openTeamBuilder();
+		}
     }
 
     public void onSectionAttached(int number) {
@@ -122,4 +121,9 @@ public class MainActivity extends Activity
         }
         return super.onOptionsItemSelected(item);
     }
+
+	private void openTeamBuilder() {
+		Intent intent = new Intent(this, TeamBuilderActivity.class);
+		startActivity(intent);
+	}
 }

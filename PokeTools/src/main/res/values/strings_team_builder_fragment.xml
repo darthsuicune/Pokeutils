@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="team_builder_fragment_title">Team Builder</string>
+    <string name="team_main_screen">Main Screen</string>
+    <string name="team_member1">Member 1</string>
+    <string name="team_member2">Member 2</string>
+    <string name="team_member3">Member 3</string>
+    <string name="team_member4">Member 4</string>
+    <string name="team_member5">Member 5</string>
+    <string name="team_member6">Member 6</string>
+
+
 </resources>

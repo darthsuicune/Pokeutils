@@ -97,14 +97,18 @@ public class TeamBuilderDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
+        mDrawerListView.setAdapter(new ArrayAdapter<>(
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
                 new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
+						getString(R.string.team_main_screen),
+                        getString(R.string.team_member1),
+                        getString(R.string.team_member2),
+                        getString(R.string.team_member3),
+						getString(R.string.team_member4),
+						getString(R.string.team_member5),
+						getString(R.string.team_member6),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -197,7 +201,11 @@ public class TeamBuilderDrawerFragment extends Fragment {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
         if (mCallbacks != null) {
-            mCallbacks.onPokemonSelected(position);
+			if (position == 0){
+				mCallbacks.onMainScreenSelected();
+			} else {
+				mCallbacks.onPokemonSelected(position);
+			}
         }
     }
 
@@ -272,5 +280,6 @@ public class TeamBuilderDrawerFragment extends Fragment {
          * Called when an item in the navigation drawer is selected.
          */
         void onPokemonSelected(int position);
+		void onMainScreenSelected();
     }
 }

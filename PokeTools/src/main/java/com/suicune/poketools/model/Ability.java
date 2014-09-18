@@ -1,7 +1,9 @@
 package com.suicune.poketools.model;
 
 /**
- * Created by denis on 01.01.14.
+ * Created by lapuente on 17.09.14.
  */
-public class Ability {
+public interface Ability {
+	public int nameResId();
+	public int descriptionResId();
 }
