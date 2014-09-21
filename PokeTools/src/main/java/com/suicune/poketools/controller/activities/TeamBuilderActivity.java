@@ -45,22 +45,25 @@ public class TeamBuilderActivity extends ActionBarActivity
 		mTeamBuilderDrawerFragment
 				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 		teamFragments = new HashMap<>();
+		setMainFragment();
+	}
+
+	private void setMainFragment() {
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.commit();
 	}
 
 	@Override
 	public void onPokemonSelected(int position) {
 		FragmentTransaction transaction = null;
 		String tag = null;
+		transaction = getFragmentManager().beginTransaction();
+		if (teamFragments.containsKey(position)) {
 
-		if (position != mCurrentFragment) {
+		} else {
 			transaction = getFragmentManager().beginTransaction();
-			if (teamFragments.containsKey(position)) {
-
-			} else {
-				transaction = getFragmentManager().beginTransaction();
-				TeamMemberFragment fragment = TeamMemberFragment.newInstance(position);
-				teamFragments.put(position, fragment);
-			}
+			TeamMemberFragment fragment = TeamMemberFragment.newInstance(position);
+			teamFragments.put(position, fragment);
 		}
 		if (transaction != null) {
 			transaction.replace(R.id.team_builder_container, teamFragments.get(position), tag)

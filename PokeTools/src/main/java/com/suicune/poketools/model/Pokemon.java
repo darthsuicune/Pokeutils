@@ -7,7 +7,6 @@ import java.util.Map;
  * Created by lapuente on 17.09.14.
  */
 public interface Pokemon {
-	public int raceId();
 	public int dexNumber();
 	public int formNumber();
 	public double femaleRatio();

@@ -193,10 +193,14 @@ public class TeamBuilderDrawerFragment extends Fragment {
     }
 
     private void selectItem(int position) {
-        mCurrentSelectedPosition = position;
+		if (mCurrentSelectedPosition == position) {
+			return;
+		}
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
+			mDrawerListView.setItemChecked(mCurrentSelectedPosition, false);
         }
+		mCurrentSelectedPosition = position;
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }

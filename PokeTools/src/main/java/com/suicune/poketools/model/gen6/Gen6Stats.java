@@ -26,14 +26,15 @@ public class Gen6Stats extends Stats {
 
 	public Stats.StatType statType;
 
-	public Gen6Stats(int level) {
+	public Gen6Stats(int level, int[] baseStats) {
 		ivs = new HashMap<>();
 		evs = new HashMap<>();
 		base = new HashMap<>();
 		values = new HashMap<>();
 		setIvs(MAX_IV, MAX_IV, MAX_IV, MAX_IV, MAX_IV, MAX_IV);
-		setEvs(MAX_EV, MAX_EV, MAX_EV, MAX_EV, MAX_EV, MAX_EV);
-		setBaseStats(MAX_BASE, MAX_BASE, MAX_BASE, MAX_BASE, MAX_BASE, MAX_BASE);
+		setEvs(MIN_EV, MIN_EV, MIN_EV, MIN_EV, MIN_EV, MIN_EV);
+		setBaseStats(baseStats[0], baseStats[1], baseStats[2], baseStats[3], baseStats[4],
+				baseStats[5]);
 		setValuesFromStats(level);
 	}
 
@@ -112,15 +113,19 @@ public class Gen6Stats extends Stats {
 		values.put(Stat.HP,
 				IvTools.calculateHp(level, base.get(Stat.HP), ivs.get(Stat.HP), evs.get(Stat.HP)));
 		values.put(Stat.ATTACK,
-				IvTools.calculateStat(level, base.get(Stat.ATTACK), ivs.get(Stat.ATTACK), evs.get(Stat.ATTACK)));
+				IvTools.calculateStat(level, base.get(Stat.ATTACK), ivs.get(Stat.ATTACK),
+						evs.get(Stat.ATTACK)));
 		values.put(Stat.DEFENSE,
-				IvTools.calculateStat(level, base.get(Stat.DEFENSE), ivs.get(Stat.DEFENSE), evs.get(Stat.DEFENSE)));
-		values.put(Stat.SPECIAL_ATTACK,
-				IvTools.calculateStat(level, base.get(Stat.SPECIAL_ATTACK), ivs.get(Stat.SPECIAL_ATTACK), evs.get(Stat.SPECIAL_ATTACK)));
+				IvTools.calculateStat(level, base.get(Stat.DEFENSE), ivs.get(Stat.DEFENSE),
+						evs.get(Stat.DEFENSE)));
+		values.put(Stat.SPECIAL_ATTACK, IvTools.calculateStat(level, base.get(Stat.SPECIAL_ATTACK),
+				ivs.get(Stat.SPECIAL_ATTACK), evs.get(Stat.SPECIAL_ATTACK)));
 		values.put(Stat.SPECIAL_DEFENSE,
-				IvTools.calculateStat(level, base.get(Stat.SPECIAL_DEFENSE), ivs.get(Stat.SPECIAL_DEFENSE), evs.get(Stat.SPECIAL_DEFENSE)));
+				IvTools.calculateStat(level, base.get(Stat.SPECIAL_DEFENSE),
+						ivs.get(Stat.SPECIAL_DEFENSE), evs.get(Stat.SPECIAL_DEFENSE)));
 		values.put(Stat.SPEED,
-				IvTools.calculateStat(level, base.get(Stat.SPEED), ivs.get(Stat.SPEED), evs.get(Stat.SPEED)));
+				IvTools.calculateStat(level, base.get(Stat.SPEED), ivs.get(Stat.SPEED),
+						evs.get(Stat.SPEED)));
 		return this;
 	}
 

@@ -2,11 +2,14 @@ package com.suicune.poketools.model.gen6;
 
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
+import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.Type;
-import com.suicune.poketools.model.factories.StatsFactory;
 import com.suicune.poketools.utils.IvTools;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,12 +20,19 @@ import java.util.Map;
  * Created by denis on 01.01.14.
  */
 public class Gen6Pokemon implements Pokemon {
+	public static final String ARG_DEX_NUMBER = "number";
+	public static final String ARG_FORM = "form";
+	public static final String ARG_ABILITIES = "abilities";
+	public static final String ARG_TYPES = "types";
+	public static final String ARG_BASE_STATS = "baseStats";
+
+
 	/**
 	 * Immutable properties
 	 */
-	public final int mRaceResId;
 	public final int mPokedexNumber;
 	public final int mForm;
+	public final int mFormCount;
 	public final double mFemaleRatio;
 	public final double mMaleRatio;
 	public final Stats mStats;
@@ -33,9 +43,9 @@ public class Gen6Pokemon implements Pokemon {
 	public final String mClassification;
 	public final int mCaptureRate;
 	public final int mBaseEggSteps;
-	public final Gen6Ability mAbility1;
-	public final Gen6Ability mAbility2;
-	public final Gen6Ability mAbilityHidden;
+	public final Ability mAbility1;
+	public final Ability mAbility2;
+	public final Ability mAbilityHidden;
 	public final boolean isHiddenAbilityAvailable;
 	public final int mExperienceGrowth;
 	public final int mBaseHappiness;
@@ -55,25 +65,28 @@ public class Gen6Pokemon implements Pokemon {
 	public List<Attack> mAttackSet;
 	public Gen6Ability mAbility;
 	public int mHappiness = 70;
+	public Type mAdditionalType;
+	public Nature mNature;
 
-	public Gen6Pokemon(int resId, int level) {
+	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types,
+					   Ability[] abilities, int formCount) throws JSONException {
 		mLevel = level;
-		mRaceResId = resId;
-		mPokedexNumber = 0;
-		mForm = 0;
+		mPokedexNumber = data.getInt(ARG_DEX_NUMBER);
+		mForm = data.getInt(ARG_FORM);
+		mFormCount = formCount;
 		mFemaleRatio = 0;
 		mMaleRatio = 0;
-		mStats = StatsFactory.createStats(6, level);
-		mType1 = null;
-		mType2 = null;
+		mStats = stats;
+		mType1 = types[0];
+		mType2 = types[1];
 		mHeight = 0;
 		mWeight = 0;
 		mClassification = "";
 		mCaptureRate = 0;
 		mBaseEggSteps = 0;
-		mAbility1 = null;
-		mAbility2 = null;
-		mAbilityHidden = null;
+		mAbility1 = abilities[0];
+		mAbility2 = abilities[1];
+		mAbilityHidden = abilities[2];
 		mExperienceGrowth = 0;
 		mBaseHappiness = 0;
 		mEvsEarned = new HashMap<>();
@@ -85,47 +98,6 @@ public class Gen6Pokemon implements Pokemon {
 		mEggMoves = new ArrayList<>();
 		mTutorMoves = new HashMap<>();
 		mTransferAttacks = new HashMap<>();
-		mAttackSet = new ArrayList<>();
-	}
-
-	public Gen6Pokemon(int raceResId, int pokedexNumber, int form, double femaleRatio, double maleRatio,
-				Stats baseStats, Type type1, Type type2, double height, double weight,
-				String classification, int captureRate, int baseEggSteps, Gen6Ability ability1,
-				Gen6Ability ability2, Gen6Ability abilityHidden, int experienceGrowth,
-				int baseHappiness, Map<Gen6Stats.Stat, Integer> evsEarned, EggGroup eggGroup1,
-				EggGroup eggGroup2, boolean isHiddenAbilityAvailable,
-				Map<Integer, Attack> levelAttacks, Map<String, Attack> tmAttacks,
-				List<Attack> eggMoves, Map<String, Attack> tutorMoves,
-				Map<String, Attack> transferAttacks, int level) {
-
-		mRaceResId = raceResId;
-		mPokedexNumber = pokedexNumber;
-		mForm = form;
-		mFemaleRatio = femaleRatio;
-		mMaleRatio = maleRatio;
-		mStats = baseStats;
-		mType1 = type1;
-		mType2 = type2;
-		mHeight = height;
-		mWeight = weight;
-		mClassification = classification;
-		mCaptureRate = captureRate;
-		mBaseEggSteps = baseEggSteps;
-		mAbility1 = ability1;
-		mAbility2 = ability2;
-		mAbilityHidden = abilityHidden;
-		mExperienceGrowth = experienceGrowth;
-		mBaseHappiness = baseHappiness;
-		mEvsEarned = evsEarned;
-		mEggGroup1 = eggGroup1;
-		mEggGroup2 = eggGroup2;
-		this.isHiddenAbilityAvailable = isHiddenAbilityAvailable;
-		mLevelAttacks = levelAttacks;
-		mTmAttacks = tmAttacks;
-		mEggMoves = eggMoves;
-		mTutorMoves = tutorMoves;
-		mTransferAttacks = transferAttacks;
-		mLevel = level;
 		mAttackSet = new ArrayList<>();
 	}
 
@@ -172,10 +144,6 @@ public class Gen6Pokemon implements Pokemon {
 
 	private void calculateStats() {
 		mStats.updateWith(IvTools.calculateStats(this));
-	}
-
-	@Override public int raceId() {
-		return mRaceResId;
 	}
 
 	@Override public int dexNumber() {
