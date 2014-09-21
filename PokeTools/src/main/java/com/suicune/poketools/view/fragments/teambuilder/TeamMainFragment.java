@@ -13,14 +13,14 @@ import com.suicune.poketools.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TeamMainFragment.OnFragmentInteractionListener} interface
+ * {@link com.suicune.poketools.view.fragments.teambuilder.TeamMainFragment.OnTeamEditedListener} interface
  * to handle interaction events.
  * Use the {@link TeamMainFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
 public class TeamMainFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
+    private OnTeamEditedListener mListener;
 
     /**
      * Use this factory method to create a new instance of
@@ -57,10 +57,10 @@ public class TeamMainFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListener = (OnTeamEditedListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnTeamEditedListener");
         }
     }
 
@@ -80,7 +80,7 @@ public class TeamMainFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnTeamEditedListener {
     }
 
 }

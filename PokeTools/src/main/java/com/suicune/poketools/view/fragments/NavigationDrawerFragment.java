@@ -39,7 +39,7 @@ public class NavigationDrawerFragment extends Fragment {
      * Per the design guidelines, you should show the drawer on launch until the user manually
      * expands it. This shared preference tracks this.
      */
-    private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
+    private static final String PREF_USER_LEARNED_DRAWER = "team_builder_drawer_learned";
 
     /**
      * A pointer to the current callbacks instance (the Activity).
@@ -103,10 +103,10 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
                 new String[]{
+						getString(R.string.team_builder_fragment_title),
                         getString(R.string.damage_calc_fragment_title),
                         getString(R.string.iv_breeder_calc_fragment_title),
                         getString(R.string.iv_calc_fragment_title),
-                        getString(R.string.team_builder_fragment_title),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -245,16 +245,16 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		switch(item.getItemId()) {
+			case R.id.action_example:
+				Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            	return true;
+			default:
+				return super.onOptionsItemSelected(item);
         }
-
-        if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**

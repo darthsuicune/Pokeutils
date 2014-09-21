@@ -32,7 +32,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
     /**
      * Remember the position of the selected item.
      */
-    private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
+    private static final String PREF_SELECTED_POSITION = "selected_navigation_drawer_position";
 
     /**
      * Per the design guidelines, you should show the drawer on launch until the user manually
@@ -55,8 +55,9 @@ public class TeamBuilderDrawerFragment extends Fragment {
     private View mFragmentContainerView;
 
     private int mCurrentSelectedPosition = 0;
-    private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
+
+	private SharedPreferences prefs;
 
     public TeamBuilderDrawerFragment() {
     }
@@ -67,13 +68,10 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
         // Read in the flag indicating whether or not the user has demonstrated awareness of the
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mUserLearnedDrawer = prefs.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
-        if (savedInstanceState != null) {
-            mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
-            mFromSavedInstanceState = true;
-        }
+        mCurrentSelectedPosition = prefs.getInt(PREF_SELECTED_POSITION, 0);
 
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
@@ -177,7 +175,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
         // If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
         // per the navigation drawer design guidelines.
-        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+        if (!mUserLearnedDrawer) {
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
 
@@ -194,16 +192,18 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
 		if (mCurrentSelectedPosition == position) {
+			if (mDrawerLayout != null) {
+				mDrawerLayout.closeDrawer(mFragmentContainerView);
+			}
 			return;
 		}
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
-			mDrawerListView.setItemChecked(mCurrentSelectedPosition, false);
         }
 		mCurrentSelectedPosition = position;
-        if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(mFragmentContainerView);
-        }
+		if (mDrawerLayout != null) {
+			mDrawerLayout.closeDrawer(mFragmentContainerView);
+		}
         if (mCallbacks != null) {
 			if (position == 0){
 				mCallbacks.onMainScreenSelected();
@@ -211,6 +211,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 				mCallbacks.onPokemonSelected(position);
 			}
         }
+		prefs.edit().putInt(PREF_SELECTED_POSITION, mCurrentSelectedPosition).apply();
     }
 
     @Override
@@ -227,12 +228,6 @@ public class TeamBuilderDrawerFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mCallbacks = null;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
     }
 
     @Override
@@ -255,6 +250,9 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
 		switch(item.getItemId()) {
 			default:
 				return super.onOptionsItemSelected(item);

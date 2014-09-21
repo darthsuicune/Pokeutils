@@ -1,7 +1,11 @@
 package com.suicune.poketools.controller.activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -17,7 +21,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TeamBuilderActivity extends ActionBarActivity
-		implements TeamBuilderDrawerFragment.TeamBuilderDrawerCallbacks {
+		implements TeamBuilderDrawerFragment.TeamBuilderDrawerCallbacks,
+		TeamMainFragment.OnTeamEditedListener {
+
+	public static final String TEAM_EDIT_DRAWER_SELECTION = "team_editor_drawer_selection";
+	private static final String FRAGMENT_TAG_TEAM_MEMBER = "fragment_team_member_";
+	private static final String FRAGMENT_TAG_MAIN = "fragment_team_main";
 
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -26,6 +35,8 @@ public class TeamBuilderActivity extends ActionBarActivity
 	private Map<Integer, TeamMemberFragment> teamFragments;
 	private TeamMainFragment mainFragment;
 	private int mCurrentFragment;
+
+	private SharedPreferences prefs;
 
 	/**
 	 * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -37,6 +48,8 @@ public class TeamBuilderActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_team_builder);
 
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
 		mTeamBuilderDrawerFragment = (TeamBuilderDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
@@ -45,43 +58,51 @@ public class TeamBuilderActivity extends ActionBarActivity
 		mTeamBuilderDrawerFragment
 				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 		teamFragments = new HashMap<>();
+		mCurrentFragment = prefs.getInt(TEAM_EDIT_DRAWER_SELECTION, 0);
 		setMainFragment();
 	}
 
 	private void setMainFragment() {
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		transaction.commit();
+		String tag;
+		FragmentManager manager = getFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+		Fragment fragment;
+		switch (mCurrentFragment) {
+			case 0:
+				tag = FRAGMENT_TAG_MAIN;
+				if (mainFragment == null) {
+					mainFragment = (TeamMainFragment) manager.findFragmentByTag(tag);
+					if (mainFragment == null) {
+						mainFragment = TeamMainFragment.newInstance();
+					}
+				}
+				fragment = mainFragment;
+				break;
+			default:
+				tag = FRAGMENT_TAG_TEAM_MEMBER + mCurrentFragment;
+				if (teamFragments.get(mCurrentFragment) == null) {
+					TeamMemberFragment member = (TeamMemberFragment) manager.findFragmentByTag(tag);
+					if (member == null) {
+						member = TeamMemberFragment.newInstance(mCurrentFragment);
+						teamFragments.put(mCurrentFragment, member);
+					}
+				}
+				fragment = teamFragments.get(mCurrentFragment);
+				break;
+		}
+		transaction.replace(R.id.team_builder_container, fragment, tag).commit();
+		prefs.edit().putInt(TEAM_EDIT_DRAWER_SELECTION, mCurrentFragment).apply();
 	}
 
 	@Override
 	public void onPokemonSelected(int position) {
-		FragmentTransaction transaction = null;
-		String tag = null;
-		transaction = getFragmentManager().beginTransaction();
-		if (teamFragments.containsKey(position)) {
-
-		} else {
-			transaction = getFragmentManager().beginTransaction();
-			TeamMemberFragment fragment = TeamMemberFragment.newInstance(position);
-			teamFragments.put(position, fragment);
-		}
-		if (transaction != null) {
-			transaction.replace(R.id.team_builder_container, teamFragments.get(position), tag)
-					.commit();
-		}
 		mCurrentFragment = position;
+		setMainFragment();
 	}
 
 	@Override public void onMainScreenSelected() {
-		if (mCurrentFragment != 0) {
-			FragmentTransaction transaction = getFragmentManager().beginTransaction();
-			if (mainFragment == null) {
-				mainFragment = TeamMainFragment.newInstance();
-			}
-			transaction.replace(R.id.team_builder_container, mainFragment).commit();
-		}
-
 		mCurrentFragment = 0;
+		setMainFragment();
 	}
 
 	public void restoreActionBar() {
@@ -90,7 +111,6 @@ public class TeamBuilderActivity extends ActionBarActivity
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
