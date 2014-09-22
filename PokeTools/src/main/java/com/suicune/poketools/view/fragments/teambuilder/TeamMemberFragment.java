@@ -1,5 +1,6 @@
 package com.suicune.poketools.view.fragments.teambuilder;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.model.Pokemon;
 
 /**
  * A fragment representing a list of Items.
@@ -14,14 +16,24 @@ import com.suicune.poketools.R;
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
  * <p />
- * Activities containing this fragment MUST implement the {@link OnSomethingSomethingListener}
+ * Activities containing this fragment MUST implement the {@link com.suicune.poketools.view.fragments.teambuilder.TeamMemberFragment.OnTeamMemberChangedListener}
  * interface.
  */
 public class TeamMemberFragment extends Fragment  {
 
+	private static final String ARG_POSITION = "position";
 
-    public static TeamMemberFragment newInstance(int position) {
+	private OnTeamMemberChangedListener mCallbacks;
+
+	private Pokemon mPokemon;
+
+	private int mPosition;
+
+	public static TeamMemberFragment newInstance(int position) {
         TeamMemberFragment fragment = new TeamMemberFragment();
+		Bundle args = new Bundle();
+		args.putInt(ARG_POSITION, position);
+		fragment.setArguments(args);
         return fragment;
     }
 
@@ -32,11 +44,22 @@ public class TeamMemberFragment extends Fragment  {
     public TeamMemberFragment() {
     }
 
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		try {
+			mCallbacks = (OnTeamMemberChangedListener) activity;
+		} catch (ClassCastException e) {
+			throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
+		}
+	}
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // TODO: Create Adapter to display your content
+		if(getArguments() != null) {
+			mPosition = getArguments().getInt(ARG_POSITION);
+		}
     }
 
     @Override
@@ -47,7 +70,11 @@ public class TeamMemberFragment extends Fragment  {
         return view;
     }
 
-	public interface OnSomethingSomethingListener {
+	public void notifyChange() {
+		mCallbacks.onTeamMemberChanged(mPokemon);
+	}
 
+	public interface OnTeamMemberChangedListener {
+		public void onTeamMemberChanged(Pokemon pokemon);
 	}
 }

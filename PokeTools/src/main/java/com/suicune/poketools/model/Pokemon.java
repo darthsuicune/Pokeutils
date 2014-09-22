@@ -6,25 +6,34 @@ import java.util.Map;
 /**
  * Created by lapuente on 17.09.14.
  */
-public interface Pokemon {
-	public int dexNumber();
-	public int formNumber();
-	public double femaleRatio();
-	public double maleRatio();
-	public Stats stats();
-	public List<Type> types();
-	public Ability ability1();
-	public Ability ability2();
-	public Ability abilityHidden();
-	public boolean isHiddenAbilityAvailable();
-	public Map<Integer, Attack> levelAttacks();
-	public Map<String, Attack> tmAttacks();
-	public List<Attack> eggAttacks();
-	public Map<String, Attack> tutorAttacks();
-	public Map<String, Attack> transferAttacks();
+public abstract class Pokemon {
+	public abstract int dexNumber();
+	public abstract int formNumber();
+	public abstract double femaleRatio();
+	public abstract double maleRatio();
+	public abstract Stats stats();
+	public abstract List<Type> types();
+	public abstract Ability ability1();
+	public abstract Ability ability2();
+	public abstract Ability abilityHidden();
+	public abstract boolean isHiddenAbilityAvailable();
+	public abstract Map<Integer, Attack> levelAttacks();
+	public abstract Map<String, Attack> tmAttacks();
+	public abstract List<Attack> eggAttacks();
+	public abstract Map<String, Attack> tutorAttacks();
+	public abstract Map<String, Attack> transferAttacks();
+	
+	public abstract int level();
+	public abstract List<Attack> currentAttacks();
+	public abstract Ability currentAbility();
 
-	public int level();
-	public List<Attack> currentAttacks();
-	public Ability currentAbility();
+	@Override public String toString() {
+		return "#" + dexNumber() + " - " + getName(dexNumber(), formNumber());
+	}
+
+	public String getName(int number, int form) {
+		//TODO: Replace with actual name
+		return "name";
+	}
 
 }

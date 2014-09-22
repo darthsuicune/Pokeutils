@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * Created by denis on 01.01.14.
  */
-public class Gen6Pokemon implements Pokemon {
+public class Gen6Pokemon extends Pokemon {
 	public static final String ARG_DEX_NUMBER = "number";
 	public static final String ARG_FORM = "form";
 	public static final String ARG_ABILITIES = "abilities";

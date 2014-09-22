@@ -81,7 +81,8 @@ public class TeamBuilderActivity extends ActionBarActivity
 			default:
 				tag = FRAGMENT_TAG_TEAM_MEMBER + mCurrentFragment;
 				if (teamFragments.get(mCurrentFragment) == null) {
-					TeamMemberFragment member = (TeamMemberFragment) manager.findFragmentByTag(tag);
+					TeamMemberFragment member;
+					member = (TeamMemberFragment) manager.findFragmentByTag(tag);
 					if (member == null) {
 						member = TeamMemberFragment.newInstance(mCurrentFragment);
 						teamFragments.put(mCurrentFragment, member);
