@@ -220,7 +220,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
         try {
             mCallbacks = (TeamBuilderDrawerCallbacks) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
+            throw new ClassCastException("Activity must implement TeamBuilderDrawerCallbacks.");
         }
     }
 
