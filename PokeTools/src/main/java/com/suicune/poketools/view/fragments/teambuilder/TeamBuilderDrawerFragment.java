@@ -206,44 +206,44 @@ public class TeamBuilderDrawerFragment extends Fragment {
 			}
 		}
 		prefs.edit().putInt(PREF_SELECTED_POSITION, mCurrentSelectedPosition).apply();
-	}
+    }
 
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		try {
-			mCallbacks = (TeamBuilderDrawerCallbacks) activity;
-		} catch (ClassCastException e) {
-			throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
-		}
-	}
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallbacks = (TeamBuilderDrawerCallbacks) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException("Activity must implement TeamBuilderDrawerCallbacks.");
+        }
+    }
 
-	@Override
-	public void onDetach() {
-		super.onDetach();
-		mCallbacks = null;
-	}
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
 
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		// Forward the new configuration the drawer toggle component.
-		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Forward the new configuration the drawer toggle component.
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		// If the drawer is open, show the global app actions in the action bar. See also
-		// showGlobalContextActionBar, which controls the top-left area of the action bar.
-		if (mDrawerLayout != null && isDrawerOpen()) {
-			inflater.inflate(R.menu.global, menu);
-			showGlobalContextActionBar();
-		}
-		super.onCreateOptionsMenu(menu, inflater);
-	}
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // If the drawer is open, show the global app actions in the action bar. See also
+        // showGlobal1ContextActionBar, which controls the top-left area of the action bar.
+        if (mDrawerLayout != null && isDrawerOpen()) {
+            inflater.inflate(R.menu.global, menu);
+            showGlobalContextActionBar();
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
@@ -259,7 +259,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 	}
 
 	public void onMemberChanged(int position, Pokemon pokemon) {
-		//TODO: Do this
+		((PokemonTeamAdapter)mAdapter).modifyPosition(position, pokemon);
 	}
 
 	/**
@@ -298,12 +298,15 @@ public class TeamBuilderDrawerFragment extends Fragment {
 								 getString(R.string.team_member3),
 								 getString(R.string.team_member4),
 								 getString(R.string.team_member5),
-								 getString(R.string.team_member6),});
+								 getString(R.string.team_member6)});
 		}
 
 		public PokemonTeamAdapter(Context context, PokemonTeam team) {
 			super(context, android.R.layout.simple_list_item_activated_1, android.R.id.text1,
 					team.getNames(context));
+		}
+
+		public void modifyPosition(int position, Pokemon pokemon) {
 		}
 	}
 }

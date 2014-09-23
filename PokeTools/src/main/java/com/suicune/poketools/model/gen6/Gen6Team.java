@@ -43,17 +43,19 @@ public class Gen6Team implements PokemonTeam {
 	@Override public String[] getNames(Context context) {
 		String[] names = new String[7];
 		names[0] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
-		names[1] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
-		names[2] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
-		names[3] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
-		names[4] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
-		names[5] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
-		names[6] = (members.get(6) != null) ? members.get(6).mName : context.getString(R.string.team_main_screen);
+		for (int i = 0; i <= 6; i++) {
+			names[i] = getMemberName(i, context, R.string.team_member6);
+		}
 
-		return new String[0];
+		return names;
 	}
 
-	public String getMemberName(int position, Context context) {
-
+	public String getMemberName(int position, Context context, int resId) {
+		if(members.get(position) != null) {
+			Pokemon member = members.get(position);
+			return member.getName(member.dexNumber(), member.formNumber());
+		} else {
+			return context.getString(resId);
+		}
 	}
 }
