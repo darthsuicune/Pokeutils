@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.model.Pokemon;
+import com.suicune.poketools.model.PokemonTeam;
 import com.suicune.poketools.view.fragments.teambuilder.TeamBuilderDrawerFragment;
 import com.suicune.poketools.view.fragments.teambuilder.TeamMainFragment;
 import com.suicune.poketools.view.fragments.teambuilder.TeamMemberFragment;
@@ -135,5 +137,13 @@ public class TeamBuilderActivity extends ActionBarActivity
 			default:
 				return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override public void onMemberChanged(int position, Pokemon member) {
+		mTeamBuilderDrawerFragment.onMemberChanged(position, member);
+	}
+
+	@Override public void onTeamChanged(PokemonTeam team) {
+		mTeamBuilderDrawerFragment.onTeamChanged(team);
 	}
 }

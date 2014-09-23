@@ -1,14 +1,17 @@
 package com.suicune.poketools.view.fragments.teambuilder;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.model.Pokemon;
+import com.suicune.poketools.model.PokemonTeam;
+import com.suicune.poketools.model.gen6.Gen6Team;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +24,7 @@ import com.suicune.poketools.R;
  */
 public class TeamMainFragment extends Fragment {
     private OnTeamEditedListener mListener;
+	private Gen6Team mTeam;
 
     /**
      * Use this factory method to create a new instance of
@@ -81,6 +85,8 @@ public class TeamMainFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnTeamEditedListener {
+		public void onMemberChanged(int position, Pokemon member);
+		public void onTeamChanged(PokemonTeam team);
     }
 
 }

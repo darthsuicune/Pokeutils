@@ -1,21 +1,59 @@
 package com.suicune.poketools.model.gen6;
 
+import android.content.Context;
+
+import com.suicune.poketools.R;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.PokemonTeam;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by lapuente on 22.09.14.
  */
 public class Gen6Team implements PokemonTeam {
+	public String mName;
+	public Map<Integer, Pokemon> members;
+	public Gen6Team() {
+		members = new HashMap<>();
+	}
 	@Override public String getName() {
-		return null;
+		return mName;
+	}
+
+	@Override public PokemonTeam setName(String name) {
+		mName = name;
+		return this;
 	}
 
 	@Override public Pokemon getMember(int position) {
-		return null;
+		return members.get(position);
 	}
 
 	@Override public int getMemberCount() {
-		return 0;
+		return members.size();
+	}
+
+	@Override public PokemonTeam addMember(int position, Pokemon pokemon) {
+		members.put(position, pokemon);
+		return this;
+	}
+
+	@Override public String[] getNames(Context context) {
+		String[] names = new String[7];
+		names[0] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
+		names[1] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
+		names[2] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
+		names[3] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
+		names[4] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
+		names[5] = (mName != null) ? mName : context.getString(R.string.team_main_screen);
+		names[6] = (members.get(6) != null) ? members.get(6).mName : context.getString(R.string.team_main_screen);
+
+		return new String[0];
+	}
+
+	public String getMemberName(int position, Context context) {
+
 	}
 }
