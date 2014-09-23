@@ -9,5 +9,14 @@
     <string name="team_member5">Member 5</string>
     <string name="team_member6">Member 6</string>
 
+    <string-array name="team_builder_drawer_defaults">
+        <item>@string/team_main_screen</item>
+        <item>@string/team_member1</item>
+        <item>@string/team_member2</item>
+        <item>@string/team_member3</item>
+        <item>@string/team_member4</item>
+        <item>@string/team_member5</item>
+        <item>@string/team_member6</item>
+    </string-array>
 
 </resources>

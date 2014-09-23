@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class TeamBuilderActivity extends ActionBarActivity
 		implements TeamBuilderDrawerFragment.TeamBuilderDrawerCallbacks,
-		TeamMainFragment.OnTeamEditedListener {
+		TeamMainFragment.OnTeamEditedListener, TeamMemberFragment.OnTeamMemberChangedListener {
 
 	public static final String TEAM_EDIT_DRAWER_SELECTION = "team_editor_drawer_selection";
 	private static final String FRAGMENT_TAG_TEAM_MEMBER = "fragment_team_member_";
@@ -139,11 +139,11 @@ public class TeamBuilderActivity extends ActionBarActivity
 		}
 	}
 
-	@Override public void onMemberChanged(int position, Pokemon member) {
-		mTeamBuilderDrawerFragment.onMemberChanged(position, member);
-	}
-
 	@Override public void onTeamChanged(PokemonTeam team) {
 		mTeamBuilderDrawerFragment.onTeamChanged(team);
+	}
+
+	@Override public void onTeamMemberChanged(int position, Pokemon pokemon) {
+		mTeamBuilderDrawerFragment.onMemberChanged(position, pokemon);
 	}
 }

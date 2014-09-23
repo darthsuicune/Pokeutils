@@ -26,6 +26,8 @@ public abstract class Pokemon {
 	public abstract int level();
 	public abstract List<Attack> currentAttacks();
 	public abstract Ability currentAbility();
+	public abstract String nickname();
+	public abstract void setNickname(String nickname);
 
 	@Override public String toString() {
 		return "#" + dexNumber() + " - " + getName(dexNumber(), formNumber());

@@ -24,8 +24,6 @@ public class Gen6Stats extends Stats {
 	public Map<Stat, Integer> base;
 	public Map<Stat, Integer> values;
 
-	public Stats.StatType statType;
-
 	public Gen6Stats(int level, int[] baseStats) {
 		ivs = new HashMap<>();
 		evs = new HashMap<>();
@@ -39,31 +37,19 @@ public class Gen6Stats extends Stats {
 	}
 
 	@Override public boolean checkForValidValues() {
-		switch (statType) {
-			case EV:
-				return checkForValidValues(evs, MAX_EV, MIN_EV);
-			case IV:
-				return checkForValidValues(ivs, MAX_IV, MIN_IV);
-			case BASE:
-				return checkForValidValues(base, MAX_BASE, MIN_BASE);
-			case VALUE:
-				return checkForValidValues(values, MAX_VALUE, MIN_VALUE);
-			default:
-				return false;
-		}
+		return checkForValidValues(evs, MAX_EV, MIN_EV) &&
+			   checkForValidValues(ivs, MAX_IV, MIN_IV) &&
+			   checkForValidValues(base, MAX_BASE, MIN_BASE) &&
+			   checkForValidValues(values, MAX_VALUE, MIN_VALUE);
 	}
 
 	private boolean checkForValidValues(Map<Stat, Integer> values, int max, int min) {
-		boolean areValid = true;
-		if (values.get(Stat.HP) > max || values.get(Stat.HP) < min ||
-			values.get(Stat.ATTACK) > max || values.get(Stat.ATTACK) < min ||
-			values.get(Stat.DEFENSE) > max || values.get(Stat.DEFENSE) < min ||
-			values.get(Stat.SPECIAL_ATTACK) > max || values.get(Stat.SPECIAL_ATTACK) < min ||
-			values.get(Stat.SPECIAL_DEFENSE) > max || values.get(Stat.SPECIAL_DEFENSE) < min ||
-			values.get(Stat.SPEED) > max || values.get(Stat.SPEED) < min) {
-			areValid = false;
-		}
-		return areValid;
+		return (values.get(Stat.HP) > max && values.get(Stat.HP) < min &&
+			values.get(Stat.ATTACK) > max && values.get(Stat.ATTACK) < min &&
+			values.get(Stat.DEFENSE) > max && values.get(Stat.DEFENSE) < min &&
+			values.get(Stat.SPECIAL_ATTACK) > max && values.get(Stat.SPECIAL_ATTACK) < min &&
+			values.get(Stat.SPECIAL_DEFENSE) > max && values.get(Stat.SPECIAL_DEFENSE) < min &&
+			values.get(Stat.SPEED) > max && values.get(Stat.SPEED) < min);
 	}
 
 	@Override public int gen() {
@@ -78,7 +64,7 @@ public class Gen6Stats extends Stats {
 		ivs.put(Stat.SPECIAL_ATTACK, spattack);
 		ivs.put(Stat.SPECIAL_DEFENSE, spdefense);
 		ivs.put(Stat.SPEED, speed);
-		checkForValidValues();
+		checkForValidValues(ivs, MAX_IV, MIN_IV);
 		notifyChanged();
 		return this;
 	}
@@ -91,20 +77,20 @@ public class Gen6Stats extends Stats {
 		evs.put(Stat.SPECIAL_ATTACK, spattack);
 		evs.put(Stat.SPECIAL_DEFENSE, spdefense);
 		evs.put(Stat.SPEED, speed);
-		checkForValidValues();
+		checkForValidValues(evs, MAX_EV, MIN_IV);
 		notifyChanged();
 		return this;
 	}
 
 	@Override public Stats setBaseStats(int hp, int attack, int defense, int spattack,
 										int spdefense, int speed) {
-		ivs.put(Stat.HP, hp);
-		ivs.put(Stat.ATTACK, attack);
-		ivs.put(Stat.DEFENSE, defense);
-		ivs.put(Stat.SPECIAL_ATTACK, spattack);
-		ivs.put(Stat.SPECIAL_DEFENSE, spdefense);
-		ivs.put(Stat.SPEED, speed);
-		checkForValidValues();
+		base.put(Stat.HP, hp);
+		base.put(Stat.ATTACK, attack);
+		base.put(Stat.DEFENSE, defense);
+		base.put(Stat.SPECIAL_ATTACK, spattack);
+		base.put(Stat.SPECIAL_DEFENSE, spdefense);
+		base.put(Stat.SPEED, speed);
+		checkForValidValues(base, MAX_BASE, MIN_BASE);
 		notifyChanged();
 		return this;
 	}
@@ -137,7 +123,7 @@ public class Gen6Stats extends Stats {
 		ivs.put(Stat.SPECIAL_ATTACK, spattack);
 		ivs.put(Stat.SPECIAL_DEFENSE, spdefense);
 		ivs.put(Stat.SPEED, speed);
-		checkForValidValues();
+		checkForValidValues(values, MAX_VALUE, MIN_VALUE);
 		notifyChanged();
 		return this;
 	}

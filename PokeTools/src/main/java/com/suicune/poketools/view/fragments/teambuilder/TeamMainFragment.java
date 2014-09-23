@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.suicune.poketools.R;
-import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.PokemonTeam;
 import com.suicune.poketools.model.gen6.Gen6Team;
 
@@ -85,7 +84,6 @@ public class TeamMainFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnTeamEditedListener {
-		public void onMemberChanged(int position, Pokemon member);
 		public void onTeamChanged(PokemonTeam team);
     }
 

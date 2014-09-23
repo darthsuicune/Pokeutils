@@ -64,6 +64,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 	private boolean mUserLearnedDrawer;
 
 	private SharedPreferences prefs;
+	private String[] mNames = new String[7];
 
 	public TeamBuilderDrawerFragment() {
 	}
@@ -101,6 +102,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 				selectItem(position);
 			}
 		});
+		mNames = getActivity().getResources().getStringArray(R.array.team_builder_drawer_defaults);
 		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext());
 		mDrawerListView.setAdapter(mAdapter);
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
@@ -158,9 +160,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 							// The user manually opened the drawer; store this flag to prevent auto-showing
 							// the navigation drawer automatically in the future.
 							mUserLearnedDrawer = true;
-							SharedPreferences sp =
-									PreferenceManager.getDefaultSharedPreferences(getActivity());
-							sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+							prefs.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
 						}
 
 						getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
@@ -206,44 +206,44 @@ public class TeamBuilderDrawerFragment extends Fragment {
 			}
 		}
 		prefs.edit().putInt(PREF_SELECTED_POSITION, mCurrentSelectedPosition).apply();
-    }
+	}
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mCallbacks = (TeamBuilderDrawerCallbacks) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException("Activity must implement TeamBuilderDrawerCallbacks.");
-        }
-    }
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		try {
+			mCallbacks = (TeamBuilderDrawerCallbacks) activity;
+		} catch (ClassCastException e) {
+			throw new ClassCastException("Activity must implement TeamBuilderDrawerCallbacks.");
+		}
+	}
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mCallbacks = null;
-    }
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		mCallbacks = null;
+	}
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Forward the new configuration the drawer toggle component.
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		// Forward the new configuration the drawer toggle component.
+		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // If the drawer is open, show the global app actions in the action bar. See also
-        // showGlobal1ContextActionBar, which controls the top-left area of the action bar.
-        if (mDrawerLayout != null && isDrawerOpen()) {
-            inflater.inflate(R.menu.global, menu);
-            showGlobalContextActionBar();
-        }
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		// If the drawer is open, show the global app actions in the action bar. See also
+		// showGlobal1ContextActionBar, which controls the top-left area of the action bar.
+		if (mDrawerLayout != null && isDrawerOpen()) {
+			inflater.inflate(R.menu.global, menu);
+			showGlobalContextActionBar();
+		}
+		super.onCreateOptionsMenu(menu, inflater);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
@@ -254,12 +254,15 @@ public class TeamBuilderDrawerFragment extends Fragment {
 	}
 
 	public void onTeamChanged(PokemonTeam team) {
-		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext(), team);
+		mNames[0] = team.getName();
+		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext());
 		mDrawerListView.setAdapter(mAdapter);
 	}
 
 	public void onMemberChanged(int position, Pokemon pokemon) {
-		((PokemonTeamAdapter)mAdapter).modifyPosition(position, pokemon);
+		mNames[position] = pokemon.nickname();
+		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext());
+		mDrawerListView.setAdapter(mAdapter);
 	}
 
 	/**
@@ -270,7 +273,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setTitle(R.string.app_name);
+		actionBar.setTitle(R.string.team_builder_fragment_title);
 	}
 
 	private ActionBar getActionBar() {
@@ -292,21 +295,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 	private class PokemonTeamAdapter extends ArrayAdapter<String> {
 		public PokemonTeamAdapter(Context context) {
 			super(context, android.R.layout.simple_list_item_activated_1, android.R.id.text1,
-					new String[]{getString(R.string.team_main_screen),
-								 getString(R.string.team_member1),
-								 getString(R.string.team_member2),
-								 getString(R.string.team_member3),
-								 getString(R.string.team_member4),
-								 getString(R.string.team_member5),
-								 getString(R.string.team_member6)});
-		}
-
-		public PokemonTeamAdapter(Context context, PokemonTeam team) {
-			super(context, android.R.layout.simple_list_item_activated_1, android.R.id.text1,
-					team.getNames(context));
-		}
-
-		public void modifyPosition(int position, Pokemon pokemon) {
+					mNames);
 		}
 	}
 }

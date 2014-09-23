@@ -67,6 +67,7 @@ public class Gen6Pokemon extends Pokemon {
 	public int mHappiness = 70;
 	public Type mAdditionalType;
 	public Nature mNature;
+	public String mNickname;
 
 	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types,
 					   Ability[] abilities, int formCount) throws JSONException {
@@ -99,6 +100,7 @@ public class Gen6Pokemon extends Pokemon {
 		mTutorMoves = new HashMap<>();
 		mTransferAttacks = new HashMap<>();
 		mAttackSet = new ArrayList<>();
+		mNickname = getName(mPokedexNumber, mForm);
 	}
 
 	public Gen6Pokemon setIvs(int hp, int attack, int defense, int spattack, int spdefense,
@@ -219,5 +221,12 @@ public class Gen6Pokemon extends Pokemon {
 
 	@Override public Ability currentAbility() {
 		return mAbility;
+	}
+
+	@Override public String nickname() {
+		return mNickname;
+	}
+	@Override public void setNickname(String nickname) {
+		this.mNickname = nickname;
 	}
 }
