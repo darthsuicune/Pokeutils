@@ -77,11 +77,11 @@ public class TeamMemberFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_team_builder_member, container, false);
 		mNameTextView = (AutoCompleteTextView) view
 				.findViewById(R.id.team_builder_member_name_autocomplete);
-		prepareAutoComplete();
+		prepareNameAutoComplete();
 		return view;
 	}
 
-	private void prepareAutoComplete() {
+	private void prepareNameAutoComplete() {
 		String[] objects = {"asdf1", "asdf2", "asdf3"};
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
 				android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, objects);
@@ -89,14 +89,15 @@ public class TeamMemberFragment extends Fragment {
 		mNameTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
 											  long id) {
-				selectPokemon(position);
+				selectPokemon(position, 0);
 			}
 		});
 	}
 
-	private void selectPokemon(int position) {
+	private void selectPokemon(int position, int form) {
 		try {
-			mPokemon = PokemonFactory.createPokemon(getActivity(), 6, position, 0, DEFAULT_LEVEL);
+			mPokemon = PokemonFactory.createPokemon(getActivity(), 6, position, form, DEFAULT_LEVEL);
+			notifyChange();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {

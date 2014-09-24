@@ -95,7 +95,7 @@ public class Gen6Stats extends Stats {
 		return this;
 	}
 
-	public Stats setValuesFromStats(int level) {
+	@Override public Stats setValuesFromStats(int level) {
 		values.put(Stat.HP,
 				IvTools.calculateHp(level, base.get(Stat.HP), ivs.get(Stat.HP), evs.get(Stat.HP)));
 		values.put(Stat.ATTACK,

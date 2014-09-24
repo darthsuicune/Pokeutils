@@ -41,6 +41,8 @@ public abstract class Stats {
 
 	public abstract boolean checkForValidValues();
 
+	public abstract Stats setValuesFromStats(int level);
+
 	public enum Stat {
 		HP,
 		ATTACK,

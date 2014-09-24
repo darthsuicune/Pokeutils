@@ -24,6 +24,7 @@ public abstract class Pokemon {
 	public abstract Map<String, Attack> transferAttacks();
 	
 	public abstract int level();
+	public abstract Pokemon setLevel(int level);
 	public abstract List<Attack> currentAttacks();
 	public abstract Ability currentAbility();
 	public abstract String nickname();

@@ -211,6 +211,12 @@ public class Gen6Pokemon extends Pokemon {
 		return mTransferAttacks;
 	}
 
+	@Override public Pokemon setLevel(int level) {
+		this.mLevel = level;
+		mStats.setValuesFromStats(level);
+		return this;
+	}
+
 	@Override public int level() {
 		return mLevel;
 	}
