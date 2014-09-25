@@ -96,13 +96,20 @@ public class TeamMemberFragment extends Fragment {
 
 	private void selectPokemon(int position, int form) {
 		try {
+			Bundle bundle = saveChanges();
 			mPokemon = PokemonFactory.createPokemon(getActivity(), 6, position, form, DEFAULT_LEVEL);
+			restoreValues(bundle);
 			notifyChange();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (JSONException e) {
+		} catch (IOException | JSONException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void restoreValues(Bundle bundle) {
+	}
+
+	private Bundle saveChanges() {
+		return mPokemon.save();
 	}
 
 	public void notifyChange() {

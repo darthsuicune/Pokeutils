@@ -2,7 +2,6 @@ package com.suicune.poketools.controller.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -67,7 +66,6 @@ public class TeamBuilderActivity extends ActionBarActivity
 	private void setMainFragment() {
 		String tag;
 		FragmentManager manager = getFragmentManager();
-		FragmentTransaction transaction = manager.beginTransaction();
 		Fragment fragment;
 		switch (mCurrentFragment) {
 			case 0:
@@ -93,7 +91,7 @@ public class TeamBuilderActivity extends ActionBarActivity
 				fragment = teamFragments.get(mCurrentFragment);
 				break;
 		}
-		transaction.replace(R.id.team_builder_container, fragment, tag).commit();
+		manager.beginTransaction().replace(R.id.team_builder_container, fragment, tag).commit();
 		prefs.edit().putInt(TEAM_EDIT_DRAWER_SELECTION, mCurrentFragment).apply();
 	}
 

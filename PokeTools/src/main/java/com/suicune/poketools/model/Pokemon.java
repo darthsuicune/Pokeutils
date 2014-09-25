@@ -1,5 +1,7 @@
 package com.suicune.poketools.model;
 
+import android.os.Bundle;
+
 import java.util.List;
 import java.util.Map;
 
@@ -24,11 +26,22 @@ public abstract class Pokemon {
 	public abstract Map<String, Attack> transferAttacks();
 	
 	public abstract int level();
-	public abstract Pokemon setLevel(int level);
 	public abstract List<Attack> currentAttacks();
 	public abstract Ability currentAbility();
 	public abstract String nickname();
-	public abstract void setNickname(String nickname);
+	public abstract int happiness();
+	public abstract Nature nature();
+	public abstract Type additionalType();
+	public abstract Pokemon setNature(Nature nature);
+	public abstract Pokemon setNickname(String nickname);
+	public abstract Pokemon setHappiness(int happiness);
+	public abstract Pokemon setLevel(int level);
+	public abstract Pokemon addAdditionalType(Type type);
+	public abstract Pokemon setCurrentAttacks(List<Attack> attacks);
+	public abstract Pokemon setCurrentAbility(Ability ability);
+
+	public abstract Bundle save();
+	public abstract Pokemon load(Bundle bundle);
 
 	@Override public String toString() {
 		return "#" + dexNumber() + " - " + getName(dexNumber(), formNumber());

@@ -1,5 +1,7 @@
 package com.suicune.poketools.model.gen6;
 
+import android.os.Bundle;
+
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Nature;
@@ -25,7 +27,6 @@ public class Gen6Pokemon extends Pokemon {
 	public static final String ARG_ABILITIES = "abilities";
 	public static final String ARG_TYPES = "types";
 	public static final String ARG_BASE_STATS = "baseStats";
-
 
 	/**
 	 * Immutable properties
@@ -63,14 +64,14 @@ public class Gen6Pokemon extends Pokemon {
 	 */
 	public int mLevel;
 	public List<Attack> mAttackSet;
-	public Gen6Ability mAbility;
+	public Ability mAbility;
 	public int mHappiness = 70;
 	public Type mAdditionalType;
 	public Nature mNature;
 	public String mNickname;
 
-	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types,
-					   Ability[] abilities, int formCount) throws JSONException {
+	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types, Ability[] abilities,
+					   int formCount) throws JSONException {
 		mLevel = level;
 		mPokedexNumber = data.getInt(ARG_DEX_NUMBER);
 		mForm = data.getInt(ARG_FORM);
@@ -106,14 +107,12 @@ public class Gen6Pokemon extends Pokemon {
 	public Gen6Pokemon setIvs(int hp, int attack, int defense, int spattack, int spdefense,
 							  int speed) {
 		mStats.setIvs(hp, attack, defense, spattack, spdefense, speed);
-		calculateStats();
 		return this;
 	}
 
 	public Gen6Pokemon setEvs(int hp, int attack, int defense, int spattack, int spdefense,
 							  int speed) {
 		mStats.setEvs(hp, attack, defense, spattack, spdefense, speed);
-		calculateStats();
 		return this;
 	}
 
@@ -124,7 +123,7 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 	public Gen6Pokemon setAttack(Attack attack, int position) {
-		if (position > 0 && position < 3) {
+		if (position >= 0 && position <= 3) {
 			mAttackSet.add(position, attack);
 		}
 		return this;
@@ -139,6 +138,39 @@ public class Gen6Pokemon extends Pokemon {
 		mHappiness = happiness;
 		return this;
 	}
+
+	public int happiness() {
+		return mHappiness;
+	}
+
+	@Override public Nature nature() {
+		return mNature;
+	}
+
+	@Override public Pokemon setNature(Nature mNature) {
+		this.mNature = mNature;
+		return this;
+	}
+
+	@Override public Type additionalType() {
+		return mAdditionalType;
+	}
+
+	@Override public Pokemon addAdditionalType(Type type) {
+		mAdditionalType = type;
+		return this;
+	}
+
+	@Override public Pokemon setCurrentAttacks(List<Attack> attacks) {
+		mAttackSet = attacks;
+		return this;
+	}
+
+	@Override public Pokemon setCurrentAbility(Ability ability) {
+		mAbility = ability;
+		return this;
+	}
+
 
 	public Stats calculateIvs() {
 		return IvTools.getIvs(this);
@@ -232,7 +264,17 @@ public class Gen6Pokemon extends Pokemon {
 	@Override public String nickname() {
 		return mNickname;
 	}
-	@Override public void setNickname(String nickname) {
+
+	@Override public Pokemon setNickname(String nickname) {
 		this.mNickname = nickname;
+		return this;
+	}
+
+	@Override public Bundle save() {
+		return null;
+	}
+
+	@Override public Pokemon load(Bundle bundle) {
+		return null;
 	}
 }
