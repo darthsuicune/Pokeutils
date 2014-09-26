@@ -69,9 +69,10 @@ public class Gen6Pokemon extends Pokemon {
 	public Type mAdditionalType;
 	public Nature mNature;
 	public String mNickname;
+	public String mName;
 
 	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types, Ability[] abilities,
-					   int formCount) throws JSONException {
+					   int formCount, String name) throws JSONException {
 		mLevel = level;
 		mPokedexNumber = data.getInt(ARG_DEX_NUMBER);
 		mForm = data.getInt(ARG_FORM);
@@ -101,45 +102,50 @@ public class Gen6Pokemon extends Pokemon {
 		mTutorMoves = new HashMap<>();
 		mTransferAttacks = new HashMap<>();
 		mAttackSet = new ArrayList<>();
-		mNickname = getName(mPokedexNumber, mForm);
+		mName = name;
+		mNickname = name;
 	}
 
-	public Gen6Pokemon setIvs(int hp, int attack, int defense, int spattack, int spdefense,
+	@Override public String name() {
+		return mName;
+	}
+
+	@Override public Pokemon setIvs(int hp, int attack, int defense, int spattack, int spdefense,
 							  int speed) {
 		mStats.setIvs(hp, attack, defense, spattack, spdefense, speed);
 		return this;
 	}
 
-	public Gen6Pokemon setEvs(int hp, int attack, int defense, int spattack, int spdefense,
+	@Override public Pokemon setEvs(int hp, int attack, int defense, int spattack, int spdefense,
 							  int speed) {
 		mStats.setEvs(hp, attack, defense, spattack, spdefense, speed);
 		return this;
 	}
 
-	public Gen6Pokemon setStats(int hp, int attack, int defense, int spattack, int spdefense,
+	@Override public Pokemon setStats(int hp, int attack, int defense, int spattack, int spdefense,
 								int speed) {
 		mStats.setCurrentValues(hp, attack, defense, spattack, spdefense, speed);
 		return this;
 	}
 
-	public Gen6Pokemon setAttack(Attack attack, int position) {
+	@Override public Pokemon addAttack(Attack attack, int position) {
 		if (position >= 0 && position <= 3) {
 			mAttackSet.add(position, attack);
 		}
 		return this;
 	}
 
-	public Gen6Pokemon setAbility(Gen6Ability ability) {
+	@Override public Pokemon setAbility(Ability ability) {
 		mAbility = ability;
 		return this;
 	}
 
-	public Gen6Pokemon setHappiness(int happiness) {
+	@Override public Pokemon setHappiness(int happiness) {
 		mHappiness = happiness;
 		return this;
 	}
 
-	public int happiness() {
+	@Override public int happiness() {
 		return mHappiness;
 	}
 
@@ -172,12 +178,14 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 
-	public Stats calculateIvs() {
-		return IvTools.getIvs(this);
+	@Override public Pokemon calculateIvs() {
+		IvTools.getIvs(this);
+		return this;
 	}
 
-	private void calculateStats() {
+	@Override public Pokemon calculateStats() {
 		mStats.updateWith(IvTools.calculateStats(this));
+		return this;
 	}
 
 	@Override public int dexNumber() {

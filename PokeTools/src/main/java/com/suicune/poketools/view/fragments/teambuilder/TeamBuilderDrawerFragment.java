@@ -261,7 +261,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
 	public void onMemberChanged(int position, Pokemon pokemon) {
 		mNames[position] = pokemon.nickname();
-		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext());
+		mAdapter = new PokemonTeamAdapter(getActivity());
 		mDrawerListView.setAdapter(mAdapter);
 	}
 

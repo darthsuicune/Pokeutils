@@ -2,6 +2,7 @@ package com.suicune.poketools.model.factories;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.os.Bundle;
 
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
@@ -51,7 +52,8 @@ public class PokemonFactory {
 		Type additionalType = pokemon.additionalType();
 		Nature nature = pokemon.nature();
 		String nickname = null;
-		if (pokemon.nickname() != pokemon.getName(pokemon.dexNumber(), pokemon.formNumber())) {
+		if (pokemon.nickname() !=
+			Pokemon.getName(context, pokemon.dexNumber(), pokemon.formNumber())) {
 			nickname = pokemon.nickname();
 		}
 		Stats oldStats = pokemon.stats();
@@ -69,11 +71,12 @@ public class PokemonFactory {
 						oldStats.ivs().get(Stats.Stat.SPECIAL_ATTACK),
 						oldStats.ivs().get(Stats.Stat.SPECIAL_DEFENSE),
 						oldStats.ivs().get(Stats.Stat.SPEED));
-		result.stats().setEvs(oldStats.evs().get(Stats.Stat.HP), oldStats.evs().get(Stats.Stat.ATTACK),
-				oldStats.evs().get(Stats.Stat.DEFENSE),
-				oldStats.evs().get(Stats.Stat.SPECIAL_ATTACK),
-				oldStats.evs().get(Stats.Stat.SPECIAL_DEFENSE),
-				oldStats.evs().get(Stats.Stat.SPEED));
+		result.stats()
+				.setEvs(oldStats.evs().get(Stats.Stat.HP), oldStats.evs().get(Stats.Stat.ATTACK),
+						oldStats.evs().get(Stats.Stat.DEFENSE),
+						oldStats.evs().get(Stats.Stat.SPECIAL_ATTACK),
+						oldStats.evs().get(Stats.Stat.SPECIAL_DEFENSE),
+						oldStats.evs().get(Stats.Stat.SPEED));
 		return result;
 	}
 
@@ -102,8 +105,15 @@ public class PokemonFactory {
 			abilities[i] = AbilityFactory.createAbility(context, 6, abilityArray.getInt(i));
 		}
 
+		String name = Pokemon.getName(context, dexNumber, form);
+
 		Gen6Pokemon poke =
-				new Gen6Pokemon(level, pokemon, stats, types, abilities, pokemonForms.length());
+				new Gen6Pokemon(level, pokemon, stats, types, abilities, pokemonForms.length(),
+						name);
 		return poke;
+	}
+
+	public static Pokemon createFromBundle(Bundle bundle) {
+		return null;
 	}
 }

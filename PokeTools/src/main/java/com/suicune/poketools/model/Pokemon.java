@@ -1,14 +1,20 @@
 package com.suicune.poketools.model;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import com.suicune.poketools.R;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Created by lapuente on 17.09.14.
  */
 public abstract class Pokemon {
+	public abstract String name();
 	public abstract int dexNumber();
 	public abstract int formNumber();
 	public abstract double femaleRatio();
@@ -32,6 +38,7 @@ public abstract class Pokemon {
 	public abstract int happiness();
 	public abstract Nature nature();
 	public abstract Type additionalType();
+	public abstract Pokemon setAbility(Ability ability);
 	public abstract Pokemon setNature(Nature nature);
 	public abstract Pokemon setNickname(String nickname);
 	public abstract Pokemon setHappiness(int happiness);
@@ -40,16 +47,67 @@ public abstract class Pokemon {
 	public abstract Pokemon setCurrentAttacks(List<Attack> attacks);
 	public abstract Pokemon setCurrentAbility(Ability ability);
 
+	public abstract Pokemon setIvs(int hp, int attack, int defense, int spattack, int spdefense,
+								   int speed);
+
+	public abstract Pokemon setEvs(int hp, int attack, int defense, int spattack, int spdefense,
+								   int speed);
+
+	public abstract Pokemon setStats(int hp, int attack, int defense, int spattack, int spdefense,
+									 int speed);
+
+	public abstract Pokemon addAttack(Attack attack, int position);
+
+	public abstract Pokemon calculateIvs();
+	public abstract Pokemon calculateStats();
+
 	public abstract Bundle save();
 	public abstract Pokemon load(Bundle bundle);
 
 	@Override public String toString() {
-		return "#" + dexNumber() + " - " + getName(dexNumber(), formNumber());
+		return "#" + dexNumber() + " - " + name();
 	}
 
-	public String getName(int number, int form) {
-		//TODO: Replace with actual name
-		return "name";
+	public static String getName(Context context, int number, int form) {
+		String[] names = context.getResources().getStringArray(R.array.pokemon_names);
+
+		int i = 0;
+		String name = names[number];
+
+		StringTokenizer tokenizer = new StringTokenizer(names[number], ";");
+		while(tokenizer.hasMoreTokens()) {
+			if (i == form) {
+				name = tokenizer.nextToken();
+				break;
+			} else {
+				tokenizer.nextToken();
+				i++;
+			}
+		}
+		return name;
 	}
 
+	public static int getForm(String names, String name) {
+		int form = 0;
+		StringTokenizer tokenizer = new StringTokenizer(names, ";");
+		while(tokenizer.hasMoreTokens()) {
+			if (name.equals(tokenizer.nextToken())) {
+				break;
+			} else {
+				form++;
+			}
+		}
+		return form;
+	}
+
+	public static List<String> parseAllNames(String[] names) {
+		List<String> parsedNames = new ArrayList<>();
+		for (String name : names) {
+			StringTokenizer tokenizer = new StringTokenizer(name, ";");
+			while (tokenizer.hasMoreTokens()) {
+				parsedNames.add(tokenizer.nextToken());
+			}
+		}
+		return parsedNames;
+	}
 }

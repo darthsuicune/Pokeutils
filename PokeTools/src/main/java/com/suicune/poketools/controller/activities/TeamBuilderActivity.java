@@ -51,15 +51,16 @@ public class TeamBuilderActivity extends ActionBarActivity
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+		mCurrentFragment = prefs.getInt(TEAM_EDIT_DRAWER_SELECTION, 0);
 		mTeamBuilderDrawerFragment = (TeamBuilderDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
+		teamFragments = new HashMap<>();
 		mTitle = getTitle();
 
 		// Set up the drawer.
 		mTeamBuilderDrawerFragment
 				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-		teamFragments = new HashMap<>();
-		mCurrentFragment = prefs.getInt(TEAM_EDIT_DRAWER_SELECTION, 0);
+
 		setMainFragment();
 	}
 
@@ -81,12 +82,11 @@ public class TeamBuilderActivity extends ActionBarActivity
 			default:
 				tag = FRAGMENT_TAG_TEAM_MEMBER + mCurrentFragment;
 				if (teamFragments.get(mCurrentFragment) == null) {
-					TeamMemberFragment member;
-					member = (TeamMemberFragment) manager.findFragmentByTag(tag);
+					TeamMemberFragment member = (TeamMemberFragment) manager.findFragmentByTag(tag);
 					if (member == null) {
 						member = TeamMemberFragment.newInstance(mCurrentFragment);
-						teamFragments.put(mCurrentFragment, member);
 					}
+					teamFragments.put(mCurrentFragment, member);
 				}
 				fragment = teamFragments.get(mCurrentFragment);
 				break;
