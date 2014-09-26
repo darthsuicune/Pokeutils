@@ -14,6 +14,18 @@ import java.util.StringTokenizer;
  * Created by lapuente on 17.09.14.
  */
 public abstract class Pokemon {
+	public static final String ARG_GEN = "gen";
+	public static final String ARG_DEX_NUMBER = "number";
+	public static final String ARG_FORM = "form";
+	public static final String ARG_FORM_COUNT = "form_count";
+	public static final String ARG_NICKNAME = "name";
+	public static final String ARG_NAME = "nickname";
+	public static final String ARG_LEVEL = "level";
+	public static final String ARG_ABILITIES = "abilities";
+	public static final String ARG_TYPES = "types";
+	public static final String ARG_BASE_STATS = "baseStats";
+
+	public abstract int gen();
 	public abstract String name();
 	public abstract int dexNumber();
 	public abstract int formNumber();

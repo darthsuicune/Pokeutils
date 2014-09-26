@@ -114,6 +114,15 @@ public class PokemonFactory {
 	}
 
 	public static Pokemon createFromBundle(Bundle bundle) {
-		return null;
+		Pokemon pokemon = null;
+		if (bundle.containsKey(Pokemon.ARG_GEN)) {
+			switch (bundle.getInt(Pokemon.ARG_GEN)) {
+				case 6:
+					pokemon = new Gen6Pokemon(bundle);
+					break;
+				default:
+			}
+		}
+		return pokemon;
 	}
 }

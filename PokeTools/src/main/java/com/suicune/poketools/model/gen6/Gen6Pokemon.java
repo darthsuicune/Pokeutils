@@ -22,11 +22,6 @@ import java.util.Map;
  * Created by denis on 01.01.14.
  */
 public class Gen6Pokemon extends Pokemon {
-	public static final String ARG_DEX_NUMBER = "number";
-	public static final String ARG_FORM = "form";
-	public static final String ARG_ABILITIES = "abilities";
-	public static final String ARG_TYPES = "types";
-	public static final String ARG_BASE_STATS = "baseStats";
 
 	/**
 	 * Immutable properties
@@ -71,7 +66,7 @@ public class Gen6Pokemon extends Pokemon {
 	public String mNickname;
 	public String mName;
 
-	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types, Ability[] abilities,
+	public Gen6Pokemon(int level, JSONObject bundle, Stats stats, Type[] types, Ability[] abilities,
 					   int formCount, String name) throws JSONException {
 		mLevel = level;
 		mPokedexNumber = data.getInt(ARG_DEX_NUMBER);
@@ -105,6 +100,43 @@ public class Gen6Pokemon extends Pokemon {
 		mName = name;
 		mNickname = name;
 	}
+
+	public Gen6Pokemon(Bundle bundle) {
+		mLevel = bundle.getInt(ARG_LEVEL);
+		mPokedexNumber = bundle.getInt(ARG_DEX_NUMBER);
+		mForm = bundle.getInt(ARG_FORM);
+		mFormCount = bundle.getInt(ARG_FORM_COUNT);
+		mFemaleRatio = 0;
+		mMaleRatio = 0;
+		mStats = stats;
+		mType1 = types[0];
+		mType2 = types[1];
+		mHeight = 0;
+		mWeight = 0;
+		mClassification = "";
+		mCaptureRate = 0;
+		mBaseEggSteps = 0;
+		mAbility1 = abilities[0];
+		mAbility2 = abilities[1];
+		mAbilityHidden = abilities[2];
+		mExperienceGrowth = 0;
+		mBaseHappiness = 0;
+		mEvsEarned = new HashMap<>();
+		mEggGroup1 = null;
+		mEggGroup2 = null;
+		this.isHiddenAbilityAvailable = false;
+		mLevelAttacks = new HashMap<>();
+		mTmAttacks = new HashMap<>();
+		mEggMoves = new ArrayList<>();
+		mTutorMoves = new HashMap<>();
+		mTransferAttacks = new HashMap<>();
+		mAttackSet = new ArrayList<>();
+		mName = bundle.getString(ARG_NAME);
+		mNickname = bundle.getString(ARG_NICKNAME);
+
+	}
+
+	@Override public int gen() { return 6; }
 
 	@Override public String name() {
 		return mName;
