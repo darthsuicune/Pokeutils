@@ -87,7 +87,6 @@ public class TeamMemberFragment extends Fragment {
 		}
 		if(savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
 			restoreValues(savedInstanceState.getBundle(ARG_POKEMON));
-
 		}
 	}
 
@@ -102,6 +101,9 @@ public class TeamMemberFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_team_builder_member, container, false);
 		prepareNameAutoComplete(view);
 		prepareBaseStatsViews(view);
+		if(mPokemon != null) {
+			updatePokemon();
+		}
 		return view;
 	}
 
@@ -155,7 +157,9 @@ public class TeamMemberFragment extends Fragment {
 			Bundle bundle = saveChanges();
 			mPokemon =
 					PokemonFactory.createPokemon(getActivity(), 6, dexNumber, form, DEFAULT_LEVEL);
-			restoreValues(bundle);
+			if(bundle != null) {
+				restoreValues(bundle);
+			}
 			updatePokemon();
 		} catch (IOException | JSONException e) {
 			e.printStackTrace();
@@ -180,8 +184,9 @@ public class TeamMemberFragment extends Fragment {
 	}
 
 	private void restoreValues(Bundle bundle) {
-		mPokemon = PokemonFactory.createFromBundle(bundle);
-		if(mPokemon != null) {
+		Pokemon pokemon = PokemonFactory.createFromBundle(bundle);
+		if(pokemon != null) {
+			mPokemon = pokemon;
 			updatePokemon();
 		}
 	}

@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -39,11 +39,6 @@ public class TeamBuilderActivity extends ActionBarActivity
 
 	private SharedPreferences prefs;
 
-	/**
-	 * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-	 */
-	private CharSequence mTitle;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,11 +46,13 @@ public class TeamBuilderActivity extends ActionBarActivity
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+		Toolbar toolbar = (Toolbar) findViewById(R.id.team_builder_toolbar);
+		setSupportActionBar(toolbar);
+
 		mCurrentFragment = prefs.getInt(TEAM_EDIT_DRAWER_SELECTION, 0);
 		mTeamBuilderDrawerFragment = (TeamBuilderDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		teamFragments = new HashMap<>();
-		mTitle = getTitle();
 
 		// Set up the drawer.
 		mTeamBuilderDrawerFragment
@@ -75,6 +72,7 @@ public class TeamBuilderActivity extends ActionBarActivity
 					mainFragment = (TeamMainFragment) manager.findFragmentByTag(tag);
 					if (mainFragment == null) {
 						mainFragment = TeamMainFragment.newInstance();
+						mainFragment.setRetainInstance(true);
 					}
 				}
 				fragment = mainFragment;
@@ -85,6 +83,7 @@ public class TeamBuilderActivity extends ActionBarActivity
 					TeamMemberFragment member = (TeamMemberFragment) manager.findFragmentByTag(tag);
 					if (member == null) {
 						member = TeamMemberFragment.newInstance(mCurrentFragment);
+						member.setRetainInstance(true);
 					}
 					teamFragments.put(mCurrentFragment, member);
 				}
@@ -106,13 +105,6 @@ public class TeamBuilderActivity extends ActionBarActivity
 		setMainFragment();
 	}
 
-	public void restoreActionBar() {
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(mTitle);
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mTeamBuilderDrawerFragment.isDrawerOpen()) {
@@ -120,7 +112,6 @@ public class TeamBuilderActivity extends ActionBarActivity
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
 			getMenuInflater().inflate(R.menu.team_builder, menu);
-			restoreActionBar();
 			return true;
 		}
 		return super.onCreateOptionsMenu(menu);

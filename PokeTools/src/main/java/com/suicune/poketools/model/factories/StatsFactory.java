@@ -1,5 +1,7 @@
 package com.suicune.poketools.model.factories;
 
+import android.os.Bundle;
+
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.gen6.Gen6Stats;
 
@@ -18,5 +20,9 @@ public class StatsFactory {
 
 	private static Stats createGen6Stats(int level, int[] baseStats) {
 		return new Gen6Stats(level, baseStats);
+	}
+
+	public static Stats fromBundle(Bundle statsBundle) {
+		return null;
 	}
 }

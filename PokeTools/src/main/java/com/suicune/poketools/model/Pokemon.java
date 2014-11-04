@@ -24,6 +24,7 @@ public abstract class Pokemon {
 	public static final String ARG_ABILITIES = "abilities";
 	public static final String ARG_TYPES = "types";
 	public static final String ARG_BASE_STATS = "baseStats";
+	public static final String ARG_STATS = "stats";
 
 	public abstract int gen();
 	public abstract String name();

@@ -1,6 +1,5 @@
 package com.suicune.poketools.view.fragments.teambuilder;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -8,9 +7,10 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -103,7 +103,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 			}
 		});
 		mNames = getActivity().getResources().getStringArray(R.array.team_builder_drawer_defaults);
-		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext());
+		mAdapter = new PokemonTeamAdapter(getActivity());
 		mDrawerListView.setAdapter(mAdapter);
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
@@ -125,47 +125,43 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
 		// set a custom shadow that overlays the main content when the drawer opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-		// set up the drawer's list view with items and click listener
 
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
-
+		Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.team_builder_toolbar);
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the navigation drawer and the action bar app icon.
-		mDrawerToggle =
-				new ActionBarDrawerToggle(getActivity(),                    /* host Activity */
-						mDrawerLayout,                    /* DrawerLayout object */
-						R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
-						R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
-						R.string.navigation_drawer_close  /* "close drawer" description for accessibility */) {
-					@Override
-					public void onDrawerClosed(View drawerView) {
-						super.onDrawerClosed(drawerView);
-						if (!isAdded()) {
-							return;
-						}
+		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), //host Activity
+				mDrawerLayout, //DrawerLayout object
+				toolbar, //nav drawer image to replace 'Up' caret
+				R.string.navigation_drawer_open, // "open drawer" description for accessibility
+				R.string.navigation_drawer_close // "close drawer" description for accessibility
+		) {
+			@Override
+			public void onDrawerClosed(View drawerView) {
+				super.onDrawerClosed(drawerView);
+				if (!isAdded()) {
+					return;
+				}
 
-						getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-					}
+				getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+			}
 
-					@Override
-					public void onDrawerOpened(View drawerView) {
-						super.onDrawerOpened(drawerView);
-						if (!isAdded()) {
-							return;
-						}
+			@Override
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				if (!isAdded()) {
+					return;
+				}
 
-						if (!mUserLearnedDrawer) {
-							// The user manually opened the drawer; store this flag to prevent auto-showing
-							// the navigation drawer automatically in the future.
-							mUserLearnedDrawer = true;
-							prefs.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
-						}
+				if (!mUserLearnedDrawer) {
+					// The user manually opened the drawer; store this flag to prevent auto-showing
+					// the navigation drawer automatically in the future.
+					mUserLearnedDrawer = true;
+					prefs.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+				}
 
-						getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-					}
-				};
+				getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+			}
+		};
 
 		// If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
 		// per the navigation drawer design guidelines.
@@ -228,7 +224,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		// Forward the new configuration the drawer toggle component.
-		mDrawerToggle.onConfigurationChanged(newConfig);
+		//mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	@Override
@@ -237,16 +233,15 @@ public class TeamBuilderDrawerFragment extends Fragment {
 		// showGlobal1ContextActionBar, which controls the top-left area of the action bar.
 		if (mDrawerLayout != null && isDrawerOpen()) {
 			inflater.inflate(R.menu.global, menu);
-			showGlobalContextActionBar();
 		}
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
+		/*if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
-		}
+		}*/
 		switch (item.getItemId()) {
 			default:
 				return super.onOptionsItemSelected(item);
@@ -255,7 +250,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
 	public void onTeamChanged(PokemonTeam team) {
 		mNames[0] = team.getName();
-		mAdapter = new PokemonTeamAdapter(getActionBar().getThemedContext());
+		mAdapter = new PokemonTeamAdapter(getActivity());
 		mDrawerListView.setAdapter(mAdapter);
 	}
 
@@ -263,21 +258,6 @@ public class TeamBuilderDrawerFragment extends Fragment {
 		mNames[position] = pokemon.nickname();
 		mAdapter = new PokemonTeamAdapter(getActivity());
 		mDrawerListView.setAdapter(mAdapter);
-	}
-
-	/**
-	 * Per the navigation drawer design guidelines, updates the action bar to show the global app
-	 * 'context', rather than just what's in the current screen.
-	 */
-	private void showGlobalContextActionBar() {
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setTitle(R.string.team_builder_fragment_title);
-	}
-
-	private ActionBar getActionBar() {
-		return getActivity().getActionBar();
 	}
 
 	/**

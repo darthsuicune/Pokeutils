@@ -1,6 +1,7 @@
 package com.suicune.poketools.model.factories;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import com.suicune.poketools.R;
 import com.suicune.poketools.model.Ability;
@@ -23,5 +24,10 @@ public class AbilityFactory {
 		String[] abilities = context.getResources().getStringArray(R.array.abilities);
 		String[] descriptions = context.getResources().getStringArray(R.array.ability_descriptions);
 		return new Gen6Ability(abilities[abilityCode], descriptions[abilityCode]);
+	}
+
+	public static Ability fromBundle(Bundle bundle, int index) {
+		//TODO: DO.
+		return null;
 	}
 }

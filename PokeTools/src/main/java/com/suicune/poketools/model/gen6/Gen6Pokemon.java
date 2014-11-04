@@ -8,6 +8,9 @@ import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.Type;
+import com.suicune.poketools.model.factories.AbilityFactory;
+import com.suicune.poketools.model.factories.StatsFactory;
+import com.suicune.poketools.model.factories.TypeFactory;
 import com.suicune.poketools.utils.IvTools;
 
 import org.json.JSONException;
@@ -66,7 +69,7 @@ public class Gen6Pokemon extends Pokemon {
 	public String mNickname;
 	public String mName;
 
-	public Gen6Pokemon(int level, JSONObject bundle, Stats stats, Type[] types, Ability[] abilities,
+	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types, Ability[] abilities,
 					   int formCount, String name) throws JSONException {
 		mLevel = level;
 		mPokedexNumber = data.getInt(ARG_DEX_NUMBER);
@@ -108,17 +111,17 @@ public class Gen6Pokemon extends Pokemon {
 		mFormCount = bundle.getInt(ARG_FORM_COUNT);
 		mFemaleRatio = 0;
 		mMaleRatio = 0;
-		mStats = stats;
-		mType1 = types[0];
-		mType2 = types[1];
+		mStats = StatsFactory.fromBundle(bundle.getBundle(ARG_STATS));
+		mType1 = TypeFactory.fromBundle(bundle.getBundle(ARG_TYPES), 0);
+		mType2 = TypeFactory.fromBundle(bundle.getBundle(ARG_TYPES), 1);
 		mHeight = 0;
 		mWeight = 0;
 		mClassification = "";
 		mCaptureRate = 0;
 		mBaseEggSteps = 0;
-		mAbility1 = abilities[0];
-		mAbility2 = abilities[1];
-		mAbilityHidden = abilities[2];
+		mAbility1 = AbilityFactory.fromBundle(bundle.getBundle(ARG_ABILITIES), 0);
+		mAbility2 = AbilityFactory.fromBundle(bundle.getBundle(ARG_ABILITIES), 1);
+		mAbilityHidden = AbilityFactory.fromBundle(bundle.getBundle(ARG_ABILITIES), 2);
 		mExperienceGrowth = 0;
 		mBaseHappiness = 0;
 		mEvsEarned = new HashMap<>();
@@ -311,10 +314,12 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 	@Override public Bundle save() {
+		//TODO: Do.
 		return null;
 	}
 
 	@Override public Pokemon load(Bundle bundle) {
+		//TODO: do.
 		return null;
 	}
 }

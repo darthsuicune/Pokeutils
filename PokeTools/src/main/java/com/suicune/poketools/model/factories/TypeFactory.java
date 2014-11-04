@@ -1,5 +1,7 @@
 package com.suicune.poketools.model.factories;
 
+import android.os.Bundle;
+
 import com.suicune.poketools.model.Type;
 import com.suicune.poketools.model.gen6.Gen6Type;
 
@@ -20,5 +22,8 @@ public class TypeFactory {
 		return Gen6Type.getType(typeCode);
 	}
 
-
+	public static Type fromBundle(Bundle bundle, int index) {
+		//TODO: do.
+		return null;
+	}
 }

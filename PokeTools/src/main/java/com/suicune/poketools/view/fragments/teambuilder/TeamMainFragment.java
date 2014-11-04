@@ -32,8 +32,7 @@ public class TeamMainFragment extends Fragment {
      * @return A new instance of fragment TeamMainFragment.
      */
     public static TeamMainFragment newInstance() {
-        TeamMainFragment fragment = new TeamMainFragment();
-        return fragment;
+        return new TeamMainFragment();
     }
     public TeamMainFragment() {
         // Required empty public constructor
