@@ -24,52 +24,56 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/team_builder_member_base_stats"
+        android:id="@+id/team_builder_member_stats"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/stat_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_member_base_stats_hp"/>
+            <TextView
+                style="@style/stat_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/team_member_base_stats_hp"/>
 
-        <TextView
-            style="@style/stat_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_member_base_stats_attack"/>
+            <TextView
+                style="@style/stat_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/team_member_base_stats_attack"/>
 
-        <TextView
-            style="@style/stat_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_member_base_stats_defense"/>
+            <TextView
+                style="@style/stat_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/team_member_base_stats_defense"/>
 
-        <TextView
-            style="@style/stat_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_member_base_stats_special_attack"/>
+            <TextView
+                style="@style/stat_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/team_member_base_stats_special_attack"/>
 
-        <TextView
-            style="@style/stat_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_member_base_stats_special_defense"/>
+            <TextView
+                style="@style/stat_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/team_member_base_stats_special_defense"/>
 
-        <TextView
-            style="@style/stat_text_view"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_member_base_stats_speed"/>
+            <TextView
+                style="@style/stat_text_view"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/team_member_base_stats_speed"/>
+        </LinearLayout>
     </LinearLayout>
-
 
 </LinearLayout>

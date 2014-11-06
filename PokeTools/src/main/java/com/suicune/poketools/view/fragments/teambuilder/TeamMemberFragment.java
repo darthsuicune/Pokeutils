@@ -43,9 +43,6 @@ public class TeamMemberFragment extends Fragment {
 
 	private OnTeamMemberChangedListener mCallbacks;
 
-	// Views
-	private AutoCompleteTextView mNameTextView;
-
 	//BaseStats Views
 	private LinearLayout mBaseStatsView;
 	private HashMap<Stats.Stat, TextView> mBaseStatsViews;
@@ -108,16 +105,16 @@ public class TeamMemberFragment extends Fragment {
 	}
 
 	private void prepareNameAutoComplete(View view) {
-		mNameTextView = (AutoCompleteTextView) view
+		AutoCompleteTextView nameTextView = (AutoCompleteTextView) view
 				.findViewById(R.id.team_builder_member_name_autocomplete);
 		final String[] objects = getResources().getStringArray(R.array.pokemon_names);
 		final List<String> names = Pokemon.parseAllNames(objects);
 		ArrayAdapter<String> adapter =
 				new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,
 						names);
-		mNameTextView.setAdapter(adapter);
-		mNameTextView.setThreshold(1);
-		mNameTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		nameTextView.setAdapter(adapter);
+		nameTextView.setThreshold(1);
+		nameTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 			@Override public boolean onEditorAction(TextView textView, int actionId,
 													KeyEvent keyEvent) {
 				switch (actionId) {
@@ -135,7 +132,7 @@ public class TeamMemberFragment extends Fragment {
 				}
 			}
 		});
-		mNameTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		nameTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
 											  long id) {
 				selectPokemon(((TextView) view).getText().toString());
@@ -167,7 +164,7 @@ public class TeamMemberFragment extends Fragment {
 	}
 
 	private void prepareBaseStatsViews(View v) {
-		mBaseStatsView = (LinearLayout) v.findViewById(R.id.team_builder_member_base_stats);
+		mBaseStatsView = (LinearLayout) v.findViewById(R.id.team_builder_member_stats);
 		mBaseStatsViews = new HashMap<>();
 		mBaseStatsViews
 				.put(Stats.Stat.HP, (TextView) v.findViewById(R.id.team_member_base_stats_hp));
