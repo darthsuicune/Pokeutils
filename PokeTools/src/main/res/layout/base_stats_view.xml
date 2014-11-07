@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="5dp">
+
+    <TextView
+        style="@style/stat_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_base_stats_hp"/>
+
+    <TextView
+        style="@style/stat_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_base_stats_attack"/>
+
+    <TextView
+        style="@style/stat_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_base_stats_defense"/>
+
+    <TextView
+        style="@style/stat_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_base_stats_special_attack"/>
+
+    <TextView
+        style="@style/stat_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_base_stats_special_defense"/>
+
+    <TextView
+        style="@style/stat_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_base_stats_speed"/>
+</LinearLayout>

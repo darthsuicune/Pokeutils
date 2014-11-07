@@ -13,7 +13,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
@@ -37,14 +36,12 @@ import java.util.List;
  * interface.
  */
 public class TeamMemberFragment extends Fragment {
-	private static final int DEFAULT_LEVEL = 50;
 	private static final String ARG_POSITION = "position";
 	private static final String ARG_POKEMON = "pokemon";
 
 	private OnTeamMemberChangedListener mCallbacks;
 
 	//BaseStats Views
-	private LinearLayout mBaseStatsView;
 	private HashMap<Stats.Stat, TextView> mBaseStatsViews;
 
 	private Pokemon mPokemon;
@@ -82,7 +79,7 @@ public class TeamMemberFragment extends Fragment {
 		if (getArguments() != null) {
 			mPosition = getArguments().getInt(ARG_POSITION);
 		}
-		if(savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
+		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
 			restoreValues(savedInstanceState.getBundle(ARG_POKEMON));
 		}
 	}
@@ -98,7 +95,7 @@ public class TeamMemberFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_team_builder_member, container, false);
 		prepareNameAutoComplete(view);
 		prepareBaseStatsViews(view);
-		if(mPokemon != null) {
+		if (mPokemon != null) {
 			updatePokemon();
 		}
 		return view;
@@ -152,9 +149,9 @@ public class TeamMemberFragment extends Fragment {
 		}
 		try {
 			Bundle bundle = saveChanges();
-			mPokemon =
-					PokemonFactory.createPokemon(getActivity(), 6, dexNumber, form, DEFAULT_LEVEL);
-			if(bundle != null) {
+			mPokemon = PokemonFactory
+					.createPokemon(getActivity(), 6, dexNumber, form, Pokemon.DEFAULT_LEVEL);
+			if (bundle != null) {
 				restoreValues(bundle);
 			}
 			updatePokemon();
@@ -164,7 +161,6 @@ public class TeamMemberFragment extends Fragment {
 	}
 
 	private void prepareBaseStatsViews(View v) {
-		mBaseStatsView = (LinearLayout) v.findViewById(R.id.team_builder_member_stats);
 		mBaseStatsViews = new HashMap<>();
 		mBaseStatsViews
 				.put(Stats.Stat.HP, (TextView) v.findViewById(R.id.team_member_base_stats_hp));
@@ -182,7 +178,7 @@ public class TeamMemberFragment extends Fragment {
 
 	private void restoreValues(Bundle bundle) {
 		Pokemon pokemon = PokemonFactory.createFromBundle(bundle);
-		if(pokemon != null) {
+		if (pokemon != null) {
 			mPokemon = pokemon;
 			updatePokemon();
 		}

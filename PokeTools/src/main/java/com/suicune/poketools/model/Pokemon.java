@@ -26,6 +26,8 @@ public abstract class Pokemon {
 	public static final String ARG_BASE_STATS = "baseStats";
 	public static final String ARG_STATS = "stats";
 
+	public static final int DEFAULT_LEVEL = 100;
+
 	public abstract int gen();
 	public abstract String name();
 	public abstract int dexNumber();

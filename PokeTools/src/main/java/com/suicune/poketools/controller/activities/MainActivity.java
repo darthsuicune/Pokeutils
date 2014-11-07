@@ -1,12 +1,12 @@
 package com.suicune.poketools.controller.activities;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,16 +18,13 @@ import com.suicune.poketools.view.fragments.NavigationDrawerFragment;
 
 public class MainActivity extends Activity
 		implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+	private static final String TAG_DAMAGE_CALC = "damageCalcFragment";
+	private static final String TAG_IV_CALC = "ivCalcFragment";
+	private static final String TAG_IV_BREEDER = "ivBreederFragment";
 
-	/**
-	 * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-	 */
 	private NavigationDrawerFragment mNavigationDrawerFragment;
-
-	/**
-	 * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-	 */
 	private CharSequence mTitle;
+	private Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +34,7 @@ public class MainActivity extends Activity
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
+		toolbar = (Toolbar) findViewById(R.id.main_toolbar);
 
 		// Set up the drawer.
 		mNavigationDrawerFragment
@@ -52,20 +50,35 @@ public class MainActivity extends Activity
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getFragmentManager();
 		Fragment fragment = null;
+		String tag;
 		switch (position) {
 			case 1:
-				fragment = DamageCalcFragment.newInstance();
+				tag = TAG_DAMAGE_CALC;
+				fragment = fragmentManager.findFragmentByTag(tag);
+				if(fragment == null) {
+					fragment = DamageCalcFragment.newInstance();
+				}
 				break;
 			case 2:
-				fragment = IvBreedingCalcFragment.newInstance();
+				tag = TAG_IV_BREEDER;
+				fragment = fragmentManager.findFragmentByTag(tag);
+				if(fragment == null) {
+					fragment = IvBreedingCalcFragment.newInstance();
+				}
 				break;
 			case 3:
-				fragment = IvCalcFragment.newInstance();
+				tag = TAG_IV_CALC;
+				fragment = fragmentManager.findFragmentByTag(tag);
+				if(fragment == null) {
+					fragment = IvCalcFragment.newInstance();
+				}
 				break;
 			default:
+				tag = "";
 				break;
 		}
-		fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+		fragment.setRetainInstance(true);
+		fragmentManager.beginTransaction().replace(R.id.container, fragment, tag).commit();
 		onSectionAttached(position);
 	}
 
@@ -81,15 +94,10 @@ public class MainActivity extends Activity
 				mTitle = getString(R.string.iv_calc_fragment_title);
 				break;
 		}
+		if (toolbar != null) {
+			toolbar.setTitle(mTitle);
+		}
 	}
-
-	public void restoreActionBar() {
-		ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(mTitle);
-	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +106,6 @@ public class MainActivity extends Activity
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
 			getMenuInflater().inflate(R.menu.main, menu);
-			restoreActionBar();
 			return true;
 		}
 		return super.onCreateOptionsMenu(menu);
@@ -109,11 +116,12 @@ public class MainActivity extends Activity
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		switch (item.getItemId()) {
+			case R.id.action_settings:
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	private void openTeamBuilder() {
