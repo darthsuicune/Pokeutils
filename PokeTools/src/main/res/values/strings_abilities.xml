@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="abilities">
+        <item>""</item>
+        <item>"Stench"</item>
+        <item>"Drizzle"</item>
+        <item>"Speed Boost"</item>
+        <item>"Battle Armor"</item>
+        <item>"Sturdy"</item>
+        <item>"Damp"</item>
+        <item>"Limber"</item>
+        <item>"Sand Veil"</item>
+        <item>"Static"</item>
+        <item>"Volt Absorb"</item>
+        <item>"Water Absorb"</item>
+        <item>"Oblivious"</item>
+        <item>"Cloud Nine"</item>
+        <item>"Compoundeyes"</item>
+        <item>"Insomnia"</item>
+        <item>"Color Change"</item>
+        <item>"Immunity"</item>
+        <item>"Flash Fire"</item>
+        <item>"Shield Dust"</item>
+        <item>"Own Tempo"</item>
+        <item>"Suction Cups"</item>
+        <item>"Intimidate"</item>
+        <item>"Shadow Tag"</item>
+        <item>"Rough Skin"</item>
+        <item>"Wonder Guard"</item>
+        <item>"Levitate"</item>
+        <item>"Effect Spore"</item>
+        <item>"Synchronize"</item>
+        <item>"Clear Body"</item>
+        <item>"Natural Cure"</item>
+        <item>"Lightningrod"</item>
+        <item>"Serene Grace"</item>
+        <item>"Swift Swim"</item>
+        <item>"Chlorophyll"</item>
+        <item>"Illuminate"</item>
+        <item>"Trace"</item>
+        <item>"Huge Power"</item>
+        <item>"Poison Point"</item>
+        <item>"Inner Focus"</item>
+        <item>"Magma Armor"</item>
+        <item>"Water Veil"</item>
+        <item>"Magnet Pull"</item>
+        <item>"Soundproof"</item>
+        <item>"Rain Dish"</item>
+        <item>"Sand Stream"</item>
+        <item>"Pressure"</item>
+        <item>"Thick Fat"</item>
+        <item>"Early Bird"</item>
+        <item>"Flame Body"</item>
+        <item>"Run Away"</item>
+        <item>"Keen Eye"</item>
+        <item>"Hyper Cutter"</item>
+        <item>"Pickup"</item>
+        <item>"Truant"</item>
+        <item>"Hustle"</item>
+        <item>"Cute Charm"</item>
+        <item>"Plus"</item>
+        <item>"Minus"</item>
+        <item>"Forecast"</item>
+        <item>"Sticky Hold"</item>
+        <item>"Shed Skin"</item>
+        <item>"Guts"</item>
+        <item>"Marvel Scale"</item>
+        <item>"Liquid Ooze"</item>
+        <item>"Overgrow"</item>
+        <item>"Blaze"</item>
+        <item>"Torrent"</item>
+        <item>"Swarm"</item>
+        <item>"Rock Head"</item>
+        <item>"Drought"</item>
+        <item>"Arena Trap"</item>
+        <item>"Vital Spirit"</item>
+        <item>"White Smoke"</item>
+        <item>"Pure Power"</item>
+        <item>"Shell Armor"</item>
+        <item>"Air Lock"</item>
+        <item>"Tangled Feet"</item>
+        <item>"Motor Drive"</item>
+        <item>"Rivalry"</item>
+        <item>"Steadfast"</item>
+        <item>"Snow Cloak"</item>
+        <item>"Gluttony"</item>
+        <item>"Anger Point"</item>
+        <item>"Unburden"</item>
+        <item>"Heatproof"</item>
+        <item>"Simple"</item>
+        <item>"Dry Skin"</item>
+        <item>"Download"</item>
+        <item>"Iron Fist"</item>
+        <item>"Poison Heal"</item>
+        <item>"Adaptability"</item>
+        <item>"Skill Link"</item>
+        <item>"Hydration"</item>
+        <item>"Solar Power"</item>
+        <item>"Quick Feet"</item>
+        <item>"Normalize"</item>
+        <item>"Sniper"</item>
+        <item>"Magic Guard"</item>
+        <item>"No Guard"</item>
+        <item>"Stall"</item>
+        <item>"Technician"</item>
+        <item>"Leaf Guard"</item>
+        <item>"Klutz"</item>
+        <item>"Mold Breaker"</item>
+        <item>"Super Luck"</item>
+        <item>"Aftermath"</item>
+        <item>"Anticipation"</item>
+        <item>"Forewarn"</item>
+        <item>"Unaware"</item>
+        <item>"Tinted Lens"</item>
+        <item>"Filter"</item>
+        <item>"Slow Start"</item>
+        <item>"Scrappy"</item>
+        <item>"Storm Drain"</item>
+        <item>"Ice Body"</item>
+        <item>"Solid Rock"</item>
+        <item>"Snow Warning"</item>
+        <item>"Honey Gather"</item>
+        <item>"Frisk"</item>
+        <item>"Reckless"</item>
+        <item>"Multitype"</item>
+        <item>"Flower Gift"</item>
+        <item>"Bad Dreams"</item>
+        <item>"Pickpocket"</item>
+        <item>"Sheer Force"</item>
+        <item>"Contrary"</item>
+        <item>"Unnerve"</item>
+        <item>"Defiant"</item>
+        <item>"Defeatist"</item>
+        <item>"Cursed Body"</item>
+        <item>"Healer"</item>
+        <item>"Friend Guard"</item>
+        <item>"Weak Armor"</item>
+        <item>"Heavy Metal"</item>
+        <item>"Light Metal"</item>
+        <item>"Multiscale"</item>
+        <item>"Toxic Boost"</item>
+        <item>"Flare Boost"</item>
+        <item>"Harvest"</item>
+        <item>"Telepathy"</item>
+        <item>"Moody"</item>
+        <item>"Overcoat"</item>
+        <item>"Poison Touch"</item>
+        <item>"Regenerator"</item>
+        <item>"Big Pecks"</item>
+        <item>"Sand Rush"</item>
+        <item>"Wonder Skin"</item>
+        <item>"Analytic"</item>
+        <item>"Illusion"</item>
+        <item>"Imposter"</item>
+        <item>"Infiltrator"</item>
+        <item>"Mummy"</item>
+        <item>"Moxie"</item>
+        <item>"Justified"</item>
+        <item>"Rattled"</item>
+        <item>"Magic Bounce"</item>
+        <item>"Sap Sipper"</item>
+        <item>"Prankster"</item>
+        <item>"Sand Force"</item>
+        <item>"Iron Barbs"</item>
+        <item>"Zen Mode"</item>
+        <item>"Victory Star"</item>
+        <item>"Turboblaze"</item>
+        <item>"Teravolt"</item>
+    </string-array>
+    <string-array name="ability_descriptions">
+        <item>""</item>
+        <item>"The stench helps keep wild Pokémon away."</item>
+        <item>"The Pokémon makes it rain if it appears in battle."</item>
+        <item>"The Pokémon's Speed stat is gradually boosted."</item>
+        <item>"The Pokémon is protected against critical hits."</item>
+        <item>"The Pokémon is protected against 1-hit KO attacks."</item>
+        <item>"Prevents combatants from self destructing."</item>
+        <item>"The Pokémon is protected from paralysis."</item>
+        <item>"Boosts the Pokémon's evasion in a sandstorm."</item>
+        <item>"Contact with the Pokémon may cause paralysis."</item>
+        <item>"Restores HP if hit by an Electric-type move."</item>
+        <item>"Restores HP if hit by a Water-type move."</item>
+        <item>"Prevents the Pokémon from becoming infatuated."</item>
+        <item>"Eliminates the effects of weather."</item>
+        <item>"The Pokémon's accuracy is boosted."</item>
+        <item>"Prevents the Pokémon from falling asleep."</item>
+        <item>"Changes the Pokémon's type to the foe's move."</item>
+        <item>"Prevents the Pokémon from getting poisoned."</item>
+        <item>"Powers up Fire-type moves if hit by a fire move."</item>
+        <item>"Blocks the added effects of attacks taken."</item>
+        <item>"Prevents the Pokémon from becoming confused."</item>
+        <item>"Negates moves that force switching out."</item>
+        <item>"Lowers the foe's Attack stat."</item>
+        <item>"Prevents the foe from escaping."</item>
+        <item>"Inflicts damage to the foe on contact."</item>
+        <item>"Only supereffective moves will hit."</item>
+        <item>"Gives full immunity to all Ground-type moves."</item>
+        <item>"Contact may paralyze, poison, or cause sleep."</item>
+        <item>"Passes on a burn, poison, or paralysis to the foe."</item>
+        <item>"Prevents the Pokémon's stats from being lowered."</item>
+        <item>"All status problems are healed upon switching out."</item>
+        <item>"The Pokémon draws in all Electric-type moves."</item>
+        <item>"Boosts the likelihood of added effects appearing."</item>
+        <item>"Boosts the Pokémon's Speed in rain."</item>
+        <item>"Boosts the Pokémon's Speed in sunshine."</item>
+        <item>"Raises the likelihood of meeting wild Pokémon."</item>
+        <item>"The Pokémon copies the foe's ability."</item>
+        <item>"Raises the Pokémon's Attack stat."</item>
+        <item>"Contact with the Pokémon may poison the foe."</item>
+        <item>"The Pokémon is protected from flinching."</item>
+        <item>"Prevents the Pokémon from becoming frozen."</item>
+        <item>"Prevents the Pokémon from getting a burn."</item>
+        <item>"Prevents Steel-type Pokémon from escaping."</item>
+        <item>"Gives full immunity to all sound-based moves."</item>
+        <item>"The Pokémon gradually recovers HP in rain."</item>
+        <item>"The Pokémon summons a sandstorm in battle."</item>
+        <item>"The Pokémon raises the foe's PP usage."</item>
+        <item>"Raises resistance to Fire-and Ice-type moves."</item>
+        <item>"The Pokémon awakens quickly from sleep."</item>
+        <item>"Contact with the Pokémon may burn the foe."</item>
+        <item>"Enables sure getaway from wild Pokémon."</item>
+        <item>"Prevents the Pokémon from losing accuracy."</item>
+        <item>"Prevents the Attack stat from being lowered."</item>
+        <item>"The Pokémon may pick up items."</item>
+        <item>"The Pokémon can't attack on consecutive turns."</item>
+        <item>"Boosts the Attack stat, but lowers accuracy."</item>
+        <item>"Contact with the Pokémon may cause infatuation."</item>
+        <item>"Boosts Sp. Atk if another Pokémon has Minus."</item>
+        <item>"Boosts Sp. Atk if another Pokémon has Plus."</item>
+        <item>"CASTFORM transforms with the weather."</item>
+        <item>"Protects the Pokémon from item theft."</item>
+        <item>"The Pokémon may heal its own status problems."</item>
+        <item>"Boosts Attack if there is a status problem."</item>
+        <item>"Boosts Defense if there is a status problem."</item>
+        <item>"Inflicts damage on foes using any draining move."</item>
+        <item>"Powers up Grass-type moves in a pinch."</item>
+        <item>"Powers up Fire-type moves in a pinch."</item>
+        <item>"Powers up Water-type moves in a pinch."</item>
+        <item>"Powers up Bug-type moves in a pinch."</item>
+        <item>"Protects the Pokémon from recoil damage."</item>
+        <item>"The Pokémon makes it sunny if it is in battle."</item>
+        <item>"Prevents the foe from fleeing."</item>
+        <item>"Prevents the Pokémon from falling asleep."</item>
+        <item>"Prevents the Pokémon's stats from being lowered."</item>
+        <item>"Boosts the power of physical attacks."</item>
+        <item>"The Pokémon is protected against critical hits."</item>
+        <item>"Eliminates the effects of weather."</item>
+        <item>"Raises evasion if the Pokémon is confused."</item>
+        <item>"Raises Speed if hit by an Electric-type move."</item>
+        <item>"Raises Attack if the foe is of the same gender."</item>
+        <item>"Raises Speed each time the Pokémon flinches."</item>
+        <item>"Raises evasion in a hailstorm."</item>
+        <item>"Encourages the early use of a held Berry."</item>
+        <item>"Raises Attack upon taking a critical hit."</item>
+        <item>"Raises Speed if a held item is used."</item>
+        <item>"Weakens the power of Fire-type moves."</item>
+        <item>"The Pokémon is prone to wild stat changes."</item>
+        <item>"Reduces HP if it is hot. Water restores HP."</item>
+        <item>"Adjusts power according to the foe's ability."</item>
+        <item>"Boosts the power of punching moves."</item>
+        <item>"Restores HP if the Pokémon is poisoned."</item>
+        <item>"Powers up moves of the same type."</item>
+        <item>"Increases the frequency of multi-strike moves."</item>
+        <item>"Heals status problems if it is raining."</item>
+        <item>"Boosts Sp. Atk, but lowers HP in sunshine."</item>
+        <item>"Boosts Speed if there is a status problem."</item>
+        <item>"All the Pokémon's moves become the Normal type."</item>
+        <item>"Powers up moves if they become critical hits."</item>
+        <item>"The Pokémon only takes damage from attacks."</item>
+        <item>"Ensures the Pokémon and its foe's attacks land."</item>
+        <item>"The Pokémon moves after even slower foes."</item>
+        <item>"Powers up the Pokémon's weaker moves."</item>
+        <item>"Prevents status problems in sunny weather."</item>
+        <item>"The Pokémon can't use any held items."</item>
+        <item>"Moves can be used regardless of abilities."</item>
+        <item>"Heightens the critical-hit ratios of moves."</item>
+        <item>"Damages the foe landing the finishing hit."</item>
+        <item>"Senses the foe's dangerous moves."</item>
+        <item>"Determines what moves the foe has."</item>
+        <item>"Ignores any change in ability by the foe."</item>
+        <item>"Powers up 'not very effective' moves."</item>
+        <item>"Powers down super-effective moves."</item>
+        <item>"Temporarily halves Attack and Speed."</item>
+        <item>"Enables moves to hit Ghost-type foes."</item>
+        <item>"The Pokémon draws in all Water-type moves."</item>
+        <item>"The Pokémon regains HP in a hailstorm."</item>
+        <item>"Powers down super-effective moves."</item>
+        <item>"The Pokémon summons a hailstorm in battle."</item>
+        <item>"The Pokémon may gather Honey from somewhere."</item>
+        <item>"The Pokémon can check the foe's held item."</item>
+        <item>"Powers up moves that have recoil damage."</item>
+        <item>"Changes type to match the held Plate."</item>
+        <item>"Powers up party Pokémon when it is sunny."</item>
+        <item>"Reduces a sleeping foe's HP."</item>
+        <item>"Steals attacking Pokémon's held item on contact."</item>
+        <item>"Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects."</item>
+        <item>"Inverts stat modifiers."</item>
+        <item>"Prevents opposing Pokémon from eating held Berries."</item>
+        <item>"Raises Attack two stages upon having any stat lowered."</item>
+        <item>"Halves Attack and Special Attack below 50% HP."</item>
+        <item>"Has a 30% chance of Disabling any move that hits the Pokémon."</item>
+        <item>"Has a 30% chance of curing each adjacent ally of any major status ailment after each turn."</item>
+        <item>"Decreases damage inflicted against friendly Pokémon."</item>
+        <item>"Raises Speed and lowers Defense by one stage each upon being hit by any move."</item>
+        <item>"Doubles the Pokémon's weight."</item>
+        <item>"Halves the Pokémon's weight."</item>
+        <item>"Halves damage taken from full HP."</item>
+        <item>"Increases Attack to 1.5× when poisoned."</item>
+        <item>"Increases Special Attack to 1.5× when burned."</item>
+        <item>"Restores any held Berry after the turn on which it is used."</item>
+        <item>"Protects against damaging moves from friendly Pokémon."</item>
+        <item>"Raises a random stat two stages and lowers another one stage after each turn."</item>
+        <item>"Protects against damage from weather."</item>
+        <item>"Has a 20% chance of poisoning Pokémon upon contact when attacking."</item>
+        <item>"Heals for 1/3 max HP upon leaving battle."</item>
+        <item>"Protects against Defense drops."</item>
+        <item>"Doubles Speed during a sandstorm."</item>
+        <item>"Has a 50% chance of protecting against non-damaging moves that inflict major status ailments."</item>
+        <item>"Strengthens moves when moving last."</item>
+        <item>"Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move."</item>
+        <item>"Transforms upon entering battle."</item>
+        <item>"Ignores Light Screen, Reflect, and Safeguard."</item>
+        <item>"Changes attacking Pokémon's abilities to mummify on contact."</item>
+        <item>"Raises Attack one stage upon KOing a Pokémon."</item>
+        <item>"Raises Attack when hit by dark-type moves."</item>
+        <item>"Raises Speed one stage upon being hit by a Dark, Ghost, or Bug move."</item>
+        <item>"Reflects most non-damaging moves back at their user."</item>
+        <item>"Absorbs Grass moves, raising Attack one stage{mechanic:stat modifier}."</item>
+        <item>"Raises non-damaging moves' priority by one stage."</item>
+        <item>"Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm."</item>
+        <item>"Damages attacking Pokémon for 1/8 their max HP on contact."</item>
+        <item>"Changes Darmanitan to daruma mode below 50% max HP."</item>
+        <item>"Raises moves' accuracy to 1.1× for friendly Pokémon."</item>
+        <item>"Makes moves ignore targets' abilities if they could hinder or prevent them."</item>
+        <item>"Makes moves ignore targets' abilities if they could hinder or prevent them."</item>
+    </string-array>
+
+</resources>
