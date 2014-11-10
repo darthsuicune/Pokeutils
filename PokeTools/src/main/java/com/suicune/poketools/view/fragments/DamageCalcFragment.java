@@ -15,7 +15,6 @@ import com.suicune.poketools.view.PokemonCardView;
 
 import java.util.List;
 
-
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Use the {@link DamageCalcFragment#newInstance} factory method to
