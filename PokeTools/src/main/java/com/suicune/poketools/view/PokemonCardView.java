@@ -61,6 +61,9 @@ public class PokemonCardView {
 			}
 
 			@Override public void afterTextChanged(Editable editable) {
+				if(mPokemon == null) {
+					return;
+				}
 				try {
 					int newLevel = Integer.parseInt(editable.toString());
 					if (newLevel >= 1 && newLevel <= 100) {
@@ -147,7 +150,7 @@ public class PokemonCardView {
 		}
 	}
 
-	private void showPokemonInfo() {
+	public void showPokemonInfo() {
 		for (Stats.Stat stat : mPokemon.stats().base().keySet()) {
 			mBaseStatsViews.get(stat).setText("" + mPokemon.stats().base().get(stat));
 		}

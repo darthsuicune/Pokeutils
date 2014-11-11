@@ -22,7 +22,19 @@ public class StatsFactory {
 		return new Gen6Stats(level, baseStats);
 	}
 
-	public static Stats fromBundle(Bundle statsBundle) {
-		return null;
+	public static Stats fromBundle(int gen, Bundle bundle) {
+		Stats stats;
+		switch (gen) {
+			case 6:
+				stats = new Gen6Stats(bundle.getInt(Stats.ARG_LEVEL),
+						bundle.getIntArray(Stats.ARG_BASE));
+				int[] array = bundle.getIntArray(Stats.ARG_EVS);
+				stats.setEvs(array[0], array[1], array[2], array[3], array[4], array[5]);
+				array = bundle.getIntArray(Stats.ARG_IVS);
+				stats.setIvs(array[0], array[1], array[2], array[3], array[4], array[5]);
+			default:
+				stats = null;
+		}
+		return stats;
 	}
 }

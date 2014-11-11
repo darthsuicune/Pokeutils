@@ -1,5 +1,7 @@
 package com.suicune.poketools.model.gen6;
 
+import android.os.Bundle;
+
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.utils.IvTools;
 
@@ -23,8 +25,10 @@ public class Gen6Stats extends Stats {
 	public Map<Stat, Integer> evs;
 	public Map<Stat, Integer> base;
 	public Map<Stat, Integer> values;
+	public int level;
 
 	public Gen6Stats(int level, int[] baseStats) {
+		this.level = level;
 		ivs = new HashMap<>();
 		evs = new HashMap<>();
 		base = new HashMap<>();
@@ -113,6 +117,29 @@ public class Gen6Stats extends Stats {
 				IvTools.calculateStat(level, base.get(Stat.SPEED), ivs.get(Stat.SPEED),
 						evs.get(Stat.SPEED)));
 		return this;
+	}
+
+	@Override public Bundle save() {
+		int[] baseArray, evArray, ivArray;
+		baseArray = toArray(base);
+		evArray = toArray(ivs);
+		ivArray = toArray(ivs);
+		Bundle bundle = new Bundle();
+		bundle.putInt(ARG_LEVEL, level);
+		bundle.putIntArray(ARG_EVS, evArray);
+		bundle.putIntArray(ARG_IVS, ivArray);
+		bundle.putIntArray(ARG_BASE, baseArray);
+		return bundle;
+	}
+
+	private int[] toArray(Map<Stat, Integer> map) {
+		int[] array = {map.get(Stat.HP),
+				map.get(Stat.ATTACK),
+				map.get(Stat.DEFENSE),
+				map.get(Stat.SPECIAL_ATTACK),
+				map.get(Stat.SPECIAL_DEFENSE),
+				map.get(Stat.SPEED)};
+		return array;
 	}
 
 	@Override public Stats setCurrentValues(int hp, int attack, int defense, int spattack,

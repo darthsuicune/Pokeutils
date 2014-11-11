@@ -22,7 +22,12 @@ public abstract class Pokemon {
 	public static final String ARG_NAME = "nickname";
 	public static final String ARG_LEVEL = "level";
 	public static final String ARG_ABILITIES = "abilities";
+	public static final String ARG_ABILITY_1 = "ability_1";
+	public static final String ARG_ABILITY_2 = "ability_2";
+	public static final String ARG_ABILITY_HIDDEN = "ability_hidden";
 	public static final String ARG_TYPES = "types";
+	public static final String ARG_TYPE_1 = "type_1";
+	public static final String ARG_TYPE_2 = "type_2";
 	public static final String ARG_BASE_STATS = "baseStats";
 	public static final String ARG_STATS = "stats";
 

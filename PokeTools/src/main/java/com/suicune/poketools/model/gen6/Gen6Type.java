@@ -11,27 +11,28 @@ import java.util.List;
  */
 
 public enum Gen6Type implements Type {
-	NONE(R.string.type_none),
-	NORMAL(R.string.type_none),
-	FIGHTING(R.string.type_fighting),
-	FLYING(R.string.type_flying),
-	POISON(R.string.type_poison),
-	GROUND(R.string.type_ground),
-	ROCK(R.string.type_rock),
-	BUG(R.string.type_bug),
-	GHOST(R.string.type_ghost),
-	STEEL(R.string.type_steel),
-	FIRE(R.string.type_fire),
-	WATER(R.string.type_water),
-	GRASS(R.string.type_grass),
-	ELECTRIC(R.string.type_electric),
-	PSYCHIC(R.string.type_psychic),
-	ICE(R.string.type_ice),
-	DRAGON(R.string.type_dragon),
-	DARK(R.string.type_dark),
-	FAIRY(R.string.type_fairy);
+	NONE(0, R.string.type_none),
+	NORMAL(1, R.string.type_none),
+	FIGHTING(2, R.string.type_fighting),
+	FLYING(3, R.string.type_flying),
+	POISON(4, R.string.type_poison),
+	GROUND(5, R.string.type_ground),
+	ROCK(6, R.string.type_rock),
+	BUG(7, R.string.type_bug),
+	GHOST(8, R.string.type_ghost),
+	STEEL(9, R.string.type_steel),
+	FIRE(10, R.string.type_fire),
+	WATER(11, R.string.type_water),
+	GRASS(12, R.string.type_grass),
+	ELECTRIC(13, R.string.type_electric),
+	PSYCHIC(14, R.string.type_psychic),
+	ICE(15, R.string.type_ice),
+	DRAGON(16, R.string.type_dragon),
+	DARK(17, R.string.type_dark),
+	FAIRY(18, R.string.type_fairy);
 
-	private Gen6Type(int nameResId) {
+	private Gen6Type(int code, int nameResId) {
+		mCode = code;
 		mNameResId = nameResId;
 	}
 
@@ -39,6 +40,7 @@ public enum Gen6Type implements Type {
 	public List<Type> mResistances;
 	public List<Type> mImmunities;
 	public int mNameResId;
+	public int mCode;
 
 	/**
 	 * Set all the values
@@ -137,6 +139,10 @@ public enum Gen6Type implements Type {
 
 	@Override public int nameResId() {
 		return mNameResId;
+	}
+
+	@Override public int save() {
+		return mCode;
 	}
 
 	public static Gen6Type getType(int typeId) {

@@ -1,5 +1,7 @@
 package com.suicune.poketools.model.gen6;
 
+import android.os.Bundle;
+
 import com.suicune.poketools.model.Ability;
 
 /**
@@ -8,9 +10,11 @@ import com.suicune.poketools.model.Ability;
 public class Gen6Ability implements Ability {
 	public String mName;
 	public String mDescription;
-	public Gen6Ability(String name, String description) {
+	public int mCode;
+	public Gen6Ability(String name, String description, int code) {
 		mName = name;
 		mDescription = description;
+		mCode = code;
 	}
 	@Override public String name() {
 		return mName;
@@ -18,5 +22,13 @@ public class Gen6Ability implements Ability {
 
 	@Override public String description() {
 		return mDescription;
+	}
+
+	@Override public Bundle save() {
+		Bundle bundle = new Bundle();
+		bundle.putString(ARG_NAME, mName);
+		bundle.putString(ARG_DESCRIPTION, mDescription);
+		bundle.putInt(ARG_CODE, mCode);
+		return bundle;
 	}
 }

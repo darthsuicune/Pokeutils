@@ -52,8 +52,8 @@ public class PokemonFactory {
 		Type additionalType = pokemon.additionalType();
 		Nature nature = pokemon.nature();
 		String nickname = null;
-		if (pokemon.nickname() !=
-			Pokemon.getName(context, pokemon.dexNumber(), pokemon.formNumber())) {
+		if (!pokemon.nickname().equals(Pokemon.getName(context, pokemon.dexNumber(),
+				pokemon.formNumber()))) {
 			nickname = pokemon.nickname();
 		}
 		Stats oldStats = pokemon.stats();
@@ -107,14 +107,12 @@ public class PokemonFactory {
 
 		String name = Pokemon.getName(context, dexNumber, form);
 
-		Gen6Pokemon poke =
-				new Gen6Pokemon(level, pokemon, stats, types, abilities, pokemonForms.length(),
-						name);
-		return poke;
+		return new Gen6Pokemon(level, pokemon, stats, types, abilities, pokemonForms.length(),
+				name);
 	}
 
 	public static Pokemon createFromBundle(Bundle bundle) {
-		if(bundle == null) {
+		if (bundle == null) {
 			return null;
 		}
 		Pokemon pokemon = null;

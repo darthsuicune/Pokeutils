@@ -111,17 +111,17 @@ public class Gen6Pokemon extends Pokemon {
 		mFormCount = bundle.getInt(ARG_FORM_COUNT);
 		mFemaleRatio = 0;
 		mMaleRatio = 0;
-		mStats = StatsFactory.fromBundle(bundle.getBundle(ARG_STATS));
-		mType1 = TypeFactory.fromBundle(bundle.getBundle(ARG_TYPES), 0);
-		mType2 = TypeFactory.fromBundle(bundle.getBundle(ARG_TYPES), 1);
+		mStats = StatsFactory.fromBundle(6, bundle.getBundle(ARG_STATS));
+		mType1 = TypeFactory.createType(6, bundle.getInt(ARG_TYPE_1, 0));
+		mType2 = TypeFactory.createType(6, bundle.getInt(ARG_TYPE_2, 0));
 		mHeight = 0;
 		mWeight = 0;
 		mClassification = "";
 		mCaptureRate = 0;
 		mBaseEggSteps = 0;
-		mAbility1 = AbilityFactory.fromBundle(bundle.getBundle(ARG_ABILITIES), 0);
-		mAbility2 = AbilityFactory.fromBundle(bundle.getBundle(ARG_ABILITIES), 1);
-		mAbilityHidden = AbilityFactory.fromBundle(bundle.getBundle(ARG_ABILITIES), 2);
+		mAbility1 = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY_1));
+		mAbility2 = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY_2));
+		mAbilityHidden = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY_HIDDEN));
 		mExperienceGrowth = 0;
 		mBaseHappiness = 0;
 		mEvsEarned = new HashMap<>();
@@ -314,8 +314,21 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 	@Override public Bundle save() {
-		//TODO: Do.
-		return null;
+		Bundle bundle = new Bundle();
+		bundle.putInt(ARG_GEN, gen());
+		bundle.putInt(ARG_LEVEL, level());
+		bundle.putInt(ARG_DEX_NUMBER, dexNumber());
+		bundle.putInt(ARG_FORM, formNumber());
+		bundle.putInt(ARG_FORM_COUNT, mFormCount);
+		bundle.putBundle(ARG_STATS, mStats.save());
+		bundle.putInt(ARG_TYPE_1, mType1.save());
+		bundle.putInt(ARG_TYPE_2, mType2.save());
+		bundle.putString(ARG_NAME, mName);
+		bundle.putString(ARG_NICKNAME, mNickname);
+		bundle.putBundle(ARG_ABILITY_1, mAbility1.save());
+		bundle.putBundle(ARG_ABILITY_2, mAbility2.save());
+		bundle.putBundle(ARG_ABILITY_HIDDEN, mAbilityHidden.save());
+		return bundle;
 	}
 
 	@Override public Pokemon load(Bundle bundle) {

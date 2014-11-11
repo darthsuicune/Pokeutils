@@ -10,4 +10,5 @@ public interface Type {
 	public List<Type> weaknesses();
 	public List<Type> resistances();
 	public List<Type> immunities();
+	public int save();
 }

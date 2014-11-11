@@ -1,5 +1,7 @@
 package com.suicune.poketools.model;
 
+import android.os.Bundle;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +10,10 @@ import java.util.Map;
  * Created by lapuente on 17.09.14.
  */
 public abstract class Stats {
+	public static final String ARG_BASE = "base";
+	public static final String ARG_EVS = "evs";
+	public static final String ARG_IVS = "ivs";
+	public static final String ARG_LEVEL = "level";
 	List<OnStatsChangedListener> listeners;
 	protected Stats() {
 		listeners = new ArrayList<>();
@@ -42,6 +48,8 @@ public abstract class Stats {
 	public abstract boolean checkForValidValues();
 
 	public abstract Stats setValuesFromStats(int level);
+
+	public abstract Bundle save();
 
 	public enum Stat {
 		HP,

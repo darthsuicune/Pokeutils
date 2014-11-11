@@ -50,28 +50,36 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 		if (mAttacker == null) {
 			mAttacker = new PokemonCardView(getActivity(), this,
 					(CardView) fragmentView.findViewById(R.id.damage_calc_attacker));
+		} else {
+			mAttacker.showPokemonInfo();
 		}
 		if (mDefender == null) {
 			mDefender = new PokemonCardView(getActivity(), this,
 					(CardView) fragmentView.findViewById(R.id.damage_calc_defender));
-		}
-		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
-			restoreValues(savedInstanceState.getBundle(ARG_ATTACKER), true);
-		}
-		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
-			restoreValues(savedInstanceState.getBundle(ARG_DEFENDER), false);
+		} else {
+			mDefender.showPokemonInfo();
 		}
 		return fragmentView;
 	}
 
+	@Override public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+//		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
+//			restoreValues(savedInstanceState.getBundle(ARG_ATTACKER), true);
+//		}
+//		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
+//			restoreValues(savedInstanceState.getBundle(ARG_DEFENDER), false);
+//		}
+	}
+
 	@Override public void onSaveInstanceState(Bundle outState) {
+//		if (mAttacker.isReady()) {
+//			outState.putBundle(ARG_ATTACKER, mAttacker.saveChanges());
+//		}
+//		if (mDefender.isReady()) {
+//			outState.putBundle(ARG_DEFENDER, mDefender.saveChanges());
+//		}
 		super.onSaveInstanceState(outState);
-		if (mAttacker.isReady()) {
-			outState.putBundle(ARG_ATTACKER, mAttacker.saveChanges());
-		}
-		if (mDefender.isReady()) {
-			outState.putBundle(ARG_DEFENDER, mDefender.saveChanges());
-		}
 	}
 
 	private void restoreValues(Bundle bundle, boolean isAttacker) {

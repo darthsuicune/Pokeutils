@@ -23,11 +23,16 @@ public class AbilityFactory {
 	private static Ability createGen6Ability(Context context, int abilityCode) {
 		String[] abilities = context.getResources().getStringArray(R.array.abilities);
 		String[] descriptions = context.getResources().getStringArray(R.array.ability_descriptions);
-		return new Gen6Ability(abilities[abilityCode], descriptions[abilityCode]);
+		return new Gen6Ability(abilities[abilityCode], descriptions[abilityCode], abilityCode);
 	}
 
-	public static Ability fromBundle(Bundle bundle, int index) {
-		//TODO: DO.
-		return null;
+	public static Ability fromBundle(int gen, Bundle bundle) {
+		switch (gen) {
+			case 6:
+				return new Gen6Ability(bundle.getString(Ability.ARG_NAME),
+						bundle.getString(Ability.ARG_DESCRIPTION), bundle.getInt(Ability.ARG_CODE));
+			default:
+				return null;
+		}
 	}
 }
