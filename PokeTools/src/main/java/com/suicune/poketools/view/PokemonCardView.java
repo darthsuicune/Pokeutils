@@ -1,6 +1,7 @@
 package com.suicune.poketools.view;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,6 +24,7 @@ import com.suicune.poketools.model.factories.PokemonFactory;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,14 +45,21 @@ public class PokemonCardView {
 		setupView(view);
 	}
 
+	public boolean isReady() {
+		return mPokemon != null;
+	}
+
 	public void setupView(CardView view) {
 		EditText levelView = (EditText) view.findViewById(R.id.level);
-		AutoCompleteTextView nameTextView = (AutoCompleteTextView) view
-				.findViewById(R.id.name);
+		AutoCompleteTextView nameTextView = (AutoCompleteTextView) view.findViewById(R.id.name);
 
 		levelView.addTextChangedListener(new TextWatcher() {
-			@Override public void beforeTextChanged(CharSequence cs, int i, int i2, int i3) {}
-			@Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+			@Override public void beforeTextChanged(CharSequence cs, int i, int i2, int i3) {
+			}
+
+			@Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+			}
+
 			@Override public void afterTextChanged(Editable editable) {
 				try {
 					int newLevel = Integer.parseInt(editable.toString());
@@ -66,6 +75,9 @@ public class PokemonCardView {
 		});
 		prepareBaseStatsViews(view);
 		prepareNameAutoComplete(nameTextView);
+		if(mPokemon != null) {
+			showPokemonInfo();
+		}
 	}
 
 	private void prepareBaseStatsViews(View v) {
@@ -125,12 +137,11 @@ public class PokemonCardView {
 			if (objects[i].contains(name)) {
 				dexNumber = i;
 				form = Pokemon.getForm(objects[i], name);
+				break;
 			}
 		}
 		try {
-			mPokemon = PokemonFactory
-					.createPokemon(mContext, 6, dexNumber, form, Pokemon.DEFAULT_LEVEL);
-			showPokemonInfo();
+			setPokemon(dexNumber, form, Pokemon.DEFAULT_LEVEL);
 		} catch (IOException | JSONException e) {
 			e.printStackTrace();
 		}
@@ -143,6 +154,23 @@ public class PokemonCardView {
 	}
 
 	public List<Attack> getAttacks() {
-		return null;
+		if (isReady()) {
+			return mPokemon.currentAttacks();
+		} else {
+			return new ArrayList<>();
+		}
+	}
+
+	public void setPokemon(int dexNumber, int form, int level) throws IOException, JSONException {
+		setPokemon(PokemonFactory.createPokemon(mContext, 6, dexNumber, form, level));
+	}
+
+	public void setPokemon(Pokemon pokemon) {
+		mPokemon = pokemon;
+		showPokemonInfo();
+	}
+
+	public Bundle saveChanges() {
+		return mPokemon.save();
 	}
 }

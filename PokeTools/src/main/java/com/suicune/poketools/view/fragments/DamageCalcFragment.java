@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.suicune.poketools.R;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Pokemon;
+import com.suicune.poketools.model.factories.PokemonFactory;
 import com.suicune.poketools.view.PokemonCardHolder;
 import com.suicune.poketools.view.PokemonCardView;
 
@@ -21,6 +22,9 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
+
+	private static final String ARG_ATTACKER = "attacker";
+	private static final String ARG_DEFENDER = "defender";
 
 	private PokemonCardView mAttacker;
 	private PokemonCardView mDefender;
@@ -43,7 +47,7 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		View fragmentView = inflater.inflate(R.layout.fragment_damage_calc, container, false);
-		if(mAttacker == null) {
+		if (mAttacker == null) {
 			mAttacker = new PokemonCardView(getActivity(), this,
 					(CardView) fragmentView.findViewById(R.id.damage_calc_attacker));
 		}
@@ -51,17 +55,45 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 			mDefender = new PokemonCardView(getActivity(), this,
 					(CardView) fragmentView.findViewById(R.id.damage_calc_defender));
 		}
+		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
+			restoreValues(savedInstanceState.getBundle(ARG_ATTACKER), true);
+		}
+		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
+			restoreValues(savedInstanceState.getBundle(ARG_DEFENDER), false);
+		}
 		return fragmentView;
+	}
+
+	@Override public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		if (mAttacker.isReady()) {
+			outState.putBundle(ARG_ATTACKER, mAttacker.saveChanges());
+		}
+		if (mDefender.isReady()) {
+			outState.putBundle(ARG_DEFENDER, mDefender.saveChanges());
+		}
+	}
+
+	private void restoreValues(Bundle bundle, boolean isAttacker) {
+		Pokemon pokemon = PokemonFactory.createFromBundle(bundle);
+		if (pokemon != null) {
+			if (isAttacker) {
+				mAttacker.setPokemon(pokemon);
+			} else {
+				mDefender.setPokemon(pokemon);
+			}
+			updatePokemon(pokemon);
+		}
 	}
 
 	//TODO: Implement
 	@Override public void updatePokemon(Pokemon pokemon) {
-		if(pokemon == mAttacker.mPokemon) {
-			List<Attack> attackerAttacks = mAttacker.getAttacks();
-		} else {
-			List<Attack> defenderAttacks = mDefender.getAttacks();
-		}
-		if(mAttacker.mPokemon != null && mDefender.mPokemon != null) {
+		if (mAttacker.isReady() && mDefender.isReady()) {
+			if (pokemon == mAttacker.mPokemon) {
+				List<Attack> attackerAttacks = mAttacker.getAttacks();
+			} else {
+				List<Attack> defenderAttacks = mDefender.getAttacks();
+			}
 			calculateDamages();
 		}
 	}
