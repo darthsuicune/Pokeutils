@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<com.suicune.poketools.view.PokemonCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <AutoCompleteTextView
                 android:id="@+id/name"
                 android:layout_weight="6"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:imeOptions="actionGo"/>
+
             <EditText
                 android:id="@+id/level"
                 android:text="@string/default_level"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:inputType="number"
+                android:layout_height="wrap_content"
+                android:singleLine="true"/>
         </LinearLayout>
+
         <include
             android:id="@+id/pokemon_base_stats"
             layout="@layout/base_stats_view"/>
+
+        <include
+            android:id="@+id/pokemon_ivs"
+            layout="@layout/evs_ivs_view"/>
+
+        <include
+            android:id="@+id/pokemon_evs"
+            layout="@layout/evs_ivs_view"/>
+        <include
+            android:id="@+id/pokemon_stats"
+            layout="@layout/evs_ivs_view"/>
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+</com.suicune.poketools.view.PokemonCardView>

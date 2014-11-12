@@ -2,19 +2,15 @@ package com.suicune.poketools.view.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.suicune.poketools.R;
-import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.factories.PokemonFactory;
 import com.suicune.poketools.view.PokemonCardHolder;
 import com.suicune.poketools.view.PokemonCardView;
-
-import java.util.List;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -26,8 +22,10 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 	private static final String ARG_ATTACKER = "attacker";
 	private static final String ARG_DEFENDER = "defender";
 
-	private PokemonCardView mAttacker;
-	private PokemonCardView mDefender;
+	private PokemonCardView mAttackerView;
+	private PokemonCardView mDefenderView;
+	private Pokemon mAttacker;
+	private Pokemon mDefender;
 
 	/**
 	 * Use this factory method to create a new instance of
@@ -43,65 +41,49 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 		// Required empty public constructor
 	}
 
+	@Override public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
+			mAttacker = PokemonFactory.createFromBundle(savedInstanceState.getBundle(ARG_ATTACKER));
+		}
+		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
+			mDefender = PokemonFactory.createFromBundle(savedInstanceState.getBundle(ARG_DEFENDER));
+		}
+	}
+
+	@Override public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		if(mAttacker != null) {
+			outState.putBundle(ARG_ATTACKER, mAttacker.save());
+		}
+		if(mDefender != null) {
+			outState.putBundle(ARG_DEFENDER, mDefender.save());
+		}
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		View fragmentView = inflater.inflate(R.layout.fragment_damage_calc, container, false);
-		if (mAttacker == null) {
-			mAttacker = new PokemonCardView(getActivity(), this,
-					(CardView) fragmentView.findViewById(R.id.damage_calc_attacker));
-		} else {
-			mAttacker.showPokemonInfo();
-		}
-		if (mDefender == null) {
-			mDefender = new PokemonCardView(getActivity(), this,
-					(CardView) fragmentView.findViewById(R.id.damage_calc_defender));
-		} else {
-			mDefender.showPokemonInfo();
-		}
+		mAttackerView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_attacker);
+		mDefenderView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_defender);
 		return fragmentView;
 	}
 
-	@Override public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-//		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
-//			restoreValues(savedInstanceState.getBundle(ARG_ATTACKER), true);
-//		}
-//		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
-//			restoreValues(savedInstanceState.getBundle(ARG_DEFENDER), false);
-//		}
-	}
-
-	@Override public void onSaveInstanceState(Bundle outState) {
-//		if (mAttacker.isReady()) {
-//			outState.putBundle(ARG_ATTACKER, mAttacker.saveChanges());
-//		}
-//		if (mDefender.isReady()) {
-//			outState.putBundle(ARG_DEFENDER, mDefender.saveChanges());
-//		}
-		super.onSaveInstanceState(outState);
-	}
-
-	private void restoreValues(Bundle bundle, boolean isAttacker) {
-		Pokemon pokemon = PokemonFactory.createFromBundle(bundle);
-		if (pokemon != null) {
-			if (isAttacker) {
-				mAttacker.setPokemon(pokemon);
-			} else {
-				mDefender.setPokemon(pokemon);
-			}
-			updatePokemon(pokemon);
-		}
+	@Override public void onResume() {
+		super.onResume();
+		mAttackerView.setup(this, mAttacker);
+		mDefenderView.setup(this, mDefender);
 	}
 
 	//TODO: Implement
 	@Override public void updatePokemon(Pokemon pokemon) {
-		if (mAttacker.isReady() && mDefender.isReady()) {
-			if (pokemon == mAttacker.mPokemon) {
-				List<Attack> attackerAttacks = mAttacker.getAttacks();
-			} else {
-				List<Attack> defenderAttacks = mDefender.getAttacks();
-			}
+		if (pokemon == mAttackerView.mPokemon) {
+			mAttacker = pokemon;
+		} else {
+			mDefender = pokemon;
+		}
+		if (mAttackerView.isReady() && mDefenderView.isReady()) {
 			calculateDamages();
 		}
 	}

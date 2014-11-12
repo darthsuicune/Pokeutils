@@ -170,6 +170,10 @@ public class Gen6Pokemon extends Pokemon {
 		return this;
 	}
 
+	@Override public Map<Stats.Stat, Integer> baseStats() {
+		return stats().base();
+	}
+
 	@Override public Pokemon setAbility(Ability ability) {
 		mAbility = ability;
 		return this;
@@ -334,5 +338,17 @@ public class Gen6Pokemon extends Pokemon {
 	@Override public Pokemon load(Bundle bundle) {
 		//TODO: do.
 		return null;
+	}
+
+	@Override public Map<Stats.Stat, Integer> evs() {
+		return stats().evs();
+	}
+
+	@Override public Map<Stats.Stat, Integer> ivs() {
+		return stats().ivs();
+	}
+
+	@Override public Map<Stats.Stat, Integer> currentStats() {
+		return stats().currentValues();
 	}
 }

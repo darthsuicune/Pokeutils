@@ -42,7 +42,7 @@ public class TeamBuilderDrawerFragment extends Fragment {
 	 * Per the design guidelines, you should show the drawer on launch until the user manually
 	 * expands it. This shared preference tracks this.
 	 */
-	private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
+	private static final String PREF_USER_LEARNED_DRAWER = "team_builder_drawer_learned";
 
 	/**
 	 * A pointer to the current callbacks instance (the Activity).
@@ -129,11 +129,8 @@ public class TeamBuilderDrawerFragment extends Fragment {
 		Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.team_builder_toolbar);
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the navigation drawer and the action bar app icon.
-		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), //host Activity
-				mDrawerLayout, //DrawerLayout object
-				toolbar, //nav drawer image to replace 'Up' caret
-				R.string.navigation_drawer_open, // "open drawer" description for accessibility
-				R.string.navigation_drawer_close // "close drawer" description for accessibility
+		mDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, toolbar,
+				R.string.navigation_drawer_open, R.string.navigation_drawer_close //
 		) {
 			@Override
 			public void onDrawerClosed(View drawerView) {

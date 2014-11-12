@@ -32,6 +32,7 @@ public class StatsFactory {
 				stats.setEvs(array[0], array[1], array[2], array[3], array[4], array[5]);
 				array = bundle.getIntArray(Stats.ARG_IVS);
 				stats.setIvs(array[0], array[1], array[2], array[3], array[4], array[5]);
+				break;
 			default:
 				stats = null;
 		}

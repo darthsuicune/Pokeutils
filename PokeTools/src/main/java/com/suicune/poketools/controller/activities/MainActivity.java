@@ -14,15 +14,15 @@ import com.suicune.poketools.R;
 import com.suicune.poketools.view.fragments.DamageCalcFragment;
 import com.suicune.poketools.view.fragments.IvBreedingCalcFragment;
 import com.suicune.poketools.view.fragments.IvCalcFragment;
-import com.suicune.poketools.view.fragments.NavigationDrawerFragment;
+import com.suicune.poketools.view.fragments.MainNavigationDrawerFragment;
 
 public class MainActivity extends Activity
-		implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+		implements MainNavigationDrawerFragment.NavigationDrawerCallbacks {
 	private static final String TAG_DAMAGE_CALC = "damageCalcFragment";
 	private static final String TAG_IV_CALC = "ivCalcFragment";
 	private static final String TAG_IV_BREEDER = "ivBreederFragment";
 
-	private NavigationDrawerFragment mNavigationDrawerFragment;
+	private MainNavigationDrawerFragment mMainNavigationDrawerFragment;
 	private CharSequence mTitle;
 	private Toolbar toolbar;
 
@@ -31,14 +31,14 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
+		mMainNavigationDrawerFragment = (MainNavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
 		mTitle = getTitle();
 		toolbar = (Toolbar) findViewById(R.id.main_toolbar);
 		toolbar.setTitle(mTitle);
 
 		// Set up the drawer.
-		mNavigationDrawerFragment
+		mMainNavigationDrawerFragment
 				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
@@ -79,7 +79,7 @@ public class MainActivity extends Activity
 				break;
 		}
 		if(fragment != null) {
-			fragment.setRetainInstance(true);
+			//fragment.setRetainInstance(true);
 			fragmentManager.beginTransaction().replace(R.id.container, fragment, tag).commit();
 			onSectionAttached(position);
 		}
@@ -104,7 +104,7 @@ public class MainActivity extends Activity
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mNavigationDrawerFragment.isDrawerOpen()) {
+		if (!mMainNavigationDrawerFragment.isDrawerOpen()) {
 			// Only show items in the action bar relevant to this screen if the drawer is not
 			// showing. Otherwise, let the drawer decide what to show in the action bar.
 			getMenuInflater().inflate(R.menu.main, menu);

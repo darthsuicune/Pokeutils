@@ -28,7 +28,7 @@ import com.suicune.poketools.R;
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment {
+public class MainNavigationDrawerFragment extends Fragment {
 
 	// Remember the position of the selected item.
 	private static final String STATE_SELECTED_POSITION =
@@ -36,7 +36,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 	// Per the design guidelines, you should show the drawer on launch until the user manually
 	// expands it. This shared preference tracks this.
-	private static final String PREF_USER_LEARNED_DRAWER = "team_builder_drawer_learned";
+	private static final String PREF_USER_LEARNED_DRAWER = "main_navigation_drawer_learned";
 
 	// A pointer to the current callbacks instance (the Activity).
 	private NavigationDrawerCallbacks mCallbacks;
@@ -49,12 +49,11 @@ public class NavigationDrawerFragment extends Fragment {
 	private View mFragmentContainerView;
 
 	private int mCurrentSelectedPosition;
-	private boolean mFromSavedInstanceState;
 	private boolean mUserLearnedDrawer;
 
 	private SharedPreferences prefs;
 
-	public NavigationDrawerFragment() {
+	public MainNavigationDrawerFragment() {
 	}
 
 	@Override
@@ -66,9 +65,6 @@ public class NavigationDrawerFragment extends Fragment {
 		prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		mUserLearnedDrawer = prefs.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
-		if (savedInstanceState != null) {
-			mFromSavedInstanceState = true;
-		}
 		mCurrentSelectedPosition = prefs.getInt(STATE_SELECTED_POSITION, -1);
 
 		// Select either the default item (0) or the last selected item.
@@ -157,7 +153,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 		// If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
 		// per the navigation drawer design guidelines.
-		if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+		if (!mUserLearnedDrawer) {
 			mDrawerLayout.openDrawer(mFragmentContainerView);
 		}
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/hp"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/attack"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/defense"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/special_attack"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/special_defense"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/speed"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+</LinearLayout>

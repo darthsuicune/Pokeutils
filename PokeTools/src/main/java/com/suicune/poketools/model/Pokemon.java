@@ -31,7 +31,9 @@ public abstract class Pokemon {
 	public static final String ARG_BASE_STATS = "baseStats";
 	public static final String ARG_STATS = "stats";
 
-	public static final int DEFAULT_LEVEL = 100;
+	public static final int MIN_LEVEL = 1;
+	public static final int MAX_LEVEL = 100;
+	public static final int DEFAULT_LEVEL = MAX_LEVEL;
 
 	public abstract int gen();
 	public abstract String name();
@@ -78,6 +80,7 @@ public abstract class Pokemon {
 
 	public abstract Pokemon addAttack(Attack attack, int position);
 
+	public abstract Map<Stats.Stat, Integer> baseStats();
 	public abstract Pokemon calculateIvs();
 	public abstract Pokemon calculateStats();
 
@@ -130,4 +133,8 @@ public abstract class Pokemon {
 		}
 		return parsedNames;
 	}
+
+	public abstract Map<Stats.Stat, Integer> evs();
+	public abstract Map<Stats.Stat, Integer> ivs();
+	public abstract Map<Stats.Stat, Integer> currentStats();
 }

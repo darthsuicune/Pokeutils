@@ -99,6 +99,19 @@ public class Gen6Stats extends Stats {
 		return this;
 	}
 
+	@Override public Stats setCurrentValues(int hp, int attack, int defense, int spattack,
+											int spdefense, int speed) {
+		values.put(Stat.HP, hp);
+		values.put(Stat.ATTACK, attack);
+		values.put(Stat.DEFENSE, defense);
+		values.put(Stat.SPECIAL_ATTACK, spattack);
+		values.put(Stat.SPECIAL_DEFENSE, spdefense);
+		values.put(Stat.SPEED, speed);
+		checkForValidValues(values, MAX_VALUE, MIN_VALUE);
+		notifyChanged();
+		return this;
+	}
+
 	@Override public Stats setValuesFromStats(int level) {
 		values.put(Stat.HP,
 				IvTools.calculateHp(level, base.get(Stat.HP), ivs.get(Stat.HP), evs.get(Stat.HP)));
@@ -120,15 +133,11 @@ public class Gen6Stats extends Stats {
 	}
 
 	@Override public Bundle save() {
-		int[] baseArray, evArray, ivArray;
-		baseArray = toArray(base);
-		evArray = toArray(ivs);
-		ivArray = toArray(ivs);
 		Bundle bundle = new Bundle();
 		bundle.putInt(ARG_LEVEL, level);
-		bundle.putIntArray(ARG_EVS, evArray);
-		bundle.putIntArray(ARG_IVS, ivArray);
-		bundle.putIntArray(ARG_BASE, baseArray);
+		bundle.putIntArray(ARG_EVS, toArray(evs));
+		bundle.putIntArray(ARG_IVS, toArray(ivs));
+		bundle.putIntArray(ARG_BASE, toArray(base));
 		return bundle;
 	}
 
@@ -140,19 +149,6 @@ public class Gen6Stats extends Stats {
 				map.get(Stat.SPECIAL_DEFENSE),
 				map.get(Stat.SPEED)};
 		return array;
-	}
-
-	@Override public Stats setCurrentValues(int hp, int attack, int defense, int spattack,
-											int spdefense, int speed) {
-		ivs.put(Stat.HP, hp);
-		ivs.put(Stat.ATTACK, attack);
-		ivs.put(Stat.DEFENSE, defense);
-		ivs.put(Stat.SPECIAL_ATTACK, spattack);
-		ivs.put(Stat.SPECIAL_DEFENSE, spdefense);
-		ivs.put(Stat.SPEED, speed);
-		checkForValidValues(values, MAX_VALUE, MIN_VALUE);
-		notifyChanged();
-		return this;
 	}
 
 	@Override public Stats updateWith(Stats newStats) {
