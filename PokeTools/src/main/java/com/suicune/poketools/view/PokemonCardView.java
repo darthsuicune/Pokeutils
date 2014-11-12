@@ -13,12 +13,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.factories.PokemonFactory;
+import com.suicune.poketools.model.gen6.Gen6Nature;
 
 import org.json.JSONException;
 
@@ -40,6 +43,7 @@ public class PokemonCardView extends CardView {
 	private AutoCompleteTextView mNameView;
 	private EditText mLevelView;
 	public Pokemon mPokemon;
+	private Nature selectedNature;
 
 	public PokemonCardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -88,6 +92,7 @@ public class PokemonCardView extends CardView {
 		prepareStatsView(mIvsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
 		prepareStatsView(mEvsView, findViewById(R.id.pokemon_evs), R.string.evs);
 		prepareStatsView(mStatsView, findViewById(R.id.pokemon_stats), R.string.values);
+		prepareNatureView((Spinner)findViewById(R.id.nature));
 		prepareNameAutoComplete(mNameView);
 		if (mPokemon != null) {
 			showPokemonInfo();
@@ -117,6 +122,31 @@ public class PokemonCardView extends CardView {
 				(TextView) findViewById(R.id.team_member_base_stats_special_defense));
 		mBaseStatsViews
 				.put(Stats.Stat.SPEED, (TextView) findViewById(R.id.team_member_base_stats_speed));
+	}
+
+	private void prepareNatureView(Spinner natureView) {
+		natureView.setAdapter(new ArrayAdapter<>(
+				getContext(),
+				android.R.layout.simple_spinner_dropdown_item,
+				getResources().getStringArray(R.array.natures)
+		));
+		natureView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
+												 long l) {
+				Nature nature = Gen6Nature.get(i);
+				if(selectedNature != nature) {
+					selectedNature = nature;
+				}
+				if (mPokemon != null) {
+					mPokemon.setNature(selectedNature);
+					showPokemonInfo();
+				}
+			}
+
+			@Override public void onNothingSelected(AdapterView<?> adapterView) {
+
+			}
+		});
 	}
 
 	private void prepareNameAutoComplete(AutoCompleteTextView view) {
@@ -179,7 +209,6 @@ public class PokemonCardView extends CardView {
 			mIvsView.get(stat).setText("" + mPokemon.ivs().get(stat));
 			mStatsView.get(stat).setText("" + mPokemon.currentStats().get(stat));
 		}
-
 	}
 
 	public void setPokemon(int dexNumber, int form, int level) throws IOException, JSONException {
@@ -188,6 +217,9 @@ public class PokemonCardView extends CardView {
 
 	public void setPokemon(Pokemon pokemon) {
 		mPokemon = pokemon;
+		if(selectedNature != null) {
+			mPokemon.setNature(selectedNature);
+		}
 		cardHolder.updatePokemon(pokemon);
 		showPokemonInfo();
 	}

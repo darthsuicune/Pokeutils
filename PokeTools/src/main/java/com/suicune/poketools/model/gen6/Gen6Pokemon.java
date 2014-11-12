@@ -192,8 +192,9 @@ public class Gen6Pokemon extends Pokemon {
 		return mNature;
 	}
 
-	@Override public Pokemon setNature(Nature mNature) {
-		this.mNature = mNature;
+	@Override public Pokemon setNature(Nature nature) {
+		this.mNature = nature;
+		this.mStats.setNature(nature);
 		return this;
 	}
 
@@ -218,7 +219,7 @@ public class Gen6Pokemon extends Pokemon {
 
 
 	@Override public Pokemon calculateIvs() {
-		IvTools.getIvs(this);
+		IvTools.getIvs(6, this);
 		return this;
 	}
 

@@ -2,6 +2,7 @@ package com.suicune.poketools.model.gen6;
 
 import android.os.Bundle;
 
+import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.utils.IvTools;
 
@@ -25,6 +26,7 @@ public class Gen6Stats extends Stats {
 	public Map<Stat, Integer> evs;
 	public Map<Stat, Integer> base;
 	public Map<Stat, Integer> values;
+	public Nature nature;
 	public int level;
 
 	public Gen6Stats(int level, int[] baseStats) {
@@ -33,6 +35,7 @@ public class Gen6Stats extends Stats {
 		evs = new HashMap<>();
 		base = new HashMap<>();
 		values = new HashMap<>();
+		this.nature = Gen6Nature.HARDY;
 		setIvs(MAX_IV, MAX_IV, MAX_IV, MAX_IV, MAX_IV, MAX_IV);
 		setEvs(MIN_EV, MIN_EV, MIN_EV, MIN_EV, MIN_EV, MIN_EV);
 		setBaseStats(baseStats[0], baseStats[1], baseStats[2], baseStats[3], baseStats[4],
@@ -49,11 +52,11 @@ public class Gen6Stats extends Stats {
 
 	private boolean checkForValidValues(Map<Stat, Integer> values, int max, int min) {
 		return (values.get(Stat.HP) > max && values.get(Stat.HP) < min &&
-			values.get(Stat.ATTACK) > max && values.get(Stat.ATTACK) < min &&
-			values.get(Stat.DEFENSE) > max && values.get(Stat.DEFENSE) < min &&
-			values.get(Stat.SPECIAL_ATTACK) > max && values.get(Stat.SPECIAL_ATTACK) < min &&
-			values.get(Stat.SPECIAL_DEFENSE) > max && values.get(Stat.SPECIAL_DEFENSE) < min &&
-			values.get(Stat.SPEED) > max && values.get(Stat.SPEED) < min);
+				values.get(Stat.ATTACK) > max && values.get(Stat.ATTACK) < min &&
+				values.get(Stat.DEFENSE) > max && values.get(Stat.DEFENSE) < min &&
+				values.get(Stat.SPECIAL_ATTACK) > max && values.get(Stat.SPECIAL_ATTACK) < min &&
+				values.get(Stat.SPECIAL_DEFENSE) > max && values.get(Stat.SPECIAL_DEFENSE) < min &&
+				values.get(Stat.SPEED) > max && values.get(Stat.SPEED) < min);
 	}
 
 	@Override public int gen() {
@@ -113,22 +116,32 @@ public class Gen6Stats extends Stats {
 	}
 
 	@Override public Stats setValuesFromStats(int level) {
-		values.put(Stat.HP,
-				IvTools.calculateHp(level, base.get(Stat.HP), ivs.get(Stat.HP), evs.get(Stat.HP)));
+		this.level = level;
+		values.put(Stat.HP, IvTools.calculateHp(6, level, base.get(Stat.HP), ivs.get(Stat.HP),
+				evs.get(Stat.HP)));
 		values.put(Stat.ATTACK,
-				IvTools.calculateStat(level, base.get(Stat.ATTACK), ivs.get(Stat.ATTACK),
-						evs.get(Stat.ATTACK)));
+				IvTools.calculateStat(6, level, base.get(Stat.ATTACK), ivs.get(Stat.ATTACK),
+						evs.get(Stat.ATTACK), nature.attackModifier()));
 		values.put(Stat.DEFENSE,
-				IvTools.calculateStat(level, base.get(Stat.DEFENSE), ivs.get(Stat.DEFENSE),
-						evs.get(Stat.DEFENSE)));
-		values.put(Stat.SPECIAL_ATTACK, IvTools.calculateStat(level, base.get(Stat.SPECIAL_ATTACK),
-				ivs.get(Stat.SPECIAL_ATTACK), evs.get(Stat.SPECIAL_ATTACK)));
+				IvTools.calculateStat(6, level, base.get(Stat.DEFENSE), ivs.get(Stat.DEFENSE),
+						evs.get(Stat.DEFENSE), nature.defenseModifier()));
+		values.put(Stat.SPECIAL_ATTACK,
+				IvTools.calculateStat(6, level, base.get(Stat.SPECIAL_ATTACK),
+						ivs.get(Stat.SPECIAL_ATTACK), evs.get(Stat.SPECIAL_ATTACK),
+						nature.specialAttackModifier()));
 		values.put(Stat.SPECIAL_DEFENSE,
-				IvTools.calculateStat(level, base.get(Stat.SPECIAL_DEFENSE),
-						ivs.get(Stat.SPECIAL_DEFENSE), evs.get(Stat.SPECIAL_DEFENSE)));
+				IvTools.calculateStat(6, level, base.get(Stat.SPECIAL_DEFENSE),
+						ivs.get(Stat.SPECIAL_DEFENSE), evs.get(Stat.SPECIAL_DEFENSE),
+						nature.specialDefenseModifier()));
 		values.put(Stat.SPEED,
-				IvTools.calculateStat(level, base.get(Stat.SPEED), ivs.get(Stat.SPEED),
-						evs.get(Stat.SPEED)));
+				IvTools.calculateStat(6, level, base.get(Stat.SPEED), ivs.get(Stat.SPEED),
+						evs.get(Stat.SPEED), nature.speedModifier()));
+		return this;
+	}
+
+	@Override public Stats setNature(Nature nature) {
+		this.nature = nature;
+		this.setValuesFromStats(level);
 		return this;
 	}
 
@@ -142,13 +155,12 @@ public class Gen6Stats extends Stats {
 	}
 
 	private int[] toArray(Map<Stat, Integer> map) {
-		int[] array = {map.get(Stat.HP),
-				map.get(Stat.ATTACK),
-				map.get(Stat.DEFENSE),
-				map.get(Stat.SPECIAL_ATTACK),
-				map.get(Stat.SPECIAL_DEFENSE),
-				map.get(Stat.SPEED)};
-		return array;
+		return new int[]{map.get(Stat.HP),
+						 map.get(Stat.ATTACK),
+						 map.get(Stat.DEFENSE),
+						 map.get(Stat.SPECIAL_ATTACK),
+						 map.get(Stat.SPECIAL_DEFENSE),
+						 map.get(Stat.SPEED)};
 	}
 
 	@Override public Stats updateWith(Stats newStats) {

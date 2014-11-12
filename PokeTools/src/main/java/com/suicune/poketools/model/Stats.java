@@ -49,6 +49,8 @@ public abstract class Stats {
 
 	public abstract Stats setValuesFromStats(int level);
 
+	public abstract Stats setNature(Nature nature);
+
 	public abstract Bundle save();
 
 	public enum Stat {

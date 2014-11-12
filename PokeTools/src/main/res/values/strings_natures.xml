@@ -25,5 +25,31 @@
     <string name="nature_gentle">Gentle</string>
     <string name="nature_sassy">Sassy</string>
     <string name="nature_careful">Careful</string>
-
+    <string-array name="natures">
+        <item>@string/nature_hardy</item>
+        <item>@string/nature_bashful</item>
+        <item>@string/nature_docile</item>
+        <item>@string/nature_quirky</item>
+        <item>@string/nature_serious</item>
+        <item>@string/nature_lonely</item>
+        <item>@string/nature_adamant</item>
+        <item>@string/nature_naughty</item>
+        <item>@string/nature_brave</item>
+        <item>@string/nature_bold</item>
+        <item>@string/nature_impish</item>
+        <item>@string/nature_lax</item>
+        <item>@string/nature_relaxed</item>
+        <item>@string/nature_modest</item>
+        <item>@string/nature_mild</item>
+        <item>@string/nature_rash</item>
+        <item>@string/nature_quiet</item>
+        <item>@string/nature_calm</item>
+        <item>@string/nature_gentle</item>
+        <item>@string/nature_careful</item>
+        <item>@string/nature_sassy</item>
+        <item>@string/nature_timid</item>
+        <item>@string/nature_hasty</item>
+        <item>@string/nature_jolly</item>
+        <item>@string/nature_naive</item>
+    </string-array>
 </resources>
