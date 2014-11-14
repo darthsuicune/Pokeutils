@@ -96,8 +96,16 @@ public class PokemonFactory {
 
 		//Prepare attacks
 		List<Attack> attacks = new ArrayList<>();
-		for (int i = 0; i < formAttacksArray.length(); i++) {
-			attacksArray.put(formAttacksArray.getInt(i));
+		if(attacksArray != formAttacksArray) {
+			for (int i = 0; i < formAttacksArray.length(); i++) {
+				attacks.add(AttackFactory.create(context, 6, attacksArray.getInt(i)));
+			}
+		}
+		for(int i = 0; i < attacksArray.length(); i++) {
+			Attack attack = AttackFactory.create(context, 6, attacksArray.getInt(i));
+			if(!attacks.contains(attack)) {
+				attacks.add(attack);
+			}
 		}
 
 		//Prepare Types
