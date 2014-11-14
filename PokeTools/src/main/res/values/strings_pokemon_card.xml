@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_level">100</string>
+    <string name="base_stats">base</string>
     <string name="ivs">ivs</string>
     <string name="evs">evs</string>
     <string name="values">values</string>

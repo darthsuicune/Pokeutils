@@ -34,7 +34,6 @@ public class Gen6Pokemon extends Pokemon {
 	public final int mFormCount;
 	public final double mFemaleRatio;
 	public final double mMaleRatio;
-	public final Stats mStats;
 	public final Type mType1;
 	public final Type mType2;
 	public final double mHeight;
@@ -56,6 +55,11 @@ public class Gen6Pokemon extends Pokemon {
 	public final List<Attack> mEggMoves;
 	public final Map<String, Attack> mTutorMoves;
 	public final Map<String, Attack> mTransferAttacks;
+
+	/**
+	 * Subproperties are modifiable
+	 */
+	public final Stats mStats;
 
 	/**
 	 * Mutable properties

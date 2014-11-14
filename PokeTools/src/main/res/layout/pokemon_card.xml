@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.suicune.poketools.view.PokemonCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            style="@style/PokemonCard">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/pokemon_name_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/PokemonCard.Name"/>
+
+        <LinearLayout
+            android:id="@+id/pokemon_card_details"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View style="@style/Divider.Horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/name"
+                    android:layout_weight="6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:imeOptions="actionGo"/>
+
+                <EditText
+                    android:id="@+id/level"
+                    android:text="@string/default_level"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"/>
+
+                <Spinner
+                    android:id="@+id/nature"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/pokemon_base_stats"
+                layout="@layout/base_stats_view"/>
+
+            <include
+                android:id="@+id/pokemon_ivs"
+                layout="@layout/evs_ivs_view"/>
+
+            <include
+                android:id="@+id/pokemon_evs"
+                layout="@layout/evs_ivs_view"/>
+
+            <include
+                android:id="@+id/pokemon_stats"
+                layout="@layout/evs_ivs_view"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.suicune.poketools.view.PokemonCardView>

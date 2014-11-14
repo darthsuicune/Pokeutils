@@ -40,10 +40,13 @@ public class PokemonCardView extends CardView {
 	private Map<Stats.Stat, EditText> mIvsView = new HashMap<>();
 	private Map<Stats.Stat, EditText> mEvsView = new HashMap<>();
 	private Map<Stats.Stat, EditText> mStatsView = new HashMap<>();
-	private AutoCompleteTextView mNameView;
+	private AutoCompleteTextView mNameAutoCompleteView;
+	private TextView mNameView;
 	private EditText mLevelView;
+	private View mCardDetailsView;
 	public Pokemon mPokemon;
 	private Nature selectedNature;
+	private boolean isShown = true;
 
 	public PokemonCardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -61,9 +64,34 @@ public class PokemonCardView extends CardView {
 	}
 
 	public void setupSubViews() {
+		mCardDetailsView = findViewById(R.id.pokemon_card_details);
 		mLevelView = (EditText) findViewById(R.id.level);
-		mNameView = (AutoCompleteTextView) findViewById(R.id.name);
+		mNameView = (TextView) findViewById(R.id.pokemon_name_title);
+		mNameAutoCompleteView = (AutoCompleteTextView) findViewById(R.id.name);
 
+		prepareHeaderView();
+		prepareLevelView();
+		prepareBaseStatsViews();
+		prepareStatsView(mIvsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
+		prepareStatsView(mEvsView, findViewById(R.id.pokemon_evs), R.string.evs);
+		prepareStatsView(mStatsView, findViewById(R.id.pokemon_stats), R.string.values);
+		prepareNatureView((Spinner)findViewById(R.id.nature));
+		prepareNameAutoComplete(mNameAutoCompleteView);
+		if (mPokemon != null) {
+			showPokemonInfo();
+		}
+	}
+
+	private void prepareHeaderView() {
+		mNameView.setOnClickListener(new OnClickListener() {
+			@Override public void onClick(View view) {
+				mCardDetailsView.setVisibility((isShown) ? View.GONE : View.VISIBLE);
+				isShown = !isShown;
+			}
+		});
+	}
+
+	private void prepareLevelView() {
 		mLevelView.addTextChangedListener(new TextWatcher() {
 			@Override public void beforeTextChanged(CharSequence cs, int i, int i2, int i3) {
 			}
@@ -88,15 +116,6 @@ public class PokemonCardView extends CardView {
 				}
 			}
 		});
-		prepareBaseStatsViews();
-		prepareStatsView(mIvsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
-		prepareStatsView(mEvsView, findViewById(R.id.pokemon_evs), R.string.evs);
-		prepareStatsView(mStatsView, findViewById(R.id.pokemon_stats), R.string.values);
-		prepareNatureView((Spinner)findViewById(R.id.nature));
-		prepareNameAutoComplete(mNameView);
-		if (mPokemon != null) {
-			showPokemonInfo();
-		}
 	}
 
 	private void prepareStatsView(Map<Stats.Stat, EditText> statViews, View view, int tagId) {
@@ -202,6 +221,7 @@ public class PokemonCardView extends CardView {
 
 	public void showPokemonInfo() {
 		mNameView.setText(mPokemon.nickname());
+		mNameAutoCompleteView.setText(mPokemon.name());
 		mLevelView.setText("" + mPokemon.level());
 		for (Stats.Stat stat : mPokemon.baseStats().keySet()) {
 			mBaseStatsViews.get(stat).setText("" + mPokemon.baseStats().get(stat));
