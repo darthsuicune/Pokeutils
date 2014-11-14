@@ -10,6 +10,8 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:drawableLeft="@android:drawable/arrow_down_float"
+            android:drawableStart="@android:drawable/arrow_down_float"
             android:id="@+id/pokemon_name_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,6 +68,9 @@
             <include
                 android:id="@+id/pokemon_stats"
                 layout="@layout/evs_ivs_view"/>
+            <include
+                android:id="@+id/attacks"
+                layout="@layout/attacks_view" />
         </LinearLayout>
     </LinearLayout>
 </com.suicune.poketools.view.PokemonCardView>

@@ -79,8 +79,12 @@ public class TeamMemberFragment extends Fragment {
 		if (getArguments() != null) {
 			mPosition = getArguments().getInt(ARG_POSITION);
 		}
-		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
-			restoreValues(savedInstanceState.getBundle(ARG_POKEMON));
+		try {
+			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
+				restoreValues(savedInstanceState.getBundle(ARG_POKEMON));
+			}
+		} catch (IOException | JSONException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -176,8 +180,8 @@ public class TeamMemberFragment extends Fragment {
 				(TextView) v.findViewById(R.id.team_member_base_stats_speed));
 	}
 
-	private void restoreValues(Bundle bundle) {
-		Pokemon pokemon = PokemonFactory.createFromBundle(bundle);
+	private void restoreValues(Bundle bundle) throws IOException, JSONException {
+		Pokemon pokemon = PokemonFactory.createFromBundle(getActivity(), bundle);
 		if (pokemon != null) {
 			mPokemon = pokemon;
 			updatePokemon();

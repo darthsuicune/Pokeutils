@@ -8,9 +8,6 @@ import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.Type;
-import com.suicune.poketools.model.factories.AbilityFactory;
-import com.suicune.poketools.model.factories.StatsFactory;
-import com.suicune.poketools.model.factories.TypeFactory;
 import com.suicune.poketools.utils.IvTools;
 
 import org.json.JSONException;
@@ -25,7 +22,6 @@ import java.util.Map;
  * Created by denis on 01.01.14.
  */
 public class Gen6Pokemon extends Pokemon {
-
 	/**
 	 * Immutable properties
 	 */
@@ -55,6 +51,7 @@ public class Gen6Pokemon extends Pokemon {
 	public final List<Attack> mEggMoves;
 	public final Map<String, Attack> mTutorMoves;
 	public final Map<String, Attack> mTransferAttacks;
+	public final List<Attack> mAttackList;
 
 	/**
 	 * Subproperties are modifiable
@@ -74,7 +71,7 @@ public class Gen6Pokemon extends Pokemon {
 	public String mName;
 
 	public Gen6Pokemon(int level, JSONObject data, Stats stats, Type[] types, Ability[] abilities,
-					   int formCount, String name) throws JSONException {
+					   int formCount, String name, List<Attack> attackList) throws JSONException {
 		mLevel = level;
 		mPokedexNumber = data.getInt(ARG_DEX_NUMBER);
 		mForm = data.getInt(ARG_FORM);
@@ -106,26 +103,28 @@ public class Gen6Pokemon extends Pokemon {
 		mAttackSet = new ArrayList<>();
 		mName = name;
 		mNickname = name;
+		mAttackList = attackList;
 	}
 
-	public Gen6Pokemon(Bundle bundle) {
+	public Gen6Pokemon(Bundle bundle, Stats stats, Type type1, Type type2, Ability ability1,
+					   Ability ability2, Ability hiddenAbility, List<Attack> attackList) {
 		mLevel = bundle.getInt(ARG_LEVEL);
 		mPokedexNumber = bundle.getInt(ARG_DEX_NUMBER);
 		mForm = bundle.getInt(ARG_FORM);
 		mFormCount = bundle.getInt(ARG_FORM_COUNT);
 		mFemaleRatio = 0;
 		mMaleRatio = 0;
-		mStats = StatsFactory.fromBundle(6, bundle.getBundle(ARG_STATS));
-		mType1 = TypeFactory.createType(6, bundle.getInt(ARG_TYPE_1, 0));
-		mType2 = TypeFactory.createType(6, bundle.getInt(ARG_TYPE_2, 0));
+		mStats = stats;
+		mType1 = type1;
+		mType2 = type2;
 		mHeight = 0;
 		mWeight = 0;
 		mClassification = "";
 		mCaptureRate = 0;
 		mBaseEggSteps = 0;
-		mAbility1 = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY_1));
-		mAbility2 = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY_2));
-		mAbilityHidden = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY_HIDDEN));
+		mAbility1 = ability1;
+		mAbility2 = ability2;
+		mAbilityHidden = hiddenAbility;
 		mExperienceGrowth = 0;
 		mBaseHappiness = 0;
 		mEvsEarned = new HashMap<>();
@@ -140,7 +139,7 @@ public class Gen6Pokemon extends Pokemon {
 		mAttackSet = new ArrayList<>();
 		mName = bundle.getString(ARG_NAME);
 		mNickname = bundle.getString(ARG_NICKNAME);
-
+		mAttackList = attackList;
 	}
 
 	@Override public int gen() { return 6; }

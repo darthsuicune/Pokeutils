@@ -30,6 +30,7 @@ public abstract class Pokemon {
 	public static final String ARG_TYPE_2 = "type_2";
 	public static final String ARG_BASE_STATS = "baseStats";
 	public static final String ARG_STATS = "stats";
+	public static final String ARG_ATTACKS = "attacks";
 
 	public static final int MIN_LEVEL = 1;
 	public static final int MAX_LEVEL = 100;

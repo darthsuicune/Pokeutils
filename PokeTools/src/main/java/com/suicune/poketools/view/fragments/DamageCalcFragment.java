@@ -12,6 +12,10 @@ import com.suicune.poketools.model.factories.PokemonFactory;
 import com.suicune.poketools.view.PokemonCardHolder;
 import com.suicune.poketools.view.PokemonCardView;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
  * Use the {@link DamageCalcFragment#newInstance} factory method to
@@ -43,20 +47,26 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
-			mAttacker = PokemonFactory.createFromBundle(savedInstanceState.getBundle(ARG_ATTACKER));
-		}
-		if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
-			mDefender = PokemonFactory.createFromBundle(savedInstanceState.getBundle(ARG_DEFENDER));
+		try {
+			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
+				mAttacker = PokemonFactory.createFromBundle(getActivity(),
+						savedInstanceState.getBundle(ARG_ATTACKER));
+			}
+			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
+				mDefender = PokemonFactory.createFromBundle(getActivity(),
+						savedInstanceState.getBundle(ARG_DEFENDER));
+			}
+		} catch (JSONException | IOException e) {
+			e.printStackTrace();
 		}
 	}
 
 	@Override public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		if(mAttacker != null) {
+		if (mAttacker != null) {
 			outState.putBundle(ARG_ATTACKER, mAttacker.save());
 		}
-		if(mDefender != null) {
+		if (mDefender != null) {
 			outState.putBundle(ARG_DEFENDER, mDefender.save());
 		}
 	}

@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,8 +53,8 @@ public class PokemonFactory {
 		Type additionalType = pokemon.additionalType();
 		Nature nature = pokemon.nature();
 		String nickname = null;
-		if (!pokemon.nickname().equals(Pokemon.getName(context, pokemon.dexNumber(),
-				pokemon.formNumber()))) {
+		if (!pokemon.nickname()
+				.equals(Pokemon.getName(context, pokemon.dexNumber(), pokemon.formNumber()))) {
 			nickname = pokemon.nickname();
 		}
 		Stats oldStats = pokemon.stats();
@@ -83,23 +84,35 @@ public class PokemonFactory {
 	private static Pokemon createGen6Pokemon(Context context, int dexNumber, int form, int level)
 			throws IOException, JSONException {
 		AssetManager manager = context.getAssets();
-		JSONArray pokemonForms = FileUtils.toJsonArray(manager.open("gen5/" + dexNumber + ".json"));
+		JSONArray pokemonForms =
+				FileUtils.toJsonArray(manager.open("gen5/pokes/" + dexNumber + ".json"));
 		JSONObject pokemon = pokemonForms.getJSONObject(form);
 
-		JSONArray typeArray = pokemon.getJSONArray(Gen6Pokemon.ARG_TYPES);
-		JSONArray abilityArray = pokemon.getJSONArray(Gen6Pokemon.ARG_ABILITIES);
-		JSONArray statsArray = pokemon.getJSONArray(Gen6Pokemon.ARG_BASE_STATS);
+		JSONArray typeArray = pokemon.getJSONArray(Pokemon.ARG_TYPES);
+		JSONArray abilityArray = pokemon.getJSONArray(Pokemon.ARG_ABILITIES);
+		JSONArray statsArray = pokemon.getJSONArray(Pokemon.ARG_BASE_STATS);
+		JSONArray formAttacksArray = pokemon.getJSONArray(Pokemon.ARG_ATTACKS);
+		JSONArray attacksArray = pokemonForms.getJSONObject(0).getJSONArray(Pokemon.ARG_ATTACKS);
 
+		//Prepare attacks
+		List<Attack> attacks = new ArrayList<>();
+		for (int i = 0; i < formAttacksArray.length(); i++) {
+			attacksArray.put(formAttacksArray.getInt(i));
+		}
+
+		//Prepare Types
 		Type[] types = new Type[2];
 		types[0] = TypeFactory.createType(6, typeArray.getInt(0));
 		types[1] = TypeFactory.createType(6, typeArray.getInt(1));
 
+		//Prepare base stats
 		int[] baseStats = new int[6];
 		for (int i = 0; i < 6; i++) {
 			baseStats[i] = statsArray.getInt(i);
 		}
 		Stats stats = StatsFactory.createStats(6, level, baseStats);
 
+		//Prepare abilities
 		Ability[] abilities = new Ability[3];
 		for (int i = 0; i < 3; i++) {
 			abilities[i] = AbilityFactory.createAbility(context, 6, abilityArray.getInt(i));
@@ -107,11 +120,12 @@ public class PokemonFactory {
 
 		String name = Pokemon.getName(context, dexNumber, form);
 
-		return new Gen6Pokemon(level, pokemon, stats, types, abilities, pokemonForms.length(),
-				name);
+		return new Gen6Pokemon(level, pokemon, stats, types, abilities, pokemonForms.length(), name,
+				attacks);
 	}
 
-	public static Pokemon createFromBundle(Bundle bundle) {
+	public static Pokemon createFromBundle(Context context, Bundle bundle)
+			throws IOException, JSONException {
 		if (bundle == null) {
 			return null;
 		}
@@ -119,7 +133,16 @@ public class PokemonFactory {
 		if (bundle.containsKey(Pokemon.ARG_GEN)) {
 			switch (bundle.getInt(Pokemon.ARG_GEN)) {
 				case 6:
-					pokemon = new Gen6Pokemon(bundle);
+					pokemon = new Gen6Pokemon(bundle,
+							StatsFactory.fromBundle(6, bundle.getBundle(Pokemon.ARG_STATS)),
+							TypeFactory.createType(6, bundle.getInt(Pokemon.ARG_TYPE_1)),
+							TypeFactory.createType(6, bundle.getInt(Pokemon.ARG_TYPE_2)),
+							AbilityFactory.fromBundle(6, bundle.getBundle(Pokemon.ARG_ABILITY_1)),
+							AbilityFactory.fromBundle(6, bundle.getBundle(Pokemon.ARG_ABILITY_2)),
+							AbilityFactory
+									.fromBundle(6, bundle.getBundle(Pokemon.ARG_ABILITY_HIDDEN)),
+							AttackFactory.fromBundle(context, 6,
+									bundle.getIntArray(Pokemon.ARG_ATTACKS)));
 					break;
 				default:
 			}
