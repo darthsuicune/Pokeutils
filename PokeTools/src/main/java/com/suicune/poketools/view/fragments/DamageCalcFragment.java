@@ -86,7 +86,6 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 		mDefenderView.setup(this, mDefender);
 	}
 
-	//TODO: Implement
 	@Override public void updatePokemon(Pokemon pokemon) {
 		if (pokemon == mAttackerView.mPokemon) {
 			mAttacker = pokemon;

@@ -1,20 +1,9 @@
 package com.suicune.poketools.utils;
 
-import com.suicune.poketools.model.Pokemon;
-import com.suicune.poketools.model.Stats;
-
 /**
  * Created by denis on 01.01.14.
  */
 public class IvTools {
-    public static Stats getIvs(int gen, Pokemon pokemon){
-        return null;
-    }
-    public static Stats calculateStats(Pokemon pokemon){
-		Stats stats = pokemon.stats();
-		stats.setValuesFromStats(pokemon.level());
-		return stats;
-    }
 
 	/**
 	 * Stats calculator by bulbapedia
@@ -27,7 +16,7 @@ public class IvTools {
 		switch(gen) {
 			case 1:
 			case 2:
-				return 0;
+				return 1;
 			case 3:
 			case 4:
 			case 5:
@@ -39,7 +28,7 @@ public class IvTools {
 	}
 
 	/**
-	 * Formula for HP
+	 * Formula for HP, gen3 and above
 	 * HP = [IV + (2*Base) + EV/4 + 100] * Level/100 + 10
 	 * @param level
 	 * @param base
@@ -54,7 +43,7 @@ public class IvTools {
 		}
 		int base2 = base * 2;
 		double ev4 = ev / 4;
-		double level100 = level / 100;
+		double level100 = (double) level / 100.0;
 		double intermediate = iv + base2 + ev4 + 100;
 		double intermediate2 = level100 * intermediate;
 		int result = (int) intermediate2;
@@ -65,7 +54,7 @@ public class IvTools {
 		switch(gen) {
 			case 1:
 			case 2:
-				return 0;
+				return 1;
 			case 3:
 			case 4:
 			case 5:
@@ -76,7 +65,7 @@ public class IvTools {
 	}
 
 	/**
-	 * Formula for Stats
+	 * Formula for Stats, gen 3 and above
 	 * Stat = {[IV + (2*Base) + EV/4] * Level/100 + 5} * modifier
 	 * @param level
 	 * @param base
@@ -88,7 +77,7 @@ public class IvTools {
 	private static int calculateStatGen6(int level, int base, int iv, int ev, double modifier) {
 		int base2 = base * 2;
 		double ev4 = ev / 4;
-		double level100 = level / 100;
+		double level100 = (double) level / 100.0;
 		double intermediate = iv + base2 + ev4;
 		double intermediate2 = level100 * intermediate;
 		double intermediate3 = intermediate2 + 5;

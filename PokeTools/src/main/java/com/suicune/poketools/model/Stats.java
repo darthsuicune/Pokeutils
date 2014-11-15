@@ -53,6 +53,9 @@ public abstract class Stats {
 
 	public abstract Bundle save();
 
+	public abstract Map<Stat, List<Integer>> calculateIvs();
+	public abstract Stats calculateStats();
+
 	public enum Stat {
 		HP,
 		ATTACK,
@@ -61,6 +64,20 @@ public abstract class Stats {
 		SPECIAL_ATTACK,
 		SPECIAL_DEFENSE,
 		SPEED;
+
+		public static Stat[] values(int gen) {
+			switch(gen) {
+				case 1:
+				return new Stat[] {
+						HP, ATTACK, DEFENSE, SPECIAL, SPEED
+				};
+				default:
+					return new Stat[] {
+							HP, ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED
+					};
+			}
+
+		}
 	}
 
 	public enum StatType {

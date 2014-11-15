@@ -75,27 +75,23 @@ public enum Gen6Nature implements Nature {
 		return mDecreasedStat;
 	}
 
-	@Override public double attackModifier() {
-		return mAttackModifier;
+	@Override public double statModifier(Stats.Stat stat) {
+		switch(stat) {
+			case ATTACK:
+				return mAttackModifier;
+			case DEFENSE:
+				return mDefenseModifier;
+			case SPECIAL_ATTACK:
+				return mSpecialAttackModifier;
+			case SPECIAL_DEFENSE:
+				return mSpecialDefenseModifier;
+			case SPEED:
+				return mSpeedModifier;
+			default:
+				return 1.0;
+		}
 	}
-
-	@Override public double defenseModifier() {
-		return mDefenseModifier;
-	}
-
-	@Override public double specialAttackModifier() {
-		return mSpecialAttackModifier;
-	}
-
-	@Override public double specialDefenseModifier() {
-		return mSpecialDefenseModifier;
-	}
-
-	@Override public double speedModifier() {
-		return mSpeedModifier;
-	}
-
-	public static Nature get(int index) {
-		return Gen6Nature.values()[index];
+	public int save() {
+		return this.ordinal();
 	}
 }

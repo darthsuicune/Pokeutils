@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="iv_calc_fragment_title">IV Calculator</string>
+    <string name="calculate_ivs">Calculate IVs</string>
 </resources>

@@ -6,7 +6,9 @@ import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.utils.IvTools;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -117,25 +119,15 @@ public class Gen6Stats extends Stats {
 
 	@Override public Stats setValuesFromStats(int level) {
 		this.level = level;
-		values.put(Stat.HP, IvTools.calculateHp(6, level, base.get(Stat.HP), ivs.get(Stat.HP),
-				evs.get(Stat.HP)));
-		values.put(Stat.ATTACK,
-				IvTools.calculateStat(6, level, base.get(Stat.ATTACK), ivs.get(Stat.ATTACK),
-						evs.get(Stat.ATTACK), nature.attackModifier()));
-		values.put(Stat.DEFENSE,
-				IvTools.calculateStat(6, level, base.get(Stat.DEFENSE), ivs.get(Stat.DEFENSE),
-						evs.get(Stat.DEFENSE), nature.defenseModifier()));
-		values.put(Stat.SPECIAL_ATTACK,
-				IvTools.calculateStat(6, level, base.get(Stat.SPECIAL_ATTACK),
-						ivs.get(Stat.SPECIAL_ATTACK), evs.get(Stat.SPECIAL_ATTACK),
-						nature.specialAttackModifier()));
-		values.put(Stat.SPECIAL_DEFENSE,
-				IvTools.calculateStat(6, level, base.get(Stat.SPECIAL_DEFENSE),
-						ivs.get(Stat.SPECIAL_DEFENSE), evs.get(Stat.SPECIAL_DEFENSE),
-						nature.specialDefenseModifier()));
-		values.put(Stat.SPEED,
-				IvTools.calculateStat(6, level, base.get(Stat.SPEED), ivs.get(Stat.SPEED),
-						evs.get(Stat.SPEED), nature.speedModifier()));
+		for (Stat stat : Stat.values(gen())) {
+			if (stat == Stat.HP) {
+				values.put(stat, IvTools.calculateHp(gen(), level, base.get(stat), ivs.get(stat),
+						evs.get(stat)));
+			} else {
+				values.put(stat, IvTools.calculateStat(gen(), level, base.get(stat), ivs.get(stat),
+						evs.get(stat), nature.statModifier(stat)));
+			}
+		}
 		return this;
 	}
 
@@ -154,6 +146,36 @@ public class Gen6Stats extends Stats {
 		return bundle;
 	}
 
+	@Override public Map<Stat, List<Integer>> calculateIvs() {
+		Map<Stat, List<Integer>> result = new HashMap<>();
+		for (Stat stat : Stat.values(gen())) {
+			List<Integer> possibleValues = new ArrayList<>();
+			for (int i = 0; i <= 31; i++) {
+				if (matchesValue(values.get(stat), stat, i)) {
+					possibleValues.add(i);
+				}
+			}
+			result.put(stat, possibleValues);
+		}
+		return result;
+	}
+
+	private boolean matchesValue(int value, Stat stat, int iv) {
+		if (stat == Stat.HP) {
+			return value ==
+				   IvTools.calculateHp(gen(), level, base().get(stat), iv, evs().get(stat));
+		} else {
+			return value ==
+				   IvTools.calculateStat(gen(), level, base().get(stat), iv, evs().get(stat),
+						   nature.statModifier(stat));
+		}
+	}
+
+
+	@Override public Stats calculateStats() {
+		return setValuesFromStats(this.level);
+	}
+
 	private int[] toArray(Map<Stat, Integer> map) {
 		return new int[]{map.get(Stat.HP),
 						 map.get(Stat.ATTACK),
@@ -166,7 +188,6 @@ public class Gen6Stats extends Stats {
 	@Override public Stats updateWith(Stats newStats) {
 		ivs = newStats.ivs();
 		evs = newStats.evs();
-		base = newStats.base();
 		values = newStats.currentValues();
 		checkForValidValues();
 		notifyChanged();

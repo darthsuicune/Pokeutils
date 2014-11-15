@@ -15,6 +15,7 @@ public interface Attack {
 	public boolean hasSpecialTreatment();
 	public Category category();
 	public int gen();
+	public int id();
 	public int attackClass();
 	public int power();
 	public int accuracy();
@@ -22,6 +23,7 @@ public interface Attack {
 	public int priority();
 	public String name();
 	public String description();
+	public String toString();
 
 	public enum Category {
 		PHYSICAL, SPECIAL, OTHER;

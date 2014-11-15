@@ -7,6 +7,9 @@ import com.suicune.poketools.R;
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.gen6.Gen6Ability;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 /**
  * Created by denis on 20.09.14.
  */
@@ -14,9 +17,8 @@ public class AbilityFactory {
 	public static Ability createAbility(Context context, int gen, int abilityCode) {
 		switch (gen) {
 			case 6:
-				return createGen6Ability(context, abilityCode);
 			default:
-				return null;
+				return createGen6Ability(context, abilityCode);
 		}
 	}
 
@@ -29,10 +31,27 @@ public class AbilityFactory {
 	public static Ability fromBundle(int gen, Bundle bundle) {
 		switch (gen) {
 			case 6:
+			default:
 				return new Gen6Ability(bundle.getString(Ability.ARG_NAME),
 						bundle.getString(Ability.ARG_DESCRIPTION), bundle.getInt(Ability.ARG_CODE));
-			default:
-				return null;
 		}
+	}
+
+	public static Ability[] fromJson(Context context, int gen, JSONArray abilityArray)
+			throws JSONException {
+		switch (gen) {
+			case 6:
+			default:
+				return createGen6List(context, abilityArray);
+		}
+	}
+
+	public static Ability[] createGen6List(Context context, JSONArray abilityArray)
+			throws JSONException {
+		Ability[] abilities = new Ability[3];
+		for (int i = 0; i < 3; i++) {
+			abilities[i] = AbilityFactory.createAbility(context, 6, abilityArray.getInt(i));
+		}
+		return abilities;
 	}
 }

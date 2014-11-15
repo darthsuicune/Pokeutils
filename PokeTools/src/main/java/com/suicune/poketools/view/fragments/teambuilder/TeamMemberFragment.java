@@ -167,17 +167,17 @@ public class TeamMemberFragment extends Fragment {
 	private void prepareBaseStatsViews(View v) {
 		mBaseStatsViews = new HashMap<>();
 		mBaseStatsViews
-				.put(Stats.Stat.HP, (TextView) v.findViewById(R.id.team_member_base_stats_hp));
+				.put(Stats.Stat.HP, (TextView) v.findViewById(R.id.hp));
 		mBaseStatsViews.put(Stats.Stat.ATTACK,
-				(TextView) v.findViewById(R.id.team_member_base_stats_attack));
+				(TextView) v.findViewById(R.id.attack));
 		mBaseStatsViews.put(Stats.Stat.DEFENSE,
-				(TextView) v.findViewById(R.id.team_member_base_stats_defense));
+				(TextView) v.findViewById(R.id.defense));
 		mBaseStatsViews.put(Stats.Stat.SPECIAL_ATTACK,
-				(TextView) v.findViewById(R.id.team_member_base_stats_special_attack));
+				(TextView) v.findViewById(R.id.special_attack));
 		mBaseStatsViews.put(Stats.Stat.SPECIAL_DEFENSE,
-				(TextView) v.findViewById(R.id.team_member_base_stats_special_defense));
+				(TextView) v.findViewById(R.id.special_defense));
 		mBaseStatsViews.put(Stats.Stat.SPEED,
-				(TextView) v.findViewById(R.id.team_member_base_stats_speed));
+				(TextView) v.findViewById(R.id.speed));
 	}
 
 	private void restoreValues(Bundle bundle) throws IOException, JSONException {

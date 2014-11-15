@@ -7,6 +7,7 @@ import com.suicune.poketools.model.Type;
  * Created by denis on 01.01.14.
  */
 public class Gen6Attack implements Attack {
+	public final int id;
 	public final Type type;
 	public final int attackClass;
 	public final Category category;
@@ -17,8 +18,9 @@ public class Gen6Attack implements Attack {
 	public final String name;
 	public final String description;
 
-	public Gen6Attack(Type type, int attackClass, int power, int accuracy, int pp, int priority,
-				  String name, String description) {
+	public Gen6Attack(int id, Type type, int attackClass, int power, int accuracy, int pp,
+					  int priority, String name, String description) {
+		this.id = id;
 		this.type = type;
 		this.attackClass = attackClass;
 		this.power = power;
@@ -36,7 +38,7 @@ public class Gen6Attack implements Attack {
 
 	@Override public boolean hasSpecialTreatment() {
 		//TODO: Requires massive switch with special treatment checks
-		if(power == 1) {
+		if (power == 1) {
 			return true;
 		}
 		return false;
@@ -48,6 +50,10 @@ public class Gen6Attack implements Attack {
 
 	@Override public int gen() {
 		return 6;
+	}
+
+	@Override public int id() {
+		return id;
 	}
 
 	@Override public int attackClass() {
@@ -76,5 +82,13 @@ public class Gen6Attack implements Attack {
 
 	@Override public String description() {
 		return description;
+	}
+
+	@Override public String toString() {
+		return name + " (" + type.toString() + " " + power + ")";
+	}
+
+	@Override public boolean equals(Object o) {
+		return ((Attack) o).id() == this.id;
 	}
 }

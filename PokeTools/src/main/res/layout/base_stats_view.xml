@@ -3,51 +3,17 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:padding="5dp">
+
     <TextView
         android:text="@string/base_stats"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        style="@style/PokemonCard.StatTextView"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_member_base_stats_hp"/>
+    <include layout="@layout/stats_text_view"
+             android:layout_width="0dp"
+             android:layout_weight="12"
+             android:layout_height="wrap_content"/>
 
-    <TextView
-        style="@style/PokemonCard.StatTextView"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_member_base_stats_attack"/>
 
-    <TextView
-        style="@style/PokemonCard.StatTextView"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_member_base_stats_defense"/>
-
-    <TextView
-        style="@style/PokemonCard.StatTextView"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_member_base_stats_special_attack"/>
-
-    <TextView
-        style="@style/PokemonCard.StatTextView"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_member_base_stats_special_defense"/>
-
-    <TextView
-        style="@style/PokemonCard.StatTextView"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        android:id="@+id/team_member_base_stats_speed"/>
 </LinearLayout>

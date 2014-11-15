@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        style="@style/PokemonCard.StatTextView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:id="@+id/hp"/>
+
+    <TextView
+        style="@style/PokemonCard.StatTextView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:id="@+id/attack"/>
+
+    <TextView
+        style="@style/PokemonCard.StatTextView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:id="@+id/defense"/>
+
+    <TextView
+        style="@style/PokemonCard.StatTextView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:id="@+id/special_attack"/>
+
+    <TextView
+        style="@style/PokemonCard.StatTextView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:id="@+id/special_defense"/>
+
+    <TextView
+        style="@style/PokemonCard.StatTextView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:id="@+id/speed"/>
+</LinearLayout>

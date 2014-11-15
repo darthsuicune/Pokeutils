@@ -1,6 +1,7 @@
 package com.suicune.poketools.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,18 +18,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
-import com.suicune.poketools.model.Stats;
+import com.suicune.poketools.model.factories.NatureFactory;
 import com.suicune.poketools.model.factories.PokemonFactory;
-import com.suicune.poketools.model.gen6.Gen6Nature;
 
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.suicune.poketools.model.Stats.Stat;
 
 /**
  * Created by lapuente on 07.11.14.
@@ -36,10 +40,11 @@ import java.util.Map;
 public class PokemonCardView extends CardView {
 	private final Context mContext;
 	public PokemonCardHolder cardHolder;
-	private Map<Stats.Stat, TextView> mBaseStatsViews = new HashMap<>();
-	private Map<Stats.Stat, EditText> mIvsView = new HashMap<>();
-	private Map<Stats.Stat, EditText> mEvsView = new HashMap<>();
-	private Map<Stats.Stat, EditText> mStatsView = new HashMap<>();
+	private Map<Stat, TextView> mBaseStatsViews = new HashMap<>();
+	private Map<Stat, EditText> mIvsView = new HashMap<>();
+	private Map<Stat, EditText> mEvsView = new HashMap<>();
+	private Map<Stat, EditText> mStatsView = new HashMap<>();
+	private Map<Integer, Spinner> mAttackViews = new HashMap<>();
 	private AutoCompleteTextView mNameAutoCompleteView;
 	private TextView mNameView;
 	private EditText mLevelView;
@@ -47,6 +52,7 @@ public class PokemonCardView extends CardView {
 	public Pokemon mPokemon;
 	private Nature selectedNature;
 	private boolean isShown = true;
+	private AttackAdapter mAttackAdapter;
 
 	public PokemonCardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -57,6 +63,9 @@ public class PokemonCardView extends CardView {
 		this.cardHolder = holder;
 		this.mPokemon = pokemon;
 		setupSubViews();
+		if (mPokemon != null) {
+			setupAttacks();
+		}
 	}
 
 	public boolean isReady() {
@@ -75,7 +84,8 @@ public class PokemonCardView extends CardView {
 		prepareStatsView(mIvsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
 		prepareStatsView(mEvsView, findViewById(R.id.pokemon_evs), R.string.evs);
 		prepareStatsView(mStatsView, findViewById(R.id.pokemon_stats), R.string.values);
-		prepareNatureView((Spinner)findViewById(R.id.nature));
+		prepareNatureView((Spinner) findViewById(R.id.nature));
+		prepareAttackViews();
 		prepareNameAutoComplete(mNameAutoCompleteView);
 		if (mPokemon != null) {
 			showPokemonInfo();
@@ -108,7 +118,7 @@ public class PokemonCardView extends CardView {
 					if (newLevel != mPokemon.level() && newLevel >= Pokemon.MIN_LEVEL &&
 						newLevel <= Pokemon.MAX_LEVEL) {
 						mPokemon.setLevel(newLevel);
-						showPokemonInfo();
+						updateStats();
 					}
 				} catch (NumberFormatException nfe) {
 					nfe.printStackTrace();
@@ -118,54 +128,88 @@ public class PokemonCardView extends CardView {
 		});
 	}
 
-	private void prepareStatsView(Map<Stats.Stat, EditText> statViews, View view, int tagId) {
+	private void prepareStatsView(Map<Stat, EditText> statViews, View view, int tagId) {
 		((TextView) view.findViewById(R.id.label)).setText(tagId);
-		statViews.put(Stats.Stat.HP, (EditText) view.findViewById(R.id.hp));
-		statViews.put(Stats.Stat.ATTACK, (EditText) view.findViewById(R.id.attack));
-		statViews.put(Stats.Stat.DEFENSE, (EditText) view.findViewById(R.id.defense));
-		statViews.put(Stats.Stat.SPECIAL_ATTACK, (EditText) view.findViewById(R.id.special_attack));
-		statViews.put(Stats.Stat.SPECIAL_DEFENSE,
-				(EditText) view.findViewById(R.id.special_defense));
-		statViews.put(Stats.Stat.SPEED, (EditText) view.findViewById(R.id.speed));
+		statViews.put(Stat.HP, (EditText) view.findViewById(R.id.hp));
+		statViews.put(Stat.ATTACK, (EditText) view.findViewById(R.id.attack));
+		statViews.put(Stat.DEFENSE, (EditText) view.findViewById(R.id.defense));
+		statViews.put(Stat.SPECIAL_ATTACK, (EditText) view.findViewById(R.id.special_attack));
+		statViews.put(Stat.SPECIAL_DEFENSE, (EditText) view.findViewById(R.id.special_defense));
+		statViews.put(Stat.SPEED, (EditText) view.findViewById(R.id.speed));
+		for(Stat stat : Stat.values(6)) {
+			statViews.get(stat).addTextChangedListener(new StatChangedListener(stat, tagId));
+		}
 	}
 
 	private void prepareBaseStatsViews() {
-		mBaseStatsViews.put(Stats.Stat.HP, (TextView) findViewById(R.id.team_member_base_stats_hp));
-		mBaseStatsViews.put(Stats.Stat.ATTACK,
-				(TextView) findViewById(R.id.team_member_base_stats_attack));
-		mBaseStatsViews.put(Stats.Stat.DEFENSE,
-				(TextView) findViewById(R.id.team_member_base_stats_defense));
-		mBaseStatsViews.put(Stats.Stat.SPECIAL_ATTACK,
-				(TextView) findViewById(R.id.team_member_base_stats_special_attack));
-		mBaseStatsViews.put(Stats.Stat.SPECIAL_DEFENSE,
-				(TextView) findViewById(R.id.team_member_base_stats_special_defense));
-		mBaseStatsViews
-				.put(Stats.Stat.SPEED, (TextView) findViewById(R.id.team_member_base_stats_speed));
+		mBaseStatsViews.put(Stat.HP, (TextView) findViewById(R.id.hp));
+		mBaseStatsViews.put(Stat.ATTACK, (TextView) findViewById(R.id.attack));
+		mBaseStatsViews.put(Stat.DEFENSE, (TextView) findViewById(R.id.defense));
+		mBaseStatsViews.put(Stat.SPECIAL_ATTACK, (TextView) findViewById(R.id.special_attack));
+		mBaseStatsViews.put(Stat.SPECIAL_DEFENSE, (TextView) findViewById(R.id.special_defense));
+		mBaseStatsViews.put(Stat.SPEED, (TextView) findViewById(R.id.speed));
 	}
 
 	private void prepareNatureView(Spinner natureView) {
-		natureView.setAdapter(new ArrayAdapter<>(
-				getContext(),
-				android.R.layout.simple_spinner_dropdown_item,
-				getResources().getStringArray(R.array.natures)
-		));
+		natureView.setAdapter(
+				new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+						getResources().getStringArray(R.array.natures)));
 		natureView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
 												 long l) {
-				Nature nature = Gen6Nature.get(i);
-				if(selectedNature != nature) {
-					selectedNature = nature;
-				}
-				if (mPokemon != null) {
-					mPokemon.setNature(selectedNature);
-					showPokemonInfo();
-				}
+				setNature(i);
 			}
 
 			@Override public void onNothingSelected(AdapterView<?> adapterView) {
 
 			}
 		});
+		if (mPokemon != null) {
+			natureView.setSelection(mPokemon.nature().save());
+		}
+	}
+
+	private void setNature(int index) {
+		Nature nature = NatureFactory.get(6, index);
+		if (selectedNature != nature) {
+			selectedNature = nature;
+		}
+		if (mPokemon != null) {
+			mPokemon.setNature(selectedNature);
+			showPokemonInfo();
+		}
+		for (Stat stat : Stat.values(6)) {
+			if (stat.equals(nature.increasedStat())) {
+				mBaseStatsViews.get(stat).setBackgroundColor(Color.GREEN);
+			} else if (stat.equals(nature.decreasedStat())) {
+				mBaseStatsViews.get(stat).setBackgroundColor(Color.RED);
+			} else {
+				mBaseStatsViews.get(stat).setBackgroundColor(Color.TRANSPARENT);
+			}
+		}
+	}
+
+	private void prepareAttackViews() {
+		mAttackViews.put(1, (Spinner) findViewById(R.id.attack_1));
+		mAttackViews.put(2, (Spinner) findViewById(R.id.attack_2));
+		mAttackViews.put(3, (Spinner) findViewById(R.id.attack_3));
+		mAttackViews.put(4, (Spinner) findViewById(R.id.attack_4));
+		mAttackAdapter = new AttackAdapter(getContext(), new ArrayList<Attack>());
+		for (int i = 1; i <= 4; i++) {
+			Spinner attackSpinner = mAttackViews.get(i);
+			attackSpinner.setAdapter(mAttackAdapter);
+			final int element = i;
+			attackSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override public void onItemSelected(AdapterView<?> adapterView, View view,
+													 int position, long id) {
+					mPokemon.addAttack((Attack) adapterView.getAdapter().getItem(position),
+							element);
+				}
+
+				@Override public void onNothingSelected(AdapterView<?> adapterView) {
+				}
+			});
+		}
 	}
 
 	private void prepareNameAutoComplete(AutoCompleteTextView view) {
@@ -220,13 +264,27 @@ public class PokemonCardView extends CardView {
 	}
 
 	public void showPokemonInfo() {
-		mNameView.setText(mPokemon.nickname());
-		mNameAutoCompleteView.setText(mPokemon.name());
-		mLevelView.setText("" + mPokemon.level());
-		for (Stats.Stat stat : mPokemon.baseStats().keySet()) {
+		if(!mNameView.getText().equals(mPokemon.nickname())) {
+			mNameView.setText(mPokemon.nickname());
+			mNameAutoCompleteView.setText(mPokemon.name());
+		}
+		if(!mLevelView.getText().equals(Integer.toString(mPokemon.level()))) {
+			mLevelView.setText("" + mPokemon.level());
+		}
+		updateStats();
+	}
+
+	public void updateStats() {
+		for (Stat stat : Stat.values(6)) {
 			mBaseStatsViews.get(stat).setText("" + mPokemon.baseStats().get(stat));
 			mEvsView.get(stat).setText("" + mPokemon.evs().get(stat));
 			mIvsView.get(stat).setText("" + mPokemon.ivs().get(stat));
+		}
+		updateStatValues();
+	}
+
+	private void updateStatValues() {
+		for (Stat stat : Stat.values(6)) {
 			mStatsView.get(stat).setText("" + mPokemon.currentStats().get(stat));
 		}
 	}
@@ -237,10 +295,79 @@ public class PokemonCardView extends CardView {
 
 	public void setPokemon(Pokemon pokemon) {
 		mPokemon = pokemon;
-		if(selectedNature != null) {
+		if (selectedNature != null) {
 			mPokemon.setNature(selectedNature);
 		}
-		cardHolder.updatePokemon(pokemon);
+		setupAttacks();
 		showPokemonInfo();
+		cardHolder.updatePokemon(pokemon);
+	}
+
+	private void setupAttacks() {
+		mAttackAdapter.addAll(mPokemon.attackList());
+		if (mPokemon.currentAttacks().size() > 0) {
+			for (Integer index : mPokemon.currentAttacks().keySet()) {
+				Spinner spinner = mAttackViews.get(index);
+				spinner.setSelection(mAttackAdapter.find(mPokemon.currentAttacks().get(index)));
+			}
+		}
+	}
+
+	private class AttackAdapter extends ArrayAdapter<Attack> {
+		List<Attack> mAttacks;
+
+		public AttackAdapter(Context context, List<Attack> objects) {
+			super(context, android.R.layout.simple_spinner_dropdown_item, objects);
+			mAttacks = objects;
+		}
+
+		public int find(Attack attack) {
+			int i = 0;
+			for (Attack element : mAttacks) {
+				if (attack.equals(element)) {
+					return i;
+				} else {
+					i++;
+				}
+			}
+			return 0;
+		}
+	}
+
+	private class StatChangedListener implements TextWatcher {
+		final Stat mStat;
+		final int mTagId;
+
+		public StatChangedListener(Stat stat, int tagId) {
+			this.mStat = stat;
+			this.mTagId = tagId;
+		}
+
+		@Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+
+		@Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+
+		@Override public void afterTextChanged(Editable editable) {
+			int value;
+			try {
+				value = Integer.parseInt(editable.toString());
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				return;
+			}
+			switch(mTagId) {
+				case R.string.ivs:
+					mPokemon.setIv(mStat, value);
+					updateStatValues();
+					break;
+				case R.string.evs:
+					mPokemon.setEv(mStat, value);
+					updateStatValues();
+					break;
+				case R.string.values:
+					mPokemon.setValue(mStat, value);
+					break;
+			}
+		}
 	}
 }

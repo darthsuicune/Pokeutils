@@ -1,5 +1,6 @@
 package com.suicune.poketools.model.gen6;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.suicune.poketools.model.Ability;
@@ -8,15 +9,22 @@ import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.Type;
-import com.suicune.poketools.utils.IvTools;
+import com.suicune.poketools.model.factories.AbilityFactory;
+import com.suicune.poketools.model.factories.AttackFactory;
+import com.suicune.poketools.model.factories.NatureFactory;
+import com.suicune.poketools.model.factories.StatsFactory;
+import com.suicune.poketools.model.factories.TypeFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.suicune.poketools.model.Stats.Stat;
 
 /**
  * Created by denis on 01.01.14.
@@ -43,7 +51,7 @@ public class Gen6Pokemon extends Pokemon {
 	public final boolean isHiddenAbilityAvailable;
 	public final int mExperienceGrowth;
 	public final int mBaseHappiness;
-	public final Map<Gen6Stats.Stat, Integer> mEvsEarned;
+	public final Map<Stat, Integer> mEvsEarned;
 	public final EggGroup mEggGroup1;
 	public final EggGroup mEggGroup2;
 	public final Map<Integer, Attack> mLevelAttacks;
@@ -62,7 +70,7 @@ public class Gen6Pokemon extends Pokemon {
 	 * Mutable properties
 	 */
 	public int mLevel;
-	public List<Attack> mAttackSet;
+	public Map<Integer, Attack> mAttackSet;
 	public Ability mAbility;
 	public int mHappiness = 70;
 	public Type mAdditionalType;
@@ -100,46 +108,13 @@ public class Gen6Pokemon extends Pokemon {
 		mEggMoves = new ArrayList<>();
 		mTutorMoves = new HashMap<>();
 		mTransferAttacks = new HashMap<>();
-		mAttackSet = new ArrayList<>();
+		mAttackSet = new HashMap<>();
 		mName = name;
 		mNickname = name;
 		mAttackList = attackList;
-	}
-
-	public Gen6Pokemon(Bundle bundle, Stats stats, Type type1, Type type2, Ability ability1,
-					   Ability ability2, Ability hiddenAbility, List<Attack> attackList) {
-		mLevel = bundle.getInt(ARG_LEVEL);
-		mPokedexNumber = bundle.getInt(ARG_DEX_NUMBER);
-		mForm = bundle.getInt(ARG_FORM);
-		mFormCount = bundle.getInt(ARG_FORM_COUNT);
-		mFemaleRatio = 0;
-		mMaleRatio = 0;
-		mStats = stats;
-		mType1 = type1;
-		mType2 = type2;
-		mHeight = 0;
-		mWeight = 0;
-		mClassification = "";
-		mCaptureRate = 0;
-		mBaseEggSteps = 0;
-		mAbility1 = ability1;
-		mAbility2 = ability2;
-		mAbilityHidden = hiddenAbility;
-		mExperienceGrowth = 0;
-		mBaseHappiness = 0;
-		mEvsEarned = new HashMap<>();
-		mEggGroup1 = null;
-		mEggGroup2 = null;
-		this.isHiddenAbilityAvailable = false;
-		mLevelAttacks = new HashMap<>();
-		mTmAttacks = new HashMap<>();
-		mEggMoves = new ArrayList<>();
-		mTutorMoves = new HashMap<>();
-		mTransferAttacks = new HashMap<>();
-		mAttackSet = new ArrayList<>();
-		mName = bundle.getString(ARG_NAME);
-		mNickname = bundle.getString(ARG_NICKNAME);
-		mAttackList = attackList;
+		mAbility = mAbility1;
+		mAdditionalType = TypeFactory.getDefault(6);
+		mNature = NatureFactory.getDefault(6);
 	}
 
 	@Override public int gen() { return 6; }
@@ -167,13 +142,35 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 	@Override public Pokemon addAttack(Attack attack, int position) {
-		if (position >= 0 && position <= 3) {
-			mAttackSet.add(position, attack);
+		if (position >= 1 && position <= 4) {
+			mAttackSet.put(position, attack);
 		}
 		return this;
 	}
 
-	@Override public Map<Stats.Stat, Integer> baseStats() {
+	@Override public Pokemon addAttack(Attack attack) {
+		if(mAttackSet.size() < 4) {
+			mAttackSet.put(mAttackSet.size(), attack);
+		}
+		return this;
+	}
+
+	@Override public Pokemon setIv(Stat stat, int value) {
+		mStats.ivs().put(stat, value);
+		return this;
+	}
+
+	@Override public Pokemon setEv(Stat stat, int value) {
+		mStats.evs().put(stat, value);
+		return this;
+	}
+
+	@Override public Pokemon setValue(Stat stat, int value) {
+		mStats.currentValues().put(stat, value);
+		return this;
+	}
+
+	@Override public Map<Stat, Integer> baseStats() {
 		return stats().base();
 	}
 
@@ -210,7 +207,7 @@ public class Gen6Pokemon extends Pokemon {
 		return this;
 	}
 
-	@Override public Pokemon setCurrentAttacks(List<Attack> attacks) {
+	@Override public Pokemon setCurrentAttacks(Map<Integer, Attack> attacks) {
 		mAttackSet = attacks;
 		return this;
 	}
@@ -221,14 +218,12 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 
-	@Override public Pokemon calculateIvs() {
-		IvTools.getIvs(6, this);
-		return this;
+	@Override public Map<Stat, List<Integer>> calculateIvs() {
+		return mStats.calculateIvs();
 	}
 
-	@Override public Pokemon calculateStats() {
-		mStats.updateWith(IvTools.calculateStats(this));
-		return this;
+	@Override public Stats calculateStats() {
+		return mStats.calculateStats();
 	}
 
 	@Override public int dexNumber() {
@@ -251,11 +246,12 @@ public class Gen6Pokemon extends Pokemon {
 		return mStats;
 	}
 
-	@Override public List<Type> types() {
-		List<Type> types = new ArrayList<>();
-		types.add(mType1);
-		types.add(mType2);
-		return types;
+	@Override public Type type1() {
+		return mType1;
+	}
+
+	@Override public Type type2() {
+		return mType2;
 	}
 
 	@Override public Ability ability1() {
@@ -294,6 +290,10 @@ public class Gen6Pokemon extends Pokemon {
 		return mTransferAttacks;
 	}
 
+	@Override public List<Attack> attackList() {
+		return mAttackList;
+	}
+
 	@Override public Pokemon setLevel(int level) {
 		this.mLevel = level;
 		mStats.setValuesFromStats(level);
@@ -304,7 +304,7 @@ public class Gen6Pokemon extends Pokemon {
 		return mLevel;
 	}
 
-	@Override public List<Attack> currentAttacks() {
+	@Override public Map<Integer, Attack> currentAttacks() {
 		return mAttackSet;
 	}
 
@@ -323,36 +323,53 @@ public class Gen6Pokemon extends Pokemon {
 
 	@Override public Bundle save() {
 		Bundle bundle = new Bundle();
-		bundle.putInt(ARG_GEN, gen());
 		bundle.putInt(ARG_LEVEL, level());
+		bundle.putInt(ARG_GEN, gen());
 		bundle.putInt(ARG_DEX_NUMBER, dexNumber());
 		bundle.putInt(ARG_FORM, formNumber());
-		bundle.putInt(ARG_FORM_COUNT, mFormCount);
 		bundle.putBundle(ARG_STATS, mStats.save());
-		bundle.putInt(ARG_TYPE_1, mType1.save());
-		bundle.putInt(ARG_TYPE_2, mType2.save());
 		bundle.putString(ARG_NAME, mName);
 		bundle.putString(ARG_NICKNAME, mNickname);
-		bundle.putBundle(ARG_ABILITY_1, mAbility1.save());
-		bundle.putBundle(ARG_ABILITY_2, mAbility2.save());
-		bundle.putBundle(ARG_ABILITY_HIDDEN, mAbilityHidden.save());
+		bundle.putInt(ARG_HAPPINESS, mHappiness);
+		bundle.putBundle(ARG_ABILITY, mAbility.save());
+		bundle.putInt(ARG_ADDITIONAL_TYPE, mAdditionalType.save());
+		bundle.putInt(ARG_NATURE, mNature.save());
+		int[] currentAttacks = new int[4];
+		for(int i = 1; i <= 4; i++) {
+			currentAttacks[i - 1] = (mAttackSet.get(i) != null) ? mAttackSet.get(i).id() : 0;
+		}
+		bundle.putIntArray(ARG_CURRENT_ATTACKS, currentAttacks);
 		return bundle;
 	}
 
-	@Override public Pokemon load(Bundle bundle) {
-		//TODO: do.
-		return null;
+	@Override public Pokemon load(Context context, Bundle bundle)
+			throws IOException, JSONException {
+		if(!bundle.getString(ARG_NAME).equals(bundle.getString(ARG_NICKNAME))) {
+			this.mNickname = bundle.getString(ARG_NICKNAME);
+		}
+		this.mAbility = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY));
+		int[] currentAttacks = bundle.getIntArray(ARG_CURRENT_ATTACKS);
+		for(int i = 1; i <= 4; i++) {
+			if(currentAttacks[i - 1] != 0) {
+				mAttackSet.put(i, AttackFactory.create(context, 6, currentAttacks[i - 1]));
+			}
+		}
+		this.mHappiness = bundle.getInt(ARG_HAPPINESS);
+		this.mAdditionalType = TypeFactory.createType(6, bundle.getInt(ARG_ADDITIONAL_TYPE));
+		this.mNature = NatureFactory.get(6, bundle.getInt(ARG_NATURE));
+		this.stats().updateWith(StatsFactory.fromBundle(6, bundle.getBundle(ARG_STATS)));
+		return this;
 	}
 
-	@Override public Map<Stats.Stat, Integer> evs() {
+	@Override public Map<Stat, Integer> evs() {
 		return stats().evs();
 	}
 
-	@Override public Map<Stats.Stat, Integer> ivs() {
+	@Override public Map<Stat, Integer> ivs() {
 		return stats().ivs();
 	}
 
-	@Override public Map<Stats.Stat, Integer> currentStats() {
+	@Override public Map<Stat, Integer> currentStats() {
 		return stats().currentValues();
 	}
 }

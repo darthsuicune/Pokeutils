@@ -5,10 +5,15 @@ import android.os.Bundle;
 
 import com.suicune.poketools.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import static com.suicune.poketools.model.Stats.Stat;
 
 /**
  * Created by lapuente on 17.09.14.
@@ -17,57 +22,76 @@ public abstract class Pokemon {
 	public static final String ARG_GEN = "gen";
 	public static final String ARG_DEX_NUMBER = "number";
 	public static final String ARG_FORM = "form";
-	public static final String ARG_FORM_COUNT = "form_count";
 	public static final String ARG_NICKNAME = "name";
 	public static final String ARG_NAME = "nickname";
 	public static final String ARG_LEVEL = "level";
 	public static final String ARG_ABILITIES = "abilities";
-	public static final String ARG_ABILITY_1 = "ability_1";
-	public static final String ARG_ABILITY_2 = "ability_2";
-	public static final String ARG_ABILITY_HIDDEN = "ability_hidden";
 	public static final String ARG_TYPES = "types";
-	public static final String ARG_TYPE_1 = "type_1";
-	public static final String ARG_TYPE_2 = "type_2";
 	public static final String ARG_BASE_STATS = "baseStats";
 	public static final String ARG_STATS = "stats";
 	public static final String ARG_ATTACKS = "attacks";
+	public static final String ARG_ABILITY = "ability";
+	public static final String ARG_CURRENT_ATTACKS = "currentAttacks";
+	public static final String ARG_HAPPINESS = "happiness";
+	public static final String ARG_ADDITIONAL_TYPE = "additionalType";
+	public static final String ARG_NATURE = "nature";
 
 	public static final int MIN_LEVEL = 1;
 	public static final int MAX_LEVEL = 100;
 	public static final int DEFAULT_LEVEL = MAX_LEVEL;
 
+	/**
+	 * Inmutable parameters
+	 */
 	public abstract int gen();
 	public abstract String name();
 	public abstract int dexNumber();
 	public abstract int formNumber();
-	public abstract double femaleRatio();
-	public abstract double maleRatio();
 	public abstract Stats stats();
-	public abstract List<Type> types();
+	public abstract Map<Stat, Integer> baseStats();
+	public abstract Map<Stat, Integer> evs();
+	public abstract Map<Stat, Integer> ivs();
+	public abstract Map<Stat, Integer> currentStats();
+	public abstract Type type1();
+	public abstract Type type2();
 	public abstract Ability ability1();
 	public abstract Ability ability2();
 	public abstract Ability abilityHidden();
+	public abstract List<Attack> attackList();
+
+	/**
+	 * Pending to implement for dex
+	 */
+	public abstract double femaleRatio();
+	public abstract double maleRatio();
 	public abstract boolean isHiddenAbilityAvailable();
 	public abstract Map<Integer, Attack> levelAttacks();
 	public abstract Map<String, Attack> tmAttacks();
 	public abstract List<Attack> eggAttacks();
 	public abstract Map<String, Attack> tutorAttacks();
 	public abstract Map<String, Attack> transferAttacks();
-	
+
+	/**
+	 * Mutable properties
+	 */
 	public abstract int level();
-	public abstract List<Attack> currentAttacks();
+	public abstract Map<Integer, Attack> currentAttacks();
 	public abstract Ability currentAbility();
 	public abstract String nickname();
 	public abstract int happiness();
 	public abstract Nature nature();
 	public abstract Type additionalType();
+
+	/**
+	 * Setters
+	 */
 	public abstract Pokemon setAbility(Ability ability);
 	public abstract Pokemon setNature(Nature nature);
 	public abstract Pokemon setNickname(String nickname);
 	public abstract Pokemon setHappiness(int happiness);
 	public abstract Pokemon setLevel(int level);
 	public abstract Pokemon addAdditionalType(Type type);
-	public abstract Pokemon setCurrentAttacks(List<Attack> attacks);
+	public abstract Pokemon setCurrentAttacks(Map<Integer,Attack> attacks);
 	public abstract Pokemon setCurrentAbility(Ability ability);
 
 	public abstract Pokemon setIvs(int hp, int attack, int defense, int spattack, int spdefense,
@@ -80,19 +104,25 @@ public abstract class Pokemon {
 									 int speed);
 
 	public abstract Pokemon addAttack(Attack attack, int position);
+	public abstract Pokemon addAttack(Attack attack);
 
-	public abstract Map<Stats.Stat, Integer> baseStats();
-	public abstract Pokemon calculateIvs();
-	public abstract Pokemon calculateStats();
+	public abstract Pokemon setIv(Stat stat, int value);
+	public abstract Pokemon setEv(Stat stat, int value);
+	public abstract Pokemon setValue(Stat stat, int value);
+	/**
+	 * Utility methods
+	 */
+	public abstract Map<Stat, List<Integer>> calculateIvs();
+	public abstract Stats calculateStats();
 
 	public abstract Bundle save();
-	public abstract Pokemon load(Bundle bundle);
+	public abstract Pokemon load(Context context, Bundle bundle) throws IOException, JSONException;
 
 	@Override public String toString() {
 		return "#" + dexNumber() + " - " + name();
 	}
 
-	public static String getName(Context context, int number, int form) {
+	public static String getDefaultName(Context context, int number, int form) {
 		String[] names = context.getResources().getStringArray(R.array.pokemon_names);
 
 		int i = 0;
@@ -134,8 +164,4 @@ public abstract class Pokemon {
 		}
 		return parsedNames;
 	}
-
-	public abstract Map<Stats.Stat, Integer> evs();
-	public abstract Map<Stats.Stat, Integer> ivs();
-	public abstract Map<Stats.Stat, Integer> currentStats();
 }

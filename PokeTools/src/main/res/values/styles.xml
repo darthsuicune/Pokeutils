@@ -22,7 +22,6 @@
 
     <style name="PokemonCard.StatTextView">
         <item name="android:gravity">center</item>
-        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="PokemonCard.AttackSpinner">
