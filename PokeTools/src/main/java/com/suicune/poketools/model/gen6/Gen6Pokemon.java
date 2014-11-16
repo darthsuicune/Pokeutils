@@ -156,12 +156,12 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 	@Override public Pokemon setIv(Stat stat, int value) {
-		mStats.ivs().put(stat, value);
+		mStats.putIv(stat, value);
 		return this;
 	}
 
 	@Override public Pokemon setEv(Stat stat, int value) {
-		mStats.evs().put(stat, value);
+		mStats.putEv(stat, value);
 		return this;
 	}
 

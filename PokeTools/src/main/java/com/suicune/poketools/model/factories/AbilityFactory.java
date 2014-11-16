@@ -54,4 +54,14 @@ public class AbilityFactory {
 		}
 		return abilities;
 	}
+
+	public static int find(Context context, Ability ability) {
+		String[] abilities = context.getResources().getStringArray(R.array.abilities);
+		for(int i = 0; i < abilities.length; i++) {
+			if(abilities[i].equals(ability.name())) {
+				return i;
+			}
+		}
+		return 0;
+	}
 }

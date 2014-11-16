@@ -120,15 +120,22 @@ public class Gen6Stats extends Stats {
 	@Override public Stats setValuesFromStats(int level) {
 		this.level = level;
 		for (Stat stat : Stat.values(gen())) {
-			if (stat == Stat.HP) {
-				values.put(stat, IvTools.calculateHp(gen(), level, base.get(stat), ivs.get(stat),
-						evs.get(stat)));
-			} else {
-				values.put(stat, IvTools.calculateStat(gen(), level, base.get(stat), ivs.get(stat),
-						evs.get(stat), nature.statModifier(stat)));
-			}
+			values.put(stat, calculateValue(stat, base.get(stat), ivs.get(stat), evs.get(stat)));
 		}
 		return this;
+	}
+
+	private boolean matchesValue(int value, Stat stat, int iv) {
+		return value == calculateValue(stat, base.get(stat), iv, evs.get(stat));
+
+	}
+
+	private int calculateValue(Stat stat, int base, int iv, int ev) {
+		if (stat == Stat.HP) {
+			return IvTools.calculateHp(gen(), level, base, iv, ev);
+		} else {
+			return IvTools.calculateStat(gen(), level, base, iv, ev, nature.statModifier(stat));
+		}
 	}
 
 	@Override public Stats setNature(Nature nature) {
@@ -160,20 +167,21 @@ public class Gen6Stats extends Stats {
 		return result;
 	}
 
-	private boolean matchesValue(int value, Stat stat, int iv) {
-		if (stat == Stat.HP) {
-			return value ==
-				   IvTools.calculateHp(gen(), level, base().get(stat), iv, evs().get(stat));
-		} else {
-			return value ==
-				   IvTools.calculateStat(gen(), level, base().get(stat), iv, evs().get(stat),
-						   nature.statModifier(stat));
-		}
-	}
-
 
 	@Override public Stats calculateStats() {
 		return setValuesFromStats(this.level);
+	}
+
+	@Override public Stats putIv(Stat stat, int value) {
+		ivs.put(stat, value);
+		values.put(stat, calculateValue(stat, base.get(stat), value, evs.get(stat)));
+		return this;
+	}
+
+	@Override public Stats putEv(Stat stat, int value) {
+		evs.put(stat, value);
+		values.put(stat, calculateValue(stat, base.get(stat), ivs.get(stat), value));
+		return this;
 	}
 
 	private int[] toArray(Map<Stat, Integer> map) {

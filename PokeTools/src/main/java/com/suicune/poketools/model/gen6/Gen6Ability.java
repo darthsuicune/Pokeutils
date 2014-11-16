@@ -16,6 +16,11 @@ public class Gen6Ability implements Ability {
 		mDescription = description;
 		mCode = code;
 	}
+
+	@Override public int id() {
+		return mCode;
+	}
+
 	@Override public String name() {
 		return mName;
 	}

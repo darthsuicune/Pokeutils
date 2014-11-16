@@ -32,7 +32,7 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/name"
-                    android:layout_weight="6"
+                    android:layout_weight="3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
@@ -48,9 +48,15 @@
                     android:singleLine="true"/>
 
                 <Spinner
-                    android:id="@+id/nature"
+                    android:id="@+id/ability"
                     android:layout_width="0dp"
                     android:layout_weight="3"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:id="@+id/nature"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 

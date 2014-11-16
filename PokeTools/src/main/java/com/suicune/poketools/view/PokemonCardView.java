@@ -18,9 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
+import com.suicune.poketools.model.factories.AbilityFactory;
 import com.suicune.poketools.model.factories.NatureFactory;
 import com.suicune.poketools.model.factories.PokemonFactory;
 
@@ -28,6 +30,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,11 +51,13 @@ public class PokemonCardView extends CardView {
 	private AutoCompleteTextView mNameAutoCompleteView;
 	private TextView mNameView;
 	private EditText mLevelView;
+	private Spinner mAbilityView;
 	private View mCardDetailsView;
 	public Pokemon mPokemon;
 	private Nature selectedNature;
 	private boolean isShown = true;
 	private AttackAdapter mAttackAdapter;
+	private Ability selectedAbility;
 
 	public PokemonCardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -77,10 +82,12 @@ public class PokemonCardView extends CardView {
 		mLevelView = (EditText) findViewById(R.id.level);
 		mNameView = (TextView) findViewById(R.id.pokemon_name_title);
 		mNameAutoCompleteView = (AutoCompleteTextView) findViewById(R.id.name);
+		mAbilityView = (Spinner) findViewById(R.id.ability);
 
 		prepareHeaderView();
 		prepareLevelView();
 		prepareBaseStatsViews();
+		prepareAbilitySpinner();
 		prepareStatsView(mIvsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
 		prepareStatsView(mEvsView, findViewById(R.id.pokemon_evs), R.string.evs);
 		prepareStatsView(mStatsView, findViewById(R.id.pokemon_stats), R.string.values);
@@ -136,7 +143,7 @@ public class PokemonCardView extends CardView {
 		statViews.put(Stat.SPECIAL_ATTACK, (EditText) view.findViewById(R.id.special_attack));
 		statViews.put(Stat.SPECIAL_DEFENSE, (EditText) view.findViewById(R.id.special_defense));
 		statViews.put(Stat.SPEED, (EditText) view.findViewById(R.id.speed));
-		for(Stat stat : Stat.values(6)) {
+		for (Stat stat : Stat.values(6)) {
 			statViews.get(stat).addTextChangedListener(new StatChangedListener(stat, tagId));
 		}
 	}
@@ -148,6 +155,27 @@ public class PokemonCardView extends CardView {
 		mBaseStatsViews.put(Stat.SPECIAL_ATTACK, (TextView) findViewById(R.id.special_attack));
 		mBaseStatsViews.put(Stat.SPECIAL_DEFENSE, (TextView) findViewById(R.id.special_defense));
 		mBaseStatsViews.put(Stat.SPEED, (TextView) findViewById(R.id.speed));
+	}
+
+	private void prepareAbilitySpinner() {
+		List<String> abilityList = Arrays.asList(getResources().getStringArray(R.array.abilities));
+		mAbilityView.setAdapter(
+				new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+						abilityList));
+		mAbilityView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
+												 long l) {
+				setAbility(i);
+			}
+
+			@Override public void onNothingSelected(AdapterView<?> adapterView) {
+
+			}
+		});
+		if(mPokemon != null) {
+			mAbilityView.setSelection(mPokemon.currentAbility().id());
+		}
+
 	}
 
 	private void prepareNatureView(Spinner natureView) {
@@ -186,6 +214,16 @@ public class PokemonCardView extends CardView {
 			} else {
 				mBaseStatsViews.get(stat).setBackgroundColor(Color.TRANSPARENT);
 			}
+		}
+	}
+
+	private void setAbility(int index) {
+		Ability ability = AbilityFactory.createAbility(getContext(), 6, index);
+		if (selectedAbility != ability) {
+			selectedAbility = ability;
+		}
+		if (mPokemon != null) {
+			mPokemon.setAbility(selectedAbility);
 		}
 	}
 
@@ -264,11 +302,11 @@ public class PokemonCardView extends CardView {
 	}
 
 	public void showPokemonInfo() {
-		if(!mNameView.getText().equals(mPokemon.nickname())) {
+		if (!mNameView.getText().equals(mPokemon.nickname())) {
 			mNameView.setText(mPokemon.nickname());
 			mNameAutoCompleteView.setText(mPokemon.name());
 		}
-		if(!mLevelView.getText().equals(Integer.toString(mPokemon.level()))) {
+		if (!mLevelView.getText().toString().equals(Integer.toString(mPokemon.level()))) {
 			mLevelView.setText("" + mPokemon.level());
 		}
 		updateStats();
@@ -298,6 +336,8 @@ public class PokemonCardView extends CardView {
 		if (selectedNature != null) {
 			mPokemon.setNature(selectedNature);
 		}
+		mPokemon.setAbility(mPokemon.ability1());
+		mAbilityView.setSelection(AbilityFactory.find(getContext(), mPokemon.currentAbility()));
 		setupAttacks();
 		showPokemonInfo();
 		cardHolder.updatePokemon(pokemon);
@@ -343,9 +383,11 @@ public class PokemonCardView extends CardView {
 			this.mTagId = tagId;
 		}
 
-		@Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+		@Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+		}
 
-		@Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+		@Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+		}
 
 		@Override public void afterTextChanged(Editable editable) {
 			int value;
@@ -355,7 +397,7 @@ public class PokemonCardView extends CardView {
 				e.printStackTrace();
 				return;
 			}
-			switch(mTagId) {
+			switch (mTagId) {
 				case R.string.ivs:
 					mPokemon.setIv(mStat, value);
 					updateStatValues();

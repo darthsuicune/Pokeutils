@@ -56,6 +56,9 @@ public abstract class Stats {
 	public abstract Map<Stat, List<Integer>> calculateIvs();
 	public abstract Stats calculateStats();
 
+	public abstract Stats putIv(Stat stat, int value);
+	public abstract Stats putEv(Stat stat, int value);
+
 	public enum Stat {
 		HP,
 		ATTACK,
