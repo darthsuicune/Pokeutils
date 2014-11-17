@@ -25,7 +25,10 @@ public class AbilityFactory {
 	private static Ability createGen6Ability(Context context, int abilityCode) {
 		String[] abilities = context.getResources().getStringArray(R.array.abilities);
 		String[] descriptions = context.getResources().getStringArray(R.array.ability_descriptions);
-		return new Gen6Ability(abilities[abilityCode], descriptions[abilityCode], abilityCode);
+		String[] battleDescriptions =
+				context.getResources().getStringArray(R.array.ability_battle_descriptions);
+		return new Gen6Ability(abilities[abilityCode], descriptions[abilityCode], abilityCode,
+				battleDescriptions[abilityCode]);
 	}
 
 	public static Ability fromBundle(int gen, Bundle bundle) {
@@ -33,7 +36,8 @@ public class AbilityFactory {
 			case 6:
 			default:
 				return new Gen6Ability(bundle.getString(Ability.ARG_NAME),
-						bundle.getString(Ability.ARG_DESCRIPTION), bundle.getInt(Ability.ARG_CODE));
+						bundle.getString(Ability.ARG_DESCRIPTION), bundle.getInt(Ability.ARG_CODE),
+						bundle.getString(Ability.ARG_BATTLE_DESCRIPTION));
 		}
 	}
 
@@ -57,8 +61,8 @@ public class AbilityFactory {
 
 	public static int find(Context context, Ability ability) {
 		String[] abilities = context.getResources().getStringArray(R.array.abilities);
-		for(int i = 0; i < abilities.length; i++) {
-			if(abilities[i].equals(ability.name())) {
+		for (int i = 0; i < abilities.length; i++) {
+			if (abilities[i].equals(ability.name())) {
 				return i;
 			}
 		}

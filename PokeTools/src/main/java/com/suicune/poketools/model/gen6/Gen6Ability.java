@@ -10,11 +10,13 @@ import com.suicune.poketools.model.Ability;
 public class Gen6Ability implements Ability {
 	public String mName;
 	public String mDescription;
+	public String mBattleDescription;
 	public int mCode;
-	public Gen6Ability(String name, String description, int code) {
+	public Gen6Ability(String name, String description, int code, String battleDescription) {
 		mName = name;
 		mDescription = description;
 		mCode = code;
+		mBattleDescription = battleDescription;
 	}
 
 	@Override public int id() {
@@ -29,10 +31,15 @@ public class Gen6Ability implements Ability {
 		return mDescription;
 	}
 
+	@Override public String battleDescription() {
+		return mBattleDescription;
+	}
+
 	@Override public Bundle save() {
 		Bundle bundle = new Bundle();
 		bundle.putString(ARG_NAME, mName);
 		bundle.putString(ARG_DESCRIPTION, mDescription);
+		bundle.putString(ARG_BATTLE_DESCRIPTION, mBattleDescription);
 		bundle.putInt(ARG_CODE, mCode);
 		return bundle;
 	}

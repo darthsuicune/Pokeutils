@@ -26,13 +26,13 @@ public interface Attack {
 	public String toString();
 
 	public enum Category {
-		PHYSICAL, SPECIAL, OTHER;
+		OTHER, PHYSICAL, SPECIAL;
 
 		public static Category fromClass(int attackClass) {
 			switch(attackClass) {
-				case 0:
-					return PHYSICAL;
 				case 1:
+					return PHYSICAL;
+				case 2:
 					return SPECIAL;
 				default:
 					return OTHER;

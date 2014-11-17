@@ -1,0 +1,99 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dex number:</strong>
+  <%= @pokemon.dex_number %>
+</p>
+
+<p>
+  <strong>Form:</strong>
+  <%= @pokemon.form %>
+</p>
+
+<p>
+  <strong>Egg group 1:</strong>
+  <%= @pokemon.egg_group_1 %>
+</p>
+
+<p>
+  <strong>Egg group 2:</strong>
+  <%= @pokemon.egg_group_2 %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @pokemon.height %>
+</p>
+
+<p>
+  <strong>Pokemon name:</strong>
+  <%= @pokemon.pokemon_name.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @pokemon.weight %>
+</p>
+
+<p>
+  <strong>Ability 1:</strong>
+  <%= @pokemon.ability_1 %>
+</p>
+
+<p>
+  <strong>Ability 2:</strong>
+  <%= @pokemon.ability_2 %>
+</p>
+
+<p>
+  <strong>Ability 3:</strong>
+  <%= @pokemon.ability_3 %>
+</p>
+
+<p>
+  <strong>Min level:</strong>
+  <%= @pokemon.min_level %>
+</p>
+
+<p>
+  <strong>Base hp:</strong>
+  <%= @pokemon.base_hp %>
+</p>
+
+<p>
+  <strong>Base attack:</strong>
+  <%= @pokemon.base_attack %>
+</p>
+
+<p>
+  <strong>Base defense:</strong>
+  <%= @pokemon.base_defense %>
+</p>
+
+<p>
+  <strong>Base sp attack:</strong>
+  <%= @pokemon.base_sp_attack %>
+</p>
+
+<p>
+  <strong>Base sp defense:</strong>
+  <%= @pokemon.base_sp_defense %>
+</p>
+
+<p>
+  <strong>Base speed:</strong>
+  <%= @pokemon.base_speed %>
+</p>
+
+<p>
+  <strong>Type 1:</strong>
+  <%= @pokemon.type_1 %>
+</p>
+
+<p>
+  <strong>Type 2:</strong>
+  <%= @pokemon.type_2 %>
+</p>
+
+<%= link_to 'Edit', edit_pokemon_path(@pokemon) %> |
+<%= link_to 'Back', pokemons_path %>

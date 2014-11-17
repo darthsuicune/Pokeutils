@@ -1,0 +1,2 @@
+class Berry < Item
+end

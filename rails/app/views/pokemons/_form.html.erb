@@ -1,0 +1,93 @@
+<%= form_for(@pokemon) do |f| %>
+  <% if @pokemon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pokemon.errors.count, "error") %> prohibited this pokemon from being saved:</h2>
+
+      <ul>
+      <% @pokemon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dex_number %><br>
+    <%= f.number_field :dex_number %>
+  </div>
+  <div class="field">
+    <%= f.label :form %><br>
+    <%= f.number_field :form %>
+  </div>
+  <div class="field">
+    <%= f.label :egg_group_1 %><br>
+    <%= f.number_field :egg_group_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :egg_group_2 %><br>
+    <%= f.number_field :egg_group_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :pokemon_name_id %><br>
+    <%= f.number_field :pokemon_name_id %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :ability_1 %><br>
+    <%= f.number_field :ability_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :ability_2 %><br>
+    <%= f.number_field :ability_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :ability_3 %><br>
+    <%= f.number_field :ability_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :min_level %><br>
+    <%= f.number_field :min_level %>
+  </div>
+  <div class="field">
+    <%= f.label :base_hp %><br>
+    <%= f.number_field :base_hp %>
+  </div>
+  <div class="field">
+    <%= f.label :base_attack %><br>
+    <%= f.number_field :base_attack %>
+  </div>
+  <div class="field">
+    <%= f.label :base_defense %><br>
+    <%= f.number_field :base_defense %>
+  </div>
+  <div class="field">
+    <%= f.label :base_sp_attack %><br>
+    <%= f.number_field :base_sp_attack %>
+  </div>
+  <div class="field">
+    <%= f.label :base_sp_defense %><br>
+    <%= f.number_field :base_sp_defense %>
+  </div>
+  <div class="field">
+    <%= f.label :base_speed %><br>
+    <%= f.number_field :base_speed %>
+  </div>
+  <div class="field">
+    <%= f.label :type_1 %><br>
+    <%= f.number_field :type_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :type_2 %><br>
+    <%= f.number_field :type_2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
