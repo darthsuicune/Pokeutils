@@ -1,3 +1,6 @@
+#run with:
+# bundle exec rails runner "eval(File.read 'readDb.rb')"
+
 base = "db/pokemon"
 abilities_folder = "#{base}/abilities"
 items_folder = "#{base}/items"
@@ -255,7 +258,6 @@ def process_pokes(folder)
 		f.each_line do |line|
 			poke_id, value = line.split(" ", 2)
 			dex,form = poke_id.split(":")
-			value.
 			PokemonName.create(dex_number: dex, form_number: form, name: value.chomp) if PokemonName.where(dex_number: dex, form_number: form).empty?
 			Pokemon.create(dex_number: dex, form: form, pokemon_name_id: name.id) if Pokemon.where(dex_number: dex, form: form).empty?
 		end
