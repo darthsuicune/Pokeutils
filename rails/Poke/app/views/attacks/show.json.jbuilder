@@ -1,0 +1,1 @@
+json.extract! @attack, :accuracy, :code, :accuracy, :category_code, :caused_effect, :crit_rate, :damage_class, :effect_chance, :flinch_chance, :healing, :max_turns, :min_turns, :power, :pp, :priority, :recoil, :status, :attack_type

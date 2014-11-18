@@ -1,59 +1,63 @@
 <h1>Listing pokemons</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Dex number</th>
-      <th>Form</th>
-      <th>Egg group 1</th>
-      <th>Egg group 2</th>
-      <th>Height</th>
-      <th>Pokemon name</th>
-      <th>Weight</th>
-      <th>Ability 1</th>
-      <th>Ability 2</th>
-      <th>Ability 3</th>
-      <th>Min level</th>
-      <th>Base hp</th>
-      <th>Base attack</th>
-      <th>Base defense</th>
-      <th>Base sp attack</th>
-      <th>Base sp defense</th>
-      <th>Base speed</th>
-      <th>Type 1</th>
-      <th>Type 2</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Dex number</th>
+			<th>Form</th>
+			<th>Egg group 1</th>
+			<th>Egg group 2</th>
+			<th>Height</th>
+			<th>Pokemon name</th>
+			<th>Weight</th>
+			<th>Ability 1</th>
+			<th>Ability 2</th>
+			<th>Ability 3</th>
+			<th>Min level</th>
+			<th>Base hp</th>
+			<th>Base attack</th>
+			<th>Base defense</th>
+			<th>Base sp attack</th>
+			<th>Base sp defense</th>
+			<th>Base speed</th>
+			<th>Type 1</th>
+			<th>Type 2</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @pokemons.each do |pokemon| %>
-      <tr>
-        <td><%= pokemon.dex_number %></td>
-        <td><%= pokemon.form %></td>
-        <td><%= EggGroup.find(pokemon.egg_group_1).name if pokemon.egg_group_1 %></td>
-        <td><%= EggGroup.find(pokemon.egg_group_2).name if pokemon.egg_group_2 %></td>
-        <td><%= pokemon.height %></td>
-        <td><%= pokemon.pokemon_name.name %></td>
-        <td><%= pokemon.weight %></td>
-        <td><%= Ability.find_by_code(pokemon.ability_1).name unless pokemon.ability_1.nil?%></td>
-        <td><%= Ability.find_by_code(pokemon.ability_2).name unless pokemon.ability_2.nil? %></td>
-        <td><%= Ability.find_by_code(pokemon.ability_3).name unless pokemon.ability_3.nil? %></td>
-        <td><%= pokemon.min_level %></td>
-        <td><%= pokemon.base_hp %></td>
-        <td><%= pokemon.base_attack %></td>
-        <td><%= pokemon.base_defense %></td>
-        <td><%= pokemon.base_sp_attack %></td>
-        <td><%= pokemon.base_sp_defense %></td>
-        <td><%= pokemon.base_speed %></td>
-        <td><%= PokemonType.find_by_code(pokemon.type_1).name unless pokemon.type_1.nil?%></td>
-        <td><%= PokemonType.find_by_code(pokemon.type_2).name unless pokemon.type_2.nil? %></td>
-        <td><%= link_to 'Show', pokemon %></td>
-        <td><%= link_to 'Edit', edit_pokemon_path(pokemon) %></td>
-        <td><%= link_to 'Destroy', pokemon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @pokemons.each do |pokemon| %>
+			<tr>
+				<td><%= pokemon.dex_number %></td>
+				<td><%= pokemon.form %></td>
+				<td><%= EggGroup.find(pokemon.egg_group_1).name if pokemon.egg_group_1 %></td>
+				<td><%= EggGroup.find(pokemon.egg_group_2).name if pokemon.egg_group_2 %></td>
+				<td><%= pokemon.height %></td>
+				<td><%= pokemon.pokemon_name.name %></td>
+				<td><%= pokemon.weight %></td>
+				<td><%= Ability.find_by_code(pokemon.ability_1).name unless pokemon.ability_1.nil?%></td>
+				<td><%= Ability.find_by_code(pokemon.ability_2).name unless pokemon.ability_2.nil? %></td>
+				<td><%= Ability.find_by_code(pokemon.ability_3).name unless pokemon.ability_3.nil? %></td>
+				<td><%= pokemon.min_level %></td>
+				<td><%= pokemon.base_hp %></td>
+				<td><%= pokemon.base_attack %></td>
+				<td><%= pokemon.base_defense %></td>
+				<td><%= pokemon.base_sp_attack %></td>
+				<td><%= pokemon.base_sp_defense %></td>
+				<td><%= pokemon.base_speed %></td>
+				<td><%= PokemonType.find_by_code(pokemon.type_1).name unless pokemon.type_1.nil?%></td>
+				<td><%= PokemonType.find_by_code(pokemon.type_2).name unless pokemon.type_2.nil? %></td>
+				<% if pokemon.form > 0 %>
+					<td><%= link_to 'Show', pokemon_path(pokemon.dex_number, form: pokemon.form ) %></td>
+				<% else %>
+					<td><%= link_to 'Show', pokemon_path(pokemon.dex_number) %></td>
+				<% end %>
+				<td><%= link_to 'Edit', edit_pokemon_path(pokemon) %></td>
+				<td><%= link_to 'Destroy', pokemon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>

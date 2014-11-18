@@ -3,21 +3,29 @@ class Pokemon < ActiveRecord::Base
 	
 	belongs_to :pokemon_name
 	has_many :pokemon_attacks
-	has_many :attacks, through: :pokemon_attacks, foreign_key: "attack_code"
+	has_many :attack_codes, through: :pokemon_attacks, source: "attack"
 	
 	def name
 		pokemon_name.name
 	end
 	
-	def attack_codes
+	def attacks
 		result = []
-		self.attacks.each do |att|
+		self.attack_codes.each do |att|
 			result << att.code
 		end
 		result
 	end
 	
+	def abilities
+		[self.ability_1, self.ability_2, self.ability_3]
+	end
+	
 	def baseStats
 		[self.base_hp, self.base_attack, self.base_defense, self.base_sp_attack, self.base_sp_defense, self.base_speed]
+	end
+	
+	def types
+		[self.type_1, self.type_2]
 	end
 end

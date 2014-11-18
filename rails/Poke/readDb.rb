@@ -83,14 +83,6 @@ def process_moves(folder)
 			a.save
 		end
 	end
-	File.open "#{folder}/move_message.txt", "r" do |f|
-		f.each_line do |line|
-			code, value = line.split(" ", 2)
-			a = Attack.find_by_code(code)
-			a.message = value unless a.message
-			a.save
-		end
-	end
 	folder = "#{folder}/6G"
 	File.open "#{folder}/accuracy.txt", "r" do |f|
 		f.each_line do |line|
@@ -258,7 +250,7 @@ def process_pokes(folder)
 		f.each_line do |line|
 			poke_id, value = line.split(" ", 2)
 			dex,form = poke_id.split(":")
-			PokemonName.create(dex_number: dex, form_number: form, name: value.chomp) if PokemonName.where(dex_number: dex, form_number: form).empty?
+			name = PokemonName.create(dex_number: dex, form_number: form, name: value.chomp) if PokemonName.where(dex_number: dex, form_number: form).empty?
 			Pokemon.create(dex_number: dex, form: form, pokemon_name_id: name.id) if Pokemon.where(dex_number: dex, form: form).empty?
 		end
 	end
@@ -470,7 +462,8 @@ def fill_gaps
 		poke.weight = original.weight unless poke.weight
 		poke.ability_1 = original.ability_1 unless poke.ability_1
 		poke.ability_2 = original.ability_2 unless poke.ability_2
-		poke.ability_3 = original.ability_3 unless poke.ability_3
+		poke.ability_3 = original.ability_3 unless poke.ability_3 
+		poke.ability_2 = poke.ability_3 = 0 if poke.name["Mega "]
 		poke.min_level = original.min_level unless poke.min_level
 		poke.type_1 = original.type_1 unless poke.type_1
 		poke.type_2 = original.type_2 unless poke.type_2
