@@ -1,1 +1,1 @@
-{id: 443, attackgeneration: 5, attacktype: 9, attackpriority: 0, attackpp: 20, attackpower: 60, attackclass: 1, attackaccuracy: 101}
+{id: 443, attackgeneration: 5, attack_type: 9, priority: 0, pp: 20, power: 60, damage_class: 1, accuracy: 101}

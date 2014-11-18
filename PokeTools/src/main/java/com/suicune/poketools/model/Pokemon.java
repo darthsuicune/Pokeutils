@@ -20,8 +20,13 @@ import static com.suicune.poketools.model.Stats.Stat;
  */
 public abstract class Pokemon {
 	public static final String ARG_GEN = "gen";
-	public static final String ARG_DEX_NUMBER = "number";
+	public static final String ARG_DEX_NUMBER = "dex_number";
 	public static final String ARG_FORM = "form";
+	public static final String ARG_EGG_GROUP_1 = "egg_group_1";
+	public static final String ARG_EGG_GROUP_2 = "egg_group_2";
+	public static final String ARG_HEIGHT = "height";
+	public static final String ARG_WEIGHT = "weight";
+	public static final String ARG_MIN_LEVEL = "min_level";
 	public static final String ARG_NICKNAME = "name";
 	public static final String ARG_NAME = "nickname";
 	public static final String ARG_LEVEL = "level";
@@ -58,6 +63,11 @@ public abstract class Pokemon {
 	public abstract Ability ability2();
 	public abstract Ability abilityHidden();
 	public abstract List<Attack> attackList();
+	public abstract EggGroup eggGroup1();
+	public abstract EggGroup eggGroup2();
+	public abstract double height();
+	public abstract double weight();
+	public abstract int minLevel();
 
 	/**
 	 * Pending to implement for dex

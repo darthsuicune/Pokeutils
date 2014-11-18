@@ -4,22 +4,22 @@
         <item>"Missingno"</item>
         <item>"Bulbasaur"</item>
         <item>"Ivysaur"</item>
-        <item>"Venusaur"</item>
+        <item>"Venusaur;Mega Venusaur"</item>
         <item>"Charmander"</item>
         <item>"Charmeleon"</item>
-        <item>"Charizard"</item>
+        <item>"Charizard;Mega Charizard X;Mega Charizard Y"</item>
         <item>"Squirtle"</item>
         <item>"Wartortle"</item>
-        <item>"Blastoise"</item>
+        <item>"Blastoise;Mega Blastoise"</item>
         <item>"Caterpie"</item>
         <item>"Metapod"</item>
         <item>"Butterfree"</item>
         <item>"Weedle"</item>
         <item>"Kakuna"</item>
-        <item>"Beedrill"</item>
+        <item>"Beedrill;Mega Beedrill"</item>
         <item>"Pidgey"</item>
         <item>"Pidgeotto"</item>
-        <item>"Pidgeot"</item>
+        <item>"Pidgeot;Mega Pidgeot"</item>
         <item>"Rattata"</item>
         <item>"Raticate"</item>
         <item>"Spearow"</item>
@@ -66,7 +66,7 @@
         <item>"Poliwrath"</item>
         <item>"Abra"</item>
         <item>"Kadabra"</item>
-        <item>"Alakazam"</item>
+        <item>"Alakazam;Mega Alakazam"</item>
         <item>"Machop"</item>
         <item>"Machoke"</item>
         <item>"Machamp"</item>
@@ -81,7 +81,7 @@
         <item>"Ponyta"</item>
         <item>"Rapidash"</item>
         <item>"Slowpoke"</item>
-        <item>"Slowbro"</item>
+        <item>"Slowbro;Mega Slowbro"</item>
         <item>"Magnemite"</item>
         <item>"Magneton"</item>
         <item>"Farfetch\'d"</item>
@@ -95,7 +95,7 @@
         <item>"Cloyster"</item>
         <item>"Gastly"</item>
         <item>"Haunter"</item>
-        <item>"Gengar"</item>
+        <item>"Gengar;Mega Gengar"</item>
         <item>"Onix"</item>
         <item>"Drowzee"</item>
         <item>"Hypno"</item>
@@ -116,7 +116,7 @@
         <item>"Rhydon"</item>
         <item>"Chansey"</item>
         <item>"Tangela"</item>
-        <item>"Kangaskhan"</item>
+        <item>"Kangaskhan;Mega Kangaskhan"</item>
         <item>"Horsea"</item>
         <item>"Seadra"</item>
         <item>"Goldeen"</item>
@@ -128,10 +128,10 @@
         <item>"Jynx"</item>
         <item>"Electabuzz"</item>
         <item>"Magmar"</item>
-        <item>"Pinsir"</item>
+        <item>"Pinsir;Mega Pinsir"</item>
         <item>"Tauros"</item>
         <item>"Magikarp"</item>
-        <item>"Gyarados"</item>
+        <item>"Gyarados;Mega Gyarados"</item>
         <item>"Lapras"</item>
         <item>"Ditto"</item>
         <item>"Eevee"</item>
@@ -143,7 +143,7 @@
         <item>"Omastar"</item>
         <item>"Kabuto"</item>
         <item>"Kabutops"</item>
-        <item>"Aerodactyl"</item>
+        <item>"Aerodactyl;Mega Aerodactyl"</item>
         <item>"Snorlax"</item>
         <item>"Articuno"</item>
         <item>"Zapdos"</item>
@@ -151,7 +151,7 @@
         <item>"Dratini"</item>
         <item>"Dragonair"</item>
         <item>"Dragonite"</item>
-        <item>"Mewtwo"</item>
+        <item>"Mewtwo;Mega Mewtwo X;Mega Mewtwo Y"</item>
         <item>"Mew"</item>
         <item>"Chikorita"</item>
         <item>"Bayleef"</item>
@@ -182,7 +182,7 @@
         <item>"Xatu"</item>
         <item>"Mareep"</item>
         <item>"Flaaffy"</item>
-        <item>"Ampharos"</item>
+        <item>"Ampharos;Mega Ampharos"</item>
         <item>"Bellossom"</item>
         <item>"Marill"</item>
         <item>"Azumarill"</item>
@@ -209,13 +209,13 @@
         <item>"Forretress"</item>
         <item>"Dunsparce"</item>
         <item>"Gligar"</item>
-        <item>"Steelix"</item>
+        <item>"Steelix;Mega Steelix"</item>
         <item>"Snubbull"</item>
         <item>"Granbull"</item>
         <item>"Qwilfish"</item>
-        <item>"Scizor"</item>
+        <item>"Scizor;Mega Scizor"</item>
         <item>"Shuckle"</item>
-        <item>"Heracross"</item>
+        <item>"Heracross;Mega Heracross"</item>
         <item>"Sneasel"</item>
         <item>"Teddiursa"</item>
         <item>"Ursaring"</item>
@@ -230,7 +230,7 @@
         <item>"Mantine"</item>
         <item>"Skarmory"</item>
         <item>"Houndour"</item>
-        <item>"Houndoom"</item>
+        <item>"Houndoom;Mega Houndoom"</item>
         <item>"Kingdra"</item>
         <item>"Phanpy"</item>
         <item>"Donphan"</item>
@@ -249,19 +249,19 @@
         <item>"Suicune"</item>
         <item>"Larvitar"</item>
         <item>"Pupitar"</item>
-        <item>"Tyranitar"</item>
+        <item>"Tyranitar;Mega Tyranitar"</item>
         <item>"Lugia"</item>
         <item>"Ho-Oh"</item>
         <item>"Celebi"</item>
         <item>"Treecko"</item>
         <item>"Grovyle"</item>
-        <item>"Sceptile"</item>
+        <item>"Sceptile;Mega Sceptile"</item>
         <item>"Torchic"</item>
         <item>"Combusken"</item>
-        <item>"Blaziken"</item>
+        <item>"Blaziken;Mega Blaziken"</item>
         <item>"Mudkip"</item>
         <item>"Marshtomp"</item>
-        <item>"Swampert"</item>
+        <item>"Swampert;Mega Swampert"</item>
         <item>"Poochyena"</item>
         <item>"Mightyena"</item>
         <item>"Zigzagoon"</item>
@@ -283,7 +283,7 @@
         <item>"Pelipper"</item>
         <item>"Ralts"</item>
         <item>"Kirlia"</item>
-        <item>"Gardevoir"</item>
+        <item>"Gardevoir;Mega Gardevoir"</item>
         <item>"Surskit"</item>
         <item>"Masquerain"</item>
         <item>"Shroomish"</item>
@@ -303,15 +303,15 @@
         <item>"Nosepass"</item>
         <item>"Skitty"</item>
         <item>"Delcatty"</item>
-        <item>"Sableye"</item>
-        <item>"Mawile"</item>
+        <item>"Sableye;Mega Sableye"</item>
+        <item>"Mawile;Mega Mawile"</item>
         <item>"Aron"</item>
         <item>"Lairon"</item>
-        <item>"Aggron"</item>
+        <item>"Aggron;Mega Aggron"</item>
         <item>"Meditite"</item>
-        <item>"Medicham"</item>
+        <item>"Medicham;Mega Medicham"</item>
         <item>"Electrike"</item>
-        <item>"Manectric"</item>
+        <item>"Manectric;Mega Manectric"</item>
         <item>"Plusle"</item>
         <item>"Minun"</item>
         <item>"Volbeat"</item>
@@ -320,11 +320,11 @@
         <item>"Gulpin"</item>
         <item>"Swalot"</item>
         <item>"Carvanha"</item>
-        <item>"Sharpedo"</item>
+        <item>"Sharpedo;Mega Sharpedo"</item>
         <item>"Wailmer"</item>
         <item>"Wailord"</item>
         <item>"Numel"</item>
-        <item>"Camerupt"</item>
+        <item>"Camerupt;Mega Camerupt"</item>
         <item>"Torkoal"</item>
         <item>"Spoink"</item>
         <item>"Grumpig"</item>
@@ -335,7 +335,7 @@
         <item>"Cacnea"</item>
         <item>"Cacturne"</item>
         <item>"Swablu"</item>
-        <item>"Altaria"</item>
+        <item>"Altaria;Mega Altaria"</item>
         <item>"Zangoose"</item>
         <item>"Seviper"</item>
         <item>"Lunatone"</item>
@@ -355,15 +355,15 @@
         <item>"Castform;Castform-Snowy;Castform-Rainy;Castform-Sunny"</item>
         <item>"Kecleon"</item>
         <item>"Shuppet"</item>
-        <item>"Banette"</item>
+        <item>"Banette;Mega Banette"</item>
         <item>"Duskull"</item>
         <item>"Dusclops"</item>
         <item>"Tropius"</item>
         <item>"Chimecho"</item>
-        <item>"Absol"</item>
+        <item>"Absol;Mega Absol"</item>
         <item>"Wynaut"</item>
         <item>"Snorunt"</item>
-        <item>"Glalie"</item>
+        <item>"GlalieMega Glalie"</item>
         <item>"Spheal"</item>
         <item>"Sealeo"</item>
         <item>"Walrein"</item>
@@ -374,18 +374,18 @@
         <item>"Luvdisc"</item>
         <item>"Bagon"</item>
         <item>"Shelgon"</item>
-        <item>"Salamence"</item>
+        <item>"Salamence;Mega Salamence"</item>
         <item>"Beldum"</item>
         <item>"Metang"</item>
-        <item>"Metagross"</item>
+        <item>"Metagross;Mega Metagross"</item>
         <item>"Regirock"</item>
         <item>"Regice"</item>
         <item>"Registeel"</item>
-        <item>"Latias"</item>
-        <item>"Latios"</item>
-        <item>"Kyogre"</item>
-        <item>"Groudon"</item>
-        <item>"Rayquaza"</item>
+        <item>"Latias;Mega Latias"</item>
+        <item>"Latios;Mega Latios"</item>
+        <item>"Kyogre;Primal Kyogre"</item>
+        <item>"Groudon;Primal Groudon"</item>
+        <item>"Rayquaza;Mega Rayquaza"</item>
         <item>"Jirachi"</item>
         <item>"Deoxys;Deoxys-Attack;Deoxys-Defense;Deoxys-Speed"</item>
         <item>"Turtwig"</item>
@@ -429,7 +429,7 @@
         <item>"Drifloon"</item>
         <item>"Drifblim"</item>
         <item>"Buneary"</item>
-        <item>"Lopunny"</item>
+        <item>"Lopunny;Mega Lopunny"</item>
         <item>"Mismagius"</item>
         <item>"Honchkrow"</item>
         <item>"Glameow"</item>
@@ -446,10 +446,10 @@
         <item>"Spiritomb"</item>
         <item>"Gible"</item>
         <item>"Gabite"</item>
-        <item>"Garchomp"</item>
+        <item>"Garchomp;Mega Garchomp"</item>
         <item>"Munchlax"</item>
         <item>"Riolu"</item>
-        <item>"Lucario"</item>
+        <item>"Lucario;Mega Lucario"</item>
         <item>"Hippopotas"</item>
         <item>"Hippowdon"</item>
         <item>"Skorupi"</item>
@@ -461,7 +461,7 @@
         <item>"Lumineon"</item>
         <item>"Mantyke"</item>
         <item>"Snover"</item>
-        <item>"Abomasnow"</item>
+        <item>"Abomasnow;Mega Abomasnow"</item>
         <item>"Weavile"</item>
         <item>"Magnezone"</item>
         <item>"Lickilicky"</item>
@@ -476,7 +476,7 @@
         <item>"Gliscor"</item>
         <item>"Mamoswine"</item>
         <item>"Porygon-Z"</item>
-        <item>"Gallade"</item>
+        <item>"Gallade;Mega Gallade"</item>
         <item>"Probopass"</item>
         <item>"Dusknoir"</item>
         <item>"Froslass"</item>
@@ -532,7 +532,7 @@
         <item>"Swoobat"</item>
         <item>"Drilbur"</item>
         <item>"Excadrill"</item>
-        <item>"Audino"</item>
+        <item>"Audino;Mega Audino"</item>
         <item>"Timburr"</item>
         <item>"Gurdurr"</item>
         <item>"Conkeldurr"</item>
@@ -651,6 +651,77 @@
         <item>"Keldeo;Keldeo-Resolute"</item>
         <item>"Meloetta;Meloetta-S(Pirouette)"</item>
         <item>"Genesect;Genesect-Douse;Genesect-Shock;Genesect-Burn;Genesect-Chill"</item>
+        <item>"Chespin"</item>
+        <item>"Quilladin"</item>
+        <item>"Chesnaught"</item>
+        <item>"Fennekin"</item>
+        <item>"Braixen"</item>
+        <item>"Delphox"</item>
+        <item>"Froakie"</item>
+        <item>"Frogadier"</item>
+        <item>"Greninja"</item>
+        <item>"Bunnelby"</item>
+        <item>"Diggersby"</item>
+        <item>"Fletchling"</item>
+        <item>"Fletchinder"</item>
+        <item>"Talonflame"</item>
+        <item>"Scatterbug"</item>
+        <item>"Spewpa"</item>
+        <item>"Vivillon;Vivillon-Icy Snow;Vivillon-Archipelago;Vivillon-Continental;Vivillon-Elegant;Vivillon-Garden;Vivillon-High Plains;Vivillon-Jungle;Vivillon-Marine;Vivillon-Modern;Vivillon-Monsoon;Vivillon-Ocean;Vivillon-Polar;Vivillon-River;Vivillon-Sandstorm;Vivillon-Savannah;Vivillon-Sun;Vivillon-Tundra;Vivillon-Fancy;Vivillon-Pokeball"</item>
+        <item>"Litleo"</item>
+        <item>"Pyroar"</item>
+        <item>"Flabébé;Flabébé-Orange;Flabébé-Yellow;Flabébé-Blue;Flabébé-White"</item>
+        <item>"Floette;Floette-Orange;Floette-Yellow;Floette-Blue;Floette-White;Floette-EF"</item>
+        <item>"Florges;Florges-Orange;Florges-Yellow;Florges-Blue;Florges-White"</item>
+        <item>"Skiddo"</item>
+        <item>"Gogoat"</item>
+        <item>"Pancham"</item>
+        <item>"Pangoro"</item>
+        <item>"Furfrou;Furfrou-Heart;Furfrou-Star;Furfrou-Diamond;Furfrou-Debutante;Furfrou-Matron;Furfrou-Dandy;Furfrou-La Reine;Furfrou-Kabuki;Furfrou-Pharaoh"</item>
+        <item>"Espurr"</item>
+        <item>"Meowstic;Meowstic-F"</item>
+        <item>"Honedge"</item>
+        <item>"Doublade"</item>
+        <item>"Aegislash;Aegislash-B"</item>
+        <item>"Spritzee"</item>
+        <item>"Aromatisse"</item>
+        <item>"Swirlix"</item>
+        <item>"Slurpuff"</item>
+        <item>"Inkay"</item>
+        <item>"Malamar"</item>
+        <item>"Binacle"</item>
+        <item>"Barbaracle"</item>
+        <item>"Skrelp"</item>
+        <item>"Dragalge"</item>
+        <item>"Clauncher"</item>
+        <item>"Clawitzer"</item>
+        <item>"Helioptile"</item>
+        <item>"Heliolisk"</item>
+        <item>"Tyrunt"</item>
+        <item>"Tyrantrum"</item>
+        <item>"Amaura"</item>
+        <item>"Aurorus"</item>
+        <item>"Sylveon"</item>
+        <item>"Hawlucha"</item>
+        <item>"Dedenne"</item>
+        <item>"Carbink"</item>
+        <item>"Goomy"</item>
+        <item>"Sliggoo"</item>
+        <item>"Goodra"</item>
+        <item>"Klefki"</item>
+        <item>"Phantump"</item>
+        <item>"Trevenant"</item>
+        <item>"Pumpkaboo;Pumpkaboo-S;Pumpkaboo-L;Pumpkaboo-XL"</item>
+        <item>"Gourgeist;Gourgeist-S;Gourgeist-L;Gourgeist-XL"</item>
+        <item>"Bergmite"</item>
+        <item>"Avalugg"</item>
+        <item>"Noibat"</item>
+        <item>"Noivern"</item>
+        <item>"Xerneas;Xerneas-A"</item>
+        <item>"Yveltal"</item>
+        <item>"Zygarde"</item>
+        <item>"Diancie;Mega Diancie"</item>
+        <item>"Hoopa;Hoopa-B"</item>
+        <item>"Volcanion"</item>
     </string-array>
-
 </resources>

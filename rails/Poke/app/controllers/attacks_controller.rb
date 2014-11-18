@@ -19,6 +19,6 @@ class AttacksController < ApplicationController
 	
 	private
 		def set_attack
-			@attack = Attack.find(params[:id])
+			@attack = Attack.find_by_code(params[:id])
 		end
 end

@@ -3,13 +3,15 @@ package com.suicune.poketools.model.gen6;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Type;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by denis on 01.01.14.
  */
 public class Gen6Attack implements Attack {
 	public final int id;
 	public final Type type;
-	public final int attackClass;
 	public final Category category;
 	public final int power;
 	public final int accuracy;
@@ -17,19 +19,34 @@ public class Gen6Attack implements Attack {
 	public final int priority;
 	public final String name;
 	public final String description;
+	public final int mCritRate;
+	public final int mEffectChance;
+	public final int mFlinchChance;
+	public final int mHealing;
+	public final int mMaxTurns;
+	public final int mMinTurns;
+	public final int mRecoil;
+	public final Status mStatus;
 
-	public Gen6Attack(int id, Type type, int attackClass, int power, int accuracy, int pp,
-					  int priority, String name, String description) {
-		this.id = id;
+	public Gen6Attack(Type type, JSONObject data, String name, String description)
+			throws JSONException {
+		this.id = (data.isNull(ARG_CODE)) ? 0 : data.getInt(ARG_CODE) ;
 		this.type = type;
-		this.attackClass = attackClass;
-		this.power = power;
-		this.accuracy = accuracy;
-		this.pp = pp;
-		this.priority = priority;
+		this.category = Category.fromClass((data.isNull(ARG_CLASS)) ? 0 : data.getInt(ARG_CLASS)) ;
+		this.power = (data.isNull(ARG_POWER)) ? 0 : data.getInt(ARG_POWER) ;
+		this.accuracy = (data.isNull(ARG_ACCURACY)) ? 0 : data.getInt(ARG_ACCURACY) ;
+		this.pp = (data.isNull(ARG_PP)) ? 0 : data.getInt(ARG_PP) ;
+		this.priority = (data.isNull(ARG_PRIORITY)) ? 0 : data.getInt(ARG_PRIORITY) ;
 		this.name = name;
 		this.description = description;
-		this.category = Category.fromClass(attackClass);
+		this.mCritRate = (data.isNull(ARG_CRIT_RATE)) ? 0 : data.getInt(ARG_CRIT_RATE) ;
+		this.mEffectChance = (data.isNull(ARG_EFFECT_CHANCE)) ? 0 : data.getInt(ARG_EFFECT_CHANCE) ;
+		this.mFlinchChance = (data.isNull(ARG_FLINCH_CHANCE)) ? 0 : data.getInt(ARG_FLINCH_CHANCE) ;
+		this.mHealing = (data.isNull(ARG_HEALING)) ? 0 : data.getInt(ARG_HEALING) ;
+		this.mMaxTurns = (data.isNull(ARG_MAX_TURNS)) ? 0 : data.getInt(ARG_MAX_TURNS) ;
+		this.mMinTurns = (data.isNull(ARG_MIN_TURNS)) ? 0 : data.getInt(ARG_MIN_TURNS) ;
+		this.mRecoil = (data.isNull(ARG_RECOIL)) ? 0 : data.getInt(ARG_RECOIL) ;
+		this.mStatus = Status.fromCode((data.isNull(ARG_STATUS)) ? 0 : data.getInt(ARG_STATUS)) ;
 	}
 
 	@Override public Type type() {
@@ -56,10 +73,6 @@ public class Gen6Attack implements Attack {
 		return id;
 	}
 
-	@Override public int attackClass() {
-		return attackClass;
-	}
-
 	@Override public int power() {
 		return power;
 	}
@@ -74,6 +87,38 @@ public class Gen6Attack implements Attack {
 
 	@Override public int priority() {
 		return priority;
+	}
+
+	@Override public int critRate() {
+		return mCritRate;
+	}
+
+	@Override public int effectChance() {
+		return mEffectChance;
+	}
+
+	@Override public int flinchChance() {
+		return mFlinchChance;
+	}
+
+	@Override public int healing() {
+		return mHealing;
+	}
+
+	@Override public int maxTurns() {
+		return mMaxTurns;
+	}
+
+	@Override public int minTurns() {
+		return mMinTurns;
+	}
+
+	@Override public int recoil() {
+		return mRecoil;
+	}
+
+	@Override public Status status() {
+		return mStatus;
 	}
 
 	@Override public String name() {

@@ -55,7 +55,7 @@ public class PokemonFactory {
 			throws IOException, JSONException {
 		AssetManager manager = context.getAssets();
 		JSONArray pokemonForms =
-				FileUtils.toJsonArray(manager.open("gen5/pokes/" + dexNumber + ".json"));
+				FileUtils.toJsonArray(manager.open("gen6/pokes/" + dexNumber + ".json"));
 		JSONObject pokemon = pokemonForms.getJSONObject(form);
 
 		JSONArray typeArray = pokemon.getJSONArray(Pokemon.ARG_TYPES);

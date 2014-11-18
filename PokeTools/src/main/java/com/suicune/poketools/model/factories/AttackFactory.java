@@ -33,11 +33,9 @@ public class AttackFactory {
 	private static Attack createGen6Attack(Context context, int id)
 			throws IOException, JSONException {
 		AssetManager manager = context.getAssets();
-		JSONObject attack = FileUtils.toJson(manager.open("gen5/attacks/" + id + ".json"));
-		return new Gen6Attack(id, TypeFactory.createType(6, attack.getInt(Attack.ARG_TYPE)),
-				attack.getInt(Attack.ARG_CLASS), attack.getInt(Attack.ARG_POWER),
-				attack.getInt(Attack.ARG_PRIORITY), attack.getInt(Attack.ARG_ACCURACY),
-				attack.getInt(Attack.ARG_PP),
+		JSONObject attack = FileUtils.toJson(manager.open("gen6/attacks/" + id + ".json"));
+		return new Gen6Attack(TypeFactory.createType(6, attack.getInt(Attack.ARG_TYPE)),
+				attack,
 				context.getResources().getStringArray(R.array.attack_names)[id], "");
 	}
 

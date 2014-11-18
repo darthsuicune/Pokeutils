@@ -1,1 +1,1 @@
-{"accuracy":101,"code":502,"category_code":13,"caused_effect":null,"crit_rate":null,"damage_class":0,"effect_chance":null,"flinch_chance":null,"healing":null,"max_turns":null,"min_turns":null,"power":null,"pp":15,"priority":1,"recoil":null,"status":null,"attack_type":14}
+{"accuracy":100,"code":503,"category_code":4,"caused_effect":4,"crit_rate":null,"damage_class":2,"effect_chance":30,"flinch_chance":null,"healing":null,"max_turns":null,"min_turns":null,"power":80,"pp":15,"priority":null,"recoil":null,"status":1,"attack_type":11}

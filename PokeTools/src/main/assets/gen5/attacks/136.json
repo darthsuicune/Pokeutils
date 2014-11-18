@@ -1,1 +1,1 @@
-{id: 136, attackgeneration: 5, attacktype: 2, attackpriority: 0, attackpp: 10, attackpower: 130, attackclass: 1, attackaccuracy: 90}
+{id: 136, attackgeneration: 5, attack_type: 2, priority: 0, pp: 10, power: 130, damage_class: 1, accuracy: 90}

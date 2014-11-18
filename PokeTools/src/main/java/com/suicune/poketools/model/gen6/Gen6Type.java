@@ -12,7 +12,7 @@ import java.util.List;
 
 public enum Gen6Type implements Type {
 	NONE(0, R.string.type_none),
-	NORMAL(1, R.string.type_none),
+	NORMAL(1, R.string.type_normal),
 	FIGHTING(2, R.string.type_fighting),
 	FLYING(3, R.string.type_flying),
 	POISON(4, R.string.type_poison),

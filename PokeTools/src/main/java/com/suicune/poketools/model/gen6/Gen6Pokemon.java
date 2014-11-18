@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
+import com.suicune.poketools.model.EggGroup;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
@@ -27,6 +28,7 @@ import java.util.Map;
 import static com.suicune.poketools.model.Stats.Stat;
 
 /**
+ * [{"dex_number":1,"form":0,"egg_group_1":2,"egg_group_2":7,"height":0.7,"weight":6.9,"abilities":[65,0,null],"min_level":1,"baseStats":[45,49,49,65,65,45],"types":[12,4],"attacks":[14,15,20,22,29,33,34,36,38,45,70,73,74,75,76,77,79,80,81,92,102,104,111,113,124,130,133,148,156,164,173,174,182,188,189,202,203,204,206,207,210,213,214,216,218,219,230,235,237,241,249,263,267,275,282,290,311,320,331,335,338,345,363,388,402,412,437,438,445,447,474,496,497,520,585,593]}]
  * Created by denis on 01.01.14.
  */
 public class Gen6Pokemon extends Pokemon {
@@ -45,6 +47,7 @@ public class Gen6Pokemon extends Pokemon {
 	public final String mClassification;
 	public final int mCaptureRate;
 	public final int mBaseEggSteps;
+	public final int mMinLevel;
 	public final Ability mAbility1;
 	public final Ability mAbility2;
 	public final Ability mAbilityHidden;
@@ -89,8 +92,8 @@ public class Gen6Pokemon extends Pokemon {
 		mStats = stats;
 		mType1 = types[0];
 		mType2 = types[1];
-		mHeight = 0;
-		mWeight = 0;
+		mHeight = (data.isNull(ARG_HEIGHT)) ? 0 : data.getDouble(ARG_HEIGHT);
+		mWeight = (data.isNull(ARG_WEIGHT)) ? 0 : data.getDouble(ARG_WEIGHT);
 		mClassification = "";
 		mCaptureRate = 0;
 		mBaseEggSteps = 0;
@@ -99,9 +102,10 @@ public class Gen6Pokemon extends Pokemon {
 		mAbilityHidden = abilities[2];
 		mExperienceGrowth = 0;
 		mBaseHappiness = 0;
+		mMinLevel = data.getInt(ARG_MIN_LEVEL);
 		mEvsEarned = new HashMap<>();
-		mEggGroup1 = null;
-		mEggGroup2 = null;
+		mEggGroup1 = EggGroup.fromValue((data.isNull(ARG_EGG_GROUP_1)) ? 0 : data.getInt(ARG_EGG_GROUP_1));
+		mEggGroup2 = EggGroup.fromValue((data.isNull(ARG_EGG_GROUP_2)) ? 0 : data.getInt(ARG_EGG_GROUP_2));
 		this.isHiddenAbilityAvailable = false;
 		mLevelAttacks = new HashMap<>();
 		mTmAttacks = new HashMap<>();
@@ -292,6 +296,26 @@ public class Gen6Pokemon extends Pokemon {
 
 	@Override public List<Attack> attackList() {
 		return mAttackList;
+	}
+
+	@Override public EggGroup eggGroup1() {
+		return mEggGroup1;
+	}
+
+	@Override public EggGroup eggGroup2() {
+		return mEggGroup2;
+	}
+
+	@Override public double height() {
+		return mHeight;
+	}
+
+	@Override public double weight() {
+		return mWeight;
+	}
+
+	@Override public int minLevel() {
+		return mMinLevel;
 	}
 
 	@Override public Pokemon setLevel(int level) {
