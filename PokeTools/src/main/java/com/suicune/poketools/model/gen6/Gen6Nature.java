@@ -41,52 +41,52 @@ public enum Gen6Nature implements Nature {
 	NAIVE(R.string.nature_naive, Stats.Stat.SPEED, Stats.Stat.SPECIAL_DEFENSE, 1, 1, 1, 0.9, 1.1);
 
 
-	public int mNameResId;
-	public Stats.Stat mIncreasedStat;
-	public Stats.Stat mDecreasedStat;
-	public double mAttackModifier;
-	public double mDefenseModifier;
-	public double mSpecialAttackModifier;
-	public double mSpecialDefenseModifier;
-	public double mSpeedModifier;
+	public int nameResId;
+	public Stats.Stat increasedStat;
+	public Stats.Stat decreasedStat;
+	public double attackModifier;
+	public double defenseModifier;
+	public double specialAttackModifier;
+	public double specialDefenseModifier;
+	public double speedModifier;
 
 	private Gen6Nature(int nameResId, Stats.Stat increasedStat, Stats.Stat decreasedStat,
 					   double attackModifier, double defenseModifier, double spAttackModifier,
 					   double spDefenseModifier, double speedModifier) {
-		mNameResId = nameResId;
-		mIncreasedStat = increasedStat;
-		mDecreasedStat = decreasedStat;
-		mAttackModifier = attackModifier;
-		mDefenseModifier = defenseModifier;
-		mSpecialAttackModifier = spAttackModifier;
-		mSpecialDefenseModifier = spDefenseModifier;
-		mSpeedModifier = speedModifier;
+		this.nameResId = nameResId;
+		this.increasedStat = increasedStat;
+		this.decreasedStat = decreasedStat;
+		this.attackModifier = attackModifier;
+		this.defenseModifier = defenseModifier;
+		specialAttackModifier = spAttackModifier;
+		specialDefenseModifier = spDefenseModifier;
+		this.speedModifier = speedModifier;
 	}
 
 	@Override public int nameResId() {
-		return mNameResId;
+		return nameResId;
 	}
 
 	@Override public Stats.Stat increasedStat() {
-		return mIncreasedStat;
+		return increasedStat;
 	}
 
 	@Override public Stats.Stat decreasedStat() {
-		return mDecreasedStat;
+		return decreasedStat;
 	}
 
 	@Override public double statModifier(Stats.Stat stat) {
 		switch(stat) {
 			case ATTACK:
-				return mAttackModifier;
+				return attackModifier;
 			case DEFENSE:
-				return mDefenseModifier;
+				return defenseModifier;
 			case SPECIAL_ATTACK:
-				return mSpecialAttackModifier;
+				return specialAttackModifier;
 			case SPECIAL_DEFENSE:
-				return mSpecialDefenseModifier;
+				return specialDefenseModifier;
 			case SPEED:
-				return mSpeedModifier;
+				return speedModifier;
 			default:
 				return 1.0;
 		}

@@ -19,14 +19,14 @@ public class Gen6Attack extends Attack {
 	public final int priority;
 	public final String name;
 	public final String description;
-	public final int mCritRate;
-	public final int mEffectChance;
-	public final int mFlinchChance;
-	public final int mHealing;
-	public final int mMaxTurns;
-	public final int mMinTurns;
-	public final int mRecoil;
-	public final Status mStatus;
+	public final int critRate;
+	public final int effectChance;
+	public final int flinchChance;
+	public final int healing;
+	public final int maxTurns;
+	public final int minTurns;
+	public final int recoil;
+	public final Status status;
 
 	public Gen6Attack(Type type, JSONObject data, String name, String description)
 			throws JSONException {
@@ -39,14 +39,14 @@ public class Gen6Attack extends Attack {
 		this.priority = (data.isNull(ARG_PRIORITY)) ? 0 : data.getInt(ARG_PRIORITY) ;
 		this.name = name;
 		this.description = description;
-		this.mCritRate = (data.isNull(ARG_CRIT_RATE)) ? 0 : data.getInt(ARG_CRIT_RATE) ;
-		this.mEffectChance = (data.isNull(ARG_EFFECT_CHANCE)) ? 0 : data.getInt(ARG_EFFECT_CHANCE) ;
-		this.mFlinchChance = (data.isNull(ARG_FLINCH_CHANCE)) ? 0 : data.getInt(ARG_FLINCH_CHANCE) ;
-		this.mHealing = (data.isNull(ARG_HEALING)) ? 0 : data.getInt(ARG_HEALING) ;
-		this.mMaxTurns = (data.isNull(ARG_MAX_TURNS)) ? 0 : data.getInt(ARG_MAX_TURNS) ;
-		this.mMinTurns = (data.isNull(ARG_MIN_TURNS)) ? 0 : data.getInt(ARG_MIN_TURNS) ;
-		this.mRecoil = (data.isNull(ARG_RECOIL)) ? 0 : data.getInt(ARG_RECOIL) ;
-		this.mStatus = Status.fromCode((data.isNull(ARG_STATUS)) ? 0 : data.getInt(ARG_STATUS)) ;
+		this.critRate = (data.isNull(ARG_CRIT_RATE)) ? 0 : data.getInt(ARG_CRIT_RATE) ;
+		this.effectChance = (data.isNull(ARG_EFFECT_CHANCE)) ? 0 : data.getInt(ARG_EFFECT_CHANCE) ;
+		this.flinchChance = (data.isNull(ARG_FLINCH_CHANCE)) ? 0 : data.getInt(ARG_FLINCH_CHANCE) ;
+		this.healing = (data.isNull(ARG_HEALING)) ? 0 : data.getInt(ARG_HEALING) ;
+		this.maxTurns = (data.isNull(ARG_MAX_TURNS)) ? 0 : data.getInt(ARG_MAX_TURNS) ;
+		this.minTurns = (data.isNull(ARG_MIN_TURNS)) ? 0 : data.getInt(ARG_MIN_TURNS) ;
+		this.recoil = (data.isNull(ARG_RECOIL)) ? 0 : data.getInt(ARG_RECOIL) ;
+		this.status = Status.fromCode((data.isNull(ARG_STATUS)) ? 0 : data.getInt(ARG_STATUS)) ;
 	}
 
 	@Override public Type type() {
@@ -58,7 +58,11 @@ public class Gen6Attack extends Attack {
 		if (power == 1) {
 			return true;
 		}
-		return false;
+		switch(id) {
+
+			default:
+				return false;
+		}
 	}
 
 	@Override public Category category() {
@@ -74,6 +78,9 @@ public class Gen6Attack extends Attack {
 	}
 
 	@Override public int power() {
+		if(power == 1) {
+
+		}
 		return power;
 	}
 
@@ -90,35 +97,35 @@ public class Gen6Attack extends Attack {
 	}
 
 	@Override public int critRate() {
-		return mCritRate;
+		return critRate;
 	}
 
 	@Override public int effectChance() {
-		return mEffectChance;
+		return effectChance;
 	}
 
 	@Override public int flinchChance() {
-		return mFlinchChance;
+		return flinchChance;
 	}
 
 	@Override public int healing() {
-		return mHealing;
+		return healing;
 	}
 
 	@Override public int maxTurns() {
-		return mMaxTurns;
+		return maxTurns;
 	}
 
 	@Override public int minTurns() {
-		return mMinTurns;
+		return minTurns;
 	}
 
 	@Override public int recoil() {
-		return mRecoil;
+		return recoil;
 	}
 
 	@Override public Status status() {
-		return mStatus;
+		return status;
 	}
 
 	@Override public String name() {
@@ -129,7 +136,7 @@ public class Gen6Attack extends Attack {
 		return description;
 	}
 
-	@Override public String toString() {
+	public String toString() {
 		return name + " (" + type.toString() + " " + power + ")";
 	}
 
