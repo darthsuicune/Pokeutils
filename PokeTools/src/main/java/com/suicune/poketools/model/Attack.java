@@ -1,9 +1,11 @@
 package com.suicune.poketools.model;
 
+import com.suicune.poketools.view.Typeable;
+
 /**
  * Created by lapuente on 17.09.14.
  */
-public interface Attack {
+public abstract class Attack implements Typeable {
 	public static final String ARG_TYPE = "attack_type";
 	public static final String ARG_PRIORITY = "priority";
 	public static final String ARG_PP = "pp";
@@ -21,42 +23,42 @@ public interface Attack {
 	public static final String ARG_RECOIL = "recoil";
 	public static final String ARG_STATUS = "status";
 
-	public Type type();
+	public abstract Type type();
 
-	public boolean hasSpecialTreatment();
+	public abstract boolean hasSpecialTreatment();
 
-	public Category category();
+	public abstract Category category();
 
-	public int gen();
+	public abstract int gen();
 
-	public int id();
+	public abstract int id();
 
-	public int power();
+	public abstract int power();
 
-	public int accuracy();
+	public abstract int accuracy();
 
-	public int pp();
+	public abstract int pp();
 
-	public int priority();
+	public abstract int priority();
 
-	public int critRate();
+	public abstract int critRate();
 
-	public int effectChance();
+	public abstract int effectChance();
 
-	public int flinchChance();
+	public abstract int flinchChance();
 
-	public int healing();
+	public abstract int healing();
 
-	public int maxTurns();
-	public int minTurns();
-	public int recoil();
-	public Status status();
+	public abstract int maxTurns();
+	public abstract int minTurns();
+	public abstract int recoil();
+	public abstract Status status();
 
-	public String name();
+	public abstract String name();
 
-	public String description();
+	public abstract String description();
 
-	public String toString();
+	public abstract String toString();
 
 	public enum Category {
 		OTHER, PHYSICAL, SPECIAL;

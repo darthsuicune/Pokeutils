@@ -2,6 +2,7 @@ package com.suicune.poketools.model.gen6;
 
 import com.suicune.poketools.R;
 import com.suicune.poketools.model.Type;
+import com.suicune.poketools.view.Typeable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,139 +11,145 @@ import java.util.List;
  * Created by denis on 01.01.14.
  */
 
-public enum Gen6Type implements Type {
-	NONE(0, R.string.type_none),
-	NORMAL(1, R.string.type_normal),
-	FIGHTING(2, R.string.type_fighting),
-	FLYING(3, R.string.type_flying),
-	POISON(4, R.string.type_poison),
-	GROUND(5, R.string.type_ground),
-	ROCK(6, R.string.type_rock),
-	BUG(7, R.string.type_bug),
-	GHOST(8, R.string.type_ghost),
-	STEEL(9, R.string.type_steel),
-	FIRE(10, R.string.type_fire),
-	WATER(11, R.string.type_water),
-	GRASS(12, R.string.type_grass),
-	ELECTRIC(13, R.string.type_electric),
-	PSYCHIC(14, R.string.type_psychic),
-	ICE(15, R.string.type_ice),
-	DRAGON(16, R.string.type_dragon),
-	DARK(17, R.string.type_dark),
-	FAIRY(18, R.string.type_fairy);
+public enum Gen6Type implements Type, Typeable {
+	NONE(0, R.string.type_none, R.color.none),
+	NORMAL(1, R.string.type_normal, R.color.normal),
+	FIGHTING(2, R.string.type_fighting, R.color.fighting),
+	FLYING(3, R.string.type_flying, R.color.flying),
+	POISON(4, R.string.type_poison, R.color.poison),
+	GROUND(5, R.string.type_ground, R.color.ground),
+	ROCK(6, R.string.type_rock, R.color.rock),
+	BUG(7, R.string.type_bug, R.color.bug),
+	GHOST(8, R.string.type_ghost, R.color.ghost),
+	STEEL(9, R.string.type_steel, R.color.steel),
+	FIRE(10, R.string.type_fire, R.color.fire),
+	WATER(11, R.string.type_water, R.color.water),
+	GRASS(12, R.string.type_grass, R.color.grass),
+	ELECTRIC(13, R.string.type_electric, R.color.electric),
+	PSYCHIC(14, R.string.type_psychic, R.color.psychic),
+	ICE(15, R.string.type_ice, R.color.ice),
+	DRAGON(16, R.string.type_dragon, R.color.dragon),
+	DARK(17, R.string.type_dark, R.color.dark),
+	FAIRY(18, R.string.type_fairy, R.color.fairy);
 
-	private Gen6Type(int code, int nameResId) {
-		mCode = code;
-		mNameResId = nameResId;
+	private Gen6Type(int code, int nameResId, int color) {
+		this.code = code;
+		this.nameResId = nameResId;
+		this.color = color;
 	}
 
-	public List<Type> mWeaknesses;
-	public List<Type> mResistances;
-	public List<Type> mImmunities;
-	public int mNameResId;
-	public int mCode;
+	public List<Type> weaknesses;
+	public List<Type> resistances;
+	public List<Type> immunities;
+	public int nameResId;
+	public int code;
+	public int color;
 
 	/**
 	 * Set all the values
 	 */
 	static {
-		NONE.mWeaknesses = Arrays.asList();
-		NONE.mResistances = Arrays.asList();
-		NONE.mImmunities = Arrays.asList();
+		NONE.weaknesses = Arrays.asList();
+		NONE.resistances = Arrays.asList();
+		NONE.immunities = Arrays.asList();
 
-		NORMAL.mWeaknesses = Arrays.asList((Type) FIGHTING);
-		NORMAL.mResistances = Arrays.asList();
-		NORMAL.mImmunities = Arrays.asList((Type) GHOST);
+		NORMAL.weaknesses = Arrays.asList((Type) FIGHTING);
+		NORMAL.resistances = Arrays.asList();
+		NORMAL.immunities = Arrays.asList((Type) GHOST);
 
-		FIGHTING.mWeaknesses = Arrays.asList((Type) FLYING, PSYCHIC, FAIRY);
-		FIGHTING.mResistances = Arrays.asList((Type) ROCK, BUG, DARK);
-		FIGHTING.mImmunities = Arrays.asList();
+		FIGHTING.weaknesses = Arrays.asList((Type) FLYING, PSYCHIC, FAIRY);
+		FIGHTING.resistances = Arrays.asList((Type) ROCK, BUG, DARK);
+		FIGHTING.immunities = Arrays.asList();
 
-		FLYING.mWeaknesses = Arrays.asList((Type) ROCK, ELECTRIC, ICE);
-		FLYING.mResistances = Arrays.asList((Type) FIGHTING, BUG, GRASS);
-		FLYING.mImmunities = Arrays.asList((Type) GROUND);
+		FLYING.weaknesses = Arrays.asList((Type) ROCK, ELECTRIC, ICE);
+		FLYING.resistances = Arrays.asList((Type) FIGHTING, BUG, GRASS);
+		FLYING.immunities = Arrays.asList((Type) GROUND);
 
-		POISON.mWeaknesses = Arrays.asList((Type) GROUND, PSYCHIC);
-		POISON.mResistances = Arrays.asList((Type) FIGHTING, POISON, BUG, GRASS, FAIRY);
-		POISON.mImmunities = Arrays.asList();
+		POISON.weaknesses = Arrays.asList((Type) GROUND, PSYCHIC);
+		POISON.resistances = Arrays.asList((Type) FIGHTING, POISON, BUG, GRASS, FAIRY);
+		POISON.immunities = Arrays.asList();
 
-		GROUND.mWeaknesses = Arrays.asList((Type) WATER, GRASS, ICE);
-		GROUND.mResistances = Arrays.asList((Type) POISON, ROCK);
-		GROUND.mImmunities = Arrays.asList((Type) ELECTRIC);
+		GROUND.weaknesses = Arrays.asList((Type) WATER, GRASS, ICE);
+		GROUND.resistances = Arrays.asList((Type) POISON, ROCK);
+		GROUND.immunities = Arrays.asList((Type) ELECTRIC);
 
-		ROCK.mWeaknesses = Arrays.asList((Type) FIGHTING, GROUND, STEEL, WATER, GRASS);
-		ROCK.mResistances = Arrays.asList((Type) NORMAL, FLYING, POISON, FIRE);
-		ROCK.mImmunities = Arrays.asList();
+		ROCK.weaknesses = Arrays.asList((Type) FIGHTING, GROUND, STEEL, WATER, GRASS);
+		ROCK.resistances = Arrays.asList((Type) NORMAL, FLYING, POISON, FIRE);
+		ROCK.immunities = Arrays.asList();
 
-		BUG.mWeaknesses = Arrays.asList((Type) FLYING, ROCK, FIRE);
-		BUG.mResistances = Arrays.asList((Type) FIGHTING, GROUND, GRASS);
-		BUG.mImmunities = Arrays.asList();
+		BUG.weaknesses = Arrays.asList((Type) FLYING, ROCK, FIRE);
+		BUG.resistances = Arrays.asList((Type) FIGHTING, GROUND, GRASS);
+		BUG.immunities = Arrays.asList();
 
-		GHOST.mWeaknesses = Arrays.asList((Type) GHOST, DARK);
-		GHOST.mResistances = Arrays.asList((Type) POISON, BUG);
-		GHOST.mImmunities = Arrays.asList((Type) NORMAL, FIGHTING);
+		GHOST.weaknesses = Arrays.asList((Type) GHOST, DARK);
+		GHOST.resistances = Arrays.asList((Type) POISON, BUG);
+		GHOST.immunities = Arrays.asList((Type) NORMAL, FIGHTING);
 
-		STEEL.mWeaknesses = Arrays.asList((Type) FIGHTING, GROUND, FIRE);
-		STEEL.mResistances =
+		STEEL.weaknesses = Arrays.asList((Type) FIGHTING, GROUND, FIRE);
+		STEEL.resistances =
 				Arrays.asList((Type) NORMAL, FLYING, ROCK, BUG, STEEL, GRASS, PSYCHIC, ICE, DRAGON,
 						FAIRY);
-		STEEL.mImmunities = Arrays.asList((Type) POISON);
+		STEEL.immunities = Arrays.asList((Type) POISON);
 
-		FIRE.mWeaknesses = Arrays.asList((Type) GROUND, ROCK, WATER);
-		FIRE.mResistances = Arrays.asList((Type) BUG, STEEL, FIRE, GRASS, ICE, FAIRY);
-		FIRE.mImmunities = Arrays.asList();
+		FIRE.weaknesses = Arrays.asList((Type) GROUND, ROCK, WATER);
+		FIRE.resistances = Arrays.asList((Type) BUG, STEEL, FIRE, GRASS, ICE, FAIRY);
+		FIRE.immunities = Arrays.asList();
 
-		WATER.mWeaknesses = Arrays.asList((Type) GRASS, ELECTRIC);
-		WATER.mResistances = Arrays.asList((Type) STEEL, FIRE, WATER, ICE);
-		WATER.mImmunities = Arrays.asList();
+		WATER.weaknesses = Arrays.asList((Type) GRASS, ELECTRIC);
+		WATER.resistances = Arrays.asList((Type) STEEL, FIRE, WATER, ICE);
+		WATER.immunities = Arrays.asList();
 
-		GRASS.mWeaknesses = Arrays.asList((Type) FLYING, POISON, BUG, FIRE, ICE);
-		GRASS.mResistances = Arrays.asList((Type) GROUND, WATER, GRASS, ELECTRIC);
-		GRASS.mImmunities = Arrays.asList();
+		GRASS.weaknesses = Arrays.asList((Type) FLYING, POISON, BUG, FIRE, ICE);
+		GRASS.resistances = Arrays.asList((Type) GROUND, WATER, GRASS, ELECTRIC);
+		GRASS.immunities = Arrays.asList();
 
-		ELECTRIC.mWeaknesses = Arrays.asList((Type) GROUND);
-		ELECTRIC.mResistances = Arrays.asList((Type) FLYING, STEEL, ELECTRIC);
-		ELECTRIC.mImmunities = Arrays.asList();
+		ELECTRIC.weaknesses = Arrays.asList((Type) GROUND);
+		ELECTRIC.resistances = Arrays.asList((Type) FLYING, STEEL, ELECTRIC);
+		ELECTRIC.immunities = Arrays.asList();
 
-		PSYCHIC.mWeaknesses = Arrays.asList((Type) BUG, GHOST, DARK);
-		PSYCHIC.mResistances = Arrays.asList((Type) FIGHTING, PSYCHIC);
-		PSYCHIC.mImmunities = Arrays.asList();
+		PSYCHIC.weaknesses = Arrays.asList((Type) BUG, GHOST, DARK);
+		PSYCHIC.resistances = Arrays.asList((Type) FIGHTING, PSYCHIC);
+		PSYCHIC.immunities = Arrays.asList();
 
-		ICE.mWeaknesses = Arrays.asList((Type) FIGHTING, ROCK, STEEL, FIRE);
-		ICE.mResistances = Arrays.asList((Type) ICE);
-		ICE.mImmunities = Arrays.asList();
+		ICE.weaknesses = Arrays.asList((Type) FIGHTING, ROCK, STEEL, FIRE);
+		ICE.resistances = Arrays.asList((Type) ICE);
+		ICE.immunities = Arrays.asList();
 
-		DRAGON.mWeaknesses = Arrays.asList((Type) ICE, DRAGON, FAIRY);
-		DRAGON.mResistances = Arrays.asList((Type) FIRE, WATER, GRASS, ELECTRIC);
-		DRAGON.mImmunities = Arrays.asList();
+		DRAGON.weaknesses = Arrays.asList((Type) ICE, DRAGON, FAIRY);
+		DRAGON.resistances = Arrays.asList((Type) FIRE, WATER, GRASS, ELECTRIC);
+		DRAGON.immunities = Arrays.asList();
 
-		DARK.mWeaknesses = Arrays.asList((Type) FIGHTING, BUG, FAIRY);
-		DARK.mResistances = Arrays.asList((Type) GHOST, DARK);
-		DARK.mImmunities = Arrays.asList((Type) PSYCHIC);
+		DARK.weaknesses = Arrays.asList((Type) FIGHTING, BUG, FAIRY);
+		DARK.resistances = Arrays.asList((Type) GHOST, DARK);
+		DARK.immunities = Arrays.asList((Type) PSYCHIC);
 
-		FAIRY.mWeaknesses = Arrays.asList((Type) POISON, STEEL);
-		FAIRY.mResistances = Arrays.asList((Type) FIGHTING, DARK, BUG);
-		FAIRY.mImmunities = Arrays.asList((Type) DRAGON);
+		FAIRY.weaknesses = Arrays.asList((Type) POISON, STEEL);
+		FAIRY.resistances = Arrays.asList((Type) FIGHTING, DARK, BUG);
+		FAIRY.immunities = Arrays.asList((Type) DRAGON);
 	}
 
 	@Override public List<Type> weaknesses() {
-		return mWeaknesses;
+		return weaknesses;
 	}
 
 	@Override public List<Type> resistances() {
-		return mResistances;
+		return resistances;
 	}
 
 	@Override public List<Type> immunities() {
-		return mImmunities;
+		return immunities;
 	}
 
 	@Override public int nameResId() {
-		return mNameResId;
+		return nameResId;
 	}
 
 	@Override public int save() {
-		return mCode;
+		return code;
+	}
+
+	@Override public int color() {
+		return color;
 	}
 
 	public static Gen6Type getType(int typeId) {

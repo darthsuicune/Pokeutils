@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.suicune.poketools.R;
+import com.suicune.poketools.view.Typeable;
 
 import org.json.JSONException;
 
@@ -18,7 +19,7 @@ import static com.suicune.poketools.model.Stats.Stat;
 /**
  * Created by lapuente on 17.09.14.
  */
-public abstract class Pokemon {
+public abstract class Pokemon implements Typeable {
 	public static final String ARG_GEN = "gen";
 	public static final String ARG_DEX_NUMBER = "dex_number";
 	public static final String ARG_FORM = "form";

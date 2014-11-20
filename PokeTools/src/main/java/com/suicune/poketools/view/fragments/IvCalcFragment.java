@@ -32,7 +32,7 @@ import static com.suicune.poketools.model.Stats.Stat;
 public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 	private static final String ARG_POKEMON = "pokemon";
 	private PokemonCardView mCardView;
-	private Pokemon mPokemon;
+	private Pokemon pokemon;
 
 	private Map<Stat, TextView> mResultViews = new HashMap<>();
 
@@ -64,7 +64,7 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		Button button = (Button) fragmentView.findViewById(R.id.calculate_ivs);
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override public void onClick(View view) {
-				calculateIVs();
+				displayIvs();
 			}
 		});
 		View results = fragmentView.findViewById(R.id.results);
@@ -77,9 +77,9 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		mResultViews.put(Stat.SPEED, (TextView) results.findViewById(R.id.speed));
 	}
 
-	private void calculateIVs() {
-		if (mPokemon != null) {
-			Map<Stat, List<Integer>> results = mPokemon.calculateIvs();
+	private void displayIvs() {
+		if (pokemon != null) {
+			Map<Stat, List<Integer>> results = pokemon.calculateIvs();
 			for (Stat stat : Stat.values(6)) {
 				List<Integer> statResults = results.get(stat);
 				String result;
@@ -103,7 +103,7 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		super.onCreate(savedInstanceState);
 		try {
 			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
-				mPokemon = PokemonFactory
+				pokemon = PokemonFactory
 						.createFromBundle(getActivity(), savedInstanceState.getBundle(ARG_POKEMON));
 			}
 		} catch (JSONException | IOException e) {
@@ -113,24 +113,16 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		if (mPokemon != null) {
-			outState.putBundle(ARG_POKEMON, mPokemon.save());
-		}
+		mCardView.saveState(outState, ARG_POKEMON);
 	}
 
 	@Override public void onResume() {
 		super.onResume();
-		mCardView.setup(this, mPokemon);
+		mCardView.setup(this, pokemon);
 	}
 
 	@Override public void updatePokemon(Pokemon pokemon) {
-		mPokemon = pokemon;
+		this.pokemon = pokemon;
 		displayIvs();
 	}
-
-	//TODO: Implement
-	private void displayIvs() {
-
-	}
-
 }

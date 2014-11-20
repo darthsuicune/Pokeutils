@@ -26,10 +26,10 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 	private static final String ARG_ATTACKER = "attacker";
 	private static final String ARG_DEFENDER = "defender";
 
-	private PokemonCardView mAttackerView;
-	private PokemonCardView mDefenderView;
-	private Pokemon mAttacker;
-	private Pokemon mDefender;
+	private PokemonCardView attackerView;
+	private PokemonCardView defenderView;
+	private Pokemon attacker;
+	private Pokemon defender;
 
 	/**
 	 * Use this factory method to create a new instance of
@@ -49,11 +49,11 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 		super.onCreate(savedInstanceState);
 		try {
 			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_ATTACKER)) {
-				mAttacker = PokemonFactory.createFromBundle(getActivity(),
+				attacker = PokemonFactory.createFromBundle(getActivity(),
 						savedInstanceState.getBundle(ARG_ATTACKER));
 			}
 			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_DEFENDER)) {
-				mDefender = PokemonFactory.createFromBundle(getActivity(),
+				defender = PokemonFactory.createFromBundle(getActivity(),
 						savedInstanceState.getBundle(ARG_DEFENDER));
 			}
 		} catch (JSONException | IOException e) {
@@ -63,36 +63,32 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		if (mAttacker != null) {
-			outState.putBundle(ARG_ATTACKER, mAttacker.save());
-		}
-		if (mDefender != null) {
-			outState.putBundle(ARG_DEFENDER, mDefender.save());
-		}
+		attackerView.saveState(outState, ARG_ATTACKER);
+		defenderView.saveState(outState, ARG_DEFENDER);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		View fragmentView = inflater.inflate(R.layout.fragment_damage_calc, container, false);
-		mAttackerView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_attacker);
-		mDefenderView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_defender);
+		attackerView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_attacker);
+		defenderView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_defender);
 		return fragmentView;
 	}
 
 	@Override public void onResume() {
 		super.onResume();
-		mAttackerView.setup(this, mAttacker);
-		mDefenderView.setup(this, mDefender);
+		attackerView.setup(this, attacker);
+		defenderView.setup(this, defender);
 	}
 
 	@Override public void updatePokemon(Pokemon pokemon) {
-		if (pokemon == mAttackerView.mPokemon) {
-			mAttacker = pokemon;
+		if (pokemon == attackerView.pokemon) {
+			attacker = pokemon;
 		} else {
-			mDefender = pokemon;
+			defender = pokemon;
 		}
-		if (mAttackerView.isReady() && mDefenderView.isReady()) {
+		if (attackerView.hasAValidPokemon() && defenderView.hasAValidPokemon()) {
 			calculateDamages();
 		}
 	}

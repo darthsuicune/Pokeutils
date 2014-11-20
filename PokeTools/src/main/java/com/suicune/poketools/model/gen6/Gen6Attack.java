@@ -9,7 +9,7 @@ import org.json.JSONObject;
 /**
  * Created by denis on 01.01.14.
  */
-public class Gen6Attack implements Attack {
+public class Gen6Attack extends Attack {
 	public final int id;
 	public final Type type;
 	public final Category category;
@@ -135,5 +135,9 @@ public class Gen6Attack implements Attack {
 
 	@Override public boolean equals(Object o) {
 		return ((Attack) o).id() == this.id;
+	}
+
+	@Override public int color() {
+		return type.color();
 	}
 }

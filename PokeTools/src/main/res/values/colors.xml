@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="none">@android:color/transparent</color>
+    <color name="normal">@android:color/white</color>
+    <color name="fighting">#FF00</color>
+    <color name="flying">@android:color/holo_blue_bright</color>
+    <color name="poison">@android:color/holo_purple</color>
+    <color name="ground">#4F40</color>
+    <color name="rock">#4F40</color>
+    <color name="bug">@android:color/holo_green_light</color>
+    <color name="ghost">#4F0F</color>
+    <color name="steel">#9FFF</color>
+    <color name="fire">@android:color/holo_red_dark</color>
+    <color name="water">@android:color/holo_blue_dark</color>
+    <color name="grass">@android:color/holo_green_dark</color>
+    <color name="electric">#FF0</color>
+    <color name="psychic">@android:color/holo_purple</color>
+    <color name="ice">@android:color/holo_blue_light</color>
+    <color name="dragon">@android:color/transparent</color>
+    <color name="dark">#1FFF</color>
+    <color name="fairy">#F0F</color>
+</resources>
