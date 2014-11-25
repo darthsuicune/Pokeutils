@@ -43,4 +43,10 @@
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
     </style>
+
+    <style name="AttackResults">
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

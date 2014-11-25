@@ -16,11 +16,22 @@
             layout="@layout/pokemon_card"/>
 
         <include
+            android:id="@+id/damace_calc_attacker_results"
+            layout="@layout/attack_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
             android:id="@+id/damage_calc_defender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/pokemon_card"/>
 
+        <include
+            android:id="@+id/damace_calc_defender_results"
+            layout="@layout/attack_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <LinearLayout
             android:id="@+id/damage_calc_results"
             android:layout_width="match_parent"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.suicune.poketools.R;
 import com.suicune.poketools.model.Pokemon;
@@ -15,6 +16,8 @@ import com.suicune.poketools.view.PokemonCardView;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -30,6 +33,9 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 	private PokemonCardView defenderView;
 	private Pokemon attacker;
 	private Pokemon defender;
+
+	private Map<Integer, TextView> attackerResults = new HashMap<>();
+	private Map<Integer, TextView> defenderResults = new HashMap<>();
 
 	/**
 	 * Use this factory method to create a new instance of
@@ -73,7 +79,18 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 		View fragmentView = inflater.inflate(R.layout.fragment_damage_calc, container, false);
 		attackerView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_attacker);
 		defenderView = (PokemonCardView) fragmentView.findViewById(R.id.damage_calc_defender);
+		loadResultViews(attackerResults,
+				fragmentView.findViewById(R.id.damace_calc_attacker_results));
+		loadResultViews(defenderResults,
+				fragmentView.findViewById(R.id.damace_calc_defender_results));
 		return fragmentView;
+	}
+
+	private void loadResultViews(Map<Integer, TextView> views, View view) {
+		views.put(1, (TextView) view.findViewById(R.id.attack_1_result));
+		views.put(2, (TextView) view.findViewById(R.id.attack_2_result));
+		views.put(3, (TextView) view.findViewById(R.id.attack_3_result));
+		views.put(4, (TextView) view.findViewById(R.id.attack_4_result));
 	}
 
 	@Override public void onResume() {
@@ -93,7 +110,6 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 		}
 	}
 
-	//TODO: Implement
 	private void calculateDamages() {
 
 	}

@@ -1,10 +1,13 @@
 package com.suicune.poketools.model.gen6;
 
 import com.suicune.poketools.model.Attack;
+import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Type;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * Created by denis on 01.01.14.
@@ -138,6 +141,10 @@ public class Gen6Attack extends Attack {
 
 	public String toString() {
 		return name + " (" + type.toString() + " " + power + ")";
+	}
+
+	@Override public List<Integer> getDamageRange(Pokemon attacker, Pokemon defender) {
+		return null;
 	}
 
 	@Override public boolean equals(Object o) {

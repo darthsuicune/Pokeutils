@@ -2,6 +2,8 @@ package com.suicune.poketools.model;
 
 import com.suicune.poketools.view.Typeable;
 
+import java.util.List;
+
 /**
  * Created by lapuente on 17.09.14.
  */
@@ -59,6 +61,7 @@ public abstract class Attack implements Typeable {
 	public abstract String description();
 
 	public abstract String toString();
+	public abstract List<Integer> getDamageRange(Pokemon attacker, Pokemon defender);
 
 	public enum Category {
 		OTHER, PHYSICAL, SPECIAL;
