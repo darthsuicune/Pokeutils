@@ -51,6 +51,7 @@ public abstract class Pokemon implements Typeable {
 	 */
 	public abstract int gen();
 	public abstract String name();
+
 	public abstract int dexNumber();
 	public abstract int formNumber();
 	public abstract Stats stats();
@@ -125,7 +126,12 @@ public abstract class Pokemon implements Typeable {
 	 */
 	public abstract Map<Stat, List<Integer>> calculateIvs();
 	public abstract Stats calculateStats();
+	public abstract List<Integer> attack(int index, Pokemon defender, Battlefield field);
 
+
+	public abstract Item item();
+
+	public abstract boolean isBurned();
 	public abstract Bundle save();
 	public abstract Pokemon load(Context context, Bundle bundle) throws IOException, JSONException;
 

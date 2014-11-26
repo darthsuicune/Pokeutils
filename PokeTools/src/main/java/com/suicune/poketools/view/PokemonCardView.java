@@ -74,6 +74,7 @@ public class PokemonCardView extends CardView {
 		this.pokemon = pokemon;
 		if (this.hasAValidPokemon()) {
 			setupAttacks();
+			cardHolder.updatePokemon(pokemon);
 		}
 	}
 
@@ -122,6 +123,7 @@ public class PokemonCardView extends CardView {
 						level <= Pokemon.MAX_LEVEL) {
 						pokemon.setLevel(level);
 						updateStats();
+						cardHolder.updatePokemon(pokemon);
 					}
 				} catch (NumberFormatException nfe) {
 					nfe.printStackTrace();
@@ -201,6 +203,7 @@ public class PokemonCardView extends CardView {
 		if (hasAValidPokemon()) {
 			pokemon.setNature(selectedNature);
 			showPokemonInfo();
+			cardHolder.updatePokemon(pokemon);
 		}
 		for (Stat stat : Stat.values(6)) {
 			if (stat.equals(nature.increasedStat())) {
@@ -220,6 +223,7 @@ public class PokemonCardView extends CardView {
 		}
 		if (hasAValidPokemon()) {
 			pokemon.setAbility(selectedAbility);
+			cardHolder.updatePokemon(pokemon);
 		}
 	}
 
@@ -239,6 +243,7 @@ public class PokemonCardView extends CardView {
 					Attack attack = (Attack) adapterView.getAdapter().getItem(position);
 					pokemon.addAttack(attack, element);
 					view.setBackgroundColor(getResources().getColor(attack.color()));
+					cardHolder.updatePokemon(pokemon);
 				}
 
 				@Override public void onNothingSelected(AdapterView<?> adapterView) {
@@ -343,6 +348,7 @@ public class PokemonCardView extends CardView {
 	}
 
 	private void setupAttacks() {
+		attackAdapter.clear();
 		attackAdapter.addAll(pokemon.attackList());
 		if (pokemon.currentAttacks().size() > 0) {
 			for (Integer index : pokemon.currentAttacks().keySet()) {
@@ -384,12 +390,12 @@ public class PokemonCardView extends CardView {
 	}
 
 	private class StatChangedListener implements TextWatcher {
-		final Stat mStat;
-		final int mTagId;
+		final Stat stat;
+		final int tagId;
 
 		public StatChangedListener(Stat stat, int tagId) {
-			this.mStat = stat;
-			this.mTagId = tagId;
+			this.stat = stat;
+			this.tagId = tagId;
 		}
 
 		@Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -406,19 +412,20 @@ public class PokemonCardView extends CardView {
 				e.printStackTrace();
 				return;
 			}
-			switch (mTagId) {
+			switch (tagId) {
 				case R.string.ivs:
-					pokemon.setIv(mStat, value);
+					pokemon.setIv(stat, value);
 					updateStatValues();
 					break;
 				case R.string.evs:
-					pokemon.setEv(mStat, value);
+					pokemon.setEv(stat, value);
 					updateStatValues();
 					break;
 				case R.string.values:
-					pokemon.setValue(mStat, value);
+					pokemon.setValue(stat, value);
 					break;
 			}
+			cardHolder.updatePokemon(pokemon);
 		}
 	}
 }

@@ -7,7 +7,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/attack_1_result"
-        android:text="TEST"
         style="@style/AttackResults"/>
     <TextView
         android:layout_width="wrap_content"
@@ -15,14 +14,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/attack_2_result"
-        android:text="TEST"
         style="@style/AttackResults"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/attack_3_result"
         android:layout_below="@+id/attack_1_result"
-        android:text="TEST"
         style="@style/AttackResults"/>
     <TextView
         android:layout_width="wrap_content"
@@ -31,6 +28,5 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/attack_2_result"
         android:id="@+id/attack_4_result"
-        android:text="TEST"
         style="@style/AttackResults"/>
 </RelativeLayout>

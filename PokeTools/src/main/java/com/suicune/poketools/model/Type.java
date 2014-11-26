@@ -12,4 +12,5 @@ public interface Type {
 	public List<Type> immunities();
 	public int save();
 	public int color();
+	public double modifierAgainst(Type type);
 }

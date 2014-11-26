@@ -37,6 +37,8 @@ public abstract class Attack implements Typeable {
 
 	public abstract int power();
 
+	public abstract int power(Pokemon attacker, Pokemon defender);
+
 	public abstract int accuracy();
 
 	public abstract int pp();
@@ -61,7 +63,14 @@ public abstract class Attack implements Typeable {
 	public abstract String description();
 
 	public abstract String toString();
-	public abstract List<Integer> getDamageRange(Pokemon attacker, Pokemon defender);
+	public abstract List<Integer> getDamageRange(Pokemon attacker, Pokemon defender,
+												 Battlefield field);
+
+	public abstract double getEffectiveness(Pokemon defender);
+
+	public abstract Stats.Stat usedStat();
+
+	public abstract Stats.Stat receivedStat();
 
 	public enum Category {
 		OTHER, PHYSICAL, SPECIAL;

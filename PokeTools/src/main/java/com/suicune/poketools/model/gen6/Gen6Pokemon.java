@@ -5,7 +5,9 @@ import android.os.Bundle;
 
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
+import com.suicune.poketools.model.Battlefield;
 import com.suicune.poketools.model.EggGroup;
+import com.suicune.poketools.model.Item;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.Stats;
@@ -230,6 +232,10 @@ public class Gen6Pokemon extends Pokemon {
 		return stats.calculateStats();
 	}
 
+	@Override public List<Integer> attack(int index, Pokemon defender, Battlefield field) {
+		return currentAttacks().get(index).getDamageRange(this, defender, field);
+	}
+
 	@Override public int dexNumber() {
 		return pokedexNumber;
 	}
@@ -383,6 +389,14 @@ public class Gen6Pokemon extends Pokemon {
 		this.nature = NatureFactory.get(6, bundle.getInt(ARG_NATURE));
 		this.stats().updateWith(StatsFactory.fromBundle(6, bundle.getBundle(ARG_STATS)));
 		return this;
+	}
+
+	@Override public Item item() {
+		return null;
+	}
+
+	@Override public boolean isBurned() {
+		return false;
 	}
 
 	@Override public Map<Stat, Integer> evs() {

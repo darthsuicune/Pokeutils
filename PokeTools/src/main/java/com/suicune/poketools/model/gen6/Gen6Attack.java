@@ -1,8 +1,11 @@
 package com.suicune.poketools.model.gen6;
 
 import com.suicune.poketools.model.Attack;
+import com.suicune.poketools.model.Battlefield;
 import com.suicune.poketools.model.Pokemon;
+import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.Type;
+import com.suicune.poketools.utils.DamageCalcTools;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,23 +36,23 @@ public class Gen6Attack extends Attack {
 
 	public Gen6Attack(Type type, JSONObject data, String name, String description)
 			throws JSONException {
-		this.id = (data.isNull(ARG_CODE)) ? 0 : data.getInt(ARG_CODE) ;
+		this.id = (data.isNull(ARG_CODE)) ? 0 : data.getInt(ARG_CODE);
 		this.type = type;
-		this.category = Category.fromClass((data.isNull(ARG_CLASS)) ? 0 : data.getInt(ARG_CLASS)) ;
-		this.power = (data.isNull(ARG_POWER)) ? 0 : data.getInt(ARG_POWER) ;
-		this.accuracy = (data.isNull(ARG_ACCURACY)) ? 0 : data.getInt(ARG_ACCURACY) ;
-		this.pp = (data.isNull(ARG_PP)) ? 0 : data.getInt(ARG_PP) ;
-		this.priority = (data.isNull(ARG_PRIORITY)) ? 0 : data.getInt(ARG_PRIORITY) ;
+		this.category = Category.fromClass((data.isNull(ARG_CLASS)) ? 0 : data.getInt(ARG_CLASS));
+		this.power = (data.isNull(ARG_POWER)) ? 0 : data.getInt(ARG_POWER);
+		this.accuracy = (data.isNull(ARG_ACCURACY)) ? 0 : data.getInt(ARG_ACCURACY);
+		this.pp = (data.isNull(ARG_PP)) ? 0 : data.getInt(ARG_PP);
+		this.priority = (data.isNull(ARG_PRIORITY)) ? 0 : data.getInt(ARG_PRIORITY);
 		this.name = name;
 		this.description = description;
-		this.critRate = (data.isNull(ARG_CRIT_RATE)) ? 0 : data.getInt(ARG_CRIT_RATE) ;
-		this.effectChance = (data.isNull(ARG_EFFECT_CHANCE)) ? 0 : data.getInt(ARG_EFFECT_CHANCE) ;
-		this.flinchChance = (data.isNull(ARG_FLINCH_CHANCE)) ? 0 : data.getInt(ARG_FLINCH_CHANCE) ;
-		this.healing = (data.isNull(ARG_HEALING)) ? 0 : data.getInt(ARG_HEALING) ;
-		this.maxTurns = (data.isNull(ARG_MAX_TURNS)) ? 0 : data.getInt(ARG_MAX_TURNS) ;
-		this.minTurns = (data.isNull(ARG_MIN_TURNS)) ? 0 : data.getInt(ARG_MIN_TURNS) ;
-		this.recoil = (data.isNull(ARG_RECOIL)) ? 0 : data.getInt(ARG_RECOIL) ;
-		this.status = Status.fromCode((data.isNull(ARG_STATUS)) ? 0 : data.getInt(ARG_STATUS)) ;
+		this.critRate = (data.isNull(ARG_CRIT_RATE)) ? 0 : data.getInt(ARG_CRIT_RATE);
+		this.effectChance = (data.isNull(ARG_EFFECT_CHANCE)) ? 0 : data.getInt(ARG_EFFECT_CHANCE);
+		this.flinchChance = (data.isNull(ARG_FLINCH_CHANCE)) ? 0 : data.getInt(ARG_FLINCH_CHANCE);
+		this.healing = (data.isNull(ARG_HEALING)) ? 0 : data.getInt(ARG_HEALING);
+		this.maxTurns = (data.isNull(ARG_MAX_TURNS)) ? 0 : data.getInt(ARG_MAX_TURNS);
+		this.minTurns = (data.isNull(ARG_MIN_TURNS)) ? 0 : data.getInt(ARG_MIN_TURNS);
+		this.recoil = (data.isNull(ARG_RECOIL)) ? 0 : data.getInt(ARG_RECOIL);
+		this.status = Status.fromCode((data.isNull(ARG_STATUS)) ? 0 : data.getInt(ARG_STATUS));
 	}
 
 	@Override public Type type() {
@@ -61,8 +64,7 @@ public class Gen6Attack extends Attack {
 		if (power == 1) {
 			return true;
 		}
-		switch(id) {
-
+		switch (id) {
 			default:
 				return false;
 		}
@@ -81,8 +83,13 @@ public class Gen6Attack extends Attack {
 	}
 
 	@Override public int power() {
-		if(power == 1) {
+		return power;
+	}
 
+	@Override public int power(Pokemon attacker, Pokemon defender) {
+		int power = this.power;
+		if (hasSpecialTreatment()) {
+			//TODO: Switch over all possible strange
 		}
 		return power;
 	}
@@ -143,8 +150,30 @@ public class Gen6Attack extends Attack {
 		return name + " (" + type.toString() + " " + power + ")";
 	}
 
-	@Override public List<Integer> getDamageRange(Pokemon attacker, Pokemon defender) {
-		return null;
+	@Override public List<Integer> getDamageRange(Pokemon attacker, Pokemon defender,
+												  Battlefield field) {
+		return DamageCalcTools.getDamage(6, this, attacker, defender, field);
+	}
+
+	@Override public double getEffectiveness(Pokemon defender) {
+		double firstType = defender.type1().modifierAgainst(this.type);
+		double secondType = defender.type2().modifierAgainst(type);
+		return firstType * secondType;
+	}
+
+	@Override public Stats.Stat usedStat() {
+		return (category == Category.PHYSICAL) ? Stats.Stat.ATTACK : Stats.Stat.SPECIAL_ATTACK;
+	}
+
+	@Override public Stats.Stat receivedStat() {
+		switch (id) {
+			//Psyshock/Psysomething/Secret sword
+			case -1:
+			default:
+				return (category == Category.PHYSICAL) ? Stats.Stat.DEFENSE :
+						Stats.Stat.SPECIAL_DEFENSE;
+		}
+
 	}
 
 	@Override public boolean equals(Object o) {

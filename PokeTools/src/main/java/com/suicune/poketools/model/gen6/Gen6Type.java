@@ -152,6 +152,17 @@ public enum Gen6Type implements Type, Typeable {
 		return color;
 	}
 
+	@Override public double modifierAgainst(Type type) {
+		if(weaknesses.contains(type)) {
+			return 2.0;
+		} else if (resistances.contains(type)){
+			return 0.5;
+		} else if (immunities.contains(type)) {
+			return 0;
+		}
+		return 1;
+	}
+
 	public static Gen6Type getType(int typeId) {
 		switch (typeId) {
 			case 0:
