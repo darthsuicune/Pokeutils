@@ -5,4 +5,20 @@
     <string name="ivs">ivs</string>
     <string name="evs">evs</string>
     <string name="values">values</string>
+    <string name="modifiers">Mods</string>
+    <string-array name="stat_modifiers">
+        <item>-6</item>
+        <item>-5</item>
+        <item>-4</item>
+        <item>-3</item>
+        <item>-2</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>

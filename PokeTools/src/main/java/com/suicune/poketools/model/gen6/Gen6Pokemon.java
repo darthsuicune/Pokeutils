@@ -70,6 +70,7 @@ public class Gen6Pokemon extends Pokemon {
 	 * Subproperties are modifiable
 	 */
 	public final Stats stats;
+	public final Map<Stat, Integer> statModifiers = new HashMap<>();
 
 	/**
 	 * Mutable properties
@@ -174,6 +175,28 @@ public class Gen6Pokemon extends Pokemon {
 	@Override public Pokemon setValue(Stat stat, int value) {
 		stats.currentValues().put(stat, value);
 		return this;
+	}
+
+	@Override public Pokemon setStatModifier(Stat stat, int modifier) {
+		statModifiers.put(stat, modifier);
+		return this;
+	}
+
+	@Override public int statModifier(Stat stat) {
+		return (statModifiers.containsKey(stat) ? statModifiers.get(stat) : 0);
+	}
+
+	@Override public int finalValue(Stat stat) {
+		double multiplier;
+		int statModifier = statModifier(stat);
+		if (statModifier >= 0) {
+			multiplier = (statModifier + 2.0) / 2.0;
+		} else {
+			int down = 2 - statModifier;
+			multiplier = 2.0 / (double) down;
+		}
+
+		return (int)((double)currentStats().get(stat) * multiplier);
 	}
 
 	@Override public Map<Stat, Integer> baseStats() {

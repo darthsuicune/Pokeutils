@@ -121,6 +121,9 @@ public abstract class Pokemon implements Typeable {
 	public abstract Pokemon setIv(Stat stat, int value);
 	public abstract Pokemon setEv(Stat stat, int value);
 	public abstract Pokemon setValue(Stat stat, int value);
+	public abstract Pokemon setStatModifier(Stat stat, int modifier);
+	public abstract int statModifier(Stat stat);
+	public abstract int finalValue(Stat stat);
 	/**
 	 * Utility methods
 	 */

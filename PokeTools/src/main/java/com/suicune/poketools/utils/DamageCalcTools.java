@@ -30,10 +30,8 @@ public class DamageCalcTools {
 											  Battlefield field) {
 		List<Integer> results = new ArrayList<>();
 		if (attack.category() != Attack.Category.OTHER) {
-			int baseDamage =
-					baseDamage(attacker.level(), attacker.currentStats().get(attack.usedStat()),
-							defender.currentStats().get(attack.receivedStat()),
-							attack.power(attacker, defender));
+			int baseDamage = baseDamage(attacker.level(), attacker.finalValue(attack.usedStat()),
+					defender.finalValue(attack.receivedStat()), attack.power(attacker, defender));
 			boolean stab = (attack.type() == attacker.type1() || attack.type() == attacker.type2());
 			double typeEffectiveness = attack.getEffectiveness(defender);
 			double critical = (field.isCritical(attack)) ? 1.5 : 1.0;
@@ -66,14 +64,14 @@ public class DamageCalcTools {
 	}
 
 	private static double modifiedDamage(int baseDamage, boolean stab, double typeEffectiveness,
-										double critical, double modifier) {
+										 double critical, double modifier) {
 		double stabBonus = (stab) ? 1.5 : 1.0;
 		return (int) (baseDamage * stabBonus * typeEffectiveness * critical * modifier);
 	}
 
 	private static double getModifier(Item attackerItem, Item defenderItem, Ability attackerAbility,
-									 Ability defenderAbility, Battlefield field,
-									 boolean isAttackerBurned) {
+									  Ability defenderAbility, Battlefield field,
+									  boolean isAttackerBurned) {
 		//TODO: ... Do.
 		double isBurned = (isAttackerBurned) ? 0.5 : 1;
 		return 1.0 * isBurned;

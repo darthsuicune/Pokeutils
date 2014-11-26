@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.widget.AdapterView.*;
 import static com.suicune.poketools.model.Stats.Stat;
 
 /**
@@ -49,6 +50,7 @@ public class PokemonCardView extends CardView {
 	private Map<Stat, EditText> evsView = new HashMap<>();
 	private Map<Stat, EditText> statsView = new HashMap<>();
 	private Map<Integer, Spinner> attackViews = new HashMap<>();
+	private Map<Stat, Spinner> statModifiersView = new HashMap<>();
 
 	private AutoCompleteTextView nameAutoCompleteView;
 	private TextView nameView;
@@ -63,6 +65,7 @@ public class PokemonCardView extends CardView {
 	int level = Pokemon.DEFAULT_LEVEL;
 
 	public Pokemon pokemon;
+
 
 	public PokemonCardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -92,11 +95,41 @@ public class PokemonCardView extends CardView {
 		prepareStatsView(ivsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
 		prepareStatsView(evsView, findViewById(R.id.pokemon_evs), R.string.evs);
 		prepareStatsView(statsView, findViewById(R.id.pokemon_stats), R.string.values);
+		prepareStatModifiersView(statModifiersView, findViewById(R.id.pokemon_stat_modifiers));
 		prepareNatureView((Spinner) findViewById(R.id.nature));
 		prepareAttackViews();
 		prepareNameAutoComplete(nameAutoCompleteView);
 
 		showPokemonInfo();
+	}
+
+	private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
+		viewSet.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
+		viewSet.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
+		viewSet.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
+		viewSet.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
+		viewSet.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
+		for (final Stat stat : viewSet.keySet()) {
+			viewSet.get(stat).setAdapter(
+					new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+							getContext().getResources().getStringArray(R.array.stat_modifiers)));
+			viewSet.get(stat).setSelection(6);
+			viewSet.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
+				@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
+													 long l) {
+					if (hasAValidPokemon()) {
+						pokemon.setStatModifier(stat,
+								Integer.parseInt((String) adapterView.getItemAtPosition(i)));
+						cardHolder.updatePokemon(pokemon);
+					}
+				}
+
+				@Override public void onNothingSelected(AdapterView<?> adapterView) {
+
+				}
+			});
+		}
+
 	}
 
 	private void prepareHeaderView() {
@@ -119,7 +152,8 @@ public class PokemonCardView extends CardView {
 			@Override public void afterTextChanged(Editable editable) {
 				try {
 					level = Integer.parseInt(editable.toString());
-					if (hasAValidPokemon() && level != pokemon.level() && level >= Pokemon.MIN_LEVEL &&
+					if (hasAValidPokemon() && level != pokemon.level() &&
+						level >= Pokemon.MIN_LEVEL &&
 						level <= Pokemon.MAX_LEVEL) {
 						pokemon.setLevel(level);
 						updateStats();
@@ -160,14 +194,13 @@ public class PokemonCardView extends CardView {
 		abilityView.setAdapter(
 				new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
 						abilityList));
-		abilityView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		abilityView.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
 												 long l) {
 				setAbility(i);
 			}
 
 			@Override public void onNothingSelected(AdapterView<?> adapterView) {
-
 			}
 		});
 		if (hasAValidPokemon()) {
@@ -180,7 +213,7 @@ public class PokemonCardView extends CardView {
 		natureView.setAdapter(
 				new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
 						getResources().getStringArray(R.array.natures)));
-		natureView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		natureView.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
 												 long l) {
 				setNature(i);
@@ -237,7 +270,7 @@ public class PokemonCardView extends CardView {
 			Spinner attackSpinner = attackViews.get(i);
 			attackSpinner.setAdapter(attackAdapter);
 			final int element = i;
-			attackSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			attackSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 				@Override public void onItemSelected(AdapterView<?> adapterView, View view,
 													 int position, long id) {
 					Attack attack = (Attack) adapterView.getAdapter().getItem(position);
@@ -256,7 +289,8 @@ public class PokemonCardView extends CardView {
 		final String[] objects = getContext().getResources().getStringArray(R.array.pokemon_names);
 		final List<String> names = Pokemon.parseAllNames(objects);
 		ArrayAdapter<String> adapter =
-				new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, names);
+				new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line,
+						names);
 		view.setAdapter(adapter);
 		view.setThreshold(1);
 		view.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -277,7 +311,7 @@ public class PokemonCardView extends CardView {
 				}
 			}
 		});
-		view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		view.setOnItemClickListener(new OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
 											  long id) {
 				selectPokemon(((TextView) view).getText().toString());
@@ -304,7 +338,7 @@ public class PokemonCardView extends CardView {
 	}
 
 	public void showPokemonInfo() {
-		if(hasAValidPokemon()) {
+		if (hasAValidPokemon()) {
 			if (!nameView.getText().equals(pokemon.nickname())) {
 				nameView.setText(pokemon.nickname());
 				nameAutoCompleteView.setText(pokemon.name());
@@ -342,6 +376,10 @@ public class PokemonCardView extends CardView {
 		}
 		this.pokemon.setAbility(this.pokemon.ability1());
 		abilityView.setSelection(AbilityFactory.find(getContext(), this.pokemon.currentAbility()));
+		for (Stat stat : statModifiersView.keySet()) {
+			pokemon.setStatModifier(stat,
+					Integer.parseInt((String) statModifiersView.get(stat).getSelectedItem()));
+		}
 		setupAttacks();
 		showPokemonInfo();
 		cardHolder.updatePokemon(pokemon);

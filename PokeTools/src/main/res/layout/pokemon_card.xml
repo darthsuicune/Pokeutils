@@ -89,6 +89,12 @@
                 android:layout_width="match_parent"/>
             <include
                 android:layout_margin="4dp"
+                android:id="@+id/pokemon_stat_modifiers"
+                layout="@layout/stat_modifiers"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <include
+                android:layout_margin="4dp"
                 android:id="@+id/attacks"
                 layout="@layout/attacks_view"
                 android:layout_height="wrap_content"
