@@ -124,9 +124,7 @@ public class PokemonCardView extends CardView {
 					}
 				}
 
-				@Override public void onNothingSelected(AdapterView<?> adapterView) {
-
-				}
+				@Override public void onNothingSelected(AdapterView<?> adapterView) {}
 			});
 		}
 
