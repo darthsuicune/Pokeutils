@@ -6,14 +6,10 @@ import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.utils.IvTools;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by denis on min1.min1.14.
- */
 public class Gen6Stats extends Stats {
 	private static final int MAX_EV = 255;
 	private static final int MAX_IV = 31;
@@ -65,8 +61,8 @@ public class Gen6Stats extends Stats {
 		return 6;
 	}
 
-	@Override public Stats setIvs(int hp, int attack, int defense, int spattack, int spdefense,
-								  int speed) {
+	@Override
+	public Stats setIvs(int hp, int attack, int defense, int spattack, int spdefense, int speed) {
 		ivs.put(Stat.HP, hp);
 		ivs.put(Stat.ATTACK, attack);
 		ivs.put(Stat.DEFENSE, defense);
@@ -78,8 +74,8 @@ public class Gen6Stats extends Stats {
 		return this;
 	}
 
-	@Override public Stats setEvs(int hp, int attack, int defense, int spattack, int spdefense,
-								  int speed) {
+	@Override
+	public Stats setEvs(int hp, int attack, int defense, int spattack, int spdefense, int speed) {
 		evs.put(Stat.HP, hp);
 		evs.put(Stat.ATTACK, attack);
 		evs.put(Stat.DEFENSE, defense);
@@ -91,8 +87,9 @@ public class Gen6Stats extends Stats {
 		return this;
 	}
 
-	@Override public Stats setBaseStats(int hp, int attack, int defense, int spattack,
-										int spdefense, int speed) {
+	@Override
+	public Stats setBaseStats(int hp, int attack, int defense, int spattack, int spdefense,
+							  int speed) {
 		base.put(Stat.HP, hp);
 		base.put(Stat.ATTACK, attack);
 		base.put(Stat.DEFENSE, defense);
@@ -104,8 +101,9 @@ public class Gen6Stats extends Stats {
 		return this;
 	}
 
-	@Override public Stats setCurrentValues(int hp, int attack, int defense, int spattack,
-											int spdefense, int speed) {
+	@Override
+	public Stats setCurrentValues(int hp, int attack, int defense, int spattack, int spdefense,
+								  int speed) {
 		values.put(Stat.HP, hp);
 		values.put(Stat.ATTACK, attack);
 		values.put(Stat.DEFENSE, defense);
@@ -123,11 +121,6 @@ public class Gen6Stats extends Stats {
 			values.put(stat, calculateValue(stat, base.get(stat), ivs.get(stat), evs.get(stat)));
 		}
 		return this;
-	}
-
-	private boolean matchesValue(int value, Stat stat, int iv) {
-		return value == calculateValue(stat, base.get(stat), iv, evs.get(stat));
-
 	}
 
 	private int calculateValue(Stat stat, int base, int iv, int ev) {
@@ -156,17 +149,12 @@ public class Gen6Stats extends Stats {
 	@Override public Map<Stat, List<Integer>> calculateIvs() {
 		Map<Stat, List<Integer>> result = new HashMap<>();
 		for (Stat stat : Stat.values(gen())) {
-			List<Integer> possibleValues = new ArrayList<>();
-			for (int i = 0; i <= 31; i++) {
-				if (matchesValue(values.get(stat), stat, i)) {
-					possibleValues.add(i);
-				}
-			}
-			result.put(stat, possibleValues);
+			result.put(stat,
+					IvTools.calculatePossibleStatValues(gen(), level, base.get(stat), ivs.get(stat),
+							evs.get(stat), nature.statModifier(stat)));
 		}
 		return result;
 	}
-
 
 	@Override public Stats calculateStats() {
 		return setValuesFromStats(this.level);

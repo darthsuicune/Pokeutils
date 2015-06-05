@@ -3,7 +3,6 @@ package com.suicune.poketools.view.fragments;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
@@ -205,13 +204,6 @@ public class MainNavigationDrawerFragment extends Fragment {
 	}
 
 	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		// Forward the new configuration the drawer toggle component.
-		//        mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// If the drawer is open, show the global app actions in the action bar. See also
 		// showGlobalContextActionBar, which controls the top-left area of the action bar.
@@ -223,9 +215,6 @@ public class MainNavigationDrawerFragment extends Fragment {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		//		if (mDrawerToggle.onOptionsItemSelected(item)) {
-		//			return true;
-		//		}
 		switch (item.getItemId()) {
 			case R.id.action_example:
 				Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
@@ -235,10 +224,7 @@ public class MainNavigationDrawerFragment extends Fragment {
 		}
 	}
 
-	/**
-	 * Callbacks interface that all activities using this fragment must implement.
-	 */
-	public static interface NavigationDrawerCallbacks {
+	public interface NavigationDrawerCallbacks {
 		void onNavigationDrawerItemSelected(int position);
 	}
 }
