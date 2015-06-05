@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.suicune.poketools.model.Stats.Stat;
+import static com.suicune.poketools.model.Stats.Stat.*;
 
 
 public class IvCalcFragment extends Fragment implements PokemonCardHolder {
@@ -63,13 +64,12 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 			}
 		});
 		View results = fragmentView.findViewById(R.id.results);
-		resultViews.put(Stat.HP, (TextView) results.findViewById(R.id.hp));
-		resultViews.put(Stat.ATTACK, (TextView) results.findViewById(R.id.attack));
-		resultViews.put(Stat.DEFENSE, (TextView) results.findViewById(R.id.defense));
-		resultViews.put(Stat.SPECIAL_ATTACK, (TextView) results.findViewById(R.id.special_attack));
-		resultViews
-				.put(Stat.SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.special_defense));
-		resultViews.put(Stat.SPEED, (TextView) results.findViewById(R.id.speed));
+		resultViews.put(HP, (TextView) results.findViewById(R.id.hp));
+		resultViews.put(ATTACK, (TextView) results.findViewById(R.id.attack));
+		resultViews.put(DEFENSE, (TextView) results.findViewById(R.id.defense));
+		resultViews.put(SPECIAL_ATTACK, (TextView) results.findViewById(R.id.special_attack));
+		resultViews.put(SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.special_defense));
+		resultViews.put(SPEED, (TextView) results.findViewById(R.id.speed));
 	}
 
 	private void displayIvs() {
@@ -87,7 +87,7 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 						break;
 					default:
 						result = "" + results.get(stat).get(0) + " - " +
-								 results.get(stat).get(results.get(stat).size() - 1);
+								results.get(stat).get(results.get(stat).size() - 1);
 				}
 				resultViews.get(stat).setText(result);
 			}

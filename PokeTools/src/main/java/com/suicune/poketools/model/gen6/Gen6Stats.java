@@ -150,7 +150,7 @@ public class Gen6Stats extends Stats {
 		Map<Stat, List<Integer>> result = new HashMap<>();
 		for (Stat stat : Stat.values(gen())) {
 			result.put(stat,
-					IvTools.calculatePossibleStatValues(gen(), level, base.get(stat), ivs.get(stat),
+					IvTools.calculatePossibleIvValues(gen(), level, base.get(stat), ivs.get(stat),
 							evs.get(stat), nature.statModifier(stat)));
 		}
 		return result;
