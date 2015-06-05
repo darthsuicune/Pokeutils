@@ -6,9 +6,6 @@ import com.suicune.poketools.model.gen6.Gen6Type;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-/**
- * Created by denis on 20.09.14.
- */
 public class TypeFactory {
 	public static Type createType(int gen, int typeCode) {
 		switch (gen) {

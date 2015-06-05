@@ -16,9 +16,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lapuente on 14.11.14.
- */
 public class AttackFactory {
 	public static Attack create(Context context, int gen, int id)
 			throws IOException, JSONException {

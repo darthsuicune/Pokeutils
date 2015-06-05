@@ -2,17 +2,14 @@ package com.suicune.poketools.model;
 
 import android.os.Bundle;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public interface Ability {
-	public static final String ARG_NAME = "name";
-	public static final String ARG_CODE = "code";
-	public static final String ARG_DESCRIPTION = "description";
-	public static final String ARG_BATTLE_DESCRIPTION = "battle_description";
-	public int id();
-	public String name();
-	public String description();
-	public String battleDescription();
-	public Bundle save();
+	String ARG_NAME = "name";
+	String ARG_CODE = "code";
+	String ARG_DESCRIPTION = "description";
+	String ARG_BATTLE_DESCRIPTION = "battle_description";
+	int id();
+	String name();
+	String description();
+	String battleDescription();
+	Bundle save();
 }

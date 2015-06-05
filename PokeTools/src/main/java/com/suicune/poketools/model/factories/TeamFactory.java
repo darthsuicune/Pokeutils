@@ -3,9 +3,6 @@ package com.suicune.poketools.model.factories;
 import com.suicune.poketools.model.PokemonTeam;
 import com.suicune.poketools.model.gen6.Gen6Team;
 
-/**
- * Created by lapuente on 22.09.14.
- */
 public class TeamFactory {
 	public static PokemonTeam create(int gen) {
 		switch(gen) {

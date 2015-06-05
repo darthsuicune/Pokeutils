@@ -9,9 +9,6 @@ import com.suicune.poketools.model.PokemonTeam;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by lapuente on 22.09.14.
- */
 public class Gen6Team implements PokemonTeam {
 	public String mName;
 	public Map<Integer, Pokemon> members;
@@ -55,7 +52,7 @@ public class Gen6Team implements PokemonTeam {
 	public String getMemberName(int position, Context context, int resId) {
 		if(members.get(position) != null) {
 			Pokemon member = members.get(position);
-			return member.getDefaultName(context, member.dexNumber(), member.formNumber());
+			return Pokemon.getDefaultName(context, member.dexNumber(), member.formNumber());
 		} else {
 			return context.getString(resId);
 		}

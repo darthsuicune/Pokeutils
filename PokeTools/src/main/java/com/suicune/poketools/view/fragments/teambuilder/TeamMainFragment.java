@@ -2,7 +2,6 @@ package com.suicune.poketools.view.fragments.teambuilder;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,11 +49,6 @@ public class TeamMainFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_team_main, container, false);
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-        }
-    }
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -83,7 +77,7 @@ public class TeamMainFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnTeamEditedListener {
-		public void onTeamChanged(PokemonTeam team);
+		void onTeamChanged(PokemonTeam team);
     }
 
 }

@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by denis on 20.09.14.
- */
 public class FileUtils {
 	public static JSONObject toJson(InputStream stream) throws JSONException, IOException {
 		return new JSONObject(toString(stream));

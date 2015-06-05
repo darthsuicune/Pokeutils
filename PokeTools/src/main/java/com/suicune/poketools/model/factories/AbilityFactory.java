@@ -10,9 +10,6 @@ import com.suicune.poketools.model.gen6.Gen6Ability;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-/**
- * Created by denis on 20.09.14.
- */
 public class AbilityFactory {
 	public static Ability createAbility(Context context, int gen, int abilityCode) {
 		switch (gen) {

@@ -236,9 +236,6 @@ public class TeamBuilderDrawerFragment extends Fragment {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		/*if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}*/
 		switch (item.getItemId()) {
 			default:
 				return super.onOptionsItemSelected(item);
@@ -257,13 +254,8 @@ public class TeamBuilderDrawerFragment extends Fragment {
 		mDrawerListView.setAdapter(mAdapter);
 	}
 
-	/**
-	 * Callbacks interface that all activities using this fragment must implement.
-	 */
-	public static interface TeamBuilderDrawerCallbacks {
-		/**
-		 * Called when an item in the navigation drawer is selected.
-		 */
+
+	public interface TeamBuilderDrawerCallbacks {
 		void onPokemonSelected(int position);
 
 		void onMainScreenSelected();

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +21,7 @@ import com.suicune.poketools.view.fragments.teambuilder.TeamMemberFragment;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TeamBuilderActivity extends ActionBarActivity
+public class TeamBuilderActivity extends AppCompatActivity
 		implements TeamBuilderDrawerFragment.TeamBuilderDrawerCallbacks,
 		TeamMainFragment.OnTeamEditedListener, TeamMemberFragment.OnTeamMemberChangedListener {
 

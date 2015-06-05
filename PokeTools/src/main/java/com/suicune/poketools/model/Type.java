@@ -2,15 +2,12 @@ package com.suicune.poketools.model;
 
 import java.util.List;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public interface Type {
-	public int nameResId();
-	public List<Type> weaknesses();
-	public List<Type> resistances();
-	public List<Type> immunities();
-	public int save();
-	public int color();
-	public double modifierAgainst(Type type);
+	int nameResId();
+	List<Type> weaknesses();
+	List<Type> resistances();
+	List<Type> immunities();
+	int save();
+	int color();
+	double modifierAgainst(Type type);
 }

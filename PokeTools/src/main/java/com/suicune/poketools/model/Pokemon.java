@@ -16,9 +16,6 @@ import java.util.StringTokenizer;
 
 import static com.suicune.poketools.model.Stats.Stat;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public abstract class Pokemon implements Typeable {
 	public static final String ARG_GEN = "gen";
 	public static final String ARG_DEX_NUMBER = "dex_number";

@@ -19,9 +19,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public class PokemonFactory {
 	public static Pokemon createPokemon(Context context, int gen, int dexNumber, int form,
 										int level) throws IOException, JSONException {

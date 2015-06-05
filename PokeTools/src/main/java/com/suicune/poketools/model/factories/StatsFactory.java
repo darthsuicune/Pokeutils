@@ -8,9 +8,6 @@ import com.suicune.poketools.model.gen6.Gen6Stats;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public class StatsFactory {
 	public static Stats createStats(int gen, int level, int[] baseStats) {
 		switch (gen) {

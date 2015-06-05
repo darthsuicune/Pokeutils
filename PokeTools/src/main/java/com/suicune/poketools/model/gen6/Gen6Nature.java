@@ -4,9 +4,6 @@ import com.suicune.poketools.R;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Stats;
 
-/**
- * Created by denis on 20.09.14.
- */
 public enum Gen6Nature implements Nature {
 	HARDY(R.string.nature_hardy, null, null, 1, 1, 1, 1, 1), //Nothing
 	BASHFUL(R.string.nature_bashful, null, null, 1, 1, 1, 1, 1), //Nothing
@@ -50,7 +47,7 @@ public enum Gen6Nature implements Nature {
 	public double specialDefenseModifier;
 	public double speedModifier;
 
-	private Gen6Nature(int nameResId, Stats.Stat increasedStat, Stats.Stat decreasedStat,
+	Gen6Nature(int nameResId, Stats.Stat increasedStat, Stats.Stat decreasedStat,
 					   double attackModifier, double defenseModifier, double spAttackModifier,
 					   double spDefenseModifier, double speedModifier) {
 		this.nameResId = nameResId;

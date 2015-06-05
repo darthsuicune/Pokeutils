@@ -4,9 +4,6 @@ import com.suicune.poketools.view.Typeable;
 
 import java.util.List;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public abstract class Attack implements Typeable {
 	public static final String ARG_TYPE = "attack_type";
 	public static final String ARG_PRIORITY = "priority";

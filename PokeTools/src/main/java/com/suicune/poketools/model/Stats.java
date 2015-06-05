@@ -6,15 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by lapuente on 17.09.14.
- */
 public abstract class Stats {
 	public static final String ARG_BASE = "base";
 	public static final String ARG_EVS = "evs";
 	public static final String ARG_IVS = "ivs";
 	public static final String ARG_LEVEL = "level";
 	List<OnStatsChangedListener> listeners;
+
 	protected Stats() {
 		listeners = new ArrayList<>();
 	}
@@ -25,15 +23,18 @@ public abstract class Stats {
 
 	public abstract int gen();
 
-	public abstract Stats setIvs(int hp, int attack, int defense, int spattack, int spdefense, int speed);
+	public abstract Stats setIvs(int hp, int attack, int defense, int spattack, int spdefense,
+								 int speed);
 
-	public abstract Stats setEvs(int hp, int attack, int defense, int spattack, int spdefense, int speed);
+	public abstract Stats setEvs(int hp, int attack, int defense, int spattack, int spdefense,
+								 int speed);
 
 	public abstract Stats setBaseStats(int hp, int attack, int defense, int spattack, int spdefense,
-							  int speed);
+									   int speed);
 
-	public abstract Stats setCurrentValues(int hp, int attack, int defense, int spattack, int spdefense,
-								  int speed);
+	public abstract Stats setCurrentValues(int hp, int attack, int defense, int spattack,
+										   int spdefense,
+										   int speed);
 
 	public abstract Stats updateWith(Stats newStats);
 
@@ -54,9 +55,11 @@ public abstract class Stats {
 	public abstract Bundle save();
 
 	public abstract Map<Stat, List<Integer>> calculateIvs();
+
 	public abstract Stats calculateStats();
 
 	public abstract Stats putIv(Stat stat, int value);
+
 	public abstract Stats putEv(Stat stat, int value);
 
 	public enum Stat {
@@ -69,13 +72,13 @@ public abstract class Stats {
 		SPEED;
 
 		public static Stat[] values(int gen) {
-			switch(gen) {
+			switch (gen) {
 				case 1:
-				return new Stat[] {
-						HP, ATTACK, DEFENSE, SPECIAL, SPEED
-				};
+					return new Stat[]{
+							HP, ATTACK, DEFENSE, SPECIAL, SPEED
+					};
 				default:
-					return new Stat[] {
+					return new Stat[]{
 							HP, ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED
 					};
 			}
@@ -91,12 +94,12 @@ public abstract class Stats {
 	}
 
 	protected void notifyChanged() {
-		for(OnStatsChangedListener listener : listeners) {
+		for (OnStatsChangedListener listener : listeners) {
 			listener.onStatsChanged(this);
 		}
 	}
 
 	public interface OnStatsChangedListener {
-		public void onStatsChanged(Stats newStats);
+		void onStatsChanged(Stats newStats);
 	}
 }
