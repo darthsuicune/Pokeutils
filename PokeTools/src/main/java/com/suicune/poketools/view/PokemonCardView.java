@@ -39,9 +39,6 @@ import java.util.Map;
 import static android.widget.AdapterView.*;
 import static com.suicune.poketools.model.Stats.Stat;
 
-/**
- * Created by lapuente on 07.11.14.
- */
 public class PokemonCardView extends CardView {
 	public PokemonCardHolder cardHolder;
 

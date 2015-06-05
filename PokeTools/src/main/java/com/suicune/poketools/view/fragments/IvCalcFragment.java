@@ -24,17 +24,12 @@ import java.util.Map;
 import static com.suicune.poketools.model.Stats.Stat;
 
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Use the {@link IvCalcFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 	private static final String ARG_POKEMON = "pokemon";
-	private PokemonCardView mCardView;
+	private PokemonCardView cardView;
 	private Pokemon pokemon;
 
-	private Map<Stat, TextView> mResultViews = new HashMap<>();
+	private Map<Stat, TextView> resultViews = new HashMap<>();
 
 	/**
 	 * Use this factory method to create a new instance of
@@ -55,7 +50,7 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View fragmentView = inflater.inflate(R.layout.fragment_iv_calc, container, false);
-		mCardView = (PokemonCardView) fragmentView.findViewById(R.id.pokemon);
+		cardView = (PokemonCardView) fragmentView.findViewById(R.id.pokemon);
 		setupCalculator(fragmentView);
 		return fragmentView;
 	}
@@ -68,13 +63,13 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 			}
 		});
 		View results = fragmentView.findViewById(R.id.results);
-		mResultViews.put(Stat.HP, (TextView) results.findViewById(R.id.hp));
-		mResultViews.put(Stat.ATTACK, (TextView) results.findViewById(R.id.attack));
-		mResultViews.put(Stat.DEFENSE, (TextView) results.findViewById(R.id.defense));
-		mResultViews.put(Stat.SPECIAL_ATTACK, (TextView) results.findViewById(R.id.special_attack));
-		mResultViews
+		resultViews.put(Stat.HP, (TextView) results.findViewById(R.id.hp));
+		resultViews.put(Stat.ATTACK, (TextView) results.findViewById(R.id.attack));
+		resultViews.put(Stat.DEFENSE, (TextView) results.findViewById(R.id.defense));
+		resultViews.put(Stat.SPECIAL_ATTACK, (TextView) results.findViewById(R.id.special_attack));
+		resultViews
 				.put(Stat.SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.special_defense));
-		mResultViews.put(Stat.SPEED, (TextView) results.findViewById(R.id.speed));
+		resultViews.put(Stat.SPEED, (TextView) results.findViewById(R.id.speed));
 	}
 
 	private void displayIvs() {
@@ -94,7 +89,7 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 						result = "" + results.get(stat).get(0) + " - " +
 								 results.get(stat).get(results.get(stat).size() - 1);
 				}
-				mResultViews.get(stat).setText(result);
+				resultViews.get(stat).setText(result);
 			}
 		}
 	}
@@ -113,12 +108,12 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		mCardView.saveState(outState, ARG_POKEMON);
+		cardView.saveState(outState, ARG_POKEMON);
 	}
 
 	@Override public void onResume() {
 		super.onResume();
-		mCardView.setup(this, pokemon);
+		cardView.setup(this, pokemon);
 	}
 
 	@Override public void updatePokemon(Pokemon pokemon) {
