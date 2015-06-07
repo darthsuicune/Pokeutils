@@ -1,11 +1,11 @@
 package com.suicune.poketools.controller.activities;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,35 +16,41 @@ import com.suicune.poketools.view.fragments.IvBreedingCalcFragment;
 import com.suicune.poketools.view.fragments.IvCalcFragment;
 import com.suicune.poketools.view.fragments.MainNavigationDrawerFragment;
 
-public class MainActivity extends Activity
+public class MainActivity extends AppCompatActivity
 		implements MainNavigationDrawerFragment.NavigationDrawerCallbacks {
-	private static final String TAG_DAMAGE_CALC = "damageCalcFragment";
-	private static final String TAG_IV_CALC = "ivCalcFragment";
-	private static final String TAG_IV_BREEDER = "ivBreederFragment";
+	public static final String TAG_DAMAGE_CALC = "damageCalcFragment";
+	public static final String TAG_IV_CALC = "ivCalcFragment";
+	public static final String TAG_IV_BREEDER = "ivBreederFragment";
 
-	private MainNavigationDrawerFragment mMainNavigationDrawerFragment;
-	private CharSequence mTitle;
-	private Toolbar toolbar;
+	public static final int TEAM_BUILDER_SECTION = 0;
+	public static final int DAMAGE_CALC_SECTION = 1;
+	public static final int IV_BREED_SECTION = 2;
+	public static final int IV_CALC_SECTION = 3;
+
+
+	MainNavigationDrawerFragment mainNavigationDrawerFragment;
+	CharSequence title;
+	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mMainNavigationDrawerFragment = (MainNavigationDrawerFragment) getFragmentManager()
+		mainNavigationDrawerFragment = (MainNavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
-		mTitle = getTitle();
+		title = getTitle();
 		toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-		toolbar.setTitle(mTitle);
+		toolbar.setTitle(title);
 
 		// Set up the drawer.
-		mMainNavigationDrawerFragment
+		mainNavigationDrawerFragment
 				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		if (position == 0) {
+		if (position == TEAM_BUILDER_SECTION) {
 			openTeamBuilder();
 			return;
 		}
@@ -53,21 +59,21 @@ public class MainActivity extends Activity
 		Fragment fragment = null;
 		String tag;
 		switch (position) {
-			case 1:
+			case DAMAGE_CALC_SECTION:
 				tag = TAG_DAMAGE_CALC;
 				fragment = fragmentManager.findFragmentByTag(tag);
 				if(fragment == null) {
 					fragment = DamageCalcFragment.newInstance();
 				}
 				break;
-			case 2:
+			case IV_BREED_SECTION:
 				tag = TAG_IV_BREEDER;
 				fragment = fragmentManager.findFragmentByTag(tag);
 				if(fragment == null) {
 					fragment = IvBreedingCalcFragment.newInstance();
 				}
 				break;
-			case 3:
+			case IV_CALC_SECTION:
 				tag = TAG_IV_CALC;
 				fragment = fragmentManager.findFragmentByTag(tag);
 				if(fragment == null) {
@@ -88,23 +94,23 @@ public class MainActivity extends Activity
 	public void onSectionAttached(int number) {
 		switch (number) {
 			case 1:
-				mTitle = getString(R.string.damage_calc_fragment_title);
+				title = getString(R.string.damage_calc_fragment_title);
 				break;
 			case 2:
-				mTitle = getString(R.string.iv_breeder_calc_fragment_title);
+				title = getString(R.string.iv_breeder_calc_fragment_title);
 				break;
 			case 3:
-				mTitle = getString(R.string.iv_calc_fragment_title);
+				title = getString(R.string.iv_calc_fragment_title);
 				break;
 		}
 		if (toolbar != null) {
-			toolbar.setTitle(mTitle);
+			toolbar.setTitle(title);
 		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mMainNavigationDrawerFragment.isDrawerOpen()) {
+		if (!mainNavigationDrawerFragment.isDrawerOpen()) {
 			// Only show items in the action bar relevant to this screen if the drawer is not
 			// showing. Otherwise, let the drawer decide what to show in the action bar.
 			getMenuInflater().inflate(R.menu.main, menu);

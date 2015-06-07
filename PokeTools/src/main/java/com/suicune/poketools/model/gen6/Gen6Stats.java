@@ -43,9 +43,9 @@ public class Gen6Stats extends Stats {
 
 	@Override public boolean checkForValidValues() {
 		return checkForValidValues(evs, MAX_EV, MIN_EV) &&
-			   checkForValidValues(ivs, MAX_IV, MIN_IV) &&
-			   checkForValidValues(base, MAX_BASE, MIN_BASE) &&
-			   checkForValidValues(values, MAX_VALUE, MIN_VALUE);
+				checkForValidValues(ivs, MAX_IV, MIN_IV) &&
+				checkForValidValues(base, MAX_BASE, MIN_BASE) &&
+				checkForValidValues(values, MAX_VALUE, MIN_VALUE);
 	}
 
 	private boolean checkForValidValues(Map<Stat, Integer> values, int max, int min) {
@@ -148,10 +148,15 @@ public class Gen6Stats extends Stats {
 
 	@Override public Map<Stat, List<Integer>> calculateIvs() {
 		Map<Stat, List<Integer>> result = new HashMap<>();
-		for (Stat stat : Stat.values(gen())) {
-			result.put(stat,
-					IvTools.calculatePossibleIvValues(gen(), level, base.get(stat), ivs.get(stat),
-							evs.get(stat), nature.statModifier(stat)));
+		for (Stat stat : Stat.values(6)) {
+			if (stat == Stat.HP) {
+				result.put(stat, IvTools.calculatePossibleHpIvValues(6, level, base.get(stat),
+						values.get(stat), evs.get(stat)));
+			} else {
+				result.put(stat,
+						IvTools.calculatePossibleIvValues(6, level, base.get(stat),
+								values.get(stat), evs.get(stat), nature.statModifier(stat)));
+			}
 		}
 		return result;
 	}
@@ -174,11 +179,11 @@ public class Gen6Stats extends Stats {
 
 	private int[] toArray(Map<Stat, Integer> map) {
 		return new int[]{map.get(Stat.HP),
-						 map.get(Stat.ATTACK),
-						 map.get(Stat.DEFENSE),
-						 map.get(Stat.SPECIAL_ATTACK),
-						 map.get(Stat.SPECIAL_DEFENSE),
-						 map.get(Stat.SPEED)};
+				map.get(Stat.ATTACK),
+				map.get(Stat.DEFENSE),
+				map.get(Stat.SPECIAL_ATTACK),
+				map.get(Stat.SPECIAL_DEFENSE),
+				map.get(Stat.SPEED)};
 	}
 
 	@Override public Stats updateWith(Stats newStats) {

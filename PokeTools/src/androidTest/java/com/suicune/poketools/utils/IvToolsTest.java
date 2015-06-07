@@ -20,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class IvToolsTest {
 	static int[] DITTO = new int[]{48, 48, 48, 48, 48, 48};
+	static int[] LATIOS = new int[]{80, 90, 80, 130, 110, 110};
 
 	//Ditto 36 Sassy 87,44,46,46,44,38
 	@Test public void subject1() {
@@ -31,7 +32,7 @@ public class IvToolsTest {
 						new int[]{18, 19, 20},
 						new int[]{2, 3},
 						new int[]{10, 11, 12}),
-				calculated(36, Gen6Nature.SASSY, new int[] {87, 44, 46, 46, 44, 38}));
+				calculated(36, Gen6Nature.SASSY, new int[]{87, 44, 46, 46, 44, 38}, DITTO));
 	}
 
 	//Ditto 36 Hardy 85,41,49,50,48,49
@@ -44,7 +45,7 @@ public class IvToolsTest {
 						new int[]{29, 30, 31},
 						new int[]{24, 25, 26},
 						new int[]{27, 28}),
-				calculated(36, Gen6Nature.HARDY, new int[]{85, 41, 49, 50, 48, 49}));
+				calculated(36, Gen6Nature.HARDY, new int[]{85, 41, 49, 50, 48, 49}, DITTO));
 	}
 
 	//Ditto 37 Sassy 90,49,45,44,48,45
@@ -57,7 +58,7 @@ public class IvToolsTest {
 						new int[]{10, 11, 12},
 						new int[]{10, 11, 12},
 						new int[]{26, 27, 28, 29, 30, 31}),
-				calculated(37, Gen6Nature.SASSY, new int[]{90, 49, 45, 44, 48, 45}));
+				calculated(37, Gen6Nature.SASSY, new int[]{90, 49, 45, 44, 48, 45}, DITTO));
 	}
 
 	//Ditto 38 Hardy 91,48,50,52,45,48
@@ -70,7 +71,7 @@ public class IvToolsTest {
 						new int[]{28, 29, 30},
 						new int[]{10, 11},
 						new int[]{18, 19}),
-				calculated(38, Gen6Nature.HARDY, new int[]{91, 48, 50, 52, 45, 48}));
+				calculated(38, Gen6Nature.HARDY, new int[]{91, 48, 50, 52, 45, 48}, DITTO));
 	}
 
 	//Ditto 38 Hasty 92,46,39,51,44,45
@@ -83,7 +84,20 @@ public class IvToolsTest {
 						new int[]{26, 27},
 						new int[]{7, 8, 9},
 						new int[]{0, 1}),
-				calculated(38, Gen6Nature.HASTY, new int[]{92, 46, 39, 51, 44, 45}));
+				calculated(38, Gen6Nature.HASTY, new int[]{92, 46, 39, 51, 44, 45}, DITTO));
+	}
+
+	//Latios 30 Hasty 97, 68, 50, 90, 76, 88
+	@Test public void subject6() {
+		assertEquals(
+				expected(30, Gen6Nature.HASTY,
+						new int[]{30, 31},
+						new int[]{30, 31},
+						new int[]{10, 11, 12, 13},
+						new int[]{24, 25, 26},
+						new int[]{17, 18, 19},
+						new int[]{30, 31}),
+				calculated(30, Gen6Nature.HASTY, new int[]{97, 68, 50, 90, 76, 88}, LATIOS));
 	}
 
 	private TestSubject expected(int level, Nature nature, int[] hp, int[] att, int[] def,
@@ -106,17 +120,17 @@ public class IvToolsTest {
 		return stats;
 	}
 
-	private TestSubject calculated(int level, Nature nature, int[] stats) {
-		List<Integer> hps = IvTools.calculatePossibleHpIvValues(6, level, DITTO[0], stats[0], 0);
-		List<Integer> atts = IvTools.calculatePossibleIvValues(6, level, DITTO[1], stats[1], 0,
+	private TestSubject calculated(int level, Nature nature, int[] stats, int[] base) {
+		List<Integer> hps = IvTools.calculatePossibleHpIvValues(6, level, base[0], stats[0], 0);
+		List<Integer> atts = IvTools.calculatePossibleIvValues(6, level, base[1], stats[1], 0,
 				nature.statModifier(Stats.Stat.ATTACK));
-		List<Integer> defs = IvTools.calculatePossibleIvValues(6, level, DITTO[2], stats[2], 0,
+		List<Integer> defs = IvTools.calculatePossibleIvValues(6, level, base[2], stats[2], 0,
 				nature.statModifier(Stats.Stat.DEFENSE));
-		List<Integer> spatts = IvTools.calculatePossibleIvValues(6, level, DITTO[3], stats[3], 0,
+		List<Integer> spatts = IvTools.calculatePossibleIvValues(6, level, base[3], stats[3], 0,
 				nature.statModifier(Stats.Stat.SPECIAL_ATTACK));
-		List<Integer> spdefs = IvTools.calculatePossibleIvValues(6, level, DITTO[4], stats[4], 0,
+		List<Integer> spdefs = IvTools.calculatePossibleIvValues(6, level, base[4], stats[4], 0,
 				nature.statModifier(Stats.Stat.SPECIAL_DEFENSE));
-		List<Integer> speeds = IvTools.calculatePossibleIvValues(6, level, DITTO[5], stats[5], 0,
+		List<Integer> speeds = IvTools.calculatePossibleIvValues(6, level, base[5], stats[5], 0,
 				nature.statModifier(Stats.Stat.SPEED));
 		return new TestSubject(level, hps, atts, defs, spatts, spdefs, speeds, nature);
 	}
@@ -151,7 +165,7 @@ public class IvToolsTest {
 				List<Integer> expected = possibleValues.get(stat);
 				sort(current);
 				sort(expected);
-				if(!current.equals(expected)) {
+				if (!current.equals(expected)) {
 					matches = false;
 				} else {
 					System.out.println("" + current.get(0) + ", " + expected.get(0));

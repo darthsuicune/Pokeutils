@@ -126,4 +126,20 @@ public class IvTools {
 		}
 		return possibleValues;
 	}
+
+	public static String asText(List<Integer> stats, String empty) {
+		String result;
+		switch (stats.size()) {
+			case 0:
+				result = empty;
+				break;
+			case 1:
+				result = "" + stats.get(0);
+				break;
+			default:
+				result = "" + stats.get(0) + " - " +
+						stats.get(stats.size() - 1);
+		}
+		return result;
+	}
 }

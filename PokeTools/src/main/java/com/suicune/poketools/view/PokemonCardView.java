@@ -36,46 +36,50 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.widget.AdapterView.*;
+import static android.widget.AdapterView.OnItemClickListener;
+import static android.widget.AdapterView.OnItemSelectedListener;
 import static com.suicune.poketools.model.Stats.Stat;
 
 public class PokemonCardView extends CardView {
 	public PokemonCardHolder cardHolder;
 
-	private Map<Stat, TextView> baseStatsViews = new HashMap<>();
-	private Map<Stat, EditText> ivsView = new HashMap<>();
-	private Map<Stat, EditText> evsView = new HashMap<>();
-	private Map<Stat, EditText> statsView = new HashMap<>();
-	private Map<Integer, Spinner> attackViews = new HashMap<>();
-	private Map<Stat, Spinner> statModifiersView = new HashMap<>();
+	Map<Stat, TextView> baseStatsViews = new HashMap<>();
+	Map<Stat, EditText> ivsView = new HashMap<>();
+	Map<Stat, EditText> evsView = new HashMap<>();
+	Map<Stat, EditText> statsView = new HashMap<>();
+	Map<Integer, Spinner> attackViews = new HashMap<>();
+	Map<Stat, Spinner> statModifiersView = new HashMap<>();
 
-	private AutoCompleteTextView nameAutoCompleteView;
-	private TextView nameView;
-	private EditText levelView;
-	private Spinner abilityView;
-	private View cardDetailsView;
+	AutoCompleteTextView nameAutoCompleteView;
+	TextView nameView;
+	EditText levelView;
+	Spinner abilityView;
+	View cardDetailsView;
 
-	private Nature selectedNature;
-	private boolean isShown = true;
-	private AttackAdapter attackAdapter;
-	private Ability selectedAbility;
+	Nature selectedNature;
+	boolean isShown = true;
+	AttackAdapter attackAdapter;
+	Ability selectedAbility;
 	int level = Pokemon.DEFAULT_LEVEL;
 
 	public Pokemon pokemon;
+	boolean areAttacksEnabled = true;
 
+	public PokemonCardView(Context context) {
+		super(context);
+	}
 
 	public PokemonCardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public void setup(PokemonCardHolder holder, Pokemon pokemon) {
+	public PokemonCardView(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
+	}
+
+	public void setup(PokemonCardHolder holder) {
 		this.cardHolder = holder;
 		setupSubViews();
-		this.pokemon = pokemon;
-		if (this.hasAValidPokemon()) {
-			setupAttacks();
-			cardHolder.updatePokemon(pokemon);
-		}
 	}
 
 	public void setupSubViews() {
@@ -100,33 +104,6 @@ public class PokemonCardView extends CardView {
 		showPokemonInfo();
 	}
 
-	private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
-		viewSet.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
-		viewSet.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
-		viewSet.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
-		viewSet.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
-		viewSet.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
-		for (final Stat stat : viewSet.keySet()) {
-			viewSet.get(stat).setAdapter(
-					new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
-							getContext().getResources().getStringArray(R.array.stat_modifiers)));
-			viewSet.get(stat).setSelection(6);
-			viewSet.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
-				@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
-													 long l) {
-					if (hasAValidPokemon()) {
-						pokemon.setStatModifier(stat,
-								Integer.parseInt((String) adapterView.getItemAtPosition(i)));
-						cardHolder.updatePokemon(pokemon);
-					}
-				}
-
-				@Override public void onNothingSelected(AdapterView<?> adapterView) {}
-			});
-		}
-
-	}
-
 	private void prepareHeaderView() {
 		nameView.setOnClickListener(new OnClickListener() {
 			@Override public void onClick(View view) {
@@ -148,8 +125,7 @@ public class PokemonCardView extends CardView {
 				try {
 					level = Integer.parseInt(editable.toString());
 					if (hasAValidPokemon() && level != pokemon.level() &&
-						level >= Pokemon.MIN_LEVEL &&
-						level <= Pokemon.MAX_LEVEL) {
+							level >= Pokemon.MIN_LEVEL && level <= Pokemon.MAX_LEVEL) {
 						pokemon.setLevel(level);
 						updateStats();
 						cardHolder.updatePokemon(pokemon);
@@ -160,6 +136,34 @@ public class PokemonCardView extends CardView {
 				}
 			}
 		});
+	}
+
+	private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
+		viewSet.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
+		viewSet.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
+		viewSet.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
+		viewSet.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
+		viewSet.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
+		for (final Stat stat : viewSet.keySet()) {
+			viewSet.get(stat).setAdapter(
+					new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+							getContext().getResources().getStringArray(R.array.stat_modifiers)));
+			viewSet.get(stat).setSelection(6);
+			viewSet.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
+				@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
+													 long l) {
+					if (hasAValidPokemon()) {
+						pokemon.setStatModifier(stat,
+								Integer.parseInt((String) adapterView.getItemAtPosition(i)));
+						cardHolder.updatePokemon(pokemon);
+					}
+				}
+
+				@Override public void onNothingSelected(AdapterView<?> adapterView) {
+				}
+			});
+		}
+
 	}
 
 	private void prepareStatsView(Map<Stat, EditText> statViews, View view, int tagId) {
@@ -398,6 +402,20 @@ public class PokemonCardView extends CardView {
 	public void saveState(Bundle outState, String index) {
 		if (hasAValidPokemon()) {
 			outState.putBundle(index, pokemon.save());
+		}
+	}
+
+	public void enableAttacks() {
+		areAttacksEnabled = true;
+		for(View v : attackViews.values()) {
+			v.setVisibility(View.VISIBLE);
+		}
+	}
+
+	public void disableAttacks() {
+		areAttacksEnabled = false;
+		for (View v : attackViews.values()) {
+			v.setVisibility(View.GONE);
 		}
 	}
 

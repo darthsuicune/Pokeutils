@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.suicune.poketools.R;
 import com.suicune.poketools.model.Pokemon;
 import com.suicune.poketools.model.factories.PokemonFactory;
+import com.suicune.poketools.utils.IvTools;
 import com.suicune.poketools.view.PokemonCardHolder;
 import com.suicune.poketools.view.PokemonCardView;
 
@@ -22,7 +23,12 @@ import java.util.List;
 import java.util.Map;
 
 import static com.suicune.poketools.model.Stats.Stat;
-import static com.suicune.poketools.model.Stats.Stat.*;
+import static com.suicune.poketools.model.Stats.Stat.ATTACK;
+import static com.suicune.poketools.model.Stats.Stat.DEFENSE;
+import static com.suicune.poketools.model.Stats.Stat.HP;
+import static com.suicune.poketools.model.Stats.Stat.SPECIAL_ATTACK;
+import static com.suicune.poketools.model.Stats.Stat.SPECIAL_DEFENSE;
+import static com.suicune.poketools.model.Stats.Stat.SPEED;
 
 
 public class IvCalcFragment extends Fragment implements PokemonCardHolder {
@@ -77,19 +83,8 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 			Map<Stat, List<Integer>> results = pokemon.calculateIvs();
 			for (Stat stat : Stat.values(6)) {
 				List<Integer> statResults = results.get(stat);
-				String result;
-				switch (statResults.size()) {
-					case 0:
-						result = getString(R.string.empty);
-						break;
-					case 1:
-						result = "" + statResults.get(0);
-						break;
-					default:
-						result = "" + results.get(stat).get(0) + " - " +
-								results.get(stat).get(results.get(stat).size() - 1);
-				}
-				resultViews.get(stat).setText(result);
+				resultViews.get(stat)
+						.setText(IvTools.asText(statResults, getString(R.string.empty)));
 			}
 		}
 	}
@@ -113,7 +108,10 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onResume() {
 		super.onResume();
-		cardView.setup(this, pokemon);
+		cardView.setup(this);
+		if(pokemon != null) {
+			cardView.setPokemon(pokemon);
+		}
 	}
 
 	@Override public void updatePokemon(Pokemon pokemon) {

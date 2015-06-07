@@ -107,8 +107,15 @@ public class DamageCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onResume() {
 		super.onResume();
-		attackerView.setup(this, attacker);
-		defenderView.setup(this, defender);
+		attackerView.setup(this);
+		if (attacker != null) {
+			attackerView.setPokemon(attacker);
+		}
+
+		defenderView.setup(this);
+		if (defender != null) {
+			defenderView.setPokemon(defender);
+		}
 	}
 
 	@Override public void updatePokemon(Pokemon pokemon) {
