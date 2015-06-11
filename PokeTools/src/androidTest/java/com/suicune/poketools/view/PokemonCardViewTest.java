@@ -9,13 +9,19 @@ import com.suicune.poketools.R;
 import com.suicune.poketools.controller.activities.MainActivity;
 import com.suicune.poketools.model.Pokemon;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.closeSoftKeyboard;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -74,5 +80,27 @@ public class PokemonCardViewTest {
 		for (View v : cardView.attackViews.values()) {
 			assertEquals(v.getVisibility(), View.GONE);
 		}
+	}
+
+	@Test public void gyaradosShowsItsData() throws Exception {
+		setupCard();
+		onView(withId(R.id.name)).perform(typeText("Gya"));
+		onView(withText("Gyarados")).perform(click());
+		onView(Matchers.allOf(
+				isDescendantOfA(withId(R.id.pokemon_base_stats)),
+				withId(R.id.attack)
+		)).check(matches(withText(125)));
+	}
+
+	@Test public void diancieShowsItsData() throws Exception {
+		setupCard();
+		onView(withId(R.id.name)).perform(typeText("Dian"));
+		closeSoftKeyboard();
+		Thread.sleep(1000);
+		onView(withText("Diancie")).perform(click());
+		onView(Matchers.allOf(
+				isDescendantOfA(withId(R.id.pokemon_base_stats)),
+				withId(R.id.defense)
+		)).check(matches(withText(150)));
 	}
 }

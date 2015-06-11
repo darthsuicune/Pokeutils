@@ -7,16 +7,16 @@ import com.suicune.poketools.model.Ability;
 /**
  * Created by denis on 01.01.14.
  */
-public class Gen6Ability implements Ability {
-	public String mName;
-	public String mDescription;
-	public String mBattleDescription;
+public class Gen6Ability extends Ability {
+	public String name;
+	public String description;
+	public String battleDescription;
 	public int mCode;
 	public Gen6Ability(String name, String description, int code, String battleDescription) {
-		mName = name;
-		mDescription = description;
+		this.name = name;
+		this.description = description;
 		mCode = code;
-		mBattleDescription = battleDescription;
+		this.battleDescription = battleDescription;
 	}
 
 	@Override public int id() {
@@ -24,22 +24,22 @@ public class Gen6Ability implements Ability {
 	}
 
 	@Override public String name() {
-		return mName;
+		return name;
 	}
 
 	@Override public String description() {
-		return mDescription;
+		return description;
 	}
 
 	@Override public String battleDescription() {
-		return mBattleDescription;
+		return battleDescription;
 	}
 
 	@Override public Bundle save() {
 		Bundle bundle = new Bundle();
-		bundle.putString(ARG_NAME, mName);
-		bundle.putString(ARG_DESCRIPTION, mDescription);
-		bundle.putString(ARG_BATTLE_DESCRIPTION, mBattleDescription);
+		bundle.putString(ARG_NAME, name);
+		bundle.putString(ARG_DESCRIPTION, description);
+		bundle.putString(ARG_BATTLE_DESCRIPTION, battleDescription);
 		bundle.putInt(ARG_CODE, mCode);
 		return bundle;
 	}

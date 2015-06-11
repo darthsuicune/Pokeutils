@@ -28,6 +28,28 @@ public class AbilityFactory {
 				battleDescriptions[abilityCode]);
 	}
 
+	public static Ability[] getAbilityList(Context context, int gen) {
+		switch (gen) {
+			case 6:
+			default:
+				return getGen6AbilityList(context);
+		}
+
+	}
+
+	private static Ability[] getGen6AbilityList(Context context) {
+		String[] abilityNames = context.getResources().getStringArray(R.array.abilities);
+		String[] descriptions = context.getResources().getStringArray(R.array.ability_descriptions);
+		String[] battleDescriptions =
+				context.getResources().getStringArray(R.array.ability_battle_descriptions);
+		Ability[] abilities = new Ability[abilityNames.length];
+		for (int i = 0; i < abilities.length; i++) {
+			abilities[i] = new Gen6Ability(abilityNames[i], descriptions[i], i,
+					battleDescriptions[i]);
+		}
+		return abilities;
+	}
+
 	public static Ability fromBundle(int gen, Bundle bundle) {
 		switch (gen) {
 			case 6:
@@ -47,11 +69,13 @@ public class AbilityFactory {
 		}
 	}
 
-	public static Ability[] createGen6List(Context context, JSONArray abilityArray)
+	private static Ability[] createGen6List(Context context, JSONArray abilityArray)
 			throws JSONException {
 		Ability[] abilities = new Ability[3];
 		for (int i = 0; i < 3; i++) {
-			abilities[i] = AbilityFactory.createAbility(context, 6, abilityArray.getInt(i));
+			int abilityNumber = (abilityArray.isNull(i)) ? 0 : abilityArray.getInt(i);
+			abilities[i] = AbilityFactory.createAbility(context, 6, abilityNumber);
+
 		}
 		return abilities;
 	}
