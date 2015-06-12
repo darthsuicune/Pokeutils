@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.suicune.poketools.view.PokemonCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.suicune.poketools.view.PokemonCardView style="@style/PokemonCard"
+                                            xmlns:android="http://schemas.android.com/apk/res/android"
                                             android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            style="@style/PokemonCard">
+                                            android:layout_height="wrap_content">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:drawableLeft="@android:drawable/arrow_down_float"
-            android:drawableStart="@android:drawable/arrow_down_float"
-            android:drawablePadding="8dp"
             android:id="@+id/pokemon_name_title"
+            style="@style/PokemonCard.Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/PokemonCard.Name"/>
+            android:drawableLeft="@android:drawable/arrow_down_float"
+            android:drawablePadding="8dp"
+            android:drawableStart="@android:drawable/arrow_down_float"/>
 
         <LinearLayout
             android:id="@+id/pokemon_card_details"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <View style="@style/Divider.Horizontal"/>
 
@@ -32,73 +32,74 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/name"
-                    android:layout_weight="3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:imeOptions="actionGo"/>
+                    android:layout_weight="3"
+                    android:imeOptions="actionGo"
+                    android:singleLine="true"/>
 
                 <EditText
                     android:id="@+id/level"
-                    android:text="@string/default_level"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:inputType="number"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"/>
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@string/default_level"/>
 
                 <com.suicune.poketools.view.AbilityView
                     android:id="@+id/ability"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"/>
 
                 <com.suicune.poketools.view.NatureView
                     android:id="@+id/nature"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"/>
             </LinearLayout>
 
             <include
                 android:id="@+id/pokemon_base_stats"
                 layout="@layout/base_stats_view"
-                android:layout_margin="4dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:layout_margin="4dp"/>
 
             <include
-                android:layout_margin="4dp"
                 android:id="@+id/pokemon_ivs"
                 layout="@layout/evs_ivs_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:layout_margin="4dp"/>
 
             <include
-                android:layout_margin="4dp"
                 android:id="@+id/pokemon_evs"
                 layout="@layout/evs_ivs_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:layout_margin="4dp"/>
 
             <include
-                android:layout_margin="4dp"
                 android:id="@+id/pokemon_stats"
                 layout="@layout/evs_ivs_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:layout_margin="4dp"/>
+
             <include
-                android:layout_margin="4dp"
                 android:id="@+id/pokemon_stat_modifiers"
                 layout="@layout/stat_modifiers"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
-            <include
-                android:layout_margin="4dp"
+                android:layout_margin="4dp"/>
+
+            <com.suicune.poketools.view.AttacksView
                 android:id="@+id/attacks"
-                layout="@layout/attacks_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_margin="4dp"/>
         </LinearLayout>
     </LinearLayout>
 </com.suicune.poketools.view.PokemonCardView>

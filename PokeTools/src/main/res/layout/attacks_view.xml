@@ -1,42 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Spinner
-            android:id="@+id/attack_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/PokemonCard.AttackSpinner">
-        </Spinner>
-        <Spinner
-            android:id="@+id/attack_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/PokemonCard.AttackSpinner">
-        </Spinner>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Spinner
-            android:id="@+id/attack_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/PokemonCard.AttackSpinner">
-        </Spinner>
-        <Spinner
-            android:id="@+id/attack_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/PokemonCard.AttackSpinner">
-        </Spinner>
-    </LinearLayout>
-</LinearLayout>
+<com.suicune.poketools.view.AttacksView xmlns:android="http://schemas.android.com/apk/res/android"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/attack_1"
+        style="@style/PokemonCard.AttackSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/attack_2"
+        style="@style/PokemonCard.AttackSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/attack_1"
+        android:layout_toRightOf="@id/attack_1" >
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/attack_3"
+        style="@style/PokemonCard.AttackSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/attack_1" >
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/attack_4"
+        style="@style/PokemonCard.AttackSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/attack_1"
+        android:layout_toEndOf="@id/attack_3"
+        android:layout_toRightOf="@id/attack_3" >
+    </Spinner>
+</com.suicune.poketools.view.AttacksView>

@@ -23,13 +23,11 @@ import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
-import com.suicune.poketools.model.factories.AbilityFactory;
 import com.suicune.poketools.model.factories.PokemonFactory;
 
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,13 +52,14 @@ public class PokemonCardView extends CardView {
 	View cardDetailsView;
 	AbilityView abilityView;
 	NatureView natureView;
+	AttacksView attacksView;
 
 	boolean isShown = true;
-	AttackAdapter attackAdapter;
 	int level = Pokemon.DEFAULT_LEVEL;
 
 	public Pokemon pokemon;
 	boolean areAttacksEnabled = true;
+	boolean areModsEnabled = true;
 
 	public PokemonCardView(Context context) {
 		super(context);
@@ -86,18 +85,19 @@ public class PokemonCardView extends CardView {
 		nameAutoCompleteView = (AutoCompleteTextView) findViewById(R.id.name);
 		abilityView = (AbilityView) findViewById(R.id.ability);
 		natureView = (NatureView) findViewById(R.id.nature);
+		attacksView = (AttacksView) findViewById(R.id.attacks);
 
 		prepareHeaderView();
+		prepareNameAutoComplete(nameAutoCompleteView);
 		prepareLevelView();
 		prepareBaseStatsViews();
 		prepareAbilitySpinner();
+		prepareNatureView();
 		prepareStatsView(ivsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
 		prepareStatsView(evsView, findViewById(R.id.pokemon_evs), R.string.evs);
 		prepareStatsView(statsView, findViewById(R.id.pokemon_stats), R.string.values);
 		prepareStatModifiersView(statModifiersView, findViewById(R.id.pokemon_stat_modifiers));
-		prepareNatureView();
 		prepareAttackViews();
-		prepareNameAutoComplete(nameAutoCompleteView);
 
 		showPokemonInfo();
 	}
@@ -111,6 +111,77 @@ public class PokemonCardView extends CardView {
 		});
 	}
 
+	private void prepareNameAutoComplete(AutoCompleteTextView view) {
+		final String[] objects = getContext().getResources().getStringArray(R.array.pokemon_names);
+		final List<String> names = Pokemon.parseAllNames(objects);
+		ArrayAdapter<String> adapter =
+				new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line,
+						names);
+		view.setAdapter(adapter);
+		view.setThreshold(1);
+		view.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			@Override public boolean onEditorAction(TextView textView, int actionId,
+													KeyEvent keyEvent) {
+				switch (actionId) {
+					case EditorInfo.IME_ACTION_DONE:
+					case EditorInfo.IME_ACTION_GO:
+					case EditorInfo.IME_NULL:
+						selectPokemon(textView.getText().toString());
+
+						InputMethodManager ime = (InputMethodManager) getContext()
+								.getSystemService(Context.INPUT_METHOD_SERVICE);
+						ime.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+						return true;
+					default:
+						return false;
+				}
+			}
+		});
+		view.setOnItemClickListener(new OnItemClickListener() {
+			@Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
+											  long id) {
+				selectPokemon(((TextView) view).getText().toString());
+			}
+		});
+	}
+
+	private void selectPokemon(String name) {
+		try {
+			setPokemon(PokemonFactory.createPokemon(getContext(), 6, name, level));
+		} catch (IOException | JSONException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void setPokemon(Pokemon pokemon) {
+		this.pokemon = pokemon;
+		if (natureView.nature() != null) {
+			this.pokemon.setNature(natureView.nature());
+		}
+		abilityView.setAsCurrent(this.pokemon.currentAbility());
+		for (Stat stat : statModifiersView.keySet()) {
+			pokemon.setStatModifier(stat,
+					Integer.parseInt((String) statModifiersView.get(stat).getSelectedItem()));
+		}
+		setAttacks();
+		setCurrentAttacks();
+		showPokemonInfo();
+		cardHolder.updatePokemon(pokemon);
+	}
+
+	private void setAttacks() {
+		if (areAttacksEnabled && hasAValidPokemon()) {
+			attacksView.setAttacks(pokemon.attackList());
+		}
+	}
+
+	private void setCurrentAttacks() {
+		if (areAttacksEnabled && hasAValidPokemon() && pokemon.currentAttacks().size() > 0) {
+			attacksView.setCurrentAttacks(pokemon.currentAttacks());
+		}
+	}
+
 	private void prepareLevelView() {
 		levelView.addTextChangedListener(new TextWatcher() {
 			@Override public void beforeTextChanged(CharSequence cs, int i, int i2, int i3) {
@@ -120,20 +191,23 @@ public class PokemonCardView extends CardView {
 			}
 
 			@Override public void afterTextChanged(Editable editable) {
-				try {
-					level = Integer.parseInt(editable.toString());
-					if (hasAValidPokemon() && level != pokemon.level() &&
-							level >= Pokemon.MIN_LEVEL && level <= Pokemon.MAX_LEVEL) {
-						pokemon.setLevel(level);
-						updateStats();
-						cardHolder.updatePokemon(pokemon);
-					}
-				} catch (NumberFormatException nfe) {
-					nfe.printStackTrace();
-					//Nothing else to do here, leave everything as is.
-				}
+				setLevel(editable);
 			}
 		});
+	}
+
+	private void setLevel(Editable editable) {
+		try {
+			level = Integer.parseInt(editable.toString());
+			if (hasAValidPokemon() && level != pokemon.level() &&
+					level >= Pokemon.MIN_LEVEL && level <= Pokemon.MAX_LEVEL) {
+				pokemon.setLevel(level);
+				updateStats();
+				cardHolder.updatePokemon(pokemon);
+			}
+		} catch (NumberFormatException nfe) {
+			nfe.printStackTrace();
+		}
 	}
 
 	private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
@@ -198,7 +272,7 @@ public class PokemonCardView extends CardView {
 	}
 
 	private void selectNewAbility(Ability ability) {
-		if(hasAValidPokemon()) {
+		if (hasAValidPokemon()) {
 			pokemon.setAbility(ability);
 			showPokemonInfo();
 			cardHolder.updatePokemon(pokemon);
@@ -234,80 +308,13 @@ public class PokemonCardView extends CardView {
 	}
 
 	private void prepareAttackViews() {
-		attackViews.put(1, (Spinner) findViewById(R.id.attack_1));
-		attackViews.put(2, (Spinner) findViewById(R.id.attack_2));
-		attackViews.put(3, (Spinner) findViewById(R.id.attack_3));
-		attackViews.put(4, (Spinner) findViewById(R.id.attack_4));
-		attackAdapter = new AttackAdapter(getContext(), new ArrayList<Attack>());
-		for (int i = 1; i <= 4; i++) {
-			Spinner attackSpinner = attackViews.get(i);
-			attackSpinner.setAdapter(attackAdapter);
-			final int element = i;
-			attackSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-				@Override public void onItemSelected(AdapterView<?> adapterView, View view,
-													 int position, long id) {
-					Attack attack = (Attack) adapterView.getAdapter().getItem(position);
-					pokemon.addAttack(attack, element);
-					view.setBackgroundColor(getResources().getColor(attack.color()));
-					cardHolder.updatePokemon(pokemon);
-				}
-
-				@Override public void onNothingSelected(AdapterView<?> adapterView) {
-				}
-			});
-		}
-	}
-
-	private void prepareNameAutoComplete(AutoCompleteTextView view) {
-		final String[] objects = getContext().getResources().getStringArray(R.array.pokemon_names);
-		final List<String> names = Pokemon.parseAllNames(objects);
-		ArrayAdapter<String> adapter =
-				new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line,
-						names);
-		view.setAdapter(adapter);
-		view.setThreshold(1);
-		view.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-			@Override public boolean onEditorAction(TextView textView, int actionId,
-													KeyEvent keyEvent) {
-				switch (actionId) {
-					case EditorInfo.IME_ACTION_DONE:
-					case EditorInfo.IME_ACTION_GO:
-					case EditorInfo.IME_NULL:
-						selectPokemon(textView.getText().toString());
-
-						InputMethodManager ime = (InputMethodManager) getContext()
-								.getSystemService(Context.INPUT_METHOD_SERVICE);
-						ime.hideSoftInputFromWindow(textView.getWindowToken(), 0);
-						return true;
-					default:
-						return false;
-				}
+		attacksView.setup(new AttacksView.OnAttacksChangedListener() {
+			@Override public void onAttackChanged(int index, Attack attack) {
+				pokemon.addAttack(attack, index);
+				cardHolder.updatePokemon(pokemon);
 			}
 		});
-		view.setOnItemClickListener(new OnItemClickListener() {
-			@Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
-											  long id) {
-				selectPokemon(((TextView) view).getText().toString());
-			}
-		});
-	}
-
-	private void selectPokemon(String name) {
-		final String[] objects = getContext().getResources().getStringArray(R.array.pokemon_names);
-		int dexNumber = 0;
-		int form = 0;
-		for (int i = 0; i < objects.length; i++) {
-			if (objects[i].contains(name)) {
-				dexNumber = i;
-				form = Pokemon.getForm(objects[i], name);
-				break;
-			}
-		}
-		try {
-			setPokemon(dexNumber, form);
-		} catch (IOException | JSONException e) {
-			e.printStackTrace();
-		}
+		setAttacks();
 	}
 
 	public void showPokemonInfo() {
@@ -328,44 +335,13 @@ public class PokemonCardView extends CardView {
 			baseStatsViews.get(stat).setText("" + pokemon.baseStats().get(stat));
 			evsView.get(stat).setText("" + pokemon.evs().get(stat));
 			ivsView.get(stat).setText("" + pokemon.ivs().get(stat));
+			statsView.get(stat).setText("" + pokemon.currentStats().get(stat));
 		}
-		updateStatValues();
 	}
 
 	private void updateStatValues() {
 		for (Stat stat : Stat.values(6)) {
 			statsView.get(stat).setText("" + pokemon.currentStats().get(stat));
-		}
-	}
-
-	public void setPokemon(int dexNumber, int form) throws IOException, JSONException {
-		setPokemon(PokemonFactory.createPokemon(getContext(), 6, dexNumber, form, level));
-	}
-
-	public void setPokemon(Pokemon pokemon) {
-		this.pokemon = pokemon;
-		if (natureView.nature() != null) {
-			this.pokemon.setNature(natureView.nature());
-		}
-		this.pokemon.setAbility(this.pokemon.ability1());
-		abilityView.setSelection(AbilityFactory.find(getContext(), this.pokemon.currentAbility()));
-		for (Stat stat : statModifiersView.keySet()) {
-			pokemon.setStatModifier(stat,
-					Integer.parseInt((String) statModifiersView.get(stat).getSelectedItem()));
-		}
-		setupAttacks();
-		showPokemonInfo();
-		cardHolder.updatePokemon(pokemon);
-	}
-
-	private void setupAttacks() {
-		attackAdapter.clear();
-		attackAdapter.addAll(pokemon.attackList());
-		if (pokemon.currentAttacks().size() > 0) {
-			for (Integer index : pokemon.currentAttacks().keySet()) {
-				Spinner spinner = attackViews.get(index);
-				spinner.setSelection(attackAdapter.find(pokemon.currentAttacks().get(index)));
-			}
 		}
 	}
 
@@ -381,37 +357,32 @@ public class PokemonCardView extends CardView {
 
 	public void enableAttacks() {
 		areAttacksEnabled = true;
-		for(View v : attackViews.values()) {
-			v.setVisibility(View.VISIBLE);
+		if(attacksView != null) {
+			attacksView.setVisibility(VISIBLE);
 		}
+		setAttacks();
 	}
 
 	public void disableAttacks() {
 		areAttacksEnabled = false;
-		for (View v : attackViews.values()) {
-			v.setVisibility(View.GONE);
+		if (attacksView != null) {
+			attacksView.setVisibility(View.GONE);
 		}
 	}
 
-	private class AttackAdapter extends ArrayAdapter<Attack> {
-		List<Attack> attacks;
+	public void enableMods() {
+		areModsEnabled = true;
+		for(Spinner mod : statModifiersView.values()) {
+			mod.setVisibility(VISIBLE);
+		}
+	}
 
-		public AttackAdapter(Context context, List<Attack> objects) {
-			super(context, android.R.layout.simple_spinner_dropdown_item, objects);
-			attacks = objects;
+	public void disableMods() {
+		areModsEnabled = false;
+		for (Spinner mod : statModifiersView.values()) {
+			mod.setVisibility(GONE);
 		}
 
-		public int find(Attack attack) {
-			int i = 0;
-			for (Attack element : attacks) {
-				if (attack.equals(element)) {
-					return i;
-				} else {
-					i++;
-				}
-			}
-			return 0;
-		}
 	}
 
 	private class StatChangedListener implements TextWatcher {

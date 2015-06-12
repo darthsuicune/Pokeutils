@@ -67,7 +67,7 @@ public class NatureView extends Spinner{
 	}
 
 	public Nature nature() {
-		return currentNature.first;
+		return (currentNature != null) ? currentNature.first : null;
 	}
 
 	@Override public Object getSelectedItem() {

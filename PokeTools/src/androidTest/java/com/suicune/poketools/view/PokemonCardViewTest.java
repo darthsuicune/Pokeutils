@@ -77,14 +77,16 @@ public class PokemonCardViewTest {
 				cardView.disableAttacks();
 			}
 		});
-		for (View v : cardView.attackViews.values()) {
+		for (View v    : cardView.attackViews.values()) {
 			assertEquals(v.getVisibility(), View.GONE);
 		}
 	}
 
 	@Test public void gyaradosShowsItsData() throws Exception {
 		setupCard();
-		onView(withId(R.id.name)).perform(typeText("Gya"));
+		onView(withId(R.id.name)).perform(typeText("gya"));
+		closeSoftKeyboard();
+		Thread.sleep(1000);
 		onView(withText("Gyarados")).perform(click());
 		onView(Matchers.allOf(
 				isDescendantOfA(withId(R.id.pokemon_base_stats)),
@@ -94,7 +96,7 @@ public class PokemonCardViewTest {
 
 	@Test public void diancieShowsItsData() throws Exception {
 		setupCard();
-		onView(withId(R.id.name)).perform(typeText("Dian"));
+		onView(withId(R.id.name)).perform(typeText("dian"));
 		closeSoftKeyboard();
 		Thread.sleep(1000);
 		onView(withText("Diancie")).perform(click());

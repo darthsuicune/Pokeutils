@@ -31,7 +31,6 @@ public class NatureViewTest {
 	@Test public void testSetNature() throws Throwable {
 		loadView();
 		view.setNature(BOLD);
-		assertEquals(BOLD, view.currentNature.first);
 		assertEquals(BOLD, view.getSelectedItem());
 	}
 

@@ -149,7 +149,7 @@ public class Gen6Pokemon extends Pokemon {
 	}
 
 	@Override public Pokemon addAttack(Attack attack, int position) {
-		if (position >= 1 && position <= 4) {
+		if (position >= 0 && position <= 3) {
 			attackSet.put(position, attack);
 		}
 		return this;
@@ -402,9 +402,9 @@ public class Gen6Pokemon extends Pokemon {
 		}
 		this.ability = AbilityFactory.fromBundle(6, bundle.getBundle(ARG_ABILITY));
 		int[] currentAttacks = bundle.getIntArray(ARG_CURRENT_ATTACKS);
-		for(int i = 1; i <= 4; i++) {
-			if(currentAttacks[i - 1] != 0) {
-				attackSet.put(i, AttackFactory.create(context, 6, currentAttacks[i - 1]));
+		for(int i = 0; i < 4; i++) {
+			if(currentAttacks[i] != 0) {
+				attackSet.put(i, AttackFactory.create(context, 6, currentAttacks[i]));
 			}
 		}
 		this.happiness = bundle.getInt(ARG_HAPPINESS);

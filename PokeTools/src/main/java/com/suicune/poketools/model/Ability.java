@@ -25,4 +25,8 @@ public abstract class Ability {
 		}
 		return false;
 	}
+
+	@Override public String toString() {
+		return name();
+	}
 }

@@ -1,6 +1,5 @@
 package com.suicune.poketools.view;
 
-import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -10,6 +9,7 @@ import com.suicune.poketools.controller.activities.MainActivity;
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.factories.AbilityFactory;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +18,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -25,12 +26,19 @@ import static org.mockito.Mockito.verify;
 public class AbilityViewTest {
 	AbilityView view;
 	MainActivity activity;
+	Ability[] abilities;
 
 	@Rule public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
 	AbilityView.OnAbilitySelectedListener listener;
 
+	@Before public void setup() throws Exception {
+		abilities = AbilityFactory.getAbilityList(InstrumentationRegistry.getTargetContext(), 6);
+	}
+
 	@Test public void testSetAbility() throws Throwable {
 		createView();
+		view.setAsCurrent(abilities[4]);
+		assertEquals(abilities[4], view.getSelectedItem());
 	}
 
 	private void createView() throws Throwable {
@@ -53,16 +61,14 @@ public class AbilityViewTest {
 
 	@Test public void withANewSelectionTheCallbackIsCalled() throws Throwable {
 		loadView();
-		Ability[] abilities = AbilityFactory.getAbilityList(activity, 6);
-		setupListener();
 		onView(withId(R.id.ability)).perform(click());
 		onView(withText(abilities[3].name())).perform(click());
 		verify(listener).onAbilitySelected(abilities[3]);
 	}
 
-	@NonNull private MainActivity loadView() {
+	private void loadView() throws Throwable {
 		activity = rule.getActivity();
 		view = (AbilityView) activity.findViewById(R.id.ability);
-		return activity;
+		setupListener();
 	}
 }

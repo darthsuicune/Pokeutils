@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
+import com.suicune.poketools.R;
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Pokemon;
@@ -20,6 +21,21 @@ import java.io.IOException;
 import java.util.List;
 
 public class PokemonFactory {
+	public static Pokemon createPokemon(Context context, int gen, String name, int level)
+			throws IOException, JSONException {
+		final String[] objects = context.getResources().getStringArray(R.array.pokemon_names);
+		int dexNumber = 0;
+		int form = 0;
+		for (int i = 0; i < objects.length; i++) {
+			if (objects[i].contains(name)) {
+				dexNumber = i;
+				form = Pokemon.getForm(objects[i], name);
+				break;
+			}
+		}
+		return createPokemon(context, gen, dexNumber, form, level);
+	}
+
 	public static Pokemon createPokemon(Context context, int gen, int dexNumber, int form,
 										int level) throws IOException, JSONException {
 		switch (gen) {

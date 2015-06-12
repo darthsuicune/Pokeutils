@@ -109,6 +109,8 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 	@Override public void onResume() {
 		super.onResume();
 		cardView.setup(this);
+		cardView.disableAttacks();
+		cardView.disableMods();
 		if(pokemon != null) {
 			cardView.setPokemon(pokemon);
 		}

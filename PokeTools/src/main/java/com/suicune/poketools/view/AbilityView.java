@@ -8,15 +8,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.suicune.poketools.R;
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.factories.AbilityFactory;
 
 public class AbilityView extends Spinner {
-	private Pair<Ability, Integer> currentAbility;
-	private OnAbilitySelectedListener listener;
-	private String[] abilities;
-	private ArrayAdapter<String> adapter;
+	Pair<Ability, Integer> currentAbility;
+	OnAbilitySelectedListener listener;
+	Ability[] abilities;
+	ArrayAdapter<Ability> adapter;
 
 	public AbilityView(Context context) {
 		super(context);
@@ -35,9 +34,9 @@ public class AbilityView extends Spinner {
 	}
 
 	private void setAdapter() {
-		abilities = getResources().getStringArray(R.array.abilities);
+		abilities = AbilityFactory.getAbilityList(getContext(), 6);
 		adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
-						abilities);
+				abilities);
 		setAdapter(adapter);
 		setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
@@ -61,11 +60,16 @@ public class AbilityView extends Spinner {
 	}
 
 	public Ability ability() {
-		return currentAbility.first;
+		return (currentAbility != null) ? currentAbility.first : null;
 	}
 
 	@Override public Object getSelectedItem() {
 		return (currentAbility != null) ? currentAbility.first : null;
+	}
+
+	public void setAsCurrent(Ability ability) {
+		currentAbility = new Pair<>(ability, ability.id());
+		this.setSelection(ability.id());
 	}
 
 	public interface OnAbilitySelectedListener {
