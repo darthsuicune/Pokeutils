@@ -181,4 +181,6 @@ public abstract class Pokemon implements Typeable {
 		}
 		return parsedNames;
 	}
+
+	public abstract void updateStat(Stats.StatType type, Stat stat, int newValue);
 }

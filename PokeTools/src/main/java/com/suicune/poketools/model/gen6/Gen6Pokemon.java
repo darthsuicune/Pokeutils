@@ -414,6 +414,23 @@ public class Gen6Pokemon extends Pokemon {
 		return this;
 	}
 
+	@Override public void updateStat(Stats.StatType type, Stat stat, int newValue) {
+		switch(type) {
+			case EV:
+				stats.putEv(stat, newValue);
+				break;
+			case IV:
+				stats.putIv(stat, newValue);
+				break;
+			case VALUE:
+				setValue(stat, newValue);
+				break;
+			case BASE:
+			default:
+				//For now we don't allow modifying this directly
+		}
+	}
+
 	@Override public Item item() {
 		return null;
 	}

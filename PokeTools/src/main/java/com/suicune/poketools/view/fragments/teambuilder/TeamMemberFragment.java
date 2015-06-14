@@ -167,17 +167,17 @@ public class TeamMemberFragment extends Fragment {
 	private void prepareBaseStatsViews(View v) {
 		mBaseStatsViews = new HashMap<>();
 		mBaseStatsViews
-				.put(Stats.Stat.HP, (TextView) v.findViewById(R.id.hp));
+				.put(Stats.Stat.HP, (TextView) v.findViewById(R.id.base_hp));
 		mBaseStatsViews.put(Stats.Stat.ATTACK,
-				(TextView) v.findViewById(R.id.attack));
+				(TextView) v.findViewById(R.id.base_attack));
 		mBaseStatsViews.put(Stats.Stat.DEFENSE,
-				(TextView) v.findViewById(R.id.defense));
+				(TextView) v.findViewById(R.id.base_defense));
 		mBaseStatsViews.put(Stats.Stat.SPECIAL_ATTACK,
-				(TextView) v.findViewById(R.id.special_attack));
+				(TextView) v.findViewById(R.id.base_special_attack));
 		mBaseStatsViews.put(Stats.Stat.SPECIAL_DEFENSE,
-				(TextView) v.findViewById(R.id.special_defense));
+				(TextView) v.findViewById(R.id.base_special_defense));
 		mBaseStatsViews.put(Stats.Stat.SPEED,
-				(TextView) v.findViewById(R.id.speed));
+				(TextView) v.findViewById(R.id.base_speed));
 	}
 
 	private void restoreValues(Bundle bundle) throws IOException, JSONException {
@@ -208,6 +208,6 @@ public class TeamMemberFragment extends Fragment {
 	}
 
 	public interface OnTeamMemberChangedListener {
-		public void onTeamMemberChanged(int position, Pokemon pokemon);
+		void onTeamMemberChanged(int position, Pokemon pokemon);
 	}
 }

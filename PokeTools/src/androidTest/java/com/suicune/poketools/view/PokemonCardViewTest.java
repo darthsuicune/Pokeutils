@@ -3,7 +3,6 @@ package com.suicune.poketools.view;
 import android.support.test.espresso.contrib.DrawerActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
 
 import com.suicune.poketools.R;
 import com.suicune.poketools.controller.activities.MainActivity;
@@ -21,9 +20,10 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 
@@ -64,22 +64,17 @@ public class PokemonCardViewTest {
 				cardView.enableAttacks();
 			}
 		});
-		for (View v : cardView.attackViews.values()) {
-			assertEquals(v.getVisibility(), View.VISIBLE);
-		}
+		onView(withId(R.id.attacks)).check(matches(isDisplayed()));
 	}
 
 	@Test public void disableAttacksRemovesThemFromVisibility() throws Throwable {
 		setupCard();
-
 		rule.runOnUiThread(new Runnable() {
 			@Override public void run() {
 				cardView.disableAttacks();
 			}
 		});
-		for (View v    : cardView.attackViews.values()) {
-			assertEquals(v.getVisibility(), View.GONE);
-		}
+		onView(withId(R.id.attacks)).check(matches(not(isDisplayed())));
 	}
 
 	@Test public void gyaradosShowsItsData() throws Exception {
@@ -89,8 +84,8 @@ public class PokemonCardViewTest {
 		Thread.sleep(1000);
 		onView(withText("Gyarados")).perform(click());
 		onView(Matchers.allOf(
-				isDescendantOfA(withId(R.id.pokemon_base_stats)),
-				withId(R.id.attack)
+				isDescendantOfA(withId(StatsView.BASE_STATS_ID)),
+				withId(R.id.base_attack)
 		)).check(matches(withText(125)));
 	}
 
@@ -101,8 +96,8 @@ public class PokemonCardViewTest {
 		Thread.sleep(1000);
 		onView(withText("Diancie")).perform(click());
 		onView(Matchers.allOf(
-				isDescendantOfA(withId(R.id.pokemon_base_stats)),
-				withId(R.id.defense)
+				isDescendantOfA(withId(StatsView.BASE_STATS_ID)),
+				withId(R.id.base_defense)
 		)).check(matches(withText(150)));
 	}
 }

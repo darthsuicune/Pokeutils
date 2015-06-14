@@ -37,11 +37,11 @@ public class IvCalcFragmentTest {
 
 	@Test public void testUpdatePokemonDisplaysTheIvs() throws Throwable {
 		getFragment();
-		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.hp))).check(
+		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.base_hp))).check(
 				matches(withText("30 - 31")));
-		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.attack)))
+		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.base_attack)))
 				.check(matches(withText("30 - 31")));
-		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.speed)))
+		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.base_speed)))
 				.check(matches(withText("30 - 31")));
 	}
 

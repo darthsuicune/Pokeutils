@@ -2,6 +2,7 @@ package com.suicune.poketools.view;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AttacksView extends RelativeLayout {
+	@IdRes public static final int ATTACK_1_SPINNER_ID = 110;
+	@IdRes public static final int ATTACK_2_SPINNER_ID = 111;
+	@IdRes public static final int ATTACK_3_SPINNER_ID = 112;
+	@IdRes public static final int ATTACK_4_SPINNER_ID = 113;
+
 	OnAttacksChangedListener listener;
 	Map<Integer, Spinner> attackViews = new HashMap<>();
 	List<Attack> attacks = new ArrayList<>();
@@ -57,7 +63,7 @@ public class AttacksView extends RelativeLayout {
 		Spinner spinner = attackViews.get(index);
 		if (spinner == null) {
 			spinner = new Spinner(getContext());
-			spinner.setId(index + 1);
+			spinner.setId(index + 110); // Build the ids with 110 + index
 			this.addView(spinner, layoutOptions(index));
 		}
 

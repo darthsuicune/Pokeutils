@@ -70,12 +70,12 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 			}
 		});
 		View results = fragmentView.findViewById(R.id.results);
-		resultViews.put(HP, (TextView) results.findViewById(R.id.hp));
-		resultViews.put(ATTACK, (TextView) results.findViewById(R.id.attack));
-		resultViews.put(DEFENSE, (TextView) results.findViewById(R.id.defense));
-		resultViews.put(SPECIAL_ATTACK, (TextView) results.findViewById(R.id.special_attack));
-		resultViews.put(SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.special_defense));
-		resultViews.put(SPEED, (TextView) results.findViewById(R.id.speed));
+		resultViews.put(HP, (TextView) results.findViewById(R.id.base_hp));
+		resultViews.put(ATTACK, (TextView) results.findViewById(R.id.base_attack));
+		resultViews.put(DEFENSE, (TextView) results.findViewById(R.id.base_defense));
+		resultViews.put(SPECIAL_ATTACK, (TextView) results.findViewById(R.id.base_special_attack));
+		resultViews.put(SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.base_special_defense));
+		resultViews.put(SPEED, (TextView) results.findViewById(R.id.base_speed));
 	}
 
 	private void displayIvs() {

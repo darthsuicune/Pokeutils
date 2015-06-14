@@ -2,6 +2,9 @@ package com.suicune.poketools.model;
 
 import android.os.Bundle;
 
+import com.suicune.poketools.R;
+import com.suicune.poketools.model.gen6.Gen6Stats;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +65,16 @@ public abstract class Stats {
 
 	public abstract Stats putEv(Stat stat, int value);
 
+	public static boolean isValid(int gen, StatType statType, Stat stat, int value) {
+		switch (gen) {
+			case 1:
+			default:
+				return Gen6Stats.isValid(statType, stat, value);
+		}
+	}
+
+	public abstract int get(Stat stat, StatType base);
+
 	public enum Stat {
 		HP,
 		ATTACK,
@@ -86,10 +99,20 @@ public abstract class Stats {
 	}
 
 	public enum StatType {
-		EV,
-		IV,
-		BASE,
-		VALUE
+		EV (R.string.evs),
+		IV (R.string.ivs),
+		BASE (R.string.base_stats),
+		VALUE (R.string.values);
+
+		int resId;
+
+		StatType(int resId) {
+			this.resId = resId;
+		}
+
+		public int resId() {
+			return resId;
+		}
 	}
 
 	protected void notifyChanged() {

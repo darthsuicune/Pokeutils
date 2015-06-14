@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.suicune.poketools.view.PokemonCardView style="@style/PokemonCard"
-                                            xmlns:android="http://schemas.android.com/apk/res/android"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content">
+<com.suicune.poketools.view.PokemonCardView
+    style="@style/PokemonCard"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,13 +19,13 @@
             android:drawablePadding="8dp"
             android:drawableStart="@android:drawable/arrow_down_float"/>
 
+        <View style="@style/Divider.Horizontal"/>
+
         <LinearLayout
             android:id="@+id/pokemon_card_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <View style="@style/Divider.Horizontal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,37 +61,8 @@
                     android:layout_weight="2"/>
             </LinearLayout>
 
-            <include
-                android:id="@+id/pokemon_base_stats"
-                layout="@layout/base_stats_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
-
-            <include
-                android:id="@+id/pokemon_ivs"
-                layout="@layout/evs_ivs_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
-
-            <include
-                android:id="@+id/pokemon_evs"
-                layout="@layout/evs_ivs_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
-
-            <include
-                android:id="@+id/pokemon_stats"
-                layout="@layout/evs_ivs_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
-
-            <include
-                android:id="@+id/pokemon_stat_modifiers"
-                layout="@layout/stat_modifiers"
+            <com.suicune.poketools.view.StatsView
+                android:id="@+id/pokemon_stats_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"/>

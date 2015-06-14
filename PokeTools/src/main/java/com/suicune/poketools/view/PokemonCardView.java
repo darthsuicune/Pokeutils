@@ -1,7 +1,6 @@
 package com.suicune.poketools.view;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
@@ -15,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
@@ -23,28 +21,19 @@ import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.Nature;
 import com.suicune.poketools.model.Pokemon;
+import com.suicune.poketools.model.Stats;
 import com.suicune.poketools.model.factories.PokemonFactory;
 
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static android.widget.AdapterView.OnItemClickListener;
-import static android.widget.AdapterView.OnItemSelectedListener;
 import static com.suicune.poketools.model.Stats.Stat;
 
 public class PokemonCardView extends CardView {
 	public PokemonCardHolder cardHolder;
-
-	Map<Stat, TextView> baseStatsViews = new HashMap<>();
-	Map<Stat, EditText> ivsView = new HashMap<>();
-	Map<Stat, EditText> evsView = new HashMap<>();
-	Map<Stat, EditText> statsView = new HashMap<>();
-	Map<Integer, Spinner> attackViews = new HashMap<>();
-	Map<Stat, Spinner> statModifiersView = new HashMap<>();
 
 	AutoCompleteTextView nameAutoCompleteView;
 	TextView nameView;
@@ -53,6 +42,7 @@ public class PokemonCardView extends CardView {
 	AbilityView abilityView;
 	NatureView natureView;
 	AttacksView attacksView;
+	StatsView statsView;
 
 	boolean isShown = true;
 	int level = Pokemon.DEFAULT_LEVEL;
@@ -79,24 +69,21 @@ public class PokemonCardView extends CardView {
 	}
 
 	public void setupSubViews() {
-		cardDetailsView = findViewById(R.id.pokemon_card_details);
-		levelView = (EditText) findViewById(R.id.level);
 		nameView = (TextView) findViewById(R.id.pokemon_name_title);
-		nameAutoCompleteView = (AutoCompleteTextView) findViewById(R.id.name);
-		abilityView = (AbilityView) findViewById(R.id.ability);
-		natureView = (NatureView) findViewById(R.id.nature);
-		attacksView = (AttacksView) findViewById(R.id.attacks);
+		cardDetailsView = findViewById(R.id.pokemon_card_details);
+		nameAutoCompleteView = (AutoCompleteTextView) cardDetailsView.findViewById(R.id.name);
+		levelView = (EditText) cardDetailsView.findViewById(R.id.level);
+		abilityView = (AbilityView) cardDetailsView.findViewById(R.id.ability);
+		natureView = (NatureView) cardDetailsView.findViewById(R.id.nature);
+		statsView = (StatsView) cardDetailsView.findViewById(R.id.pokemon_stats_view);
+		attacksView = (AttacksView) cardDetailsView.findViewById(R.id.attacks);
 
 		prepareHeaderView();
 		prepareNameAutoComplete(nameAutoCompleteView);
 		prepareLevelView();
-		prepareBaseStatsViews();
 		prepareAbilitySpinner();
 		prepareNatureView();
-		prepareStatsView(ivsView, findViewById(R.id.pokemon_ivs), R.string.ivs);
-		prepareStatsView(evsView, findViewById(R.id.pokemon_evs), R.string.evs);
-		prepareStatsView(statsView, findViewById(R.id.pokemon_stats), R.string.values);
-		prepareStatModifiersView(statModifiersView, findViewById(R.id.pokemon_stat_modifiers));
+		prepareStatsView();
 		prepareAttackViews();
 
 		showPokemonInfo();
@@ -156,18 +143,33 @@ public class PokemonCardView extends CardView {
 
 	public void setPokemon(Pokemon pokemon) {
 		this.pokemon = pokemon;
-		if (natureView.nature() != null) {
-			this.pokemon.setNature(natureView.nature());
-		}
-		abilityView.setAsCurrent(this.pokemon.currentAbility());
-		for (Stat stat : statModifiersView.keySet()) {
-			pokemon.setStatModifier(stat,
-					Integer.parseInt((String) statModifiersView.get(stat).getSelectedItem()));
-		}
-		setAttacks();
-		setCurrentAttacks();
+		updatePokemonData();
 		showPokemonInfo();
 		cardHolder.updatePokemon(pokemon);
+	}
+
+	private void updatePokemonData() {
+		if (hasAValidPokemon()) {
+			if(natureView.nature() != null) {
+				this.pokemon.setNature(natureView.nature());
+			}
+		}
+	}
+
+	public void showPokemonInfo() {
+		if (hasAValidPokemon()) {
+			setAttacks();
+			setCurrentAttacks();
+			abilityView.setAsCurrent(this.pokemon.currentAbility());
+			if (!nameView.getText().equals(pokemon.nickname())) {
+				nameView.setText(pokemon.nickname());
+				nameAutoCompleteView.setText(pokemon.name());
+			}
+			if (!levelView.getText().toString().equals(Integer.toString(pokemon.level()))) {
+				levelView.setText("" + pokemon.level());
+			}
+			statsView.setStats(pokemon.stats());
+		}
 	}
 
 	private void setAttacks() {
@@ -202,62 +204,12 @@ public class PokemonCardView extends CardView {
 			if (hasAValidPokemon() && level != pokemon.level() &&
 					level >= Pokemon.MIN_LEVEL && level <= Pokemon.MAX_LEVEL) {
 				pokemon.setLevel(level);
-				updateStats();
+				showPokemonInfo();
 				cardHolder.updatePokemon(pokemon);
 			}
 		} catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
 		}
-	}
-
-	private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
-		viewSet.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
-		viewSet.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
-		viewSet.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
-		viewSet.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
-		viewSet.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
-		for (final Stat stat : viewSet.keySet()) {
-			viewSet.get(stat).setAdapter(
-					new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
-							getContext().getResources().getStringArray(R.array.stat_modifiers)));
-			viewSet.get(stat).setSelection(6);
-			viewSet.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
-				@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
-													 long l) {
-					if (hasAValidPokemon()) {
-						pokemon.setStatModifier(stat,
-								Integer.parseInt((String) adapterView.getItemAtPosition(i)));
-						cardHolder.updatePokemon(pokemon);
-					}
-				}
-
-				@Override public void onNothingSelected(AdapterView<?> adapterView) {
-				}
-			});
-		}
-
-	}
-
-	private void prepareStatsView(Map<Stat, EditText> statViews, View view, int tagId) {
-		((TextView) view.findViewById(R.id.label)).setText(tagId);
-		statViews.put(Stat.HP, (EditText) view.findViewById(R.id.hp));
-		statViews.put(Stat.ATTACK, (EditText) view.findViewById(R.id.attack));
-		statViews.put(Stat.DEFENSE, (EditText) view.findViewById(R.id.defense));
-		statViews.put(Stat.SPECIAL_ATTACK, (EditText) view.findViewById(R.id.special_attack));
-		statViews.put(Stat.SPECIAL_DEFENSE, (EditText) view.findViewById(R.id.special_defense));
-		statViews.put(Stat.SPEED, (EditText) view.findViewById(R.id.speed));
-		for (Stat stat : Stat.values(6)) {
-			statViews.get(stat).addTextChangedListener(new StatChangedListener(stat, tagId));
-		}
-	}
-
-	private void prepareBaseStatsViews() {
-		baseStatsViews.put(Stat.HP, (TextView) findViewById(R.id.hp));
-		baseStatsViews.put(Stat.ATTACK, (TextView) findViewById(R.id.attack));
-		baseStatsViews.put(Stat.DEFENSE, (TextView) findViewById(R.id.defense));
-		baseStatsViews.put(Stat.SPECIAL_ATTACK, (TextView) findViewById(R.id.special_attack));
-		baseStatsViews.put(Stat.SPECIAL_DEFENSE, (TextView) findViewById(R.id.special_defense));
-		baseStatsViews.put(Stat.SPEED, (TextView) findViewById(R.id.speed));
 	}
 
 	private void prepareAbilitySpinner() {
@@ -291,19 +243,23 @@ public class PokemonCardView extends CardView {
 	}
 
 	private void selectNewNature(Nature nature) {
+		statsView.setNature(nature);
 		if (hasAValidPokemon()) {
 			pokemon.setNature(nature);
 			showPokemonInfo();
 			cardHolder.updatePokemon(pokemon);
 		}
-		for (Stat stat : Stat.values(6)) {
-			if (stat.equals(nature.increasedStat())) {
-				baseStatsViews.get(stat).setBackgroundColor(Color.GREEN);
-			} else if (stat.equals(nature.decreasedStat())) {
-				baseStatsViews.get(stat).setBackgroundColor(Color.RED);
-			} else {
-				baseStatsViews.get(stat).setBackgroundColor(Color.TRANSPARENT);
+	}
+
+	private void prepareStatsView() {
+		statsView.setup(new StatsView.OnStatsChangedListener() {
+			@Override public void onStatChanged(Stats.StatType type, Stat stat, int newValue) {
+				pokemon.updateStat(type, stat, newValue);
 			}
+		});
+
+		if(hasAValidPokemon()) {
+			statsView.setStats(pokemon.stats());
 		}
 	}
 
@@ -315,34 +271,6 @@ public class PokemonCardView extends CardView {
 			}
 		});
 		setAttacks();
-	}
-
-	public void showPokemonInfo() {
-		if (hasAValidPokemon()) {
-			if (!nameView.getText().equals(pokemon.nickname())) {
-				nameView.setText(pokemon.nickname());
-				nameAutoCompleteView.setText(pokemon.name());
-			}
-			if (!levelView.getText().toString().equals(Integer.toString(pokemon.level()))) {
-				levelView.setText("" + pokemon.level());
-			}
-			updateStats();
-		}
-	}
-
-	public void updateStats() {
-		for (Stat stat : Stat.values(6)) {
-			baseStatsViews.get(stat).setText("" + pokemon.baseStats().get(stat));
-			evsView.get(stat).setText("" + pokemon.evs().get(stat));
-			ivsView.get(stat).setText("" + pokemon.ivs().get(stat));
-			statsView.get(stat).setText("" + pokemon.currentStats().get(stat));
-		}
-	}
-
-	private void updateStatValues() {
-		for (Stat stat : Stat.values(6)) {
-			statsView.get(stat).setText("" + pokemon.currentStats().get(stat));
-		}
 	}
 
 	public boolean hasAValidPokemon() {
@@ -372,56 +300,16 @@ public class PokemonCardView extends CardView {
 
 	public void enableMods() {
 		areModsEnabled = true;
-		for(Spinner mod : statModifiersView.values()) {
-			mod.setVisibility(VISIBLE);
+		if(statsView != null) {
+			statsView.enableMods();
 		}
 	}
 
 	public void disableMods() {
 		areModsEnabled = false;
-		for (Spinner mod : statModifiersView.values()) {
-			mod.setVisibility(GONE);
+		if (statsView != null) {
+			statsView.disableMods();
 		}
 
-	}
-
-	private class StatChangedListener implements TextWatcher {
-		final Stat stat;
-		final int tagId;
-
-		public StatChangedListener(Stat stat, int tagId) {
-			this.stat = stat;
-			this.tagId = tagId;
-		}
-
-		@Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-		}
-
-		@Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-		}
-
-		@Override public void afterTextChanged(Editable editable) {
-			int value;
-			try {
-				value = Integer.parseInt(editable.toString());
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-				return;
-			}
-			switch (tagId) {
-				case R.string.ivs:
-					pokemon.setIv(stat, value);
-					updateStatValues();
-					break;
-				case R.string.evs:
-					pokemon.setEv(stat, value);
-					updateStatValues();
-					break;
-				case R.string.values:
-					pokemon.setValue(stat, value);
-					break;
-			}
-			cardHolder.updatePokemon(pokemon);
-		}
 	}
 }

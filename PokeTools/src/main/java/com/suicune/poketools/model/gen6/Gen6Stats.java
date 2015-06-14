@@ -177,6 +177,20 @@ public class Gen6Stats extends Stats {
 		return this;
 	}
 
+	@Override public int get(Stat stat, StatType statType) {
+		switch (statType) {
+			case EV:
+				return evs.get(stat);
+			case IV:
+				return ivs.get(stat);
+			case VALUE:
+				return values.get(stat);
+			case BASE:
+			default:
+				return base.get(stat);
+		}
+	}
+
 	private int[] toArray(Map<Stat, Integer> map) {
 		return new int[]{map.get(Stat.HP),
 				map.get(Stat.ATTACK),
@@ -211,4 +225,17 @@ public class Gen6Stats extends Stats {
 		return values;
 	}
 
+	public static boolean isValid(StatType statType, Stat stat, int value) {
+		switch(statType) {
+			case EV:
+				return value >= MIN_EV && value <= MAX_EV;
+			case IV:
+				return value >= MIN_IV && value <= MAX_IV;
+			case VALUE:
+				return value >= MIN_VALUE && value <= MAX_VALUE;
+			case BASE:
+			default:
+				return value >= MIN_BASE && value <= MAX_BASE;
+		}
+	}
 }

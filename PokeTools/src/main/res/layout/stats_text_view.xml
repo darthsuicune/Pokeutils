@@ -9,40 +9,40 @@
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:id="@+id/hp"/>
+        android:id="@+id/base_hp"/>
 
     <TextView
         style="@style/PokemonCard.StatTextView"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:id="@+id/attack"/>
+        android:id="@+id/base_attack"/>
 
     <TextView
         style="@style/PokemonCard.StatTextView"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:id="@+id/defense"/>
+        android:id="@+id/base_defense"/>
 
     <TextView
         style="@style/PokemonCard.StatTextView"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:id="@+id/special_attack"/>
+        android:id="@+id/base_special_attack"/>
 
     <TextView
         style="@style/PokemonCard.StatTextView"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:id="@+id/special_defense"/>
+        android:id="@+id/base_special_defense"/>
 
     <TextView
         style="@style/PokemonCard.StatTextView"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:id="@+id/speed"/>
+        android:id="@+id/base_speed"/>
 </LinearLayout>
