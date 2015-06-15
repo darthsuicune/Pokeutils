@@ -8,8 +8,12 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
@@ -33,11 +37,16 @@ public class StatsView extends LinearLayout {
 	@IdRes public static final int IVS_VIEW_ID = 101;
 	@IdRes public static final int EVS_VIEW_ID = 102;
 	@IdRes public static final int VALUES_VIEW_ID = 103;
+	@IdRes public static final int MODIFIERS_ID = 104;
+
+	Map<StatType, View> rootViews = new HashMap<>();
+	Map<StatType, Boolean> enabledViews = new HashMap<>();
 
 	Map<Stat, TextView> baseStatsViews = new HashMap<>();
 	Map<Stat, EditText> ivsViews = new HashMap<>();
 	Map<Stat, EditText> evsViews = new HashMap<>();
 	Map<Stat, EditText> valuesViews = new HashMap<>();
+	Map<Stat, Spinner> modifiersViews = new HashMap<>();
 
 	Stats stats;
 	OnStatsChangedListener listener;
@@ -64,10 +73,12 @@ public class StatsView extends LinearLayout {
 		prepareViews(StatType.IV, ivsViews, R.layout.evs_ivs_view, IVS_VIEW_ID);
 		prepareViews(StatType.EV, evsViews, R.layout.evs_ivs_view, EVS_VIEW_ID);
 		prepareViews(StatType.VALUE, valuesViews, R.layout.evs_ivs_view, VALUES_VIEW_ID);
+		prepareModifiersViews();
 	}
 
 	private void prepareBaseStatsViews() {
 		View v = LayoutInflater.from(getContext()).inflate(R.layout.base_stats_view, null);
+		rootViews.put(StatType.BASE, v);
 		v.setId(BASE_STATS_ID);
 		addView(v);
 		baseStatsViews.put(HP, (TextView) v.findViewById(R.id.base_hp));
@@ -129,6 +140,34 @@ public class StatsView extends LinearLayout {
 		}
 	}
 
+	private void prepareModifiersViews() {
+		View v = LayoutInflater.from(getContext()).inflate(R.layout.stat_modifiers, null);
+		v.setId(MODIFIERS_ID);
+		addView(v);
+		modifiersViews.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
+		modifiersViews.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
+		modifiersViews.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
+		modifiersViews.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
+		modifiersViews.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
+		for (final Stat stat : modifiersViews.keySet()) {
+			modifiersViews.get(stat).setAdapter(
+					new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+							getContext().getResources().getStringArray(R.array.stat_modifiers)));
+			modifiersViews.get(stat).setSelection(6);
+			modifiersViews.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
+				@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
+													 long l) {
+					int newValue = Integer.parseInt((String) adapterView.getItemAtPosition(i));
+					listener.onStatChanged(StatType.MODIFIER, stat, newValue);
+
+				}
+
+				@Override public void onNothingSelected(AdapterView<?> adapterView) {
+				}
+			});
+		}
+	}
+
 	public void setup(OnStatsChangedListener listener) {
 		this.listener = listener;
 	}
@@ -142,14 +181,22 @@ public class StatsView extends LinearLayout {
 
 	private void updateViews() {
 		for (Stat stat : Stat.values(6)) {
-			TextView base = baseStatsViews.get(stat);
-			EditText iv = ivsViews.get(stat);
-			EditText ev = evsViews.get(stat);
-			EditText value = valuesViews.get(stat);
-			base.setText(Integer.toString(stats.get(stat, StatType.BASE)));
-			iv.setText(Integer.toString(stats.get(stat, StatType.IV)));
-			ev.setText(Integer.toString(stats.get(stat, StatType.EV)));
-			value.setText(Integer.toString(stats.get(stat, StatType.VALUE)));
+			if(enabledViews.get(StatType.BASE)) {
+				TextView base = baseStatsViews.get(stat);
+				base.setText(Integer.toString(stats.get(stat, StatType.BASE)));
+			}
+			if (enabledViews.get(StatType.IV)) {
+				EditText iv = ivsViews.get(stat);
+				iv.setText(Integer.toString(stats.get(stat, StatType.IV)));
+			}
+			if (enabledViews.get(StatType.EV)) {
+				EditText ev = evsViews.get(stat);
+				ev.setText(Integer.toString(stats.get(stat, StatType.EV)));
+			}
+			if (enabledViews.get(StatType.VALUE)) {
+				EditText value = valuesViews.get(stat);
+				value.setText(Integer.toString(stats.get(stat, StatType.VALUE)));
+			}
 		}
 	}
 
@@ -167,10 +214,13 @@ public class StatsView extends LinearLayout {
 	}
 
 	public void enableMods() {
-
+		rootViews.get(StatType.MODIFIER).setVisibility(View.VISIBLE);
+		enabledViews.put(StatType.MODIFIER, true);
 	}
 
 	public void disableMods() {
+		rootViews.get(StatType.MODIFIER).setVisibility(View.GONE);
+		enabledViews.put(StatType.MODIFIER, false);
 
 	}
 
@@ -183,72 +233,6 @@ public class StatsView extends LinearLayout {
  *
 
  private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
- viewSet.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
- viewSet.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
- viewSet.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
- viewSet.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
- viewSet.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
- for (final Stat stat : viewSet.keySet()) {
- viewSet.get(stat).setAdapter(
- new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,
- getContext().getResources().getStringArray(R.array.stat_modifiers)));
- viewSet.get(stat).setSelection(6);
- viewSet.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
-@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
-long l) {
-if (hasAValidPokemon()) {
-pokemon.setStatModifier(stat,
-Integer.parseInt((String) adapterView.getItemAtPosition(i)));
-cardHolder.updatePokemon(pokemon);
-}
-}
 
-@Override public void onNothingSelected(AdapterView<?> adapterView) {
-}
-});
- }
-
- }
-
- private void prepareStatsView(Map<Stat, EditText> statViews, View view, int tagId) {
- ((TextView) view.findViewById(R.id.label)).setText(tagId);
- statViews.put(Stat.HP, (EditText) view.findViewById(R.id.hp));
- statViews.put(Stat.ATTACK, (EditText) view.findViewById(R.id.attack));
- statViews.put(Stat.DEFENSE, (EditText) view.findViewById(R.id.defense));
- statViews.put(Stat.SPECIAL_ATTACK, (EditText) view.findViewById(R.id.special_attack));
- statViews.put(Stat.SPECIAL_DEFENSE, (EditText) view.findViewById(R.id.special_defense));
- statViews.put(Stat.SPEED, (EditText) view.findViewById(R.id.speed));
- for (Stat stat : Stat.values(6)) {
- statViews.get(stat).addTextChangedListener(new StatChangedListener(stat, tagId));
- }
- }
-
- private void prepareBaseStatsViews() {
- baseStatsViews.put(Stat.HP, (TextView) findViewById(R.id.base_hp));
- baseStatsViews.put(Stat.ATTACK, (TextView) findViewById(R.id.base_attack));
- baseStatsViews.put(Stat.DEFENSE, (TextView) findViewById(R.id.base_defense));
- baseStatsViews.put(Stat.SPECIAL_ATTACK, (TextView) findViewById(R.id.base_special_attack));
- baseStatsViews.put(Stat.SPECIAL_DEFENSE, (TextView) findViewById(R.id.base_special_defense));
- baseStatsViews.put(Stat.SPEED, (TextView) findViewById(R.id.base_speed));
- }
- *
-
- public void updateStats() {
- for (Stat stat : Stat.values(6)) {
- baseStatsViews.get(stat).setText("" + pokemon.baseStats().get(stat));
- evsView.get(stat).setText("" + pokemon.evs().get(stat));
- ivsView.get(stat).setText("" + pokemon.ivs().get(stat));
- statsView.get(stat).setText("" + pokemon.currentStats().get(stat));
- }
- }
-
- private void updateStatValues() {
- for (Stat stat : Stat.values(6)) {
- statsView.get(stat).setText("" + pokemon.currentStats().get(stat));
- }
- }
- for (Stat stat : statModifiersView.keySet()) {
- pokemon.setStatModifier(stat,
- Integer.parseInt((String) statModifiersView.get(stat).getSelectedItem()));
  }
  */

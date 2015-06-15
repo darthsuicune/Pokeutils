@@ -99,10 +99,10 @@ public abstract class Stats {
 	}
 
 	public enum StatType {
-		EV (R.string.evs),
-		IV (R.string.ivs),
-		BASE (R.string.base_stats),
-		VALUE (R.string.values);
+		EV(R.string.evs),
+		IV(R.string.ivs),
+		BASE(R.string.base_stats),
+		VALUE(R.string.values), MODIFIER(R.string.modifiers);
 
 		int resId;
 

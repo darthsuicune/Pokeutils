@@ -425,6 +425,9 @@ public class Gen6Pokemon extends Pokemon {
 			case VALUE:
 				setValue(stat, newValue);
 				break;
+			case MODIFIER:
+				setStatModifier(stat, newValue);
+				break;
 			case BASE:
 			default:
 				//For now we don't allow modifying this directly
