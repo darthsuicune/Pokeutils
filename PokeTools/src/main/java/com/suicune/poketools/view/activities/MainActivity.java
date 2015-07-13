@@ -1,4 +1,4 @@
-package com.suicune.poketools.controller.activities;
+package com.suicune.poketools.view.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -27,13 +27,11 @@ public class MainActivity extends AppCompatActivity
 	public static final int IV_BREED_SECTION = 2;
 	public static final int IV_CALC_SECTION = 3;
 
-
 	MainNavigationDrawerFragment mainNavigationDrawerFragment;
 	CharSequence title;
 	Toolbar toolbar;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -48,12 +46,11 @@ public class MainActivity extends AppCompatActivity
 				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
-	@Override
-	public void onNavigationDrawerItemSelected(int position) {
-		if (position == TEAM_BUILDER_SECTION) {
-			openTeamBuilder();
-			return;
-		}
+	@Override public void onTeamBuilderRequested() {
+		openTeamBuilder();
+	}
+
+	@Override public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getFragmentManager();
 		Fragment fragment = null;
@@ -62,21 +59,21 @@ public class MainActivity extends AppCompatActivity
 			case DAMAGE_CALC_SECTION:
 				tag = TAG_DAMAGE_CALC;
 				fragment = fragmentManager.findFragmentByTag(tag);
-				if(fragment == null) {
+				if (fragment == null) {
 					fragment = DamageCalcFragment.newInstance();
 				}
 				break;
 			case IV_BREED_SECTION:
 				tag = TAG_IV_BREEDER;
 				fragment = fragmentManager.findFragmentByTag(tag);
-				if(fragment == null) {
+				if (fragment == null) {
 					fragment = IvBreedingCalcFragment.newInstance();
 				}
 				break;
 			case IV_CALC_SECTION:
 				tag = TAG_IV_CALC;
 				fragment = fragmentManager.findFragmentByTag(tag);
-				if(fragment == null) {
+				if (fragment == null) {
 					fragment = IvCalcFragment.newInstance();
 				}
 				break;
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity
 				tag = "";
 				break;
 		}
-		if(fragment != null) {
+		if (fragment != null) {
 			//fragment.setRetainInstance(true);
 			fragmentManager.beginTransaction().replace(R.id.container, fragment, tag).commit();
 			onSectionAttached(position);
@@ -108,8 +105,7 @@ public class MainActivity extends AppCompatActivity
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mainNavigationDrawerFragment.isDrawerOpen()) {
 			// Only show items in the action bar relevant to this screen if the drawer is not
 			// showing. Otherwise, let the drawer decide what to show in the action bar.
@@ -119,8 +115,7 @@ public class MainActivity extends AppCompatActivity
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will automatically handle clicks on
 		// the Home/Up button, so long as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId()) {

@@ -54,31 +54,34 @@ public class StatsView extends LinearLayout {
 
 	public StatsView(Context context) {
 		super(context);
-		createSubViews();
 	}
 
 	public StatsView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		createSubViews();
 	}
 
 	public StatsView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
+	}
+
+	public void setup(OnStatsChangedListener listener) {
+		this.listener = listener;
 		createSubViews();
 	}
 
 	private void createSubViews() {
 		setOrientation(VERTICAL);
 		prepareBaseStatsViews();
-		prepareViews(StatType.IV, ivsViews, R.layout.evs_ivs_view, IVS_VIEW_ID);
-		prepareViews(StatType.EV, evsViews, R.layout.evs_ivs_view, EVS_VIEW_ID);
-		prepareViews(StatType.VALUE, valuesViews, R.layout.evs_ivs_view, VALUES_VIEW_ID);
+		prepareViews(StatType.IV, ivsViews, IVS_VIEW_ID);
+		prepareViews(StatType.EV, evsViews, EVS_VIEW_ID);
+		prepareViews(StatType.VALUE, valuesViews, VALUES_VIEW_ID);
 		prepareModifiersViews();
 	}
 
 	private void prepareBaseStatsViews() {
 		View v = LayoutInflater.from(getContext()).inflate(R.layout.base_stats_view, null);
 		rootViews.put(StatType.BASE, v);
+		enabledViews.put(StatType.BASE, true);
 		v.setId(BASE_STATS_ID);
 		addView(v);
 		baseStatsViews.put(HP, (TextView) v.findViewById(R.id.base_hp));
@@ -89,9 +92,10 @@ public class StatsView extends LinearLayout {
 		baseStatsViews.put(SPEED, (TextView) v.findViewById(R.id.base_speed));
 	}
 
-	private void prepareViews(final StatType statType, Map<Stat, EditText> viewsMap, int layoutId,
-							  int viewId) {
-		View v = LayoutInflater.from(getContext()).inflate(layoutId, null);
+	private void prepareViews(final StatType statType, Map<Stat, EditText> viewsMap, int viewId) {
+		View v = LayoutInflater.from(getContext()).inflate(R.layout.evs_ivs_view, null);
+		rootViews.put(statType, v);
+		enabledViews.put(statType, true);
 		v.setId(viewId);
 		addView(v);
 		((TextView) v.findViewById(R.id.label)).setText(statType.resId());
@@ -117,7 +121,7 @@ public class StatsView extends LinearLayout {
 				}
 
 				@Override public void afterTextChanged(Editable editable) {
-					if(isExternalUpdate) {
+					if (isExternalUpdate) {
 						return;
 					}
 					try {
@@ -142,6 +146,8 @@ public class StatsView extends LinearLayout {
 
 	private void prepareModifiersViews() {
 		View v = LayoutInflater.from(getContext()).inflate(R.layout.stat_modifiers, null);
+		rootViews.put(StatType.MODIFIER, v);
+		enabledViews.put(StatType.MODIFIER, true);
 		v.setId(MODIFIERS_ID);
 		addView(v);
 		modifiersViews.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
@@ -166,10 +172,6 @@ public class StatsView extends LinearLayout {
 				}
 			});
 		}
-	}
-
-	public void setup(OnStatsChangedListener listener) {
-		this.listener = listener;
 	}
 
 	public void setStats(Stats stats) {
@@ -228,11 +230,3 @@ public class StatsView extends LinearLayout {
 		void onStatChanged(StatType type, Stat stat, int newValue);
 	}
 }
-
-/**
- *
-
- private void prepareStatModifiersView(Map<Stat, Spinner> viewSet, View v) {
-
- }
- */

@@ -5,7 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.suicune.poketools.R;
-import com.suicune.poketools.controller.activities.MainActivity;
+import com.suicune.poketools.view.activities.MainActivity;
 import com.suicune.poketools.model.Ability;
 import com.suicune.poketools.model.factories.AbilityFactory;
 

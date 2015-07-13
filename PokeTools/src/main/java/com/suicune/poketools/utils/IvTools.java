@@ -10,6 +10,10 @@ public class IvTools {
 	 * http://bulbapedia.bulbagarden.net/wiki/Stats#Determination_of_stats
 	 */
 
+	/**
+	 * Formula for HP, gen3 and above
+	 * HP = [IV + (2*Base) + EV/4 + 100] * Level/100 + 10
+	 */
 	public static int calculateHp(int gen, int level, int base, int iv, int ev) {
 		switch (gen) {
 			// TODO: Gen 1 and 2 use a different formula
@@ -26,16 +30,6 @@ public class IvTools {
 
 	}
 
-	/**
-	 * Formula for HP, gen3 and above
-	 * HP = [IV + (2*Base) + EV/4 + 100] * Level/100 + 10
-	 *
-	 * @param level
-	 * @param base
-	 * @param iv
-	 * @param ev
-	 * @return
-	 */
 	private static int calculateHpGen6(int level, int base, int iv, int ev) {
 		//Special Shedinja case
 		if (base == 1) {
@@ -45,6 +39,11 @@ public class IvTools {
 		return (int) result;
 	}
 
+
+	/**
+	 * Formula for Stats, gen 3 and above
+	 * Stat = {[IV + (2*Base) + EV/4] * Level/100 + 5} * modifier
+	 */
 	public static int calculateStat(int gen, int level, int base, int iv, int ev, double modifier) {
 		switch (gen) {
 			case 1:
@@ -58,18 +57,6 @@ public class IvTools {
 				return calculateStatGen6(level, base, iv, ev, modifier);
 		}
 	}
-
-	/**
-	 * Formula for Stats, gen 3 and above
-	 * Stat = {[IV + (2*Base) + EV/4] * Level/100 + 5} * modifier
-	 *
-	 * @param level
-	 * @param base
-	 * @param iv
-	 * @param ev
-	 * @param modifier
-	 * @return
-	 */
 	private static int calculateStatGen6(int level, int base, int iv, int ev, double modifier) {
 		double result = ((iv + 2 * base + ev / 4) * level / 100 + 5) * modifier;
 		return (int) result;
@@ -101,6 +88,9 @@ public class IvTools {
 		return possibleValues;
 	}
 
+	/**
+	 * Calculates the possible IVs (not hp) for a stat given the values are known
+	 */
 	public static List<Integer> calculatePossibleIvValues(int gen, int level, int value, int base,
 														  int ev, double modifier) {
 		switch (gen) {
@@ -127,6 +117,9 @@ public class IvTools {
 		return possibleValues;
 	}
 
+	/**
+	 * Convenience method for creating a properly formatted string displaying the stats/stat range
+	 */
 	public static String asText(List<Integer> stats, String empty) {
 		String result;
 		switch (stats.size()) {

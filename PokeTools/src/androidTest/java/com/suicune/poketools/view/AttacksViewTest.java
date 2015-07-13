@@ -7,7 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.widget.Spinner;
 
 import com.suicune.poketools.R;
-import com.suicune.poketools.controller.activities.MainActivity;
+import com.suicune.poketools.view.activities.MainActivity;
 import com.suicune.poketools.model.Attack;
 import com.suicune.poketools.model.factories.AttackFactory;
 import com.suicune.poketools.view.AttacksView.OnAttacksChangedListener;

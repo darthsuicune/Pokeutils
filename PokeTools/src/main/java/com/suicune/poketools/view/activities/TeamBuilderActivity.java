@@ -1,4 +1,4 @@
-package com.suicune.poketools.controller.activities;
+package com.suicune.poketools.view.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

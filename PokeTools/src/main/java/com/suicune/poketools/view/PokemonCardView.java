@@ -36,7 +36,7 @@ public class PokemonCardView extends CardView {
 	public PokemonCardHolder cardHolder;
 
 	AutoCompleteTextView nameAutoCompleteView;
-	TextView nameView;
+	TextView nameHeaderView;
 	EditText levelView;
 	View cardDetailsView;
 	AbilityView abilityView;
@@ -69,7 +69,7 @@ public class PokemonCardView extends CardView {
 	}
 
 	public void setupSubViews() {
-		nameView = (TextView) findViewById(R.id.pokemon_name_title);
+		nameHeaderView = (TextView) findViewById(R.id.pokemon_name_title);
 		cardDetailsView = findViewById(R.id.pokemon_card_details);
 		nameAutoCompleteView = (AutoCompleteTextView) cardDetailsView.findViewById(R.id.name);
 		levelView = (EditText) cardDetailsView.findViewById(R.id.level);
@@ -86,11 +86,13 @@ public class PokemonCardView extends CardView {
 		prepareStatsView();
 		prepareAttackViews();
 
-		showPokemonInfo();
+		if (hasAValidPokemon()) {
+			showPokemonInfo();
+		}
 	}
 
 	private void prepareHeaderView() {
-		nameView.setOnClickListener(new OnClickListener() {
+		nameHeaderView.setOnClickListener(new OnClickListener() {
 			@Override public void onClick(View view) {
 				cardDetailsView.setVisibility((isShown) ? View.GONE : View.VISIBLE);
 				isShown = !isShown;
@@ -107,8 +109,8 @@ public class PokemonCardView extends CardView {
 		view.setAdapter(adapter);
 		view.setThreshold(1);
 		view.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-			@Override public boolean onEditorAction(TextView textView, int actionId,
-													KeyEvent keyEvent) {
+			@Override
+			public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
 				switch (actionId) {
 					case EditorInfo.IME_ACTION_DONE:
 					case EditorInfo.IME_ACTION_GO:
@@ -125,8 +127,8 @@ public class PokemonCardView extends CardView {
 			}
 		});
 		view.setOnItemClickListener(new OnItemClickListener() {
-			@Override public void onItemClick(AdapterView<?> adapterView, View view, int position,
-											  long id) {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 				selectPokemon(((TextView) view).getText().toString());
 			}
 		});
@@ -143,44 +145,57 @@ public class PokemonCardView extends CardView {
 
 	public void setPokemon(Pokemon pokemon) {
 		this.pokemon = pokemon;
-		updatePokemonData();
-		showPokemonInfo();
-		cardHolder.updatePokemon(pokemon);
+		if (hasAValidPokemon()) {
+			updatePokemonData();
+			showPokemonInfo();
+			cardHolder.updatePokemon(pokemon);
+		}
 	}
 
 	private void updatePokemonData() {
-		if (hasAValidPokemon()) {
-			if(natureView.nature() != null) {
-				this.pokemon.setNature(natureView.nature());
-			}
+		if (natureView.nature() != null) {
+			this.pokemon.setNature(natureView.nature());
 		}
 	}
 
 	public void showPokemonInfo() {
-		if (hasAValidPokemon()) {
-			setAttacks();
-			setCurrentAttacks();
-			abilityView.setAsCurrent(this.pokemon.currentAbility());
-			if (!nameView.getText().equals(pokemon.nickname())) {
-				nameView.setText(pokemon.nickname());
-				nameAutoCompleteView.setText(pokemon.name());
-			}
-			if (!levelView.getText().toString().equals(Integer.toString(pokemon.level()))) {
-				levelView.setText("" + pokemon.level());
-			}
-			statsView.setStats(pokemon.stats());
-		}
+		updateAttacks();
+		displayAbility();
+		displayName();
+		displayNature();
+		displayStats();
+		displayLevel();
 	}
 
-	private void setAttacks() {
+	private void updateAttacks() {
 		if (areAttacksEnabled && hasAValidPokemon()) {
 			attacksView.setAttacks(pokemon.attackList());
+			attacksView.setCurrentAttacks(pokemon.currentAttacks());
 		}
 	}
 
-	private void setCurrentAttacks() {
-		if (areAttacksEnabled && hasAValidPokemon() && pokemon.currentAttacks().size() > 0) {
-			attacksView.setCurrentAttacks(pokemon.currentAttacks());
+	private void displayAbility() {
+		abilityView.setAsCurrent(this.pokemon.currentAbility());
+	}
+
+	private void displayName() {
+		if (!nameHeaderView.getText().equals(pokemon.nickname())) {
+			nameHeaderView.setText(pokemon.nickname());
+			nameAutoCompleteView.setText(pokemon.name());
+		}
+	}
+
+	private void displayNature() {
+		natureView.setNature(pokemon.nature());
+	}
+
+	private void displayStats() {
+		statsView.setStats(pokemon.stats());
+	}
+
+	private void displayLevel() {
+		if (Integer.parseInt(levelView.getText().toString()) != pokemon.level()) {
+			levelView.setText(Integer.toString(pokemon.level()));
 		}
 	}
 
@@ -202,9 +217,9 @@ public class PokemonCardView extends CardView {
 		try {
 			level = Integer.parseInt(editable.toString());
 			if (hasAValidPokemon() && level != pokemon.level() &&
-					level >= Pokemon.MIN_LEVEL && level <= Pokemon.MAX_LEVEL) {
+				level >= Pokemon.MIN_LEVEL && level <= Pokemon.MAX_LEVEL) {
 				pokemon.setLevel(level);
-				showPokemonInfo();
+				displayStats();
 				cardHolder.updatePokemon(pokemon);
 			}
 		} catch (NumberFormatException nfe) {
@@ -226,7 +241,7 @@ public class PokemonCardView extends CardView {
 	private void selectNewAbility(Ability ability) {
 		if (hasAValidPokemon()) {
 			pokemon.setAbility(ability);
-			showPokemonInfo();
+			displayAbility();
 			cardHolder.updatePokemon(pokemon);
 		}
 	}
@@ -238,7 +253,8 @@ public class PokemonCardView extends CardView {
 			}
 		});
 		if (hasAValidPokemon()) {
-			natureView.setNature(pokemon.nature());
+			displayNature();
+			displayStats();
 		}
 	}
 
@@ -246,7 +262,8 @@ public class PokemonCardView extends CardView {
 		statsView.setNature(nature);
 		if (hasAValidPokemon()) {
 			pokemon.setNature(nature);
-			showPokemonInfo();
+			displayNature();
+			displayStats();
 			cardHolder.updatePokemon(pokemon);
 		}
 	}
@@ -254,12 +271,14 @@ public class PokemonCardView extends CardView {
 	private void prepareStatsView() {
 		statsView.setup(new StatsView.OnStatsChangedListener() {
 			@Override public void onStatChanged(Stats.StatType type, Stat stat, int newValue) {
-				pokemon.updateStat(type, stat, newValue);
+				if(hasAValidPokemon()) {
+					pokemon.updateStat(type, stat, newValue);
+				}
 			}
 		});
 
-		if(hasAValidPokemon()) {
-			statsView.setStats(pokemon.stats());
+		if (hasAValidPokemon()) {
+			displayStats();
 		}
 	}
 
@@ -270,7 +289,7 @@ public class PokemonCardView extends CardView {
 				cardHolder.updatePokemon(pokemon);
 			}
 		});
-		setAttacks();
+		updateAttacks();
 	}
 
 	public boolean hasAValidPokemon() {
@@ -285,10 +304,10 @@ public class PokemonCardView extends CardView {
 
 	public void enableAttacks() {
 		areAttacksEnabled = true;
-		if(attacksView != null) {
+		if (attacksView != null) {
 			attacksView.setVisibility(VISIBLE);
 		}
-		setAttacks();
+		updateAttacks();
 	}
 
 	public void disableAttacks() {
@@ -300,7 +319,7 @@ public class PokemonCardView extends CardView {
 
 	public void enableMods() {
 		areModsEnabled = true;
-		if(statsView != null) {
+		if (statsView != null) {
 			statsView.enableMods();
 		}
 	}

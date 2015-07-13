@@ -52,9 +52,8 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		// Required empty public constructor
 	}
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+									   Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View fragmentView = inflater.inflate(R.layout.fragment_iv_calc, container, false);
 		cardView = (PokemonCardView) fragmentView.findViewById(R.id.pokemon);
@@ -74,7 +73,8 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		resultViews.put(ATTACK, (TextView) results.findViewById(R.id.base_attack));
 		resultViews.put(DEFENSE, (TextView) results.findViewById(R.id.base_defense));
 		resultViews.put(SPECIAL_ATTACK, (TextView) results.findViewById(R.id.base_special_attack));
-		resultViews.put(SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.base_special_defense));
+		resultViews
+				.put(SPECIAL_DEFENSE, (TextView) results.findViewById(R.id.base_special_defense));
 		resultViews.put(SPEED, (TextView) results.findViewById(R.id.base_speed));
 	}
 
@@ -111,7 +111,7 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		cardView.setup(this);
 		cardView.disableAttacks();
 		cardView.disableMods();
-		if(pokemon != null) {
+		if (pokemon != null) {
 			cardView.setPokemon(pokemon);
 		}
 	}
