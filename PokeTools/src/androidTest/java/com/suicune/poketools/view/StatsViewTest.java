@@ -5,8 +5,8 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.suicune.poketools.R;
-import com.suicune.poketools.view.activities.MainActivity;
 import com.suicune.poketools.model.Stats;
+import com.suicune.poketools.view.activities.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,7 +17,6 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -39,7 +38,7 @@ public class StatsViewTest {
 
 	private void loadView() throws Throwable {
 		DrawerActions.openDrawer(R.id.drawer_layout);
-		onView(withText(R.string.iv_calc_fragment_title)).perform(click());
+		onView(withId(R.id.iv_calc)).perform(click());
 		DrawerActions.closeDrawer(R.id.drawer_layout);
 		view = (StatsView) rule.getActivity().findViewById(R.id.pokemon_stats_view);
 		setupListener();

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.suicune.poketools.R;
@@ -52,23 +51,32 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		// Required empty public constructor
 	}
 
+	@Override public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		try {
+			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
+				pokemon = PokemonFactory
+						.createFromBundle(getActivity(), savedInstanceState.getBundle(ARG_POKEMON));
+			}
+		} catch (JSONException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View fragmentView = inflater.inflate(R.layout.fragment_iv_calc, container, false);
 		cardView = (PokemonCardView) fragmentView.findViewById(R.id.pokemon);
+		cardView.setup(this);
+		cardView.disableAttacks();
+		cardView.disableMods();
 		setupCalculator(fragmentView);
 		return fragmentView;
 	}
 
 	private void setupCalculator(View fragmentView) {
-		Button button = (Button) fragmentView.findViewById(R.id.calculate_ivs);
-		button.setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View view) {
-				displayIvs();
-			}
-		});
-		View results = fragmentView.findViewById(R.id.results);
+		View results = fragmentView.findViewById(R.id.iv_calc_results);
 		resultViews.put(HP, (TextView) results.findViewById(R.id.base_hp));
 		resultViews.put(ATTACK, (TextView) results.findViewById(R.id.base_attack));
 		resultViews.put(DEFENSE, (TextView) results.findViewById(R.id.base_defense));
@@ -89,18 +97,6 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 		}
 	}
 
-	@Override public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		try {
-			if (savedInstanceState != null && savedInstanceState.containsKey(ARG_POKEMON)) {
-				pokemon = PokemonFactory
-						.createFromBundle(getActivity(), savedInstanceState.getBundle(ARG_POKEMON));
-			}
-		} catch (JSONException | IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	@Override public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		cardView.saveState(outState, ARG_POKEMON);
@@ -108,9 +104,6 @@ public class IvCalcFragment extends Fragment implements PokemonCardHolder {
 
 	@Override public void onResume() {
 		super.onResume();
-		cardView.setup(this);
-		cardView.disableAttacks();
-		cardView.disableMods();
 		if (pokemon != null) {
 			cardView.setPokemon(pokemon);
 		}

@@ -10,5 +10,8 @@
     <string name="title_activity_team_builder">TeamBuilderActivity</string>
     <string name="empty">Invalid</string>
     <string name="error_invalid_value">Invalid value</string>
+    <string name="team_builder_create_new">Create new team</string>
+    <string name="pokedex_fragment_title">Pokedex</string>
+    <string name="drawer_sections_title">Sections</string>
 
 </resources>

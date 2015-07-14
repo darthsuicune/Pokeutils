@@ -45,7 +45,7 @@ public class PokemonCardViewTest {
 	private void setupCard() {
 		activity = rule.getActivity();
 		openDrawer(R.id.drawer_layout);
-		onView(withText(R.string.iv_calc_fragment_title)).perform(click());
+		onView(withId(R.id.iv_calc)).perform(click());
 		closeDrawer(R.id.drawer_layout);
 		cardView = (PokemonCardView) activity.findViewById(R.id.pokemon);
 		cardView.cardHolder = holder;
@@ -70,6 +70,15 @@ public class PokemonCardViewTest {
 		onView(withId(R.id.attacks)).check(matches(isDisplayed()));
 	}
 
+	private void whenShowing(String pokemon) throws InterruptedException {
+		onView(withId(R.id.name)).perform(typeText(pokemon.substring(0, pokemon.length() - 2)));
+		closeSoftKeyboard();
+		Thread.sleep(500);
+		onView(withText(pokemon)).inRoot(
+				withDecorView(not(is(activity.getWindow().getDecorView()))))
+				.perform(click());
+	}
+
 	@Test public void disableAttacksRemovesThemFromVisibility() throws Throwable {
 		whenShowing("Gyarados");
 		rule.runOnUiThread(new Runnable() {
@@ -84,14 +93,6 @@ public class PokemonCardViewTest {
 		whenShowing("Gyarados");
 		onView(allOf(isDescendantOfA(withId(StatsView.BASE_STATS_ID)), withId(R.id.base_attack)))
 				.check(matches(withText("125")));
-	}
-
-	private void whenShowing(String pokemon) throws InterruptedException {
-		onView(withId(R.id.name)).perform(typeText(pokemon.substring(0, pokemon.length() - 2)));
-		closeSoftKeyboard();
-		Thread.sleep(500);
-		onView(withText(pokemon)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-				.perform(click());
 	}
 
 	@Test public void diancieShowsItsData() throws Exception {

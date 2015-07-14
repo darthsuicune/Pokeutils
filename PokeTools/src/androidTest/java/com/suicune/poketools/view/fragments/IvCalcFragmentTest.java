@@ -37,18 +37,18 @@ public class IvCalcFragmentTest {
 
 	@Test public void testUpdatePokemonDisplaysTheIvs() throws Throwable {
 		getFragment();
-		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.base_hp))).check(
+		onView(allOf(isDescendantOfA(withId(R.id.iv_calc_results)), withId(R.id.base_hp))).check(
 				matches(withText("30 - 31")));
-		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.base_attack)))
+		onView(allOf(isDescendantOfA(withId(R.id.iv_calc_results)), withId(R.id.base_attack)))
 				.check(matches(withText("30 - 31")));
-		onView(allOf(isDescendantOfA(withId(R.id.results)), withId(R.id.base_speed)))
+		onView(allOf(isDescendantOfA(withId(R.id.iv_calc_results)), withId(R.id.base_speed)))
 				.check(matches(withText("30 - 31")));
 	}
 
 	private void getFragment() throws Throwable {
 		MainActivity activity = rule.getActivity();
 		DrawerActions.openDrawer(R.id.drawer_layout);
-		onView(withText(R.string.iv_calc_fragment_title)).perform(click());
+		onView(withId(R.id.iv_calc)).perform(click());
 		DrawerActions.closeDrawer(R.id.drawer_layout);
 		fragment = (IvCalcFragment) activity.getFragmentManager()
 				.findFragmentByTag(MainActivity.TAG_IV_CALC);

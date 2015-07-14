@@ -65,13 +65,13 @@
                 android:id="@+id/pokemon_stats_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
+                android:layout_margin="8dp"/>
 
             <com.suicune.poketools.view.AttacksView
                 android:id="@+id/attacks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
+                android:layout_margin="8dp"/>
         </LinearLayout>
     </LinearLayout>
 </com.suicune.poketools.view.PokemonCardView>

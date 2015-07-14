@@ -2,7 +2,6 @@ package com.suicune.poketools.view.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,119 +14,92 @@ import com.suicune.poketools.view.fragments.DamageCalcFragment;
 import com.suicune.poketools.view.fragments.IvBreedingCalcFragment;
 import com.suicune.poketools.view.fragments.IvCalcFragment;
 import com.suicune.poketools.view.fragments.MainNavigationDrawerFragment;
+import com.suicune.poketools.view.fragments.PokedexFragment;
+import com.suicune.poketools.view.fragments.teambuilder.TeamBuilderFragment;
 
 public class MainActivity extends AppCompatActivity
-		implements MainNavigationDrawerFragment.NavigationDrawerCallbacks {
+		implements MainNavigationDrawerFragment.MainNavigationDrawerCallbacks {
 	public static final String TAG_DAMAGE_CALC = "damageCalcFragment";
 	public static final String TAG_IV_CALC = "ivCalcFragment";
 	public static final String TAG_IV_BREEDER = "ivBreederFragment";
-
-	public static final int TEAM_BUILDER_SECTION = 0;
-	public static final int DAMAGE_CALC_SECTION = 1;
-	public static final int IV_BREED_SECTION = 2;
-	public static final int IV_CALC_SECTION = 3;
+	public static final String TAG_POKEDEX = "pokedexFragment";
+	public static final String TAG_TEAM_BUILDER = "teamBuilderFragment";
 
 	MainNavigationDrawerFragment mainNavigationDrawerFragment;
-	CharSequence title;
-	Toolbar toolbar;
+	FragmentManager manager;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		manager = getFragmentManager();
 		setContentView(R.layout.activity_main);
-
-		mainNavigationDrawerFragment = (MainNavigationDrawerFragment) getFragmentManager()
-				.findFragmentById(R.id.navigation_drawer);
-		title = getTitle();
-		toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-		toolbar.setTitle(title);
-
-		// Set up the drawer.
-		mainNavigationDrawerFragment
-				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_toolbar);
+		setSupportActionBar(toolbar);
+		mainNavigationDrawerFragment =
+				(MainNavigationDrawerFragment) manager.findFragmentById(R.id.navigation_drawer);
+		mainNavigationDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout),
+				findViewById(R.id.navigation_drawer), toolbar);
 	}
 
 	@Override public void onTeamBuilderRequested() {
-		openTeamBuilder();
+		Fragment fragment = manager.findFragmentByTag(TAG_TEAM_BUILDER);
+		if (fragment == null) {
+			fragment = TeamBuilderFragment.newInstance();
+		}
+		setFragment(fragment, TAG_TEAM_BUILDER, R.string.team_builder_fragment_title);
 	}
 
-	@Override public void onNavigationDrawerItemSelected(int position) {
-		// update the main content by replacing fragments
-		FragmentManager fragmentManager = getFragmentManager();
-		Fragment fragment = null;
-		String tag;
-		switch (position) {
-			case DAMAGE_CALC_SECTION:
-				tag = TAG_DAMAGE_CALC;
-				fragment = fragmentManager.findFragmentByTag(tag);
-				if (fragment == null) {
-					fragment = DamageCalcFragment.newInstance();
-				}
-				break;
-			case IV_BREED_SECTION:
-				tag = TAG_IV_BREEDER;
-				fragment = fragmentManager.findFragmentByTag(tag);
-				if (fragment == null) {
-					fragment = IvBreedingCalcFragment.newInstance();
-				}
-				break;
-			case IV_CALC_SECTION:
-				tag = TAG_IV_CALC;
-				fragment = fragmentManager.findFragmentByTag(tag);
-				if (fragment == null) {
-					fragment = IvCalcFragment.newInstance();
-				}
-				break;
-			default:
-				tag = "";
-				break;
-		}
-		if (fragment != null) {
-			//fragment.setRetainInstance(true);
-			fragmentManager.beginTransaction().replace(R.id.container, fragment, tag).commit();
-			onSectionAttached(position);
-		}
+	private void setFragment(Fragment fragment, String tag, int titleId) {
+		setTitle(titleId);
+		manager.beginTransaction().replace(R.id.container, fragment, tag).commit();
 	}
 
-	public void onSectionAttached(int number) {
-		switch (number) {
-			case 1:
-				title = getString(R.string.damage_calc_fragment_title);
-				break;
-			case 2:
-				title = getString(R.string.iv_breeder_calc_fragment_title);
-				break;
-			case 3:
-				title = getString(R.string.iv_calc_fragment_title);
-				break;
+	@Override public void onDamageCalcRequested() {
+		Fragment fragment = manager.findFragmentByTag(TAG_DAMAGE_CALC);
+		if (fragment == null) {
+			fragment = DamageCalcFragment.newInstance();
 		}
-		if (toolbar != null) {
-			toolbar.setTitle(title);
+		setFragment(fragment, TAG_DAMAGE_CALC, R.string.damage_calc_fragment_title);
+	}
+
+	@Override public void onIvBreederRequested() {
+		Fragment fragment = manager.findFragmentByTag(TAG_IV_BREEDER);
+		if (fragment == null) {
+			fragment = IvBreedingCalcFragment.newInstance();
 		}
+		setFragment(fragment, TAG_IV_BREEDER, R.string.iv_breeder_calc_fragment_title);
+	}
+
+	@Override public void onIvCalcRequested() {
+		Fragment fragment = manager.findFragmentByTag(TAG_IV_CALC);
+		if (fragment == null) {
+			fragment = IvCalcFragment.newInstance();
+		}
+		setFragment(fragment, TAG_IV_CALC, R.string.iv_calc_fragment_title);
+	}
+
+	@Override public void onPokedexRequested() {
+		Fragment fragment = manager.findFragmentByTag(TAG_POKEDEX);
+		if (fragment == null) {
+			fragment = PokedexFragment.newInstance();
+		}
+		setFragment(fragment, TAG_POKEDEX, R.string.pokedex_fragment_title);
 	}
 
 	@Override public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mainNavigationDrawerFragment.isDrawerOpen()) {
-			// Only show items in the action bar relevant to this screen if the drawer is not
-			// showing. Otherwise, let the drawer decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.main, menu);
-			return true;
-		}
-		return super.onCreateOptionsMenu(menu);
+		//Show the global option, and if the drawer is open, pass the event to it
+		getMenuInflater().inflate(R.menu.global, menu);
+		return !mainNavigationDrawerFragment.isDrawerOpen() || super.onCreateOptionsMenu(menu);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will automatically handle clicks on
-		// the Home/Up button, so long as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId()) {
 			case R.id.action_settings:
 				return true;
 			default:
+				// Pass the event to ActionBarDrawerToggle, if it returns true, then it has
+				// handled the app icon touch event
+				mainNavigationDrawerFragment.onOptionsItemSelected(item);
 				return super.onOptionsItemSelected(item);
 		}
-	}
-
-	private void openTeamBuilder() {
-		Intent intent = new Intent(this, TeamBuilderActivity.class);
-		startActivity(intent);
 	}
 }

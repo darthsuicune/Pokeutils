@@ -32,31 +32,30 @@ public class TeamBuilderActivity extends AppCompatActivity
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
 	 */
-	private TeamBuilderDrawerFragment mTeamBuilderDrawerFragment;
+	private TeamBuilderDrawerFragment teamBuilderDrawerFragment;
 	private Map<Integer, TeamMemberFragment> teamFragments;
 	private TeamMainFragment mainFragment;
-	private int mCurrentFragment;
+	private int currentFragment;
 
 	private SharedPreferences prefs;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	@Override protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_team_builder);
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+		currentFragment = prefs.getInt(TEAM_EDIT_DRAWER_SELECTION, 0);
+		teamFragments = new HashMap<>();
+
 		Toolbar toolbar = (Toolbar) findViewById(R.id.team_builder_toolbar);
 		setSupportActionBar(toolbar);
 
-		mCurrentFragment = prefs.getInt(TEAM_EDIT_DRAWER_SELECTION, 0);
-		mTeamBuilderDrawerFragment = (TeamBuilderDrawerFragment) getFragmentManager()
-				.findFragmentById(R.id.navigation_drawer);
-		teamFragments = new HashMap<>();
-
 		// Set up the drawer.
-		mTeamBuilderDrawerFragment
-				.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		teamBuilderDrawerFragment = (TeamBuilderDrawerFragment) getFragmentManager()
+				.findFragmentById(R.id.navigation_drawer);
+		teamBuilderDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout),
+				findViewById(R.id.navigation_drawer), toolbar);
 
 		setMainFragment();
 	}
@@ -65,7 +64,7 @@ public class TeamBuilderActivity extends AppCompatActivity
 		String tag;
 		FragmentManager manager = getFragmentManager();
 		Fragment fragment;
-		switch (mCurrentFragment) {
+		switch (currentFragment) {
 			case 0:
 				tag = FRAGMENT_TAG_MAIN;
 				if (mainFragment == null) {
@@ -78,61 +77,60 @@ public class TeamBuilderActivity extends AppCompatActivity
 				fragment = mainFragment;
 				break;
 			default:
-				tag = FRAGMENT_TAG_TEAM_MEMBER + mCurrentFragment;
-				if (teamFragments.get(mCurrentFragment) == null) {
+				tag = FRAGMENT_TAG_TEAM_MEMBER + currentFragment;
+				if (teamFragments.get(currentFragment) == null) {
 					TeamMemberFragment member = (TeamMemberFragment) manager.findFragmentByTag(tag);
 					if (member == null) {
-						member = TeamMemberFragment.newInstance(mCurrentFragment);
+						member = TeamMemberFragment.newInstance(currentFragment);
 						member.setRetainInstance(true);
 					}
-					teamFragments.put(mCurrentFragment, member);
+					teamFragments.put(currentFragment, member);
 				}
-				fragment = teamFragments.get(mCurrentFragment);
+				fragment = teamFragments.get(currentFragment);
 				break;
 		}
 		manager.beginTransaction().replace(R.id.team_builder_container, fragment, tag).commit();
-		prefs.edit().putInt(TEAM_EDIT_DRAWER_SELECTION, mCurrentFragment).apply();
+		prefs.edit().putInt(TEAM_EDIT_DRAWER_SELECTION, currentFragment).apply();
 	}
 
-	@Override
-	public void onPokemonSelected(int position) {
-		mCurrentFragment = position;
+	@Override public void onPokemonSelected(int position) {
+		currentFragment = position;
 		setMainFragment();
 	}
 
 	@Override public void onMainScreenSelected() {
-		mCurrentFragment = 0;
+		currentFragment = 0;
 		setMainFragment();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mTeamBuilderDrawerFragment.isDrawerOpen()) {
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
+		if (!teamBuilderDrawerFragment.isDrawerOpen()) {
 			// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.team_builder, menu);
+			getMenuInflater().inflate(R.menu.global, menu);
 			return true;
 		}
 		return super.onCreateOptionsMenu(menu);
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	@Override public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId()) {
+			case R.id.action_settings:
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
 
 	@Override public void onTeamChanged(PokemonTeam team) {
-		mTeamBuilderDrawerFragment.onTeamChanged(team);
+		teamBuilderDrawerFragment.onTeamChanged(team);
 	}
 
 	@Override public void onTeamMemberChanged(int position, Pokemon pokemon) {
-		mTeamBuilderDrawerFragment.onMemberChanged(position, pokemon);
+		teamBuilderDrawerFragment.onMemberChanged(position, pokemon);
 	}
 }

@@ -72,9 +72,9 @@ public class StatsView extends LinearLayout {
 	private void createSubViews() {
 		setOrientation(VERTICAL);
 		prepareBaseStatsViews();
-		prepareViews(StatType.IV, ivsViews, IVS_VIEW_ID);
-		prepareViews(StatType.EV, evsViews, EVS_VIEW_ID);
-		prepareViews(StatType.VALUE, valuesViews, VALUES_VIEW_ID);
+		prepareStatViews(StatType.IV, ivsViews, IVS_VIEW_ID);
+		prepareStatViews(StatType.EV, evsViews, EVS_VIEW_ID);
+		prepareStatViews(StatType.VALUE, valuesViews, VALUES_VIEW_ID);
 		prepareModifiersViews();
 	}
 
@@ -92,7 +92,8 @@ public class StatsView extends LinearLayout {
 		baseStatsViews.put(SPEED, (TextView) v.findViewById(R.id.base_speed));
 	}
 
-	private void prepareViews(final StatType statType, Map<Stat, EditText> viewsMap, int viewId) {
+	private void prepareStatViews(final StatType statType, Map<Stat, EditText> viewsMap,
+								  int viewId) {
 		View v = LayoutInflater.from(getContext()).inflate(R.layout.evs_ivs_view, null);
 		rootViews.put(statType, v);
 		enabledViews.put(statType, true);
@@ -105,42 +106,9 @@ public class StatsView extends LinearLayout {
 		viewsMap.put(SPECIAL_ATTACK, (EditText) v.findViewById(R.id.special_attack));
 		viewsMap.put(SPECIAL_DEFENSE, (EditText) v.findViewById(R.id.special_defense));
 		viewsMap.put(SPEED, (EditText) v.findViewById(R.id.speed));
-		for (final Stat stat : viewsMap.keySet()) {
-			final EditText editText = viewsMap.get(stat);
-			editText.addTextChangedListener(new TextWatcher() {
-				@Override
-				public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-					if (i2 > 0 && editText.getError() != null) {
-						editText.setError(null);
-					}
-				}
-
-				@Override
-				public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-				}
-
-				@Override public void afterTextChanged(Editable editable) {
-					if (isExternalUpdate) {
-						return;
-					}
-					try {
-						listener.onStatChanged(statType, stat,
-								parseNewValue(statType, stat, editable));
-					} catch (NumberFormatException e) {
-						//The thing is empty or incorrect. Show error
-						editText.setError(getContext().getString(R.string.error_invalid_value));
-					}
-				}
-
-				private int parseNewValue(StatType statType, Stat stat, Editable editable) {
-					int result = Integer.parseInt(editable.toString());
-					if (!Stats.isValid(6, statType, stat, result)) {
-						throw new NumberFormatException();
-					}
-					return result;
-				}
-			});
+		for (Stat stat : viewsMap.keySet()) {
+			EditText editText = viewsMap.get(stat);
+			editText.addTextChangedListener(new StatViewTextWatcher(editText, statType, stat));
 		}
 	}
 
@@ -152,8 +120,10 @@ public class StatsView extends LinearLayout {
 		addView(v);
 		modifiersViews.put(Stat.ATTACK, (Spinner) v.findViewById(R.id.attack_modifier));
 		modifiersViews.put(Stat.DEFENSE, (Spinner) v.findViewById(R.id.defense_modifier));
-		modifiersViews.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
-		modifiersViews.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
+		modifiersViews
+				.put(Stat.SPECIAL_ATTACK, (Spinner) v.findViewById(R.id.special_attack_modifier));
+		modifiersViews
+				.put(Stat.SPECIAL_DEFENSE, (Spinner) v.findViewById(R.id.special_defense_modifier));
 		modifiersViews.put(Stat.SPEED, (Spinner) v.findViewById(R.id.speed_modifier));
 		for (final Stat stat : modifiersViews.keySet()) {
 			modifiersViews.get(stat).setAdapter(
@@ -161,8 +131,8 @@ public class StatsView extends LinearLayout {
 							getContext().getResources().getStringArray(R.array.stat_modifiers)));
 			modifiersViews.get(stat).setSelection(6);
 			modifiersViews.get(stat).setOnItemSelectedListener(new OnItemSelectedListener() {
-				@Override public void onItemSelected(AdapterView<?> adapterView, View view, int i,
-													 long l) {
+				@Override
+				public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 					int newValue = Integer.parseInt((String) adapterView.getItemAtPosition(i));
 					listener.onStatChanged(StatType.MODIFIER, stat, newValue);
 
@@ -183,31 +153,26 @@ public class StatsView extends LinearLayout {
 
 	private void updateViews() {
 		for (Stat stat : Stat.values(6)) {
-			if(enabledViews.get(StatType.BASE)) {
-				TextView base = baseStatsViews.get(stat);
-				base.setText(Integer.toString(stats.get(stat, StatType.BASE)));
-			}
-			if (enabledViews.get(StatType.IV)) {
-				EditText iv = ivsViews.get(stat);
-				iv.setText(Integer.toString(stats.get(stat, StatType.IV)));
-			}
-			if (enabledViews.get(StatType.EV)) {
-				EditText ev = evsViews.get(stat);
-				ev.setText(Integer.toString(stats.get(stat, StatType.EV)));
-			}
-			if (enabledViews.get(StatType.VALUE)) {
-				EditText value = valuesViews.get(stat);
-				value.setText(Integer.toString(stats.get(stat, StatType.VALUE)));
-			}
+			updateStatView(StatType.BASE, baseStatsViews, stat);
+			updateStatView(StatType.IV, ivsViews, stat);
+			updateStatView(StatType.EV, evsViews, stat);
+			updateStatView(StatType.VALUE, valuesViews, stat);
+		}
+	}
+
+	private void updateStatView(StatType type, Map<Stat, ? extends TextView> views, Stat stat) {
+		if (enabledViews.get(type)) {
+			TextView view = views.get(stat);
+			view.setText(Integer.toString(stats.get(stat, type)));
 		}
 	}
 
 	public void setNature(Nature nature) {
-		for(Stat stat : baseStatsViews.keySet()) {
+		for (Stat stat : baseStatsViews.keySet()) {
 			View v = baseStatsViews.get(stat);
-			if(stat == nature.decreasedStat()) {
+			if (stat == nature.decreasedStat()) {
 				v.setBackgroundColor(getResources().getColor(R.color.decreased_stat));
-			} else if(stat == nature.increasedStat()) {
+			} else if (stat == nature.increasedStat()) {
 				v.setBackgroundColor(getResources().getColor(R.color.increased_stat));
 			} else {
 				v.setBackgroundColor(Color.TRANSPARENT);
@@ -228,5 +193,48 @@ public class StatsView extends LinearLayout {
 
 	public interface OnStatsChangedListener {
 		void onStatChanged(StatType type, Stat stat, int newValue);
+	}
+
+	private class StatViewTextWatcher implements TextWatcher {
+		EditText editText;
+		StatType statType;
+		Stat stat;
+
+		public StatViewTextWatcher(EditText editText, StatType statType, Stat stat) {
+			this.editText = editText;
+			this.statType = statType;
+			this.stat = stat;
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence string, int start, int count, int after) {
+			if (after > 0 && editText.getError() != null) {
+				editText.setError(null);
+			}
+		}
+
+		@Override public void onTextChanged(CharSequence string, int start, int before, int count) {
+
+		}
+
+		@Override public void afterTextChanged(Editable editable) {
+			if (isExternalUpdate) {
+				return;
+			}
+			try {
+				listener.onStatChanged(statType, stat, parseNewValue(statType, stat, editable));
+			} catch (NumberFormatException e) {
+				//The thing is empty or incorrect. Show error
+				editText.setError(getContext().getString(R.string.error_invalid_value));
+			}
+		}
+
+		private int parseNewValue(StatType statType, Stat stat, Editable editable) {
+			int result = Integer.parseInt(editable.toString());
+			if (!Stats.isValid(6, statType, stat, result)) {
+				throw new NumberFormatException();
+			}
+			return result;
+		}
 	}
 }
