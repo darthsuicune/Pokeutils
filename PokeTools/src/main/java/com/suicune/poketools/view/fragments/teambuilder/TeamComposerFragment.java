@@ -14,15 +14,15 @@ import com.suicune.poketools.model.gen6.Gen6Team;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link com.suicune.poketools.view.fragments.teambuilder.TeamMainFragment.OnTeamEditedListener} interface
+ * {@link TeamComposerFragment.OnTeamEditedListener} interface
  * to handle interaction events.
- * Use the {@link TeamMainFragment#newInstance} factory method to
+ * Use the {@link TeamComposerFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class TeamMainFragment extends Fragment {
-    private OnTeamEditedListener mListener;
-	private Gen6Team mTeam;
+public class TeamComposerFragment extends Fragment {
+    private OnTeamEditedListener listener;
+	private Gen6Team team;
 
     /**
      * Use this factory method to create a new instance of
@@ -30,10 +30,10 @@ public class TeamMainFragment extends Fragment {
      *
      * @return A new instance of fragment TeamMainFragment.
      */
-    public static TeamMainFragment newInstance() {
-        return new TeamMainFragment();
+    public static TeamComposerFragment newInstance() {
+        return new TeamComposerFragment();
     }
-    public TeamMainFragment() {
+    public TeamComposerFragment() {
         // Required empty public constructor
     }
 
@@ -53,7 +53,7 @@ public class TeamMainFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnTeamEditedListener) activity;
+            listener = (OnTeamEditedListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnTeamEditedListener");
@@ -63,7 +63,7 @@ public class TeamMainFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
     /**

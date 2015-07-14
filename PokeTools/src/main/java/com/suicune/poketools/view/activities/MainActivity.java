@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity
 		Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_toolbar);
 		setSupportActionBar(toolbar);
 		mainNavigationDrawerFragment =
-				(MainNavigationDrawerFragment) manager.findFragmentById(R.id.navigation_drawer);
-		mainNavigationDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout),
-				findViewById(R.id.navigation_drawer), toolbar);
+				(MainNavigationDrawerFragment) manager.findFragmentById(R.id.main_activity_drawer);
+		mainNavigationDrawerFragment.setUp((DrawerLayout) findViewById(R.id.main_activity_layout),
+				findViewById(R.id.main_activity_drawer), toolbar);
 	}
 
 	@Override public void onTeamBuilderRequested() {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
 	private void setFragment(Fragment fragment, String tag, int titleId) {
 		setTitle(titleId);
-		manager.beginTransaction().replace(R.id.container, fragment, tag).commit();
+		manager.beginTransaction().replace(R.id.main_activity_fragment_container, fragment, tag).commit();
 	}
 
 	@Override public void onDamageCalcRequested() {

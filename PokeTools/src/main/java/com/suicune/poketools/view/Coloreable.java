@@ -1,5 +1,5 @@
 package com.suicune.poketools.view;
 
-public interface Typeable {
+public interface Coloreable {
 	int color();
 }

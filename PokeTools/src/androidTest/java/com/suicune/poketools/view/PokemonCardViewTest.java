@@ -44,9 +44,9 @@ public class PokemonCardViewTest {
 
 	private void setupCard() {
 		activity = rule.getActivity();
-		openDrawer(R.id.drawer_layout);
+		openDrawer(R.id.main_activity_layout);
 		onView(withId(R.id.iv_calc)).perform(click());
-		closeDrawer(R.id.drawer_layout);
+		closeDrawer(R.id.main_activity_layout);
 		cardView = (PokemonCardView) activity.findViewById(R.id.pokemon);
 		cardView.cardHolder = holder;
 	}

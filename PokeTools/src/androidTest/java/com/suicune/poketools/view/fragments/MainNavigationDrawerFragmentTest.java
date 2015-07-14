@@ -35,31 +35,46 @@ public class MainNavigationDrawerFragmentTest {
 	@Before public void setUp() throws Exception {
 		activity = rule.getActivity();
 		fragment = (MainNavigationDrawerFragment) activity.getFragmentManager()
-				.findFragmentById(R.id.navigation_drawer);
+				.findFragmentById(R.id.main_activity_drawer);
 		listener = mock(MainNavigationDrawerFragment.MainNavigationDrawerCallbacks.class);
 		fragment.listener = listener;
-		DrawerActions.openDrawer(R.id.drawer_layout);
 	}
 
 	@Test public void selectingTheIvCalcWorks() throws Exception {
-		afterSelecting(R.id.iv_calc);
+		whenSelecting(R.id.iv_calc);
 		onView(allOf(withText(R.string.iv_calc_fragment_title),
 				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
 		onView(withId(R.id.iv_calc_results)).check(matches(isDisplayed()));
 		verify(listener).onIvCalcRequested();
 	}
 
-	private void afterSelecting(int resId) throws InterruptedException {
+	private void whenSelecting(int resId) throws InterruptedException {
+		DrawerActions.openDrawer(R.id.main_activity_layout);
 		onView(withId(resId)).perform(click());
-		Thread.sleep(500); //Let the drawer get closed
 	}
 
 	@Test public void selectingTheTeamBuilderWorks() throws Exception {
-		afterSelecting(R.id.team_builder);
+		whenSelecting(R.id.team_builder);
 		onView(allOf(withText(R.string.team_builder_fragment_title),
 				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
 		onView(withId(R.id.team_builder_create_new)).check(matches(isDisplayed()));
 		onView(withId(R.id.team_builder_current_teams)).check(matches(isDisplayed()));
 		verify(listener).onTeamBuilderRequested();
+	}
+
+	@Test public void selectingTheDamageCalcWorks() throws Exception {
+		whenSelecting(R.id.damage_calc);
+		onView(allOf(withText(R.string.damage_calc_fragment_title),
+				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
+		onView(withId(R.id.damage_calc_attacker)).check(matches(isDisplayed()));
+		verify(listener).onDamageCalcRequested();
+	}
+
+	@Test public void selectingThePokedexWorks() throws Exception {
+		whenSelecting(R.id.pokedex);
+		onView(allOf(withText(R.string.pokedex_fragment_title),
+				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
+		onView(withId(R.id.pokemon_list)).check(matches(isDisplayed()));
+		verify(listener).onDamageCalcRequested();
 	}
 }

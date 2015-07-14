@@ -1,10 +1,10 @@
 package com.suicune.poketools.model;
 
-import com.suicune.poketools.view.Typeable;
+import com.suicune.poketools.view.Coloreable;
 
 import java.util.List;
 
-public abstract class Attack implements Typeable {
+public abstract class Attack implements Coloreable {
 	public static final String ARG_TYPE = "attack_type";
 	public static final String ARG_PRIORITY = "priority";
 	public static final String ARG_PP = "pp";

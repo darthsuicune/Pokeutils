@@ -1,8 +1,7 @@
 <!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
-<android.support.v4.widget.DrawerLayout
+<android.support.v4.widget.DrawerLayout android:id="@+id/main_activity_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.suicune.poketools.view.activities.MainActivity">
@@ -13,12 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_activity_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/ActionBar" />
+
         <FrameLayout
-            android:id="@+id/container"
+            android:id="@+id/main_activity_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
@@ -30,10 +30,11 @@
          android:layout_gravity="left" instead. -->
     <!-- The drawer is given a fixed width in dp and extends the full height of
          the container. -->
-    <fragment android:id="@+id/navigation_drawer"
+    <fragment
+        android:id="@+id/main_activity_drawer"
+        android:name="com.suicune.poketools.view.fragments.MainNavigationDrawerFragment"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:name="com.suicune.poketools.view.fragments.MainNavigationDrawerFragment" />
+        android:layout_gravity="start" />
 
 </android.support.v4.widget.DrawerLayout>

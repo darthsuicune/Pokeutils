@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.suicune.poketools.R;
-import com.suicune.poketools.view.Typeable;
+import com.suicune.poketools.view.Coloreable;
 
 import org.json.JSONException;
 
@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
 
 import static com.suicune.poketools.model.Stats.Stat;
 
-public abstract class Pokemon implements Typeable {
+public abstract class Pokemon implements Coloreable {
 	public static final String ARG_GEN = "gen";
 	public static final String ARG_DEX_NUMBER = "dex_number";
 	public static final String ARG_FORM = "form";

@@ -30,7 +30,7 @@ public class MainNavigationDrawerFragment extends NavigationDrawerFragment {
 
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		currentSelectedSection = prefs.getInt(STATE_SELECTED_SECTION, R.id.iv_calc);
+		currentSelectedSection = prefs.getInt(STATE_SELECTED_SECTION, R.id.pokedex);
 		selectItem(currentSelectedSection);
 	}
 

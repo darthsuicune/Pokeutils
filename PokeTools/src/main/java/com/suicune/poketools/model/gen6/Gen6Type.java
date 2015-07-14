@@ -2,7 +2,7 @@ package com.suicune.poketools.model.gen6;
 
 import com.suicune.poketools.R;
 import com.suicune.poketools.model.Type;
-import com.suicune.poketools.view.Typeable;
+import com.suicune.poketools.view.Coloreable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by denis on 01.01.14.
  */
 
-public enum Gen6Type implements Type, Typeable {
+public enum Gen6Type implements Type, Coloreable {
 	NONE(0, R.string.type_none, R.color.none),
 	NORMAL(1, R.string.type_normal, R.color.normal),
 	FIGHTING(2, R.string.type_fighting, R.color.fighting),

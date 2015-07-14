@@ -5,6 +5,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="ActionBar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
     <style name="PokemonCard">
         <item name="android:padding">4dp</item>
     </style>
@@ -32,6 +37,12 @@
         <item name="android:padding">2dp</item>
     </style>
 
+    <style name="AttackResults">
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="Divider">
         <item name="android:background">?android:attr/listDivider</item>
     </style>
@@ -48,11 +59,7 @@
         <item name="android:layout_marginBottom">5dp</item>
     </style>
 
-    <style name="AttackResults">
-        <item name="android:padding">8dp</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:gravity">center</item>
-    </style>
+    <!-- Navigation Drawer -->
 
     <style name="DrawerText">
         <item name="android:gravity">center_vertical</item>
@@ -68,8 +75,8 @@
     </style>
 
     <style name="DrawerTitle" parent="DrawerEntry">
-        <!-- 36 implies 54% transparency -->
-        <item name="android:textColor">#36000000</item>
+        <!-- 255 * 0.54 = 137 -> 10001001 = 89 -->
+        <item name="android:textColor">#89000000</item>
         <item name="android:paddingLeft">16dp</item>
     </style>
 </resources>

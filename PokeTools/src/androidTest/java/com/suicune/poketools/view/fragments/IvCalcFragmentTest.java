@@ -47,9 +47,9 @@ public class IvCalcFragmentTest {
 
 	private void getFragment() throws Throwable {
 		MainActivity activity = rule.getActivity();
-		DrawerActions.openDrawer(R.id.drawer_layout);
+		DrawerActions.openDrawer(R.id.main_activity_layout);
 		onView(withId(R.id.iv_calc)).perform(click());
-		DrawerActions.closeDrawer(R.id.drawer_layout);
+		DrawerActions.closeDrawer(R.id.main_activity_layout);
 		fragment = (IvCalcFragment) activity.getFragmentManager()
 				.findFragmentByTag(MainActivity.TAG_IV_CALC);
 		rule.runOnUiThread(new Runnable() {

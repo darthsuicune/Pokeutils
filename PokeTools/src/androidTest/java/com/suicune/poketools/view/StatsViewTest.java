@@ -37,9 +37,9 @@ public class StatsViewTest {
 	}
 
 	private void loadView() throws Throwable {
-		DrawerActions.openDrawer(R.id.drawer_layout);
+		DrawerActions.openDrawer(R.id.main_activity_layout);
 		onView(withId(R.id.iv_calc)).perform(click());
-		DrawerActions.closeDrawer(R.id.drawer_layout);
+		DrawerActions.closeDrawer(R.id.main_activity_layout);
 		view = (StatsView) rule.getActivity().findViewById(R.id.pokemon_stats_view);
 		setupListener();
 	}
