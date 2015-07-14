@@ -14,12 +14,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -42,9 +37,6 @@ public class MainNavigationDrawerFragmentTest {
 
 	@Test public void selectingTheIvCalcWorks() throws Exception {
 		whenSelecting(R.id.iv_calc);
-		onView(allOf(withText(R.string.iv_calc_fragment_title),
-				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
-		onView(withId(R.id.iv_calc_results)).check(matches(isDisplayed()));
 		verify(listener).onIvCalcRequested();
 	}
 
@@ -53,28 +45,23 @@ public class MainNavigationDrawerFragmentTest {
 		onView(withId(resId)).perform(click());
 	}
 
+	@Test public void selectingTheIvBreederCalcWorks() throws Exception {
+		whenSelecting(R.id.iv_breeder_calc);
+		verify(listener).onIvBreederRequested();
+	}
+
 	@Test public void selectingTheTeamBuilderWorks() throws Exception {
 		whenSelecting(R.id.team_builder);
-		onView(allOf(withText(R.string.team_builder_fragment_title),
-				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
-		onView(withId(R.id.team_builder_create_new)).check(matches(isDisplayed()));
-		onView(withId(R.id.team_builder_current_teams)).check(matches(isDisplayed()));
 		verify(listener).onTeamBuilderRequested();
 	}
 
 	@Test public void selectingTheDamageCalcWorks() throws Exception {
 		whenSelecting(R.id.damage_calc);
-		onView(allOf(withText(R.string.damage_calc_fragment_title),
-				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
-		onView(withId(R.id.damage_calc_attacker)).check(matches(isDisplayed()));
 		verify(listener).onDamageCalcRequested();
 	}
 
 	@Test public void selectingThePokedexWorks() throws Exception {
 		whenSelecting(R.id.pokedex);
-		onView(allOf(withText(R.string.pokedex_fragment_title),
-				isDescendantOfA(withId(R.id.main_activity_toolbar)))).check(matches(isDisplayed()));
-		onView(withId(R.id.pokemon_list)).check(matches(isDisplayed()));
-		verify(listener).onDamageCalcRequested();
+		verify(listener).onPokedexRequested();
 	}
 }

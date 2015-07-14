@@ -14,11 +14,13 @@ import com.suicune.poketools.view.fragments.DamageCalcFragment;
 import com.suicune.poketools.view.fragments.IvBreedingCalcFragment;
 import com.suicune.poketools.view.fragments.IvCalcFragment;
 import com.suicune.poketools.view.fragments.MainNavigationDrawerFragment;
+import com.suicune.poketools.view.fragments.MainNavigationDrawerFragment.MainNavigationDrawerCallbacks;
 import com.suicune.poketools.view.fragments.PokedexFragment;
 import com.suicune.poketools.view.fragments.teambuilder.TeamBuilderFragment;
+import com.suicune.poketools.view.fragments.teambuilder.TeamBuilderFragment.OnTeamBuilderInteractionListener;
 
 public class MainActivity extends AppCompatActivity
-		implements MainNavigationDrawerFragment.MainNavigationDrawerCallbacks {
+		implements MainNavigationDrawerCallbacks, OnTeamBuilderInteractionListener {
 	public static final String TAG_DAMAGE_CALC = "damageCalcFragment";
 	public static final String TAG_IV_CALC = "ivCalcFragment";
 	public static final String TAG_IV_BREEDER = "ivBreederFragment";
@@ -50,7 +52,8 @@ public class MainActivity extends AppCompatActivity
 
 	private void setFragment(Fragment fragment, String tag, int titleId) {
 		setTitle(titleId);
-		manager.beginTransaction().replace(R.id.main_activity_fragment_container, fragment, tag).commit();
+		manager.beginTransaction().replace(R.id.main_activity_fragment_container, fragment,
+				tag).commit();
 	}
 
 	@Override public void onDamageCalcRequested() {
@@ -101,5 +104,13 @@ public class MainActivity extends AppCompatActivity
 				mainNavigationDrawerFragment.onOptionsItemSelected(item);
 				return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override public void onNewTeamRequested() {
+
+	}
+
+	@Override public void onTeamSelected() {
+
 	}
 }
